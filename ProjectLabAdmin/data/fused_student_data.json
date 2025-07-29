@@ -1,0 +1,6908 @@
+{
+  "metadata": {
+    "creation_date": "2025-07-29T02:49:21.699676",
+    "total_students": 364,
+    "students_with_topics": 10,
+    "students_with_enrollments": 358,
+    "dlxls_records": 10,
+    "dlnep_records": 362
+  },
+  "students": [
+    {
+      "student_neptun": "Q71MBS",
+      "student_name": "Abdullazade Mustafa",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT01",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "H45GMC",
+      "student_name": "Affes Firas",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML11",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "A92Q1Z",
+      "student_name": "Ahmadov Yusif",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML11",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "TEUL0U",
+      "student_name": "Ajkler Ákos Szabolcs",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "O373VK",
+      "student_name": "Alala Saly",
+      "enrolled_courses": [],
+      "has_topic": true,
+      "supervisor": "Somogyi Norbert Zsolt (somogyi.norbert)",
+      "topic_category": "Nincs megadva",
+      "topic_title": "Android alapú szoftverfejlesztés",
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "X3025D",
+      "student_name": "Almoghrabi Makram Issam",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML11",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "ZSO5CM",
+      "student_name": "Anderlik Sándor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "NYNEBB",
+      "student_name": "Angyal Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "X9Z2ZK",
+      "student_name": "Angyal-Tóth Ábel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "G9A749",
+      "student_name": "Ari András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "RQR669",
+      "student_name": "Babics Ádám",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "VHUI74",
+      "student_name": "Bacskai Tamás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "NID4HA",
+      "student_name": "Bakos Gergő",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "OTQVE5",
+      "student_name": "Bakó Péter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "OM7XYM",
+      "student_name": "Balla János",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT13",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "L76XFE",
+      "student_name": "Balogh István Barnabás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GS9UPB",
+      "student_name": "Balázs Martin Géza",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "PHIF7K",
+      "student_name": "Barabás Martin",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "WTOVS4",
+      "student_name": "Barna László",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DKY3V6",
+      "student_name": "Barta Ákos",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM027",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "U9DTUU",
+      "student_name": "Bayer Ákos",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "C2JUZ6",
+      "student_name": "Benedek Olivér",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "VZ9AS0",
+      "student_name": "Benedek Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DOGB3R",
+      "student_name": "Benkő Orsolya",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "M975OK",
+      "student_name": "Bereczki Máté",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "LB8O75",
+      "student_name": "Berente Bálint István",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "EHLXA6",
+      "student_name": "Berky Bence Tibor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT13",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "SM5P0J",
+      "student_name": "Biró Bence",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QUB9NB",
+      "student_name": "Biró Áron",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "N7BCSW",
+      "student_name": "Bognár Ádám",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": true,
+      "supervisor": "Albert István (ialbert)",
+      "topic_category": "Nincs megadva",
+      "topic_title": "Webes alkalmazás készítése",
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "KQSVOO",
+      "student_name": "Boldizsár András János",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "PETJ0Q",
+      "student_name": "Bolgár Zsófia",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FU4H9H",
+      "student_name": "Bollér Henrik András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "LI7BDT",
+      "student_name": "Bor Csenge Nóra",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CQIA5X",
+      "student_name": "Bruncsics Bálint",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "EQT5K1",
+      "student_name": "Bugya Eszter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CNE27B",
+      "student_name": "Buránszki Domonkos",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "UPQ6TE",
+      "student_name": "Buzási Boglárka Anna",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "S4XMEP",
+      "student_name": "Bánáti Tamás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GUYAMT",
+      "student_name": "Bárányos Donát",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JAJ6AD",
+      "student_name": "Bárányos Petra Sári",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "C3FBCD",
+      "student_name": "Bärnkopf Áron Salamon",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "E77YIW",
+      "student_name": "Böröcz Botond",
+      "enrolled_courses": [],
+      "has_topic": true,
+      "supervisor": "Somogyi Norbert Zsolt (somogyi.norbert)",
+      "topic_category": "Nincs megadva",
+      "topic_title": "Kotlin Multiplatform alapú szoftverfejlesztés",
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "MOZH9G",
+      "student_name": "Büki Kálmán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "H1A0IA",
+      "student_name": "Bőczén Koppány András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FZI562",
+      "student_name": "Csalagovits Máté",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "N852Z8",
+      "student_name": "Csarkovszkij Artyjom Alekszandrovics",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML10",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "CM8F9W",
+      "student_name": "Csegzi Lóránd Márton",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ANUZE6",
+      "student_name": "Cserei Zsolt",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ENEAUV",
+      "student_name": "Csernitzky Gergő Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM027",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "L0P1FU",
+      "student_name": "Cseszka Bence",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "XND9YW",
+      "student_name": "Csibi Patrik Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DVSBKJ",
+      "student_name": "Csirmaz Gáspár",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GIQBWP",
+      "student_name": "Csutora Lilla",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL01",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "LMVWRE",
+      "student_name": "Csutár Márk Tibor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "B3OFT4",
+      "student_name": "Csábi-Kis Henrik",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "Q8CHHW",
+      "student_name": "Csákai Bence Huba",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "J74X5F",
+      "student_name": "Csókás Gergő Levente",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "WI18BC",
+      "student_name": "Csóti Balázs Gábor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CDEBFX",
+      "student_name": "Czeglédi Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "I6W3O3",
+      "student_name": "Czeglédy Gergely",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "TEHJBO",
+      "student_name": "Czibulya Csongor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "APY9AN",
+      "student_name": "Dancs Bertalan",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "AZTVS7",
+      "student_name": "Dancsó Marcell",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "I9XF28",
+      "student_name": "Daoud Maged Hosni Bahnam",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT01",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "GD4YKT",
+      "student_name": "De Haan Tom",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "A8LNH3",
+      "student_name": "Demény Tamás Attila",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BGVPVW",
+      "student_name": "Demők Döme Máté",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "S2DQUO",
+      "student_name": "Deák Botond",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT13",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "XFCBM7",
+      "student_name": "Dhouioui Oussama",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML11",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "E0PKKH",
+      "student_name": "Dombóvári Bálint",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CWGYWC",
+      "student_name": "Domonkos Ádám",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DRNME9",
+      "student_name": "Dudás Tamás Alex",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JJSFIL",
+      "student_name": "Dézsenyi Balázs Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QNRY8Q",
+      "student_name": "Dúl András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DMOXZA",
+      "student_name": "Epres Tamás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BSD94P",
+      "student_name": "Farbaky Pál János",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "UBZN8Q",
+      "student_name": "Farkas Péter Károly",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DW5LT4",
+      "student_name": "Fazekas Gyula",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "WE0JN9",
+      "student_name": "Fehér Anna",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HY4UCB",
+      "student_name": "Fejes Botond",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "KR5WPC",
+      "student_name": "Fekete Álmos Valér",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "AHU632",
+      "student_name": "Ferencz Kincső Lilla",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "P2H0P0",
+      "student_name": "Ferge Máté Lajos",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "D3MKVM",
+      "student_name": "Fischer Balázs",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "Z0EAAP",
+      "student_name": "Fosztó-Bartha Ábel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "D3KKX6",
+      "student_name": "Frikker Erik Vince",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM027",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JSUMEA",
+      "student_name": "Fógel Barnabás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HZNJM6",
+      "student_name": "Füstös Gergely",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CWCCUY",
+      "student_name": "Galatean Marcell",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "YRF3M3",
+      "student_name": "Gallik Zoltán György",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "KYQU46",
+      "student_name": "Galuska Zoltán Bálint",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QD5NG2",
+      "student_name": "Garad Ágoston Attila",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT13",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "R74UM5",
+      "student_name": "Geier Csaba",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FXD9AM",
+      "student_name": "Gembela Gergely",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "X9VG6O",
+      "student_name": "Gergely Mátyás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL01",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "M44MK1",
+      "student_name": "Gibicsár Gergő",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "D73IKB",
+      "student_name": "Gulig József Máté",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HUCHEX",
+      "student_name": "Gulybán Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "E5P1LO",
+      "student_name": "Gulyás Bence",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "T6LEKK",
+      "student_name": "Gulyás Máté",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM027",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IVCEPY",
+      "student_name": "Gurabi Kristóf János",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "P804SK",
+      "student_name": "Gyuricza Zalán László",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "PKK65Q",
+      "student_name": "Gyóni Ákos Attila",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "B04G6C",
+      "student_name": "Gyöngyösi Ákos",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HUQ0EJ",
+      "student_name": "Gál Botond",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "WUPA9P",
+      "student_name": "Göndöcs Martin",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "TYJ892",
+      "student_name": "Görbe Dávid",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "Z4EUJV",
+      "student_name": "Haag Domonkos",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "E7LDNJ",
+      "student_name": "Hamadeh Amir",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "A1FVB8",
+      "student_name": "Hanich Péter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GIZVI5",
+      "student_name": "Hankóczi Gábor Miklós",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QFVUVQ",
+      "student_name": "Hantos Péter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM027",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BYI1SZ",
+      "student_name": "Haouet Yassine",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML11",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "C4Y40S",
+      "student_name": "Hegyi Norbert",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "OH48J3",
+      "student_name": "Horgos Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT13",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "LH6LZG",
+      "student_name": "Hortoványi Ottó",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BFK4J4",
+      "student_name": "Horváth Gellért",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GZIFZX",
+      "student_name": "Horváth Kristóf",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL01",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "D68QT7",
+      "student_name": "Horváth Mátyás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM027",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CYUH2Q",
+      "student_name": "Horváth Tamás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "PGBDTC",
+      "student_name": "Horváth Ágoston",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "PH4LP3",
+      "student_name": "Hunyady Zsombor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "H9PB1F",
+      "student_name": "Hérincs Bence Attila",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "D85S3M",
+      "student_name": "Hőgyes Krisztián",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "TK4K29",
+      "student_name": "Illés Ákos",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "X32SQC",
+      "student_name": "Iqbal Daud",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT01",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "JG0GNZ",
+      "student_name": "Ismayilov Ibadat",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT01",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "RD671I",
+      "student_name": "Istvánfi Gergő",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "OWM3QU",
+      "student_name": "Iványi Balázs",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "YYFVWG",
+      "student_name": "Jabeur Iheb",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML11",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "E1R8KP",
+      "student_name": "Jankura Tamás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JCIRJL",
+      "student_name": "Jeges Gábor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": true,
+      "supervisor": "Forstner Bertalan Dr. (cyberci)",
+      "topic_category": "Nincs megadva",
+      "topic_title": "Képességteszt-adatokat gyűjtő mobil játékok fejlesztése Android platformon",
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ELMHX3",
+      "student_name": "Jordán Levente Tibor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JXOV52",
+      "student_name": "Jost Márk Benedek",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "C9N6ZK",
+      "student_name": "Jáky Dániel Fülöp",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GNTJWZ",
+      "student_name": "Jósvai Máté",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ELA7CK",
+      "student_name": "Kajfis Kíra",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "RIMR52",
+      "student_name": "Kanatbekova Aichurok",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML11",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "PT8YWJ",
+      "student_name": "Karakas Dávid",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "PDCO3F",
+      "student_name": "Kelemen Áron Bence",
+      "enrolled_courses": [],
+      "has_topic": true,
+      "supervisor": "Morvay Balázs Tibor (morvaybalazs)",
+      "topic_category": "Szoftver",
+      "topic_title": "Alkalmazott gépi tanulás",
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HBA16N",
+      "student_name": "Kende Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "AMW164",
+      "student_name": "Kerekes László Levente",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "B7T8JE",
+      "student_name": "Kis Mihály Bence",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "G9IUGM",
+      "student_name": "Kiss Viktor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IFQQ7T",
+      "student_name": "Klaffl Attila András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        },
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FTBI4N",
+      "student_name": "Klauzer László Zsolt",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DCJW9V",
+      "student_name": "Kolonics Gergő Armand",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "M35K2K",
+      "student_name": "Komáromi Sándor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT03",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FZHO93",
+      "student_name": "Kopacz Bence Gyula",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FUN6YZ",
+      "student_name": "Kotroczó Ádám",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BYVO9O",
+      "student_name": "Kovács Donát",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": true,
+      "supervisor": "Somogyi Norbert Zsolt (somogyi.norbert)",
+      "topic_category": "Nincs megadva",
+      "topic_title": "Kotlin Multiplatform alapú szoftverfejlesztés",
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FYEAS5",
+      "student_name": "Kovács Dávid",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "MQGC2F",
+      "student_name": "Kovács István",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IB72D1",
+      "student_name": "Kovács Máté",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CZ4WH5",
+      "student_name": "Kovács Nimród Ányos",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BUH29U",
+      "student_name": "Kovács Tibor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DDEZWD",
+      "student_name": "Kovács Zsombor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "L4HKTK",
+      "student_name": "Kucsera Patrik",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "Y3ZTEI",
+      "student_name": "Kurcsi Norbert",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BLDI3I",
+      "student_name": "Kurtos András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "RSY0MJ",
+      "student_name": "Kurucz István",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "D1DVWK",
+      "student_name": "Kálmánczhelyi Dóra",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QLYM8M",
+      "student_name": "Károlyi Mihály",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ARN859",
+      "student_name": "Kárpáti Kristóf Soma",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CY1BLZ",
+      "student_name": "Kékegyi Márk",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "AC1PYI",
+      "student_name": "Kékesi Szabolcs",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "E5X0XA",
+      "student_name": "Kéri Bálint",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GWCYIK",
+      "student_name": "Körtvélyessy László",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "G3A4MA",
+      "student_name": "Körömi Roland",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "A8UNMW",
+      "student_name": "Landolsi Hiba Allah",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML11",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "P3850P",
+      "student_name": "Le Ngoc Thai",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CDGJW9",
+      "student_name": "Lenkovics Ákos",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "L6KOH4",
+      "student_name": "Lenner András Tibor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "AOM6DL",
+      "student_name": "Leszkovszki Nóra",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "H847OK",
+      "student_name": "Lipcsei Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "S2OGR2",
+      "student_name": "Lubics Botond",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "KOPKZK",
+      "student_name": "Lénárd Zsombor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "YIWROG",
+      "student_name": "Lénárt Levente",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "C7OKIE",
+      "student_name": "Lévai Márton",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FSL7CU",
+      "student_name": "Mankge Simphiwe Harvey",
+      "enrolled_courses": [],
+      "has_topic": true,
+      "supervisor": "Al-Magsoosi Husam (husam)",
+      "topic_category": "Szoftver",
+      "topic_title": "Z-ENG: An Integrated AI-Powered Learning Platform",
+      "is_english_topic": true,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "K2DE0K",
+      "student_name": "Marák Levente",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BWPAFC",
+      "student_name": "Mayer Dávid Gergő",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DO9MAO",
+      "student_name": "Miczki Márk",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "Q40HYS",
+      "student_name": "Mihályi Péter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "TCV0Y9",
+      "student_name": "Mikola Bálint István",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "SHKGZW",
+      "student_name": "Mizser Ádám Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BDJV6G",
+      "student_name": "Mohammed Rasti Jamal Mohammed",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML11",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "W55IO8",
+      "student_name": "Molnár Balázs",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JINVFB",
+      "student_name": "Molnár Bence György",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "S6VYM8",
+      "student_name": "Molnár Kamilla",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GJHN6G",
+      "student_name": "Molnár Kristóf András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JGWFM2",
+      "student_name": "Molnár Levente",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "YG29PD",
+      "student_name": "Morvai Attila János",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        },
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "C0FUJI",
+      "student_name": "Moré Áron",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "UZ472Y",
+      "student_name": "Motyovszki András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HEZNU6",
+      "student_name": "Mucsi Attila Gábor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "MA3424",
+      "student_name": "Musa Abdullah",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": true,
+      "supervisor": "Forstner Bertalan Dr. (cyberci)",
+      "topic_category": "Nincs megadva",
+      "topic_title": "Képességteszt-adatokat gyűjtő mobil játékok fejlesztése Android platformon",
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CKOPKR",
+      "student_name": "Muzslai László",
+      "enrolled_courses": [],
+      "has_topic": true,
+      "supervisor": "Somogyi Norbert Zsolt (somogyi.norbert)",
+      "topic_category": "Nincs megadva",
+      "topic_title": "Kotlin Multiplatform alapú szoftverfejlesztés",
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IQF6OF",
+      "student_name": "Máté Sámuel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QTU3QF",
+      "student_name": "Ménes Zsombor Rajmond",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "PRYJJV",
+      "student_name": "Mészáros Barna",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "Q4KPC5",
+      "student_name": "Mészáros László",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ER6NSU",
+      "student_name": "Mészáros Márk",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CHYD8H",
+      "student_name": "Móczár Dániel László",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "TM1S67",
+      "student_name": "Müller Péter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "SISEYQ",
+      "student_name": "Nagy Bence",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FIM3VE",
+      "student_name": "Nagy Borbála",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HC1QJP",
+      "student_name": "Nagy Gergely",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "MKEEOZ",
+      "student_name": "Nagy Gábor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BC7TB3",
+      "student_name": "Nagy László",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JBCZP8",
+      "student_name": "Nagy Márk",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "H6S9BC",
+      "student_name": "Natkay Botond",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CK9G55",
+      "student_name": "Nemes Axel Roland",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "OHKFY9",
+      "student_name": "Novák Bálint Huba",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "T711GD",
+      "student_name": "Nyuli Barnabás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GWPESM",
+      "student_name": "Nás Levente Gellért",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "M8PH6J",
+      "student_name": "Németh Balázs",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ITG9SC",
+      "student_name": "Németh Fábián András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HYJEO6",
+      "student_name": "Oláh Levente",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM027",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "L5N83Q",
+      "student_name": "Ottó Lőrinc",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CQZ9MA",
+      "student_name": "Ozvaldik Krisztina",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "U5O7X7",
+      "student_name": "Pafféri Péter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QN1SXN",
+      "student_name": "Pallos Gábor György",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "S95MOE",
+      "student_name": "Papp Alex",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "YQX8DN",
+      "student_name": "Papp Bercel Tas",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HV0CRH",
+      "student_name": "Papp Levente",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "F8FGJW",
+      "student_name": "Patyi Csaba Bendegúz",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT13",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "N8OSF8",
+      "student_name": "Penk András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IUBBRI",
+      "student_name": "Pifkó Barna",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "RXBESJ",
+      "student_name": "Piller Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "NQ47TW",
+      "student_name": "Plaszkony Balázs",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "MKIIDG",
+      "student_name": "Pokó Kincső Réka",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CQNAK4",
+      "student_name": "Pordán Barnabás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "OADCD9",
+      "student_name": "Porkoláb Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL01",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IBOLQ0",
+      "student_name": "Poór Lívia",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HM9T3V",
+      "student_name": "Prantner Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "W9DMQM",
+      "student_name": "Prim Patrik Gábor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL01",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "XF7A69",
+      "student_name": "Prinz Márk",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "WCY91I",
+      "student_name": "Prágai Patrik József",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "C5T5L7",
+      "student_name": "Pál Marcell",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BW4XQ7",
+      "student_name": "Pálmai Flórián",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "L87LWY",
+      "student_name": "Pásztori Péter Benjámin",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ENLH9I",
+      "student_name": "Péter Bence Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HMX7LV",
+      "student_name": "Pósa Tamás Márton",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "MWAI9Y",
+      "student_name": "Raisz Olivér Iván",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "Q45KK7",
+      "student_name": "Rendes Botond",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "YO685Y",
+      "student_name": "Richly Bálint Gábor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "E29I7E",
+      "student_name": "Rideg Vilmos Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "VN48J4",
+      "student_name": "Rohrsetzer Róbert Richard",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        },
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QWF9WO",
+      "student_name": "Rumi Zoárd",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "X8SDVC",
+      "student_name": "Rácz Dominik István",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "KAMFNQ",
+      "student_name": "Rékó Márton",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "AO7JX4",
+      "student_name": "Réti Ádám",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "LM1ZJR",
+      "student_name": "Safár Gergő",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "VX4USX",
+      "student_name": "Sajben Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "RU0BNQ",
+      "student_name": "Salti Hani",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "SXJ197",
+      "student_name": "Samaien Tariq Raed Tariq",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT01",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "S2Q2D4",
+      "student_name": "Schmidt Gergő András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "E9CLSH",
+      "student_name": "Schmieder Nándor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GOJSW7",
+      "student_name": "Schreiber Ádám",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JQ2DO9",
+      "student_name": "Sebestény János",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM027",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "OUK8CF",
+      "student_name": "Seregélyes Viktória",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DXD80O",
+      "student_name": "Simon Tamás Dorián",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL01",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "KUR6F9",
+      "student_name": "Sinkó Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GPJR54",
+      "student_name": "Somogyi Benedek",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IYX0EQ",
+      "student_name": "Spertli Krisztián",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HQKOZA",
+      "student_name": "Stankovics Dóra",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "YJRFP9",
+      "student_name": "Starosta Gergő Bence",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "Y2K0WG",
+      "student_name": "Steltzer Soma",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "DINZ55",
+      "student_name": "Straub Alexander",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "TE6YK0",
+      "student_name": "Szabó Bence",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CEPI95",
+      "student_name": "Szabó Bendegúz",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "AFXLJG",
+      "student_name": "Szabó Gergő Barnabás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ET9AUJ",
+      "student_name": "Szabó László",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "HGACP9",
+      "student_name": "Szabó Vencel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "EO1CKD",
+      "student_name": "Szakmári Ádám",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GAA9DD",
+      "student_name": "Szakács Olivér",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "RHJR2H",
+      "student_name": "Szalay Gergő",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GTF0NF",
+      "student_name": "Szanda Márton",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IU2FB6",
+      "student_name": "Szatmári Gergely István",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IB2BQD",
+      "student_name": "Szebedy Géza István",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "YTPENK",
+      "student_name": "Szegedi Balázs Márk",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "NBTWCD",
+      "student_name": "Szegletes Jakab István",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "NC2UM0",
+      "student_name": "Szeifert Cintia",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CCNZI2",
+      "student_name": "Szekeres Alex",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CMTORT",
+      "student_name": "Szekeres Márton",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QK9MU4",
+      "student_name": "Szelle Csaba",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ROV43C",
+      "student_name": "Személyi Balázs András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FN5NF0",
+      "student_name": "Szentgyörgyi Ábel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "NIIIIG",
+      "student_name": "Szigeti Donát",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IYTB57",
+      "student_name": "Szigeti Ádám Péter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "XH1H8E",
+      "student_name": "Sziklai Dávid László",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "THGPZB",
+      "student_name": "Szilczer Ármin",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "TRTGN8",
+      "student_name": "Szlivka-Strbik Anna Viktória",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "RV30LP",
+      "student_name": "Szobek Ádám Márk",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "VN450W",
+      "student_name": "Szokoly-Angyal Armand",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "NQZ3BI",
+      "student_name": "Szrenka Mátyás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "LDAG8S",
+      "student_name": "Sztancs László",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "N4BWZG",
+      "student_name": "Szurovcsák Ramóna",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "UJ19SJ",
+      "student_name": "Száller Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "C5KSYL",
+      "student_name": "Szántó Péter András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GT5X34",
+      "student_name": "Száraz Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BL046F",
+      "student_name": "Széll Sámuel Marcell",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "XYD66R",
+      "student_name": "Szénási Krisztián",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "GZXGUQ",
+      "student_name": "Szép András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BE9NZC",
+      "student_name": "Szüllő Péter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "N9YWA1",
+      "student_name": "Szőke Zsombor István",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FZFZXF",
+      "student_name": "Sághy Attila",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "KQF28D",
+      "student_name": "Sági Péter Pál",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "I8E8B0",
+      "student_name": "Sándor Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "C7XUDE",
+      "student_name": "Sándor Tibor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "OGLSI2",
+      "student_name": "Sánta Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BT3AEX",
+      "student_name": "Sásdi András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "IY6CT2",
+      "student_name": "Süle Zalán Attila",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FFASHD",
+      "student_name": "Takács Máté",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "G1NYGN",
+      "student_name": "Tamásy Gergely Márton",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QM5EA9",
+      "student_name": "Tarcza Lídia",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "BRY27P",
+      "student_name": "Tasi Gergő",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CEBH76",
+      "student_name": "Telek Marcell",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "E9Y0GQ",
+      "student_name": "Telekes Márton Gábor",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "K8OTTI",
+      "student_name": "Tima Patrik Richárd",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CMX3M3",
+      "student_name": "Tolnai Martin",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "THIPZB",
+      "student_name": "Turi Márton Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QVFLJH",
+      "student_name": "Técsi Zsuzsanna Vilma",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FRUVFA",
+      "student_name": "Tóth Balázs Tamás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CCF0DW",
+      "student_name": "Tóth Dominik",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "EJH8MF",
+      "student_name": "Tóth Eszter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "YP6PCD",
+      "student_name": "Tóth Imre",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM027",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "D28B59",
+      "student_name": "Tóth Kincső Eszter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FRPI0M",
+      "student_name": "Tóth Tamás",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "G3PNZL",
+      "student_name": "Tóth Álmos Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "Q6Q7X2",
+      "student_name": "Tömösi Botond",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL01",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "FP85Z0",
+      "student_name": "Török Norbert",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "EMXT9B",
+      "student_name": "Vajcik Dominik",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "X5ATXN",
+      "student_name": "Vajda Balázs",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "K04JA8",
+      "student_name": "Varga Csaba",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "UG6U91",
+      "student_name": "Varga Dávid",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CFF6ZQ",
+      "student_name": "Varga Zádor András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "E22H8P",
+      "student_name": "Varga Ádám Marcell",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "K82BHB",
+      "student_name": "Varga Áron András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CIUDF4",
+      "student_name": "Vargay András Dávid",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "WNMUG4",
+      "student_name": "Vas Benedek Zoltán",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JIZTMY",
+      "student_name": "Vendel János Patrik",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "QT3BQN",
+      "student_name": "Venter Máté",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "CW3S56",
+      "student_name": "Vepperi Virág",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT13",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "A7FOV4",
+      "student_name": "Veres András Jenő",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM026",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "N3SIT4",
+      "student_name": "Vida András",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL05",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "XOBM6X",
+      "student_name": "Vigh Boldizsár",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "JIUDSZ",
+      "student_name": "Vámos Ádám",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "NPB8UM",
+      "student_name": "Vámosi József",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "WYZJ90",
+      "student_name": "Vörös Asztrik",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT10",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "SLLV0S",
+      "student_name": "Vörös László",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "L3GKN5",
+      "student_name": "Wang Xiang",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUM039",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "D4006T",
+      "student_name": "Zalaváry Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "K6T9KG",
+      "student_name": "Zarai Fedi",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML11",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "IPWWIW",
+      "student_name": "Zharkeshov Nurtas",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT01",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "TLXUYD",
+      "student_name": "Zhou Zhengdao",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT01",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "P46IR8",
+      "student_name": "Zolcsák Eszter",
+      "enrolled_courses": [],
+      "has_topic": true,
+      "supervisor": "Somogyi Norbert Zsolt (somogyi.norbert)",
+      "topic_category": "Nincs megadva",
+      "topic_title": "Android alapú szoftverfejlesztés",
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "U4EF0W",
+      "student_name": "Zsély Balázs István",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL01",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "nan",
+      "student_name": "nan",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUML10",
+          "is_english_course": true,
+          "schedule_type": "nan",
+          "entry": "nan",
+          "partial_result": "nan"
+        },
+        {
+          "course_code": "BMEVIAUMT03",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "nan",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": true
+    },
+    {
+      "student_neptun": "T95NKI",
+      "student_name": "Ágoston Dániel",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUMT12",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "ID3FM3",
+      "student_name": "Árvay Péter",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAT00",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    },
+    {
+      "student_neptun": "EZG1LF",
+      "student_name": "Ötvös Márton Álmos",
+      "enrolled_courses": [
+        {
+          "course_code": "BMEVIAUAL04",
+          "is_english_course": false,
+          "schedule_type": "nan",
+          "entry": "Nem",
+          "partial_result": "nan"
+        }
+      ],
+      "has_topic": false,
+      "supervisor": null,
+      "topic_category": null,
+      "topic_title": null,
+      "is_english_topic": false,
+      "is_enrolled_in_english_course": false
+    }
+  ]
+}

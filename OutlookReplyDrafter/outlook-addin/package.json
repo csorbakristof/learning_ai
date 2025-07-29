@@ -1,0 +1,20 @@
+{
+  "name": "outlook-ai-addin",
+  "version": "1.0.0",
+  "description": "Frontend for Outlook AI Email Assistant Add-in",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 3000 -S -C cert.pem -K key.pem",
+    "dev": "http-server -p 3000 -S -C cert.pem -K key.pem --cors",
+    "cert": "openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem -subj \"/C=US/ST=State/L=City/O=Organization/CN=localhost\""
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "openssl": "^2.0.0"
+  },
+  "keywords": ["outlook", "office", "addin"],
+  "author": "Your Name",
+  "license": "MIT"
+}

@@ -1,0 +1,28 @@
+' This code should be placed in the Word document's VBA project
+' 
+' Instructions for implementing in Word:
+' 1. Open the ReviewAndGradeTemplate.docx file
+' 2. Press Alt+F11 to open VBA Editor
+' 3. Insert a new Module (Insert > Module)
+' 4. Copy the GenPdf.bas code into this module
+' 5. Optionally, add the following code to the ThisDocument module for automatic shortcut assignment
+
+' ThisDocument Module Code:
+Private Sub Document_Open()
+    ' Assign Ctrl+Shift+P shortcut when document opens
+    Call AssignPdfShortcut
+End Sub
+
+Private Sub Document_Close()
+    ' Remove shortcut when document closes
+    Call RemovePdfShortcut
+End Sub
+
+' Alternative manual shortcut assignment
+' If the automatic assignment doesn't work, users can manually assign the shortcut:
+' 1. Go to File > Options > Customize Ribbon
+' 2. Click "Customize..." next to Keyboard shortcuts
+' 3. In Categories, select "Macros"
+' 4. Select "ExportToPDF" macro
+' 5. In "Press new shortcut key" field, press Ctrl+Shift+P
+' 6. Click "Assign" and "Close"

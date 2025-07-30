@@ -103,6 +103,29 @@ Please have a look at the overall source code. Some files seem to be very long. 
 
 Remove all downloaded files and fresh start the whole system for a complete test.
 
+# Topic collector
+
+Hello! I need you to create an additional python+selenium application which is independent from the previous ones. Put it in a folder called app3_topic_collector. Look at the specification in @specification_topiccollector.md . Can you generate the application for me? Ask me if you need additional information.
+
+---
+
+Yes, please run the application so I can see the resulting JSON.
+
+---
+
+The app seems to open the pages of advisors as well which is not required. Advisors appear in the details pages of the topics but we only need their names, so clicking on their name (it is also a link) is not necessary. Why is the application doing that?
+
+(A kategória oldalon minden linket megvizsgált, pedig a témák után szerepel a konzulensek neve is és az is link. Azt nem kellene követni...)
+
+---
+
+Ahhhh.... I see the issue! You need to login to the portal to see the selectors. Please modify the application to open the website and then wait for the user to log in before continuing.
+
+## Drop selector clicking and selenium and login at all
+
+I realized that we can solve the whole task much easier and faster: the list of course codes appears on the category pages, so the app can extact them from there for every topic which is contained in that category. And then there is no need for the selector manipulation at all. Which also means that there is no need to login and no need for selenium at all. We can solve this with simple static html downloads. Please modify the @specification_topiccollector.md file accordingly.
+
+----
 
 
 

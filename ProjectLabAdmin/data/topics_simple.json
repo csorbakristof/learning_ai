@@ -1,0 +1,3792 @@
+[
+  {
+    "title": ".Net alapú fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Net-alapu-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 11,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Alaprajz tervező webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alaprajz-tervezo-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Alkalmazott gépi tanulás »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-gepi-tanulas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Amazon AWS alapú alkalmazásfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Amazon-AWS-alapu-alkalmazasfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 7,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Android Auto/Automotive - autós integrációs lehetőségek vizsgálata modern mobil platformokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-AutoAutomotive",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Android mobil alkalmazás fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-mobil-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Arduino Alvik robot megismerése és fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Arduino-Alvik-robot-megismerese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Beosztástervezési algoritmusok fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Beosztastervezesi-algoritmusok",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "BigData / Üzleti Intelligencia (BI) rendszer fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/BigData--Uzleti-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Blazor alapú webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Blazor-alapu-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Felhasználói felület készítése .NET alapokon beosztástervezési feladatokhoz »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Felhasznaloi-felulet-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Fizika informált neurális hálózatok alkalmazása (Physics Informed Neural Networks, PINN) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Fizika-informalt-neuralis",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "iOS alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "iOS szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Java Spring vagy Node.JS FullStack fejlesztés React/Angular frontend technológiákkal »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Java-Spring-vagy-NodeJS",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Játék fejlesztése Windows 11-re »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatek-fejlesztese-Windows",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Játékfejlesztés WebGL2/WebGPU alapon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatekfejlesztes-WebGL2WebGPU",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Képességteszt-adatokat gyűjtő mobil játékok fejlesztése Android platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Kepessegtesztadatokat-gyujto",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Kotlin Multiplatform alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Kotlin-Multiplatform-alapu",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "LLM-alapú információkereső eszköz dokumentumtárakhoz »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/LLMalapu-informaciokereso",
+    "is_external": true,
+    "external_partner": "Zenitech",
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Mesterséges Intelligencia alapú generatív/önfejlesztő web/mobil alkalmazás tervezése és fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Mélytanulási módszerek alkalmazása a gyakoraltban »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Melytanulasi-modszerek-alkalmazasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Mobil alkalmazás fejlesztése iOS platformra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mobil-alkalmazas-fejlesztese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Moodle intrastruktúra megismerése és bővítmények fejlesztése PHP és JavaScript alapokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Moodle-intrastruktura-megismerese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Portálfejlesztés Angular/React keretrendszerrel »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Portalfejlesztes-Angular",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 13,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Számítógépes látáson alapuló AR/VR megoldás generatív AI-val »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Szamitogepes-latason-alapulo",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Webes-alkalmazas-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "ZENG: Anonymous person tracking using AI »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Anonymous-person-tracking",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Z-ENG: DeepFake detection  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-DeepFake-detection",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 8,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Z-ENG: Development of a multimedia DeepFake recognition application based on artificial intelligence »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Development-of-a",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Z-ENG: Online signature verification using Machine-learning algorithms »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Online-signature",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": "Z-ENG: Silent Zone: Smart Auto-Silencer Based on Location Radius Mobile Application »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Silent-Zone-Smart",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Onlab"
+  },
+  {
+    "title": ".Net alapú fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Net-alapu-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 11,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Alaprajz tervező webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alaprajz-tervezo-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Alkalmazott gépi tanulás »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-gepi-tanulas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Amazon AWS alapú alkalmazásfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Amazon-AWS-alapu-alkalmazasfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 7,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Android Auto/Automotive - autós integrációs lehetőségek vizsgálata modern mobil platformokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-AutoAutomotive",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Android mobil alkalmazás fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-mobil-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Aukciós portál megvalósítása alkalmazott mesterséges intelligencia támogatással »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Aukcios-portal-megvalositasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Beosztástervezési algoritmusok fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Beosztastervezesi-algoritmusok",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "BigData / Üzleti Intelligencia (BI) rendszer fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/BigData--Uzleti-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Blazor alapú webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Blazor-alapu-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Fizika informált neurális hálózatok alkalmazása (Physics Informed Neural Networks, PINN) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Fizika-informalt-neuralis",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "iOS alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "iOS szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Irodai automatizálási feladatok Microsoft platformokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Irodai-automatizalasi-feladatok",
+    "is_external": true,
+    "external_partner": "VIK",
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Java Spring vagy Node.JS FullStack fejlesztés React/Angular frontend technológiákkal »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Java-Spring-vagy-NodeJS",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Játék fejlesztése Windows 11-re »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatek-fejlesztese-Windows",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Kotlin Multiplatform alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Kotlin-Multiplatform-alapu",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Közüzemi hálózatok optimalizálása és anomália detekció fullstack és MI technológiákkal »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Kozuzemi-halozatok-optimalizalasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Mesterséges Intelligencia alapú generatív/önfejlesztő web/mobil alkalmazás tervezése és fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Mesterséges intelligencia alapú szabályozás a teljesítményelektronikában »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-intelligencia1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Mélytanulási módszerek alkalmazása a gyakoraltban »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Melytanulasi-modszerek-alkalmazasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Mobil alkalmazás fejlesztése iOS platformra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mobil-alkalmazas-fejlesztese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Moodle intrastruktúra megismerése és bővítmények fejlesztése PHP és JavaScript alapokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Moodle-intrastruktura-megismerese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Portálfejlesztés Angular/React keretrendszerrel »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Portalfejlesztes-Angular",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 13,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Számítógépes látáson alapuló AR/VR megoldás generatív AI-val »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Szamitogepes-latason-alapulo",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Szimulált Intelligens Energiafelhasználás-menedzsment Rendszer Javaslatmotorral »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Szimulalt-Intelligens-Energiafelhasznalasmenedzsment",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Teljesítményelektronikai eszközök prediktív szabályozása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Teljesitmenyelektronikai",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Webes-alkalmazas-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Z-ENG: An Integrated AI-Powered Learning Platform »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-An-Integrated-AIPowered",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "ZENG: Anonymous person tracking using AI »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Anonymous-person-tracking",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Z-ENG: DeepFake detection  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-DeepFake-detection",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 8,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Z-ENG: Development of a multimedia DeepFake recognition application based on artificial intelligence »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Development-of-a",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Z-ENG: Online signature verification using Machine-learning algorithms »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Online-signature",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "Z-ENG: Silent Zone: Smart Auto-Silencer Based on Location Radius Mobile Application »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Silent-Zone-Smart",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScInfo/Szakdolgozat"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Alaprajz tervező webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alaprajz-tervezo-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Alkalmazott gépi tanulás »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-gepi-tanulas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Amazon AWS alapú alkalmazásfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Amazon-AWS-alapu-alkalmazasfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Android Auto/Automotive - autós integrációs lehetőségek vizsgálata modern mobil platformokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-AutoAutomotive",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Android mobil alkalmazás fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-mobil-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Arduino Alvik robot megismerése és fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Arduino-Alvik-robot-megismerese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "BigData / Üzleti Intelligencia (BI) rendszer fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/BigData--Uzleti-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Blazor alapú webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Blazor-alapu-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "iOS alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "iOS szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Java Spring vagy Node.JS FullStack fejlesztés React/Angular frontend technológiákkal »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Java-Spring-vagy-NodeJS",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Játék fejlesztése Windows 11-re »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatek-fejlesztese-Windows",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Játékfejlesztés WebGL2/WebGPU alapon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatekfejlesztes-WebGL2WebGPU",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Mesterséges Intelligencia alapú generatív/önfejlesztő web/mobil alkalmazás tervezése és fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Mesterséges intelligencia alapú szabályozás a teljesítményelektronikában »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-intelligencia1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Mobil alkalmazás fejlesztése iOS platformra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mobil-alkalmazas-fejlesztese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Számítógépes látáson alapuló AR/VR megoldás generatív AI-val »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Szamitogepes-latason-alapulo",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Teljesítményelektronikai eszközök prediktív szabályozása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Teljesitmenyelektronikai",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "UAV hardver fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/UAV-hardver-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Webes-alkalmazas-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "Z-ENG: Development of a multimedia DeepFake recognition application based on artificial intelligence »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Development-of-a",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Onlab"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Alaprajz tervező webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alaprajz-tervezo-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Alkalmazott gépi tanulás »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-gepi-tanulas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Amazon AWS alapú alkalmazásfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Amazon-AWS-alapu-alkalmazasfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Android Auto/Automotive - autós integrációs lehetőségek vizsgálata modern mobil platformokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-AutoAutomotive",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Android mobil alkalmazás fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-mobil-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "BigData / Üzleti Intelligencia (BI) rendszer fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/BigData--Uzleti-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Blazor alapú webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Blazor-alapu-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "iOS alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "iOS szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Java Spring vagy Node.JS FullStack fejlesztés React/Angular frontend technológiákkal »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Java-Spring-vagy-NodeJS",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Játék fejlesztése Windows 11-re »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatek-fejlesztese-Windows",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Közüzemi hálózatok optimalizálása és anomália detekció fullstack és MI technológiákkal »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Kozuzemi-halozatok-optimalizalasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Mesterséges Intelligencia alapú generatív/önfejlesztő web/mobil alkalmazás tervezése és fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Mesterséges intelligencia alapú szabályozás a teljesítményelektronikában »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-intelligencia1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Mobil alkalmazás fejlesztése iOS platformra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mobil-alkalmazas-fejlesztese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Számítógépes látáson alapuló AR/VR megoldás generatív AI-val »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Szamitogepes-latason-alapulo",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Teljesítményelektronikai eszközök prediktív szabályozása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Teljesitmenyelektronikai",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "Webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Webes-alkalmazas-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScVillany/Szakdolgozat"
+  },
+  {
+    "title": "4 tengelyes quadrocopter fejlesztése és irányítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/4-tengelyes-quadrocopter",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 8,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "Mesterséges intelligencia alapú szabályozás a teljesítményelektronikában »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-intelligencia1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "Teljesítményelektronikai eszközök prediktív szabályozása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Teljesitmenyelektronikai",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/BScMechatronika/Szakdolgozat"
+  },
+  {
+    "title": ".Net alapú fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Net-alapu-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 11,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "3D nyomtató tervezése és megvalósítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/3D-nyomtato-tervezese-es",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "4 tengelyes quadrocopter fejlesztése és irányítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/4-tengelyes-quadrocopter",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 8,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Alaprajz tervező webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alaprajz-tervezo-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Alkalmazott gépi tanulás »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-gepi-tanulas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Alkalmazott mesterséges intelligencia a tájékoztatásban - SZERVER OLDAL »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-mesterseges2",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Amazon AWS alapú alkalmazásfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Amazon-AWS-alapu-alkalmazasfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 7,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Android Auto/Automotive - autós integrációs lehetőségek vizsgálata modern mobil platformokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-AutoAutomotive",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Android mobil alkalmazás fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-mobil-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Beltéri navigációra képes drón fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Belteri-navigaciora-kepes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Beosztástervezési algoritmusok fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Beosztastervezesi-algoritmusok",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "BigData / Üzleti Intelligencia (BI) rendszer fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/BigData--Uzleti-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Blazor alapú webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Blazor-alapu-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Drónraj fejlesztése Navio2 alapon (UAV) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Dronraj-fejlesztese-Navio2",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Felhasználói felület készítése .NET alapokon beosztástervezési feladatokhoz »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Felhasznaloi-felulet-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Fizika informált neurális hálózatok alkalmazása (Physics Informed Neural Networks, PINN) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Fizika-informalt-neuralis",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "iOS alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "iOS szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Java Spring vagy Node.JS FullStack fejlesztés React/Angular frontend technológiákkal »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Java-Spring-vagy-NodeJS",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Játék fejlesztése Windows 11-re »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatek-fejlesztese-Windows",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Játékfejlesztés WebGL2/WebGPU alapon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatekfejlesztes-WebGL2WebGPU",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Képességteszt-adatokat gyűjtő mobil játékok fejlesztése Android platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Kepessegtesztadatokat-gyujto",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Kotlin Multiplatform alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Kotlin-Multiplatform-alapu",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Mesterséges Intelligencia alapú generatív/önfejlesztő web/mobil alkalmazás tervezése és fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Mesterséges intelligencia alapú szabályozás a teljesítményelektronikában »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-intelligencia1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Mélytanulási módszerek alkalmazása a gyakoraltban »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Melytanulasi-modszerek-alkalmazasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Mobil alkalmazás fejlesztése iOS platformra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mobil-alkalmazas-fejlesztese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Moodle intrastruktúra megismerése és bővítmények fejlesztése PHP és JavaScript alapokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Moodle-intrastruktura-megismerese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Portálfejlesztés Angular/React keretrendszerrel »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Portalfejlesztes-Angular",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 13,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Számítógépes látáson alapuló AR/VR megoldás generatív AI-val »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Szamitogepes-latason-alapulo",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Teljesítményelektronikai eszközök prediktív szabályozása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Teljesitmenyelektronikai",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "UAV hardver fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/UAV-hardver-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "Webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Webes-alkalmazas-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": "ZENG: Anonymous person tracking using AI »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Anonymous-person-tracking",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Onlab"
+  },
+  {
+    "title": ".Net alapú fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Net-alapu-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 11,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "3D nyomtató tervezése és megvalósítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/3D-nyomtato-tervezese-es",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "4 tengelyes quadrocopter fejlesztése és irányítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/4-tengelyes-quadrocopter",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 8,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "A tanulási képesség mobil környezetben való vizsgálatának elemzése és modellezése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/A-tanulasi-kepesseg-mobil",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Alaprajz tervező webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alaprajz-tervezo-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Alkalmazott gépi tanulás »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-gepi-tanulas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Alkalmazott mesterséges intelligencia a tájékoztatásban - MOBIL OLDAL »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-mesterseges3",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Amazon AWS alapú alkalmazásfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Amazon-AWS-alapu-alkalmazasfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 7,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés és üzemeltetés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes2",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Android Auto/Automotive - autós integrációs lehetőségek vizsgálata modern mobil platformokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-AutoAutomotive",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Android mobil alkalmazás fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-mobil-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Beltéri navigációra képes drón fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Belteri-navigaciora-kepes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "BigData / Üzleti Intelligencia (BI) rendszer fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/BigData--Uzleti-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Blazor alapú webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Blazor-alapu-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Drónraj fejlesztése Navio2 alapon (UAV) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Dronraj-fejlesztese-Navio2",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Fizika informált neurális hálózatok alkalmazása (Physics Informed Neural Networks, PINN) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Fizika-informalt-neuralis",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "iOS alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "iOS szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Java Spring vagy Node.JS FullStack fejlesztés React/Angular frontend technológiákkal »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Java-Spring-vagy-NodeJS",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Játék fejlesztése Windows 11-re »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatek-fejlesztese-Windows",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Képességteszt-adatokat gyűjtő mobil játékok fejlesztése Android platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Kepessegtesztadatokat-gyujto",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Kotlin Multiplatform alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Kotlin-Multiplatform-alapu",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "LLM-alapú információkereső eszköz dokumentumtárakhoz »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/LLMalapu-informaciokereso",
+    "is_external": true,
+    "external_partner": "Zenitech",
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Mesterséges Intelligencia alapú generatív/önfejlesztő web/mobil alkalmazás tervezése és fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Mesterséges intelligencia alapú szabályozás a teljesítményelektronikában »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-intelligencia1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Mélytanulási módszerek alkalmazása a gyakoraltban »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Melytanulasi-modszerek-alkalmazasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Mobil alkalmazás fejlesztése iOS platformra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mobil-alkalmazas-fejlesztese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Portálfejlesztés Angular/React keretrendszerrel »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Portalfejlesztes-Angular",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 13,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Spring alapú skálázódó képességteszt-adatokat gyűjtő portálrendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Spring-alapu-skalazodo-kepessegtesztadatokat",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Számítógépes látáson alapuló AR/VR megoldás generatív AI-val »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Szamitogepes-latason-alapulo",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Szimulált Intelligens Energiafelhasználás-menedzsment Rendszer Javaslatmotorral »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Szimulalt-Intelligens-Energiafelhasznalasmenedzsment",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Teljesítményelektronikai eszközök prediktív szabályozása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Teljesitmenyelektronikai",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "UAV hardver fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/UAV-hardver-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Webes-alkalmazas-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "ZENG: Anonymous person tracking using AI »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Anonymous-person-tracking",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Z-ENG: DeepFake detection  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-DeepFake-detection",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 8,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Z-ENG: Online signature verification using Machine-learning algorithms »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Online-signature",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "Z-ENG: Silent Zone: Smart Auto-Silencer Based on Location Radius Mobile Application »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/ZENG-Silent-Zone-Smart",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScInfo/Diploma"
+  },
+  {
+    "title": "3D nyomtató tervezése és megvalósítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/3D-nyomtato-tervezese-es",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "4 tengelyes quadrocopter fejlesztése és irányítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/4-tengelyes-quadrocopter",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 8,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Alaprajz tervező webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alaprajz-tervezo-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Alkalmazott gépi tanulás »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-gepi-tanulas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Amazon AWS alapú alkalmazásfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Amazon-AWS-alapu-alkalmazasfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Android Auto/Automotive - autós integrációs lehetőségek vizsgálata modern mobil platformokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-AutoAutomotive",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Android mobil alkalmazás fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-mobil-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Beltéri navigációra képes drón fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Belteri-navigaciora-kepes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "BigData / Üzleti Intelligencia (BI) rendszer fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/BigData--Uzleti-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Blazor alapú webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Blazor-alapu-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Drónraj fejlesztése Navio2 alapon (UAV) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Dronraj-fejlesztese-Navio2",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Fizika informált neurális hálózatok alkalmazása (Physics Informed Neural Networks, PINN) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Fizika-informalt-neuralis",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "iOS alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "iOS szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Java Spring vagy Node.JS FullStack fejlesztés React/Angular frontend technológiákkal »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Java-Spring-vagy-NodeJS",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Játék fejlesztése Windows 11-re »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatek-fejlesztese-Windows",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Játékfejlesztés WebGL2/WebGPU alapon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatekfejlesztes-WebGL2WebGPU",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Mesterséges Intelligencia alapú generatív/önfejlesztő web/mobil alkalmazás tervezése és fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Mesterséges intelligencia alapú szabályozás a teljesítményelektronikában »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-intelligencia1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Mobil alkalmazás fejlesztése iOS platformra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mobil-alkalmazas-fejlesztese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Számítógépes látáson alapuló AR/VR megoldás generatív AI-val »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Szamitogepes-latason-alapulo",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Teljesítményelektronikai eszközök prediktív szabályozása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Teljesitmenyelektronikai",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "UAV hardver fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/UAV-hardver-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "Webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Webes-alkalmazas-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Onlab"
+  },
+  {
+    "title": "3D nyomtató tervezése és megvalósítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/3D-nyomtato-tervezese-es",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "4 tengelyes quadrocopter fejlesztése és irányítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/4-tengelyes-quadrocopter",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 8,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "A tanulási képesség mobil környezetben való vizsgálatának elemzése és modellezése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/A-tanulasi-kepesseg-mobil",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Alaprajz tervező webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alaprajz-tervezo-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Alkalmazott gépi tanulás »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-gepi-tanulas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Alkalmazott-Mesterseges1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Amazon AWS alapú alkalmazásfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Amazon-AWS-alapu-alkalmazasfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Android alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Android Auto/Automotive - autós integrációs lehetőségek vizsgálata modern mobil platformokon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-AutoAutomotive",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Android mobil alkalmazás fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-mobil-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Beltéri navigációra képes drón fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Belteri-navigaciora-kepes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "BigData / Üzleti Intelligencia (BI) rendszer fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/BigData--Uzleti-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Blazor alapú webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Blazor-alapu-webes-alkalmazas",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Drónraj fejlesztése Navio2 alapon (UAV) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Dronraj-fejlesztese-Navio2",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Fizika informált neurális hálózatok alkalmazása (Physics Informed Neural Networks, PINN) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Fizika-informalt-neuralis",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "iOS alapú szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-alapu-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "iOS szoftverfejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/iOS-szoftverfejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Java Spring vagy Node.JS FullStack fejlesztés React/Angular frontend technológiákkal »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Java-Spring-vagy-NodeJS",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Játék fejlesztése Windows 11-re »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatek-fejlesztese-Windows",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Mesterséges Intelligencia alapú generatív/önfejlesztő web/mobil alkalmazás tervezése és fejlesztése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-Intelligencia",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Mesterséges intelligencia alapú szabályozás a teljesítményelektronikában »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-intelligencia1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Mobil alkalmazás fejlesztése iOS platformra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mobil-alkalmazas-fejlesztese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Számítógépes látáson alapuló AR/VR megoldás generatív AI-val »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Szamitogepes-latason-alapulo",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Teljesítményelektronikai eszközök prediktív szabályozása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Teljesitmenyelektronikai",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "UAV hardver fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/UAV-hardver-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "Webes alkalmazás készítése »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Webes-alkalmazas-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScVillany/Diploma"
+  },
+  {
+    "title": "3D nyomtató tervezése és megvalósítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/3D-nyomtato-tervezese-es",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "4 tengelyes quadrocopter fejlesztése és irányítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/4-tengelyes-quadrocopter",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 8,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Beltéri navigációra képes drón fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Belteri-navigaciora-kepes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Drónraj fejlesztése Navio2 alapon (UAV) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Dronraj-fejlesztese-Navio2",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Fizika informált neurális hálózatok alkalmazása (Physics Informed Neural Networks, PINN) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Fizika-informalt-neuralis",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Játékfejlesztés WebGL2/WebGPU alapon »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Jatekfejlesztes-WebGL2WebGPU",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Mesterséges intelligencia alapú szabályozás a teljesítményelektronikában »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-intelligencia1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Teljesítményelektronikai eszközök prediktív szabályozása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Teljesitmenyelektronikai",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "UAV hardver fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/UAV-hardver-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Onlab"
+  },
+  {
+    "title": "3D nyomtató tervezése és megvalósítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/3D-nyomtato-tervezese-es",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 4,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "4 tengelyes quadrocopter fejlesztése és irányítása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/4-tengelyes-quadrocopter",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 8,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "5G hálózatba kapcsolt kamera rendszer »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/5G-halozatba-kapcsolt-kamera",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "AI Need for speed! »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/AI-Need-for-speed1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 20,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "Android applikáció készítése opensource webszerverhez »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Android-applikacio-keszitese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "Beltéri navigációra képes drón fejlesztése  »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Belteri-navigaciora-kepes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "Dróne és AI programozása akadálypálya leküzdésére »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Drone-es-AI-programozasa",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 5,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "Drónraj fejlesztése Navio2 alapon (UAV) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Dronraj-fejlesztese-Navio2",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "Fizika informált neurális hálózatok alkalmazása (Physics Informed Neural Networks, PINN) »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Fizika-informalt-neuralis",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "Mesterséges intelligencia alapú szabályozás a teljesítményelektronikában »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Mesterseges-intelligencia1",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 3,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "MI használata mérnöki hétköznapi feladatokra »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 15,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Split-ergo-keyboard-tervezese",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "Teljesítményelektronikai eszközök prediktív szabályozása »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Teljesitmenyelektronikai",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "UAV hardver fejlesztés »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/UAV-hardver-fejlesztes",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "Vibe coding mérnökként »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Vibe-coding-mernokkent",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 10,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "Videostream megoldások VR headsetben »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/Realtime-videostream-5Gn",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 2,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  },
+  {
+    "title": "VR/AR megoldások 5G hálózaton »",
+    "url": "https://www.aut.bme.hu/Task/25-26-osz/VRAR-megoldasok-5G-halozaton",
+    "is_external": false,
+    "external_partner": null,
+    "student_limit": 1,
+    "advisors": [],
+    "courses": [],
+    "source_category_url": "https://www.aut.bme.hu/Education/MScMechatronika/Diploma"
+  }
+]

@@ -1,0 +1,1497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><title>
+	Oktatás - BME AUT
+</title><link href="../../favicon.ico" rel="shortcut icon" type="image/x-icon"/><link href="../../favicon.ico" rel="icon" type="image/x-icon"/><link href="https://www.aut.bme.hu/Static/OpenSearch.xml" rel="search" title="BME AAIT" type="application/opensearchdescription+xml"/>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/Static/jquery/jquery.tools.min.js" type="text/javascript"></script>
+<script src="/Static/tiny_mce/tiny_mce.js" type="text/javascript"></script>
+<script src="/Static/Bundles-js-core-lib?v=Hi429rh1p2uy1WXeQW95KH0_-WXcBHmUdIcTgIm4VlA1"></script>
+<script src="/Static/Bundles-js-core?v=h4U_nDEAfk-mXOaoyq3XGBqoEEUBKL2SzD1WKgxigKI1"></script>
+<script src="/Static/Bundles-js-core-hu?v=PfhrRyfh2WETWX21Yg9b3p1g8OiIUiKER7gtiULjWSk1"></script>
+<link href="/Static/jQuery/smoothness/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css"/><link href="/Static/Bundles-css-core?v=pBvpkJMQpYNbQDi5rh0yrb36DSrNwkb1APrW4N_XnJ41" rel="stylesheet"/>
+<meta content="359052983552" property="fb:app_id"/><meta content="BME Automatizálási és Alkalmazott Informatikai Tanszék" property="og:site_name"/>
+<script src="/Static/jQuery/Bundles-js-multipleAccordion?v=wZsZHfHLX9dbQ5glqByFtRSbS942ESNR1edclM6otwQ1"></script>
+<link href="http://feeds.feedburner.com/bmeaait" rel="alternate" title="Hírek - BME AAIT" type="application/rss+xml"/></head>
+<body>
+<div id="fb-root"></div>
+<script>
+		window.fbAsyncInit = function () {
+			FB.init( {
+				appId: '359052983552',
+				xfbml: true
+			} );
+
+			// Subscribe to the Facebook events to track social actions in Google Analytics.
+			if ( FB && FB.Event && FB.Event.subscribe ) {
+				FB.Event.subscribe( 'edge.create', function ( targetUrl ) {
+					_gaq.push( ['_trackSocial', 'Facebook', 'Like', targetUrl] );
+				} );
+
+				FB.Event.subscribe( 'edge.remove', function ( targetUrl ) {
+					_gaq.push( ['_trackSocial', 'Facebook', 'Unlike', targetUrl] );
+				} );
+
+				FB.Event.subscribe( 'message.send', function ( targetUrl ) {
+					_gaq.push( ['_trackSocial', 'Facebook', 'Send', targetUrl] );
+				} );
+			}
+		};
+		
+		(function ( d, s, id ) {
+			var js, fjs = d.getElementsByTagName( s )[0];
+			if ( d.getElementById( id ) ) { return; }
+			js = d.createElement( s ); js.id = id;
+			js.src = "//connect.facebook.net/hu_HU/all.js";
+			fjs.parentNode.insertBefore( js, fjs );
+		} ( document, 'script', 'facebook-jssdk' ) );
+	</script>
+<form action="Onlab" id="form1" method="post">
+<input id="__AaitC" name="__AaitC" type="hidden" value="/wEFJDE0ZjJhMjMwLWViNTQtNGYyNi05Zjc3LTdmMWJkMjEzY2ZjZg=="/>
+<input id="__VIEWSTATE" name="__VIEWSTATE" type="hidden" value="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"/>
+<script src="/ScriptResource.axd?d=Nj3FBysNY6hXtIKQtsBo1YskH0uRP6T9VbCgu8HllP-F85yXUOkq26T7rXkMtMxiUHTlyEyu-l3ORKijr9biFI-LvRCYbjXFNxDXnN6rRI5pMAig_NkdqTfEjNu45SGVLQ1FVJ1vL5SfW_PAVlcp0W5BnFA1&amp;t=ffffffffe8f46b29" type="text/javascript"></script>
+<script src="/WebResource.axd?d=rC8T0HT15M8cPo_PKVS7IOacRLqfUDDdpRI4aDrZbRqi7xcDgklLxUE3NSYW9SfHh1lJe9lMFhRHECsxT8j1nn4WCckBc7I3fXXJ8grBROKfmkv6yFEVeZs-X3Kuw-edpBBhXg2&amp;t=638561375345342065" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var __cultureInfo = {"name":"hu","numberFormat":{"CurrencyDecimalDigits":2,"CurrencyDecimalSeparator":",","IsReadOnly":false,"CurrencyGroupSizes":[3],"NumberGroupSizes":[3],"PercentGroupSizes":[3],"CurrencyGroupSeparator":" ","CurrencySymbol":"Ft","NaNSymbol":"nem szám","CurrencyNegativePattern":8,"NumberNegativePattern":1,"PercentPositivePattern":1,"PercentNegativePattern":1,"NegativeInfinitySymbol":"mínusz végtelen","NegativeSign":"-","NumberDecimalDigits":2,"NumberDecimalSeparator":",","NumberGroupSeparator":" ","CurrencyPositivePattern":3,"PositiveInfinitySymbol":"végtelen","PositiveSign":"+","PercentDecimalDigits":2,"PercentDecimalSeparator":",","PercentGroupSeparator":" ","PercentSymbol":"%","PerMilleSymbol":"‰","NativeDigits":["0","1","2","3","4","5","6","7","8","9"],"DigitSubstitution":1},"dateTimeFormat":{"AMDesignator":"de.","Calendar":{"MinSupportedDateTime":"\/Date(-62135596800000)\/","MaxSupportedDateTime":"\/Date(253402297199999)\/","AlgorithmType":1,"CalendarType":1,"Eras":[1],"TwoDigitYearMax":2029,"IsReadOnly":false},"DateSeparator":".","FirstDayOfWeek":1,"CalendarWeekRule":0,"FullDateTimePattern":"yyyy. MMMM d. H:mm:ss","LongDatePattern":"yyyy. MMMM d.","LongTimePattern":"H:mm:ss","MonthDayPattern":"MMMM d.","PMDesignator":"du.","RFC1123Pattern":"ddd, dd MMM yyyy HH\u0027:\u0027mm\u0027:\u0027ss \u0027GMT\u0027","ShortDatePattern":"yyyy.MM.dd.","ShortTimePattern":"H:mm","SortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss","TimeSeparator":":","UniversalSortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd HH\u0027:\u0027mm\u0027:\u0027ss\u0027Z\u0027","YearMonthPattern":"yyyy. MMMM","AbbreviatedDayNames":["V","H","K","Sze","Cs","P","Szo"],"ShortestDayNames":["V","H","K","Sze","Cs","P","Szo"],"DayNames":["vasárnap","hétfő","kedd","szerda","csütörtök","péntek","szombat"],"AbbreviatedMonthNames":["jan.","febr.","márc.","ápr.","máj.","jún.","júl.","aug.","szept.","okt.","nov.","dec.",""],"MonthNames":["január","február","március","április","május","június","július","augusztus","szeptember","október","november","december",""],"IsReadOnly":false,"NativeCalendarName":"Gergely-naptár","AbbreviatedMonthGenitiveNames":["jan.","febr.","márc.","ápr.","máj.","jún.","júl.","aug.","szept.","okt.","nov.","dec.",""],"MonthGenitiveNames":["január","február","március","április","május","június","július","augusztus","szeptember","október","november","december",""]},"eras":[1,"i.sz.",null,0]};//]]>
+</script>
+<script src="/ScriptResource.axd?d=IlJAdF6B8cRibw_q6BpV3I2MdeAbDiD0E0iC661j1FLUf8Y5h8HQdvWDbZ9JBSDtGt1s8I2BPadafQOalPjz8G5YEBQaPBj9tVMqL4OidBCgOUQ2AgfVsnryJBfWE1Mjnihd0zIg343SOjUHencJ3_XSP0woMlMwf6PSLFOloQaBDjQV0&amp;t=13798092" type="text/javascript"></script>
+<input id="__VIEWSTATEGENERATOR" name="__VIEWSTATEGENERATOR" type="hidden" value="64909463"/>
+<input id="__VIEWSTATEENCRYPTED" name="__VIEWSTATEENCRYPTED" type="hidden" value=""/>
+<input id="__EVENTVALIDATION" name="__EVENTVALIDATION" type="hidden" value="Q1Kei609mghm72cmF8BbZTRrfMjcF+7pVurrVyBGSTA9PynKgEd6KHuuPJYCVvyfSEvcUn8z5kmbnuX+N62PlvWeFAnHQR9A6vtx6jvFrhE+HxOkGTuXY7eFmf1jAtwl3stI+tHFX8LeT9npZ/ieqn2AvCpgW2w7vLbZKUMBaJRy21z3yKtT6q+KrKAGBvlBDvEonVZRv8cPBdZqv2ta39wj17hRbnzZFo6x57prsSgLsznNaajm4WqdiUcQHQgcEBN4boai4nUEG6UcU0Hi+ueboia7GH9xskQD2UiEGEZR9Dz/o9SkllazUP6PK4im4DpFb9XUtFA/mcoVKuf93eXBCas0Ve2d9Gy8n8F/c7za7KkZ7tJJGE9kcquIXGb42XmVfCEFqT1wMWznOrpaXJ3BvqUFcYWytUwI7mo0myWSopRIVUWnstU8oGGZeOikBMNdpAeBaBqbAAAtn6CvANsJS4ZcxMjNbEl1BQPSZmYOnfLxkXGXj8JapZAishwldJGD17PQsW/U0BS599j9nmbKLvYIzbp/HZkHbqk4I5IrWPhkVFLf+IcJx31eQiczLMhT2+9Ue6sbEBfq59BGfLlsO+UiFllqIh2KYq+ZaX9hTklvEMZ1ooFtiuu6BOkBFqEHgIfW7h7GTcqr8yHvr6tv34P8LhZvfqmmsiSD/sUR2Na8U1QaxcibKN5axUEP+UXsQguklGhJ2hSKHYGuaepoivfhjLh+QwfknFhVHJbFVfT3fVZiYeuxm2IaIOwvzxaivgZ+TS7D2NdlWnJ7AO+D0ynNcDHIRdmoRibzrZlk9RM/i6Opb4g6vPG6vKBiobw8YA=="/>
+<div id="header-container">
+<div class="container">
+<div id="header">
+<!-- Start PortalHeader -->
+<div id="logo">
+<a href="../../Default.aspx" id="hypDefault" style="float: left;" title="Ugrás a portál kezdőlapjára"><img alt="A portál logója, erre kattintva a portál kezdőlapjára juthat" id="imgLogo" src="../../Static/img/logo-bme-aut.png" style="width: 116px; height: 70px;" title="Ugrás a portál kezdőlapjára"/></a>
+<div class="float-left">
+<div id="bme">Budapesti Műszaki és Gazdaságtudományi Egyetem - Villamosmérnöki és Informatikai Kar</div><div id="aait">Automatizálási és Alkalmazott Informatikai Tanszék</div>
+</div>
+</div>
+<div id="eyebrow">
+<ul>
+<li><a href="../../Staff/Phonebook" id="hypPhoneBook">Telefonkönyv</a></li>
+<li>
+<a href="https://www.aut.bme.hu/Login.aspx?ReturnUrl=%2fEducation%2fBScInfo%2fOnlab&amp;DirectLogin=True" title="A bejelentkezéshez kattintson ide.">Bejelentkezés</a>
+</li>
+</ul>
+<div id="search">
+<input accesskey="S" autocomplete="off" id="txtKeyword" maxlength="100" name="ctl00$Unnamed1$txtKeyword" style="width:200px;" title="A keresett szó (ALT+S)" type="text"/>
+<input id="hfFriendlyUrl" style="visibility:hidden; width: 0px; display:none;" type="text"/>
+<input class="btnFind" id="btnSimpleSearch" name="ctl00$Unnamed1$btnSimpleSearch" onclick="simpleSearch('hfFriendlyUrl','txtKeyword', ''); return false;" title="Adja meg a keresett kifejezést, majd kattintson a Keresés gombra." type="submit" value="Keresés"/>
+</div>
+</div>
+<div id="mainNavBar">
+<div id="flag">
+<input id="imgFlagEn" name="ctl00$Unnamed1$imgFlagEn" src="../../Static/img/flag_En.gif" type="image"/>
+</div>
+<a href="#mainNav_SkipLink"><img alt="Skip Navigation Links" border="0" height="0" src="/WebResource.axd?d=k_pQWU-wipRziYQdoIdQWrSBbSZsYZ81PtMYmQEuuwPFqfaNUnqyl4VnVRXhABytbc5yuLlJMOXlc2EhhiGf8gXdzSk1&amp;t=638286137964787378" width="0"/></a><div id="mainNav">
+<ul class="level1">
+<li><a class="level1" href="/" title="Ugrás a portál nyitólapjára.">Kezdőlap</a></li><li><a class="level1" href="/Pages/AboutUs" title="A tanszék bemutatkozásának megtekintése.">Rólunk</a></li><li><a class="level1 selected" href="/Education.aspx" title="A tanszék oktatási tevékenységének megtekintése.">Oktatás</a></li><li><a class="level1" href="/Staff" title="A tanszéki munkatársak adatainak megtekintése.">Munkatársak</a></li><li><a class="level1" href="/Pages/Research" title="A tanszék kutatási tevékenységének megtekintése.">Kutatás</a></li>
+</ul>
+</div><a id="mainNav_SkipLink"></a>
+</div>
+<script type="text/javascript">
+	function pageLoad()
+	{
+	    addSearchWatermark('#txtKeyword');
+		//$('#txtKeyword').watermark('Munkatárs vagy tárgy neve');
+		addCategoryAutoComplete("#txtKeyword", "/AaitService.asmx/GetSearchKeys", 1, "#hfFriendlyUrl");
+		clickOnEnter("txtKeyword", "btnSimpleSearch");
+	}
+</script>
+<!-- End PortalHeader -->
+</div>
+</div>
+</div>
+<div class="container" id="page">
+<div id="breadcrumb">
+<span id="smpBreadcrumb"><a href="#smpBreadcrumb_SkipLink"><img alt="Navigációs linkek átugrása" border="0" height="0" src="/WebResource.axd?d=k_pQWU-wipRziYQdoIdQWrSBbSZsYZ81PtMYmQEuuwPFqfaNUnqyl4VnVRXhABytbc5yuLlJMOXlc2EhhiGf8gXdzSk1&amp;t=638286137964787378" width="0"/></a><span><a href="/Default.aspx">Kezdőlap</a></span><span> » </span><span>Oktatás</span><a id="smpBreadcrumb_SkipLink"></a></span>
+</div>
+<div id="body">
+<div id="leftMenu">
+<!-- Start EducationMenu -->
+<!--[if lt IE 8]>
+<style type="text/css">
+	li a {display:inline-block;}
+	li a {display:block;}
+</style>
+<![endif]-->
+<script type="text/javascript">
+	$(document).ready(function () {
+		createAccordionMenu(location.pathname.split('/'), "#menu");
+	});
+</script>
+<div style="clear:none; float: left;">
+<ul id="menu">
+<li>
+<a>Üzemmérnök-informatikus</a>
+<ul>
+<li>
+<a href="/Education/BProf/BProfAlap">Alaptárgyak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BProf/Temalabor">Témalaboratórium</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BProf/BProfSzoftver">Szoftverfejlesztés specializáció</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BProf/BProfTeszteles">Tesztelés és Üzemeltetés specializáció</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>BSc villamosmérnök</a>
+<ul>
+<li>
+<a href="/Education/BScVillany/VillanyAlap">Alaptárgyak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScVillany/Spec2016">Beágyazott és irányító rendszerek specializáció</a>
+<ul>
+<li>
+<a href="/Education/Pages/Szakirany/BScVill2016/Bemutatkozas">Bemutatkozás</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/BScVill2016/Targyak">Tárgyak</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/BScVill2016/IpariKapcsolatok">Ipari kapcsolataink</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/BScVill2016/Oktatok">Oktatók</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/Education/BScVillany/Spec2024">Beágyazott és irányító rendszerek specializáció 2024-től</a>
+<ul>
+<li>
+<a href="/Education/Pages/Szakirany/BScVill2024/Bemutatkozas">Bemutatkozás</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/BScVill2024/Targyak">Tárgyak</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/BScVill2024/IpariKapcsolatok">Ipari kapcsolataink</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/BScVill2024/Oktatok">Oktatók</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/Education/BScVillany/Onlab">Önálló laboratórium</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScVillany/SzakmaiGyakorlat">Szakmai gyakorlat</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScVillany/Szakdolgozat">Szakdolgozat</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScVillany/Valaszthato">Választható tárgyak</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>BSc mérnökinformatikus</a>
+<ul>
+<li>
+<a href="/Education/BScInfo/InfoAlap">Alaptárgyak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScInfo/Szoftver">Szoftverfejlesztés specializáció</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScInfo/rendszerterv">Rendszertervezés specializáció</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScInfo/Temalabor">Témalaboratórium</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScInfo/Onlab">Önálló laboratórium</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScInfo/SzakmaiGyakorlat">Szakmai gyakorlat</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScInfo/Szakdolgozat">Szakdolgozat</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScInfo/Valaszthato">Választható tárgyak</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>MSc villamosmérnök</a>
+<ul>
+<li>
+<a href="/Education/MScVillany/Szgalapu2015">Számítógép-alapú rendszerek főspecializáció (kifutó)</a>
+<ul>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/Szgalapu2015/Bemutatkozas">Bemutatkozás</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/Szgalapu2015/Targyak">Tárgyak</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/Szgalapu2015/Labor">Labor</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/Szgalapu2015/Eletkepek">Életképek</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/Szgalapu2015/Sikereink">Sikereink</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/Szgalapu2015/IpariKapcsolatok">Ipari kapcsolataink</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/Szgalapu2015/Oktatok">Oktatók</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/Education/MScVillany/Szgalapu2023">Számítógép-alapú rendszerek főspecializáció (2023-tól)</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScVillany/AlkElektro2015">Alkalmazott elektronika mellékspecializáció (kifutó)</a>
+<ul>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/AlkElektro2015/Bemutatkozas">Bemutatkozás</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/AlkElektro2015/Targyak">Tárgyak</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/AlkElektro2015/IpariKapcsolatok">Ipari kapcsolataink</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScVillany/AlkElektro2015/Oktatok">Oktatók</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/Education/MScVillany/AlkElektro2023">Alkalmazott elektronika mellékspecializáció (2023-tól)</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScVillany/Onlab">Önálló laboratórium</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScVillany/SzakmaiGyakorlat">Szakmai gyakorlat</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScVillany/Diploma">Diplomatémák</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScVillany/Valaszthato">Választható tárgyak</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>MSc mérnökinformatikus</a>
+<ul>
+<li>
+<a href="/Education/MScInfo/AlkInfo2015">Alkalmazott informatika főspecializáció (kifutó)</a>
+<ul>
+<li>
+<a href="/Education/Pages/Szakirany/MScInfo/AlkInfo2015/Bemutatkozas">Bemutatkozás</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScInfo/AlkInfo2015/Targyak">Tárgyak</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScInfo/AlkInfo2015/Oktatok">Oktatók</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/Education/MScInfo/Mobilszoftver2015">Mobilszoftver-fejlesztés mellékspecializáció (kifutó)</a>
+<ul>
+<li>
+<a href="/Education/Pages/Szakirany/MScInfo/Mobilszoftver2015/Bemutatkozas">Bemutatkozás</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScInfo/Mobilszoftver2015/Targyak">Tárgyak</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScInfo/Mobilszoftver2015/Oktatok">Oktatók</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/Education/MScInfo/SzoftverfejlesztesMSc">Szoftverfejlesztés specializáció (2023-tól)</a>
+<ul>
+<li>
+<a href="/Education/Pages/Szakirany/MScInfo/SzoftverfejlesztesMSc/Bemutatkozas">Bemutatkozás</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScInfo/SzoftverfejlesztesMSc/Targyak">Tárgyak</a>
+</li>
+<li>
+<a href="/Education/Pages/Szakirany/MScInfo/SzoftverfejlesztesMSc/Oktatok">Oktatók</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/Education/MScInfo/Kozos">Közös tárgyak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScInfo/Onlab">Önálló laboratórium</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScInfo/SzakmaiGyakorlat">Szakmai gyakorlat</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScInfo/Diploma">Diplomatémák</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScInfo/Valaszthato">Választható tárgyak</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>MSc gazdaságinformatikus</a>
+<ul>
+<li>
+<a href="/Education/MScGazdInfo/SzolgFejl">Szolgáltatásfejlesztés és –menedzsment szakirány</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScGazdInfo/Penzugyi">Pénzügyi információs folyamatok szakirány</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>BSc Mechatronikai mérnök</a>
+<ul>
+<li>
+<a href="/Education/BScMechatronika/BScMechaAlap">Alaptárgyak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScMechatronika/BScMechaSpec">Specializációs tantárgyak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScMechatronika/MechatronikaBsc">Kifutó tantárgyak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScMechatronika/Szakdolgozat">Szakdolgozat</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>MSc Mechatronikai mérnök</a>
+<ul>
+<li>
+<a href="/Education/MScMechatronika/MechatronikaMscAlap">Alap- és elágazó tárgyak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScMechatronika/Mechabeagy">Intelligens beágyazott mechatronikai rendszerek specializáció</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScMechatronika/MechatronikaOkos">Okos eszközök specializáció</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScMechatronika/Onlab">Projektfeladat</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScMechatronika/Diploma">Diplomatémák</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>További GPK képzések</a>
+<ul>
+<li>
+<a href="/Education/BScGepesz/Gepesz">Gépészmérnöki szak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScGepesz/Ipari">Ipari termék- és formatervező mérnöki szak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/BScGepesz/Energetika">Energetikai mérnöki alapszak</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>MSc gépészmérnök</a>
+<ul>
+<li>
+<a href="/Education/MScGepesz/MechatronikaMsc">Mehatronikai mérnök szak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/MScGepesz/GepeszAng">Gépészeti modellezés szak (angol nyelven)</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>GTK</a>
+<ul>
+<li>
+<a href="/Education/GTK/MATanar">MA Mestertanár</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/GTK/MuszakiMenedzser">Műszaki Menedzser</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>SOTE</a>
+<ul>
+<li>
+<a href="/Education/Egeszsegugyi/ugyvitel">Ügyvitelszervező szakirány</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>Idegen nyelvű képzés</a>
+<ul>
+<li>
+<a href="/Education/Idegen/en">Angol</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/Idegen/de">Német</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a>Doktori képzés</a>
+<ul>
+<li>
+<a href="/Education/Doktori/DoktoriKozos">Közös tárgyak</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/Doktori/VillInfo">Villamosmérnöki és Mérnök informatikus</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Education/Doktori/GepeszMechatronika">Gépészmérnöki és Mechatronikai mérnöki</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="http://www.aut.bme.hu/accounts">Témaszám igénylés</a>
+<ul>
+</ul>
+</li>
+<li>
+<a>Tanszéki laborok foglalása</a>
+<ul>
+<li>
+<a href="/Reservation/QB121Forrasztas/Edit">Forrasztási időpontok foglalása</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href="/Reservation/QB127Bemeres/Edit">Bemérési időpontok foglalása</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="/Pages/Gyik/Onlab">Gyakori kérdések</a>
+<ul>
+</ul>
+</li>
+</ul>
+</div>
+<!-- End EducationMenu -->
+</div>
+<div style="float:right; width: 168px; text-align: center; margin-left: 8px;">
+<h2>Felelős oktató</h2>
+<div style="margin-right: 10px; padding: 3px">
+<img alt="Csorba Kristóf Dr. fényképe" class="photo" src="https://www.aut.bme.hu/Upload/Staff/kristof/Avatar_240418091620.jpg" title="Csorba Kristóf Dr. fényképe"/>
+</div>
+<div style="text-align: center;">
+<a href="../../Staff/kristof" style="font-weight: bold;" title="Csorba Kristóf Dr. adatainak megtekintése.">Csorba Kristóf Dr.</a>
+<br/>
+<span>Egyetemi docens</span>
+<br/>
+<span>Q.B226.</span>
+<br/>
+<span>+36 (1) 463-3702</span>
+<br/>
+<a data-addresses="6B726973746F66406175742E626D652E6875" href="javascript:SendEmail('6B726973746F66406175742E626D652E6875','','');" id="emailLink" title="Ide kattintva e-mailt küldhet az oktatónak."><script type="text/javascript">document.write( DecodeEmail('6B726973746F66406175742E626D652E6875') );</script></a>
+</div>
+</div>
+<div style="margin-left: 210px; margin-right: 170px">
+<h1>Önálló laboratórium</h1>
+<h2>Kedves leendő Önlabos!</h2>
+<p><span style="font-size: 11.2px;">Kérjük, hogy lehetőleg a regisztrációs hét végére legyen konzulens által elfogadott témád, hogy az első héten már elkezdődhessen a munka.</span></p>
+<p>További információk a gyakori kérdések gyűjteményében (például a másik tanszékről átjelentkezés módjáról):<br/><a href="/Pages/Gyik/Onlab">https://www.aut.bme.hu/Pages/Gyik/Onlab</a></p>
+</div>
+<br/>
+<div style="margin-left: 210px; margin-right: 170px">
+<h2>Kapcsolódó tárgyak</h2>
+<ul id="itemPlaceholderContainer">
+<li>
+<a href="../../Course/VIAUAL01">Önálló laboratórium (BSc, Info, 2021-ig felvettek)</a>
+<span class="tip">(VIAUAL01)</span>
+</li>
+<li>
+<a href="../../Course/VIAUAL04">Önálló laboratórium (BSc, Info, 2022-től felvettek)</a>
+<span class="tip">(VIAUAL04)</span>
+</li>
+<li>
+<a href="../../Course/VIAUM039">Projektfeladat mechatronikusoknak</a>
+<span class="tip">(VIAUM039)</span>
+</li>
+</ul>
+<!-- Start EducationTasks -->
+<div id="upTaskList">
+<h2>Kiírt témák</h2>
+<label for="ddlOrderType" id="lblOrderType">Rendezés: </label><select id="ddlOrderType" name="ctl00$cphMain$ucEducationTasks$ddlOrderType" title="Témák listázása a kiválasztott rendezés szerint.">
+<option selected="selected" value="0">ABC sorrendben</option>
+<option value="1">Konzulens(ek) neve szerint</option>
+</select>
+     
+	<label for="ddlSemester" id="lblSemester">Félév: </label><select id="ddlSemester" name="ctl00$cphMain$ucEducationTasks$ddlSemester" title="Szűrés a kiválasztott félévre.">
+<option selected="selected" value="25-26-osz">2025-2026 ősz</option>
+<option value="24-25-tavasz">2024-2025 tavasz</option>
+<option value="24-25-osz">2024-2025 ősz</option>
+<option value="23-24-tavasz">2023-2024 tavasz</option>
+<option value="23-24-osz">2023-2024 ősz</option>
+<option value="22-23-tavasz">2022-2023 tavasz</option>
+<option value="22-23-osz">2022-2023 ősz</option>
+<option value="21-22-tavasz">2021-2022 tavasz</option>
+<option value="21-22-osz">2021-2022 ősz</option>
+<option value="20-21-tavasz">2020-2021 tavasz</option>
+<option value="20-21-osz">2020-2021 ősz</option>
+<option value="19-20-tavasz">2019-2020 tavasz</option>
+<option value="19-20-osz">2019-2020 ősz</option>
+<option value="18-19-tavasz">2018-2019 tavasz</option>
+<option value="18-19-osz">2018-2019 ősz</option>
+<option value="17-18-tavasz">2017-2018 tavasz</option>
+<option value="17-18-osz">2017-2018 ősz</option>
+<option value="16-17-tavasz">2016-2017 tavasz</option>
+<option value="16-17-osz">2016-2017 ősz</option>
+<option value="15-16-tavasz">2015-2016 tavasz</option>
+<option value="15-16-osz">2015-2016 ősz</option>
+<option value="14-15-tavasz">2014-15 tavasz</option>
+<option value="14-15-osz">2014-15 ősz</option>
+<option value="13-14-tavasz">2013-14 tavasz</option>
+<option value="13-14-osz">2013-14 ősz</option>
+<option value="12-13-tavasz">2012-13 tavasz</option>
+<option value="12-13-osz">2012-13 ősz</option>
+<option value="11-12-tavasz">2011-2012 tavasz</option>
+<option value="11-12-osz">2011-2012 ősz</option>
+</select>
+<br/>
+<br/>
+<ul class="none" id="itemPlaceholderContainer" style="padding-left: 10px;">
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Net-alapu-fejlesztes" title="Téma adatainak megtekintése, jelentkezés a témára.">.Net alapú fejlesztés »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/Beny314" style="color: Gray;">Kővári Bence Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/5G-halozatba-kapcsolt-kamera" title="Téma adatainak megtekintése, jelentkezés a témára.">5G hálózatba kapcsolt kamera rendszer »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/marci" style="color: Gray;">Gótzy Márton</a>
+</li>
+<li>
+                            ·
+                            <a class="tip" href="../../Staff/aou6sp" style="color: Gray;">Blázovics László Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/AI-Need-for-speed" title="Téma adatainak megtekintése, jelentkezés a témára.">AI Need for speed! »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/kszekeres" style="color: Gray;">Szekeres Kornél</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/AI-Need-for-speed1" title="Téma adatainak megtekintése, jelentkezés a témára.">AI Need for speed! »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/kszekeres" style="color: Gray;">Szekeres Kornél</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Alaprajz-tervezo-webes-alkalmazas" title="Téma adatainak megtekintése, jelentkezés a témára.">Alaprajz tervező webes alkalmazás készítése »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/ialbert" style="color: Gray;">Albert István</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Alkalmazott-gepi-tanulas" title="Téma adatainak megtekintése, jelentkezés a témára.">Alkalmazott gépi tanulás »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/morvaybalazs" style="color: Gray;">Morvay Balázs Tibor</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Alkalmazott-Mesterseges1" title="Téma adatainak megtekintése, jelentkezés a témára.">Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Alkalmazott-Mesterseges" title="Téma adatainak megtekintése, jelentkezés a témára.">Alkalmazott Mesterséges Intelligencia Java, Node.JS vagy egyéb platformon »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Amazon-AWS-alapu-alkalmazasfejlesztes" title="Téma adatainak megtekintése, jelentkezés a témára.">Amazon AWS alapú alkalmazásfejlesztés »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Android-alapu-szoftverfejlesztes" title="Téma adatainak megtekintése, jelentkezés a témára.">Android alapú szoftverfejlesztés »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Android-alapu-szoftverfejlesztes1" title="Téma adatainak megtekintése, jelentkezés a témára.">Android alapú szoftverfejlesztés »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/somogyi.norbert" style="color: Gray;">Somogyi Norbert Zsolt</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Android-applikacio-keszitese" title="Téma adatainak megtekintése, jelentkezés a témára.">Android applikáció készítése opensource webszerverhez »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/kszekeres" style="color: Gray;">Szekeres Kornél</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Android-AutoAutomotive" title="Téma adatainak megtekintése, jelentkezés a témára.">Android Auto/Automotive - autós integrációs lehetőségek vizsgálata modern mobil platformokon »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Android-mobil-alkalmazas" title="Téma adatainak megtekintése, jelentkezés a témára.">Android mobil alkalmazás fejlesztése »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/ialbert" style="color: Gray;">Albert István</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Arduino-Alvik-robot-megismerese" title="Téma adatainak megtekintése, jelentkezés a témára.">Arduino Alvik robot megismerése és fejlesztése »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/siktdavid" style="color: Gray;">Sik Dávid</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Beosztastervezesi-algoritmusok" title="Téma adatainak megtekintése, jelentkezés a témára.">Beosztástervezési algoritmusok fejlesztése »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/trautschlaci" style="color: Gray;">Trautsch László Kálmán</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/BigData--Uzleti-Intelligencia" title="Téma adatainak megtekintése, jelentkezés a témára.">BigData / Üzleti Intelligencia (BI) rendszer fejlesztése  »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Blazor-alapu-webes-alkalmazas" title="Téma adatainak megtekintése, jelentkezés a témára.">Blazor alapú webes alkalmazás készítése »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/ialbert" style="color: Gray;">Albert István</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Drone-es-AI-programozasa" title="Téma adatainak megtekintése, jelentkezés a témára.">Dróne és AI programozása akadálypálya leküzdésére »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/kszekeres" style="color: Gray;">Szekeres Kornél</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Felhasznaloi-felulet-keszitese" title="Téma adatainak megtekintése, jelentkezés a témára.">Felhasználói felület készítése .NET alapokon beosztástervezési feladatokhoz »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/trautschlaci" style="color: Gray;">Trautsch László Kálmán</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Fizika-informalt-neuralis" title="Téma adatainak megtekintése, jelentkezés a témára.">Fizika informált neurális hálózatok alkalmazása (Physics Informed Neural Networks, PINN) »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/szinyeribence" style="color: Gray;">Szinyéri Bence</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/iOS-alapu-szoftverfejlesztes" title="Téma adatainak megtekintése, jelentkezés a témára.">iOS alapú szoftverfejlesztés »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/iOS-szoftverfejlesztes" title="Téma adatainak megtekintése, jelentkezés a témára.">iOS szoftverfejlesztés »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/morvaybalazs" style="color: Gray;">Morvay Balázs Tibor</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Java-Spring-vagy-NodeJS" title="Téma adatainak megtekintése, jelentkezés a témára.">Java Spring vagy Node.JS FullStack fejlesztés React/Angular frontend technológiákkal »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Jatek-fejlesztese-Windows" title="Téma adatainak megtekintése, jelentkezés a témára.">Játék fejlesztése Windows 11-re »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/ialbert" style="color: Gray;">Albert István</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Jatekfejlesztes-WebGL2WebGPU" title="Téma adatainak megtekintése, jelentkezés a témára.">Játékfejlesztés WebGL2/WebGPU alapon »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/raja" style="color: Gray;">Rajacsics Tamás</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Kepessegtesztadatokat-gyujto" title="Téma adatainak megtekintése, jelentkezés a témára.">Képességteszt-adatokat gyűjtő mobil játékok fejlesztése Android platformon »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/cyberci" style="color: Gray;">Forstner Bertalan Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Kotlin-Multiplatform-alapu" title="Téma adatainak megtekintése, jelentkezés a témára.">Kotlin Multiplatform alapú szoftverfejlesztés »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/somogyi.norbert" style="color: Gray;">Somogyi Norbert Zsolt</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/LLMalapu-informaciokereso" title="Téma adatainak megtekintése, jelentkezés a témára.">LLM-alapú információkereső eszköz dokumentumtárakhoz »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/cyberci" style="color: Gray;">Forstner Bertalan Dr.</a>
+</li>
+<li>
+                            ·
+                            <a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    <span class="error text-smallcaps">Külső téma</span>
+</div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Mesterseges-Intelligencia" title="Téma adatainak megtekintése, jelentkezés a témára.">Mesterséges Intelligencia alapú generatív/önfejlesztő web/mobil alkalmazás tervezése és fejlesztése »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Melytanulasi-modszerek-alkalmazasa" title="Téma adatainak megtekintése, jelentkezés a témára.">Mélytanulási módszerek alkalmazása a gyakoraltban »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/Beny314" style="color: Gray;">Kővári Bence Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/MI-hasznalata-mernoki-hetkoznapi" title="Téma adatainak megtekintése, jelentkezés a témára.">MI használata mérnöki hétköznapi feladatokra »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/kristof" style="color: Gray;">Csorba Kristóf Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Mobil-alkalmazas-fejlesztese" title="Téma adatainak megtekintése, jelentkezés a témára.">Mobil alkalmazás fejlesztése iOS platformra »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/ialbert" style="color: Gray;">Albert István</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Moodle-intrastruktura-megismerese" title="Téma adatainak megtekintése, jelentkezés a témára.">Moodle intrastruktúra megismerése és bővítmények fejlesztése PHP és JavaScript alapokon »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/siktdavid" style="color: Gray;">Sik Dávid</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Portalfejlesztes-Angular" title="Téma adatainak megtekintése, jelentkezés a témára.">Portálfejlesztés Angular/React keretrendszerrel »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/Beny314" style="color: Gray;">Kővári Bence Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Split-ergo-keyboard-tervezese" title="Téma adatainak megtekintése, jelentkezés a témára.">Split ergo keyboard tervezése és megvalósítása /osztott ergonomikus billentyűzet/ »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/marci" style="color: Gray;">Gótzy Márton</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Szamitogepes-latason-alapulo" title="Téma adatainak megtekintése, jelentkezés a témára.">Számítógépes látáson alapuló AR/VR megoldás generatív AI-val »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/tyrael" style="color: Gray;">Ekler Péter Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Vibe-coding-mernokkent" title="Téma adatainak megtekintése, jelentkezés a témára.">Vibe coding mérnökként »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/kristof" style="color: Gray;">Csorba Kristóf Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Realtime-videostream-5Gn" title="Téma adatainak megtekintése, jelentkezés a témára.">Videostream megoldások VR headsetben »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/marci" style="color: Gray;">Gótzy Márton</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/VRAR-megoldasok-5G-halozaton" title="Téma adatainak megtekintése, jelentkezés a témára.">VR/AR megoldások 5G hálózaton »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/marci" style="color: Gray;">Gótzy Márton</a>
+</li>
+<li>
+                            ·
+                            <a class="tip" href="../../Staff/aou6sp" style="color: Gray;">Blázovics László Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/Webes-alkalmazas-keszitese" title="Téma adatainak megtekintése, jelentkezés a témára.">Webes alkalmazás készítése »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/ialbert" style="color: Gray;">Albert István</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/ZENG-Anonymous-person-tracking" title="Téma adatainak megtekintése, jelentkezés a témára.">ZENG: Anonymous person tracking using AI »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/msaleem" style="color: Gray;">Mohammad Saleem Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/ZENG-DeepFake-detection" title="Téma adatainak megtekintése, jelentkezés a témára.">Z-ENG: DeepFake detection  »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/msaleem" style="color: Gray;">Mohammad Saleem Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/ZENG-Development-of-a" title="Téma adatainak megtekintése, jelentkezés a témára.">Z-ENG: Development of a multimedia DeepFake recognition application based on artificial intelligence »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/msaleem" style="color: Gray;">Mohammad Saleem Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/ZENG-Online-signature" title="Téma adatainak megtekintése, jelentkezés a témára.">Z-ENG: Online signature verification using Machine-learning algorithms »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/msaleem" style="color: Gray;">Mohammad Saleem Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+<li>
+<div style="">
+<a href="../../Task/25-26-osz/ZENG-Silent-Zone-Smart" title="Téma adatainak megtekintése, jelentkezés a témára.">Z-ENG: Silent Zone: Smart Auto-Silencer Based on Location Radius Mobile Application »</a>
+			     
+                
+                
+                        <ul class="inline" style="padding-left: 0px;">
+<li>
+<a class="tip" href="../../Staff/msaleem" style="color: Gray;">Mohammad Saleem Dr.</a>
+</li>
+</ul>
+
+                 
+			    
+            </div>
+</li>
+</ul>
+</div>
+<!-- End EducationTasks -->
+</div>
+<br style="clear:both;"/>
+</div>
+<div id="footer">
+<!-- Start PortalFooter -->
+<a class="footer-logo" href="/" id="hypHome" title="Vissza a kezdőlapra."></a>
+<ul>
+<li>
+            © BME - Automatizálási és Alkalmazott Informatikai Tanszék
+		</li>
+<li>
+<a href="../../Map" id="hypContact" title="A tanszék elérhetőségei">Kapcsolat</a>
+</li>
+<li>
+<a data-addresses="7765626D6573746572406175742E626D652E6875" href="javascript:SendEmail('7765626D6573746572406175742E626D652E6875','Észrevétel a tanszéki honlappal kapcsolatban','');">Levél a webmesternek</a>
+</li>
+</ul>
+<a class="vik-logo" href="http://www.vik.bme.hu" id="hypVikLogo" title="Navigálás a Villamosmérnöki és Informatikai Kar honlapjára."></a>
+<!-- End PortalFooter -->
+</div>
+</div>
+<script type="text/javascript">new Sys.WebForms.Menu({ element: 'mainNav', disappearAfter: 500, orientation: 'horizontal', tabIndex: 0, disabled: false });</script></form>
+<!-- Start GoogleAnalytics -->
+<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-1398564-1");
+			pageTracker._trackPageview();
+		} catch (err) {}
+	</script>
+<!-- End GoogleAnalytics -->
+<script type="text/javascript">
+	function BindToolTip()
+	{
+		$(".inputTooltip :input[type=text], .inputTooltip :input[type=password], .inputTooltip textarea").not(".noTooltip").tooltip({
+			position: "center right",
+			relative: false,
+			effect: "fade"
+		});
+	}
+
+	$(function ()
+	{
+		BindToolTip();
+	});
+
+	var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+	prm.add_endRequest(function ()
+	{
+		BindToolTip();
+	});
+</script>
+</body>
+</html>

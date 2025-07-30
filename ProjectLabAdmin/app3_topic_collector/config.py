@@ -33,11 +33,19 @@ SELENIUM_CONFIG = {
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUTPUT_FILE = "topics.json"
 
+# Base URL
+BASE_URL = "https://www.aut.bme.hu"
+
 # Scraping constants
 TOPICS_HEADING = "Kiírt témák"
 EXTERNAL_PARTNER_TEXT = "Külső partner:"
 STUDENT_LIMIT_TEXT = "Maximális létszám:"
-ADVISORS_SECTION_TEXT = "Konzulensek"
+ADVISORS_TEXT = "Konzulensek"
+
+# HTTP settings
+HTTP_TIMEOUT = 30
+REQUEST_DELAY = 0.5
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 
 # HTML element IDs
 COURSE_GROUP_DROPDOWN_ID = "ddlCourseGroup"

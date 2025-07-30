@@ -127,6 +127,9 @@ I realized that we can solve the whole task much easier and faster: the list of 
 
 ----
 
+Now please modify the code according to the new specification.
+
+---
 
 
 # Tanulságok

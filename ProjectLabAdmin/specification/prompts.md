@@ -131,6 +131,7 @@ Now please modify the code according to the new specification.
 
 ---
 
+Now there are several remaining *.log files, test scripts and files we do not need anymore. Please clean up the workspace and preserve only what is really needed.
 
 # Tanulságok
 
@@ -139,4 +140,6 @@ Pontos körbeírás alapján megtalálta a Neptun oldalon azt, amire klikkelni k
 Ha egy xlsx tartalma kell neki a munkához, simán kiíratja a terminálra egy python scripttel és ezzel gyakorlatilag megnézi, min van a fájlban, megnézi, milyen fájlok vannak stb.
 
 Nagyon jól jön, ha a munkafázisoknak és featureöknek kódja van.
+
+Kérésre felesleges fájlok törlése a workspace-ből...
 

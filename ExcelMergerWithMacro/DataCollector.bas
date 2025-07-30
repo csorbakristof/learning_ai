@@ -51,7 +51,7 @@ Sub CollectData()
         ' Skip temporary files and current file to avoid processing the file the macro is running from
         If Left(fileName, 1) <> "~" And fileName <> currentFileName Then
             
-            Application.StatusBar = "Processing: " & fileName
+            Application.StatusBar = "Feldolgozás: " & fileName
             DoEvents
             
             ' Try to open the workbook
@@ -114,8 +114,8 @@ Sub CollectData()
                             
                             If Not headersMatch Then
                                 sourceWorkbook.Close SaveChanges:=False
-                                MsgBox "Header mismatch in file: " & fileName & vbCrLf & _
-                                       "Expected headers must match the first processed file.", vbCritical, "Header Error"
+                                MsgBox "Fejléc eltérés a fájlban: " & fileName & vbCrLf & _
+                                       "A várt fejléceknek meg kell egyezniük az első feldolgozott fájllal.", vbCritical, "Fejléc hiba"
                                 GoTo NextFile
                             End If
                         End If
@@ -180,10 +180,10 @@ NextFile:
     
     ' Clear status bar and show completion message
     Application.StatusBar = False
-    MsgBox "Data collection completed!" & vbCrLf & _
-           "Files processed: " & filesProcessed & vbCrLf & _
-           "Records collected: " & (nextRow - 2) & vbCrLf & _
-           "Target worksheet: " & targetWorksheet.Name, vbInformation, "Collection Complete"
+    MsgBox "Adatgyűjtés befejezve!" & vbCrLf & _
+           "Feldolgozott fájlok: " & filesProcessed & vbCrLf & _
+           "Összegyűjtött rekordok: " & (nextRow - 2) & vbCrLf & _
+           "Cél munkalap: " & targetWorksheet.Name, vbInformation, "Gyűjtés kész"
     
     Exit Sub
     
@@ -195,7 +195,7 @@ ErrorHandler:
         sourceWorkbook.Close SaveChanges:=False
     End If
     
-    MsgBox "An error occurred during data collection: " & vbCrLf & Err.Description, vbCritical, "Error"
+    MsgBox "Hiba történt az adatgyűjtés során: " & vbCrLf & Err.Description, vbCritical, "Hiba"
 End Sub
 
 ' Keyboard shortcut assignment (Ctrl+Shift+C)

@@ -12,6 +12,11 @@ Please modify the specification so that there is no assumption about the columns
 
 I have a new idea to make this even simpler to use: the Excel file containing the macro does not contain any data initially, just a single empty worksheet and the macro. If the macro is executed, that single worksheet should be the target where the other neighbour Excel files first worksheet should be merged. Please update the specification accordingly.
 
+---
+
+Please translate all messages of the macro to hungarian.
+
+
 # Tanulságok
 
 Elsőre majdnem tökéletes lett, csak a makró másoláshoz megnyitotta a saját fájlját is, utána pedig bezára, amivel egyből kinyírta magát...

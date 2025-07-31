@@ -122,35 +122,18 @@ Private Sub CreatePrintPDF(doc As Document, pdfPath As String, reviewPages As In
     Set sourceRange = doc.Range
     sourceRange.Start = doc.Range.Start
     
-    ' Get the end position more reliably
-    If reviewPages = 1 Then
-        ' For single page review, find the last paragraph before the grade page
-        Dim lastPageStart As Long
-        lastPageStart = doc.GoTo(wdGoToPage, wdGoToAbsolute, totalPages).Start
-        
-        ' Search backwards for the last paragraph before the grade page
-        Dim i As Integer
-        For i = doc.Paragraphs.Count To 1 Step -1
-            If doc.Paragraphs(i).Range.Start < lastPageStart Then
-                sourceRange.End = doc.Paragraphs(i).Range.End
-                Exit For
-            End If
-        Next i
-    Else
-        ' For multi-page review, use a more reliable method
-        ' Find content before last page starts
-        Dim gradePageStart As Long
-        gradePageStart = doc.GoTo(wdGoToPage, wdGoToAbsolute, totalPages).Start
-        
-        ' Find the last paragraph that's definitely in the review section
-        Dim j As Integer
-        For j = doc.Paragraphs.Count To 1 Step -1
-            If doc.Paragraphs(j).Range.Start < gradePageStart Then
-                sourceRange.End = doc.Paragraphs(j).Range.End
-                Exit For
-            End If
-        Next j
-    End If
+    ' Find the last paragraph before the grade page
+    Dim lastPageStart As Long
+    lastPageStart = doc.GoTo(wdGoToPage, wdGoToAbsolute, totalPages).Start
+    
+    ' Search backwards for the last paragraph before the grade page
+    Dim i As Integer
+    For i = doc.Paragraphs.Count To 1 Step -1
+        If doc.Paragraphs(i).Range.Start < lastPageStart Then
+            sourceRange.End = doc.Paragraphs(i).Range.End
+            Exit For
+        End If
+    Next i
     
     ' Insert review content first time
     sourceRange.Copy
@@ -160,7 +143,6 @@ Private Sub CreatePrintPDF(doc As Document, pdfPath As String, reviewPages As In
     ' Add page break after first copy
     Set targetRange = tempDoc.Range
     targetRange.Collapse wdCollapseEnd
-    targetRange.InsertBreak Type:=wdPageBreak
     
     ' If review has odd pages, add one more page break to create empty page
     If isOddPages Then
@@ -176,7 +158,6 @@ Private Sub CreatePrintPDF(doc As Document, pdfPath As String, reviewPages As In
     ' Add page break after second copy
     Set targetRange = tempDoc.Range
     targetRange.Collapse wdCollapseEnd
-    targetRange.InsertBreak Type:=wdPageBreak
     
     ' If review has odd pages, add one more page break to create empty page
     If isOddPages Then

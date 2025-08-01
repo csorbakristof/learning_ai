@@ -35,23 +35,25 @@ app.post("/analyze-email", async (req, res) => {
   const { subject, sender, body } = req.body;
   const context = loadContextFiles();
 
-  const prompt = `${context}\n\nEmail from ${sender}:
-Subject: ${subject}
+  const prompt = `${context}\n\nEmail feladója: ${sender}
+Tárgy: ${subject}
 
-Body:
+Tartalom:
 ${body}
 
-Classify the email as one of:
-- NO_ACTION
-- EASY_REPLY
-- TASK_REQUIRED
+Kategorizáld az emailt az alábbiak egyikeként:
+- NINCS_TEENDŐ
+- KÖNNYŰ_VÁLASZ
+- FELADAT_SZÜKSÉGES
 
-If EASY_REPLY, suggest a reply draft.
-If TASK_REQUIRED, describe actions and suggest a reply.`;
+Ha KÖNNYŰ_VÁLASZ, javasolj egy válasz tervezetet.
+Ha FELADAT_SZÜKSÉGES, írd le a szükséges intézkedéseket és javasolj egy választ.
+
+FONTOS: Válaszolj teljes egészében magyar nyelven. Minden elemzés, javaslat és válasz magyar nyelvű legyen.`;
 
   try {
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
       messages: [{ role: "user", content: prompt }],
     });
     res.json({ response: completion.choices[0].message.content });
@@ -65,11 +67,11 @@ app.post("/compose-email", async (req, res) => {
   const { draft } = req.body;
   const context = loadContextFiles();
 
-  const prompt = `${context}\n\nYou are helping write a professional email. Improve or rewrite the following draft:\n\n${draft}`;
+  const prompt = `${context}\n\nSegítesz egy professzionális email megírásában. Javítsd vagy írd át az alábbi tervezetet:\n\n${draft}\n\nFONTOS: Válaszolj teljes egészében magyar nyelven. A javított email magyar nyelvű legyen.`;
 
   try {
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
       messages: [{ role: "user", content: prompt }],
     });
     res.json({ response: completion.choices[0].message.content });

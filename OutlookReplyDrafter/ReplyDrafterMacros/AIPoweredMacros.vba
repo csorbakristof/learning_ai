@@ -22,10 +22,7 @@ Sub AnalyzeEmailWithAI()
         If TypeOf selectedItem Is Outlook.MailItem Then
             Set olMail = selectedItem
             
-            ' Show processing message
-            MsgBox "Processing email with AI...", vbInformation, "AI Analysis"
-            
-            ' Call AI analysis
+            ' Call AI analysis (processing happens in background)
             AnalyzeWithBackend olMail
         Else
             MsgBox "Please select an email to analyze.", vbInformation, "No Email Selected"
@@ -55,9 +52,6 @@ Sub ComposeEmailWithAI()
                            "Hi," & vbCrLf & vbCrLf & "I wanted to reach out regarding..." & vbCrLf & vbCrLf & "Best regards")
     
     If draftContent <> "" Then
-        ' Show processing message
-        MsgBox "Improving email with AI...", vbInformation, "AI Processing"
-        
         ' Get AI-improved version
         Dim improvedContent As String
         improvedContent = ImproveEmailWithBackend(draftContent)
@@ -68,8 +62,6 @@ Sub ComposeEmailWithAI()
             .Body = improvedContent
             .Display
         End With
-        
-        MsgBox "AI-improved email drafted! Review and edit as needed.", vbInformation, "Email Ready"
     Else
         MsgBox "Email composition cancelled.", vbInformation, "Cancelled"
     End If
@@ -96,9 +88,6 @@ Sub GenerateSmartReply()
         If TypeOf selectedItem Is Outlook.MailItem Then
             Set olMail = selectedItem
             
-            ' Show processing message
-            MsgBox "Generating AI reply...", vbInformation, "AI Processing"
-            
             ' Analyze the email and get suggested reply
             Dim aiResponse As String
             aiResponse = AnalyzeEmailForReply(olMail)
@@ -109,8 +98,6 @@ Sub GenerateSmartReply()
                 .Body = aiResponse & vbCrLf & vbCrLf & .Body
                 .Display
             End With
-            
-            MsgBox "AI reply generated! Review and edit as needed.", vbInformation, "Reply Ready"
         Else
             MsgBox "Please select an email to reply to.", vbInformation, "No Email Selected"
         End If
@@ -131,15 +118,17 @@ Private Sub AnalyzeWithBackend(email As Outlook.MailItem)
     response = CallAnalyzeEmailAPI(email.Subject, email.SenderEmailAddress, email.Body)
     
     If response <> "" Then
-        ' Display the AI analysis in a message box
+        ' Show the AI analysis results to the user
         MsgBox "AI Analysis Results:" & vbCrLf & vbCrLf & response, vbInformation, "Email Analysis"
         
-        ' Optional: Add category or flag based on analysis
+        ' Add category or flag based on analysis (silent operation)
         If InStr(response, "TASK_REQUIRED") > 0 Then
             email.Categories = "AI-Task Required"
             email.FlagStatus = olFlagMarked
         ElseIf InStr(response, "EASY_REPLY") > 0 Then
             email.Categories = "AI-Easy Reply"
+        Else
+            email.Categories = "AI-No Action"
         End If
         
         email.Save
@@ -155,6 +144,12 @@ Private Function ImproveEmailWithBackend(draft As String) As String
     response = CallComposeEmailAPI(draft)
     
     If response <> "" Then
+        ' Show the AI improvement results to the user
+        MsgBox "AI Email Improvement:" & vbCrLf & vbCrLf & _
+               "Original:" & vbCrLf & Left(draft, 100) & "..." & vbCrLf & vbCrLf & _
+               "AI Improved:" & vbCrLf & Left(response, 150) & "...", _
+               vbInformation, "Email Enhanced"
+        
         ImproveEmailWithBackend = response
     Else
         MsgBox "Failed to improve email. Using original draft.", vbWarning, "Improvement Failed"
@@ -169,6 +164,9 @@ Private Function AnalyzeEmailForReply(email As Outlook.MailItem) As String
     response = CallAnalyzeEmailAPI(email.Subject, email.SenderEmailAddress, email.Body)
     
     If response <> "" Then
+        ' Show the AI analysis to the user before creating reply
+        MsgBox "AI Reply Analysis:" & vbCrLf & vbCrLf & response, vbInformation, "Smart Reply Generation"
+        
         ' Extract reply suggestion from response
         ' This is a simple extraction - you might want to improve this
         If InStr(response, "Reply:") > 0 Then
@@ -350,7 +348,8 @@ Sub ShowAIMacros()
     Dim macroList As String
     
     macroList = "Available AI-Powered Macros:" & vbCrLf & vbCrLf & _
-               "🤖 AnalyzeEmailWithAI - Analyze selected email with AI" & vbCrLf & _
+               "🤖 AnalyzeEmailWithAI - Analyze selected email with AI (silent)" & vbCrLf & _
+               "📋 ShowLastAnalysis - Show detailed analysis of selected email" & vbCrLf & _
                "✍️ ComposeEmailWithAI - AI-assisted email composition" & vbCrLf & _
                "💬 GenerateSmartReply - Generate AI reply to selected email" & vbCrLf & _
                "🔧 TestBackendConnection - Test connection to AI backend" & vbCrLf & vbCrLf & _
@@ -361,4 +360,41 @@ Sub ShowAIMacros()
                "File → Options → Customize Ribbon → Choose commands from: Macros"
     
     MsgBox macroList, vbInformation, "AI Macros"
+End Sub
+
+' Show Detailed Analysis for Selected Email
+Sub ShowLastAnalysis()
+    ' Shows the full AI analysis for the currently selected email
+    
+    Dim olApp As Outlook.Application
+    Dim olMail As Outlook.MailItem
+    Dim selectedItem As Object
+    
+    Set olApp = Outlook.Application
+    
+    ' Get the selected email
+    If olApp.ActiveExplorer.Selection.Count > 0 Then
+        Set selectedItem = olApp.ActiveExplorer.Selection.Item(1)
+        
+        If TypeOf selectedItem Is Outlook.MailItem Then
+            Set olMail = selectedItem
+            
+            Dim response As String
+            response = CallAnalyzeEmailAPI(olMail.Subject, olMail.SenderEmailAddress, olMail.Body)
+            
+            If response <> "" Then
+                ' Show detailed analysis in message box
+                MsgBox "Detailed AI Analysis:" & vbCrLf & vbCrLf & response, vbInformation, "Email Analysis Details"
+            Else
+                MsgBox "Failed to get AI analysis. Please check if the backend server is running.", vbError, "Analysis Failed"
+            End If
+        Else
+            MsgBox "Please select an email to analyze.", vbInformation, "No Email Selected"
+        End If
+    Else
+        MsgBox "Please select an email to analyze.", vbInformation, "No Email Selected"
+    End If
+    
+    Set olMail = Nothing
+    Set olApp = Nothing
 End Sub

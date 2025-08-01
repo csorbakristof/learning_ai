@@ -23,14 +23,10 @@ Sub AnalyzeEmailWithAI()
             Set olMail = selectedItem
             
             ' Show processing message
-            Dim statusForm As String
-            statusForm = "Processing email with AI..."
-            Application.StatusBar = statusForm
+            MsgBox "Processing email with AI...", vbInformation, "AI Analysis"
             
             ' Call AI analysis
             AnalyzeWithBackend olMail
-            
-            Application.StatusBar = ""
         Else
             MsgBox "Please select an email to analyze.", vbInformation, "No Email Selected"
         End If
@@ -60,7 +56,7 @@ Sub ComposeEmailWithAI()
     
     If draftContent <> "" Then
         ' Show processing message
-        Application.StatusBar = "Improving email with AI..."
+        MsgBox "Improving email with AI...", vbInformation, "AI Processing"
         
         ' Get AI-improved version
         Dim improvedContent As String
@@ -73,7 +69,6 @@ Sub ComposeEmailWithAI()
             .Display
         End With
         
-        Application.StatusBar = ""
         MsgBox "AI-improved email drafted! Review and edit as needed.", vbInformation, "Email Ready"
     Else
         MsgBox "Email composition cancelled.", vbInformation, "Cancelled"
@@ -102,7 +97,7 @@ Sub GenerateSmartReply()
             Set olMail = selectedItem
             
             ' Show processing message
-            Application.StatusBar = "Generating AI reply..."
+            MsgBox "Generating AI reply...", vbInformation, "AI Processing"
             
             ' Analyze the email and get suggested reply
             Dim aiResponse As String
@@ -115,7 +110,6 @@ Sub GenerateSmartReply()
                 .Display
             End With
             
-            Application.StatusBar = ""
             MsgBox "AI reply generated! Review and edit as needed.", vbInformation, "Reply Ready"
         Else
             MsgBox "Please select an email to reply to.", vbInformation, "No Email Selected"

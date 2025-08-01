@@ -91,11 +91,19 @@ OPENAI_API_KEY=your_openai_api_key_here
 ### AI Processing Flow
 1. **VBA extracts** email content (subject, sender, body)
 2. **Sends HTTP POST** to backend `/analyze-email` or `/compose-email`
-3. **Backend processes** with OpenAI GPT-4
+3. **Backend processes** with OpenAI GPT-3.5-turbo
 4. **Returns AI response** as JSON
 5. **VBA displays** results or creates new email
 
 ## Troubleshooting
+
+### ❌ "Run-time error '438': Object doesn't support this property or method"
+**Solutions:**
+- **Most common cause:** Missing Microsoft XML reference
+- Go to VBA Editor: Tools → References → Check "Microsoft XML, v6.0"
+- **Alternative cause:** Outlook security settings
+- Enable macros: File → Options → Trust Center → Macro Settings → "Enable all macros"
+- **If still failing:** Try running "TestBackendConnection" first to verify setup
 
 ### ❌ "Cannot connect to backend server"
 **Solutions:**

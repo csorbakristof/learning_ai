@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="MailApp">
+  <Id>dummy-plugin-12345-abcde-67890-fghij</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Dummy Plugin Developer</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Dummy Hello World Plugin"/>
+  <Description DefaultValue="A simple plugin to draft Hello World emails"/>
+  <IconUrl DefaultValue="http://localhost:3001/icon-32.png"/>
+  <SupportUrl DefaultValue="http://localhost:3001/help"/>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="Mailbox"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="MessageCompose">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="http://localhost:3001/compose.html"/>
+        <RequestedHeight>150</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Compose"/>
+  </Rule>
+</OfficeApp>

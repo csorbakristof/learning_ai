@@ -11,5 +11,7 @@ You mentioned "Update the path in sideload.ps1 to point to your manifest file". 
 
 We are in a git repository. Please create a suitable .gitignore file.
 
----
+# Start a dummy plugin
+
+Hava a look at @overview.md. We are working on a desktop outlook plugin. As a separate plugin, create a new folder named "dummyplugin" and create a minimal functionality dummy plugin there. I want to test how a plugin is added to Outlook desktop. This dummy plugin should only add a button to outlook and if I press it, it should draft an email for me without sending it. The content of the drafted email should only contain "Hello world!".
 

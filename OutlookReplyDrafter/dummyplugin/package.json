@@ -1,0 +1,16 @@
+{
+  "name": "dummy-outlook-plugin",
+  "version": "1.0.0",
+  "description": "A minimal Outlook plugin that drafts Hello World emails",
+  "main": "compose.js",
+  "scripts": {
+    "start": "http-server -p 3001 -c-1 --cors",
+    "dev": "http-server -p 3001 -c-1 --cors"
+  },
+  "keywords": ["outlook", "plugin", "addin", "hello-world"],
+  "author": "Dummy Plugin Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,47 +1,54 @@
-# DummyMacro - Outlook VBA Hello World Solution
+# DummyMacro - Outlook VBA Solutions
 
 ## Overview
-This folder contains a VBA macro-based solution for adding "Hello World" email drafting functionality to Outlook. This approach bypasses domain policy restrictions that often block add-ins.
+This folder contains VBA macro-based solutions for Outlook email automation. Choose the approach that best fits your needs:
 
-## Quick Start
-1. **Open Outlook** and press **Alt+F11** (VBA Editor)
-2. **Right-click project** → Insert → Module
-3. **Copy/paste code** from `HelloWorldMacro.vba`
-4. **Save** and close VBA Editor
-5. **Add button:** File → Options → Customize Ribbon → Macros
-6. **Test** your new "Hello World" button!
+1. **Basic Macros** - Simple "Hello World" functionality
+2. **AI-Powered Macros** - Full AI integration with backend server ⭐ **RECOMMENDED**
+
+## Quick Start (AI-Powered)
+1. **Start backend server:** `npm start` in `backend/` folder
+2. **Open Outlook** and press **Alt+F11** (VBA Editor)
+3. **Add XML reference:** Tools → References → Check "Microsoft XML, v6.0"
+4. **Copy/paste code** from `AIPoweredMacros.vba`
+5. **Add buttons:** File → Options → Customize Ribbon → Macros
+6. **Test connection** with "TestBackendConnection" button
 
 ## Files in This Folder
 
 ### 📝 VBA Code Files
 - **`HelloWorldMacro.vba`** - Basic "Hello World" email macro
-- **`AdvancedMacros.vba`** - Enhanced version with multiple templates
+- **`AdvancedMacros.vba`** - Enhanced templates and formatting
+- **`AIPoweredMacros.vba`** - AI integration with backend server ⭐
 
 ### 📖 Documentation
-- **`MACRO_SETUP_INSTRUCTIONS.md`** - Complete step-by-step setup guide
-- **`ADDINS_VS_MACROS.md`** - Comparison between add-ins and macros
+- **`AI_MACRO_SETUP_GUIDE.md`** - Complete setup for AI-powered macros
+- **`MACRO_SETUP_INSTRUCTIONS.md`** - Basic macro setup guide
+- **`COMPLETE_SOLUTION_COMPARISON.md`** - Compare all approaches
+- **`ADDINS_VS_MACROS.md`** - Add-ins vs macros comparison
 - **`README.md`** - This file
 
-## Key Features
+## AI-Powered Features ⭐
 
-✅ **No server required** - Runs entirely in Outlook
-✅ **Bypasses domain policies** - VBA macros usually allowed
-✅ **Easy deployment** - Copy/paste VBA code
-✅ **Multiple templates** - Basic, formatted, and custom emails
-✅ **Interactive options** - User prompts for customization
+### 🤖 **Email Analysis**
+- Select email → AI analyzes content
+- Categorizes as NO_ACTION/EASY_REPLY/TASK_REQUIRED
+- Auto-flags and categorizes emails
 
-## Available Macros
+### ✍️ **AI Compose Assistant** 
+- Enter draft → AI improves content
+- Professional tone and clarity
+- Context-aware suggestions
 
-### Basic Macros (HelloWorldMacro.vba):
-- `DraftHelloWorldEmail` - Simple "Hello world!" email
-- `DraftHelloWorldEmailFormatted` - HTML formatted version
-- `TestMacro` - Verify VBA is working
+### 💬 **Smart Reply Generation**
+- Select email → AI generates appropriate reply
+- Context from workflow and customer files
+- Ready-to-send professional responses
 
-### Advanced Macros (AdvancedMacros.vba):
-- `DraftHelloWorldEmailAdvanced` - Interactive version with options
-- `DraftMeetingRequest` - Meeting request template
-- `DraftFollowUpEmail` - Follow-up email template
-- `ShowAvailableMacros` - List all available macros
+### 🔧 **Backend Integration**
+- Same backend as web add-in (port 5000)
+- OpenAI GPT-4 integration
+- Workflow and customer context files
 
 ## Why Use Macros Instead of Add-ins?
 

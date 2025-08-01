@@ -9,9 +9,9 @@ require("dotenv").config();
 const app = express();
 app.use(bodyParser.json());
 
-// Enable CORS for Outlook add-in
+// Enable CORS for Outlook add-in and VBA macros
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://localhost:3000');
+  res.header('Access-Control-Allow-Origin', '*'); // Allow all origins for local development
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   if (req.method === 'OPTIONS') {

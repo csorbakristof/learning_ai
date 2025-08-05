@@ -1,26 +1,15 @@
 # Project Structure: Three Approaches for Outlook Email Functionality
 
 ## Overview
-This project now contains three separate solutions for adding email functionality to Outlook:
+This project now contains two separate solutions for adding email functionality to Outlook:
 
-1. **`dummyplugin/`** - Web-based Outlook Add-in approach
-2. **`DummyMacro/`** - Basic VBA Macro approach  
-3. **`ReplyDrafterMacros/`** - AI-Powered VBA Macro approach ⭐ **RECOMMENDED**
+1. **`DummyMacro/`** - Basic VBA Macro approach  
+2. **`ReplyDrafterMacros/`** - AI-Powered VBA Macro approach ⭐ **RECOMMENDED**
 
 ## Folder Structure
 
 ```
 OutlookReplyDrafter/
-├── dummyplugin/                    # Web-based Add-in Solution
-│   ├── manifest.xml                # Outlook add-in manifest
-│   ├── compose.html                # Web UI interface
-│   ├── compose.js                  # JavaScript functionality
-│   ├── package.json                # Node.js dependencies
-│   ├── README.md                   # Add-in setup instructions
-│   ├── sideload.ps1                # Manual sideloading helper
-│   ├── registry-sideload.ps1       # Registry-based sideloading
-│   └── alternative-sideload.ps1    # Alternative sideloading methods
-│
 ├── DummyMacro/                     # Basic VBA Macro Solution
 │   ├── HelloWorldMacro.vba         # Basic VBA macros
 │   ├── AdvancedMacros.vba          # Enhanced VBA macros
@@ -59,27 +48,6 @@ OutlookReplyDrafter/
 ✅ **No AI requirements**
 ✅ **Learning VBA basics**
 
-### Use **dummyplugin** (Add-in) when:
-✅ **Web technologies preferred** (HTML/JS)
-✅ **Add-ins are allowed** by domain policy
-✅ **Cross-platform compatibility** needed
-✅ **Modern web development** approach preferred
-
-## Comparison Summary
-
-| Feature | Add-in (dummyplugin) | Basic VBA (DummyMacro) | **AI VBA (ReplyDrafterMacros)** |
-|---------|---------------------|------------------------|--------------------------------|
-| **Domain Policy** | ❌ Often blocked | ✅ Usually allowed | **✅ Usually allowed** |
-| **Server Required** | ❌ Yes (port 3001) | ✅ No | **⚠️ Backend only (port 5000)** |
-| **Setup Complexity** | ❌ Complex sideloading | ✅ Copy/paste code | **✅ Copy/paste code** |
-| **AI Integration** | ❌ None (basic version) | ❌ None | **✅ Full OpenAI GPT-4** |
-| **Email Analysis** | ❌ No | ❌ No | **✅ AI categorization** |
-| **Smart Replies** | ❌ No | ❌ Static templates | **✅ AI-generated** |
-| **Context Awareness** | ❌ No | ❌ No | **✅ Workflow/Customer files** |
-| **Performance** | ⚠️ Network dependent | ✅ Native | **✅ Native + AI** |
-| **Customization** | ⚠️ Limited by web APIs | ✅ Full VBA | **✅ Full VBA + AI** |
-| **Deployment** | ❌ Requires sideloading | ✅ Built into Outlook | **✅ Built into Outlook** |
-
 ## Recommended Path
 
 **For your situation (domain policies blocking add-ins):**
@@ -113,15 +81,6 @@ OutlookReplyDrafter/
 5. Test with basic "Hello World" button
 ```
 
-### Add-in Approach (If policies allow):
-```
-1. Navigate to dummyplugin/ folder
-2. Run: npm install
-3. Run: npm start
-4. Follow sideloading instructions in README.md
-5. Use manifest.xml to install add-in
-```
-
 ## Key Differences in Functionality
 
 ### All approaches provide:
@@ -143,12 +102,6 @@ OutlookReplyDrafter/
 - HTML formatted emails
 - Meeting request templates
 - Follow-up email templates
-
-### Add-in additional features:
-- Modern web UI
-- Cross-platform compatibility
-- Web-based customization
-- Easier remote updates
 
 ## Conclusion
 

@@ -1,0 +1,1 @@
+Have a look at #specification.md. Your first task is to create a specific exam task consisting of at least 5 main subtasks. Extend the #specification.md accordingly. Write everything in hungarian and translate the original content of the specification into hungarian as well.

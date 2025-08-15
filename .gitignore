@@ -1,0 +1,5 @@
+/EViP_ZH_gen/.vs/*
+/obj/*
+/bin/*
+**/obj/*
+**/bin/*

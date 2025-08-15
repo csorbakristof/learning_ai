@@ -1,7 +1,7 @@
 # Vizsgafeladat az EViP kurzushoz
 
 Ez a megoldás egy vizsgafeladat mintamegvalósítása, amely naplófájlok elemzésével foglalkozik.
-A vizsga alapvetõ C# szintaxisra, IEnumerable, LINQ, és xUnit tesztelésre fókuszál.
+A vizsga alapvetõ C# szintaxisra, IEnumerable, LINQ, reguláris kifejezések és xUnit tesztelésre fókuszál.
 A hallgatóknak a megoldást a nulláról kell elkészíteniük. A megoldásnak 3 projektet kell tartalmaznia: egy osztálykönyvtárat, egy konzol alkalmazást és egy teszt projektet. Mind a konzol alkalmazás, mind a teszt projekt hivatkozni fog az osztálykönyvtárra.
 
 # Konkrét vizsgafeladat: Naplófájlok elemzése
@@ -29,41 +29,48 @@ Hozza létre a következõ osztályokat:
 
 ### 2.1 LogEntry modell
 Készítsen egy `LogEntry` osztályt a következõ tulajdonságokkal:
-- `DateTime Timestamp` - A naplóbejegyzés idõpontja
+- `string Timestamp` - A naplóbejegyzés idõpontja szöveg formátumban
 - `string Level` - A napló szintje (INFO, WARNING, ERROR, DEBUG)
 - `string Message` - A naplóüzenet
 - `string User` - A felhasználó neve (opcionális)
 
-### 2.2 ILogAnalyzerService interfész
-Definiáljon egy interfészt a következõ metódusokkal:
-- `Task<List<LogEntry>> ReadLogFileAsync(string filePath)`
-- `IEnumerable<LogEntry> FilterByDate(IEnumerable<LogEntry> entries, DateTime date)`
+### 2.2 LogAnalyzerService osztály
+Hozza létre a `LogAnalyzerService` osztályt a következõ metódusokkal:
+- `List<LogEntry> ReadLogFile(string filePath)`
+- `IEnumerable<LogEntry> FilterByLevel(IEnumerable<LogEntry> entries, string level)`
 - `int CountErrorEntries(IEnumerable<LogEntry> entries)`
 - `Dictionary<string, int> GetUserActivitySummary(IEnumerable<LogEntry> entries)`
-- `IEnumerable<LogEntry> FilterByLevel(IEnumerable<LogEntry> entries, string level)`
+- `bool IsValidLogFormat(string logLine)`
+- `List<string> ExtractEmailAddresses(IEnumerable<LogEntry> entries)`
+- `List<string> ExtractIPAddresses(IEnumerable<LogEntry> entries)`
 
-### 2.3 LogAnalyzerService implementáció
-Implementálja az `ILogAnalyzerService` interfészt LINQ használatával.
-
-## 3. Naplófájl beolvasása és feldolgozása
+## 3. Naplófájl beolvasása és formátum validálása
 
 **Helye:** `LogAnalyzer.Core` projekt, `LogAnalyzerService` osztály
 
-Implementálja a `ReadLogFileAsync` metódust, amely:
-- Aszinkron módon olvassa be a naplófájlt
-- Feldolgozza a sorokat és létrehozza a `LogEntry` objektumokat
+### 3.1 Fájl beolvasása
+Implementálja a `ReadLogFile` metódust, amely:
+- Beolvassa a naplófájlt soronként
+- Minden sort feldolgoz és létrehozza a `LogEntry` objektumokat
 - Képes kezelni a következõ formátumot: `[YYYY-MM-DD HH:mm:ss] [LEVEL] [USER] Message`
 - Például: `[2024-01-15 10:30:45] [ERROR] [john.doe] Database connection failed`
-- Hibakezelést tartalmaz érvénytelen sorok esetén
+- Hibakezelést tartalmaz nem létezõ fájl esetén
+
+### 3.2 Formátum validálás reguláris kifejezéssel
+Implementálja az `IsValidLogFormat` metódust, amely:
+- Reguláris kifejezést használ a naplósor formátumának ellenõrzésére
+- Ellenõrizze, hogy a sor a várt formátumban van-e: szögletes zárójelekben dátum és idõ, majd szögletes zárójelekben a napló szint, majd szögletes zárójelekben a felhasználónév, végül az üzenet
+- **Tipp:** Gondoljon a szögletes zárójelekre, számjegyekre, kötõjelekre, kettõspontokra és a négy lehetséges napló szintre
+- Visszaadja, hogy a sor megfelel-e a várt formátumnak
 
 ## 4. Naplóbejegyzések szûrése és elemzése
 
 **Helye:** `LogAnalyzer.Core` projekt, `LogAnalyzerService` osztály
 
-### 4.1 Dátum alapú szûrés
-Implementálja a `FilterByDate` metódust LINQ használatával, amely:
-- Egy adott naphoz tartozó bejegyzéseket adja vissza
-- Csak a dátumot veszi figyelembe, az idõt nem
+### 4.1 Szint alapú szûrés
+Implementálja a `FilterByLevel` metódust, amely:
+- LINQ Where() metódussal szûri az adott szintû bejegyzéseket
+- Case-insensitive összehasonlítást használ
 
 ### 4.2 Hibák számolása
 Implementálja a `CountErrorEntries` metódust, amely:
@@ -75,70 +82,95 @@ Implementálja a `GetUserActivitySummary` metódust, amely:
 - LINQ GroupBy és ToDictionary használatával csoportosítja a bejegyzéseket felhasználók szerint
 - Visszaadja, hogy melyik felhasználó hány bejegyzést hozott létre
 
-### 4.4 Szint alapú szûrés
-Implementálja a `FilterByLevel` metódust, amely:
-- Egy adott naplószinthez tartozó bejegyzéseket szûri ki
-- Case-insensitive összehasonlítást használ
+## 5. Reguláris kifejezések alkalmazása adatkinyeréshez
 
-## 5. Konzol alkalmazás készítése
+**Helye:** `LogAnalyzer.Core` projekt, `LogAnalyzerService` osztály
+
+### 5.1 E-mail címek kinyerése
+Implementálja az `ExtractEmailAddresses` metódust, amely:
+- Reguláris kifejezést használ e-mail címek megtalálásához a naplóüzenetekben
+- **Példa e-mail címek a naplóban:** `john.doe@company.com`, `support@website.hu`, `admin_user@test-site.org`
+- **Tipp:** Az e-mail cím általában betûkbõl, számokból és bizonyos speciális karakterekbõl áll, majd egy @ jel, majd újra betûk/számok, egy pont, és végül a domain végzõdés
+- LINQ SelectMany és Distinct használatával adja vissza az egyedi e-mail címeket
+
+### 5.2 IP címek kinyerése
+Implementálja az `ExtractIPAddresses` metódust, amely:
+- Reguláris kifejezést használ IPv4 címek megtalálásához a naplóüzenetekben
+- **Példa IP címek a naplóban:** `192.168.1.100`, `10.0.0.5`, `172.16.254.1`
+- **Tipp:** IPv4 cím 4 db 0-255 közötti számból áll, pontokkal elválasztva. Gondoljon arra, hogy egy-egy szám 1-3 jegyû lehet
+- LINQ SelectMany és Distinct használatával adja vissza az egyedi IP címeket
+
+## 6. Konzol alkalmazás készítése
 
 **Helye:** `LogAnalyzer.Console` projekt, `Program.cs`
 
 Készítsen egy interaktív konzol alkalmazást, amely:
 - Menü alapú navigációt biztosít
-- Lehetõséget ad naplófájl megadására
+- Létrehoz egy `LogAnalyzerService` példányt a Main metódusban
 - A következõ funkciókat kínálja:
   1. Naplófájl betöltése
   2. Összes bejegyzés megjelenítése
-  3. Adott dátumhoz tartozó bejegyzések szûrése
+  3. Adott szintû bejegyzések szûrése
   4. Hibák számának megjelenítése
   5. Felhasználói aktivitás összesítõ
-  6. Adott szintû bejegyzések szûrése
-  7. Kilépés
+  6. E-mail címek kinyerése
+  7. IP címek kinyerése
+  8. Kilépés
 
-Használjon dependency injection-t az `ILogAnalyzerService` injektálásához.
+Használjon egyszerû objektum-létrehozást (new kulcsszó) a szolgáltatás példányosításához.
 
-## 6. Egységtesztek készítése
+## 7. Egységtesztek készítése
 
 **Helye:** `LogAnalyzer.Tests` projekt
 
-Hozzon létre legalább 5 tesztesetet xUnit keretrendszerrel:
+Hozzon létre legalább 6 tesztesetet xUnit keretrendszerrel:
 
-### 6.1 LogAnalyzerServiceTests osztály
-- `ReadLogFileAsync_ValidFile_ReturnsCorrectEntries()` - Érvényes fájl beolvasásának tesztelése
-- `FilterByDate_ValidDate_ReturnsFilteredEntries()` - Dátum alapú szûrés tesztelése
+### 7.1 LogAnalyzerServiceTests osztály
+- `ReadLogFile_ValidFile_ReturnsCorrectEntries()` - Érvényes fájl beolvasásának tesztelése
+- `IsValidLogFormat_ValidFormat_ReturnsTrue()` - Formátum validálás tesztelése érvényes sorral
+- `IsValidLogFormat_InvalidFormat_ReturnsFalse()` - Formátum validálás tesztelése érvénytelen sorral
 - `CountErrorEntries_WithErrorEntries_ReturnsCorrectCount()` - Hibák számolásának tesztelése
-- `GetUserActivitySummary_WithMultipleUsers_ReturnsCorrectSummary()` - Felhasználói aktivitás tesztelése
-- `FilterByLevel_ValidLevel_ReturnsFilteredEntries()` - Szint alapú szûrés tesztelése
+- `ExtractEmailAddresses_WithEmails_ReturnsCorrectEmails()` - E-mail kinyerés tesztelése
+- `ExtractIPAddresses_WithIPs_ReturnsCorrectIPs()` - IP cím kinyerés tesztelése
 
 Használjon test data setup-ot és Assert metódusokat az eredmények ellenõrzésére.
 
-## 7. Mintafájl és dokumentáció
+## 8. Mintafájl és dokumentáció
 
 **Helye:** Megoldás gyökér mappája
 
-### 7.1 Minta naplófájl
-Hozzon létre egy `sample.log` fájlt legalább 20 sorral, különbözõ:
-- Dátumokkal
-- Naplószintekkel (INFO, WARNING, ERROR, DEBUG)
-- Felhasználókkal
-- Üzenetekkel
+### 8.1 Minta naplófájl
+Hozzon létre egy `sample.log` fájlt legalább 20 sorral, amely tartalmaz:
+- Különbözõ naplószinteket (INFO, WARNING, ERROR, DEBUG)
+- Különbözõ felhasználókat
+- E-mail címeket a naplóüzenetekben
+- IP címeket a naplóüzenetekben
+- Néhány hibás formátumú sort is a teszteléshez
 
-### 7.2 README.md
+Példa sorok:
+```
+[2024-01-15 10:30:45] [ERROR] [john.doe] Failed login attempt from 192.168.1.100
+[2024-01-15 10:31:20] [INFO] [jane.smith] User registered with email john.doe@company.com
+[2024-01-15 10:32:10] [WARNING] [admin] Suspicious activity detected from 10.0.0.5
+[2024-01-15 10:33:05] [DEBUG] [system] Email sent to support@company.hu successfully
+```
+
+### 8.2 README.md
 Készítsen dokumentációt, amely tartalmazza:
 - A projekt leírását
 - Futtatási utasításokat
 - A naplófájl formátumának leírását
+- A reguláris kifejezések alkalmazásának magyarázatát
 - Példákat a használatra
 
 ## Értékelési szempontok
 
 - **Kód minõség:** Clean code elvek betartása, megfelelõ névadás
 - **LINQ használat:** Hatékony és olvasható LINQ lekérdezések
-- **Aszinkron programozás:** Task és async/await helyes használata
+- **Reguláris kifejezések:** Helyes regex minták létrehozása és alkalmazása
 - **Tesztelés:** Átfogó tesztlefedettség, jól strukturált tesztek
 - **Hibakezelés:** Megfelelõ exception handling
-- **Projekt struktúra:** Tiszta architektúra, megfelelõ separation of concerns
+- **Projekt struktúra:** Tiszta kód szervezés, megfelelõ felelõsség megosztás
 - **Felhasználói élmény:** Intuitív konzol interfész
 
 ## Határidõ és leadás

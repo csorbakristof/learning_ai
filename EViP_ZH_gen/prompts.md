@@ -67,5 +67,26 @@ All unit tests are now in a single file #file:UnitTest1.cs . Avoid using default
 
 Tanulság: ha a vizsgafeladat magyarul kell, akkor rögtön az elején érdemes figyelni rá, hogy mi egyen magyarul és mi angolul. Példul a forráskód metódus nevei, kommentárjai...
 
---- TODO
-Look at Stryker.net website, make it work, eval result and improve tests.
+--- Stryker.net install and use
+
+I want to use the package Stryker.NET. Have a look at its website https://stryker-mutator.io/docs/stryker-net/introduction/ . I want you to
+(1) install the package for this project,
+(2) launch the default analysis,
+(3) analyse the results and suggest changes to improve the unit test coverage according to the report,
+(4) apply the suggested changes to the codebase, and
+(5) re-run the stryker.net analysis to see the achieved improvement.
+
+Now start with step 1.
+
+(Tanulság: 1-2 lépéseket végrehajtotta, közben talált elszálló unit teszteket, ezeket több iterációban javította.)
+
+---
+
+Now have a look at the Stryker.NET analysis results and suggest improvements to the codebase to reduce the number of surviving mutations.
+
+---
+
+There have been some errors and pitfalls with the introduction of Stryker.NET. Please extend pitfalls.md to reflect the new experiences and prepare us to be able to avoid these pitfalls later.
+
+---
+

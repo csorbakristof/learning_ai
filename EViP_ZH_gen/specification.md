@@ -127,7 +127,7 @@ Készítsen egy átfogó tesztkészletet, amely minden funkciót és szélsősé
 
 ### 7.1 Alapvető tesztelési környezet beállítása
 
-**Helye:** `LogAnalyzer.Tests\UnitTest1.cs`
+**Helye:** `LogAnalyzer.Tests\BasicTestSetupTests.cs`
 
 Hozza létre a tesztelési alapstruktúrát:
 - `LogAnalyzerServiceTests` osztály létrehozása
@@ -135,9 +135,21 @@ Hozza létre a tesztelési alapstruktúrát:
 - Alapvető `LogAnalyzerService` példány létrehozása
 - 5 különböző típusú teszt `LogEntry` létrehozása a teszteléshez
 
-**Célzott tesztek száma:** 5-8 alapvető teszt
+**Átadandó tesztek ebben a lépésben:**
+- `LogAnalyzerService_CanBeInstantiated()`
+- `TestData_ContainsFiveDifferentEntries()`
+- `TestData_ContainsDifferentUsers()`
+- `TestData_ContainsEmailAndIPInMessages()`
+- `LogEntry_Properties_CanBeSetAndRetrieved()`
+- `LogEntry_DefaultValues_AreEmptyStrings()`
+- `LogAnalyzerService_PublicMethods_AreAvailable()`
+- `TestSetup_ValidatesBasicFunctionality()`
+
+**Célzott tesztek száma:** 8 alapvető teszt
 
 ### 7.2 Fájlkezelési tesztek implementálása
+
+**Helye:** `LogAnalyzer.Tests\FileHandlingTests.cs`
 
 Készítsen teszteket a fájl I/O műveletek minden lehetséges forgatókönyvére:
 - **Érvényes fájl beolvasása:** `ReadLogFile_ValidFile_ReturnsCorrectEntries()`
@@ -146,11 +158,21 @@ Készítsen teszteket a fájl I/O műveletek minden lehetséges forgatókönyvé
 - **Csak hibás bejegyzéseket tartalmazó fájl:** `ReadLogFile_FileWithOnlyInvalidEntries_ReturnsEmptyList()`
 - **Vegyes érvényes/érvénytelen bejegyzések:** `ReadLogFile_FileWithMixedValidAndInvalidEntries_ReturnsOnlyValidEntries()`
 
+**Átadandó tesztek ebben a lépésben:**
+- `ReadLogFile_ValidFile_ReturnsCorrectEntries()`
+- `ReadLogFile_NonExistentFile_ThrowsFileNotFoundException()`
+- `ReadLogFile_EmptyFile_ReturnsEmptyList()`
+- `ReadLogFile_FileWithOnlyInvalidEntries_ReturnsEmptyList()`
+- `ReadLogFile_FileWithMixedValidAndInvalidEntries_ReturnsOnlyValidEntries()`
+- `ReadLogFile_LargeFile_PerformsReasonably()`
+
 **Tipp:** Használjon `Path.GetTempFileName()` és `File.WriteAllText()` metódusokat ideiglenes tesztfájlok létrehozásához.
 
-**Célzott tesztek száma:** 5-6 fájlkezelési teszt
+**Célzott tesztek száma:** 6 fájlkezelési teszt
 
 ### 7.3 Formátum validálási tesztek kifejlesztése
+
+**Helye:** `LogAnalyzer.Tests\FormatValidationTests.cs`
 
 Implementáljon részletes teszteket a formátum validáláshoz:
 
@@ -165,11 +187,26 @@ Használjon `[Theory]` és `[InlineData]` attribútumokat:
 - **Hibás dátum formátumok:** `IsValidLogFormat_InvalidDateTimeFormats_ReturnsFalse()`
 - **Hibás log szintek:** `IsValidLogFormat_InvalidLogLevels_ReturnsFalse()`
 
+**Átadandó tesztek ebben a lépésben:**
+- `IsValidLogFormat_ValidFormat_ReturnsTrue()`
+- `IsValidLogFormat_InvalidFormat_ReturnsFalse()`
+- `IsValidLogFormat_NullAndEmptyString_ReturnsFalse()`
+- `IsValidLogFormat_VariousValidFormats_ReturnsTrue()` (Theory teszt - 5 eset)
+- `IsValidLogFormat_InvalidDateTimeFormats_ReturnsFalse()` (Theory teszt - 6 eset)
+- `IsValidLogFormat_InvalidLogLevels_ReturnsFalse()` (Theory teszt - 4 eset)
+- `IsValidLogFormat_EmptyUser_ReturnsFalse()`
+- `IsValidLogFormat_EmptyMessage_ReturnsFalse()`
+- `IsValidLogFormat_MissingBrackets_ReturnsFalse()`
+- `IsValidLogFormat_ValidLogLevels_ReturnsTrue()`
+- `IsValidLogFormat_UsernameWithSpecialCharacters_ReturnsTrue()`
+
 **Tipp:** A dátum validáláshoz használjon `DateTime.TryParseExact()` metódust a regex után.
 
-**Célzott tesztek száma:** 8-12 validálási teszt
+**Célzott tesztek száma:** 11 validálási teszt
 
 ### 7.4 Szűrési és számolási tesztek
+
+**Helye:** `LogAnalyzer.Tests\FilteringAndCountingTests.cs`
 
 Készítsen teszteket minden LINQ-alapú műveletre:
 
@@ -184,9 +221,28 @@ Készítsen teszteket minden LINQ-alapú műveletre:
 - **Null paraméter kezelése:** `CountErrorEntries_WithNullEntries_ThrowsException()`
 - **Case-insensitive számolás:** `CountErrorEntries_CaseInsensitive_ReturnsCorrectCount()`
 
-**Célzott tesztek száma:** 10-12 szűrési/számolási teszt
+**Átadandó tesztek ebben a lépésben:**
+- `FilterByLevel_WithValidLevel_ReturnsCorrectEntries()`
+- `FilterByLevel_CaseInsensitive_ReturnsCorrectEntries()`
+- `FilterByLevel_NonExistentLevel_ReturnsEmpty()`
+- `FilterByLevel_EmptyLevel_ReturnsEmpty()`
+- `FilterByLevel_NullLevel_ReturnsEmpty()`
+- `FilterByLevel_EmptyEntries_ReturnsEmpty()`
+- `FilterByLevel_WhitespaceLevel_ReturnsEmpty()`
+- `FilterByLevel_NullEntries_ThrowsException()`
+- `CountErrorEntries_WithErrorEntries_ReturnsCorrectCount()`
+- `CountErrorEntries_WithNoErrorEntries_ReturnsZero()`
+- `CountErrorEntries_EmptyList_ReturnsZero()`
+- `CountErrorEntries_CaseInsensitive_ReturnsCorrectCount()`
+- `CountErrorEntries_WithNullEntries_ThrowsException()`
+- `CountErrorEntries_LargeDataset_PerformsWell()`
+- `CountErrorEntries_OnlyErrorEntries_ReturnsTotal()`
+
+**Célzott tesztek száma:** 15 szűrési/számolási teszt
 
 ### 7.5 Felhasználói aktivitás elemzési tesztek
+
+**Helye:** `LogAnalyzer.Tests\UserActivityAnalysisTests.cs`
 
 Implementáljon teszteket a felhasználói aktivitás összegzésére:
 - **Alapvető aktivitás összegzés:** `GetUserActivitySummary_ReturnsCorrectCounts()`
@@ -194,9 +250,21 @@ Implementáljon teszteket a felhasználói aktivitás összegzésére:
 - **Duplikált felhasználók kezelése:** `GetUserActivitySummary_DuplicateUsers_CountsCorrectly()`
 - **Null paraméter exception:** Megfelelő `ArgumentNullException` dobása
 
-**Célzott tesztek száma:** 5-6 aktivitás elemzési teszt
+**Átadandó tesztek ebben a lépésben:**
+- `GetUserActivitySummary_ReturnsCorrectCounts()`
+- `GetUserActivitySummary_EmptyList_ReturnsEmptyDictionary()`
+- `GetUserActivitySummary_EntriesWithEmptyUsers_ExcludesEmptyUsers()`
+- `GetUserActivitySummary_DuplicateUsers_CountsCorrectly()`
+- `GetUserActivitySummary_WithNullEntries_ThrowsException()`
+- `GetUserActivitySummary_LargeDataset_PerformsWell()`
+- `GetUserActivitySummary_CaseSensitiveUsers_TreatsAsDistinct()`
+- `GetUserActivitySummary_SingleUser_ReturnsCorrectCount()`
+
+**Célzott tesztek száma:** 8 aktivitás elemzési teszt
 
 ### 7.6 E-mail extrakciós tesztek kifejlesztése
+
+**Helye:** `LogAnalyzer.Tests\EmailExtractionTests.cs`
 
 Készítsen átfogó teszteket az e-mail címek kinyerésére:
 
@@ -210,11 +278,26 @@ Készítsen átfogó teszteket az e-mail címek kinyerésére:
 - **Hibás formátumok elutasítása:** `ExtractEmailAddresses_InvalidFormats_DoesNotExtract()`
 - **Több e-mail egy üzenetben:** `ExtractEmailAddresses_MultipleEmailsInOneMessage_ExtractsAll()`
 
+**Átadandó tesztek ebben a lépésben:**
+- `ExtractEmailAddresses_WithEmails_ReturnsCorrectEmails()`
+- `ExtractEmailAddresses_WithNoEmails_ReturnsEmptyList()`
+- `ExtractEmailAddresses_WithDuplicateEmails_ReturnsUniqueEmails()`
+- `ExtractEmailAddresses_VariousValidFormats_ExtractsCorrectly()` (Theory teszt - 5 eset)
+- `ExtractEmailAddresses_InvalidFormats_DoesNotExtract()` (Theory teszt - 6 eset)
+- `ExtractEmailAddresses_MultipleEmailsInOneMessage_ExtractsAll()`
+- `ExtractEmailAddresses_EmptyList_ReturnsEmptyList()`
+- `ExtractEmailAddresses_WithNullEntries_ThrowsException()`
+- `ExtractEmailAddresses_WithSpecialCharactersInEmails_ExtractsCorrectly()`
+- `ExtractEmailAddresses_LargeDataset_PerformsWell()`
+- `ExtractEmailAddresses_ComplexEmailFormats_ExtractsCorrectly()`
+
 **Tipp:** Fejlesszen ki egy `IsValidEmailStructure()` privát metódust a részletes e-mail validáláshoz.
 
-**Célzott tesztek száma:** 12-15 e-mail extrakciós teszt
+**Célzott tesztek száma:** 11 e-mail extrakciós teszt
 
 ### 7.7 IP cím extrakciós tesztek implementálása
+
+**Helye:** `LogAnalyzer.Tests\IPAddressExtractionTests.cs`
 
 Hozzon létre részletes teszteket az IP címek kinyerésére:
 
@@ -228,58 +311,105 @@ Hozzon létre részletes teszteket az IP címek kinyerésére:
 - **Hibás formátumok elutasítása:** `ExtractIPAddresses_InvalidFormats_DoesNotExtract()`
 - **Verziószámok kizárása:** Ne kerüljenek bele az 1.2.3.4.5 típusú szövegek
 
+**Átadandó tesztek ebben a lépésben:**
+- `ExtractIPAddresses_WithIPs_ReturnsCorrectIPs()`
+- `ExtractIPAddresses_WithNoIPs_ReturnsEmptyList()`
+- `ExtractIPAddresses_WithInvalidIPs_FiltersCorrectly()`
+- `ExtractIPAddresses_VariousValidIPs_ExtractsCorrectly()` (Theory teszt - 7 eset)
+- `ExtractIPAddresses_InvalidFormats_DoesNotExtract()` (Theory teszt - 8 eset)
+- `ExtractIPAddresses_MultipleIPsInOneMessage_ExtractsAll()`
+- `ExtractIPAddresses_WithDuplicateIPs_ReturnsUniqueIPs()`
+- `ExtractIPAddresses_EmptyList_ReturnsEmptyList()`
+- `ExtractIPAddresses_WithNullEntries_ThrowsException()`
+- `ExtractIPAddresses_PrivateIPRanges_ExtractsCorrectly()`
+- `ExtractIPAddresses_LargeDataset_PerformsWell()`
+- `ExtractIPAddresses_BoundaryValues_HandlesCorrectly()`
+- `ExtractIPAddresses_VersionNumbersExcluded_FiltersCorrectly()`
+
 **Tipp:** Implementáljon egy `IsValidIPAddress()` privát metódust, amely ellenőrzi, hogy minden oktet 0-255 között van-e.
 
-**Célzott tesztek száma:** 12-15 IP extrakciós teszt
+**Célzott tesztek száma:** 13 IP extrakciós teszt
 
-### 7.8 Szélsőséges esetek és integrációs tesztek
+### 7.8 Szélsőséges esetek és integrációs tesztek implementálása
 
-Fejlesszen ki teszteket a rendszer robusztusságának ellenőrzésére:
+**Helye:** `LogAnalyzer.Tests\EdgeCasesAndIntegrationTests.cs`
 
-#### 7.8.1 Teljesítmény és nagyméretű adatok
-- **Nagy adatkészletek kezelése:** `AllMethods_WithVeryLargeDataset_PerformReasonably()`
-- **10,000+ bejegyzés feldolgozása:** Ellenőrizze, hogy a rendszer elfogadható időn belül működik
+Hozzon létre teljeskörű integrációs teszteket és szélsőséges eseteket:
 
-#### 7.8.2 Speciális karakterek és unicode
-- **Speciális karakterek üzenetekben:** `ExtractMethods_WithSpecialCharactersInMessages_HandleCorrectly()`
-- **Unicode karakterek kezelése:** Biztosítsa, hogy a rendszer kezeli a különleges karaktereket
+#### 7.8.1 Integrációs tesztek
+- **Teljes munkamenet:** Fájl beolvasástól az összes adattranszformációig
+- **Többszálú működés:** Thread safety validálás
+- **Memória hatékonyság:** Nagy adatok kezelése
 
-#### 7.8.3 Thread safety alapvető tesztelése
-- **Párhuzamos műveletek:** `AllMethods_ThreadSafety_BasicCheck()`
-- **Concurrent hozzáférés:** Ellenőrizze, hogy a szolgáltatás biztonságosan használható párhuzamos környezetben
+#### 7.8.2 Szélsőséges esetek
+- **Üres fájlok kezelése:** Null vagy üres bemenetek
+- **Nem várt formátumok:** Hibás vagy szokatlan log bejegyzések
+- **Teljesítmény tesztek:** Nagy adatkészleteken való működés
 
-#### 7.8.4 LogEntry model tesztelése
-- **Tulajdonságok beállítása:** `LogEntry_Properties_CanBeSetAndRetrieved()`
-- **Alapértelmezett értékek:** `LogEntry_DefaultValues_AreEmptyStrings()`
+**Átadandó tesztek ebben a lépésben:**
+- `FullWorkflow_CompleteLogFile_ProcessesCorrectly()`
+- `ConcurrentAccess_MultipleThreads_ThreadSafe()`
+- `LargeDataset_ThousandsOfEntries_HandlesEfficiently()`
+- `MemoryUsage_LargeDataset_DoesNotExceedLimits()`
+- `EmptyFile_HandlesGracefully()`
+- `MalformedEntries_SkipsAndContinues()`
+- `SpecialCharacters_InLogMessages_HandledCorrectly()`
+- `MultipleFilters_CombinedOperations_ProducesCorrectResults()`
 
-**Célzott tesztek száma:** 6-8 integrációs teszt
+**Célzott tesztek száma:** 8 integráció/szélsőséges eset teszt
 
-### 7.9 Tesztelési best practices alkalmazása
+---
 
-Biztosítsa a következő tesztelési elvek betartását:
+## 8. Tesztek futtatása
 
-#### 7.9.1 Test szervezés
-- **Regions használata:** Csoportosítsa a teszteket logikai régiókba
-- **Konzisztens naming:** Használjon egyértelmű teszt neveket
-- **Setup és cleanup:** Megfelelő erőforrás kezelés
+Az összes teszt futtatásához használja a következő parancsot a projekt gyökerében:
 
-#### 7.9.2 Assert minták
-- **Több assertion egy tesztben:** Ahol indokolt, használjon több ellenőrzést
-- **Exception tesztelés:** `Assert.Throws<T>()` használata
-- **Collection assertions:** `Assert.Contains()`, `Assert.Empty()`, `Assert.All()` használata
+```bash
+dotnet test
+```
 
-#### 7.9.3 Test data management
-- **Temporary file cleanup:** `try-finally` blokkok használata
-- **Isolated tests:** Minden teszt legyen független
-- **Meaningful test data:** Reális tesztadatok használata
+Egy adott teszt osztály futtatásához:
 
-**Összesen célzott tesztek száma: 75-85 átfogó teszt**
+```bash
+dotnet test --filter "ClassName=BasicTestSetupTests"
+```
 
-### 7.10 Tesztlefedettség validálása
+Egy specifikus teszt futtatásához:
 
-A végső tesztkészletnek le kell fednie:
-- ✅ **100% metódus lefedettség** - Minden publikus metódus tesztelt
-- ✅ **Szélsőséges esetek** - Null, üres, hibás bemenetek
+```bash
+dotnet test --filter "FullyQualifiedName~ReadLogFile_ValidFile_ReturnsCorrectEntries"
+```
+
+---
+
+## 9. Értékelési kritériumok
+
+**Teljes pontszám:** 100 pont
+
+- **7.1 Alapvető tesztelési setup (10 pont):** 8 teszt átadása
+- **7.2 Fájlkezelési tesztek (15 pont):** 6 teszt átadása
+- **7.3 Formátum validációs tesztek (15 pont):** 11 teszt átadása  
+- **7.4 Szűrési és számlálási tesztek (20 pont):** 15 teszt átadása
+- **7.5 Felhasználói aktivitás elemzési tesztek (15 pont):** 8 teszt átadása
+- **7.6 Email extrakciós tesztek (15 pont):** 11 teszt átadása
+- **7.7 IP cím extrakciós tesztek (15 pont):** 13 teszt átadása
+- **7.8 Szélsőséges esetek és integrációs tesztek (10 pont):** 8 teszt átadása
+
+**Részpontszámok:** Minden részfeladat tesztjeinek arányos teljesítése alapján.
+
+**Sikeres vizsga:** Minimum 60 pont elérése (legalább 60% teszt sikeres átadása).
+
+---
+
+## 10. Hasznos tippek
+
+1. **Inkrementális fejlesztés:** Kezdje az alap tesztekkel és fokozatosan haladjon
+2. **Hibaüzenetek olvasása:** A tesztek világos hibaüzeneteket adnak
+3. **Kód újrafelhasználás:** A közös logikát emelt ki privát metódusokba
+4. **Tesztelési minták:** Figylje meg a Theory és InlineData használatát
+5. **Teljesítmény:** Nagy adatkészleteken is hatékonyan működjön a kód
+
+**Jó szerencsét a vizsgához!**
 - ✅ **Pozitív és negatív forgatókönyvek** - Sikeres és sikertelen esetek
 - ✅ **Performance validálás** - Nagy adatkészletek kezelése
 - ✅ **Exception handling** - Megfelelő hibakezelés

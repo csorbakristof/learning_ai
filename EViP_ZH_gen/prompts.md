@@ -57,7 +57,15 @@ Now extend the test project to contain a very detailed set of tests, checking ev
 
 Now please update #specification.md according to the new version of the test set. Keep it divided into subtasks so that students can work on them incrementally during the exam.
 
-TODO: group tests according to subtasks
+---
 
-(Note: VS -> VSCode átálláskor *.md encoding hiba, ha úgy marad, később megpróbálja a rosszat követni. Érdemes rögtön minden fájlt javíttatni vele.)
+All unit tests are now in a single file #file:UnitTest1.cs . Avoid using default filenames like "UnitTest1.cs", "Form1.cs" etc. And please divide the unit tests according to the subtasks in #file:specification.md . Tell the students in the subtask descriptions which unit tests they have to make pass in that subtask.
 
+---
+
+(Tanulság: VS -> VSCode átálláskor *.md encoding hiba, ha úgy marad, később megpróbálja a rosszat követni. Érdemes rögtön minden fájlt javíttatni vele.)
+
+Tanulság: ha a vizsgafeladat magyarul kell, akkor rögtön az elején érdemes figyelni rá, hogy mi egyen magyarul és mi angolul. Példul a forráskód metódus nevei, kommentárjai...
+
+--- TODO
+Look at Stryker.net website, make it work, eval result and improve tests.

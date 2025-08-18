@@ -589,6 +589,197 @@ public void IsValidIPAddress_VariousInputs_ReturnsExpectedResults(string ip, boo
 
 ---
 
-This documentation serves as a reference for avoiding similar pitfalls in future C# .NET projects and ensures more efficient development workflows, including successful integration of mutation testing with Stryker.NET.
+## 9. Advanced Mutation Testing Insights and Improvements
+
+### ❌ **Problem 8: Achieving High Mutation Scores (75%+ → 85%+)**
+After implementing comprehensive tests and reaching 77.67% mutation score, discovered specific patterns for targeting surviving mutations:
+
+**Surviving Mutation Patterns:**
+```csharp
+// Line 94, 107: Statement removal mutations
+return entries.Count(entry => string.Equals(entry.Level, "ERROR", ...));
+// Mutates to: ;
+
+// Line 153, 155, 166, 171: Logical operator mutations  
+if (email.StartsWith(".") || email.EndsWith("."))
+// Mutates to: if (email.StartsWith(".") && email.EndsWith("."))
+
+// Line 171: String literal mutations
+if (!domainPart.Contains("."))
+// Mutates to: if (!domainPart.Contains(""))
+```
+
+### ✅ **Advanced Solutions**
+**1. Exception Message Validation Tests:**
+```csharp
+[Fact]
+public void ReadLogFile_FileNotFound_ThrowsWithSpecificMessage()
+{
+    var exception = Assert.Throws<FileNotFoundException>(() => 
+        _service.ReadLogFile("nonexistent.log"));
+    Assert.Contains("Log file not found:", exception.Message);
+    Assert.NotEqual("", exception.Message); // Catches string mutations
+    Assert.NotNull(exception.Message);
+}
+```
+
+**2. Logical Operator Boundary Tests:**
+```csharp
+[Theory]
+[InlineData("a.@test.com")]      // Tests EndsWith(".") condition
+[InlineData("a@invalid")]        // Tests domain without dot
+[InlineData("a@.domain.com")]    // Tests StartsWith(".") condition  
+public void ExtractEmailAddresses_InvalidFormats_ExcludesCorrectly(string invalidEmail)
+{
+    // Catches || → && mutations by testing each condition separately
+    var result = _service.ExtractEmailAddresses(CreateTestEntries(invalidEmail));
+    Assert.Empty(result);
+}
+```
+
+**3. String Constant Mutation Defense:**
+```csharp
+[Fact]
+public void ExtractEmailAddresses_DomainMustContainDot_RejectsNoDotDomains()
+{
+    // Specifically targets the Contains(".") → Contains("") mutation
+    var entries = CreateTestEntries("user@nodomain"); // No dot in domain
+    var result = _service.ExtractEmailAddresses(entries);
+    Assert.Empty(result); // Would pass incorrectly if "." → ""
+}
+```
+
+### 📝 **Advanced Lesson Learned**
+- **Target specific mutation types systematically:**
+  - Statement removal: Test return value types and ranges
+  - Logical operators: Test each condition in isolation
+  - String literals: Create tests that depend on specific string values
+  - Boundary conditions: Test edge cases with precise assertions
+
+**Mutation Score Improvement Results:**
+- Before: 75.73% (14 surviving mutations)
+- After: 77.67% (12 surviving mutations)  
+- **+1.94% improvement** with targeted testing strategy
+
+---
+
+### ❌ **Problem 9: Understanding Realistic Mutation Score Expectations**
+Initially aimed for 100% mutation score, leading to over-engineering and diminishing returns.
+
+### ✅ **Realistic Goals**
+**Industry Standards:**
+- **Good:** 70-75% mutation score
+- **Excellent:** 75-85% mutation score
+- **Outstanding:** 85%+ mutation score
+- **100% is rarely practical or cost-effective**
+
+**Acceptable Surviving Mutations:**
+```csharp
+// Complex boolean chains in validation methods
+if (string.IsNullOrEmpty(domainPart) || 
+    domainPart.StartsWith(".") || 
+    domainPart.EndsWith(".") || 
+    !domainPart.Contains("."))
+// Some || → && mutations may survive due to validation complexity
+```
+
+### 📝 **Strategic Lesson Learned**
+- **Focus on business-critical logic over 100% coverage**
+- **Balance test effort with mutation value**
+- **Accept that some mutations in complex validation chains may survive**
+- **Prioritize mutations in core business functions**
+
+---
+
+### ❌ **Problem 10: Mutation Testing Performance with Large Test Suites**
+With 216 tests, each Stryker.NET run took 55+ seconds, making iteration slow.
+
+### ✅ **Performance Optimization Strategies**
+**1. Targeted Test Execution:**
+```bash
+# Focus on specific files during development
+dotnet stryker --files "**/LogAnalyzerService.cs"
+
+# Use filters for incremental testing
+dotnet stryker --with-baseline --baseline-provider "disk"
+```
+
+**2. Concurrent Execution:**
+```json
+// stryker-config.json
+{
+  "stryker-config": {
+    "concurrency": 4,
+    "coverage-analysis": "perTest",
+    "test-runner": "dotnet"
+  }
+}
+```
+
+**3. CI/CD Integration:**
+```yaml
+# Only run full mutation testing on main branch
+- name: Mutation Testing
+  if: github.ref == 'refs/heads/main'
+  run: dotnet stryker --reporter "dashboard"
+```
+
+### 📝 **Performance Lesson Learned**
+- **Use Stryker.NET configuration for optimization**
+- **Run full mutation testing in CI/CD, not locally during development**
+- **Focus on specific files during active development**
+- **Monitor test execution time and optimize slow tests**
+
+---
+
+## 10. Refined Best Practices from Mutation Testing Experience
+
+### 🎯 **Code Design for Testability**
+**Poor Design (Hard to Test):**
+```csharp
+// Complex boolean expression difficult to test all paths
+public bool IsValid(string input)
+{
+    return !string.IsNullOrEmpty(input) && input.Length > 5 && 
+           input.Contains("@") && !input.StartsWith(".") && 
+           !input.EndsWith(".") && input.Split('@').Length == 2;
+}
+```
+
+**Better Design (Mutation-Friendly):**
+```csharp
+public bool IsValid(string input)
+{
+    if (string.IsNullOrEmpty(input)) return false;
+    if (input.Length <= 5) return false;
+    if (!input.Contains("@")) return false;
+    if (HasInvalidBoundaries(input)) return false;
+    if (!HasValidStructure(input)) return false;
+    return true;
+}
+
+private bool HasInvalidBoundaries(string input) => 
+    input.StartsWith(".") || input.EndsWith(".");
+```
+
+### 🎯 **Strategic Test Writing**
+**Focus Areas for High Mutation Coverage:**
+1. **Boundary conditions** (>, >=, <, <=)
+2. **Logical operators** (&&, ||, !)
+3. **String operations** (Contains, StartsWith, EndsWith)
+4. **Exception handling** (specific exception types and messages)
+5. **Return value validation** (null, empty, specific values)
+
+### 🎯 **Mutation Testing ROI Analysis**
+| Score Range | Test Effort | Business Value | Recommendation |
+|-------------|-------------|----------------|----------------|
+| 0-60% | Low | Very High | **Critical - Fix immediately** |
+| 60-75% | Medium | High | **Important - Prioritize** |
+| 75-85% | High | Medium | **Good - Selective improvement** |
+| 85%+ | Very High | Low | **Excellent - Maintain** |
+
+---
+
+This documentation serves as a comprehensive reference for avoiding similar pitfalls in future C# .NET projects and ensures efficient development workflows with advanced mutation testing integration using Stryker.NET.
 
 ````

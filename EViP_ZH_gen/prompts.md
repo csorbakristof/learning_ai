@@ -1,3 +1,27 @@
+# Tanulságok
+
+ZH feladatsor összeállítás
+
+- Első körös specifikáció kérése, azt sem én írtam, csak a tananyagot. Megadtam neki az érintett előadások PPTX-eit, hogy ez alapján dolgozzon.
+- A specifikációt bontsa alfeladatokra, majd készítsen mintamegoldást és unit teszteket, majd pontosítsa a feladatkiírást.
+- Utána kicsit elkanyarodtam a mutation testing irányába.
+
+Tanulságok:
+- A **feladat kitalálásában** is simán tud segíteni a tananyag ismeretében.
+- Érdemes előre tisztázni, hogy mi **lesz magyarul** és mi angolul. Pl. forráskód kommentárjai? Főleg, ha utána az marad bent feladatként egy kiadott keretben?
+- A **Stryker.NET**-et is **ő rakta fel**, csak megmutattam neki a holnapját. (Magától tudta, hogy a Getting started oldal kell neki.)
+- A kezdéskor új sln-t hozott létre (Visual Studio alatt), én meg csak néztem az eredetit, amiben semmi nem változott...)
+- VS alatt a chat ablak sokszor beragadt, VS Code alát átköltöztem a projekt felénél.
+- **Encoding hibák VS -> VSCode átálláskor és javíttatásuk**: Ha úgy marad, később megpróbálja a rosszat követni. Érdemes rögtön minden fájlt javíttatni vele. "The file #file:prompts.md seems to have encoding issues. Please fix the hungarian characters."
+- **Kérj további unit teszteket, a kódon is javít!** Ha további unit teszteket kérek, az alapján többször addigi hibákra is rájött és azokat is javította. "Now extend the test project to contain a very detailed set of tests, checking even lots of edge cases."
+- **Inkább betippelte: konzol bemenet, javascriptes riport**
+    - Konzol bemenet szimulálása: Interaktív konzol alkalmazás minden menüpontjára kimenet, majd markdown generálás: végül nem végignyomkodta (stdin bemenetre fájllal próbálkozott, de a Console.ReadKey() miatt nem ment neki és végül inkább szimulálta a programot.)
+    - A javascriptes interaktív riport parsolása nem ment neki, helyette betippelgetett javítási lehetőségeket (És erről csak akkor szólt, amikor rákérdeztem!). Aztán megmutattam neki azt az oldalt, ahol a riporterekről ír a doksi, utána már szépen dolgozott a JSON alapján.
+- **Megjelölt feladat kódját kommentárra cserélve**: Másik kiísérletből már teszteltem, hogy kommentárban megjelöl kódrészeket le tud cserélni részletes instrukciókra.
+- prompts.md mellé **pitfalls.md kérése** nagyon tanulságos!
+
+# Konkrét promptok
+
 Have a look at #specification.md. Your first task is to create a specific exam task consisting of at least 5 main subtasks. Extend the #specification.md accordingly. Write everything in hungarian and translate the original content of the specification into hungarian as well.
 
 ---
@@ -94,3 +118,20 @@ There have been some errors and pitfalls with the introduction of Stryker.NET. P
 #file:LogAnalyzerService.cs has a IsPartOfVersionNumber method. Remove all tests which assume there is some kind of version number in the test log file which has to be separated from the IP addresses. No need to distinguish IP addresses and version numbers. Update the tests and the test input data accordingly.
 
 ---
+
+Now have a look at latest the mutation testing results and create a suggestion how to significantly improve the mutation score. For example logic operation and exception throwing seems to be a common issue to address.
+
+---
+
+(TANULSÁG) 
+
+Question: when you are reading the mutation testing reports, do you see the markings indicating the surviving mutations? Or are you just guessing based on the source code?
+
+---
+
+Have a look at the webpage https://stryker-mutator.io/docs/stryker-net/reporters/ . It contains information about how you can extract the reports of stryker.net in formats easier for you to process. Use one of those options instead.
+
+-----
+
+Now please update the #file:specification.md , and the #file:pitfalls.md files according to the improvements. Do not forget to remove the version vs IP address separation from #file:specification.md .
+

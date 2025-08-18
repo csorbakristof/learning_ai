@@ -89,23 +89,26 @@ public class AdvancedValidationTests
     #region IP Address Complex Validation
 
     [Fact]
-    public void ExtractIPAddresses_VersionNumberDetection_FiltersVersions()
+    public void ExtractIPAddresses_MixedContent_ExtractsAllValidIPs()
     {
-        // Arrange - Test various version number patterns where IP filtering should work
+        // Arrange - Test various IP patterns including those that look like version numbers
         var entries = new List<LogEntry>
         {
-            new LogEntry { Level = "INFO", User = "user", Message = "Version 1.2.3.4.5 detected", Timestamp = "2024-01-01 10:00:00" }, // 5-part version
-            new LogEntry { Level = "INFO", User = "user", Message = "Build 2.1.0.1-beta", Timestamp = "2024-01-01 10:01:00" }, // with -beta suffix
+            new LogEntry { Level = "INFO", User = "user", Message = "Application version 1.2.3.4 detected", Timestamp = "2024-01-01 10:00:00" }, // IP-like version
+            new LogEntry { Level = "INFO", User = "user", Message = "Build 2.1.0.1-beta", Timestamp = "2024-01-01 10:01:00" }, // IP-like with suffix
             new LogEntry { Level = "INFO", User = "user", Message = "Server IP: 192.168.1.100", Timestamp = "2024-01-01 10:02:00" }, // actual IP
-            new LogEntry { Level = "INFO", User = "user", Message = "Software 1.2.3.4 version", Timestamp = "2024-01-01 10:03:00" } // regular version (may be detected)
+            new LogEntry { Level = "INFO", User = "user", Message = "Connected to 10.0.0.1", Timestamp = "2024-01-01 10:03:00" } // another actual IP
         };
 
         // Act
         var ips = _service.ExtractIPAddresses(entries);
 
-        // Assert - Should contain actual IP and potentially other IPs that don't match version patterns
+        // Assert - Should extract all valid IP addresses regardless of context
+        Assert.Contains("1.2.3.4", ips);
+        Assert.Contains("2.1.0.1", ips);
         Assert.Contains("192.168.1.100", ips);
-        Assert.True(ips.Count >= 1); // At least the real IP should be there
+        Assert.Contains("10.0.0.1", ips);
+        Assert.Equal(4, ips.Count);
     }
 
     [Theory]

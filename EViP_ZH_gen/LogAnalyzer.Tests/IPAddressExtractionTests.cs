@@ -94,15 +94,16 @@ public class IPAddressExtractionTests
             new LogEntry { Level = "INFO", User = "user1", Message = "Invalid IP: 256.1.1.1", Timestamp = "2024-01-01 10:00:00" },
             new LogEntry { Level = "ERROR", User = "user2", Message = "Another invalid: 192.168.300.1", Timestamp = "2024-01-01 10:01:00" },
             new LogEntry { Level = "DEBUG", User = "user3", Message = "Valid IP: 192.168.1.1", Timestamp = "2024-01-01 10:02:00" },
-            new LogEntry { Level = "INFO", User = "user4", Message = "Version number: 1.2.3.4.5", Timestamp = "2024-01-01 10:03:00" }
+            new LogEntry { Level = "INFO", User = "user4", Message = "Valid IP-like pattern: 1.2.3.4", Timestamp = "2024-01-01 10:03:00" }
         };
 
         // Act
         var ips = _service.ExtractIPAddresses(entriesWithInvalidIPs);
 
         // Assert
-        Assert.Single(ips);
+        Assert.Equal(2, ips.Count);
         Assert.Contains("192.168.1.1", ips);
+        Assert.Contains("1.2.3.4", ips);
     }
 
     #endregion
@@ -140,7 +141,6 @@ public class IPAddressExtractionTests
     [InlineData("Invalid IP: 1.1.1.256")]
     [InlineData("Invalid IP: 192.168.1")]
     [InlineData("Not an IP: 192-168-1-1")]
-    [InlineData("Version: 1.2.3.4.5")]
     [InlineData("Incomplete: 192.168.")]
     public void ExtractIPAddresses_InvalidFormats_DoesNotExtract(string message)
     {
@@ -300,23 +300,26 @@ public class IPAddressExtractionTests
     }
 
     [Fact]
-    public void ExtractIPAddresses_VersionNumbersExcluded_FiltersCorrectly()
+    public void ExtractIPAddresses_AllValidIPPatterns_ExtractsCorrectly()
     {
         // Arrange
         var entries = new List<LogEntry>
         {
             new LogEntry { Level = "INFO", User = "user", Message = "Valid IP: 192.168.1.1", Timestamp = "2024-01-01 10:00:00" },
-            new LogEntry { Level = "INFO", User = "user", Message = "Version 1.2.3.4.5 released", Timestamp = "2024-01-01 10:01:00" },
-            new LogEntry { Level = "INFO", User = "user", Message = "Software version 2.1.0.1234", Timestamp = "2024-01-01 10:02:00" },
-            new LogEntry { Level = "INFO", User = "user", Message = "Build 1.0.0.1-beta", Timestamp = "2024-01-01 10:03:00" }
+            new LogEntry { Level = "INFO", User = "user", Message = "Application 1.2.3.4 released", Timestamp = "2024-01-01 10:01:00" },
+            new LogEntry { Level = "INFO", User = "user", Message = "Software connects to 10.0.0.1", Timestamp = "2024-01-01 10:02:00" },
+            new LogEntry { Level = "INFO", User = "user", Message = "Server at 172.16.0.1", Timestamp = "2024-01-01 10:03:00" }
         };
 
         // Act
         var ips = _service.ExtractIPAddresses(entries);
 
         // Assert
-        Assert.Single(ips);
+        Assert.Equal(4, ips.Count);
         Assert.Contains("192.168.1.1", ips);
+        Assert.Contains("1.2.3.4", ips);
+        Assert.Contains("10.0.0.1", ips);
+        Assert.Contains("172.16.0.1", ips);
     }
 
     #endregion

@@ -158,7 +158,6 @@ public class BoundaryConditionTests
     [InlineData("1.1.256.1")]     // Third octet too high
     [InlineData("1.1.1.256")]     // Fourth octet too high
     [InlineData("192.168.1")]     // Too few octets
-    [InlineData("192.168.1.1.1")] // Too many octets
     public void ExtractIPAddresses_BoundaryInvalidIPs_DoesNotExtract(string invalidIP)
     {
         // Arrange

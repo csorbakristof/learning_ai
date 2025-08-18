@@ -89,4 +89,8 @@ Now have a look at the Stryker.NET analysis results and suggest improvements to 
 There have been some errors and pitfalls with the introduction of Stryker.NET. Please extend pitfalls.md to reflect the new experiences and prepare us to be able to avoid these pitfalls later.
 
 ---
+(FONTOS)
 
+#file:LogAnalyzerService.cs has a IsPartOfVersionNumber method. Remove all tests which assume there is some kind of version number in the test log file which has to be separated from the IP addresses. No need to distinguish IP addresses and version numbers. Update the tests and the test input data accordingly.
+
+---

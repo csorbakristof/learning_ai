@@ -16,18 +16,48 @@ Please update the #specification.md accordingly.
 
 ---
 
-Now start the implementation, but work only on the 1st task "Projekt strukt�ra l�trehoz�sa".
+Now start the implementation, but work only on the 1st task "Projekt struktúra létrehozása".
 
-(Tanuls�g: �j sln-t hozott l�tre, �n meg csak n�ztem az eredetit, amiben semmi nem v�ltozott...)
-
----
-
-Now create the sample solution for the 2nd subtask: "2. Napl�bejegyz�s modell �s szolg�ltat�s l�trehoz�sa"
+(Tanulság: Új sln-t hozott létre, én meg csak néztem az eredetit, amiben semmi nem változott...)
 
 ---
 
-Now proceed with the subtask "3. Napl�f�jl beolvas�sa �s form�tum valid�l�sa".
+Now create the sample solution for the 2nd subtask: "2. Naplóbejegyzés modell és szolgáltatás létrehozása"
 
 ---
+
+Now proceed with the subtask "3. Naplófájl beolvasása és formátum validálása".
+
+---
+(FONTOS)
 
 During your work there were some errors and pitfalls. Please create a pitfalls.md in the root directory where you summarize these, so we know what to avoid next time.
+
+---
+(FONTOS)
+
+The file #file:prompts.md seems to have encoding issues. Please fix the hungarian characters.
+
+---
+Tanulság: na ez csak úgy ment neki, hogy legenerálta a kimenetet, de nem a programból nyerte ki. Szerinte a Console.ReadKey() nem látja a fájlból jövő standard inputot.
+
+"Please start the console application, redirect its output to a file named "output_demo.log" and trigger all functions of the application, so that the output_demo.log file contains everything the application can show about the #file:sample.log file."
+
+---
+
+Turn #output_demo.log into a formatted markdown file named example_run.md
+
+---
+
+Now extend the test project to contain a very detailed set of tests, checking even lots of edge cases.
+
+(Közben a kódon is tovább javított! :) )
+
+---
+
+Now please update #specification.md according to the new version of the test set. Keep it divided into subtasks so that students can work on them incrementally during the exam.
+
+TODO: group tests according to subtasks
+
+(Note: VS -> VSCode átálláskor *.md encoding hiba, ha úgy marad, később megpróbálja a rosszat követni. Érdemes rögtön minden fájlt javíttatni vele.)
+

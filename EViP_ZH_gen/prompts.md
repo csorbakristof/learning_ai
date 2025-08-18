@@ -16,12 +16,18 @@ Please update the #specification.md accordingly.
 
 ---
 
-Now start the implementation, but work only on the 1st task "Projekt struktúra létrehozása".
+Now start the implementation, but work only on the 1st task "Projekt struktï¿½ra lï¿½trehozï¿½sa".
 
-(Tanulság: új sln-t hozott létre, én meg csak néztem az eredetit, amiben semmi nem változott...)
+(Tanulsï¿½g: ï¿½j sln-t hozott lï¿½tre, ï¿½n meg csak nï¿½ztem az eredetit, amiben semmi nem vï¿½ltozott...)
+
+---
+
+Now create the sample solution for the 2nd subtask: "2. Naplï¿½bejegyzï¿½s modell ï¿½s szolgï¿½ltatï¿½s lï¿½trehozï¿½sa"
 
 ---
 
-Now create the sample solution for the 2nd subtask: "2. Naplóbejegyzés modell és szolgáltatás létrehozása"
+Now proceed with the subtask "3. Naplï¿½fï¿½jl beolvasï¿½sa ï¿½s formï¿½tum validï¿½lï¿½sa".
 
 ---
+
+During your work there were some errors and pitfalls. Please create a pitfalls.md in the root directory where you summarize these, so we know what to avoid next time.

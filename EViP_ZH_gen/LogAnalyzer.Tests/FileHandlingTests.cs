@@ -158,7 +158,10 @@ Another invalid line
         // Create 1000 valid log entries
         for (int i = 0; i < 1000; i++)
         {
-            lines.Add($"[2024-01-15 10:{i:D2}:00] [INFO] [user{i}] Test message {i}");
+            int hour = 10 + (i / 3600);
+            int minute = (i % 3600) / 60;
+            int second = i % 60;
+            lines.Add($"[2024-01-15 {hour:D2}:{minute:D2}:{second:D2}] [INFO] [user{i}] Test message {i}");
         }
         
         File.WriteAllLines(testFilePath, lines);

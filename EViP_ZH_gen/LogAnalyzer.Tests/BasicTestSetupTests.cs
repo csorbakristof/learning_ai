@@ -141,10 +141,8 @@ public class BasicTestSetupTests
     [Fact]
     public void TestSetup_ValidatesBasicFunctionality()
     {
-        // Act & Assert - Basic smoke test
-        Assert.DoesNotThrow(() => {
-            var result = _service.FilterByLevel(_testEntries, "ERROR");
-            Assert.NotNull(result);
-        });
+        // Act & Assert - Basic smoke test that no exception is thrown
+        var result = _service.FilterByLevel(_testEntries, "ERROR");
+        Assert.NotNull(result);
     }
 }

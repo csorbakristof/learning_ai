@@ -107,7 +107,7 @@ public class LogAnalyzerService
             throw new ArgumentNullException(nameof(entries));
 
         return entries
-            .Where(entry => !string.IsNullOrEmpty(entry.User))
+            .Where(entry => !string.IsNullOrWhiteSpace(entry.User))
             .GroupBy(entry => entry.User)
             .ToDictionary(group => group.Key, group => group.Count());
     }
@@ -199,7 +199,7 @@ public class LogAnalyzerService
             {
                 string ip = match.Value;
                 // Additional validation to ensure it's a complete IP (not part of version numbers, etc.)
-                if (IsValidIPAddress(ip))
+                if (IsValidIPAddress(ip) && !IsPartOfVersionNumber(entry.Message, match))
                 {
                     ips.Add(ip);
                 }
@@ -207,6 +207,50 @@ public class LogAnalyzerService
         }
         
         return ips.ToList();
+    }
+
+    private bool IsPartOfVersionNumber(string message, Match ipMatch)
+    {
+        int startPos = ipMatch.Index;
+        int endPos = ipMatch.Index + ipMatch.Length;
+        
+        // Check if there's a number or dot immediately before the IP (like in "version 2.1.0.1" or "1.2.3.4.5")
+        if (startPos > 0)
+        {
+            char prevChar = message[startPos - 1];
+            if (char.IsDigit(prevChar) || prevChar == '.')
+            {
+                return true;
+            }
+        }
+        
+        // Check if the IP is followed by another dot and number (like 1.2.3.4.5)
+        if (endPos < message.Length && message[endPos] == '.')
+        {
+            // Look ahead to see if there's another number after the dot
+            int nextDotPos = endPos + 1;
+            while (nextDotPos < message.Length && char.IsDigit(message[nextDotPos]))
+            {
+                nextDotPos++;
+            }
+            // If we found digits after the dot, this is likely a version number
+            if (nextDotPos > endPos + 1)
+            {
+                return true;
+            }
+        }
+        
+        // Check if the IP is followed by version-related suffixes
+        if (endPos < message.Length)
+        {
+            string afterIp = message.Substring(endPos, Math.Min(10, message.Length - endPos)).ToLowerInvariant();
+            if (afterIp.StartsWith("-beta") || afterIp.StartsWith("-alpha") || afterIp.StartsWith("-rc"))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private bool IsValidIPAddress(string ip)

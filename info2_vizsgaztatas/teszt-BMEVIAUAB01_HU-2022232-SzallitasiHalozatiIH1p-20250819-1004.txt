@@ -1,0 +1,160 @@
+// question: 0  name: Switch category to top/net/SzallitasiHalozatiIH1p
+$CATEGORY: top/net/SzallitasiHalozatiIH1p
+
+
+// question: 1299791  name: A Border Gateway Protocol egy autonóm rendszerek (AS-ek) közötti, ...
+::A Border Gateway Protocol egy autonóm rendszerek (AS-ek) közötti, ...::A Border Gateway Protocol egy autonóm rendszerek (AS-ek) közötti, távolságvektor-alapú protokoll.{TRUE}
+
+
+// question: 1299773  name: A DHCP szerver IP címet oszt a hálózathoz csatlakozó új eszközöknek.
+::A DHCP szerver IP címet oszt a hálózathoz csatlakozó új eszközöknek.::A DHCP szerver IP címet oszt a hálózathoz csatlakozó új eszközöknek.{TRUE}
+
+
+// question: 1299774  name: A DHCP szerver soha nem jegyez meg eszközöket, így az újra csatlakozó eszköz ...
+::A DHCP szerver soha nem jegyez meg eszközöket, így az újra csatlakozó eszköz ...::A DHCP szerver soha nem jegyez meg eszközöket, így az újra csatlakozó eszköz szinte mindig másik IP címet kap.{FALSE}
+
+
+// question: 1299755  name: A DNS rendszer UDP protokollt használ.
+::A DNS rendszer UDP protokollt használ.::A DNS rendszer UDP protokollt használ.{TRUE}
+
+
+// question: 1299768  name: A hálózati réteg biztosítja az adatok sorrendhelyes továbbítását.
+::A hálózati réteg biztosítja az adatok sorrendhelyes továbbítását.::A hálózati réteg biztosítja az adatok sorrendhelyes továbbítását.{FALSE}
+
+
+// question: 1299769  name: A hálózati réteg biztosítja az adatok veszteségmentes továbbítását.
+::A hálózati réteg biztosítja az adatok veszteségmentes továbbítását.::A hálózati réteg biztosítja az adatok veszteségmentes továbbítását.{FALSE}
+
+
+// question: 1299767  name: A hálózati réteg nem garantál semmilyen minimális sávszélességet.
+::A hálózati réteg nem garantál semmilyen minimális sávszélességet.::A hálózati réteg nem garantál semmilyen minimális sávszélességet.{TRUE}
+
+
+// question: 1299775  name: A NAT technológia a TCP és UDP portokat hostok címzésére is felhasználja.
+::A NAT technológia a TCP és UDP portokat hostok címzésére is felhasználja.::A NAT technológia a TCP és UDP portokat hostok címzésére is felhasználja.{TRUE}
+
+
+// question: 1299779  name: A NAT technológia észrevétlenül és gyakorlatilag mellékhatások nélkül ...
+::A NAT technológia észrevétlenül és gyakorlatilag mellékhatások nélkül ...::[html]A NAT technológia észrevétlenül és gyakorlatilag mellékhatások nélkül lehetővé teszi, hogy egy IP címet több eszköz is használhasson. Például bármiféle plusz beállítás nélkül üzemeltethetünk több szervert is az otthoni hálózaton.{FALSE}
+
+
+// question: 1299781  name: A ping program az ICMP echo kérést és választ használja.
+::A ping program az ICMP echo kérést és választ használja.::A ping program az ICMP echo kérést és választ használja.{TRUE}
+
+
+// question: 1299784  name: A ping program TCP protokollt használ egy speciális, "mindig válaszoló" port ...
+::A ping program TCP protokollt használ egy speciális, "mindig válaszoló" port ...::A ping program TCP protokollt használ egy speciális, "mindig válaszoló" port számmal (0-ás port).{FALSE}
+
+
+// question: 1299790  name: A távolságvektor-alapú útválasztó algoritmusokban minden router előre ismeri ...
+::A távolságvektor-alapú útválasztó algoritmusokban minden router előre ismeri ...::A távolságvektor-alapú útválasztó algoritmusokban minden router előre ismeri a teljes hálózati topológiát.{FALSE}
+
+
+// question: 1299761  name: A TCP egy full duplex kommunikációs protokoll.
+::A TCP egy full duplex kommunikációs protokoll.::A TCP egy full duplex kommunikációs protokoll.{TRUE}
+
+
+// question: 1299753  name: A TCP és UDP protokollok egészítik ki az IP címeket a port számokkal.
+::A TCP és UDP protokollok egészítik ki az IP címeket a port számokkal.::A TCP és UDP protokollok egészítik ki az IP címeket a port számokkal.{TRUE}
+
+
+// question: 1299762  name: A TCP kapcsolatban a nyugtát ugyanolyan csomag továbbítja, mint az adatokat, ...
+::A TCP kapcsolatban a nyugtát ugyanolyan csomag továbbítja, mint az adatokat, ...::A TCP kapcsolatban a nyugtát ugyanolyan csomag továbbítja, mint az adatokat, vagyis egyszerre küldhető adat és vele együtt korábbi üzenetek fogadásának nyugtázása is.{TRUE}
+
+
+// question: 1299757  name: A TCP protokoll az adatok sérülésmentes továbbítása érdekében CRC-32 ...
+::A TCP protokoll az adatok sérülésmentes továbbítása érdekében CRC-32 ...::A TCP protokoll az adatok sérülésmentes továbbítása érdekében CRC-32 hibajavító kódolást használ.{FALSE}
+
+
+// question: 1299759  name: A TCP protokoll az adatok sérülésmentes továbbítása érdekében egyszerű ...
+::A TCP protokoll az adatok sérülésmentes továbbítása érdekében egyszerű ...::A TCP protokoll az adatok sérülésmentes továbbítása érdekében egyszerű ellenőrző összeget is továbbít.{TRUE}
+
+
+// question: 1299758  name: A TCP protokoll az adatok sérülésmentes továbbítása érdekében Reed-Solomon ...
+::A TCP protokoll az adatok sérülésmentes továbbítása érdekében Reed-Solomon ...::A TCP protokoll az adatok sérülésmentes továbbítása érdekében Reed-Solomon hibajavító kódolást használ.{FALSE}
+
+
+// question: 1299783  name: A traceroute alkalmazás egyesével csökkenő TTL (Time-to-Live) értékkel küld ...
+::A traceroute alkalmazás egyesével csökkenő TTL (Time-to-Live) értékkel küld ...::A traceroute alkalmazás egyesével csökkenő TTL (Time-to-Live) értékkel küld ki csomagokat a cél felé.{FALSE}
+
+
+// question: 1299782  name: A traceroute alkalmazás folyamatosan növeklő TTL (Time-to-Live) értékkel küld...
+::A traceroute alkalmazás folyamatosan növeklő TTL (Time-to-Live) értékkel küld...::A traceroute alkalmazás folyamatosan növeklő TTL (Time-to-Live) értékkel küld ki csomagokat a cél felé.{TRUE}
+
+
+// question: 1299763  name: A UDP kapcsolatban a nyugtát ugyanolyan csomag továbbítja, mint az adatokat.
+::A UDP kapcsolatban a nyugtát ugyanolyan csomag továbbítja, mint az adatokat.::A UDP kapcsolatban a nyugtát ugyanolyan csomag továbbítja, mint az adatokat.{FALSE}
+
+
+// question: 1299754  name: A UDP protokollban nincsennek port számok, mivel nem kapcsolat alapú protokoll.
+::A UDP protokollban nincsennek port számok, mivel nem kapcsolat alapú protokoll.::A UDP protokollban nincsennek port számok, mivel nem kapcsolat alapú protokoll.{FALSE}
+
+
+// question: 1299780  name: Az ICMP üzenetekkel routerek és a hostok kommunikálnak egymással.
+::Az ICMP üzenetekkel routerek és a hostok kommunikálnak egymással.::Az ICMP üzenetekkel routerek és a hostok kommunikálnak egymással.{TRUE}
+
+
+// question: 1299770  name: Az IP fejlécben a forrás IP címe nem szerepel, mivel arra a routereknek ...
+::Az IP fejlécben a forrás IP címe nem szerepel, mivel arra a routereknek ...::Az IP fejlécben a forrás IP címe nem szerepel, mivel arra a routereknek nincsen szüksége.{FALSE}
+
+
+// question: 1299789  name: Az IPv6 már nem darabolja a csomagokat, helyette van "package too big" ICMP ...
+::Az IPv6 már nem darabolja a csomagokat, helyette van "package too big" ICMP ...::Az IPv6 már nem darabolja a csomagokat, helyette van "package too big" ICMP üzenet.{TRUE}
+
+
+// question: 1299785  name: Az IPv6 protokoll célja elsősorban a nagyon szűkös, 32 bites IP címek ...
+::Az IPv6 protokoll célja elsősorban a nagyon szűkös, 32 bites IP címek ...::Az IPv6 protokoll célja elsősorban a nagyon szűkös, 32 bites IP címek problémáját kezelni.{TRUE}
+
+
+// question: 1299786  name: Az IPv6 protokollban a címek már 64 bitesek.
+::Az IPv6 protokollban a címek már 64 bitesek.::Az IPv6 protokollban a címek már 64 bitesek.{FALSE}
+
+
+// question: 1299787  name: Az IPv6 protokollban már nincsen ellenőrző összeg.
+::Az IPv6 protokollban már nincsen ellenőrző összeg.::Az IPv6 protokollban már nincsen ellenőrző összeg.{TRUE}
+
+
+// question: 1299788  name: Az IPv6 protokollban ugyanúgy van ellenőrző összeg, mint az IPv4-ben.
+::Az IPv6 protokollban ugyanúgy van ellenőrző összeg, mint az IPv4-ben.::Az IPv6 protokollban ugyanúgy van ellenőrző összeg, mint az IPv4-ben.{FALSE}
+
+
+// question: 1299766  name: Az SSL/TLS egy a szállítási (TCP) és az alkalmazási réteg közé beékelődő ...
+::Az SSL/TLS egy a szállítási (TCP) és az alkalmazási réteg közé beékelődő ...::Az SSL/TLS egy a szállítási (TCP) és az alkalmazási réteg közé beékelődő alréteg, mely titkosított adatkapcsolatot tesz lehetővé.{TRUE}
+
+
+// question: 1299756  name: Az UDP protokoll minden szegmenst egymástól függetlenül továbbít.
+::Az UDP protokoll minden szegmenst egymástól függetlenül továbbít.::Az UDP protokoll minden szegmenst egymástól függetlenül továbbít.{TRUE}
+
+
+// question: 1299760  name: Ha a mikrovezérlőm lassú egy TCP kapcsolaton bejövő HTTP kérés fogadásához, a...
+::Ha a mikrovezérlőm lassú egy TCP kapcsolaton bejövő HTTP kérés fogadásához, a...::Ha a mikrovezérlőm lassú egy TCP kapcsolaton bejövő HTTP kérés fogadásához, a küldő oldal le fogja csökkenteni a küldési sebességét.{TRUE}
+
+
+// question: 1299772  name: Ha az én IP címem 152.66.215.222, a lokális hálózatomon (LAN) a subnet mask ...
+::Ha az én IP címem 152.66.215.222, a lokális hálózatomon (LAN) a subnet mask ...::Ha az én IP címem 152.66.215.222, a lokális hálózatomon (LAN) a subnet mask 255.255.255.0, akkor a 152.66.214.222 IP cím a LAN-on van. Igaz ez?{FALSE}
+
+
+// question: 1299771  name: Mivel az ISP-knek összefüggő IP címtartományuk van, így egy vállalat nem ...
+::Mivel az ISP-knek összefüggő IP címtartományuk van, így egy vállalat nem ...::Mivel az ISP-knek összefüggő IP címtartományuk van, így egy vállalat nem költözhet át másik ISP alá úgy, hogy megtartja az addigi IP címeit.{FALSE}
+
+
+// question: 1299776  name: NAT esetén a router megváltoztatja a kommunikáló felek IP címét a csomagokban.
+::NAT esetén a router megváltoztatja a kommunikáló felek IP címét a csomagokban.::NAT esetén a router megváltoztatja a kommunikáló felek IP címét a csomagokban.{TRUE}
+
+
+// question: 1299777  name: NAT-olt hálózaton lévő eszközök közvetlenül kívülről nem címezhetőek.
+::NAT-olt hálózaton lévő eszközök közvetlenül kívülről nem címezhetőek.::NAT-olt hálózaton lévő eszközök közvetlenül kívülről nem címezhetőek.{TRUE}
+
+
+// question: 1299778  name: NAT-olt hálózaton szervert üzemeltetni csak akkor lehet, ha a routeren be van...
+::NAT-olt hálózaton szervert üzemeltetni csak akkor lehet, ha a routeren be van...::NAT-olt hálózaton szervert üzemeltetni csak akkor lehet, ha a routeren be van kapcsolva port forwarding.{TRUE}
+
+
+// question: 1299765  name: TCP protokoll esetén ha egy csomag nem érkezik meg, de az utána következők ...
+::TCP protokoll esetén ha egy csomag nem érkezik meg, de az utána következők ...::TCP protokoll esetén ha egy csomag nem érkezik meg, de az utána következők igen, akkor az elveszett csomag utáni sikeresen átküldött csomagokat már nem kell újra elküldeni.{FALSE}
+
+
+// question: 1299764  name: TCP protokoll esetén ha egy nyugta vész el, akkor a küldő oldal időtúllépés ...
+::TCP protokoll esetén ha egy nyugta vész el, akkor a küldő oldal időtúllépés ...::TCP protokoll esetén ha egy nyugta vész el, akkor a küldő oldal időtúllépés után újraküldi a még nem nyugtázott csomagot.{TRUE}
+
+

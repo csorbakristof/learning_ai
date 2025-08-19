@@ -1,0 +1,328 @@
+// question: 0  name: Switch category to top/net/InternetEsAlkalmazasiIH1p
+$CATEGORY: top/net/InternetEsAlkalmazasiIH1p
+
+
+// question: 1299717  name: A .hu egy TLD (top level domain).
+::A .hu egy TLD (top level domain).::A .hu egy TLD (top level domain).{TRUE}
+
+
+// question: 1299687  name: A BitTorrent hálózat peer-to-peer protokollja az Internet hálózati rétegében ...
+::A BitTorrent hálózat peer-to-peer protokollja az Internet hálózati rétegében ...::A BitTorrent hálózat peer-to-peer protokollja az Internet hálózati rétegében van.{FALSE}
+
+
+// question: 1299715  name: A bme.hu az egyetem Top Level Domain-je (TLD-je)
+::A bme.hu az egyetem Top Level Domain-je (TLD-je)::A bme.hu az egyetem Top Level Domain-je (TLD-je){FALSE}
+
+
+// question: 1299716  name: A bme.hu domainhez az egyetemnek van pontosan egy hiteles DNS szervere.
+::A bme.hu domainhez az egyetemnek van pontosan egy hiteles DNS szervere.::A bme.hu domainhez az egyetemnek van pontosan egy hiteles DNS szervere.{TRUE}
+
+
+// question: 1299722  name: A DSL Splitter feladata a különböző frekvenciákon továbbított telefon hang és...
+::A DSL Splitter feladata a különböző frekvenciákon továbbított telefon hang és...::A DSL Splitter feladata a különböző frekvenciákon továbbított telefon hang és adatok szétválasztása.{TRUE}
+
+
+// question: 1299674  name: A hálózati protokollok rétegekbe szerveződnek, minden réteg csak az alatta és...
+::A hálózati protokollok rétegekbe szerveződnek, minden réteg csak az alatta és...::A hálózati protokollok rétegekbe szerveződnek, minden réteg csak az alatta és felette lévő rétegekkel kommunikál azok interfészein keresztül.{TRUE}
+
+
+// question: 1299721  name: A helyi DNS szerverek gyorsítótár szerepet is betöltenek.
+::A helyi DNS szerverek gyorsítótár szerepet is betöltenek.::A helyi DNS szerverek gyorsítótár szerepet is betöltenek.{TRUE}
+
+
+// question: 1299727  name: A HTTP fejléc első sora a HTTP igét (metódust), az URL-t és a protokoll ...
+::A HTTP fejléc első sora a HTTP igét (metódust), az URL-t és a protokoll ...::A HTTP fejléc első sora a HTTP igét (metódust), az URL-t és a protokoll verziószámot tartalmazza.{TRUE}
+
+
+// question: 1299728  name: A HTTP fejlécet és a továbbított adattartalmat egy CR és egy LF karakter ...
+::A HTTP fejlécet és a továbbított adattartalmat egy CR és egy LF karakter ...::[html]A HTTP fejlécet és a továbbított adattartalmat <span style\="font-size\: 0.9375rem;">több egymás utáni CR-LF karakter páros&nbsp;</span>választja el.{TRUE}
+
+
+// question: 1299726  name: A HTTP nem csak HTML formátumú adatok továbbítására alkalmas.
+::A HTTP nem csak HTML formátumú adatok továbbítására alkalmas.::A HTTP nem csak HTML formátumú adatok továbbítására alkalmas.{TRUE}
+
+
+// question: 1299736  name: A HTTP POST metódusa esetén az elküldött kérésben a dokumentum (és nem a ...
+::A HTTP POST metódusa esetén az elküldött kérésben a dokumentum (és nem a ...::[html]A HTTP POST metódusa esetén az elküldött kérésben a dokumentum (és nem a fejléc) tartalmazza az űrlapokon megadott adatokat, mindig XML formátumban.{FALSE}
+
+
+// question: 1299734  name: A HTTP protokoll HEAD kérésére a szerver a válaszból kihagyja az elkért ...
+::A HTTP protokoll HEAD kérésére a szerver a válaszból kihagyja az elkért ...::A HTTP protokoll HEAD kérésére a szerver a válaszból kihagyja az elkért objektumot.{TRUE}
+
+
+// question: 1299732  name: A HTTP protokoll lehetőséget ad szerver oldali fájlok törlésére.
+::A HTTP protokoll lehetőséget ad szerver oldali fájlok törlésére.::A HTTP protokoll lehetőséget ad szerver oldali fájlok törlésére.{TRUE}
+
+
+// question: 1299733  name: A HTTP protokoll önmagában nem alkalmas fájlok feltöltésére, ehhez FTP-t ...
+::A HTTP protokoll önmagában nem alkalmas fájlok feltöltésére, ehhez FTP-t ...::A HTTP protokoll önmagában nem alkalmas fájlok feltöltésére, ehhez FTP-t használ a böngésző.{FALSE}
+
+
+// question: 1299682  name: A HTTP protokoll üzeneteinek továbbításához TCP protokoll szükséges.
+::A HTTP protokoll üzeneteinek továbbításához TCP protokoll szükséges.::A HTTP protokoll üzeneteinek továbbításához TCP protokoll szükséges.{FALSE}
+
+
+// question: 1299735  name: A HTTP protokollban a "KEEPALIVE" http ige (metódus) szolgál arra, hogy ...
+::A HTTP protokollban a "KEEPALIVE" http ige (metódus) szolgál arra, hogy ...::A HTTP protokollban a "KEEPALIVE" http ige (metódus) szolgál arra, hogy perzisztens, vagyis egy TCP kapcsolaton több objektumot továbbító kapcsolatot építsen fel.{FALSE}
+
+
+// question: 1299745  name: A HTTP süti a kliens számítógépen tárolódik egy fájlban.
+::A HTTP süti a kliens számítógépen tárolódik egy fájlban.::A HTTP süti a kliens számítógépen tárolódik egy fájlban.{TRUE}
+
+
+// question: 1299741  name: A HTTP sütik szerver oldalon tárolnak adatokat a felhasználóról.
+::A HTTP sütik szerver oldalon tárolnak adatokat a felhasználóról.::A HTTP sütik szerver oldalon tárolnak adatokat a felhasználóról.{FALSE}
+
+
+// question: 1299740  name: A HTTP sütik tartalmát a kliens oldalon tárolja a böngésző.
+::A HTTP sütik tartalmát a kliens oldalon tárolja a böngésző.::A HTTP sütik tartalmát a kliens oldalon tárolja a böngésző.{TRUE}
+
+
+// question: 1299744  name: A HTTP sütiket a kliens minden HTTP kérésében elküldi a szervernek.
+::A HTTP sütiket a kliens minden HTTP kérésében elküldi a szervernek.::A HTTP sütiket a kliens minden HTTP kérésében elküldi a szervernek.{TRUE}
+
+
+// question: 1299742  name: A HTTP sütiket a szerver hozza létre és küldi el a HTTP fejlécben.
+::A HTTP sütiket a szerver hozza létre és küldi el a HTTP fejlécben.::[html]A HTTP sütik létrehozását a szerver kéri a HTTP fejlécben.{TRUE}
+
+
+// question: 1299743  name: A HTTP sütiket kliens hozza létre és egy általa generált azonosítószámot ...
+::A HTTP sütiket kliens hozza létre és egy általa generált azonosítószámot ...::A HTTP sütiket kliens hozza létre és egy általa generált azonosítószámot tartalmaznak, amit utána megoszt a szerverrel a HTTP fejlécben.{FALSE}
+
+
+// question: 1299738  name: A HTTP válaszokban a "400 Bad request" státusz kód azt jelenti, hogy a kérést...
+::A HTTP válaszokban a "400 Bad request" státusz kód azt jelenti, hogy a kérést...::A HTTP válaszokban a "400 Bad request" státusz kód azt jelenti, hogy a kérést nem tudta értelmezni a szerver.{TRUE}
+
+
+// question: 1299737  name: A HTTP válaszokban a "400 Bad request" státusz kód tipikusan azt jelenti, ...
+::A HTTP válaszokban a "400 Bad request" státusz kód tipikusan azt jelenti, ...::A HTTP válaszokban a "400 Bad request" státusz kód tipikusan azt jelenti, hogy a kért fájl nem található a szerveren.{FALSE}
+
+
+// question: 1299739  name: A HTTP válaszokban a "404 Not found" státusz kód azt jelenti, hogy a kérés ...
+::A HTTP válaszokban a "404 Not found" státusz kód azt jelenti, hogy a kérés ...::A HTTP válaszokban a "404 Not found" státusz kód azt jelenti, hogy a kérés metódusa (GET, POST stb.) nem található meg a támogatott metódusok listáján.{FALSE}
+
+
+// question: 1299698  name: A kliens socket képes jelezni, ha új kapcsolatfelvételi kérés (new connection...
+::A kliens socket képes jelezni, ha új kapcsolatfelvételi kérés (new connection...::A kliens socket képes jelezni, ha új kapcsolatfelvételi kérés (new connection esemény) érkezett.{FALSE}
+
+
+// question: 1299689  name: A Remote Desktop protokoll az Internet szállítási rétegére épül, a felett ...
+::A Remote Desktop protokoll az Internet szállítási rétegére épül, a felett ...::A Remote Desktop protokoll az Internet szállítási rétegére épül, a felett található.{TRUE}
+
+
+// question: 1299688  name: A Remote Desktop protokoll az Internet viszony rétegében van.
+::A Remote Desktop protokoll az Internet viszony rétegében van.::A Remote Desktop protokoll az Internet viszony rétegében van.{FALSE}
+
+
+// question: 1299699  name: A server socket képes jelezni, ha új kapcsolatfelvételi kérés (new connection...
+::A server socket képes jelezni, ha új kapcsolatfelvételi kérés (new connection...::A server socket képes jelezni, ha új kapcsolatfelvételi kérés (new connection esemény) érkezett.{TRUE}
+
+
+// question: 1299692  name: A server socket ugyanúgy rendelkezik adatküldő és adatfogadó (send és recv) ...
+::A server socket ugyanúgy rendelkezik adatküldő és adatfogadó (send és recv) ...::A server socket ugyanúgy rendelkezik adatküldő és adatfogadó (send és recv) funkciókkal, mint a kliens socket.{FALSE}
+
+
+// question: 1299701  name: A socket arra szolgál, hogy a szoftverfejlesztő ezen kereszül érje el a ...
+::A socket arra szolgál, hogy a szoftverfejlesztő ezen kereszül érje el a ...::A socket arra szolgál, hogy a szoftverfejlesztő ezen kereszül érje el a szállítási réteg szolgáltatásait.{TRUE}
+
+
+// question: 1299712  name: A TCP protokoll biztosítja, hogy minden elküldött csomag meg is érkezik (vagy...
+::A TCP protokoll biztosítja, hogy minden elküldött csomag meg is érkezik (vagy...::A TCP protokoll biztosítja, hogy minden elküldött csomag meg is érkezik (vagy legalábbis értesülünk róla, ha nem).{TRUE}
+
+
+// question: 1299713  name: A TCP protokoll kapcsolatalapú.
+::A TCP protokoll kapcsolatalapú.::A TCP protokoll kapcsolatalapú.{TRUE}
+
+
+// question: 1299714  name: A UDP protokoll kapcsolatalapú.
+::A UDP protokoll kapcsolatalapú.::A UDP protokoll kapcsolatalapú.{FALSE}
+
+
+// question: 1299725  name: A web böngésző a HTTP protokoll szempontjából szerver eszköz.
+::A web böngésző a HTTP protokoll szempontjából szerver eszköz.::A web böngésző a HTTP protokoll szempontjából szerver eszköz.{FALSE}
+
+
+// question: 1299690  name: A Youtube streaming szolgáltatása közvetlenül az IP protokoll felett, az ...
+::A Youtube streaming szolgáltatása közvetlenül az IP protokoll felett, az ...::A Youtube streaming szolgáltatása közvetlenül az IP protokoll felett, az Internet szállítási rétegében van.{FALSE}
+
+
+// question: 1299676  name: Adatküldésnél az IP protokoll a TCP protokolltól (TCP fejléccel együtt) ...
+::Adatküldésnél az IP protokoll a TCP protokolltól (TCP fejléccel együtt) ...::Adatküldésnél az IP protokoll a TCP protokolltól (TCP fejléccel együtt) kapott csomagokat feldarabolja, minden darab elején elhelyezi a saját IP fejlécét és az adatkapcsolati rétegnek továbbadja őket.{TRUE}
+
+
+// question: 1299677  name: Adatküldésnél az IP protokoll a TCP protokolltól kapott csomagoknak ...
+::Adatküldésnél az IP protokoll a TCP protokolltól kapott csomagoknak ...::Adatküldésnél az IP protokoll a TCP protokolltól kapott csomagoknak eltávolítja a fejlécét, majd az IP fejléccel kiegészítve továbbítja őket az adatkapcsolati rétegnek.{FALSE}
+
+
+// question: 1299707  name: Amennyiben megoldom, hogy biteket tudjak továbbítani tűz, szervó motorok és ...
+::Amennyiben megoldom, hogy biteket tudjak továbbítani tűz, szervó motorok és ...::Amennyiben megoldom, hogy biteket tudjak továbbítani tűz, szervó motorok és kamera segítségével úgy, hogy füstjeleket küldök és figyelek a kamerával, akkor az adatkapcsolati réteg leprogramozásával ezen az adatkapcsolaton akár e-mailt is át tudnék küldeni, az SMTP protokoll működne.{TRUE}
+
+
+// question: 1299719  name: Az alapértelmezett (default) name szerver az a DNS szerver, ami a Top Level ...
+::Az alapértelmezett (default) name szerver az a DNS szerver, ami a Top Level ...::Az alapértelmezett (default) name szerver az a DNS szerver, ami a Top Level Domainek DNS szervereinek tárolja hitelesen az IP címeit.{FALSE}
+
+
+// question: 1299720  name: Az alapértelmezett (default) name szerver minden számítógépen az a DNS ...
+::Az alapértelmezett (default) name szerver minden számítógépen az a DNS ...::Az alapértelmezett (default) name szerver minden számítógépen az a DNS szerver, aminek a kéréseit el fogja küldeni.{TRUE}
+
+
+// question: 1299686  name: Az FTP (File Transfer Protokoll) a transport rétegbe tartozik.
+::Az FTP (File Transfer Protokoll) a transport rétegbe tartozik.::Az FTP (File Transfer Protokoll) a transport rétegbe tartozik.{FALSE}
+
+
+// question: 1299747  name: Az FTP protokoll több TCP kapcsolatot használ egyszerre: egyet a vezérlésre, ...
+::Az FTP protokoll több TCP kapcsolatot használ egyszerre\: egyet a vezérlésre, ...::Az FTP protokoll több TCP kapcsolatot használ egyszerre\: egyet a vezérlésre, valamint továbbiakat a fájlok továbbítására.{TRUE}
+
+
+// question: 1299752  name: Az IMAP protokoll csak letölteni és törölni/meghagyni tudja a szerveren az ...
+::Az IMAP protokoll csak letölteni és törölni/meghagyni tudja a szerveren az ...::Az IMAP protokoll csak letölteni és törölni/meghagyni tudja a szerveren az emaileket, míg a POP3 protokoll a szerveren tárolásra készült és támogat mail foldereket is.{FALSE}
+
+
+// question: 1299680  name: Az Internet routerei nem támogatnak a TCP vagy UDP protokollok helyett másik ...
+::Az Internet routerei nem támogatnak a TCP vagy UDP protokollok helyett másik ...::Az Internet routerei nem támogatnak a TCP vagy UDP protokollok helyett másik szállítási rétegbeli protokollokat.{FALSE}
+
+
+// question: 1299684  name: Az Interneten a hálózati réteg lehetővé teszi, hogy ne csak számítógépeket, ...
+::Az Interneten a hálózati réteg lehetővé teszi, hogy ne csak számítógépeket, ...::Az Interneten a hálózati réteg lehetővé teszi, hogy ne csak számítógépeket, hanem alkalmazásokat is meg tudjunk címezni.{FALSE}
+
+
+// question: 1299683  name: Az Interneten a szállítási réteg teszi lehetővé, hogy nem csak ...
+::Az Interneten a szállítási réteg teszi lehetővé, hogy nem csak ...::Az Interneten a szállítási réteg teszi lehetővé, hogy nem csak számítógépeket, hanem alkalmazásokat is meg tudjunk címezni.{TRUE}
+
+
+// question: 1299685  name: Az Interneten a viszony réteg teszi lehetővé, hogy ne csak számítógépeket, ...
+::Az Interneten a viszony réteg teszi lehetővé, hogy ne csak számítógépeket, ...::Az Interneten a viszony réteg teszi lehetővé, hogy ne csak számítógépeket, hanem alkalmazásokat is meg tudjunk címezni.{FALSE}
+
+
+// question: 1299709  name: Az Interneten a webes adatforgalom igényei miatt vannak olyan routerek, ...
+::Az Interneten a webes adatforgalom igényei miatt vannak olyan routerek, ...::Az Interneten a webes adatforgalom igényei miatt vannak olyan routerek, melyek csak a HTTP protokoll továbbítására képesek, de azt a többihez képest sokszoros sebességgel.{FALSE}
+
+
+// question: 1299708  name: Az Interneten lehetne készíteni és használni két olyan routert, amik egymás ...
+::Az Interneten lehetne készíteni és használni két olyan routert, amik egymás ...::Az Interneten lehetne készíteni és használni két olyan routert, amik egymás között füstjelekkel kommunikálnak.{TRUE}
+
+
+// question: 1299675  name: Az Interneten tipikusan használt hálózati protokollok rétegekbe vannak ...
+::Az Interneten tipikusan használt hálózati protokollok rétegekbe vannak ...::Az Interneten tipikusan használt hálózati protokollok rétegekbe vannak szervezve. Teljesítmény okokból ha egy köztes réteg szolgáltatására nincsen szükség, akkor azt természetesen "át lehet ugrani" az alsóbb réteg közvetlen használatával.{FALSE}
+
+
+// question: 1299679  name: Az Internetre csatlakozó számítógépben az Ethernet protokoll a TCP csomagokat...
+::Az Internetre csatlakozó számítógépben az Ethernet protokoll a TCP csomagokat...::Az Internetre csatlakozó számítógépben az Ethernet protokoll a TCP csomagokat továbbítja a többi hálózati eszköz felé.{FALSE}
+
+
+// question: 1299678  name: Az Internetre csatlakozó számítógépben az Ethernet protokoll az IP csomagokat...
+::Az Internetre csatlakozó számítógépben az Ethernet protokoll az IP csomagokat...::Az Internetre csatlakozó számítógépben az Ethernet protokoll az IP csomagokat továbbítja a többi hálózati eszköz felé.{TRUE}
+
+
+// question: 1299702  name: Az IP cím 32 vagy 128 bites lehet.
+::Az IP cím 32 vagy 128 bites lehet.::Az IP cím 32 vagy 128 bites lehet.{TRUE}
+
+
+// question: 1299673  name: Az RFC (Request For Comment) az Interneten használt szabványok módosítására ...
+::Az RFC (Request For Comment) az Interneten használt szabványok módosítására ...::Az RFC (Request For Comment) az Interneten használt szabványok módosítására vonatkozó javaslatok gyűjteménye, ezekből alakulnak ki az erre vonatkozó ISO szabványok.{FALSE}
+
+
+// question: 1299751  name: Az SMTP a HTTP-vel ellentétben nem pull, hanem push típusú protokoll.
+::Az SMTP a HTTP-vel ellentétben nem pull, hanem push típusú protokoll.::Az SMTP a HTTP-vel ellentétben nem pull, hanem push típusú protokoll.{TRUE}
+
+
+// question: 1299748  name: Az SMTP protokoll szolgál a kliens oldalról a saját levelezőszerver felé a ...
+::Az SMTP protokoll szolgál a kliens oldalról a saját levelezőszerver felé a ...::Az SMTP protokoll szolgál a kliens oldalról a saját levelezőszerver felé a levél küldésre, valamint a levelező szerverek közötti levélküldésre, de a levelező szerverről a levelek letöltésére nem alkalmas.{TRUE}
+
+
+// question: 1299750  name: Az SMTP protokollban a küldő fél szövegesen adja meg a feladó és címzett ...
+::Az SMTP protokollban a küldő fél szövegesen adja meg a feladó és címzett ...::Az SMTP protokollban a küldő fél szövegesen adja meg a feladó és címzett sorokat is, ahova bármit beírhat.{TRUE}
+
+
+// question: 1299700  name: C nyelven a socket kezelésnél a listen metódus szolgál arra, hogy ...
+::C nyelven a socket kezelésnél a listen metódus szolgál arra, hogy ...::C nyelven a socket kezelésnél a listen metódus szolgál arra, hogy meghatározzuk, a szerver socket melyik porton "hallgatózzon".{FALSE}
+
+
+// question: 1299703  name: C-ben socket programozásnál a szerver oldalon a kliens felé adatot küldeni ...
+::C-ben socket programozásnál a szerver oldalon a kliens felé adatot küldeni ...::C-ben socket programozásnál a szerver oldalon a kliens felé adatot küldeni egy kliens socket segítségével tudunk.{TRUE}
+
+
+// question: 1299704  name: C-ben socket programozásnál a szerver oldalon a kliens felé adatot küldeni a ...
+::C-ben socket programozásnál a szerver oldalon a kliens felé adatot küldeni a ...::C-ben socket programozásnál a szerver oldalon a kliens felé adatot küldeni a szerver sockettel, mint paraméterrel meghívott send függvény segítségével tudunk.{FALSE}
+
+
+// question: 1299681  name: Egy ethernet switch bármilyen hálózati és szállítási rétegbeli protokoll ...
+::Egy ethernet switch bármilyen hálózati és szállítási rétegbeli protokoll ...::Egy ethernet switch bármilyen hálózati és szállítási rétegbeli protokoll csomagjait tudja támogatni.{TRUE}
+
+
+// question: 1299691  name: Egy kliens socket több hálózati kapcsolatot is tud egyszerre kezelni.
+::Egy kliens socket több hálózati kapcsolatot is tud egyszerre kezelni.::Egy kliens socket több hálózati kapcsolatot is tud egyszerre kezelni.{FALSE}
+
+
+// question: 1299723  name: Egy otthoni, kábelmodemes Internet kapcsolat a TV csatornákat és az ...
+::Egy otthoni, kábelmodemes Internet kapcsolat a TV csatornákat és az ...::Egy otthoni, kábelmodemes Internet kapcsolat a TV csatornákat és az adatcsomagokat időosztásosan továbbítja.{FALSE}
+
+
+// question: 1299724  name: Egy otthoni, kábelmodemes Internet kapcsolat a TV csatornákat és az ...
+::Egy otthoni, kábelmodemes Internet kapcsolat a TV csatornákat és az ...::Egy otthoni, kábelmodemes Internet kapcsolat a TV csatornákat és az adatcsomagokat frekvenciaosztásosan továbbítja.{TRUE}
+
+
+// question: 1299694  name: Egy peer-to-peer hálózat számára nagyon fontos, hogy minden tagja az idő nagy...
+::Egy peer-to-peer hálózat számára nagyon fontos, hogy minden tagja az idő nagy...::Egy peer-to-peer hálózat számára nagyon fontos, hogy minden tagja az idő nagy részében elérhető legyen.{FALSE}
+
+
+// question: 1299718  name: Egy szervezetnek több hiteles DNS szervere is lehet.
+::Egy szervezetnek több hiteles DNS szervere is lehet.::Egy szervezetnek több hiteles DNS szervere is lehet.{FALSE}
+
+
+// question: 1299672  name: Egy vállalati hálózat tipikusan egy routeren keresztül csatlakozik az ISP-hez.
+::Egy vállalati hálózat tipikusan egy routeren keresztül csatlakozik az ISP-hez.::Egy vállalati hálózat tipikusan egy routeren keresztül csatlakozik az ISP-hez.{TRUE}
+
+
+// question: 1299731  name: Frekvencia osztásos nyalábolás esetén az egyes kommunikációs kapcsolatok ...
+::Frekvencia osztásos nyalábolás esetén az egyes kommunikációs kapcsolatok ...::Frekvencia osztásos nyalábolás esetén az egyes kommunikációs kapcsolatok eltérő frekvenciákon, időben egyszerre kerülnek kiszolgálásra.{TRUE}
+
+
+// question: 1299746  name: FTP protokoll esetén fájl átvitele közben nem lehet vezérlő parancsokat ...
+::FTP protokoll esetén fájl átvitele közben nem lehet vezérlő parancsokat ...::FTP protokoll esetén fájl átvitele közben nem lehet vezérlő parancsokat átküldeni, mivel a protokoll egyetlen TCP kapcsolatot használ.{FALSE}
+
+
+// question: 1299706  name: Ha egy kifeszített pamut fonalat szervó motorokkal tudok huzogatni és ...
+::Ha egy kifeszített pamut fonalat szervó motorokkal tudok huzogatni és ...::Ha egy kifeszített pamut fonalat szervó motorokkal tudok huzogatni és megoldom, hogy ezzel biteket tudjak továbbítani, az adatkapcsolati réteget leprogramozva ezzel egy Raspberry Pi szervert rá tudok kötni az Internetre.{TRUE}
+
+
+// question: 1299749  name: Ha egy webes felületen levelezek (pl. freemail, gmail), akkor a levelek IMAP ...
+::Ha egy webes felületen levelezek (pl. freemail, gmail), akkor a levelek IMAP ...::[html]Ha egy webes felületen levelezek (pl. freemail, gmail), akkor a levelek IMAP vagy POP3 protokollal jutnak el a nálam futó kliens programomhoz.{FALSE}
+
+
+// question: 1299710  name: Ha UDP protokollal elküldök egy üzenetet, akkor az egyáltalán nem biztos, ...
+::Ha UDP protokollal elküldök egy üzenetet, akkor az egyáltalán nem biztos, ...::Ha UDP protokollal elküldök egy üzenetet, akkor az egyáltalán nem biztos, hogy meg is érkezik.{TRUE}
+
+
+// question: 1299711  name: Ha UDP protokollal elküldök egy üzenetet, akkor biztos, hogy meg is érkezik ...
+::Ha UDP protokollal elküldök egy üzenetet, akkor biztos, hogy meg is érkezik ...::Ha UDP protokollal elküldök egy üzenetet, akkor biztos, hogy meg is érkezik (vagy legalábbis biztosan értesülök róla, ha nem).{FALSE}
+
+
+// question: 1299730  name: Időosztásos nyalábolás esetén az egyes kommunikációs kapcsolatok akár ...
+::Időosztásos nyalábolás esetén az egyes kommunikációs kapcsolatok akár ...::[html]Csak időosztásos nyalábolás esetén az egyes kommunikációs kapcsolatok akár ugyanazon időszeletbe beosztva is továbbíthatók, ha elég széles frekvencia intervallum áll rendelkezésre.{FALSE#[moodle]Ha nincsen frekvenciaosztásos nyalábolás, akkor párhuzamosan nem mehetnek üzenetek ugyanabban az időben, de eltérő frekvencián.}
+
+
+// question: 1299729  name: Időosztásos nyalábolás esetén az egyes kommunikációs kapcsolatok egymás utáni...
+::Időosztásos nyalábolás esetén az egyes kommunikációs kapcsolatok egymás utáni...::Időosztásos nyalábolás esetén az egyes kommunikációs kapcsolatok egymás utáni időszeletekben kerülnek sorra.{TRUE}
+
+
+// question: 1299697  name: Kliens-szerver architektúra esetén a kliens kapcsolatonként eltérő kliens ...
+::Kliens-szerver architektúra esetén a kliens kapcsolatonként eltérő kliens ...::Kliens-szerver architektúra esetén a kliens kapcsolatonként eltérő kliens oldali portot is használhat.{TRUE}
+
+
+// question: 1299696  name: Kliens-szerver architektúra esetén a szerver alkalmazás port száma ...
+::Kliens-szerver architektúra esetén a szerver alkalmazás port száma ...::Kliens-szerver architektúra esetén a szerver alkalmazás port száma dinamikusan változhat.{FALSE}
+
+
+// question: 1299693  name: Kliens-szerver architektúra esetén a szerver nem kezdeményez kapcsolatfelvételt.
+::Kliens-szerver architektúra esetén a szerver nem kezdeményez kapcsolatfelvételt.::Kliens-szerver architektúra esetén a szerver nem kezdeményez kapcsolatfelvételt.{TRUE}
+
+
+// question: 1299695  name: Kliens-szerver architektúra esetén fontos, hogy a szerver alkalmazás port ...
+::Kliens-szerver architektúra esetén fontos, hogy a szerver alkalmazás port ...::Kliens-szerver architektúra esetén fontos, hogy a szerver alkalmazás port száma állandó legyen.{TRUE}
+
+
+// question: 1299705  name: Socket programozásnál a szerver socket accept metódusa egy kliens socketet ad...
+::Socket programozásnál a szerver socket accept metódusa egy kliens socketet ad...::Socket programozásnál a szerver socket accept metódusa egy kliens socketet ad vissza abban az esetben, ha beérkezik egy hálózati kapcsolat.{TRUE}
+
+

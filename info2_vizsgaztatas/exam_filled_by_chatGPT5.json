@@ -1,0 +1,482 @@
+[
+  {
+    "question": "A .hu egy TLD (top level domain).",
+    "answer": "true"
+  },
+  {
+    "question": "A BitTorrent hálózat peer-to-peer protokollja az Internet hálózati rétegében van.",
+    "answer": "false"
+  },
+  {
+    "question": "A bme.hu az egyetem Top Level Domain-je (TLD-je)",
+    "answer": "false"
+  },
+  {
+    "question": "A bme.hu domainhez az egyetemnek van pontosan egy hiteles DNS szervere.",
+    "answer": "false"
+  },
+  {
+    "question": "A DSL Splitter feladata a különböző frekvenciákon továbbított telefon hang és adatok szétválasztása.",
+    "answer": "true"
+  },
+  {
+    "question": "A hálózati protokollok rétegekbe szerveződnek, minden réteg csak az alatta és felette lévő rétegekkel kommunikál azok interfészein keresztül.",
+    "answer": "true"
+  },
+  {
+    "question": "A helyi DNS szerverek gyorsítótár szerepet is betöltenek.",
+    "answer": "true"
+  },
+  {
+    "question": "A HTTP fejléc első sora a HTTP igét (metódust), az URL-t és a protokoll verziószámot tartalmazza.",
+    "answer": "true"
+  },
+  {
+    "question": "A HTTP fejlécet és a továbbított adattartalmat több egymás utáni CR-LF karakter páros választja el.",
+    "answer": "false"
+  },
+  {
+    "question": "A HTTP nem csak HTML formátumú adatok továbbítására alkalmas.",
+    "answer": "true"
+  },
+  {
+    "question": "A HTTP POST metódusa esetén az elküldött kérésben a dokumentum (és nem a fejléc) tartalmazza az űrlapokon megadott adatokat, mindig XML formátumban.",
+    "answer": "false"
+  },
+  {
+    "question": "A HTTP protokoll HEAD kérésére a szerver a válaszból kihagyja az elkért objektumot.",
+    "answer": "true"
+  },
+  {
+    "question": "A HTTP protokoll lehetőséget ad szerver oldali fájlok törlésére.",
+    "answer": "false"
+  },
+  {
+    "question": "A HTTP protokoll önmagában nem alkalmas fájlok feltöltésére, ehhez FTP-t használ a böngésző.",
+    "answer": "false"
+  },
+  {
+    "question": "A HTTP protokoll üzeneteinek továbbításához TCP protokoll szükséges.",
+    "answer": "true"
+  },
+  {
+    "question": "A HTTP protokollban a \"KEEPALIVE\" http ige (metódus) szolgál arra, hogy perzisztens, vagyis egy TCP kapcsolaton több objektumot továbbító kapcsolatot építsen fel.",
+    "answer": "false"
+  },
+  {
+    "question": "A HTTP süti a kliens számítógépen tárolódik egy fájlban.",
+    "answer": "true"
+  },
+  {
+    "question": "A HTTP sütik szerver oldalon tárolnak adatokat a felhasználóról.",
+    "answer": "false"
+  },
+  {
+    "question": "A HTTP sütik tartalmát a kliens oldalon tárolja a böngésző.",
+    "answer": "true"
+  },
+  {
+    "question": "A HTTP sütiket a kliens minden HTTP kérésében elküldi a szervernek.",
+    "answer": "true"
+  },
+  {
+    "question": "A HTTP sütiket a szerver hozza létre és küldi el a HTTP fejlécben.",
+    "answer": "true"
+  },
+  {
+    "question": "A HTTP sütiket kliens hozza létre és egy általa generált azonosítószámot tartalmaznak, amit utána megoszt a szerverrel a HTTP fejlécben.",
+    "answer": "false"
+  },
+  {
+    "question": "A HTTP válaszokban a \"400 Bad request\" státusz kód azt jelenti, hogy a kérést nem tudta értelmezni a szerver.",
+    "answer": "true"
+  },
+  {
+    "question": "A HTTP válaszokban a \"400 Bad request\" státusz kód tipikusan azt jelenti, hogy a kért fájl nem található a szerveren.",
+    "answer": "false"
+  },
+  {
+    "question": "A HTTP válaszokban a \"404 Not found\" státusz kód azt jelenti, hogy a kérés metódusa (GET, POST stb.) nem található meg a támogatott metódusok listáján.",
+    "answer": "false"
+  },
+  {
+    "question": "A kliens socket képes jelezni, ha új kapcsolatfelvételi kérés (new connection esemény) érkezett.",
+    "answer": "false"
+  },
+  {
+    "question": "A Remote Desktop protokoll az Internet szállítási rétegére épül, a felett található.",
+    "answer": "true"
+  },
+  {
+    "question": "A Remote Desktop protokoll az Internet viszony rétegében van.",
+    "answer": "false"
+  },
+  {
+    "question": "A server socket képes jelezni, ha új kapcsolatfelvételi kérés (new connection esemény) érkezett.",
+    "answer": "true"
+  },
+  {
+    "question": "A server socket ugyanúgy rendelkezik adatküldő és adatfogadó (send és recv) funkciókkal, mint a kliens socket.",
+    "answer": "false"
+  },
+  {
+    "question": "A socket arra szolgál, hogy a szoftverfejlesztő ezen kereszül érje el a szállítási réteg szolgáltatásait.",
+    "answer": "true"
+  },
+  {
+    "question": "A TCP protokoll biztosítja, hogy minden elküldött csomag meg is érkezik (vagy legalábbis értesülünk róla, ha nem).",
+    "answer": "true"
+  },
+  {
+    "question": "A TCP protokoll kapcsolatalapú.",
+    "answer": "true"
+  },
+  {
+    "question": "A UDP protokoll kapcsolatalapú.",
+    "answer": "false"
+  },
+  {
+    "question": "A web böngésző a HTTP protokoll szempontjából szerver eszköz.",
+    "answer": "false"
+  },
+  {
+    "question": "A Youtube streaming szolgáltatása közvetlenül az IP protokoll felett, az Internet szállítási rétegében van.",
+    "answer": "false"
+  },
+  {
+    "question": "Adatküldésnél az IP protokoll a TCP protokolltól (TCP fejléccel együtt) kapott csomagokat feldarabolja, minden darab elején elhelyezi a saját IP fejlécét és az adatkapcsolati rétegnek továbbadja őket.",
+    "answer": "true"
+  },
+  {
+    "question": "Adatküldésnél az IP protokoll a TCP protokolltól kapott csomagoknak eltávolítja a fejlécét, majd az IP fejléccel kiegészítve továbbítja őket az adatkapcsolati rétegnek.",
+    "answer": "false"
+  },
+  {
+    "question": "Amennyiben megoldom, hogy biteket tudjak továbbítani tűz, szervó motorok és kamera segítségével úgy, hogy füstjeleket küldök és figyelek a kamerával, akkor az adatkapcsolati réteg leprogramozásával ezen az adatkapcsolaton akár e-mailt is át tudnék küldeni, az SMTP protokoll működne.",
+    "answer": "true"
+  },
+  {
+    "question": "Az alapértelmezett (default) name szerver az a DNS szerver, ami a Top Level Domainek DNS szervereinek tárolja hitelesen az IP címeit.",
+    "answer": "false"
+  },
+  {
+    "question": "Az alapértelmezett (default) name szerver minden számítógépen az a DNS szerver, aminek a kéréseit el fogja küldeni.",
+    "answer": "true"
+  },
+  {
+    "question": "Az FTP (File Transfer Protokoll) a transport rétegbe tartozik.",
+    "answer": "false"
+  },
+  {
+    "question": "Az FTP protokoll több TCP kapcsolatot használ egyszerre: egyet a vezérlésre, valamint továbbiakat a fájlok továbbítására.",
+    "answer": "true"
+  },
+  {
+    "question": "Az IMAP protokoll csak letölteni és törölni/meghagyni tudja a szerveren az emaileket, míg a POP3 protokoll a szerveren tárolásra készült és támogat mail foldereket is.",
+    "answer": "false"
+  },
+  {
+    "question": "Az Internet routerei nem támogatnak a TCP vagy UDP protokollok helyett másik szállítási rétegbeli protokollokat.",
+    "answer": "false"
+  },
+  {
+    "question": "Az Interneten a hálózati réteg lehetővé teszi, hogy ne csak számítógépeket, hanem alkalmazásokat is meg tudjunk címezni.",
+    "answer": "false"
+  },
+  {
+    "question": "Az Interneten a szállítási réteg teszi lehetővé, hogy nem csak számítógépeket, hanem alkalmazásokat is meg tudjunk címezni.",
+    "answer": "true"
+  },
+  {
+    "question": "Az Interneten a viszony réteg teszi lehetővé, hogy ne csak számítógépeket, hanem alkalmazásokat is meg tudjunk címezni.",
+    "answer": "false"
+  },
+  {
+    "question": "Az Interneten a webes adatforgalom igényei miatt vannak olyan routerek, melyek csak a HTTP protokoll továbbítására képesek, de azt a többihez képest sokszoros sebességgel.",
+    "answer": "false"
+  },
+  {
+    "question": "Az Interneten lehetne készíteni és használni két olyan routert, amik egymás között füstjelekkel kommunikálnak.",
+    "answer": "true"
+  },
+  {
+    "question": "Az Interneten tipikusan használt hálózati protokollok rétegekbe vannak szervezve. Teljesítmény okokból ha egy köztes réteg szolgáltatására nincsen szükség, akkor azt természetesen \"át lehet ugrani\" az alsóbb réteg közvetlen használatával.",
+    "answer": "false"
+  },
+  {
+    "question": "Az Internetre csatlakozó számítógépben az Ethernet protokoll a TCP csomagokat továbbítja a többi hálózati eszköz felé.",
+    "answer": "false"
+  },
+  {
+    "question": "Az Internetre csatlakozó számítógépben az Ethernet protokoll az IP csomagokat továbbítja a többi hálózati eszköz felé.",
+    "answer": "true"
+  },
+  {
+    "question": "Az IP cím 32 vagy 128 bites lehet.",
+    "answer": "true"
+  },
+  {
+    "question": "Az RFC (Request For Comment) az Interneten használt szabványok módosítására vonatkozó javaslatok gyűjteménye, ezekből alakulnak ki az erre vonatkozó ISO szabványok.",
+    "answer": "false"
+  },
+  {
+    "question": "Az SMTP a HTTP-vel ellentétben nem pull, hanem push típusú protokoll.",
+    "answer": "true"
+  },
+  {
+    "question": "Az SMTP protokoll szolgál a kliens oldalról a saját levelezőszerver felé a levél küldésre, valamint a levelező szerverek közötti levélküldésre, de a levelező szerverről a levelek letöltésére nem alkalmas.",
+    "answer": "true"
+  },
+  {
+    "question": "Az SMTP protokollban a küldő fél szövegesen adja meg a feladó és címzett sorokat is, ahova bármit beírhat.",
+    "answer": "true"
+  },
+  {
+    "question": "C nyelven a socket kezelésnél a listen metódus szolgál arra, hogy meghatározzuk, a szerver socket melyik porton \"hallgatózzon\".",
+    "answer": "false"
+  },
+  {
+    "question": "C-ben socket programozásnál a szerver oldalon a kliens felé adatot küldeni egy kliens socket segítségével tudunk.",
+    "answer": "true"
+  },
+  {
+    "question": "C-ben socket programozásnál a szerver oldalon a kliens felé adatot küldeni a szerver sockettel, mint paraméterrel meghívott send függvény segítségével tudunk.",
+    "answer": "false"
+  },
+  {
+    "question": "Egy ethernet switch bármilyen hálózati és szállítási rétegbeli protokoll csomagjait tudja támogatni.",
+    "answer": "true"
+  },
+  {
+    "question": "Egy kliens socket több hálózati kapcsolatot is tud egyszerre kezelni.",
+    "answer": "false"
+  },
+  {
+    "question": "Egy otthoni, kábelmodemes Internet kapcsolat a TV csatornákat és az adatcsomagokat időosztásosan továbbítja.",
+    "answer": "false"
+  },
+  {
+    "question": "Egy otthoni, kábelmodemes Internet kapcsolat a TV csatornákat és az adatcsomagokat frekvenciaosztásosan továbbítja.",
+    "answer": "true"
+  },
+  {
+    "question": "Egy peer-to-peer hálózat számára nagyon fontos, hogy minden tagja az idő nagy részében elérhető legyen.",
+    "answer": "true"
+  },
+  {
+    "question": "Egy szervezetnek több hiteles DNS szervere is lehet.",
+    "answer": "true"
+  },
+  {
+    "question": "Egy vállalati hálózat tipikusan egy routeren keresztül csatlakozik az ISP-hez.",
+    "answer": "true"
+  },
+  {
+    "question": "Frekvencia osztásos nyalábolás esetén az egyes kommunikációs kapcsolatok eltérő frekvenciákon, időben egyszerre kerülnek kiszolgálásra.",
+    "answer": "true"
+  },
+  {
+    "question": "FTP protokoll esetén fájl átvitele közben nem lehet vezérlő parancsokat átküldeni, mivel a protokoll egyetlen TCP kapcsolatot használ.",
+    "answer": "false"
+  },
+  {
+    "question": "Ha egy kifeszített pamut fonalat szervó motorokkal tudok huzogatni és megoldom, hogy ezzel biteket tudjak továbbítani, az adatkapcsolati réteget leprogramozva ezzel egy Raspberry Pi szervert rá tudok kötni az Internetre.",
+    "answer": "true"
+  },
+  {
+    "question": "Ha egy webes felületen levelezek (pl. freemail, gmail), akkor a levelek IMAP vagy POP3 protokollal jutnak el a nálam futó kliens programomhoz.",
+    "answer": "false"
+  },
+  {
+    "question": "Ha UDP protokollal elküldök egy üzenetet, akkor az egyáltalán nem biztos, hogy meg is érkezik.",
+    "answer": "true"
+  },
+  {
+    "question": "Ha UDP protokollal elküldök egy üzenetet, akkor biztos, hogy meg is érkezik (vagy legalábbis biztosan értesülök róla, ha nem).",
+    "answer": "false"
+  },
+  {
+    "question": "Időosztásos nyalábolás esetén az egyes kommunikációs kapcsolatok akár ugyanazon időszeletbe beosztva is továbbíthatók, ha elég széles frekvencia intervallum áll rendelkezésre.",
+    "answer": "false"
+  },
+  {
+    "question": "Időosztásos nyalábolás esetén az egyes kommunikációs kapcsolatok egymás utáni időszeletekben kerülnek sorra.",
+    "answer": "true"
+  },
+  {
+    "question": "Kliens-szerver architektúra esetén a kliens kapcsolatonként eltérő kliens oldali portot is használhat.",
+    "answer": "true"
+  },
+  {
+    "question": "Kliens-szerver architektúra esetén a szerver alkalmazás port száma dinamikusan változhat.",
+    "answer": "false"
+  },
+  {
+    "question": "Kliens-szerver architektúra esetén a szerver nem kezdeményez kapcsolatfelvételt.",
+    "answer": "true"
+  },
+  {
+    "question": "Kliens-szerver architektúra esetén fontos, hogy a szerver alkalmazás port száma állandó legyen.",
+    "answer": "true"
+  },
+  {
+    "question": "Socket programozásnál a szerver socket accept metódusa egy kliens socketet ad vissza abban az esetben, ha beérkezik egy hálózati kapcsolat.",
+    "answer": "true"
+  },
+  {
+    "question": "A Border Gateway Protocol egy autonóm rendszerek (AS-ek) közötti, távolságvektor-alapú protokoll.",
+    "answer": "true"
+  },
+  {
+    "question": "A DHCP szerver IP címet oszt a hálózathoz csatlakozó új eszközöknek.",
+    "answer": "true"
+  },
+  {
+    "question": "A DHCP szerver soha nem jegyez meg eszközöket, így az újra csatlakozó eszköz szinte mindig másik IP címet kap.",
+    "answer": "false"
+  },
+  {
+    "question": "A DNS rendszer UDP protokollt használ.",
+    "answer": "true"
+  },
+  {
+    "question": "A hálózati réteg biztosítja az adatok sorrendhelyes továbbítását.",
+    "answer": "false"
+  },
+  {
+    "question": "A hálózati réteg biztosítja az adatok veszteségmentes továbbítását.",
+    "answer": "false"
+  },
+  {
+    "question": "A hálózati réteg nem garantál semmilyen minimális sávszélességet.",
+    "answer": "true"
+  },
+  {
+    "question": "A NAT technológia a TCP és UDP portokat hostok címzésére is felhasználja.",
+    "answer": "true"
+  },
+  {
+    "question": "A NAT technológia észrevétlenül és gyakorlatilag mellékhatások nélkül lehetővé teszi, hogy egy IP címet több eszköz is használhasson. Például bármiféle plusz beállítás nélkül üzemeltethetünk több szervert is az otthoni hálózaton.",
+    "answer": "false"
+  },
+  {
+    "question": "A ping program az ICMP echo kérést és választ használja.",
+    "answer": "true"
+  },
+  {
+    "question": "A ping program TCP protokollt használ egy speciális, \"mindig válaszoló\" port számmal (0-ás port).",
+    "answer": "false"
+  },
+  {
+    "question": "A távolságvektor-alapú útválasztó algoritmusokban minden router előre ismeri a teljes hálózati topológiát.",
+    "answer": "false"
+  },
+  {
+    "question": "A TCP egy full duplex kommunikációs protokoll.",
+    "answer": "true"
+  },
+  {
+    "question": "A TCP és UDP protokollok egészítik ki az IP címeket a port számokkal.",
+    "answer": "true"
+  },
+  {
+    "question": "A TCP kapcsolatban a nyugtát ugyanolyan csomag továbbítja, mint az adatokat, vagyis egyszerre küldhető adat és vele együtt korábbi üzenetek fogadásának nyugtázása is.",
+    "answer": "true"
+  },
+  {
+    "question": "A TCP protokoll az adatok sérülésmentes továbbítása érdekében CRC-32 hibajavító kódolást használ.",
+    "answer": "false"
+  },
+  {
+    "question": "A TCP protokoll az adatok sérülésmentes továbbítása érdekében egyszerű ellenőrző összeget is továbbít.",
+    "answer": "true"
+  },
+  {
+    "question": "A TCP protokoll az adatok sérülésmentes továbbítása érdekében Reed-Solomon hibajavító kódolást használ.",
+    "answer": "false"
+  },
+  {
+    "question": "A traceroute alkalmazás egyesével csökkenő TTL (Time-to-Live) értékkel küld ki csomagokat a cél felé.",
+    "answer": "true"
+  },
+  {
+    "question": "A traceroute alkalmazás folyamatosan növeklő TTL (Time-to-Live) értékkel küld ki csomagokat a cél felé.",
+    "answer": "false"
+  },
+  {
+    "question": "A UDP kapcsolatban a nyugtát ugyanolyan csomag továbbítja, mint az adatokat.",
+    "answer": "false"
+  },
+  {
+    "question": "A UDP protokollban nincsennek port számok, mivel nem kapcsolat alapú protokoll.",
+    "answer": "false"
+  },
+  {
+    "question": "Az ICMP üzenetekkel routerek és a hostok kommunikálnak egymással.",
+    "answer": "true"
+  },
+  {
+    "question": "Az IP fejlécben a forrás IP címe nem szerepel, mivel arra a routereknek nincsen szüksége.",
+    "answer": "false"
+  },
+  {
+    "question": "Az IPv6 már nem darabolja a csomagokat, helyette van \"package too big\" ICMP üzenet.",
+    "answer": "true"
+  },
+  {
+    "question": "Az IPv6 protokoll célja elsősorban a nagyon szűkös, 32 bites IP címek problémáját kezelni.",
+    "answer": "true"
+  },
+  {
+    "question": "Az IPv6 protokollban a címek már 64 bitesek.",
+    "answer": "false"
+  },
+  {
+    "question": "Az IPv6 protokollban már nincsen ellenőrző összeg.",
+    "answer": "true"
+  },
+  {
+    "question": "Az IPv6 protokollban ugyanúgy van ellenőrző összeg, mint az IPv4-ben.",
+    "answer": "false"
+  },
+  {
+    "question": "Az SSL/TLS egy a szállítási (TCP) és az alkalmazási réteg közé beékelődő alréteg, mely titkosított adatkapcsolatot tesz lehetővé.",
+    "answer": "true"
+  },
+  {
+    "question": "Az UDP protokoll minden szegmenst egymástól függetlenül továbbít.",
+    "answer": "true"
+  },
+  {
+    "question": "Ha a mikrovezérlőm lassú egy TCP kapcsolaton bejövő HTTP kérés fogadásához, a küldő oldal le fogja csökkenteni a küldési sebességét.",
+    "answer": "true"
+  },
+  {
+    "question": "Ha az én IP címem 152.66.215.222, a lokális hálózatomon (LAN) a subnet mask 255.255.255.0, akkor a 152.66.214.222 IP cím a LAN-on van. Igaz ez?",
+    "answer": "false"
+  },
+  {
+    "question": "Mivel az ISP-knek összefüggő IP címtartományuk van, így egy vállalat nem költözhet át másik ISP alá úgy, hogy megtartja az addigi IP címeit.",
+    "answer": "true"
+  },
+  {
+    "question": "NAT esetén a router megváltoztatja a kommunikáló felek IP címét a csomagokban.",
+    "answer": "true"
+  },
+  {
+    "question": "NAT-olt hálózaton lévő eszközök közvetlenül kívülről nem címezhetőek.",
+    "answer": "true"
+  },
+  {
+    "question": "NAT-olt hálózaton szervert üzemeltetni csak akkor lehet, ha a routeren be van kapcsolva port forwarding.",
+    "answer": "true"
+  },
+  {
+    "question": "TCP protokoll esetén ha egy csomag nem érkezik meg, de az utána következők igen, akkor az elveszett csomag utáni sikeresen átküldött csomagokat már nem kell újra elküldeni.",
+    "answer": "false"
+  },
+  {
+    "question": "TCP protokoll esetén ha egy nyugta vész el, akkor a küldő oldal időtúllépés után újraküldi a még nem nyugtázott csomagot.",
+    "answer": "true"
+  }
+]

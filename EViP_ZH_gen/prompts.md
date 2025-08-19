@@ -1,12 +1,11 @@
+# A feladat
+
+Előadás PPT-k alapján ZH feladatsor generálása: először specifikációk (többféle feladat felvetés), majd az egyikből részletes és alfeladatokra bontott specifikáció, majd mintamegoldás, unit tesztek készítése. A feladatsor hivatkozik a kapcsolódó unit tesztekre.
+
+Később mutation testing (Stryker.NET) alapján forráskód javítása, további tesztek készítése.
+
 # Tanulságok
 
-ZH feladatsor összeállítás
-
-- Első körös specifikáció kérése, azt sem én írtam, csak a tananyagot. Megadtam neki az érintett előadások PPTX-eit, hogy ez alapján dolgozzon.
-- A specifikációt bontsa alfeladatokra, majd készítsen mintamegoldást és unit teszteket, majd pontosítsa a feladatkiírást.
-- Utána kicsit elkanyarodtam a mutation testing irányába.
-
-Tanulságok:
 - A **feladat kitalálásában** is simán tud segíteni a tananyag ismeretében.
 - Érdemes előre tisztázni, hogy mi **lesz magyarul** és mi angolul. Pl. forráskód kommentárjai? Főleg, ha utána az marad bent feladatként egy kiadott keretben?
 - A **Stryker.NET**-et is **ő rakta fel**, csak megmutattam neki a holnapját. (Magától tudta, hogy a Getting started oldal kell neki.)
@@ -134,4 +133,3 @@ Have a look at the webpage https://stryker-mutator.io/docs/stryker-net/reporters
 -----
 
 Now please update the #file:specification.md , and the #file:pitfalls.md files according to the improvements. Do not forget to remove the version vs IP address separation from #file:specification.md .
-

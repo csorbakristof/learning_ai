@@ -1,3 +1,15 @@
+# A feladat
+
+Szomszédos Excel fájlok tartalmát összegyűjtő Excel makró, benne felugró üzenetekkel.
+
+# Tanulságok
+
+- spec.md alapján elsőre majdnem tökéletes lett, csak a makró másoláshoz megnyitotta a saját fájlját is, utána pedig bezára, amivel **a makró egyből kinyírta magát**... Ezt kiemelve a specifikációban és a promptban is egyből megjavította.
+- Simán **le tudta fordítani** a makró minden üzenetét angolról magyarra.
+- Érdemes az ilyen Excel tábla használatáról **egy rövid leírást berakni** magába az Excel fájba, pl. az első munkalapra.
+
+# Konkrét promptok
+
 Have a look at the @spec.md file. Can you create the VBA script for me as described there?
 
 ---
@@ -15,10 +27,3 @@ I have a new idea to make this even simpler to use: the Excel file containing th
 ---
 
 Please translate all messages of the macro to hungarian.
-
-
-# Tanulságok
-
-Elsőre majdnem tökéletes lett, csak a makró másoláshoz megnyitotta a saját fájlját is, utána pedig bezára, amivel egyből kinyírta magát...
-
-Ezt kiemelve a specifikációban és a promptban is egyből megjavította.

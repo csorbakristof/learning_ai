@@ -1,6 +1,6 @@
 # Overview
 
-The goal of this project to generate PDF files based on mutiple templates and data from Excel sheets.
+The goal of this project to generate PDF files based on multiple templates and data from Excel sheets.
 
 The ControllerSheet.xlsm contains the data in its "Data" worksheet in columns A to C.
 

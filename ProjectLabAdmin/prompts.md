@@ -1,4 +1,31 @@
-# Initial prompt
+# A feladat
+
+Önlab beszámoló szervezéshez adatok begyűjtése a tanszéki portálról (konzulensek, minden téma kiírása) és Neptunból (minden kapcsolódó tárgy hallgatói listájának letöltése), majd ezek összekombinálása és egy beszámoló szekció beosztás tervező Excel tábla generálása (benne igény darabszámokkal).
+
+## Részfolyamatok futtatási sorrendben
+
+1. **DLXLS** → Témák gyűjtése a tanszéki portálról (Terhelés xlsx, témák oldalai)
+2. **DLNEP** → Neptun adatok letöltése  
+3. **DLFUSION** → Adatok összekombinálása
+4. **MKXLSX** → Beszámoló szekció tervező XLSX létrehozása 
+
+## Kimenetek
+
+- **DLFUSION**: `data/fused_student_data.json`
+- **MKXLSX**: `data/session_planner.xlsx`
+
+# Tanulságok
+
+- A selenium alapból nem lesz belépve a portálra és ha publikus oldalnak más olyankor a tartalma (nincsen téma jelentkezés dropdown list), akkor azt nem triviális észrevenni, hogy én miért látom és ő miért nem. 
+- Neptun letöltés Seleniummal: pontos körbeírás alapján megtalálta a Neptun oldalon azt, amire klikkelni kellett. De az a biztos, ha sok szűrőfeltétel van (mert TABLE igen sok volt az oldalon) és még jobb, ha pl. element id-t meg tudok neki mondani.
+- Ha egy xlsx tartalma kell neki a munkához, simán kiíratja a terminálra egy python scripttel és ezzel gyakorlatilag megnézi, min van a fájlban, megnézi, milyen fájlok vannak stb.
+- Nagyon jól jön, ha a munkafázisoknak és featureöknek kódja van.
+- Kérésre felesleges fájlok törlése a workspace-ből...
+- InformationForAI.md bevezetése, amit magának rak össze, hogy később hasznos legyen.
+
+# Konkrét promptok
+
+## Initial prompt
 
 We are going to create two python console applications: the first creates an Excel file and filles it based on data retrieved from the Internet by downloading and parsing several web pages. In some cases it may need to use Selenium to simulate the actions of a user. The second takes the Excel file as input and performs actions on a webpage using selenium. In case of Selenium actions, both applications will have to wait first for the user to login. Please create the necessary environment for the two applications in this folder.
 
@@ -103,7 +130,7 @@ Please have a look at the overall source code. Some files seem to be very long. 
 
 Remove all downloaded files and fresh start the whole system for a complete test.
 
-# Topic collector
+## Topic collector
 
 Hello! I need you to create an additional python+selenium application which is independent from the previous ones. Put it in a folder called app3_topic_collector. Look at the specification in @specification_topiccollector.md . Can you generate the application for me? Ask me if you need additional information.
 
@@ -121,7 +148,7 @@ The app seems to open the pages of advisors as well which is not required. Advis
 
 Ahhhh.... I see the issue! You need to login to the portal to see the selectors. Please modify the application to open the website and then wait for the user to log in before continuing.
 
-## Drop selector clicking and selenium and login at all
+### Drop selector clicking and selenium and login at all
 
 I realized that we can solve the whole task much easier and faster: the list of course codes appears on the category pages, so the app can extact them from there for every topic which is contained in that category. And then there is no need for the selector manipulation at all. Which also means that there is no need to login and no need for selenium at all. We can solve this with simple static html downloads. Please modify the @specification_topiccollector.md file accordingly.
 
@@ -132,14 +159,4 @@ Now please modify the code according to the new specification.
 ---
 
 Now there are several remaining *.log files, test scripts and files we do not need anymore. Please clean up the workspace and preserve only what is really needed.
-
-# Tanulságok
-
-Pontos körbeírás alapján megtalálta a Neptun oldalon azt, amire klikkelni kellett. De az a biztos, ha sok szűrőfeltétel van (mert TABLE igen sok volt az oldalon) és még jobb, ha pl. element id-t meg tudok neki mondani.
-
-Ha egy xlsx tartalma kell neki a munkához, simán kiíratja a terminálra egy python scripttel és ezzel gyakorlatilag megnézi, min van a fájlban, megnézi, milyen fájlok vannak stb.
-
-Nagyon jól jön, ha a munkafázisoknak és featureöknek kódja van.
-
-Kérésre felesleges fájlok törlése a workspace-ből...
 

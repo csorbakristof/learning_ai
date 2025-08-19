@@ -1,3 +1,11 @@
+# A feladat
+
+Outlook makró készítése, mely az aktuális levél tartalmát két fájllal kiegészítve (egy saját kis backenden keresztül) megválaszoltatja a ChatGPT API-val (piszkozat feldobásával).
+
+# Tanulságok
+
+# Konkrét promptok
+
 Have a look at the @workspace and summarize the outlook plugin and backend service it contains.
 
 ---

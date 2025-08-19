@@ -1,4 +1,19 @@
-# Initial prompt
+# A feladat
+
+Bluetoothos hőmérők letöltött adatainak összegyűjtése és vizualizálása, kimutatások készítése. Lásd specification.md.
+
+# Tanulságok
+
+- Use VS Code Tasks - Press Ctrl+Shift+P → "Tasks: Run Task" → Choose from:
+- C# példa kód a timestamp kezelésre segített neki.
+- Egy idő után kezd belassulni... és mintha ő is próbálná kezelni ("summarizing conversation history...").
+- Ha az egyes **feature-öknek van kódja**, akkor azt tényleg használja is a hivatkozásokhoz. Ezeket a specifikációban így vezettem be a fejezet elején: "In this section, I will assign an identifier for every function so that we can easier talk about them. The identifier will be before the title of the function, in brackets and may contain letters and numbers. For example "(IN001)", or "(STAT003)"."
+- Hasznos lehet bevezetni a **"Q:" prefix** mellett (csak kérdés, ne módosítson semmit) egyfajta **munkafázis kéréseket**, hogy pl. ellenőrzötten csak akkor töltsön időt doksi frissítéssel, amikor kell.
+    - DOC: update @spacification.md and @InformationForAI.md if needed.
+    - TEST: run unit tests. Fix issues and update unit tests if needed.
+    - REFACTOR
+
+# Konkrét promptok
 
 I want to create an appliation which reads CVS files packed in zip files, loads data from them and generates nice diagrams and maybe excel tables. I want to create a nice set of unit tests for this as well. Is a python console application a suitable environment for that?
 
@@ -50,7 +65,6 @@ It seems we have lots of problems with the bad timestamps. Extend the @specifica
 (Az impementációt is elkezdte magától...)
 
 ## Nagy újrakezdés a visualization témában
-
 
 I rolled back some changes and I start a new chat as you got confused and slow. Have a look at the @specification and start to implement simple visualization features.
 
@@ -124,22 +138,3 @@ Add a derived statistic to show the temperature difference "T3_Kek - T2_Terasz".
 ----
 
 Modify STAT002 visualization in the GUI so that it does not require running anything before the launch of the GUI.
-
-
-
-
-# Learnt:
-
-Use VS Code Tasks - Press Ctrl+Shift+P → "Tasks: Run Task" → Choose from:
-
-C# kód a timestamp kezelésre segített neki.
-
-Egy idő után kezd belassulni... és mintha ő is próbálná kezelni ("summarizing conversation history...").
-
-Ha az egyes feature-öknek van kódja, akkor azt tényleg használja is a hivatkozásokhoz. Ezeket a specifikációban így vezettem be a fejezet elején: "In this section, I will assign an identifier for every function so that we can easier talk about them. The identifier will be before the title of the function, in brackets and may contain letters and numbers. For example "(IN001)", or "(STAT003)"."
-
-Hasznos lehet bevezetni a "Q:" prefix mellett (csak kérdés, ne módosítson semmit) egyfajta munkafázis kéréseket, hogy pl. ellenőrzötten csak akkor töltsön időt doksi frissítéssel, amikor kell.
-
-DOC: update @spacification.md and @InformationForAI.md if needed.
-TEST: run unit tests. Fix issues and update unit tests if needed.
-Refactoring

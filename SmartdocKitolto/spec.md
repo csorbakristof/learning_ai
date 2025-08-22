@@ -13,15 +13,17 @@ In the followings, many software features have a code name shown in brackets lik
 
 Starting from Excel, we assume to have a worksheet with the same columns as what we need in the CSV file. There can be 1 or multiple data lines.
 
-The VBA macro to create here is triggered by pressing Ctrl-Shift-C in a column of the Excel worksheet. This column will be the "filename column". The triggered macro will generate an individual CSV file for every data line of the worksheet. The CSV files contain the header line (the same for every CSV file, matching the first row of the worksheet). The second line contains the corresponding data line. The name of the CSV file is taken from the "filename column" in the current row.
+The VBA macro to create here is triggered by pressing Ctrl-Shift-C in a column of the Excel worksheet. This column will be the "filename column". The triggered macro will generate an individual CSV file for every data line of the worksheet, and it will export all rows at once (not just the selected row). The CSV files contain the header line (the same for every CSV file, matching the first row of the worksheet). The second line contains the corresponding data line. The name of the CSV file is taken from the "filename column" in each row.
 
 # (CSV2PDF) Python+Selenium console application
 
 This Python script takes all CSV files in the current directory after each other and it converts them into PDF using the website.
 
 - It opens the website https://smartdoc.bme.hu/Hallgatoi_munkaszerzodes_gradualisnak/Hallgatoi_munkaszerzodes_gradualisnak.html
+    - If the webpage is not available, the script should show a clear error message and exit gracefully.
 - For every CSV file
     - It clicks on the button titled "Adat export/import" at the botton of the page. (HTML input element ID "AdatExpImp".)
     - Copy-pastes the content of the CSV file content into the textbox. (HTML textarea element ID "csvBox".)
     - Clicks on the "CSV => HTML" button. (HTML input element ID "CsvToHTML")
     - Clicks on the "PDF letöltése" button (HTML input element ID "PDFLetoltes") to download the PDF file.
+    - The script should wait for the PDF download to complete before proceeding to the next file.

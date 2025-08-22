@@ -19,3 +19,8 @@ Have a look at the file #file:spec.md ! The task to implement needs interaction 
 Have a look at #file:spec.md , do you need any further information to generate the VBA macro for feature XLS2CSV and the Python application for feature CSV2PDF?
 
 ---
+(Kérdéseket tett fel, teljesen jogosan.)
+
+The VBA macro should export all rows at once. The webpage does not need authentication, howevery it may not be available in which case a nice error message should be shown. And yes, the script should wait for the download. Please update #spec.md according to these.
+
+---

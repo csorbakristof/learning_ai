@@ -34,6 +34,7 @@ pip install -r requirements.txt
    - First row: Column headers (matching the SmartDoc template)
    - Subsequent rows: Data for each document to generate
    - One column designated as the "filename column" (contains the name for each CSV file)
+   - **Date columns**: Can contain dates in any Excel format - they will be automatically converted to YYYYMMDD format for SmartDoc compatibility
 
 3. Import the VBA macro:
    - Press `Alt + F11` to open VBA Editor
@@ -86,6 +87,19 @@ The script uses the SmartDoc website at:
 https://smartdoc.bme.hu/Hallgatoi_munkaszerzodes_gradualisnak/Hallgatoi_munkaszerzodes_gradualisnak.html
 
 **Note**: This website is only accessible from within the BME network.
+
+## Date Formatting
+
+The VBA macro (v2.1) automatically detects and formats date values for SmartDoc compatibility:
+
+- **Input**: Any Excel date format (e.g., "2025-08-22", "22/08/2025", Excel date serial numbers)
+- **Output**: YYYYMMDD format (e.g., "20250822")
+- **SmartDoc Support**: Compatible with SmartDoc date formats: n, nn, hnn, hhnn, éhhnn, ééhhnn, ééééhhnn, éééé-hh-nn, éééé.hh.nn, éééé. hh. nn
+
+**Example:**
+- Excel cell contains: `2025. 08. 22.` or `8/22/2025`
+- CSV output: `"20250822"`
+- SmartDoc: Correctly interprets the date
 
 ## CSV Format
 

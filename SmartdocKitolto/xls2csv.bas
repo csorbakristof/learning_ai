@@ -1,4 +1,4 @@
-' XLS2CSV Macro v2.0: Export all rows in the active worksheet to individual CSV files
+' XLS2CSV Macro v2.1: Export all rows in the active worksheet to individual CSV files
 ' Each CSV file is named after the value in the selected "filename column" for each row
 ' Assumes the first row is the header
 ' 
@@ -6,8 +6,27 @@
 ' - Uses UTF-8 encoding for proper Hungarian character support (á, é, í, ó, ő, ú, ű, ü)
 ' - ADODB.Stream replaces FileSystemObject for UTF-8 file writing
 ' - Compatible with csv2pdf.py encoding detection
+'
+' v2.1 Changes:
+' - Automatic date formatting to YYYYMMDD format for SmartDoc compatibility
+' - Supports SmartDoc date format requirements: n, nn, hnn, hhnn, éhhnn, ééhhnn, ééééhhnn, éééé-hh-nn, éééé.hh.nn, éééé. hh. nn
 
 Option Explicit
+
+' Helper function to format dates in YYYYMMDD format for SmartDoc compatibility
+Function FormatDateForSmartDoc(cellValue As Variant) As String
+    Dim dateValue As Date
+    
+    ' Check if the value is a date
+    If IsDate(cellValue) Then
+        dateValue = CDate(cellValue)
+        ' Format as YYYYMMDD
+        FormatDateForSmartDoc = Format(dateValue, "YYYYMMDD")
+    Else
+        ' If not a date, return the original value as string
+        FormatDateForSmartDoc = CStr(cellValue)
+    End If
+End Function
 
 Sub ExportRowsToCSV()
     Dim ws As Worksheet
@@ -37,7 +56,7 @@ Sub ExportRowsToCSV()
     
     ' Get header
     For j = 1 To lastCol
-        header = header & """" & ws.Cells(1, j).Value & """"
+        header = header & """" & FormatDateForSmartDoc(ws.Cells(1, j).Value) & """"
         If j < lastCol Then header = header & ";"
     Next j
     
@@ -50,7 +69,7 @@ Sub ExportRowsToCSV()
         End If
         csvContent = header & vbCrLf
         For j = 1 To lastCol
-            csvContent = csvContent & """" & ws.Cells(i, j).Value & """"
+            csvContent = csvContent & """" & FormatDateForSmartDoc(ws.Cells(i, j).Value) & """"
             If j < lastCol Then csvContent = csvContent & ";"
         Next j
         

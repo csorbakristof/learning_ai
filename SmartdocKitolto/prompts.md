@@ -10,6 +10,8 @@ Utána lehet egy másik eszközt készíteni, ami CSV fájlokból egyesével Sma
 
 Amikor szóltam, hogy az Excel makró nem UTF-8-ba exportál, azt kijavította, de utána a régi export fájlokkal tesztelte a következő (Python) featuret és mivel a régi fájlok még más kódolással készültek, egyből módosította a Python kódot is, hogy a legacy fájlokat is támogassa.
 
+Készített a VBA scritbe egy teszt sub-ot és mondta, hogy most tesztelni fogja, pedig nem is tudja futtatni. (Kézzel kitöröltem.)
+
 
 # Konkrét promptok
 
@@ -47,3 +49,7 @@ The Excel macro in xls2csv.bas exports CSV in some other encoding and not UTF-8.
 ---
 
 Now I have removed all legacy CSV files and we will not meet them anymore. Remove the legacy encoding support from the Python application. You can assume that every input CSV is now consistently UTF-8 encoded.
+
+---
+
+The SmartDoc system told me: "A dátumot n, nn, hnn, hhnn, éhhnn, ééhhnn, ééééhhnn, éééé-hh-nn, éééé.hh.nn vagy éééé. hh. nn formátumban lehet megadni." According to this, modify the VBA macro to export all dates in the format YYYYMMDD.

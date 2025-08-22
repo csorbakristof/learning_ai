@@ -39,6 +39,7 @@ This Python script takes all CSV files in the current directory after each other
   - Exports all data rows to individual CSV files
   - **UTF-8 encoding support** (v2.0) - proper Hungarian character handling
   - Uses ADODB.Stream for UTF-8 file writing
+  - **Automatic date formatting** (v2.1) - converts dates to YYYYMMDD format for SmartDoc compatibility
   - Proper CSV formatting with headers
   - Error handling for missing filenames
   - Hotkey registration function

@@ -12,6 +12,9 @@ Amikor szóltam, hogy az Excel makró nem UTF-8-ba exportál, azt kijavította, 
 
 Készített a VBA scritbe egy teszt sub-ot és mondta, hogy most tesztelni fogja, pedig nem is tudja futtatni. (Kézzel kitöröltem.)
 
+Csomószor elrontotta, hogy virtual env python futtatás kell, meg hogy melyik könyvtárból kell indítania. Készíttettem vele erre egy batch filet és most már azt használja szépen.
+
+CSV fájl tartalom copy-paste webre: az UTF-8 BOM-ot (Byte Order Mark) is odamásolta, amitől a weboldal megbolondult. Kimásoltam neki egy fájlba, hogy ő mit copy-pastelt be és ebből rájött, mi a gond.
 
 # Konkrét promptok
 
@@ -53,3 +56,32 @@ Now I have removed all legacy CSV files and we will not meet them anymore. Remov
 ---
 
 The SmartDoc system told me: "A dátumot n, nn, hnn, hhnn, éhhnn, ééhhnn, ééééhhnn, éééé-hh-nn, éééé.hh.nn vagy éééé. hh. nn formátumban lehet megadni." According to this, modify the VBA macro to export all dates in the format YYYYMMDD.
+
+---
+
+Now lets test the csv2pdf feature. Please start your python script to process all CSV files in the root directory of the project.
+
+---
+
+Modify the python script to wait 5 seconds after every web browser operation. Put this 5 second into a constant in the beginning of the file so it is easy to modify.
+
+---
+
+Temporarily comment out the "CSV => HTML" button click in the python script. Instead of that, wait for the user to perform this click in the browser manually. Then, resume the process.
+
+(Nem mondtam neki, hogy a konzolban várjon jelzésre...)
+
+---
+
+You keep on failing to start the script because you are in the wrong directory, fail to change it, or forget to start the virtual environment. Create a batch file in the root directory to automate these steps.
+
+---
+
+There is an issue with the copy-pasting of the CSV content into the textfield on the website. I copied the content what you pasted in into the file #file:delme.txt . You copy-pasted the content of #file:Minta Béka.csv . In the beginning of your pasting, there is some special character which is not in there in the original CSV file. Fix the python script not to send that special character.
+
+(Szerintem BOM hiba, javította.)
+
+---
+
+Make the README.md up-to-date w.r.t. how to start the two features of the project after each other. Mention the batch file you created to start the python script.
+

@@ -5,8 +5,6 @@ This project creates SmartDoc PDF files based on data from Excel sheets. For exa
 The smartdoc page we use is here, but it can only be accessed from inside BME:
 https://smartdoc.bme.hu/Hallgatoi_munkaszerzodes_gradualisnak/Hallgatoi_munkaszerzodes_gradualisnak.html
 
-An example for an empty data export can be found in the example.csv file. Header titles can be extracted from there.
-
 In the followings, many software features have a code name shown in brackets like "(XLS2CSV)". We will use these code names to reference the features or functions.
 
 # (XLS2CSV) Excel macro to generate CSV files

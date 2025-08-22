@@ -5,6 +5,9 @@ CSV2PDF Script: Convert CSV files to PDF using SmartDoc website automation
 This script processes all UTF-8 encoded CSV files in the current directory and converts them to PDF
 using the SmartDoc website at BME through Selenium automation.
 
+The script includes configurable delays (BROWSER_OPERATION_DELAY) after each browser operation
+to ensure stability and avoid overwhelming the website.
+
 Requirements:
 - selenium
 - chrome driver
@@ -24,6 +27,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, WebDriverException
 import sys
+
+# Configuration constants
+BROWSER_OPERATION_DELAY = 5  # Seconds to wait after each browser operation
 
 
 class CSV2PDFConverter:
@@ -67,6 +73,7 @@ class CSV2PDFConverter:
         
         try:
             self.driver.get(self.smartdoc_url)
+            time.sleep(BROWSER_OPERATION_DELAY)
             # Wait for page to load and check if we can find the expected elements
             self.wait.until(EC.presence_of_element_located((By.ID, "AdatExpImp")))
             print("✓ SmartDoc website is accessible and page loaded successfully.")
@@ -98,8 +105,15 @@ class CSV2PDFConverter:
         Use xls2csv.bas v2.0 to generate properly encoded CSV files.
         """
         try:
-            with open(csv_file, 'r', encoding='utf-8') as f:
+            with open(csv_file, 'r', encoding='utf-8-sig') as f:  # utf-8-sig removes BOM
                 content = f.read()
+            
+            # Strip any remaining BOM characters that might be present
+            content = content.lstrip('\ufeff')
+            
+            # Strip leading/trailing whitespace but preserve internal structure
+            content = content.strip()
+            
             return content
         except Exception as e:
             print(f"Error reading CSV file {csv_file}: {e}")
@@ -120,27 +134,37 @@ class CSV2PDFConverter:
             print("  1. Clicking 'Adat export/import' button...")
             adat_button = self.wait.until(EC.element_to_be_clickable((By.ID, "AdatExpImp")))
             adat_button.click()
+            time.sleep(BROWSER_OPERATION_DELAY)
             
             # Step 2: Find CSV textbox and paste content
             print("  2. Pasting CSV content into textbox...")
             csv_box = self.wait.until(EC.presence_of_element_located((By.ID, "csvBox")))
             csv_box.clear()
             csv_box.send_keys(csv_content)
+            time.sleep(BROWSER_OPERATION_DELAY)
             
             # Step 3: Click "CSV => HTML" button
             print("  3. Clicking 'CSV => HTML' button...")
-            csv_to_html_button = self.wait.until(EC.element_to_be_clickable((By.ID, "CsvToHTML")))
-            csv_to_html_button.click()
+            # csv_to_html_button = self.wait.until(EC.element_to_be_clickable((By.ID, "CsvToHTML")))
+            # csv_to_html_button.click()
+            # time.sleep(BROWSER_OPERATION_DELAY)
+            
+            # Manual step: Wait for user to click "CSV => HTML" button
+            print("  3. MANUAL STEP: Please click the 'CSV => HTML' button in the browser manually.")
+            input("      Press Enter after you have clicked the 'CSV => HTML' button to continue...")
+            time.sleep(BROWSER_OPERATION_DELAY)
             
             # Step 4: Handle potential warning popups
             print("  4. Handling potential warning popups...")
             time.sleep(2)  # Wait a bit for popups to appear
             self.handle_warning_popups()
+            time.sleep(BROWSER_OPERATION_DELAY)
             
             # Step 5: Click "PDF letöltése" button
             print("  5. Clicking 'PDF letöltése' button...")
             pdf_button = self.wait.until(EC.element_to_be_clickable((By.ID, "PDFLetoltes")))
             pdf_button.click()
+            time.sleep(BROWSER_OPERATION_DELAY)
             
             # Step 6: Wait for download to complete
             print("  6. Waiting for PDF download to complete...")
@@ -205,8 +229,8 @@ class CSV2PDFConverter:
                 else:
                     failed += 1
                 
-                # Small delay between files
-                time.sleep(2)
+                # Delay between files using the configurable constant
+                time.sleep(BROWSER_OPERATION_DELAY)
             
             print(f"\n=== Conversion Complete ===")
             print(f"Successfully processed: {successful} files")

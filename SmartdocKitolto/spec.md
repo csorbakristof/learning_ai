@@ -28,3 +28,48 @@ This Python script takes all CSV files in the current directory after each other
     - There may be several warning popup windows at this point, click OK on them to go on.
     - Clicks on the "PDF letöltése" button (HTML input element ID "PDFLetoltes") to download the PDF file.
     - The script should wait for the PDF download to complete before proceeding to the next file.
+
+## Implementation Status
+
+### ✅ (XLS2CSV) - COMPLETED
+- **File**: `xls2csv.bas`
+- **Features implemented**:
+  - VBA macro triggered by Ctrl+Shift+C
+  - Interactive filename column selection
+  - Exports all data rows to individual CSV files
+  - **UTF-8 encoding support** (v2.0) - proper Hungarian character handling
+  - Uses ADODB.Stream for UTF-8 file writing
+  - Proper CSV formatting with headers
+  - Error handling for missing filenames
+  - Hotkey registration function
+
+### ✅ (CSV2PDF) - COMPLETED
+- **File**: `csv2pdf.py`
+- **Features implemented**:
+  - Selenium-based web automation
+  - Chrome WebDriver integration
+  - SmartDoc website interaction
+  - CSV file processing pipeline
+  - **UTF-8 encoding support** - expects all CSV files to be UTF-8 encoded
+  - Popup warning handling
+  - Download completion waiting
+  - Error handling and recovery
+  - Comprehensive logging
+
+### 📁 Additional Files Created
+- `requirements.txt` - Python dependencies
+- `run_csv2pdf.bat` - Windows batch file for easy execution
+- `README.md` - Complete user documentation
+- `test_csv2pdf.py` - Test script for CSV parsing
+
+### 🚀 Usage Instructions
+1. **Prepare Excel data** in `input.xlsm` with proper column structure
+2. **Run XLS2CSV**: Press Ctrl+Shift+C in Excel to generate CSV files
+3. **Run CSV2PDF**: Execute `python csv2pdf.py` or `run_csv2pdf.bat` to convert to PDFs
+4. **Access from BME network** required for SmartDoc website
+
+### ⚠️ Requirements
+- Microsoft Excel with VBA support
+- Python 3.7+ with selenium package
+- Google Chrome browser
+- BME network access for SmartDoc website

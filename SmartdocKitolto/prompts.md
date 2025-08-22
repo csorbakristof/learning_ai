@@ -8,6 +8,7 @@ Utána lehet egy másik eszközt készíteni, ami CSV fájlokból egyesével Sma
 
 # Tanulságok
 
+Amikor szóltam, hogy az Excel makró nem UTF-8-ba exportál, azt kijavította, de utána a régi export fájlokkal tesztelte a következő (Python) featuret és mivel a régi fájlok még más kódolással készültek, egyből módosította a Python kódot is, hogy a legacy fájlokat is támogassa.
 
 
 # Konkrét promptok
@@ -37,3 +38,12 @@ Now the macro asks for the filename column twice. Keep only the first one.
 
 ---
 
+Now the xls2csv feature is ready. Proceed to csv2pdf and implement it.
+
+---
+
+The Excel macro in xls2csv.bas exports CSV in some other encoding and not UTF-8. Please fix it to use UTF-8 everywhere.
+
+---
+
+Now I have removed all legacy CSV files and we will not meet them anymore. Remove the legacy encoding support from the Python application. You can assume that every input CSV is now consistently UTF-8 encoded.

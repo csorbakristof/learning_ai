@@ -1,6 +1,11 @@
-' XLS2CSV Macro: Export all rows in the active worksheet to individual CSV files
+' XLS2CSV Macro v2.0: Export all rows in the active worksheet to individual CSV files
 ' Each CSV file is named after the value in the selected "filename column" for each row
 ' Assumes the first row is the header
+' 
+' v2.0 Changes:
+' - Uses UTF-8 encoding for proper Hungarian character support (á, é, í, ó, ő, ú, ű, ü)
+' - ADODB.Stream replaces FileSystemObject for UTF-8 file writing
+' - Compatible with csv2pdf.py encoding detection
 
 Option Explicit
 
@@ -12,8 +17,8 @@ Sub ExportRowsToCSV()
     Dim filenameCol As Long
     Dim filename As String
     Dim csvContent As String
-    Dim fso As Object, fileOut As Object
     Dim cell As Range
+    Dim stream As Object
     
     Set ws = ActiveSheet
     ' Prompt user to select the filename column
@@ -36,9 +41,7 @@ Sub ExportRowsToCSV()
         If j < lastCol Then header = header & ";"
     Next j
     
-    Set fso = CreateObject("Scripting.FileSystemObject")
-    
-    ' Export each row
+        ' Export each row
     For i = 2 To lastRow
         filename = ws.Cells(i, filenameCol).Value
         If filename = "" Then
@@ -51,10 +54,15 @@ Sub ExportRowsToCSV()
             If j < lastCol Then csvContent = csvContent & ";"
         Next j
         
-        ' Write to file
-        Set fileOut = fso.CreateTextFile(ThisWorkbook.Path & "\" & filename & ".csv", True, False)
-        fileOut.Write csvContent
-        fileOut.Close
+        ' Write to file using UTF-8 encoding
+        Set stream = CreateObject("ADODB.Stream")
+        stream.Type = 2 ' Text
+        stream.Charset = "UTF-8"
+        stream.Open
+        stream.WriteText csvContent
+        stream.SaveToFile ThisWorkbook.Path & "\" & filename & ".csv", 2 ' Overwrite existing
+        stream.Close
+        Set stream = Nothing
 NextRow:
     Next i
     

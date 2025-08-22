@@ -16,9 +16,6 @@ Sub ExportRowsToCSV()
     Dim cell As Range
     
     Set ws = ActiveSheet
-    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
-    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
-    
     ' Prompt user to select the filename column
     On Error Resume Next
     Set cell = Application.InputBox("Select the filename column (click a cell in the column)", Type:=8)
@@ -28,11 +25,15 @@ Sub ExportRowsToCSV()
         Exit Sub
     End If
     filenameCol = cell.Column
+
+    ' Use the filename column to determine the last row
+    lastRow = ws.Cells(ws.Rows.Count, filenameCol).End(xlUp).Row
+    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
     
     ' Get header
     For j = 1 To lastCol
-        header = header & ws.Cells(1, j).Value
-        If j < lastCol Then header = header & ","
+        header = header & """" & ws.Cells(1, j).Value & """"
+        If j < lastCol Then header = header & ";"
     Next j
     
     Set fso = CreateObject("Scripting.FileSystemObject")
@@ -46,8 +47,8 @@ Sub ExportRowsToCSV()
         End If
         csvContent = header & vbCrLf
         For j = 1 To lastCol
-            csvContent = csvContent & ws.Cells(i, j).Value
-            If j < lastCol Then csvContent = csvContent & ","
+            csvContent = csvContent & """" & ws.Cells(i, j).Value & """"
+            If j < lastCol Then csvContent = csvContent & ";"
         Next j
         
         ' Write to file

@@ -25,5 +25,6 @@ This Python script takes all CSV files in the current directory after each other
     - It clicks on the button titled "Adat export/import" at the botton of the page. (HTML input element ID "AdatExpImp".)
     - Copy-pastes the content of the CSV file content into the textbox. (HTML textarea element ID "csvBox".)
     - Clicks on the "CSV => HTML" button. (HTML input element ID "CsvToHTML")
+    - There may be several warning popup windows at this point, click OK on them to go on.
     - Clicks on the "PDF letöltése" button (HTML input element ID "PDFLetoltes") to download the PDF file.
     - The script should wait for the PDF download to complete before proceeding to the next file.

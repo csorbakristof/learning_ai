@@ -24,3 +24,16 @@ Have a look at #file:spec.md , do you need any further information to generate t
 The VBA macro should export all rows at once. The webpage does not need authentication, howevery it may not be available in which case a nice error message should be shown. And yes, the script should wait for the download. Please update #spec.md according to these.
 
 ---
+
+Update the macro to use semicolon as separator in the CSV file and use quotation marks to surround every value in it.
+
+---
+
+When getting the index of the last row, do not assume that every cell in every row is filled in. Only use the "filename column" for this as that column surely contains a value for every data row.
+
+---
+
+Now the macro asks for the filename column twice. Keep only the first one.
+
+---
+

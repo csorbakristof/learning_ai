@@ -1,0 +1,10 @@
+# Team Members Data
+# Add team members here following this format:
+# - name: "Full Name"
+#   role: "Position/Role"
+#   photo: "member-photo.jpg"  # Optional, will use placeholder if not specified
+
+# Example team member:
+- name: "Team Lead"
+  role: "Project Coordinator & AI Researcher"
+  photo: "placeholder-person.png"

@@ -1,0 +1,15 @@
+# Placeholder Image - 300x200 Project Thumbnail
+This file serves as a placeholder for project thumbnail images.
+Replace this with actual 300x200 pixel images in PNG or JPG format.
+
+Recommended specifications:
+- Dimensions: 300x200 pixels
+- Format: PNG or JPG
+- File size: Under 100KB for faster loading
+- Content: Representative screenshot or icon for the project
+
+To replace this placeholder:
+1. Create or obtain a 300x200 pixel image
+2. Name it appropriately (e.g., "bill-summarizer-thumb.png")
+3. Replace this file with your image
+4. Update the project data in _data/projects.yml

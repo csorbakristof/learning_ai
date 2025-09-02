@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+<div class="project-meta">
+  <p><strong>Status:</strong> {{ page.status | default: "In Development" }}</p>
+  <p><strong>Repository:</strong> <a href="{{ site.github.repository_url }}/tree/master/{{ page.project_dir }}">{{ page.project_dir }}</a></p>
+  {% if page.release_url %}
+  <p><strong>Latest Release:</strong> <a href="{{ page.release_url }}">Download</a></p>
+  {% endif %}
+</div>
+
+{{ content }}
+
+{% if page.getting_started %}
+## Getting Started
+
+{{ page.getting_started }}
+{% endif %}
+
+{% if page.user_guide %}
+## User Guide
+
+{{ page.user_guide }}
+{% endif %}
+
+<div class="project-footer">
+  <p><a href="{{ site.baseurl }}/projects/">← Back to Projects</a></p>
+</div>

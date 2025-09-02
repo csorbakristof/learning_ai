@@ -1,0 +1,44 @@
+# Projects Data
+# Add your projects here following this format:
+# - title: "Project Name"
+#   slug: "project-slug"  # Used for URL, should match the filename in projects/
+#   description: "Brief description of the project"
+#   thumbnail: "project-thumbnail.png"  # Optional, will use placeholder if not specified
+#   status: "Active|In Development|Completed"  # Optional, defaults to "In Development"
+#   project_dir: "ProjectDirectory"  # The actual directory name in the repository
+
+# Example projects based on your repository structure:
+- title: "Bill Summarizer"
+  slug: "bill-summarizer"
+  description: "Automated bill extraction and summarization tool for processing financial documents."
+  thumbnail: "placeholder-300x200.png"
+  status: "In Development"
+  project_dir: "BillSummarizer"
+
+- title: "Review Template Generator"
+  slug: "review-template-generator"
+  description: "Automated generation of review and grading templates for educational purposes."
+  thumbnail: "placeholder-300x200.png"
+  status: "In Development"
+  project_dir: "BiralatSablonGeneralo"
+
+- title: "Excel to Document Generator"
+  slug: "excel-to-document"
+  description: "Converts Excel data to formatted Word documents using templates."
+  thumbnail: "placeholder-300x200.png"
+  status: "In Development"
+  project_dir: "Excel2DocWithTemplate"
+
+- title: "Project Lab Admin"
+  slug: "project-lab-admin"
+  description: "Administrative tools for managing project laboratory activities and data collection."
+  thumbnail: "placeholder-300x200.png"
+  status: "Active"
+  project_dir: "ProjectLabAdmin"
+
+- title: "Temperature Monitoring"
+  slug: "temperature-monitoring"
+  description: "Temperature data collection and visualization with heatmap generation."
+  thumbnail: "placeholder-300x200.png"
+  status: "In Development"
+  project_dir: "TemperatureMonitoring"

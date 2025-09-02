@@ -1,0 +1,71 @@
+# Jekyll Configuration for Learning AI GitHub Pages
+title: "Learning AI - Generative AI Experiments"
+description: "Experiments with generative AI technologies in everyday IT engineering tasks"
+baseurl: "/learning_ai"
+url: "https://csorbakristof.github.io"
+
+# GitHub information
+github:
+  repository_url: "https://github.com/csorbakristof/learning_ai"
+  repository_name: "csorbakristof/learning_ai"
+
+# Theme configuration
+remote_theme: pages-themes/leap-day@v0.2.0
+plugins:
+  - jekyll-remote-theme
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Projects"
+    url: "/projects/"
+  - title: "Team"
+    url: "/team/"
+  - title: "Onboarding"
+    url: "/onboarding/"
+  - title: "Events"
+    url: "/events/"
+  - title: "Publications"
+    url: "/publications/"
+  - title: "Contact"
+    url: "/contact/"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md

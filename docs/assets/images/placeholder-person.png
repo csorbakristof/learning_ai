@@ -1,0 +1,15 @@
+# Placeholder Person Photo - 150x150
+This file serves as a placeholder for team member photos.
+Replace this with actual 150x150 pixel photos.
+
+Recommended specifications:
+- Dimensions: 150x150 pixels (square)
+- Format: PNG or JPG
+- File size: Under 50KB
+- Content: Professional headshot or avatar
+
+To replace this placeholder:
+1. Prepare a square photo (150x150 pixels)
+2. Name it appropriately (e.g., "john-doe.jpg")
+3. Replace this file with the photo
+4. Update the team data in _data/team.yml

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-2"?><szamla verzio="2"
+        ugyfelaz="005100411603"
+        szlaszam="101712865396"
+        kuldazon="338812139">
+   <fejlec>
+      <elado>
+         <nev>MVM Next Energiakereskedelmi Zrt.</nev>
+         <szekhely>1081Budapest,II. János Pál pápa tér 20</szekhely>
+         <adoszam>26713111-2-44</adoszam>
+         <szjszam>40.22</szjszam>
+         <bankszamlaszam>10300002-20580731-49020047</bankszamlaszam>
+      </elado>
+      <vevo>
+         <nev>Csorba Kristóf</nev>
+         <ugyfel_azon>8006027891</ugyfel_azon>
+         <szfsz>005100411603</szfsz>
+         <adoszam/>
+         <cim>
+            <telepules>Budapest</telepules>
+            <kozternev>Bartók Béla út 129. 3. em. 8.</kozternev>
+            <irszam>1115</irszam>
+         </cim>
+         <postacim>
+            <nev>Csorba Kristóf</nev>
+            <telepules>Érd</telepules>
+            <kozternev>Morva utca 13.</kozternev>
+            <irszam>2030</irszam>
+         </postacim>
+      </vevo>
+      <szamlainfo>
+         <szlanev>Földgáz elszámoló számla</szlanev>
+         <szlaszam>101712865396</szlaszam>
+         <szlakelte>2025.08.25</szlakelte>
+         <teljdatum>2025.08.25</teljdatum>
+         <fizmod>Csoportos beszedés</fizmod>
+         <szolgaltatas>Földgáz egyetemes szolgáltatás és földgázelosztás</szolgaltatas>
+         <fizhatarido>2025.09.09</fizhatarido>
+         <penznem>Ft</penznem>
+         <kovleolv_kezdet>2025.08.17</kovleolv_kezdet>
+         <kovleolv_veg>2025.09.01</kovleolv_veg>
+         <elsz_kezdete>2025.07.01</elsz_kezdete>
+         <elsz_vege>2025.09.30</elsz_vege>
+      </szamlainfo>
+   </fejlec>
+   <fogyhely index="1">
+      <sor_azonosoto>210</sor_azonosoto>
+      <fogyasztasi_hely>80116628</fogyasztasi_hely>
+      <varos>Budapest</varos>
+      <utca>Bartók Béla út 129/B. 3. em. 8.</utca>
+      <iranyitoszam>1115</iranyitoszam>
+      <arszabas_kod>ATALANY</arszabas_kod>
+      <arszabas_megnevezes>Mérő nélküli</arszabas_megnevezes>
+      <eloszto>MVM Főgáz Földgázhálózati Kft.</eloszto>
+      <pod>39N069919841111L</pod>
+      <kovetkezo_reszszamla_mennyisege>0</kovetkezo_reszszamla_mennyisege>
+      <elteres_atlagos_fogyasztashoz_ertek>0</elteres_atlagos_fogyasztashoz_ertek>
+      <haztartasi_kod>1</haztartasi_kod>
+      <haztartasi_ertek>0</haztartasi_ertek>
+      <haztartasi_szoveg>házt. célú</haztartasi_szoveg>
+      <nem_haztartasi_kod>1</nem_haztartasi_kod>
+      <nem_haztartasi_szoveg>nem házt. célú</nem_haztartasi_szoveg>
+      <nem_haztartasi_ertek>100</nem_haztartasi_ertek>
+      <tetel index="1">
+         <sor_azonosoto>315</sor_azonosoto>
+         <elszamolasi_idoszak_kezdete>2025.07.01</elszamolasi_idoszak_kezdete>
+         <elszamolasi_idoszak_vege>2025.07.31</elszamolasi_idoszak_vege>
+         <homennyiseg>450,000000000</homennyiseg>
+         <tetel_megnevezese_szoveg>Gázátalány</tetel_megnevezese_szoveg>
+         <afa_szazalek>27</afa_szazalek>
+         <mertekegyseg>MJ</mertekegyseg>
+         <netto_egysegar>2,46500000</netto_egysegar>
+         <netto_egysegar_mertekegyseg>Ft/MJ</netto_egysegar_mertekegyseg>
+         <netto_ertek>1109</netto_ertek>
+      </tetel>
+      <tetel index="2">
+         <sor_azonosoto>315</sor_azonosoto>
+         <elszamolasi_idoszak_kezdete>2025.08.01</elszamolasi_idoszak_kezdete>
+         <elszamolasi_idoszak_vege>2025.08.31</elszamolasi_idoszak_vege>
+         <homennyiseg>450,000000000</homennyiseg>
+         <tetel_megnevezese_szoveg>Gázátalány</tetel_megnevezese_szoveg>
+         <afa_szazalek>27</afa_szazalek>
+         <mertekegyseg>MJ</mertekegyseg>
+         <netto_egysegar>2,46500000</netto_egysegar>
+         <netto_egysegar_mertekegyseg>Ft/MJ</netto_egysegar_mertekegyseg>
+         <netto_ertek>1109</netto_ertek>
+      </tetel>
+      <tetel index="3">
+         <sor_azonosoto>315</sor_azonosoto>
+         <elszamolasi_idoszak_kezdete>2025.09.01</elszamolasi_idoszak_kezdete>
+         <elszamolasi_idoszak_vege>2025.09.30</elszamolasi_idoszak_vege>
+         <homennyiseg>450,000000000</homennyiseg>
+         <tetel_megnevezese_szoveg>Gázátalány</tetel_megnevezese_szoveg>
+         <afa_szazalek>27</afa_szazalek>
+         <mertekegyseg>MJ</mertekegyseg>
+         <netto_egysegar>2,46500000</netto_egysegar>
+         <netto_egysegar_mertekegyseg>Ft/MJ</netto_egysegar_mertekegyseg>
+         <netto_ertek>1109</netto_ertek>
+      </tetel>
+      <tetel index="4">
+         <sor_azonosoto>695</sor_azonosoto>
+         <homennyiseg>1350,00000000</homennyiseg>
+         <tetel_megnevezese_szoveg>Gázátalány összesen</tetel_megnevezese_szoveg>
+         <afa_szazalek>27</afa_szazalek>
+         <mertekegyseg>MJ</mertekegyseg>
+         <netto_ertek>3327</netto_ertek>
+      </tetel>
+      <tetel index="5">
+         <sor_azonosoto>699</sor_azonosoto>
+         <tetel_megnevezese_szoveg>Felhasználási hely nettó számlaérték összesen</tetel_megnevezese_szoveg>
+         <netto_ertek>3327</netto_ertek>
+      </tetel>
+   </fogyhely>
+   <afa_osszesites index="1">
+      <sor_azonosito>750</sor_azonosito>
+      <afa_szazalek>27</afa_szazalek>
+      <netto_osszeg>3327</netto_osszeg>
+      <afa_osszeg>898</afa_osszeg>
+      <brutto_osszeg>4225</brutto_osszeg>
+   </afa_osszesites>
+   <osszesites index="1">
+      <sor_azonosito>515</sor_azonosito>
+      <sor_megnevezes_kod/>
+      <sor_megnevezes_szoveg>Nettó számlaérték összesen</sor_megnevezes_szoveg>
+      <afa_szazalek>27</afa_szazalek>
+      <netto_osszeg>3327</netto_osszeg>
+   </osszesites>
+   <osszesites index="2">
+      <sor_azonosito>751</sor_azonosito>
+      <sor_megnevezes_kod/>
+      <sor_megnevezes_szoveg>Kerekítés</sor_megnevezes_szoveg>
+      <brutto_osszeg>0</brutto_osszeg>
+   </osszesites>
+   <osszesites index="3">
+      <sor_azonosito>750</sor_azonosito>
+      <sor_megnevezes_kod/>
+      <sor_megnevezes_szoveg>Bruttó számlaérték összesen**</sor_megnevezes_szoveg>
+      <brutto_osszeg>4225</brutto_osszeg>
+   </osszesites>
+   <osszesites index="4">
+      <sor_azonosito>152</sor_azonosito>
+      <sor_megnevezes_kod/>
+      <sor_megnevezes_szoveg>Támogatás, túlfizetés:</sor_megnevezes_szoveg>
+      <brutto_osszeg>0</brutto_osszeg>
+   </osszesites>
+   <osszesites index="5">
+      <sor_azonosito>760</sor_azonosito>
+      <sor_megnevezes_kod/>
+      <sor_megnevezes_szoveg>Fizetendő összeg összesen</sor_megnevezes_szoveg>
+      <brutto_osszeg>4225</brutto_osszeg>
+   </osszesites>
+   <osszesites index="6">
+      <sor_azonosito>580</sor_azonosito>
+      <sor_megnevezes_kod/>
+      <sor_megnevezes_szoveg>&lt;Dijnet&gt;</sor_megnevezes_szoveg>
+      <nyomtatasi_bizonylat_dijnet_kiegy>101712592775</nyomtatasi_bizonylat_dijnet_kiegy>
+      <kiegyenlites_datuma_dijnet>2025.06.12</kiegyenlites_datuma_dijnet>
+   </osszesites>
+</szamla>

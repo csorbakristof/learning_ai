@@ -1,0 +1,4 @@
+fájlnév;összeg;pénznem;számla_kelte;szolgáltató;fogyasztó_címe;feldolgozási_státusz;bizonytalanság_flag
+Fotav_szamla_pelda.pdf;6267;Ft;2025.08.14;: BKM Nonprofit Zrt.;1116 Budapest, Kalotaszeg u. 31.;SIKERES;IGEN: fogyasztó_címe
+MVM_gaz_szamla_pelda.pdf;4225;Ft;2025.08.25;: MVM Next Energiakereskedelmi Zrt.;"5396
+Szolgáltató neve: MVM Next Energiakereskedelmi Zrt.";SIKERES;IGEN: fogyasztó_címe

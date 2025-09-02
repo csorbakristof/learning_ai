@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-2"?><szamlak>
+   <export_datuma>2025-08-15</export_datuma>
+   <export_szla_db>1</export_szla_db>
+   <kezdo_ido>0001-01-01</kezdo_ido>
+   <zaro_ido>9999-12-31</zaro_ido>
+   <kezdo_szla_szam>122900278480</kezdo_szla_szam>
+   <zaro_szla_szam>122900278480</zaro_szla_szam>
+   <szamla>
+      <fejlec>
+         <szlasorszam>122900278480</szlasorszam>
+         <szlatipus>1</szlatipus>
+         <szladatum>2025-08-14</szladatum>
+         <teljdatum>2025-09-15</teljdatum>
+      </fejlec>
+      <szamlakibocsato>
+         <adoszam>10941362-2-44</adoszam>
+         <nev>BKM Nonprofit Zrt.</nev>
+         <cim>
+            <iranyitoszam>1116</iranyitoszam>
+            <telepules>Budapest</telepules>
+            <kozterulet_neve>Kalotaszeg utca</kozterulet_neve>
+            <hazszam>31.</hazszam>
+         </cim>
+      </szamlakibocsato>
+      <vevo>
+         <ugyfelazon>30340790</ugyfelazon>
+         <nev>CSORBA KRISTÓF</nev>
+         <cim>
+            <iranyitoszam>2030</iranyitoszam>
+            <telepules>Érd</telepules>
+            <kozterulet_neve>Morva utca</kozterulet_neve>
+            <hazszam>13</hazszam>
+         </cim>
+      </vevo>
+      <termek_szolgaltatas_tetelek>
+         <termeknev>Távhő-szolgáltatási alapdíj részfizetése</termeknev>
+         <menny>125.0</menny>
+         <mertekegys>légm3</mertekegys>
+         <nettoar>4041.0</nettoar>
+         <nettoegysar>32.33</nettoegysar>
+         <adokulcs>5.0</adokulcs>
+      </termek_szolgaltatas_tetelek>
+      <termek_szolgaltatas_tetelek>
+         <termeknev>Árengedmény</termeknev>
+         <menny>4041.0</menny>
+         <mertekegys>Ft</mertekegys>
+         <nettoar>-404.0</nettoar>
+         <adokulcs>5.0</adokulcs>
+      </termek_szolgaltatas_tetelek>
+      <termek_szolgaltatas_tetelek>
+         <termeknev>Épületrész fűtési célú hődíjának részfizetése</termeknev>
+         <menny>0.48</menny>
+         <mertekegys>GJ</mertekegys>
+         <nettoar>1183.0</nettoar>
+         <nettoegysar>2472.0</nettoegysar>
+         <adokulcs>5.0</adokulcs>
+      </termek_szolgaltatas_tetelek>
+      <termek_szolgaltatas_tetelek>
+         <termeknev>Épületrész melegvíz készítési célú hődíjának részfizetése</termeknev>
+         <menny>0.47</menny>
+         <mertekegys>GJ</mertekegys>
+         <nettoar>1149.0</nettoar>
+         <nettoegysar>2472.0</nettoegysar>
+         <adokulcs>5.0</adokulcs>
+      </termek_szolgaltatas_tetelek>
+      <zaradekok>
+         <rezsicsokkentes>1964.0</rezsicsokkentes>
+      </zaradekok>
+      <nem_kotelezo>
+         <fiz_hatarido>2025-09-15</fiz_hatarido>
+         <fiz_mod>Csoportos beszedési megbízás</fiz_mod>
+         <penznem>HUF</penznem>
+         <szla_forma>e-számla</szla_forma>
+         <kibocsato_bankszla>10401093-00029368-00000000</kibocsato_bankszla>
+      </nem_kotelezo>
+      <osszesites>
+         <afarovat>
+            <nettoar>5969.0</nettoar>
+            <adokulcs>5.0</adokulcs>
+            <adoertek>298.0</adoertek>
+            <bruttoar>6267.0</bruttoar>
+         </afarovat>
+         <vegosszeg>
+            <nettoarossz>5969.0</nettoarossz>
+            <afaertekossz>298.0</afaertekossz>
+            <bruttoarossz>6267.0</bruttoarossz>
+         </vegosszeg>
+         <fizetendo>6267.0</fizetendo>
+      </osszesites>
+   </szamla>
+</szamlak>

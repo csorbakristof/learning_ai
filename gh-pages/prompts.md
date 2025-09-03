@@ -15,3 +15,12 @@ Have a look at #spec.md and ask me further questions so you have all the data yo
 I have answered your questions in #file:spec.md . Any further questions before we start?
 
 ---
+
+ruby --version
+gem install bundler jekyll
+
+cd "e:\_learning_ai\docs"
+bundle install
+bundle exec jekyll serve --livereload
+
+http://localhost:4000/learning_ai/

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/learning_ai/assets/css/style.css?v=25b82ddcf1d89438544068aed42cc5c585d69a58" media="screen" type="text/css">
+    <link rel="stylesheet" href="/learning_ai/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Development Workflow &amp; Testing | Learning AI - Generative AI Experiments</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Development Workflow &amp; Testing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Experiments with generative AI technologies in everyday IT engineering tasks" />
+<meta property="og:description" content="Experiments with generative AI technologies in everyday IT engineering tasks" />
+<link rel="canonical" href="http://localhost:4000/learning_ai/workflow.html" />
+<meta property="og:url" content="http://localhost:4000/learning_ai/workflow.html" />
+<meta property="og:site_name" content="Learning AI - Generative AI Experiments" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Development Workflow &amp; Testing" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Experiments with generative AI technologies in everyday IT engineering tasks","headline":"Development Workflow &amp; Testing","url":"http://localhost:4000/learning_ai/workflow.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Custom head includes -->
+
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Development Workflow & Testing</h1>
+          <h2>Experiments with generative AI technologies in everyday IT engineering tasks</h2>
+        </header>
+        <section id="downloads" class="clearfix">
+          
+	  <a href="https://github.com/csorbakristof/learning_ai" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+        <hr>
+        <section id="main_content">
+          
+          <nav class="site-nav">
+            <ul>
+              
+              <li><a href="/learning_ai/">Home</a></li>
+              
+              <li><a href="/learning_ai/projects/">Projects</a></li>
+              
+              <li><a href="/learning_ai/team/">Team</a></li>
+              
+              <li><a href="/learning_ai/onboarding/">Onboarding</a></li>
+              
+              <li><a href="/learning_ai/events/">Events</a></li>
+              
+              <li><a href="/learning_ai/publications/">Publications</a></li>
+              
+              <li><a href="/learning_ai/contact/">Contact</a></li>
+              
+            </ul>
+          </nav>
+
+          <h1 id="development-workflow--testing">Development Workflow &amp; Testing</h1>
+
+<p>This guide explains how to set up, develop, and test the GitHub Pages site locally, as well as how to add new projects.</p>
+
+<h2 id="local-development-setup">Local Development Setup</h2>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>Before you begin, ensure you have:</p>
+
+<ul>
+  <li><strong>Git</strong>: For version control</li>
+  <li><strong>Ruby</strong>: Version 2.7 or higher</li>
+  <li><strong>Bundler</strong>: Ruby dependency manager</li>
+  <li><strong>Windows Subsystem for Linux (WSL)</strong> or <strong>Git Bash</strong> (recommended for Windows users)</li>
+</ul>
+
+<h3 id="installation-steps">Installation Steps</h3>
+
+<h4 id="1-install-ruby-and-jekyll">1. Install Ruby and Jekyll</h4>
+
+<p><strong>On Windows:</strong></p>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Option 1: Using Chocolatey</span><span class="w">
+</span><span class="n">choco</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nx">ruby</span><span class="w">
+
+</span><span class="c"># Option 2: Download from https://rubyinstaller.org/</span><span class="w">
+</span><span class="c"># Choose Ruby+Devkit version</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>On macOS:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Using Homebrew</span>
+brew <span class="nb">install </span>ruby
+</code></pre></div></div>
+
+<p><strong>On Linux (Ubuntu/Debian):</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>ruby-full build-essential zlib1g-dev
+
+<span class="c"># Add Ruby gems to PATH</span>
+<span class="nb">echo</span> <span class="s1">'# Install Ruby Gems to ~/gems'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">echo</span> <span class="s1">'export GEM_HOME="$HOME/gems"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">echo</span> <span class="s1">'export PATH="$HOME/gems/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">source</span> ~/.bashrc
+</code></pre></div></div>
+
+<h4 id="2-install-jekyll-and-bundler">2. Install Jekyll and Bundler</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll bundler
+</code></pre></div></div>
+
+<h4 id="3-clone-and-setup-repository">3. Clone and Setup Repository</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Clone your repository</span>
+git clone https://github.com/csorbakristof/learning_ai.git
+<span class="nb">cd </span>learning_ai
+
+<span class="c"># Navigate to docs directory</span>
+<span class="nb">cd </span>docs
+
+<span class="c"># Install dependencies</span>
+bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<h3 id="running-the-site-locally">Running the Site Locally</h3>
+
+<h4 id="start-development-server">Start Development Server</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># In the docs/ directory</span>
+bundle <span class="nb">exec </span>jekyll serve
+
+<span class="c"># Or with live reload</span>
+bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>
+</code></pre></div></div>
+
+<p>The site will be available at <code class="language-plaintext highlighter-rouge">http://localhost:4000/learning_ai/</code></p>
+
+<h4 id="common-jekyll-commands">Common Jekyll Commands</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Build the site (generates _site/ directory)</span>
+bundle <span class="nb">exec </span>jekyll build
+
+<span class="c"># Serve with drafts</span>
+bundle <span class="nb">exec </span>jekyll serve <span class="nt">--drafts</span>
+
+<span class="c"># Serve with future posts</span>
+bundle <span class="nb">exec </span>jekyll serve <span class="nt">--future</span>
+
+<span class="c"># Clean generated files</span>
+bundle <span class="nb">exec </span>jekyll clean
+</code></pre></div></div>
+
+<h3 id="development-workflow">Development Workflow</h3>
+
+<h4 id="making-changes">Making Changes</h4>
+
+<ol>
+  <li><strong>Start the development server</strong>: <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve --livereload</code></li>
+  <li><strong>Edit files</strong>: Changes to markdown files are reflected immediately</li>
+  <li><strong>Test locally</strong>: Preview changes at <code class="language-plaintext highlighter-rouge">http://localhost:4000/learning_ai/</code></li>
+  <li><strong>Commit changes</strong>: Use Git to track and commit your modifications</li>
+</ol>
+
+<h4 id="file-structure">File Structure</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docs/
+├── _config.yml           # Jekyll configuration
+├── _data/                # Data files (YAML)
+│   ├── projects.yml      # Project information
+│   └── team.yml          # Team member information
+├── _layouts/             # Page templates
+│   ├── default.html      # Main layout
+│   └── project.html      # Project page layout
+├── _templates/           # Templates for new content
+├── assets/               # Static assets
+│   └── images/           # Images and thumbnails
+├── projects/             # Project pages
+├── index.md              # Homepage
+└── *.md                  # Other pages
+</code></pre></div></div>
+
+<h2 id="adding-new-projects">Adding New Projects</h2>
+
+<h3 id="step-by-step-process">Step-by-Step Process</h3>
+
+<h4 id="1-prepare-project-information">1. Prepare Project Information</h4>
+
+<p>Gather the following information:</p>
+<ul>
+  <li>Project title and description</li>
+  <li>Current status (In Development, Active, Completed, Archived)</li>
+  <li>Repository directory name</li>
+  <li>Key features and technical details</li>
+  <li>Getting started instructions</li>
+  <li>User guide information</li>
+</ul>
+
+<h4 id="2-create-project-thumbnail">2. Create Project Thumbnail</h4>
+
+<p>Create a <strong>300x200 pixel</strong> thumbnail image:</p>
+<ul>
+  <li>Use a screenshot, icon, or representative image</li>
+  <li>Save as PNG or JPG format</li>
+  <li>Keep file size under 100KB</li>
+  <li>Place in <code class="language-plaintext highlighter-rouge">docs/assets/images/</code></li>
+  <li>Use descriptive filename (e.g., <code class="language-plaintext highlighter-rouge">my-project-thumb.png</code>)</li>
+</ul>
+
+<h4 id="3-update-projects-data">3. Update Projects Data</h4>
+
+<p>Edit <code class="language-plaintext highlighter-rouge">docs/_data/projects.yml</code>:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Your</span><span class="nv"> </span><span class="s">Project</span><span class="nv"> </span><span class="s">Name"</span>
+  <span class="na">slug</span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-project-slug"</span>  <span class="c1"># Used in URL, lowercase with hyphens</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Brief</span><span class="nv"> </span><span class="s">description</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">project"</span>
+  <span class="na">thumbnail</span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-project-thumb.png"</span>  <span class="c1"># Filename in assets/images/</span>
+  <span class="na">status</span><span class="pi">:</span> <span class="s2">"</span><span class="s">In</span><span class="nv"> </span><span class="s">Development"</span>  <span class="c1"># Status options listed above</span>
+  <span class="na">project_dir</span><span class="pi">:</span> <span class="s2">"</span><span class="s">YourProjectDirectory"</span>  <span class="c1"># Actual directory name in repository</span>
+</code></pre></div></div>
+
+<h4 id="4-create-project-page">4. Create Project Page</h4>
+
+<ol>
+  <li><strong>Copy the template</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>docs/_templates/project-template.md docs/projects/your-project-slug.md
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Edit the frontmatter</strong> (between <code class="language-plaintext highlighter-rouge">---</code> lines):
+```yaml
+—
+layout: project
+title: “Your Project Name”
+project_dir: “YourProjectDirectory”
+status: “In Development”
+release_url: “”  # Add if you have releases
+getting_started: |
+    <ol>
+      <li>Your setup instructions</li>
+      <li>Installation steps</li>
+      <li>Basic usage
+user_guide: |
+  Brief guide on how to use the project
+—
+```</li>
+    </ol>
+  </li>
+  <li><strong>Write the content</strong>: Fill in the Overview, Features, Technical Details, etc.</li>
+</ol>
+
+<h4 id="5-test-locally">5. Test Locally</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>docs
+bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>
+</code></pre></div></div>
+
+<p>Visit <code class="language-plaintext highlighter-rouge">http://localhost:4000/learning_ai/</code> to verify:</p>
+<ul>
+  <li>Project appears on homepage</li>
+  <li>Project page loads correctly</li>
+  <li>Links work properly</li>
+  <li>Images display correctly</li>
+</ul>
+
+<h4 id="6-deploy">6. Deploy</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Add [Project Name] to website"</span>
+git push origin main
+</code></pre></div></div>
+
+<p>GitHub Pages will automatically build and deploy your changes.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="common-issues">Common Issues</h3>
+
+<h4 id="bundle-install-fails">Bundle Install Fails</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Update bundler</span>
+gem update bundler
+
+<span class="c"># Clear cache and retry</span>
+bundle clean <span class="nt">--force</span>
+bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<h4 id="jekyll-serve-fails">Jekyll Serve Fails</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check Ruby version</span>
+ruby <span class="nt">--version</span>  <span class="c"># Should be 2.7+</span>
+
+<span class="c"># Reinstall Jekyll</span>
+gem uninstall jekyll
+gem <span class="nb">install </span>jekyll
+</code></pre></div></div>
+
+<h4 id="images-not-loading">Images Not Loading</h4>
+<ul>
+  <li>Check file paths in <code class="language-plaintext highlighter-rouge">_data/projects.yml</code></li>
+  <li>Ensure images are in <code class="language-plaintext highlighter-rouge">docs/assets/images/</code></li>
+  <li>Verify image filenames match exactly (case-sensitive)</li>
+</ul>
+
+<h4 id="layout-issues">Layout Issues</h4>
+<ul>
+  <li>Check YAML frontmatter syntax</li>
+  <li>Ensure proper indentation in data files</li>
+  <li>Validate YAML using online tools if needed</li>
+</ul>
+
+<h3 id="performance-tips">Performance Tips</h3>
+
+<h4 id="faster-build-times">Faster Build Times</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Exclude unnecessary files</span>
+<span class="c"># Add to _config.yml exclude list</span>
+
+<span class="c"># Use incremental builds</span>
+bundle <span class="nb">exec </span>jekyll serve <span class="nt">--incremental</span>
+</code></pre></div></div>
+
+<h4 id="optimizing-images">Optimizing Images</h4>
+<ul>
+  <li>Keep thumbnails under 100KB</li>
+  <li>Use appropriate compression</li>
+  <li>Consider WebP format for better compression (with fallbacks)</li>
+</ul>
+
+<h2 id="advanced-customization">Advanced Customization</h2>
+
+<h3 id="modifying-layouts">Modifying Layouts</h3>
+
+<p>Edit files in <code class="language-plaintext highlighter-rouge">_layouts/</code> to customize:</p>
+<ul>
+  <li>Page structure</li>
+  <li>Navigation menus</li>
+  <li>Styling and appearance</li>
+</ul>
+
+<h3 id="adding-custom-styles">Adding Custom Styles</h3>
+
+<p>Add CSS to <code class="language-plaintext highlighter-rouge">assets/css/style.scss</code>:</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span>
+<span class="nt">---</span>
+
+<span class="o">@</span><span class="nt">import</span> <span class="s2">"leap-day"</span><span class="p">;</span>
+
+<span class="c1">// Your custom styles here</span>
+<span class="nc">.project-item</span> <span class="p">{</span>
+  <span class="c1">// Custom styling</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="custom-collections">Custom Collections</h3>
+
+<p>To add new content types, modify <code class="language-plaintext highlighter-rouge">_config.yml</code>:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">collections</span><span class="pi">:</span>
+  <span class="na">tutorials</span><span class="pi">:</span>
+    <span class="na">output</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">permalink</span><span class="pi">:</span> <span class="s">/tutorials/:name/</span>
+</code></pre></div></div>
+
+<h2 id="deployment--hosting">Deployment &amp; Hosting</h2>
+
+<h3 id="github-pages-automatic-deployment">GitHub Pages Automatic Deployment</h3>
+
+<ol>
+  <li><strong>Enable GitHub Pages</strong> in repository settings</li>
+  <li><strong>Set source</strong> to “Deploy from a branch”</li>
+  <li><strong>Select branch</strong>: <code class="language-plaintext highlighter-rouge">main</code> or <code class="language-plaintext highlighter-rouge">master</code></li>
+  <li><strong>Set folder</strong>: <code class="language-plaintext highlighter-rouge">/docs</code></li>
+</ol>
+
+<h3 id="manual-deployment">Manual Deployment</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Build site locally</span>
+bundle <span class="nb">exec </span>jekyll build
+
+<span class="c"># Deploy _site/ contents to hosting provider</span>
+</code></pre></div></div>
+
+<h2 id="maintenance">Maintenance</h2>
+
+<h3 id="regular-updates">Regular Updates</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Update dependencies</span>
+bundle update
+
+<span class="c"># Check for security vulnerabilities</span>
+bundle audit
+
+<span class="c"># Update Jekyll and plugins</span>
+gem update jekyll
+</code></pre></div></div>
+
+<h3 id="monitoring">Monitoring</h3>
+
+<ul>
+  <li><strong>GitHub Actions</strong>: Set up automated testing</li>
+  <li><strong>Link checking</strong>: Regularly verify external links</li>
+  <li><strong>Performance</strong>: Monitor site speed and optimization</li>
+</ul>
+
+<hr />
+
+<p><em>This workflow documentation should be updated as processes evolve and new best practices are discovered.</em></p>
+
+
+        </section>
+
+        <footer>
+        
+          Learning AI - Generative AI Experiments is maintained by <a href="https://github.com/csorbakristof">csorbakristof</a><br>
+        
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.
+        </footer>
+
+      </div>
+    </div>
+  </body>
+</html>

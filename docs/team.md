@@ -35,34 +35,3 @@ Meet the people behind the Learning AI experiments.
 
 <p><em>Update the team data file at <code>_data/team.yml</code> to add team members.</em></p>
 {% endif %}
-
-<style>
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2em;
-  margin: 2em 0;
-}
-
-.team-member {
-  text-align: center;
-  padding: 1em;
-  border: 1px solid #eee;
-  border-radius: 8px;
-}
-
-.member-photo img {
-  border-radius: 50%;
-  border: 3px solid #ddd;
-}
-
-.team-member h3 {
-  margin: 1em 0 0.5em 0;
-}
-
-.member-role {
-  color: #666;
-  font-style: italic;
-  margin: 0;
-}
-</style>

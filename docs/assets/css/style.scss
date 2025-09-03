@@ -1,0 +1,155 @@
+---
+---
+
+@import "leap-day";
+
+/* Custom navigation styling */
+.site-nav {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.site-nav li {
+  margin: 0;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.site-nav a:hover {
+  background-color: #e0e0e0;
+}
+
+.site-nav a.active {
+  background-color: #007cba;
+  color: white;
+}
+
+/* Projects list styling */
+.projects-list {
+  margin: 2em 0;
+}
+
+.project-item {
+  display: flex;
+  margin-bottom: 2em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #eee;
+  align-items: flex-start;
+}
+
+.project-thumbnail {
+  flex-shrink: 0;
+  margin-right: 1.5em;
+}
+
+.project-thumbnail img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.project-content {
+  flex: 1;
+}
+
+.project-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.project-content h3 a {
+  text-decoration: none;
+  color: #333;
+}
+
+.project-content h3 a:hover {
+  color: #0366d6;
+}
+
+/* Team grid styling */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2em;
+  margin: 2em 0;
+}
+
+.team-member {
+  text-align: center;
+  padding: 1em;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.member-photo img {
+  border-radius: 50%;
+  border: 3px solid #ddd;
+}
+
+.team-member h3 {
+  margin: 1em 0 0.5em 0;
+}
+
+.member-role {
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Project page meta */
+.project-meta {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 1em 0;
+}
+
+.project-meta p {
+  margin: 0.5em 0;
+}
+
+.project-footer {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid #eee;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .site-nav ul {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .project-item {
+    flex-direction: column;
+  }
+  
+  .project-thumbnail {
+    margin-right: 0;
+    margin-bottom: 1em;
+    align-self: center;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}

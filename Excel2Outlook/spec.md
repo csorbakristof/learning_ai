@@ -1,6 +1,6 @@
 # Overview
 
-This solution contains several Excel macros (VBA scripts) which control Outlook (sending emails and analysing responses) based on the data retrieved from Excel tables.
+This solution contains several Excel macros (VBA scripts) which control Outlook (sending emails and analysing responses) based on the data retrieved from Excel tables. It can attach a file if needed and it supports filtering of the rows (as it drafts emails only for the visible rows).
 
 In this description every feature (typically subsections of this description) have a code name in brackets like "[F01]". Use these code names to refer to the features.
 

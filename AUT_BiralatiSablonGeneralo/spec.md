@@ -49,7 +49,7 @@ The changes to apply to the template document:
 - Replace "Dr. Érték Elek" with the value in column "Konzulens neve".
 - Replace the string "Budapest, 2020. szeptember 4." at the end of the document with "Budapest, " and the current date in hungarian format like "[year]. [month name] [day].". For example, for  (September 26, 2025), it should be: "2025. szeptember 26."
 
-Save the file and proceed to the next row.
+Save the file into a subdirectory with the name of the advisor ("Konzulens neve") which is made filesystem frieldly (just like the word document filenames derived from the student names) and proceed to the next row.
 
 ## Further details
 

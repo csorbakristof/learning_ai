@@ -173,7 +173,7 @@ Sub CollectStudents()
         ' Create Feladatkiírás fájlnév with cleaned student name
         Dim cleanedName As String
         cleanedName = CleanStudentName(terhelesWs.Cells(i, colHallgatoNeve).Value)
-        generaltWs.Cells(targetRow, targetColFeladatkiirasFajlnev).Value = "kiirasok/" & cleanedName & ".docx"
+        generaltWs.Cells(targetRow, targetColFeladatkiirasFajlnev).Value = cleanedName & ".docx"
         
         targetRow = targetRow + 1
     Next i
@@ -232,6 +232,8 @@ Sub GenerateTaskDescriptions()
     Dim szakMegnevezese As String
     Dim konzulensNeve As String
     Dim outputFilename As String
+    Dim cleanedAdvisorName As String
+    Dim fullOutputPath As String
     
     Set controllerWb = ThisWorkbook
     wordStarted = False
@@ -317,8 +319,24 @@ Sub GenerateTaskDescriptions()
             GoTo NextRow
         End If
         
+        ' Create advisor subdirectory
+        Dim advisorDir As String
+        cleanedAdvisorName = CleanStudentName(konzulensNeve) ' Reuse the same cleaning function
+        advisorDir = outputDir & "\" & cleanedAdvisorName
+        
+        ' Create advisor directory if it doesn't exist
+        If Dir(advisorDir, vbDirectory) = "" Then
+            MkDir advisorDir
+        End If
+        
+        ' Construct full output path with advisor subdirectory
+        Dim justFilename As String
+        ' The filename is now just the filename without any path prefix
+        justFilename = outputFilename
+        fullOutputPath = advisorDir & "\" & justFilename
+        
         ' Process the document
-        If ProcessWordDocument(wordApp, templatePath, outputDir & "\" & outputFilename, _
+        If ProcessWordDocument(wordApp, templatePath, fullOutputPath, _
                               dolgozatMegnevezese, szakMegnevezese, konzulensNeve, studentName) Then
             processedCount = processedCount + 1
         Else
@@ -341,7 +359,8 @@ NextRow:
            "Feldolgozott dokumentumok: " & processedCount & vbCrLf & _
            "Kihagyott sorok: " & skippedCount & vbCrLf & _
            "Hibák száma: " & errorCount & vbCrLf & vbCrLf & _
-           "A dokumentumok a következő könyvtárban találhatók: " & outputDir, _
+           "A dokumentumok konzulens szerint rendszerezve találhatók itt: " & outputDir & vbCrLf & _
+           "Minden konzulensnek külön almappája van a tisztított nevükkel.", _
            vbInformation, "Művelet befejezve"
     
     Exit Sub
@@ -354,7 +373,8 @@ ErrorInProcessing:
            "Dolgozat megnevezése: " & dolgozatMegnevezese & vbCrLf & _
            "Szak megnevezése: " & szakMegnevezese & vbCrLf & _
            "Konzulens neve: " & konzulensNeve & vbCrLf & _
-           "Kimeneti fájl: " & outputFilename & vbCrLf & vbCrLf & _
+           "Konzulens mappa: " & cleanedAdvisorName & vbCrLf & _
+           "Kimeneti fájl: " & fullOutputPath & vbCrLf & vbCrLf & _
            "Lehetséges okok és megoldások:" & vbCrLf & _
            "• A sablon dokumentumban hiányoznak a legördülő listák" & vbCrLf & _
            "• Az Excel adatok nem találhatók a Word legördülő listákban" & vbCrLf & _
@@ -444,6 +464,13 @@ Private Function ProcessWordDocument(wordApp As Object, templatePath As String, 
         ProcessWordDocument = False
         Exit Function
     End If
+    
+    ' Replace student name
+    With wordDoc.Range.Find
+        .Text = "Rezeda Kázmér"
+        .Replacement.Text = student
+        .Execute Replace:=2 ' wdReplaceAll
+    End With
     
     ' Replace consultant name
     With wordDoc.Range.Find
@@ -576,31 +603,56 @@ Private Function FindColumnIndex(ws As Worksheet, headerName As String) As Long
     FindColumnIndex = 0
 End Function
 
-' Helper function to clean student names for file system compatibility
+' Helper function to clean student names for file system compatibility with PascalCasing
 Private Function CleanStudentName(studentName As String) As String
     Dim cleanName As String
-    cleanName = UCase(Trim(studentName))
+    Dim words As Variant
+    Dim i As Integer
+    Dim word As String
+    Dim result As String
     
-    ' Replace accented characters with English letters
+    ' First, replace accented characters with English letters
+    cleanName = Trim(studentName)
     cleanName = Replace(cleanName, "Á", "A")
+    cleanName = Replace(cleanName, "á", "a")
     cleanName = Replace(cleanName, "É", "E")
+    cleanName = Replace(cleanName, "é", "e")
     cleanName = Replace(cleanName, "Í", "I")
+    cleanName = Replace(cleanName, "í", "i")
     cleanName = Replace(cleanName, "Ó", "O")
+    cleanName = Replace(cleanName, "ó", "o")
     cleanName = Replace(cleanName, "Ö", "O")
+    cleanName = Replace(cleanName, "ö", "o")
     cleanName = Replace(cleanName, "Ő", "O")
+    cleanName = Replace(cleanName, "ő", "o")
     cleanName = Replace(cleanName, "Ú", "U")
+    cleanName = Replace(cleanName, "ú", "u")
     cleanName = Replace(cleanName, "Ü", "U")
+    cleanName = Replace(cleanName, "ü", "u")
     cleanName = Replace(cleanName, "Ű", "U")
+    cleanName = Replace(cleanName, "ű", "u")
     
-    ' Replace problematic characters with underscores
-    cleanName = Replace(cleanName, " ", "_")
-    cleanName = Replace(cleanName, "-", "_")
-    cleanName = Replace(cleanName, ".", "_")
-    cleanName = Replace(cleanName, ",", "_")
-    cleanName = Replace(cleanName, "(", "_")
-    cleanName = Replace(cleanName, ")", "_")
+    ' Remove problematic characters and replace with spaces for word separation
+    cleanName = Replace(cleanName, "-", " ")
+    cleanName = Replace(cleanName, ".", " ")
+    cleanName = Replace(cleanName, ",", " ")
+    cleanName = Replace(cleanName, "(", " ")
+    cleanName = Replace(cleanName, ")", " ")
     
-    CleanStudentName = cleanName
+    ' Split by spaces and apply PascalCasing
+    words = Split(cleanName, " ")
+    result = ""
+    
+    For i = LBound(words) To UBound(words)
+        word = Trim(words(i))
+        If Len(word) > 0 Then
+            ' Capitalize first letter, lowercase the rest
+            word = UCase(Left(word, 1)) & LCase(Mid(word, 2))
+            result = result & word
+        End If
+    Next i
+    
+    CleanStudentName = result
 End Function
 
 ' Helper function to clean consultant names by removing text in brackets

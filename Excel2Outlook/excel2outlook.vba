@@ -8,6 +8,7 @@
 ' Triggered by: Ctrl+Shift+M from UserList worksheet
 '
 ' Template source: "EmailTemplate" worksheet, cell A1
+' File attachments: Optional "FileToAttach" column with filename (relative to workbook path)
 ' =============================================================================
 
 Option Explicit
@@ -17,6 +18,7 @@ Private Const EMAIL_TEMPLATE_WORKSHEET = "EmailTemplate"
 Private Const EMAIL_TEMPLATE_CELL = "A1"
 Private Const EMAIL_COLUMN = "email"
 Private Const SUBJECT_COLUMN = "Subject"
+Private Const FILE_TO_ATTACH_COLUMN = "FileToAttach"
 Private Const EMAIL_CONFIRMATION_THRESHOLD = 20
 Private Const HEADER_ROW = 1
 Private Const FIRST_DATA_ROW = 2
@@ -356,35 +358,26 @@ End Function
 Private Function PreValidateAllRows(ws As Worksheet, visibleRows As Collection, columnHeaders As Variant, emailTemplate As String) As Boolean
     Dim i As Long
     Dim currentRow As Long
-    Dim rowData As Variant
-    Dim emailAddress As String
-    Dim emailSubject As String
     Dim validationResult As String
+    Dim templateValidationResult As String
     Dim errorMessages As String
     
     errorMessages = ""
     
-    ' Validate each visible row
+    ' Validate each visible row using centralized validation
     For i = 1 To visibleRows.Count
         currentRow = visibleRows(i)
-        rowData = GetRowData(ws, currentRow)
         
-        ' Validate email address
-        emailAddress = GetColumnValue(columnHeaders, rowData, EMAIL_COLUMN)
-        If Trim(emailAddress) = "" Then
-            errorMessages = errorMessages & "Row " & currentRow & ": Email address is empty" & vbCrLf
-        End If
-        
-        ' Validate subject
-        emailSubject = GetColumnValue(columnHeaders, rowData, SUBJECT_COLUMN)
-        If Trim(emailSubject) = "" Then
-            errorMessages = errorMessages & "Row " & currentRow & ": Subject is empty" & vbCrLf
-        End If
-        
-        ' Validate template placeholders for this row
-        validationResult = ValidateTemplatePlaceholders(emailTemplate, columnHeaders, rowData, currentRow)
+        ' Use centralized row validation (includes file attachment checks)
+        validationResult = ValidateRowData(ws, currentRow, columnHeaders, emailTemplate)
         If validationResult <> "" Then
             errorMessages = errorMessages & "Row " & currentRow & ": " & validationResult & vbCrLf
+        End If
+        
+        ' Additional template placeholder validation
+        templateValidationResult = ValidateTemplatePlaceholders(emailTemplate, columnHeaders, GetRowData(ws, currentRow), currentRow)
+        If templateValidationResult <> "" Then
+            errorMessages = errorMessages & "Row " & currentRow & ": " & templateValidationResult & vbCrLf
         End If
     Next i
     
@@ -501,7 +494,7 @@ End Function
 ' =============================================================================
 ' Create email draft in Outlook
 ' =============================================================================
-Private Sub CreateEmailDraft(emailAddress As String, emailSubject As String, emailBody As String)
+Private Sub CreateEmailDraft(emailAddress As String, emailSubject As String, emailBody As String, Optional columnHeaders As Variant, Optional rowData As Variant)
     Dim mailItem As Object
     
     On Error GoTo ErrorHandler
@@ -514,6 +507,12 @@ Private Sub CreateEmailDraft(emailAddress As String, emailSubject As String, ema
         .To = emailAddress
         .Subject = emailSubject
         .Body = emailBody
+        
+        ' Attach file if column headers and row data are provided
+        If Not IsMissing(columnHeaders) And Not IsMissing(rowData) Then
+            AttachFileToEmail mailItem, columnHeaders, rowData
+        End If
+        
         .Display ' Show email draft (don't send automatically)
     End With
     
@@ -629,6 +628,19 @@ Private Function ValidateRowData(ws As Worksheet, rowNum As Long, columnHeaders 
         errors = errors & "Subject is empty. "
     End If
     
+    ' Check file attachment (optional column)
+    If HasColumn(columnHeaders, FILE_TO_ATTACH_COLUMN) Then
+        Dim fileToAttach As String
+        fileToAttach = GetColumnValue(columnHeaders, rowData, FILE_TO_ATTACH_COLUMN)
+        If Trim(fileToAttach) <> "" Then
+            Dim fullFilePath As String
+            fullFilePath = ThisWorkbook.Path & "\" & fileToAttach
+            If Not FileExists(fullFilePath) Then
+                errors = errors & "Attachment file '" & fileToAttach & "' not found. "
+            End If
+        End If
+    End If
+    
     ' Additional template validation could be added here
     
     ValidateRowData = Trim(errors)
@@ -657,8 +669,8 @@ Private Function CreateEmailFromRow(ws As Worksheet, rowNum As Long, columnHeade
         Exit Function
     End If
     
-    ' Create email draft
-    CreateEmailDraft emailAddress, emailSubject, personalizedBody
+    ' Create email draft with file attachment support
+    CreateEmailDraft emailAddress, emailSubject, personalizedBody, columnHeaders, rowData
     CreateEmailFromRow = True
     Exit Function
     
@@ -675,4 +687,36 @@ End Sub
 ' Standardized success display
 Private Sub ShowSuccess(message As String, title As String)
     MsgBox message, vbInformation, title
+End Sub
+
+' Check if file exists
+Private Function FileExists(filePath As String) As Boolean
+    FileExists = (Dir(filePath) <> "")
+End Function
+
+' Attach file to email if specified
+Private Sub AttachFileToEmail(emailItem As Object, columnHeaders As Variant, rowData As Variant)
+    On Error GoTo ErrorHandler
+    
+    ' Check if FileToAttach column exists
+    If Not HasColumn(columnHeaders, FILE_TO_ATTACH_COLUMN) Then Exit Sub
+    
+    ' Get file attachment value
+    Dim fileToAttach As String
+    fileToAttach = GetColumnValue(columnHeaders, rowData, FILE_TO_ATTACH_COLUMN)
+    
+    ' If no file specified, exit
+    If Trim(fileToAttach) = "" Then Exit Sub
+    
+    ' Build full file path
+    Dim fullFilePath As String
+    fullFilePath = ThisWorkbook.Path & "\" & fileToAttach
+    
+    ' Attach file (validation already done in ValidateRowData)
+    emailItem.Attachments.Add fullFilePath
+    
+    Exit Sub
+    
+ErrorHandler:
+    ShowError "Error attaching file '" & fileToAttach & "': " & Err.Description, "File Attachment Error"
 End Sub

@@ -14,6 +14,8 @@ The "To" field of the email is taken from the "email" column in the current row.
 
 The body of the email is created from the template mentioned above. It may contain placeholders like "[Name]" (it may contain spaces and it is case sensitive, always in square brackets). These are substituted with values taken from the UserList worksheets column with the same title as the placeholder. Column titles are case sensitive and always in row 1 and always look for exact title matches between columns and placeholders.
 
+If the UserList worksheet contains a FileToAttach column and the value for a given row is not empty, the file with that name (located beside the current excel file in the same directory) should be attached to the email. 
+
 ## Further details
 
 - If any column needed by the macro is missing, an error message has to be shown and the process should stop.
@@ -25,6 +27,16 @@ The body of the email is created from the template mentioned above. It may conta
 - Add code to register the shortcut for the macro. It should run when the workbook is opened.
 - If the EmailTemplate worksheet does not exist, show an error message.
 - Error messages should be detailed so the user has guidance how to fix the issue.
+
+## Details about file attachment
+
+- The name of the "FileToAttach" column (case sensitive check) should also be stored in a constant in the source code.
+- Support relative path with the filenames. Base directory for the relative path should be the directory where the excel file is saved.
+- If there is an error with attaching a file, MassiveSend should be interrupted and no emails should be drafted. Just like in the case of other validation errors.
+- You do not need to support attachment of multiple files.
+- You do not need to apply any validation for the files.
+- File attachment is an optional feature. If the FileToAttach column does not exist of the corresponding cell is empty, simply do not attach anything. No warning or error message should be issued in this case.
+
 
 # [MassiveSend] Massive sending emails
 

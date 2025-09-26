@@ -24,6 +24,10 @@ Excel táblák tartalmát összemásoló makró.
 #### **OutlookReplyDrafter/**
 Szerever oldal és OpenAI API segítségével válasz emailek készítése Outlook makró segítségével.
 
+#### Excel2Outlook
+Excel VBA makró, mely a minta xlsm szerint táblázatból és egy ottani email sablonból email Draftokat készít (placeholdereket behelyettesítve) és Outlookban küldésre készen feldobja őket.
+Adott nevű fájlt is tud csatolni.
+
 #### **ProjectLabAdmin/**
 Admin funkciók önlab jegyek adminisztrálására, adatok Neptunból kinyerésére (Python+Selenium)...
 

@@ -349,8 +349,19 @@ NextRow:
 ErrorInProcessing:
     If wordStarted Then wordApp.Quit
     Application.StatusBar = False
-    MsgBox "Hiba történt a " & studentName & " dokumentumának feldolgozása során." & vbCrLf & _
-           "A feldolgozás megszakadt.", vbCritical, "Feldolgozási hiba"
+    MsgBox "Hiba történt a dokumentum feldolgozása során!" & vbCrLf & vbCrLf & _
+           "Hallgató: " & studentName & vbCrLf & _
+           "Dolgozat megnevezése: " & dolgozatMegnevezese & vbCrLf & _
+           "Szak megnevezése: " & szakMegnevezese & vbCrLf & _
+           "Konzulens neve: " & konzulensNeve & vbCrLf & _
+           "Kimeneti fájl: " & outputFilename & vbCrLf & vbCrLf & _
+           "Lehetséges okok és megoldások:" & vbCrLf & _
+           "• A sablon dokumentumban hiányoznak a legördülő listák" & vbCrLf & _
+           "• Az Excel adatok nem találhatók a Word legördülő listákban" & vbCrLf & _
+           "• A sablon fájl nem megfelelő formátumú vagy sérült" & vbCrLf & _
+           "• Nincs írási jogosultság a kimeneti könyvtárba" & vbCrLf & vbCrLf & _
+           "Ellenőrizze a sablon fájlt és az adatok helyességét, majd próbálja újra.", _
+           vbCritical, "Dokumentum feldolgozási hiba"
     Exit Sub
     
 ErrorHandler:
@@ -385,8 +396,16 @@ Private Function ProcessWordDocument(wordApp As Object, templatePath As String, 
     
     ' Process the first two content controls (assuming they are dropdowns)
     If contentControls.Count < 2 Then
-        MsgBox "Hiba: A sablon dokumentumban nem található elegendő tartalom vezérlő elem." & vbCrLf & _
-               "Szükséges: legalább 2 legördülő lista.", vbCritical, "Sablon hiba"
+        MsgBox "Hiba: A sablon dokumentumban nem található elegendő tartalom vezérlő elem." & vbCrLf & vbCrLf & _
+               "Szükséges: legalább 2 legördülő lista (Content Control)" & vbCrLf & _
+               "Találva: " & contentControls.Count & " tartalom vezérlő elem" & vbCrLf & vbCrLf & _
+               "Megoldás:" & vbCrLf & _
+               "1. Nyissa meg a '" & TEMPLATE_FILENAME & "' fájlt Word-ben" & vbCrLf & _
+               "2. Helyezzen be 2 legördülő lista Content Control elemet" & vbCrLf & _
+               "3. Az első legyen a 'Dolgozat megnevezése' számára" & vbCrLf & _
+               "4. A második legyen a 'Szak megnevezése' számára" & vbCrLf & _
+               "5. Adja hozzá a megfelelő opciókat mindkét listához", _
+               vbCritical, "Sablon Content Control hiba"
         wordDoc.Close False
         ProcessWordDocument = False
         Exit Function
@@ -395,8 +414,15 @@ Private Function ProcessWordDocument(wordApp As Object, templatePath As String, 
     ' Set first dropdown (Dolgozat megnevezése)
     Set cc = contentControls(1)
     If Not SetDropdownValue(cc, dolgozat) Then
-        MsgBox "Hiba: Nem található a '" & dolgozat & "' érték az első legördülő listában." & vbCrLf & _
-               "Hallgató: " & student, vbCritical, "Legördülő lista hiba"
+        MsgBox "Hiba: Nem található a dolgozat megnevezés az első legördülő listában!" & vbCrLf & vbCrLf & _
+               "Keresett érték: '" & dolgozat & "'" & vbCrLf & _
+               "Hallgató: " & student & vbCrLf & vbCrLf & _
+               "Megoldás:" & vbCrLf & _
+               "1. Nyissa meg a '" & TEMPLATE_FILENAME & "' fájlt Word-ben" & vbCrLf & _
+               "2. Kattintson az első legördülő listára (Dolgozat megnevezése)" & vbCrLf & _
+               "3. Adja hozzá a '" & dolgozat & "' opciót a listához" & vbCrLf & _
+               "4. Vagy ellenőrizze a 'Tantárgyi adatok' munkalapon az adatok helyességét", _
+               vbCritical, "Dolgozat megnevezése hiba"
         wordDoc.Close False
         ProcessWordDocument = False
         Exit Function
@@ -405,8 +431,15 @@ Private Function ProcessWordDocument(wordApp As Object, templatePath As String, 
     ' Set second dropdown (Szak megnevezése)
     Set cc = contentControls(2)
     If Not SetDropdownValue(cc, szak) Then
-        MsgBox "Hiba: Nem található a '" & szak & "' érték a második legördülő listában." & vbCrLf & _
-               "Hallgató: " & student, vbCritical, "Legördülő lista hiba"
+        MsgBox "Hiba: Nem található a szak megnevezés a második legördülő listában!" & vbCrLf & vbCrLf & _
+               "Keresett érték: '" & szak & "'" & vbCrLf & _
+               "Hallgató: " & student & vbCrLf & vbCrLf & _
+               "Megoldás:" & vbCrLf & _
+               "1. Nyissa meg a '" & TEMPLATE_FILENAME & "' fájlt Word-ben" & vbCrLf & _
+               "2. Kattintson a második legördülő listára (Szak megnevezése)" & vbCrLf & _
+               "3. Adja hozzá a '" & szak & "' opciót a listához" & vbCrLf & _
+               "4. Vagy ellenőrizze a 'Tantárgyi adatok' munkalapon az adatok helyességét", _
+               vbCritical, "Szak megnevezése hiba"
         wordDoc.Close False
         ProcessWordDocument = False
         Exit Function

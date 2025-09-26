@@ -1,0 +1,36 @@
+# Overview
+
+This solution contains several Excel macros (VBA scripts) which control Outlook (sending emails and analysing responses) based on the data retrieved from Excel tables.
+
+In this description every feature (typically subsections of this description) have a code name in brackets like "[F01]". Use these code names to refer to the features.
+
+# [MassiveSend] Massive sending emails
+
+Input: a single worksheet in Excel which contains email addresses and further columns with text which have to be substituted into email templates. This worksheet will be referred to as "UserList", but its name in Excel may be different. It is always the current worksheet the macro is started from. Another worksheet called "EmailTemplate" contains the template for an email in the upper-left cell (always cell A1).
+
+The macro is started by Ctrl-Shift-D (standing for Drafting). If the user starts the macro, the macro checks the row the cursor is located in. It opens a new email in Outlook and writes its metadata and text body based on the data in that current row. It does not send the email, that is left to the user after reviewing the text.
+
+The "To" field of the email is taken from the "email" column in the current row. "Subject" is taken from the Subject column. 
+
+The body of the email is created from the template mentioned above. It may contain placeholders like "[Name]" (it may contain spaces and it is case sensitive, always in square brackets). These are substituted with values taken from the UserList worksheets column with the same title as the placeholder. Column titles are case sensitive and always in row 1 and always look for exact title matches between columns and placeholders.
+
+## Further details
+
+- If any column needed by the macro is missing, an error message has to be shown and the process should stop.
+- If Outlook is not available, show an error message and stop.
+- Preserve the formatting and line breaks of the template. It is only plain text now with line breaks.
+- Missing placeholder values (both in case of non-existing column or empty cell) should issue an error message and stop the macro.
+- When creating the email, it should be a draft which is shown in the compose window but not sent yet.
+- If Outlook is not running, start it.
+- Add code to register the shortcut for the macro. It should run when the workbook is opened.
+- If the EmailTemplate worksheet does not exist, show an error message.
+- Error messages should be detailed so the user has guidance how to fix the issue.
+
+
+# [ResponseCollector] Response collection from answers on an email
+
+# Later features (not to be implemented now)
+
+- Default values for the columns in Excel (upwards firs non-empty cell value)
+- Option to send to a set of users (multiple rows based on filtering or selection), they can get it as a single email with multiple addressees (only if other data are the same), everyone in bcc, or individual emails for everyone.
+

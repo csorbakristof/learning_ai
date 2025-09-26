@@ -2,3 +2,10 @@ Tailor Copilot to your preferences by writing custom instructions in a
 copilot-instructions.md file, and scale your workflow by saving
 reusable prompts in your .github/prompts folder.
 
+---
+
+10 git repository egy könyvtárban (alkönyvtáranként), mindbe be kellene másolni egy fájlt. Megkértem a copilotot, hogy másolja szét (ő inkább létrehozta mindet, de OK), majd kérésre minden repóba commitolta adott commit message használatával, majd pusholta is őket.
+Labor anyagok egységes kezelésénél praktikus...
+
+---
+

@@ -1,9 +1,14 @@
 Option Explicit
 
+' Constants
+Const TEMPLATE_FILENAME = "FeladatkiirasSablonAUT.docx"
+
 ' Workbook Event Handler - Register hotkeys when workbook opens
 Private Sub Workbook_Open()
     ' Register Ctrl+Shift+C for CollectStudents
     Application.OnKey "^+C", "CollectStudents"
+    ' Register Ctrl+Shift+G for GenerateTaskDescriptions
+    Application.OnKey "^+G", "GenerateTaskDescriptions"
 End Sub
 
 ' Main macro for collecting students data
@@ -193,6 +198,296 @@ ErrorHandler:
            "Ellenőrizze az adatforrásokat és próbálja újra.", _
            vbCritical, "Váratlan hiba"
 End Sub
+
+' Main macro for generating task descriptions
+Sub GenerateTaskDescriptions()
+    On Error GoTo ErrorHandler
+    
+    Dim controllerWb As Workbook
+    Dim generaltWs As Worksheet
+    Dim templatePath As String
+    Dim outputDir As String
+    
+    Dim lastRow As Long
+    Dim currentRow As Long
+    Dim processedCount As Long
+    Dim skippedCount As Long
+    Dim errorCount As Long
+    
+    ' Column indices
+    Dim colHallgatoNeve As Long
+    Dim colDolgozatMegnevezese As Long
+    Dim colSzakMegnevezese As Long
+    Dim colKonzulensNeve As Long
+    Dim colFeladatkiirasFajlnev As Long
+    
+    ' Word application variables
+    Dim wordApp As Object
+    Dim wordDoc As Object
+    Dim wordStarted As Boolean
+    
+    ' Variables for row processing
+    Dim studentName As String
+    Dim dolgozatMegnevezese As String
+    Dim szakMegnevezese As String
+    Dim konzulensNeve As String
+    Dim outputFilename As String
+    
+    Set controllerWb = ThisWorkbook
+    wordStarted = False
+    
+    ' Step 1: Get reference to GeneráltHallgatóiLista worksheet
+    Set generaltWs = GetWorksheet(controllerWb, "GeneráltHallgatóiLista")
+    If generaltWs Is Nothing Then
+        MsgBox "Hiba: Nem található a 'GeneráltHallgatóiLista' munkalap a vezérlő Excel fájlban." & vbCrLf & _
+               "Ellenőrizze, hogy létezik-e ilyen nevű munkalap.", _
+               vbCritical, "Munkalap nem található"
+        Exit Sub
+    End If
+    
+    ' Step 2: Check if template file exists
+    templatePath = controllerWb.Path & "\" & TEMPLATE_FILENAME
+    If Dir(templatePath) = "" Then
+        MsgBox "Hiba: Nem található a sablon fájl: " & templatePath & vbCrLf & _
+               "Ellenőrizze, hogy a '" & TEMPLATE_FILENAME & "' fájl ugyanabban a könyvtárban van-e, mint a vezérlő Excel fájl.", _
+               vbCritical, "Sablon fájl nem található"
+        Exit Sub
+    End If
+    
+    ' Step 3: Find column indices
+    colHallgatoNeve = FindColumnIndex(generaltWs, "Hallgató neve")
+    colDolgozatMegnevezese = FindColumnIndex(generaltWs, "Dolgozat megnevezése")
+    colSzakMegnevezese = FindColumnIndex(generaltWs, "Szak megnevezése")
+    colKonzulensNeve = FindColumnIndex(generaltWs, "Konzulens neve")
+    colFeladatkiirasFajlnev = FindColumnIndex(generaltWs, "Feladatkiírás fájlnév")
+    
+    If colHallgatoNeve = 0 Or colDolgozatMegnevezese = 0 Or colSzakMegnevezese = 0 Or _
+       colKonzulensNeve = 0 Or colFeladatkiirasFajlnev = 0 Then
+        MsgBox "Hiba: Nem találhatók a szükséges oszlopok a 'GeneráltHallgatóiLista' munkalapon." & vbCrLf & _
+               "Szükséges oszlopok: 'Hallgató neve', 'Dolgozat megnevezése', 'Szak megnevezése', " & _
+               "'Konzulens neve', 'Feladatkiírás fájlnév'" & vbCrLf & _
+               "Ellenőrizze az oszlopfejléceket.", _
+               vbCritical, "Oszlopok nem találhatók"
+        Exit Sub
+    End If
+    
+    ' Step 4: Get data range
+    lastRow = generaltWs.Cells(generaltWs.Rows.Count, colHallgatoNeve).End(xlUp).Row
+    If lastRow < 2 Then
+        MsgBox "Hiba: Nincsenek adatok a 'GeneráltHallgatóiLista' munkalapon." & vbCrLf & _
+               "Futtassa először a CollectStudents makrót az adatok betöltéséhez.", _
+               vbExclamation, "Nincsenek adatok"
+        Exit Sub
+    End If
+    
+    ' Step 5: Create output directory
+    outputDir = controllerWb.Path & "\kiirasok"
+    If Dir(outputDir, vbDirectory) = "" Then
+        MkDir outputDir
+    End If
+    
+    ' Step 6: Start Word application
+    On Error Resume Next
+    Set wordApp = GetObject(, "Word.Application")
+    If Err.Number <> 0 Then
+        Err.Clear
+        Set wordApp = CreateObject("Word.Application")
+        wordStarted = True
+    End If
+    On Error GoTo ErrorHandler
+    
+    wordApp.Visible = False ' Run in background for faster processing
+    
+    ' Step 7: Process each row
+    For currentRow = 2 To lastRow
+        ' Update progress
+        Application.StatusBar = "Dokumentum generálás... (" & (currentRow - 1) & "/" & (lastRow - 1) & ")"
+        
+        ' Get values from current row
+        studentName = generaltWs.Cells(currentRow, colHallgatoNeve).Value
+        dolgozatMegnevezese = generaltWs.Cells(currentRow, colDolgozatMegnevezese).Value
+        szakMegnevezese = generaltWs.Cells(currentRow, colSzakMegnevezese).Value
+        konzulensNeve = generaltWs.Cells(currentRow, colKonzulensNeve).Value
+        outputFilename = generaltWs.Cells(currentRow, colFeladatkiirasFajlnev).Value
+        
+        ' Skip rows with "nincs" or "0" values
+        If dolgozatMegnevezese = "nincs" Or dolgozatMegnevezese = "0" Or _
+           szakMegnevezese = "nincs" Or szakMegnevezese = "0" Then
+            skippedCount = skippedCount + 1
+            GoTo NextRow
+        End If
+        
+        ' Process the document
+        If ProcessWordDocument(wordApp, templatePath, outputDir & "\" & outputFilename, _
+                              dolgozatMegnevezese, szakMegnevezese, konzulensNeve, studentName) Then
+            processedCount = processedCount + 1
+        Else
+            errorCount = errorCount + 1
+            GoTo ErrorInProcessing
+        End If
+        
+NextRow:
+    Next currentRow
+    
+    ' Step 8: Close Word if we started it
+    If wordStarted Then
+        wordApp.Quit
+    End If
+    
+    ' Step 9: Clear status bar and show completion message
+    Application.StatusBar = False
+    
+    MsgBox "Feladatkiírás generálás befejezve!" & vbCrLf & vbCrLf & _
+           "Feldolgozott dokumentumok: " & processedCount & vbCrLf & _
+           "Kihagyott sorok: " & skippedCount & vbCrLf & _
+           "Hibák száma: " & errorCount & vbCrLf & vbCrLf & _
+           "A dokumentumok a következő könyvtárban találhatók: " & outputDir, _
+           vbInformation, "Művelet befejezve"
+    
+    Exit Sub
+    
+ErrorInProcessing:
+    If wordStarted Then wordApp.Quit
+    Application.StatusBar = False
+    MsgBox "Hiba történt a " & studentName & " dokumentumának feldolgozása során." & vbCrLf & _
+           "A feldolgozás megszakadt.", vbCritical, "Feldolgozási hiba"
+    Exit Sub
+    
+ErrorHandler:
+    If wordStarted And Not wordApp Is Nothing Then wordApp.Quit
+    Application.StatusBar = False
+    MsgBox "Hiba történt a feladatkiírás generálás során:" & vbCrLf & vbCrLf & _
+           "Hiba leírása: " & Err.Description & vbCrLf & _
+           "Hiba száma: " & Err.Number & vbCrLf & vbCrLf & _
+           "Ellenőrizze a sablon fájlt és az adatokat, majd próbálja újra.", _
+           vbCritical, "Váratlan hiba"
+End Sub
+
+' Helper function to process a single Word document
+Private Function ProcessWordDocument(wordApp As Object, templatePath As String, outputPath As String, _
+                                   dolgozat As String, szak As String, konzulens As String, student As String) As Boolean
+    On Error GoTo ErrorHandler
+    
+    Dim wordDoc As Object
+    Dim contentControls As Object
+    Dim cc As Object
+    Dim found As Boolean
+    Dim currentDate As String
+    
+    ' Create Hungarian formatted date
+    currentDate = "Budapest, " & Year(Date) & ". " & GetHungarianMonth(Month(Date)) & " " & Day(Date) & "."
+    
+    ' Open template document
+    Set wordDoc = wordApp.Documents.Open(templatePath)
+    
+    ' Get content controls collection
+    Set contentControls = wordDoc.ContentControls
+    
+    ' Process the first two content controls (assuming they are dropdowns)
+    If contentControls.Count < 2 Then
+        MsgBox "Hiba: A sablon dokumentumban nem található elegendő tartalom vezérlő elem." & vbCrLf & _
+               "Szükséges: legalább 2 legördülő lista.", vbCritical, "Sablon hiba"
+        wordDoc.Close False
+        ProcessWordDocument = False
+        Exit Function
+    End If
+    
+    ' Set first dropdown (Dolgozat megnevezése)
+    Set cc = contentControls(1)
+    If Not SetDropdownValue(cc, dolgozat) Then
+        MsgBox "Hiba: Nem található a '" & dolgozat & "' érték az első legördülő listában." & vbCrLf & _
+               "Hallgató: " & student, vbCritical, "Legördülő lista hiba"
+        wordDoc.Close False
+        ProcessWordDocument = False
+        Exit Function
+    End If
+    
+    ' Set second dropdown (Szak megnevezése)
+    Set cc = contentControls(2)
+    If Not SetDropdownValue(cc, szak) Then
+        MsgBox "Hiba: Nem található a '" & szak & "' érték a második legördülő listában." & vbCrLf & _
+               "Hallgató: " & student, vbCritical, "Legördülő lista hiba"
+        wordDoc.Close False
+        ProcessWordDocument = False
+        Exit Function
+    End If
+    
+    ' Replace consultant name
+    With wordDoc.Range.Find
+        .Text = "Dr. Érték Elek"
+        .Replacement.Text = konzulens
+        .Execute Replace:=2 ' wdReplaceAll
+    End With
+    
+    ' Replace date
+    With wordDoc.Range.Find
+        .Text = "Budapest, 2020. szeptember 4."
+        .Replacement.Text = currentDate
+        .Execute Replace:=2 ' wdReplaceAll
+    End With
+    
+    ' Save document
+    wordDoc.SaveAs2 outputPath
+    wordDoc.Close
+    
+    ProcessWordDocument = True
+    Exit Function
+    
+ErrorHandler:
+    If Not wordDoc Is Nothing Then wordDoc.Close False
+    ProcessWordDocument = False
+End Function
+
+' Helper function to set dropdown value in content control
+Private Function SetDropdownValue(contentControl As Object, value As String) As Boolean
+    On Error GoTo ErrorHandler
+    
+    Dim i As Integer
+    Dim dropdownItems As Object
+    
+    ' Check if it's a dropdown list content control
+    If contentControl.Type <> 3 Then ' wdContentControlDropdownList
+        SetDropdownValue = False
+        Exit Function
+    End If
+    
+    Set dropdownItems = contentControl.DropdownListEntries
+    
+    ' Look for matching value
+    For i = 1 To dropdownItems.Count
+        If dropdownItems(i).Text = value Then
+            contentControl.Range.Text = value
+            SetDropdownValue = True
+            Exit Function
+        End If
+    Next i
+    
+    ' Value not found
+    SetDropdownValue = False
+    Exit Function
+    
+ErrorHandler:
+    SetDropdownValue = False
+End Function
+
+' Helper function to get Hungarian month name
+Private Function GetHungarianMonth(monthNumber As Integer) As String
+    Select Case monthNumber
+        Case 1: GetHungarianMonth = "január"
+        Case 2: GetHungarianMonth = "február"
+        Case 3: GetHungarianMonth = "március"
+        Case 4: GetHungarianMonth = "április"
+        Case 5: GetHungarianMonth = "május"
+        Case 6: GetHungarianMonth = "június"
+        Case 7: GetHungarianMonth = "július"
+        Case 8: GetHungarianMonth = "augusztus"
+        Case 9: GetHungarianMonth = "szeptember"
+        Case 10: GetHungarianMonth = "október"
+        Case 11: GetHungarianMonth = "november"
+        Case 12: GetHungarianMonth = "december"
+        Case Else: GetHungarianMonth = "ismeretlen"
+    End Select
+End Function
 
 ' Helper function to find Terheles file in the directory
 Private Function FindTerhelesFile(directoryPath As String) As String

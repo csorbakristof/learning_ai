@@ -17,7 +17,7 @@ Populate the columns of GeneráltHallgatóiLista from this "konzultáció" works
 - Tárgykód: take "Tárgy nept" from the source
 - Dolgozat megnevezése: use a lookup formula "=IFERROR(VLOOKUP($C2,'Tantárgyi adatok'!B:D,2,FALSE),""nincs"")" where you adapt $C2 to the current row and column C.
 - Szak megnevezése: similarly to "Dolgozat megnevezése", but this time take the value from the column D ("Szak megnevezése") in the worksheet "Tantárgyi adatok". Here you may also use a lookup formula in Excel.
-- Konzulens neve: take "Konzulens" from the source
+- Konzulens neve: take "Konzulens" from the source, but if there is anything in brackets after the name, remove that.
 - Konzulens beosztása: leave empty for now
 - Feladatkiírás fájlnév: set it to "kiirasok/xxxxxx.docx" where you substitute xxxxxx with the student name (column "Hallgató neve"). You can use an Excel formula to do this.
 
@@ -47,6 +47,21 @@ The changes to apply to the template document:
 - There are two dropdown lists. In the first, choose the value matching the column "Dolgozat megnevezése". In the second dropdown list, choose the value from "Szak megnevezése".
 
 - Replace "Dr. Érték Elek" with the value in column "Konzulens neve".
-- Replace the string "Budapest, 2020. szeptember 4." at the end of the document with "Budapest, " and the current date in hungarian format like "2025. szeptember 26.".
+- Replace the string "Budapest, 2020. szeptember 4." at the end of the document with "Budapest, " and the current date in hungarian format like "[year]. [month name] [day].". For example, for  (September 26, 2025), it should be: "2025. szeptember 26."
 
 Save the file and proceed to the next row.
+
+## Further details
+
+- If the output directory does not exist, create it.
+- If a word document already exists, overwrite it.
+- The dropdown lists are content controls. They will appear in the defined order in the document: first content control = Dolgozat, second = Szak.
+- If the Excel values do not match the dropdown values, issue an error and stop.
+- String replacement should happen case sensitive and globally as we can be sure there will be only a single match.
+- If the word template file does not exist, issue an error.
+- Start word if needed and at the end, close it.
+- If there is an error, show a detailed error message and stop the processing of further rows.
+- Show progress indication as this procedure may take a long time. Use the status bar in excel.
+- At the end, show a report what has been done and whether there were errors.
+- Word does not need to be visible.
+

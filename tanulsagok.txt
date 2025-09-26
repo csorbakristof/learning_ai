@@ -9,3 +9,12 @@ Labor anyagok egységes kezelésénél praktikus...
 
 ---
 
+- Fejlesztés során időnként explicit kérni kell refactort. Ha van valami hiba, akkor meg lehet kérni, hogy keressen további hasonló hibákat is.
+- A specifikációt át lehet vele nézetni és tegyen fel kérdéseket.
+
+I have extended #spec.md with a file attachment feature for both SingleSend and MassiveSend. Have a look and ask clarifying questions if any.
+
+#spec.md updated. Any further questions?
+
+Excel formula beszúrásakor a VBA kódba az angol neveket kell beírni (nálam legalábbis) még akkor is, ha a felületen magyarul jelenik meg...
+ 

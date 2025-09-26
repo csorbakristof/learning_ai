@@ -1,5 +1,5 @@
 ' =============================================================================
-' Excel2Outlook - SingleSend and MassiveSend Features
+' Excel2Outlook - SingleSend and MassiveSend Features (Refactored)
 ' =============================================================================
 ' [SingleSend] - Sends personalized email for current row
 ' Triggered by: Ctrl+Shift+D from current row in UserList worksheet
@@ -12,9 +12,27 @@
 
 Option Explicit
 
+' Constants
+Private Const EMAIL_TEMPLATE_WORKSHEET = "EmailTemplate"
+Private Const EMAIL_TEMPLATE_CELL = "A1"
+Private Const EMAIL_COLUMN = "email"
+Private Const SUBJECT_COLUMN = "Subject"
+Private Const EMAIL_CONFIRMATION_THRESHOLD = 20
+Private Const HEADER_ROW = 1
+Private Const FIRST_DATA_ROW = 2
+
 ' Global variables for Outlook application
 Private outlookApp As Object
 Private outlookNamespace As Object
+
+' Data structure for email context
+Private Type EmailContext
+    UserListWs As Worksheet
+    TemplateWs As Worksheet
+    EmailTemplate As String
+    ColumnHeaders As Variant
+    CurrentRow As Long
+End Type
 
 ' =============================================================================
 ' Main SingleSend Macro - Entry Point
@@ -22,84 +40,39 @@ Private outlookNamespace As Object
 Sub SingleSend()
     On Error GoTo ErrorHandler
     
-    Dim currentRow As Long
-    Dim userListWs As Worksheet
-    Dim templateWs As Worksheet
-    Dim emailTemplate As String
-    Dim emailAddress As String
-    Dim emailSubject As String
-    Dim personalizedBody As String
-    Dim columnHeaders As Variant
-    Dim rowData As Variant
-    
-    ' Get current active worksheet and row
-    Set userListWs = ActiveSheet
-    currentRow = ActiveCell.Row
+    Dim context As EmailContext
+    Dim validationErrors As String
     
     ' Validate current row (must be > 1 since row 1 contains headers)
-    If currentRow <= 1 Then
-        MsgBox "Error: Please select a data row (not the header row) before running MassiveSend.", _
-               vbCritical, "MassiveSend Error"
+    If ActiveCell.Row <= HEADER_ROW Then
+        ShowError "Please select a data row (not the header row) before running SingleSend.", "SingleSend"
         Exit Sub
     End If
     
-    ' Check if EmailTemplate worksheet exists
-    Set templateWs = GetEmailTemplateWorksheet()
-    If templateWs Is Nothing Then Exit Sub
+    ' Initialize email context
+    If Not InitializeEmailContext(context, ActiveCell.Row) Then Exit Sub
     
-    ' Get email template from EmailTemplate!A1
-    emailTemplate = templateWs.Range("A1").Value
-    If Trim(emailTemplate) = "" Then
-        MsgBox "Error: Email template in 'EmailTemplate' worksheet, cell A1 is empty.", _
-               vbCritical, "MassiveSend Error"
+    ' Validate the current row data
+    validationErrors = ValidateRowData(context.UserListWs, context.CurrentRow, context.ColumnHeaders, context.EmailTemplate)
+    If validationErrors <> "" Then
+        ShowError "Validation error in row " & context.CurrentRow & ": " & validationErrors, "SingleSend"
         Exit Sub
     End If
-    
-    ' Get column headers and validate required columns
-    columnHeaders = GetColumnHeaders(userListWs)
-    If IsEmpty(columnHeaders) Then Exit Sub
-    
-    ' Validate required columns exist
-    If Not ValidateRequiredColumns(columnHeaders, "SingleSend") Then Exit Sub
-    
-    ' Get data from current row
-    rowData = GetRowData(userListWs, currentRow)
-    
-    ' Get email address and subject
-    emailAddress = GetColumnValue(columnHeaders, rowData, "email")
-    emailSubject = GetColumnValue(columnHeaders, rowData, "Subject")
-    
-    ' Validate email and subject are not empty
-    If Trim(emailAddress) = "" Then
-        MsgBox "Error: Email address is empty in row " & currentRow & ".", _
-               vbCritical, "MassiveSend Error"
-        Exit Sub
-    End If
-    
-    If Trim(emailSubject) = "" Then
-        MsgBox "Error: Subject is empty in row " & currentRow & ".", _
-               vbCritical, "MassiveSend Error"
-        Exit Sub
-    End If
-    
-    ' Process template with placeholders
-    personalizedBody = ProcessTemplate(emailTemplate, columnHeaders, rowData, currentRow)
-    If personalizedBody = "" Then Exit Sub ' Error already shown in ProcessTemplate
     
     ' Initialize Outlook connection
     If Not InitializeOutlook() Then Exit Sub
     
-    ' Create and show email draft
-    CreateEmailDraft emailAddress, emailSubject, personalizedBody
-    
-    MsgBox "Email draft created successfully for " & emailAddress, _
-           vbInformation, "SingleSend Success"
+    ' Create email draft for current row
+    If CreateEmailFromRow(context.UserListWs, context.CurrentRow, context.ColumnHeaders, context.EmailTemplate) Then
+        Dim emailAddress As String
+        emailAddress = GetColumnValue(context.ColumnHeaders, GetRowData(context.UserListWs, context.CurrentRow), EMAIL_COLUMN)
+        ShowSuccess "Email draft created successfully for " & emailAddress, "SingleSend"
+    End If
     
     Exit Sub
 
 ErrorHandler:
-    MsgBox "Unexpected error in SingleSend: " & Err.Description & vbCrLf & _
-           "Error Number: " & Err.Number, vbCritical, "SingleSend Error"
+    ShowError "Unexpected error: " & Err.Description & vbCrLf & "Error Number: " & Err.Number, "SingleSend"
 End Sub
 
 ' =============================================================================
@@ -108,50 +81,28 @@ End Sub
 Sub MassiveSend()
     On Error GoTo ErrorHandler
     
-    Dim userListWs As Worksheet
-    Dim templateWs As Worksheet
-    Dim emailTemplate As String
-    Dim columnHeaders As Variant
+    Dim context As EmailContext
     Dim visibleRows As Collection
     Dim totalEmails As Long
     Dim currentRow As Long
     Dim i As Long
     Dim confirmResult As VbMsgBoxResult
+    Dim validationErrors As String
     
-    ' Get current active worksheet
-    Set userListWs = ActiveSheet
-    
-    ' Check if EmailTemplate worksheet exists
-    Set templateWs = GetEmailTemplateWorksheet()
-    If templateWs Is Nothing Then Exit Sub
-    
-    ' Get email template from EmailTemplate!A1
-    emailTemplate = templateWs.Range("A1").Value
-    If Trim(emailTemplate) = "" Then
-        MsgBox "Error: Email template in 'EmailTemplate' worksheet, cell A1 is empty.", _
-               vbCritical, "MassiveSend Error"
-        Exit Sub
-    End If
-    
-    ' Get column headers and validate required columns
-    columnHeaders = GetColumnHeaders(userListWs)
-    If IsEmpty(columnHeaders) Then Exit Sub
-    
-    ' Validate required columns exist
-    If Not ValidateRequiredColumns(columnHeaders, "MassiveSend") Then Exit Sub
+    ' Initialize email context using first visible row for structure validation
+    If Not InitializeEmailContext(context, FIRST_DATA_ROW) Then Exit Sub
     
     ' Get all visible rows (excluding header row)
-    Set visibleRows = GetVisibleRows(userListWs)
+    Set visibleRows = GetVisibleRows(context.UserListWs)
     totalEmails = visibleRows.Count
     
     If totalEmails = 0 Then
-        MsgBox "No visible data rows found to process.", _
-               vbInformation, "MassiveSend Info"
+        ShowSuccess "No visible data rows found to process.", "MassiveSend Info"
         Exit Sub
     End If
     
-    ' Ask for confirmation if more than 20 emails
-    If totalEmails > 20 Then
+    ' Ask for confirmation if more than threshold
+    If totalEmails > EMAIL_CONFIRMATION_THRESHOLD Then
         confirmResult = MsgBox("This will create " & totalEmails & " email drafts. " & vbCrLf & _
                               "Are you sure you want to continue?", _
                               vbYesNo + vbQuestion, "MassiveSend Confirmation")
@@ -161,7 +112,7 @@ Sub MassiveSend()
     End If
     
     ' Pre-validate ALL rows before creating any emails
-    If Not PreValidateAllRows(userListWs, visibleRows, columnHeaders, emailTemplate) Then
+    If Not PreValidateAllRows(context.UserListWs, visibleRows, context.ColumnHeaders, context.EmailTemplate) Then
         Exit Sub ' Error already shown in PreValidateAllRows
     End If
     
@@ -171,18 +122,19 @@ Sub MassiveSend()
     ' Create email drafts for all visible rows
     For i = 1 To visibleRows.Count
         currentRow = visibleRows(i)
-        CreateEmailForRow userListWs, currentRow, columnHeaders, emailTemplate
+        If Not CreateEmailFromRow(context.UserListWs, currentRow, context.ColumnHeaders, context.EmailTemplate) Then
+            ShowError "Failed to create email for row " & currentRow & ". Process stopped.", "MassiveSend"
+            Exit Sub
+        End If
     Next i
     
     ' Show success summary
-    MsgBox totalEmails & " email drafts created successfully!", _
-           vbInformation, "MassiveSend Success"
+    ShowSuccess totalEmails & " email drafts created successfully!", "MassiveSend Success"
     
     Exit Sub
 
 ErrorHandler:
-    MsgBox "Unexpected error in MassiveSend: " & Err.Description & vbCrLf & _
-           "Error Number: " & Err.Number, vbCritical, "MassiveSend Error"
+    ShowError "Unexpected error: " & Err.Description & vbCrLf & "Error Number: " & Err.Number, "MassiveSend"
 End Sub
 
 ' =============================================================================
@@ -193,16 +145,16 @@ Private Function GetEmailTemplateWorksheet() As Worksheet
     
     ' Look for "EmailTemplate" worksheet (case-sensitive)
     For Each ws In ThisWorkbook.Worksheets
-        If ws.Name = "EmailTemplate" Then
+        If ws.Name = EMAIL_TEMPLATE_WORKSHEET Then
             Set GetEmailTemplateWorksheet = ws
             Exit Function
         End If
     Next ws
     
-    ' Not found - show error
-    MsgBox "Error: Worksheet named 'EmailTemplate' not found. " & vbCrLf & _
-           "Please create a worksheet named exactly 'EmailTemplate' with the email template in cell A1.", _
-           vbCritical, "MassiveSend Error"
+    ' Not found - show error using standardized function
+    ShowError "Worksheet named '" & EMAIL_TEMPLATE_WORKSHEET & "' not found. " & vbCrLf & _
+              "Please create a worksheet named exactly '" & EMAIL_TEMPLATE_WORKSHEET & "' with the email template in cell " & EMAIL_TEMPLATE_CELL & ".", _
+              "Template Error"
     
     Set GetEmailTemplateWorksheet = Nothing
 End Function
@@ -215,17 +167,16 @@ Private Function GetColumnHeaders(ws As Worksheet) As Variant
     Dim headers As Variant
     
     ' Find last column with data in row 1
-    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    lastCol = ws.Cells(HEADER_ROW, ws.Columns.Count).End(xlToLeft).Column
     
-    If lastCol = 1 And Trim(ws.Cells(1, 1).Value) = "" Then
-        MsgBox "Error: No column headers found in row 1 of the current worksheet.", _
-               vbCritical, "MassiveSend Error"
+    If lastCol = 1 And Trim(ws.Cells(HEADER_ROW, 1).Value) = "" Then
+        ShowError "No column headers found in row " & HEADER_ROW & " of the current worksheet.", "Header Error"
         GetColumnHeaders = Empty
         Exit Function
     End If
     
     ' Get headers as array
-    headers = ws.Range(ws.Cells(1, 1), ws.Cells(1, lastCol)).Value
+    headers = ws.Range(ws.Cells(HEADER_ROW, 1), ws.Cells(HEADER_ROW, lastCol)).Value
     GetColumnHeaders = headers
 End Function
 
@@ -244,30 +195,27 @@ Private Function ValidateRequiredColumns(columnHeaders As Variant, featureName A
     If UBound(columnHeaders, 1) = 1 Then
         ' Single row array - check columns
         For i = 1 To UBound(columnHeaders, 2)
-            If Trim(columnHeaders(1, i)) = "email" Then foundEmail = True
-            If Trim(columnHeaders(1, i)) = "Subject" Then foundSubject = True
+            If Trim(columnHeaders(1, i)) = EMAIL_COLUMN Then foundEmail = True
+            If Trim(columnHeaders(1, i)) = SUBJECT_COLUMN Then foundSubject = True
         Next i
     Else
         ' Single cell case
-        If Trim(columnHeaders) = "email" Then foundEmail = True
-        If Trim(columnHeaders) = "Subject" Then foundSubject = True
+        If Trim(columnHeaders) = EMAIL_COLUMN Then foundEmail = True
+        If Trim(columnHeaders) = SUBJECT_COLUMN Then foundSubject = True
     End If
     
-    ' Report missing columns
+    ' Report missing columns using standardized error function
     If Not foundEmail And Not foundSubject Then
-        MsgBox "Error: Required columns 'email' and 'Subject' are missing from row 1. " & vbCrLf & _
-               "Column names are case-sensitive and must match exactly.", _
-               vbCritical, featureName & " Error"
+        ShowError "Required columns '" & EMAIL_COLUMN & "' and '" & SUBJECT_COLUMN & "' are missing from row " & HEADER_ROW & ". " & vbCrLf & _
+                  "Column names are case-sensitive and must match exactly.", featureName
         ValidateRequiredColumns = False
     ElseIf Not foundEmail Then
-        MsgBox "Error: Required column 'email' is missing from row 1. " & vbCrLf & _
-               "Column name is case-sensitive and must match exactly.", _
-               vbCritical, featureName & " Error"
+        ShowError "Required column '" & EMAIL_COLUMN & "' is missing from row " & HEADER_ROW & ". " & vbCrLf & _
+                  "Column name is case-sensitive and must match exactly.", featureName
         ValidateRequiredColumns = False
     ElseIf Not foundSubject Then
-        MsgBox "Error: Required column 'Subject' is missing from row 1. " & vbCrLf & _
-               "Column name is case-sensitive and must match exactly.", _
-               vbCritical, featureName & " Error"
+        ShowError "Required column '" & SUBJECT_COLUMN & "' is missing from row " & HEADER_ROW & ". " & vbCrLf & _
+                  "Column name is case-sensitive and must match exactly.", featureName
         ValidateRequiredColumns = False
     Else
         ValidateRequiredColumns = True
@@ -280,8 +228,8 @@ End Function
 Private Function GetRowData(ws As Worksheet, rowNum As Long) As Variant
     Dim lastCol As Long
     
-    ' Find last column with data in row 1 (headers)
-    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    ' Find last column with data in headers row
+    lastCol = ws.Cells(HEADER_ROW, ws.Columns.Count).End(xlToLeft).Column
     
     ' Get row data as array
     GetRowData = ws.Range(ws.Cells(rowNum, 1), ws.Cells(rowNum, lastCol)).Value
@@ -371,10 +319,9 @@ Private Function ProcessTemplate(template As String, columnHeaders As Variant, r
     
     ' Report errors if any missing placeholders
     If missingPlaceholders <> "" Then
-        MsgBox "Error: Missing or empty placeholder values in row " & currentRow & ":" & vbCrLf & _
-               missingPlaceholders & vbCrLf & vbCrLf & _
-               "Please ensure all placeholder columns exist and have values.", _
-               vbCritical, "MassiveSend Error"
+        ShowError "Missing or empty placeholder values in row " & currentRow & ":" & vbCrLf & _
+                  missingPlaceholders & vbCrLf & vbCrLf & _
+                  "Please ensure all placeholder columns exist and have values.", "Template Processing"
         ProcessTemplate = ""
         Exit Function
     End If
@@ -393,8 +340,8 @@ Private Function GetVisibleRows(ws As Worksheet) As Collection
     ' Find last row with data
     lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
     
-    ' Collect visible rows (starting from row 2, skipping headers)
-    For i = 2 To lastRow
+    ' Collect visible rows (starting from first data row, skipping headers)
+    For i = FIRST_DATA_ROW To lastRow
         If Not ws.Rows(i).Hidden Then
             visibleRows.Add i
         End If
@@ -423,13 +370,13 @@ Private Function PreValidateAllRows(ws As Worksheet, visibleRows As Collection, 
         rowData = GetRowData(ws, currentRow)
         
         ' Validate email address
-        emailAddress = GetColumnValue(columnHeaders, rowData, "email")
+        emailAddress = GetColumnValue(columnHeaders, rowData, EMAIL_COLUMN)
         If Trim(emailAddress) = "" Then
             errorMessages = errorMessages & "Row " & currentRow & ": Email address is empty" & vbCrLf
         End If
         
         ' Validate subject
-        emailSubject = GetColumnValue(columnHeaders, rowData, "Subject")
+        emailSubject = GetColumnValue(columnHeaders, rowData, SUBJECT_COLUMN)
         If Trim(emailSubject) = "" Then
             errorMessages = errorMessages & "Row " & currentRow & ": Subject is empty" & vbCrLf
         End If
@@ -443,8 +390,8 @@ Private Function PreValidateAllRows(ws As Worksheet, visibleRows As Collection, 
     
     ' Show errors if any found
     If errorMessages <> "" Then
-        MsgBox "Validation errors found. No emails will be created:" & vbCrLf & vbCrLf & _
-               errorMessages, vbCritical, "MassiveSend Validation Error"
+        ShowError "Validation errors found. No emails will be created:" & vbCrLf & vbCrLf & _
+                  errorMessages, "MassiveSend Validation"
         PreValidateAllRows = False
     Else
         PreValidateAllRows = True
@@ -499,67 +446,6 @@ Private Function ValidateTemplatePlaceholders(template As String, columnHeaders 
 End Function
 
 ' =============================================================================
-' Create email draft for a specific row
-' =============================================================================
-Private Sub CreateEmailForRow(ws As Worksheet, rowNum As Long, columnHeaders As Variant, emailTemplate As String)
-    Dim rowData As Variant
-    Dim emailAddress As String
-    Dim emailSubject As String
-    Dim personalizedBody As String
-    
-    ' Get data from row
-    rowData = GetRowData(ws, rowNum)
-    
-    ' Get email address and subject
-    emailAddress = GetColumnValue(columnHeaders, rowData, "email")
-    emailSubject = GetColumnValue(columnHeaders, rowData, "Subject")
-    
-    ' Process template with placeholders
-    personalizedBody = ProcessTemplateForRow(emailTemplate, columnHeaders, rowData)
-    
-    ' Create email draft
-    CreateEmailDraft emailAddress, emailSubject, personalizedBody
-End Sub
-
-' =============================================================================
-' Process template for a specific row (simplified version without error checking)
-' =============================================================================
-Private Function ProcessTemplateForRow(template As String, columnHeaders As Variant, rowData As Variant) As String
-    Dim result As String
-    Dim placeholder As String
-    Dim startPos As Long
-    Dim endPos As Long
-    Dim columnName As String
-    Dim replacementValue As String
-    
-    result = template
-    
-    ' Find and replace all placeholders [ColumnName]
-    startPos = InStr(result, "[")
-    Do While startPos > 0
-        endPos = InStr(startPos, result, "]")
-        If endPos > 0 Then
-            ' Extract placeholder and column name
-            placeholder = Mid(result, startPos, endPos - startPos + 1)
-            columnName = Mid(placeholder, 2, Len(placeholder) - 2)
-            
-            ' Get replacement value
-            replacementValue = GetColumnValue(columnHeaders, rowData, columnName)
-            
-            ' Replace placeholder with value
-            result = Replace(result, placeholder, replacementValue)
-            
-            ' Find next placeholder
-            startPos = InStr(startPos + 1, result, "[")
-        Else
-            ' No closing bracket found
-            startPos = InStr(startPos + 1, result, "[")
-        End If
-    Loop
-    
-    ProcessTemplateForRow = result
-End Function
-
 ' =============================================================================
 ' Check if column exists in headers
 ' =============================================================================
@@ -606,10 +492,9 @@ ErrorHandler:
     Exit Function
     
 StartError:
-    MsgBox "Error: Could not start or connect to Microsoft Outlook. " & vbCrLf & _
-           "Please ensure Outlook is installed and accessible." & vbCrLf & vbCrLf & _
-           "Error details: " & Err.Description, _
-           vbCritical, "MassiveSend Error"
+    ShowError "Could not start or connect to Microsoft Outlook. " & vbCrLf & _
+              "Please ensure Outlook is installed and accessible." & vbCrLf & vbCrLf & _
+              "Error details: " & Err.Description, "Outlook Connection"
     InitializeOutlook = False
 End Function
 
@@ -635,8 +520,7 @@ Private Sub CreateEmailDraft(emailAddress As String, emailSubject As String, ema
     Exit Sub
     
 ErrorHandler:
-    MsgBox "Error creating email draft: " & Err.Description, _
-           vbCritical, "MassiveSend Error"
+    ShowError "Error creating email draft: " & Err.Description, "Email Creation"
 End Sub
 
 ' =============================================================================
@@ -664,15 +548,131 @@ End Sub
 Sub RegisterShortcuts()
     Application.OnKey "^+d", "SingleSend"
     Application.OnKey "^+m", "MassiveSend"
-    MsgBox "Keyboard shortcuts registered:" & vbCrLf & _
-           "Ctrl+Shift+D for SingleSend" & vbCrLf & _
-           "Ctrl+Shift+M for MassiveSend", _
-           vbInformation, "Shortcuts Registered"
+    ShowSuccess "Keyboard shortcuts registered:" & vbCrLf & _
+                "Ctrl+Shift+D for SingleSend" & vbCrLf & _
+                "Ctrl+Shift+M for MassiveSend", "Shortcuts Registered"
 End Sub
 
 Sub UnregisterShortcuts()
     Application.OnKey "^+d"
     Application.OnKey "^+m"
-    MsgBox "All keyboard shortcuts unregistered.", _
-           vbInformation, "Shortcuts Unregistered"
+    ShowSuccess "All keyboard shortcuts unregistered.", "Shortcuts Unregistered"
+End Sub
+
+' =============================================================================
+' Enhanced Helper Functions for Refactored Code
+' =============================================================================
+
+' Initialize EmailContext structure with validation
+Private Function InitializeEmailContext(ByRef context As EmailContext, currentRow As Long) As Boolean
+    On Error GoTo ErrorHandler
+    
+    ' Initialize basic properties
+    Set context.UserListWs = ActiveSheet
+    context.CurrentRow = currentRow
+    
+    ' Get and validate email template worksheet
+    Set context.TemplateWs = GetEmailTemplateWorksheet()
+    If context.TemplateWs Is Nothing Then
+        InitializeEmailContext = False
+        Exit Function
+    End If
+    
+    ' Get email template from EmailTemplate!A1
+    context.EmailTemplate = context.TemplateWs.Range(EMAIL_TEMPLATE_CELL).Value
+    If Trim(context.EmailTemplate) = "" Then
+        ShowError "Email template in '" & EMAIL_TEMPLATE_WORKSHEET & "' worksheet, cell " & EMAIL_TEMPLATE_CELL & " is empty.", "Template Error"
+        InitializeEmailContext = False
+        Exit Function
+    End If
+    
+    ' Get column headers and validate required columns
+    context.ColumnHeaders = GetColumnHeaders(context.UserListWs)
+    If IsEmpty(context.ColumnHeaders) Then
+        InitializeEmailContext = False
+        Exit Function
+    End If
+    
+    ' Validate required columns exist
+    If Not ValidateRequiredColumns(context.ColumnHeaders, "Email Context") Then
+        InitializeEmailContext = False
+        Exit Function
+    End If
+    
+    InitializeEmailContext = True
+    Exit Function
+    
+ErrorHandler:
+    ShowError "Error initializing email context: " & Err.Description, "Initialization Error"
+    InitializeEmailContext = False
+End Function
+
+' Validate row data for required fields
+Private Function ValidateRowData(ws As Worksheet, rowNum As Long, columnHeaders As Variant, emailTemplate As String) As String
+    Dim rowData As Variant
+    Dim emailAddress As String
+    Dim emailSubject As String
+    Dim errors As String
+    
+    ' Get row data
+    rowData = GetRowData(ws, rowNum)
+    
+    ' Check email address
+    emailAddress = GetColumnValue(columnHeaders, rowData, EMAIL_COLUMN)
+    If Trim(emailAddress) = "" Then
+        errors = errors & "Email address is empty. "
+    End If
+    
+    ' Check subject
+    emailSubject = GetColumnValue(columnHeaders, rowData, SUBJECT_COLUMN)
+    If Trim(emailSubject) = "" Then
+        errors = errors & "Subject is empty. "
+    End If
+    
+    ' Additional template validation could be added here
+    
+    ValidateRowData = Trim(errors)
+End Function
+
+' Create email from row data using consolidated logic
+Private Function CreateEmailFromRow(ws As Worksheet, rowNum As Long, columnHeaders As Variant, emailTemplate As String) As Boolean
+    On Error GoTo ErrorHandler
+    
+    Dim rowData As Variant
+    Dim emailAddress As String
+    Dim emailSubject As String
+    Dim personalizedBody As String
+    
+    ' Get row data
+    rowData = GetRowData(ws, rowNum)
+    
+    ' Extract email details
+    emailAddress = GetColumnValue(columnHeaders, rowData, EMAIL_COLUMN)
+    emailSubject = GetColumnValue(columnHeaders, rowData, SUBJECT_COLUMN)
+    
+    ' Process template with placeholders
+    personalizedBody = ProcessTemplate(emailTemplate, columnHeaders, rowData, rowNum)
+    If personalizedBody = "" Then
+        CreateEmailFromRow = False
+        Exit Function
+    End If
+    
+    ' Create email draft
+    CreateEmailDraft emailAddress, emailSubject, personalizedBody
+    CreateEmailFromRow = True
+    Exit Function
+    
+ErrorHandler:
+    ShowError "Error creating email for row " & rowNum & ": " & Err.Description, "Email Creation Error"
+    CreateEmailFromRow = False
+End Function
+
+' Standardized error display
+Private Sub ShowError(message As String, title As String)
+    MsgBox "Error: " & message, vbCritical, title
+End Sub
+
+' Standardized success display
+Private Sub ShowSuccess(message As String, title As String)
+    MsgBox message, vbInformation, title
 End Sub

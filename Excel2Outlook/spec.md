@@ -4,7 +4,7 @@ This solution contains several Excel macros (VBA scripts) which control Outlook 
 
 In this description every feature (typically subsections of this description) have a code name in brackets like "[F01]". Use these code names to refer to the features.
 
-# [MassiveSend] Massive sending emails
+# [SingleSend] Single sending emails
 
 Input: a single worksheet in Excel which contains email addresses and further columns with text which have to be substituted into email templates. This worksheet will be referred to as "UserList", but its name in Excel may be different. It is always the current worksheet the macro is started from. Another worksheet called "EmailTemplate" contains the template for an email in the upper-left cell (always cell A1).
 
@@ -26,6 +26,18 @@ The body of the email is created from the template mentioned above. It may conta
 - If the EmailTemplate worksheet does not exist, show an error message.
 - Error messages should be detailed so the user has guidance how to fix the issue.
 
+# [MassiveSend] Massive sending emails
+
+This function is another macro which sends emails just like the SingleSend feature, but it sends individual emails for every row in the UserList worksheet.
+
+## Further details
+
+- Take all visible rows into account. The user may use filtering to select a set of rows.
+- If there is an error with one of the rows, stop, show an error message and do not draft any emails.
+- The MassiveSend feature should be triggered by Ctrl-Shift-M.
+- Only create the email drafs bulk but do not send them.
+- Do not show progress, only a summary at the end.
+- If there are more than 20 emails to create, ask for user confirmation whether to proceed.
 
 # [ResponseCollector] Response collection from answers on an email
 

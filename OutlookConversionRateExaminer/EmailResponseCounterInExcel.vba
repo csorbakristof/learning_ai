@@ -62,7 +62,10 @@ Sub CountEmailResponses()
     ' Format the ResponseEmailCount column
     FormatResponseColumn externalWs, 7, lastRow
     
-    MsgBox "Response counting completed! The 'ResponseEmailCount' column has been updated.", vbInformation, "Process Complete"
+    ' Calculate HasResponded values for PartnerEmails worksheet
+    CalculateHasResponded externalWs, partnerWs
+    
+    MsgBox "Response counting completed! The 'ResponseEmailCount' column has been updated and HasResponded values calculated.", vbInformation, "Process Complete"
 End Sub
 
 ' Check if the recipients string contains any valid partners (Is EDIH partner = 1)
@@ -100,6 +103,93 @@ Function HasValidPartners(recipients As String, partnerWs As Worksheet) As Boole
         Next j
     Next i
 End Function
+
+' Calculate HasResponded values for each partner email
+Sub CalculateHasResponded(externalWs As Worksheet, partnerWs As Worksheet)
+    Dim partnerLastRow As Long
+    Dim externalLastRow As Long
+    Dim i As Long
+    Dim j As Long
+    Dim partnerEmail As String
+    Dim recipients As String
+    Dim recipientArray As Variant
+    Dim k As Integer
+    Dim totalResponses As Long
+    Dim responseCount As Long
+    
+    ' Get last rows
+    partnerLastRow = partnerWs.Cells(partnerWs.Rows.Count, 1).End(xlUp).Row
+    externalLastRow = externalWs.Cells(externalWs.Rows.Count, 1).End(xlUp).Row
+    
+    ' Add HasResponded header if column C is empty
+    If partnerWs.Cells(1, 3).Value = "" Then
+        partnerWs.Cells(1, 3).Value = "HasResponded"
+        partnerWs.Cells(1, 3).Font.Bold = True
+        partnerWs.Cells(1, 3).Interior.Color = RGB(200, 200, 200)
+    End If
+    
+    ' Process each partner email
+    For i = 2 To partnerLastRow
+        partnerEmail = Trim(partnerWs.Cells(i, 1).Value) ' Partner email address
+        totalResponses = 0
+        
+        ' Check each row in ExternalEmails for this partner email
+        For j = 2 To externalLastRow
+            recipients = Trim(externalWs.Cells(j, 2).Value) ' Recipients column (B)
+            responseCount = 0
+            
+            ' Get response count if it exists and is numeric
+            On Error Resume Next
+            responseCount = CLng(externalWs.Cells(j, 7).Value) ' ResponseEmailCount column (G)
+            On Error GoTo 0
+            
+            ' Check if partner email is in recipients list
+            If recipients <> "" And responseCount > 0 Then
+                recipientArray = Split(recipients, ";")
+                
+                For k = LBound(recipientArray) To UBound(recipientArray)
+                    If LCase(Trim(recipientArray(k))) = LCase(partnerEmail) Then
+                        totalResponses = totalResponses + responseCount
+                        Exit For ' Found the email, no need to check other recipients in this row
+                    End If
+                Next k
+            End If
+        Next j
+        
+        ' Set the HasResponded value
+        partnerWs.Cells(i, 3).Value = totalResponses
+    Next i
+    
+    ' Format the HasResponded column
+    Dim partnerRange As Range
+    Set partnerRange = partnerWs.Range(partnerWs.Cells(2, 3), partnerWs.Cells(partnerLastRow, 3))
+    
+    With partnerRange
+        .NumberFormat = "0"
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+    
+    ' Auto-fit the column
+    partnerWs.Columns(3).AutoFit
+    
+    ' Add conditional formatting to highlight partners with responses
+    With partnerRange
+        .FormatConditions.Delete ' Clear existing conditional formatting
+        
+        ' Highlight cells with value > 0 in light green
+        With .FormatConditions.Add(Type:=xlCellValue, Operator:=xlGreater, Formula1:="0")
+            .Interior.Color = RGB(198, 239, 206) ' Light green
+            .Font.Color = RGB(0, 97, 0) ' Dark green text
+        End With
+        
+        ' Highlight cells with value = 0 in light yellow
+        With .FormatConditions.Add(Type:=xlCellValue, Operator:=xlEqual, Formula1:="0")
+            .Interior.Color = RGB(255, 235, 156) ' Light yellow
+            .Font.Color = RGB(156, 101, 0) ' Dark yellow text
+        End With
+    End With
+End Sub
 
 ' Count responses for a specific conversation ID
 Function CountResponsesForConversation(ws As Worksheet, targetConversationID As String, lastRow As Long) As Long

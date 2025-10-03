@@ -370,9 +370,10 @@ Sub CreateExcelReport(externalEmails As Collection, partnerEmails As Collection)
     ' Set up headers for PartnerEmails
     partnerWorksheet.Cells(1, 1).Value = "External email"
     partnerWorksheet.Cells(1, 2).Value = "Is EDIH partner"
+    partnerWorksheet.Cells(1, 3).Value = "HasResponded"
     
     ' Format headers
-    With partnerWorksheet.Range("A1:B1")
+    With partnerWorksheet.Range("A1:C1")
         .Font.Bold = True
         .Interior.Color = RGB(200, 200, 200)
     End With
@@ -391,7 +392,7 @@ Sub CreateExcelReport(externalEmails As Collection, partnerEmails As Collection)
     Next partnerCount
     
     ' Auto-fit columns
-    partnerWorksheet.Columns("A:B").AutoFit
+    partnerWorksheet.Columns("A:C").AutoFit
     
     ' Add summary to PartnerEmails worksheet
     partnerWorksheet.Cells(row + 1, 1).Value = "Total Partner Emails:"

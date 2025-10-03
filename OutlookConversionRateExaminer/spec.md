@@ -60,3 +60,5 @@ Extend the Outlook macro so that it creates two worksheets: the content above sh
 It should have two columns: "External email" and "Is EDIH partner". The second column should be filled with default "1" values.
 
 Modify the Excel macro so that it counts the responses only for those "sent" emails which have a recipient in the "External email" column and the "Is EDIH partner" value for them is "1". (Users will set the "Is EDIH partner" value for some email addresses to 0 if that email address does not belong to a true partner and as such, should not be taken into account, although it is an external email address.)
+
+After collecting the number of responses in the worksheet "ExternalEmails", create an additional column in worksheet "PartnerEmails", column C, title "HasResponded". For all partner email addresses put here the sum of the column ExternalEmails.G (ResponseEmailCount) from every row where this email address is present in the column B (Recipients email addresses).

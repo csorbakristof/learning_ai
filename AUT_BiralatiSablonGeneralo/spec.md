@@ -19,7 +19,7 @@ Populate the columns of GeneráltHallgatóiLista from this "konzultáció" works
 - Szak megnevezése: similarly to "Dolgozat megnevezése", but this time take the value from the column D ("Szak megnevezése") in the worksheet "Tantárgyi adatok". Here you may also use a lookup formula in Excel.
 - Konzulens neve: take "Konzulens" from the source, but if there is anything in brackets after the name, remove that.
 - Konzulens beosztása: leave empty for now
-- Feladatkiírás fájlnév: set it to "kiirasok/xxxxxx.docx" where you substitute xxxxxx with the student name (column "Hallgató neve"). You can use an Excel formula to do this.
+- Feladatkiírás fájlnév: set it to "xxxxxx.docx" where you substitute xxxxxx with the student name (column "Hallgató neve"). You can use an Excel formula to do this.
 
 A macro called "CollectStudents" should perform this procedure. It should be triggered by the hotkey Ctrl-Shift-C which is registered when opening the workbook.
 
@@ -31,7 +31,7 @@ A macro called "CollectStudents" should perform this procedure. It should be tri
 - Use worksheet and column header names for identifying them.
 - No data validation is required.
 - Close "terhelés excel" after retrieving the data.
-- In the column "Feladatkiírás fájlnév", clean up the student name for file system compatilibity: remove whitespaces and convert accents and special characters to english letters.
+- In the column "Feladatkiírás fájlnév", clean up the student name for file system compatilibity: remove whitespaces and convert accents and special characters to english letters. Use PascalCasing, so for example "Csorba Kristóf" should be converted to "CsorbaKristof".
 - For the lookup columns use the formulat "=XKERES($C2;'Tantárgyi adatok'!B:B;'Tantárgyi adatok'!C:C;"nincs")"
 
 # [GenerateTaskDescriptions] Generate task descriptions
@@ -45,11 +45,11 @@ The template document is located beside the controller Excel file with the name 
 The changes to apply to the template document:
 
 - There are two dropdown lists. In the first, choose the value matching the column "Dolgozat megnevezése". In the second dropdown list, choose the value from "Szak megnevezése".
-
+- Replace "Rezeda Kázmér" with the name of the student (column "Hallgató neve") while preserving the formatting.
 - Replace "Dr. Érték Elek" with the value in column "Konzulens neve".
 - Replace the string "Budapest, 2020. szeptember 4." at the end of the document with "Budapest, " and the current date in hungarian format like "[year]. [month name] [day].". For example, for  (September 26, 2025), it should be: "2025. szeptember 26."
 
-Save the file into a subdirectory with the name of the advisor ("Konzulens neve") which is made filesystem frieldly (just like the word document filenames derived from the student names) and proceed to the next row.
+Save the file into a subdirectory with the name of the advisor ("Konzulens neve") which is made filesystem frieldly (just like the word document filenames derived from the student names) and proceed to the next row. Create the subdirectory if needed.
 
 ## Further details
 

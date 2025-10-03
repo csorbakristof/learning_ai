@@ -1,3 +1,8 @@
+- Start ExternalEmailCollector.vba in Outlook (may need to set the list of observed mail folders in the code). This will generate an Excel file.
+- Put EmailResponseCounterInExcel.vba into the Excel table.
+- In the worksheet "PartnerEmails" set the 2nd column to 0 for non-EDIH partners.
+- Run the first macro here.
+
 # Overview
 
 This is an Outlook macro based solution to scan for emails sent by a person and their responses from outside the organization.
@@ -62,3 +67,5 @@ It should have two columns: "External email" and "Is EDIH partner". The second c
 Modify the Excel macro so that it counts the responses only for those "sent" emails which have a recipient in the "External email" column and the "Is EDIH partner" value for them is "1". (Users will set the "Is EDIH partner" value for some email addresses to 0 if that email address does not belong to a true partner and as such, should not be taken into account, although it is an external email address.)
 
 After collecting the number of responses in the worksheet "ExternalEmails", create an additional column in worksheet "PartnerEmails", column C, title "HasResponded". For all partner email addresses put here the sum of the column ExternalEmails.G (ResponseEmailCount) from every row where this email address is present in the column B (Recipients email addresses).
+
+Modify the Excel macro so that when filling the HasResponeded column, it gets only two types of values: 0 for no response and 1 for any other value.

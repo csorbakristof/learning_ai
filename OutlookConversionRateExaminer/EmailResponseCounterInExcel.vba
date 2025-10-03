@@ -156,8 +156,12 @@ Sub CalculateHasResponded(externalWs As Worksheet, partnerWs As Worksheet)
             End If
         Next j
         
-        ' Set the HasResponded value
-        partnerWs.Cells(i, 3).Value = totalResponses
+        ' Set the HasResponded value (binary: 0 for no response, 1 for any response)
+        If totalResponses > 0 Then
+            partnerWs.Cells(i, 3).Value = 1
+        Else
+            partnerWs.Cells(i, 3).Value = 0
+        End If
     Next i
     
     ' Format the HasResponded column
@@ -177,16 +181,16 @@ Sub CalculateHasResponded(externalWs As Worksheet, partnerWs As Worksheet)
     With partnerRange
         .FormatConditions.Delete ' Clear existing conditional formatting
         
-        ' Highlight cells with value > 0 in light green
-        With .FormatConditions.Add(Type:=xlCellValue, Operator:=xlGreater, Formula1:="0")
+        ' Highlight cells with value = 1 (has responded) in light green
+        With .FormatConditions.Add(Type:=xlCellValue, Operator:=xlEqual, Formula1:="1")
             .Interior.Color = RGB(198, 239, 206) ' Light green
             .Font.Color = RGB(0, 97, 0) ' Dark green text
         End With
         
-        ' Highlight cells with value = 0 in light yellow
+        ' Highlight cells with value = 0 (no response) in light red
         With .FormatConditions.Add(Type:=xlCellValue, Operator:=xlEqual, Formula1:="0")
-            .Interior.Color = RGB(255, 235, 156) ' Light yellow
-            .Font.Color = RGB(156, 101, 0) ' Dark yellow text
+            .Interior.Color = RGB(255, 199, 206) ' Light red
+            .Font.Color = RGB(156, 0, 6) ' Dark red text
         End With
     End With
 End Sub

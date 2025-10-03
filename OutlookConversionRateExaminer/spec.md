@@ -19,4 +19,37 @@ The macro should
 - The macro should create a new Excel file everytime and keep Excel open so that the user can save it.
 - The macro will be run in Outlook Desktop.
 
+## Modification request
 
+Modify the macro so that it only does the following:
+- It looks for emails either
+    - direction: either "sent" or "received"
+    - going to external recipients and the body contains AI EDIH and the cutoff date is OK, or
+    - received from external senders
+- Put all the found emails into the Excel table with the following columns:
+    - Sender email address
+    - Recipients email addresses (only in To field, cc and bcc should not be taken into account)
+    - Subject
+    - Date of sending/receiving the email
+    - Conversation ID
+
+This macro (to be run in Outlook desktop) should be in the file ExternalEmailCollector.vba
+
+A second macro (into file EmailResponseCounterInExcel.vba, to be run in Excel desktop) should go along the email list above and for all "sent" emails it should collect the number or "received" emails with the same Conversation ID and put the count into an additional column called "ResponseEmailCount" (this is the title in the header).
+
+### Further details
+
+Outlook macro:
+
+- Whether an email is "sent" or "received" should be decided based on the content of the sender email address.
+- The "AI EDIH" criteria only applies to the sent emails. Mentioning "EDIH" is sufficient, "AI" is not necessarily needed.
+- The new macros should also ask for the sender email address and the domain of the organization.
+- When you check the domain of the email address, make sure not to check exact equality. If the domain name of the email address ends with the given domain name, that is already a match. Any subdomains should be accepted.
+- Exclude the cc and bcc recipients entirely.
+
+Excel macro:
+
+- The data can be assumed to be in the first worksheet.
+- Count the responses only for the "sent" emails.
+- If the Excel table does not have these columns, issue a detailed error message.
+- You can assume that the table columns have been created by the Outlook macro and so you can hardwire their location. No need for additional validation.

@@ -12,6 +12,11 @@ Díjbeszedős számlákból szolgáltató és összeg kinyerése az elszámolás
 #### **BiralatSablonGeneralo/**
 Excel makró, mely a tanszéki terhelési összesítőből kinyeri a hallgató adatait és word doksikat generál a szakdolgozat/diplomaterv bírálathoz, majd később ezekből PDF-et feltöltéshez és nyomtatáshoz is (utóbbiban minden annyiszor szerepel, ahányszor nyomtatni kell.)
 
+#### **EmailConversionTracker/**
+
+Initial commit, counts responses for all emails sent by someone outside the organization.
+Not finished yet.
+
 #### **EViP_ZH_gen/**
 Kísérlet EVIP ZH generálásra
 

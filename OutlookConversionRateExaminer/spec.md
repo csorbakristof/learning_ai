@@ -19,7 +19,7 @@ The macro should
 - The macro should create a new Excel file everytime and keep Excel open so that the user can save it.
 - The macro will be run in Outlook Desktop.
 
-## Modification request
+# Modification request
 
 Modify the macro so that it only does the following:
 - It looks for emails either
@@ -37,7 +37,7 @@ This macro (to be run in Outlook desktop) should be in the file ExternalEmailCol
 
 A second macro (into file EmailResponseCounterInExcel.vba, to be run in Excel desktop) should go along the email list above and for all "sent" emails it should collect the number or "received" emails with the same Conversation ID and put the count into an additional column called "ResponseEmailCount" (this is the title in the header).
 
-### Further details
+## Further details
 
 Outlook macro:
 
@@ -53,3 +53,10 @@ Excel macro:
 - Count the responses only for the "sent" emails.
 - If the Excel table does not have these columns, issue a detailed error message.
 - You can assume that the table columns have been created by the Outlook macro and so you can hardwire their location. No need for additional validation.
+
+# Further modification: collect partner email addresses
+
+Extend the Outlook macro so that it creates two worksheets: the content above should go into worksheet "ExternalEmails". Another one should also be created where all external email addresses should be collected from the recipient fields of the sent emails.
+It should have two columns: "External email" and "Is EDIH partner". The second column should be filled with default "1" values.
+
+Modify the Excel macro so that it counts the responses only for those "sent" emails which have a recipient in the "External email" column and the "Is EDIH partner" value for them is "1". (Users will set the "Is EDIH partner" value for some email addresses to 0 if that email address does not belong to a true partner and as such, should not be taken into account, although it is an external email address.)

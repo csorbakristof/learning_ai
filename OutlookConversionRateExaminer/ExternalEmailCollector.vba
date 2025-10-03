@@ -40,10 +40,14 @@ Sub CollectExternalEmails()
         Exit Sub
     End If
     
-    ' Create Excel report
-    CreateExcelReport externalEmails
+    ' Collect partner email addresses from sent emails
+    Dim partnerEmails As Collection
+    Set partnerEmails = CollectPartnerEmails(externalEmails, domainName)
     
-    MsgBox "External email collection completed! Excel file has been created with " & externalEmails.Count & " emails."
+    ' Create Excel report with both worksheets
+    CreateExcelReport externalEmails, partnerEmails
+    
+    MsgBox "External email collection completed! Excel file has been created with " & externalEmails.Count & " emails and " & partnerEmails.Count & " partner addresses."
 End Sub
 
 ' Function to find external emails matching criteria
@@ -296,12 +300,14 @@ Function GetToRecipientsString(mailItem As Outlook.MailItem, domainName As Strin
 End Function
 
 ' Create Excel report with external emails
-Sub CreateExcelReport(externalEmails As Collection)
+Sub CreateExcelReport(externalEmails As Collection, partnerEmails As Collection)
     Dim excelApp As Object
     Dim workbook As Object
-    Dim worksheet As Object
+    Dim externalWorksheet As Object
+    Dim partnerWorksheet As Object
     Dim row As Integer
     Dim emailInfo As Variant
+    Dim partnerInfo As Variant
     
     ' Create Excel application
     Set excelApp = CreateObject("Excel.Application")
@@ -309,18 +315,21 @@ Sub CreateExcelReport(externalEmails As Collection)
     
     ' Create new workbook
     Set workbook = excelApp.Workbooks.Add
-    Set worksheet = workbook.Worksheets(1)
     
-    ' Set up headers
-    worksheet.Cells(1, 1).Value = "Sender email address"
-    worksheet.Cells(1, 2).Value = "Recipients email addresses"
-    worksheet.Cells(1, 3).Value = "Subject"
-    worksheet.Cells(1, 4).Value = "Date of sending/receiving"
-    worksheet.Cells(1, 5).Value = "Conversation ID"
-    worksheet.Cells(1, 6).Value = "Direction"
+    ' Create ExternalEmails worksheet
+    Set externalWorksheet = workbook.Worksheets(1)
+    externalWorksheet.Name = "ExternalEmails"
+    
+    ' Set up headers for ExternalEmails
+    externalWorksheet.Cells(1, 1).Value = "Sender email address"
+    externalWorksheet.Cells(1, 2).Value = "Recipients email addresses"
+    externalWorksheet.Cells(1, 3).Value = "Subject"
+    externalWorksheet.Cells(1, 4).Value = "Date of sending/receiving"
+    externalWorksheet.Cells(1, 5).Value = "Conversation ID"
+    externalWorksheet.Cells(1, 6).Value = "Direction"
     
     ' Format headers
-    With worksheet.Range("A1:F1")
+    With externalWorksheet.Range("A1:F1")
         .Font.Bold = True
         .Interior.Color = RGB(200, 200, 200)
     End With
@@ -332,27 +341,69 @@ Sub CreateExcelReport(externalEmails As Collection)
         emailInfo = externalEmails(emailCount)
         
         ' Fill Excel row
-        worksheet.Cells(row, 1).Value = emailInfo(0) ' SenderAddress
-        worksheet.Cells(row, 2).Value = emailInfo(1) ' RecipientsString
-        worksheet.Cells(row, 3).Value = emailInfo(2) ' Subject
-        worksheet.Cells(row, 4).Value = Format(emailInfo(3), "yyyy-mm-dd hh:mm") ' EmailDate
-        worksheet.Cells(row, 5).Value = emailInfo(4) ' ConversationID
-        worksheet.Cells(row, 6).Value = emailInfo(5) ' Direction
+        externalWorksheet.Cells(row, 1).Value = emailInfo(0) ' SenderAddress
+        externalWorksheet.Cells(row, 2).Value = emailInfo(1) ' RecipientsString
+        externalWorksheet.Cells(row, 3).Value = emailInfo(2) ' Subject
+        externalWorksheet.Cells(row, 4).Value = Format(emailInfo(3), "yyyy-mm-dd hh:mm") ' EmailDate
+        externalWorksheet.Cells(row, 5).Value = emailInfo(4) ' ConversationID
+        externalWorksheet.Cells(row, 6).Value = emailInfo(5) ' Direction
         
         row = row + 1
     Next emailCount
     
     ' Auto-fit columns
-    worksheet.Columns("A:F").AutoFit
+    externalWorksheet.Columns("A:F").AutoFit
     
-    ' Add summary
-    worksheet.Cells(row + 1, 1).Value = "Total External Emails:"
-    worksheet.Cells(row + 1, 2).Value = externalEmails.Count
+    ' Add summary to ExternalEmails worksheet
+    externalWorksheet.Cells(row + 1, 1).Value = "Total External Emails:"
+    externalWorksheet.Cells(row + 1, 2).Value = externalEmails.Count
     
     ' Format summary
-    With worksheet.Range("A" & (row + 1) & ":B" & (row + 1))
+    With externalWorksheet.Range("A" & (row + 1) & ":B" & (row + 1))
         .Font.Bold = True
     End With
+    
+    ' Create PartnerEmails worksheet
+    Set partnerWorksheet = workbook.Worksheets.Add(After:=externalWorksheet)
+    partnerWorksheet.Name = "PartnerEmails"
+    
+    ' Set up headers for PartnerEmails
+    partnerWorksheet.Cells(1, 1).Value = "External email"
+    partnerWorksheet.Cells(1, 2).Value = "Is EDIH partner"
+    
+    ' Format headers
+    With partnerWorksheet.Range("A1:B1")
+        .Font.Bold = True
+        .Interior.Color = RGB(200, 200, 200)
+    End With
+    
+    ' Process each partner email
+    row = 2
+    Dim partnerCount As Long
+    For partnerCount = 1 To partnerEmails.Count
+        partnerInfo = partnerEmails(partnerCount)
+        
+        ' Fill Excel row
+        partnerWorksheet.Cells(row, 1).Value = partnerInfo(0) ' Email address
+        partnerWorksheet.Cells(row, 2).Value = partnerInfo(1) ' Is EDIH partner
+        
+        row = row + 1
+    Next partnerCount
+    
+    ' Auto-fit columns
+    partnerWorksheet.Columns("A:B").AutoFit
+    
+    ' Add summary to PartnerEmails worksheet
+    partnerWorksheet.Cells(row + 1, 1).Value = "Total Partner Emails:"
+    partnerWorksheet.Cells(row + 1, 2).Value = partnerEmails.Count
+    
+    ' Format summary
+    With partnerWorksheet.Range("A" & (row + 1) & ":B" & (row + 1))
+        .Font.Bold = True
+    End With
+    
+    ' Make ExternalEmails the active sheet
+    externalWorksheet.Activate
 End Sub
 
 ' Create email info array
@@ -367,4 +418,66 @@ Function CreateEmailInfo(mailItem As Outlook.MailItem, direction As String) As V
     emailInfo(5) = direction
     
     CreateEmailInfo = emailInfo
+End Function
+
+' Collect partner email addresses from sent emails
+Function CollectPartnerEmails(externalEmails As Collection, domainName As String) As Collection
+    Dim partnerEmails As New Collection
+    Dim uniqueEmails As New Collection
+    Dim emailInfo As Variant
+    Dim recipients As String
+    Dim recipientArray As Variant
+    Dim i As Integer
+    Dim emailAddress As String
+    
+    ' Process each external email
+    For i = 1 To externalEmails.Count
+        emailInfo = externalEmails(i)
+        
+        ' Only process sent emails
+        If LCase(emailInfo(5)) = "sent" Then ' Direction is in position 5
+            recipients = emailInfo(1) ' Recipients string is in position 1
+            
+            ' Split recipients by semicolon
+            If recipients <> "" Then
+                recipientArray = Split(recipients, ";")
+                
+                Dim j As Integer
+                For j = LBound(recipientArray) To UBound(recipientArray)
+                    emailAddress = Trim(recipientArray(j))
+                    
+                    ' Only add external email addresses
+                    If emailAddress <> "" And Not IsInternalDomain(emailAddress, domainName) Then
+                        ' Check if email is already in unique collection
+                        If Not IsEmailInCollection(uniqueEmails, emailAddress) Then
+                            uniqueEmails.Add emailAddress
+                        End If
+                    End If
+                Next j
+            End If
+        End If
+    Next i
+    
+    ' Convert unique emails to partner emails collection with default "1" values
+    For i = 1 To uniqueEmails.Count
+        Dim partnerInfo(1) As Variant
+        partnerInfo(0) = uniqueEmails(i) ' Email address
+        partnerInfo(1) = 1 ' Is EDIH partner (default to 1)
+        partnerEmails.Add partnerInfo
+    Next i
+    
+    Set CollectPartnerEmails = partnerEmails
+End Function
+
+' Helper function to check if email is already in collection
+Function IsEmailInCollection(emailCollection As Collection, emailAddress As String) As Boolean
+    Dim i As Integer
+    IsEmailInCollection = False
+    
+    For i = 1 To emailCollection.Count
+        If LCase(emailCollection(i)) = LCase(emailAddress) Then
+            IsEmailInCollection = True
+            Exit Function
+        End If
+    Next i
 End Function

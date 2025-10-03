@@ -2,57 +2,104 @@ Option Explicit
 
 ' Main subroutine to count email responses
 Sub CountEmailResponses()
-    Dim ws As Worksheet
+    Dim externalWs As Worksheet
+    Dim partnerWs As Worksheet
     Dim lastRow As Long
     Dim i As Long
     Dim conversationID As String
     Dim direction As String
+    Dim recipients As String
     Dim responseCount As Long
     
-    ' Get the first worksheet
-    Set ws = ActiveWorkbook.Worksheets(1)
+    ' Get the ExternalEmails worksheet
+    Set externalWs = ActiveWorkbook.Worksheets("ExternalEmails")
     
-    ' Find the last row with data
-    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
+    ' Get the PartnerEmails worksheet
+    On Error Resume Next
+    Set partnerWs = ActiveWorkbook.Worksheets("PartnerEmails")
+    On Error GoTo 0
+    
+    If partnerWs Is Nothing Then
+        MsgBox "PartnerEmails worksheet not found. Please run the Outlook macro first.", vbExclamation, "Missing Worksheet"
+        Exit Sub
+    End If
+    
+    ' Find the last row with data in ExternalEmails
+    lastRow = externalWs.Cells(externalWs.Rows.Count, 1).End(xlUp).Row
     
     If lastRow < 2 Then
-        MsgBox "No data found in the worksheet.", vbExclamation, "No Data"
+        MsgBox "No data found in the ExternalEmails worksheet.", vbExclamation, "No Data"
         Exit Sub
     End If
     
     ' Add ResponseEmailCount header if column G is empty
-    If ws.Cells(1, 7).Value = "" Then
-        ws.Cells(1, 7).Value = "ResponseEmailCount"
-        ws.Cells(1, 7).Font.Bold = True
-        ws.Cells(1, 7).Interior.Color = RGB(200, 200, 200)
+    If externalWs.Cells(1, 7).Value = "" Then
+        externalWs.Cells(1, 7).Value = "ResponseEmailCount"
+        externalWs.Cells(1, 7).Font.Bold = True
+        externalWs.Cells(1, 7).Interior.Color = RGB(200, 200, 200)
     End If
     
     ' Process each row
     ' Column layout: A=Sender, B=Recipients, C=Subject, D=Date, E=ConversationID, F=Direction, G=ResponseEmailCount
     For i = 2 To lastRow
-        direction = Trim(ws.Cells(i, 6).Value) ' Direction column (F)
-        conversationID = Trim(ws.Cells(i, 5).Value) ' Conversation ID column (E)
+        direction = Trim(externalWs.Cells(i, 6).Value) ' Direction column (F)
+        conversationID = Trim(externalWs.Cells(i, 5).Value) ' Conversation ID column (E)
+        recipients = Trim(externalWs.Cells(i, 2).Value) ' Recipients column (B)
         
-        ' Only count responses for sent emails
+        ' Only count responses for sent emails with valid partners
         If LCase(direction) = "sent" Then
-            If conversationID <> "" Then
-                responseCount = CountResponsesForConversation(ws, conversationID, lastRow)
-                ws.Cells(i, 7).Value = responseCount ' ResponseEmailCount column (G)
+            If conversationID <> "" And HasValidPartners(recipients, partnerWs) Then
+                responseCount = CountResponsesForConversation(externalWs, conversationID, lastRow)
+                externalWs.Cells(i, 7).Value = responseCount ' ResponseEmailCount column (G)
             Else
-                ws.Cells(i, 7).Value = 0 ' No conversation ID = no responses
+                externalWs.Cells(i, 7).Value = 0 ' No conversation ID or no valid partners = no responses
             End If
         Else
-            ws.Cells(i, 7).Value = "" ' Clear field for received emails
+            externalWs.Cells(i, 7).Value = "" ' Clear field for received emails
         End If
     Next i
     
     ' Format the ResponseEmailCount column
-    FormatResponseColumn ws, 7, lastRow
+    FormatResponseColumn externalWs, 7, lastRow
     
     MsgBox "Response counting completed! The 'ResponseEmailCount' column has been updated.", vbInformation, "Process Complete"
 End Sub
 
-
+' Check if the recipients string contains any valid partners (Is EDIH partner = 1)
+Function HasValidPartners(recipients As String, partnerWs As Worksheet) As Boolean
+    Dim recipientArray As Variant
+    Dim i As Integer
+    Dim j As Long
+    Dim emailAddress As String
+    Dim partnerLastRow As Long
+    
+    HasValidPartners = False
+    
+    If recipients = "" Then Exit Function
+    
+    ' Get last row in partner worksheet
+    partnerLastRow = partnerWs.Cells(partnerWs.Rows.Count, 1).End(xlUp).Row
+    
+    If partnerLastRow < 2 Then Exit Function
+    
+    ' Split recipients by semicolon
+    recipientArray = Split(recipients, ";")
+    
+    ' Check each recipient
+    For i = LBound(recipientArray) To UBound(recipientArray)
+        emailAddress = Trim(recipientArray(i))
+        
+        ' Check if this email is in the partner list with "Is EDIH partner" = 1
+        For j = 2 To partnerLastRow
+            If LCase(Trim(partnerWs.Cells(j, 1).Value)) = LCase(emailAddress) Then
+                If partnerWs.Cells(j, 2).Value = 1 Then
+                    HasValidPartners = True
+                    Exit Function
+                End If
+            End If
+        Next j
+    Next i
+End Function
 
 ' Count responses for a specific conversation ID
 Function CountResponsesForConversation(ws As Worksheet, targetConversationID As String, lastRow As Long) As Long
@@ -114,7 +161,7 @@ End Sub
 
 ' Helper function to create summary statistics
 Sub CreateSummaryStatistics()
-    Dim ws As Worksheet
+    Dim externalWs As Worksheet
     Dim lastRow As Long
     Dim totalSentEmails As Long
     Dim emailsWithResponses As Long
@@ -125,15 +172,15 @@ Sub CreateSummaryStatistics()
     Dim direction As String
     Dim responseCount As Long
     
-    Set ws = ActiveWorkbook.Worksheets(1)
-    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
+    Set externalWs = ActiveWorkbook.Worksheets("ExternalEmails")
+    lastRow = externalWs.Cells(externalWs.Rows.Count, 1).End(xlUp).Row
     
     ' Calculate statistics
     For i = 2 To lastRow
-        direction = Trim(ws.Cells(i, 6).Value) ' Direction column (F)
+        direction = Trim(externalWs.Cells(i, 6).Value) ' Direction column (F)
         If LCase(direction) = "sent" Then
             totalSentEmails = totalSentEmails + 1
-            responseCount = ws.Cells(i, 7).Value ' ResponseEmailCount column (G)
+            responseCount = externalWs.Cells(i, 7).Value ' ResponseEmailCount column (G)
             If responseCount > 0 Then
                 emailsWithResponses = emailsWithResponses + 1
                 totalResponses = totalResponses + responseCount
@@ -151,24 +198,24 @@ Sub CreateSummaryStatistics()
     ' Add summary section
     summaryRow = lastRow + 3
     
-    ws.Cells(summaryRow, 1).Value = "SUMMARY STATISTICS"
-    ws.Cells(summaryRow, 1).Font.Bold = True
-    ws.Cells(summaryRow, 1).Font.Size = 12
+    externalWs.Cells(summaryRow, 1).Value = "SUMMARY STATISTICS"
+    externalWs.Cells(summaryRow, 1).Font.Bold = True
+    externalWs.Cells(summaryRow, 1).Font.Size = 12
     
-    ws.Cells(summaryRow + 1, 1).Value = "Total Sent Emails:"
-    ws.Cells(summaryRow + 1, 2).Value = totalSentEmails
+    externalWs.Cells(summaryRow + 1, 1).Value = "Total Sent Emails:"
+    externalWs.Cells(summaryRow + 1, 2).Value = totalSentEmails
     
-    ws.Cells(summaryRow + 2, 1).Value = "Emails with Responses:"
-    ws.Cells(summaryRow + 2, 2).Value = emailsWithResponses
+    externalWs.Cells(summaryRow + 2, 1).Value = "Emails with Responses:"
+    externalWs.Cells(summaryRow + 2, 2).Value = emailsWithResponses
     
-    ws.Cells(summaryRow + 3, 1).Value = "Total Responses Received:"
-    ws.Cells(summaryRow + 3, 2).Value = totalResponses
+    externalWs.Cells(summaryRow + 3, 1).Value = "Total Responses Received:"
+    externalWs.Cells(summaryRow + 3, 2).Value = totalResponses
     
-    ws.Cells(summaryRow + 4, 1).Value = "Conversion Rate:"
-    ws.Cells(summaryRow + 4, 2).Value = Format(conversionRate, "0.00") & "%"
+    externalWs.Cells(summaryRow + 4, 1).Value = "Conversion Rate:"
+    externalWs.Cells(summaryRow + 4, 2).Value = Format(conversionRate, "0.00") & "%"
     
     ' Format summary section
-    With ws.Range("A" & (summaryRow + 1) & ":B" & (summaryRow + 4))
+    With externalWs.Range("A" & (summaryRow + 1) & ":B" & (summaryRow + 4))
         .Font.Bold = True
         .Borders.LineStyle = xlContinuous
         .Borders.Weight = xlThin

@@ -123,6 +123,126 @@
   -o-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
 }
+
+/* Mobile-friendly styles for larger buttons and text */
+input[type="button"] {
+  font-size: 20px;
+  padding: 15px 25px;
+  margin: 10px 5px;
+  min-height: 50px;
+  min-width: 120px;
+  border-radius: 8px;
+  border: 2px solid #333;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+input[type="button"]:hover {
+  transform: scale(1.05);
+}
+
+input[type="button"].ok {
+  background-color: #4CAF50;
+  color: white;
+  border-color: #45a049;
+}
+
+input[type="button"].ok:hover {
+  background-color: #45a049;
+}
+
+input[type="button"].danger {
+  background-color: #f44336;
+  color: white;
+  border-color: #da190b;
+}
+
+input[type="button"].danger:hover {
+  background-color: #da190b;
+}
+
+/* Large text inputs for mobile */
+input[type="text"] {
+  font-size: 18px;
+  padding: 12px;
+  margin: 8px 5px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  min-height: 40px;
+}
+
+/* Large labels for mobile */
+label {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 5px;
+  display: inline-block;
+}
+
+/* Large checkboxes for mobile */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 10px 8px;
+}
+
+/* Large log text messages */
+#info {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  min-height: 50px;
+  display: block;
+  text-align: center;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    margin: 10px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    text-align: center;
+  }
+  
+  input[type="button"] {
+    font-size: 22px;
+    padding: 18px 30px;
+    margin: 12px 8px;
+    min-height: 60px;
+    min-width: 150px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  input[type="text"] {
+    font-size: 20px;
+    padding: 15px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  label {
+    font-size: 20px;
+    display: block;
+    margin: 15px 5px 5px 5px;
+  }
+  
+  #info {
+    font-size: 24px;
+    padding: 20px;
+    margin: 15px 0;
+  }
+}
 </style>
   <title>Memo Temperature, Humidity and Battery voltage v1.0</title>
   </head>

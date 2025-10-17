@@ -128,32 +128,6 @@
   </head>
   <body>
 	<h1>Memo Temperature, Humidity and Battery voltage</h1>
-	<div class="navbar">
-        <div class="container nav-container">
-            <input class="checkbox" type="checkbox" name="" id="">
-            <div class="hamburger-lines">
-              <span class="line line1"></span>
-              <span class="line line2"></span>
-              <span class="line line3"></span>
-            </div>  
-          <div class="menu-items">
-				<li> GitHub </li>
-				<li><a href="https://github.com/pvvx/ATC_MiThermometer">&#9432;pvvx</a></li>
-				<li> Live Data </li>
-				<li><a href="GraphAtc.html">Graph Atc 1</a></li>
-				<li><a href="GraphAtc1.html">Graph Atc 2</a></li>
-				<li><a href="GraphAtc2.html">Graph Atc 3</a></li>
-				<li><a href="DevPoint.html">Dev Point</a></li>
-				<li><a href="Advertising.html">Advertising</a></li>
-				<li>Stored data</li>
-				<li><a href="GraphMemo.html">Memo Graph</a></li>
-				<li><a href="GraphMemoOriginal.html">LYWSD03MMC Memo Graph </a></li>
-				<li>Others & Flasher</li>
-				<li><a href="TelinkMiFlasher.html">Flasher</a></li>
-				<li><a href="TelinkOTA.html">OTA Flasher</a></li>
-          </div>
-        </div>
-    </div>
 	<hr>
 	<div style="height: auto; width: auto; text-align: center;">
 		<input type="button" id="butConnect" value="Connect" class="ok">	
@@ -162,6 +136,7 @@
 	  	<label for="namePrefix">Number of Samples</label>
   		<input type="text" id="LoadSamples" value="" placeholder="All">
 		<input type="button" id="butSave" value="Save data to .csv file">
+		<input type="button" id="butDeleteRecords" value="!Delete all records!" class="danger">
 		<br><br>
 		<input type="checkbox" id="setDevTime" checked>
 		<label for="setDevTime">Set device time</label>
@@ -179,7 +154,7 @@
 var $ = function(id) {
 	return document.getElementById(id);
 }
-// Вывод в терминал
+// Output to terminal (Вывод в терминал)
 function log(data) {$('info').innerHTML=data};
 function Clog(data) {$('info').innerHTML=data; console.log(data)};
 var deviceName;
@@ -209,7 +184,7 @@ $("butConnect").onclick =  function() {
 }
 var localOffset = (new Date()).getTimezoneOffset() * 60000;
 var show_on = 0;
-// Буфер входящих данных
+// Incoming data buffer (Буфер входящих данных)
 var datau = [];
 var memo = [];
 var gu;
@@ -360,9 +335,9 @@ function show_graph() {
 $('hideLoDate').onchange = function() {show_graph();};
 $('thvbat').onchange = function() {show_graph();};
 //--BLE---------------------------------------
-// Кэш объекта выбранного устройства
+// Cache of selected device object (Кэш объекта выбранного устройства)
 let deviceCache = null;
-// Кэш объекта характеристики
+// Cache of characteristic object (Кэш объекта характеристики)
 var characteristicVTH = null;
 function DevConnected() {
 		devcnn = 1;
@@ -371,7 +346,7 @@ function DevConnected() {
 		ShowConnect()
        	stage_read = 0;
 }
-// Запустить выбор Bluetooth устройства и подключиться к выбранному
+// Start Bluetooth device selection and connect to selected device (Запустить выбор Bluetooth устройства и подключиться к выбранному)
 function connect() {
 	devcnn = 0;
 	redevcnn = 0;
@@ -380,7 +355,7 @@ function connect() {
 		then(device => connectDeviceAndCacheCharacteristic(device)).
 		catch(error => {Clog(error); ShowConnect();});
 }
-// Запрос выбора Bluetooth устройства
+// Request Bluetooth device selection (Запрос выбора Bluetooth устройства)
 function requestBluetoothDevice() {
 	var deviceOptions = {optionalServices: [0xfe95, 0x181a, 0x1f10]};
 	const namePrefix = $('namePrefix').value;
@@ -404,7 +379,7 @@ function requestBluetoothDevice() {
 		return deviceCache;
 	});
 }
-// Обработчик разъединения
+// Disconnection handler (Обработчик разъединения)
 function handleDisconnection(event) {
 	let device = event.target;
     ShowConnect();
@@ -415,7 +390,7 @@ function handleDisconnection(event) {
 }
 
 var start_time;
-// Подключение к определенному устройству, получение сервиса и характеристики
+// Connect to specific device, get service and characteristic (Подключение к определенному устройству, получение сервиса и характеристики)
 function connectDeviceAndCacheCharacteristic(device) {
   if (device.gatt.connected && characteristicVTH) {
   	return Promise.resolve(null);
@@ -518,7 +493,7 @@ function connectDeviceAndCacheCharacteristic(device) {
 		});
 	});
 }
-// Отключиться от подключенного устройства
+// Disconnect from connected device (Отключиться от подключенного устройства)
 function disconnect() {
 	devcnn = 0;
 	redevcnn = 55;
@@ -553,6 +528,60 @@ function disconnect() {
 	}
 	else
 		Clog('"' + deviceCache.name + '" bluetooth device is already disconnected');
+}
+
+// Utility functions for deleting records
+function hexToBytes(hex) {
+	for (var bytes = [], c = 0; c < hex.length; c += 2)
+		bytes.push(parseInt(hex.substr(c, 2), 16));
+	return new Uint8Array(bytes);
+}
+
+function bytesToHex(data) {
+	return new Uint8Array(data).reduce(function(memo, i) {
+		return memo + ("0" + i.toString(16)).slice(-2);
+	}, "");
+}
+
+// Send custom setting to device
+function sendCustomSetting(data) {
+	if (!characteristicVTH) {
+		Clog("Error: Device not connected");
+		return;
+	}
+	
+	mainCharSend(data, characteristicVTH).then(function() {
+		Clog("Command " + data + " sent successfully");
+	}).catch(function(err) {
+		Clog("Error sending command " + data + ": " + err);
+	});
+}
+
+// Main character send function
+var mainCharSend = function(data, characteristic) {
+	return new Promise(function(resolve, reject) {
+		Clog("Sending command: " + data);
+		characteristic.writeValue(hexToBytes(data)).then(function(character) {
+			resolve("ok");
+		}).catch(function(err) {
+			reject("Error while sending command data: " + err);
+		});
+	});
+}
+
+// Delete all records button event handler
+$("butDeleteRecords").onclick = function() {
+	if (!characteristicVTH) {
+		Clog("Error: Device not connected. Please connect to device first.");
+		return;
+	}
+	
+	if (!confirm("Are you sure you want to delete all stored measurement records from the device? This action cannot be undone.")) {
+		return;
+	}
+	
+	Clog("Deleting all measurement records...");
+	sendCustomSetting("36123400");
 }
 
 /*! @license https://github.com/danvk/dygraphs/blob/v2.2.1/LICENSE.txt (MIT) */

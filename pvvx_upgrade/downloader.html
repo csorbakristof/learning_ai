@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
 <html>
   <head>
   <link rel="stylesheet" href="styles.css">
 <style type="text/css">
+/** Original: https://pvvx.github.io/ATC_MiThermometer/GraphMemo.html */
 /**
  * Default styles for the dygraphs charting library.
  */
@@ -283,8 +283,6 @@ $("butSave").onclick =  function() {
 if(window.innerHeight > 320) $('div_v').style.height = (window.innerHeight-120) + 'px';
 window.onresize = function(){
 	if(window.innerHeight > 320) $('div_v').style.height = (window.innerHeight-120) + 'px';
-//	if(gu) gu.resize();
-//	$('div_v').style.width = (window.innerWidth-50) + 'px';
 }
 function hex(number, length) {
     var str = (number.toString(16)).toUpperCase();
@@ -414,75 +412,69 @@ function connectDeviceAndCacheCharacteristic(device) {
 		then(_ => {
 			Clog('Notifications Started');
 			characteristicVTH.addEventListener('characteristicvaluechanged', event => {
-			var value = event.target.value;
-			let len = value.byteLength;
-			if(len > 0) {
-				let blkid = value.getUint8(0);
-				if(blkid == 0x35) {
-					ResponsePkt(value);
-					if(len >= 13) {
-						let cnt = value.getUint16(1, true);
-						let tc = value.getUint32(3, true);
-						let tm = value.getInt16(7, true) / 100.0;
-						let hm = value.getUint16(9, true) / 100.0;
-						let vb = value.getUint16(11, true);
-						/* Slow speed on some devices!
-						let dt = new Date(tc*1000);
-						console.log('Memo '+((dt.toISOString().slice(0, -1)).replace('T',' ')).replace('.000','')+' - Vbat: '+vb+' mV , Temp: '+tm+'°C, Humi: '+hm+'%, Count: '+cnt);
-						*/
-						log('Read Count: '+cnt);
-						memo.push([tc,tm,hm,vb]);
-						show_on = 1;
-					} else if(len >= 3) {
-						console.log('Read count: '+ memo.length);
-						console.log('Read time: ' + ((Date.now() - start_time)/1000).toFixed(3) + ' sec');
-						let time = Date.now()/1000;
-						time -= (new Date()).getTimezoneOffset() * 60;
-						blk = new Uint8Array(5);
-						blk[0] = 0x23;
-						blk[1] = time & 0xff;
-						blk[2] = (time >> 8) & 0xff;
-						blk[3] = (time >> 16) & 0xff;
-						blk[4] = (time >> 24) & 0xff;
-						console.log("Send cmd Set DevTime ("+dump(blk, blk.length)+")...");
-						characteristicVTH.writeValue(blk).then(_ => {
-							console.log('Send new DevTime ok');
-						});
-					} else if(len == 2) {
-						 memogetcont = value.getUint16(1, true);
-					}
-				} else if(blkid == 0x23 && len >= 4) {
-					let time = value.getUint32(1,true);
-					console.log('Device Time: 0x' + hex(time,8));
-					let dt = new Date(time*1000);
-					console.log('Device Date: '+(dt.toISOString().slice(0, -1)).replace('T',' '));
-					disconnect();
-				} else	if(blkid == 0x55) {
-					if(len >= 12) {
-						memo = new Array();
-						datau = new Array();
-/*						let av_meas_mem = value.getUint8(6) * 62.5 * value.getUint8(7) * value.getUint8(12);
-						if(av_meas_mem == 0) av_meas_mem = 600;
-						av_meas_mem /= 1000;
-						console.log('Memos storage interval: ' + av_meas_mem + ' sec');
-*/
-						memogetcont = parseInt($("LoadSamples").value);
-						if(isNaN(memogetcont) || memogetcont > MAX_MEMORES) memogetcont = MAX_MEMORES;
-						else if(memogetcont < 5) memogetcont = 5;
-						if(memogetcont == MAX_MEMORES)
-							Clog('Send command "get-memo all samples"...');
-						else
-							Clog('Send command "get-memo '+memogetcont+' samples"...');
-						start_time = Date.now();
-						characteristicVTH.writeValue(new Uint8Array([0x35,memogetcont&0xff, (memogetcont>>8)&0xff,0,0]))
-						.catch(error => {Clog(error); disconnect();});
-					} else {
-						Clog('Error device config!');
-						disconnect();
-					}
-				} else ResponsePkt(value);
-				}
-			});
+                // Event listener (!)
+                var value = event.target.value;
+                let len = value.byteLength;
+                if(len > 0) {
+                    let blkid = value.getUint8(0);
+                    if(blkid == 0x35) { // Measurement data response
+                        ResponsePkt(value);
+                        if(len >= 13) {
+                            let cnt = value.getUint16(1, true);
+                            let tc = value.getUint32(3, true);
+                            let tm = value.getInt16(7, true) / 100.0;
+                            let hm = value.getUint16(9, true) / 100.0;
+                            let vb = value.getUint16(11, true);
+                            log('Read Count: '+cnt);
+                            memo.push([tc,tm,hm,vb]);
+                            show_on = 1;
+                        } else if(len >= 3) {
+                            console.log('Read count: '+ memo.length);
+                            console.log('Read time: ' + ((Date.now() - start_time)/1000).toFixed(3) + ' sec');
+                            // Send new DevTime
+                            let time = Date.now()/1000;
+                            time -= (new Date()).getTimezoneOffset() * 60;
+                            blk = new Uint8Array(5);
+                            blk[0] = 0x23;
+                            blk[1] = time & 0xff;
+                            blk[2] = (time >> 8) & 0xff;
+                            blk[3] = (time >> 16) & 0xff;
+                            blk[4] = (time >> 24) & 0xff;
+                            console.log("Send cmd Set DevTime ("+dump(blk, blk.length)+")...");
+                            characteristicVTH.writeValue(blk).then(_ => {
+                                console.log('Send new DevTime ok');
+                            });
+                        } else if(len == 2) {
+                            memogetcont = value.getUint16(1, true);
+                        }
+                    } else if(blkid == 0x23 && len >= 4) {  // Response to command: DevTime set
+                        let time = value.getUint32(1,true);
+                        console.log('Device Time: 0x' + hex(time,8));
+                        let dt = new Date(time*1000);
+                        console.log('Device Date: '+(dt.toISOString().slice(0, -1)).replace('T',' '));
+                        // disconnect();    // Kristof: do not disconnect, allow record erase... user will disconnect manually.
+                    } else	if(blkid == 0x55) { // Device configuration response
+                        if(len >= 12) {
+                            memo = new Array();
+                            datau = new Array();
+
+                            memogetcont = parseInt($("LoadSamples").value);
+                            if(isNaN(memogetcont) || memogetcont > MAX_MEMORES) memogetcont = MAX_MEMORES;
+                            else if(memogetcont < 5) memogetcont = 5;
+                            if(memogetcont == MAX_MEMORES)
+                                Clog('Send command "get-memo all samples"...');
+                            else
+                                Clog('Send command "get-memo '+memogetcont+' samples"...');
+                            start_time = Date.now();
+                            characteristicVTH.writeValue(new Uint8Array([0x35,memogetcont&0xff, (memogetcont>>8)&0xff,0,0]))
+                            .catch(error => {Clog(error); disconnect();});
+                        } else {
+                            Clog('Error device config!');
+                            disconnect();
+                        }
+                    } else ResponsePkt(value);
+                    }
+                });
 			DevConnected();
 			Clog('Get device config...');
 			setTimeout(function() {

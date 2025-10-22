@@ -31,6 +31,91 @@ class SimpleTemperatureVisualizer:
         self.output_dir.mkdir(exist_ok=True)
         
         self.database = self._load_database()
+        self._device_dataframes = {}  # Cache for processed device data
+        self._summary_cache = None    # Cache for summary data
+        
+    def preload_all_devices(self):
+        """Preload all device data into memory for faster processing."""
+        print("Preloading device data...")
+        device_names = list(self.database.get('devices', {}).keys())
+        
+        for i, device_name in enumerate(device_names):
+            self._get_device_dataframe(device_name)
+            if (i + 1) % 5 == 0 or i == len(device_names) - 1:
+                print(f"  Loaded {i + 1}/{len(device_names)} devices...")
+        
+        print("Preloading complete!")
+    
+    def create_device_timeline_fast(self, device_name: str, days_limit: Optional[int] = None, 
+                                   sample_rate: int = 1) -> str:
+        """
+        Create a timeline visualization for a single device with optional data sampling.
+        
+        Args:
+            device_name: Name of the device
+            days_limit: Limit data to last N days (None for all data)
+            sample_rate: Use every Nth data point (1 = all data, 10 = every 10th point)
+            
+        Returns:
+            Path to saved plot
+        """
+        df = self._get_device_dataframe(device_name)
+        
+        if df.empty:
+            raise ValueError(f"No data found for device '{device_name}'")
+        
+        # Apply date limit if specified
+        if days_limit:
+            cutoff_date = df['timestamp'].max() - timedelta(days=days_limit)
+            df = df[df['timestamp'] >= cutoff_date]
+        
+        # Apply sampling for large datasets
+        if sample_rate > 1:
+            df = df.iloc[::sample_rate]
+            suffix_sampling = f"_sampled_{sample_rate}"
+        else:
+            suffix_sampling = ""
+        
+        # Create the plot
+        fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(14, 10), sharex=True)
+        
+        # Temperature plot
+        ax1.plot(df['timestamp'], df['temperature'], 'b-', linewidth=1.2, label='Temperature')
+        ax1.set_ylabel('Temperature (°C)')
+        title = f'Temperature Timeline - {device_name}'
+        if sample_rate > 1:
+            title += f' (Sampled 1:{sample_rate})'
+        ax1.set_title(title)
+        ax1.grid(True, alpha=0.3)
+        ax1.legend()
+        
+        # Humidity plot
+        ax2.plot(df['timestamp'], df['humidity'], 'g-', linewidth=1.2, label='Humidity')
+        ax2.set_ylabel('Humidity (%)')
+        ax2.set_title(f'Humidity Timeline - {device_name}')
+        ax2.grid(True, alpha=0.3)
+        ax2.legend()
+        
+        # Battery plot
+        ax3.plot(df['timestamp'], df['battery_mv'], 'r-', linewidth=1.2, label='Battery')
+        ax3.set_ylabel('Battery (mV)')
+        ax3.set_xlabel('Time')
+        ax3.set_title(f'Battery Level - {device_name}')
+        ax3.grid(True, alpha=0.3)
+        ax3.legend()
+        
+        # Format x-axis
+        fig.autofmt_xdate()
+        plt.tight_layout()
+        
+        # Save the plot
+        suffix = f"_last_{days_limit}days" if days_limit else "_full"
+        save_path = self.output_dir / f"{device_name}_timeline{suffix}{suffix_sampling}.png"
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        logger.info(f"Saved timeline plot: {save_path}")
+        return str(save_path)
         
     def _load_database(self) -> Dict:
         """Load the JSON database."""
@@ -40,33 +125,58 @@ class SimpleTemperatureVisualizer:
         with open(self.json_db_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     
+    def _get_device_dataframe(self, device_name: str) -> pd.DataFrame:
+        """Get cached DataFrame for a device, creating it if needed."""
+        if device_name not in self._device_dataframes:
+            if device_name not in self.database.get('devices', {}):
+                raise ValueError(f"Device '{device_name}' not found in database")
+            
+            records = self.database['devices'][device_name].get('records', [])
+            if not records:
+                return pd.DataFrame()
+            
+            # Convert all records to DataFrame in one go
+            df_data = []
+            for record in records:
+                df_data.append({
+                    'timestamp': pd.to_datetime(record['timestamp']),
+                    'temperature': record['temperature'],
+                    'humidity': record['humidity'],
+                    'battery_mv': record['battery_mv']
+                })
+            
+            df = pd.DataFrame(df_data)
+            df = df.sort_values('timestamp')
+            self._device_dataframes[device_name] = df
+        
+        return self._device_dataframes[device_name]
+    
     def get_device_data_summary(self) -> Dict[str, Dict]:
         """Get a summary of data available for each device."""
+        if self._summary_cache is not None:
+            return self._summary_cache
+        
         summary = {}
         
-        for device_name, device_data in self.database.get('devices', {}).items():
-            records = device_data.get('records', [])
+        for device_name in self.database.get('devices', {}):
+            df = self._get_device_dataframe(device_name)
             
-            if not records:
+            if df.empty:
                 continue
-                
-            timestamps = [pd.to_datetime(record['timestamp']) for record in records]
-            temperatures = [record['temperature'] for record in records]
-            humidities = [record['humidity'] for record in records]
-            batteries = [record['battery_mv'] for record in records]
             
             summary[device_name] = {
-                'record_count': len(records),
-                'first_reading': min(timestamps),
-                'last_reading': max(timestamps),
-                'temperature_range': (min(temperatures), max(temperatures)),
-                'temperature_avg': sum(temperatures) / len(temperatures),
-                'humidity_range': (min(humidities), max(humidities)), 
-                'humidity_avg': sum(humidities) / len(humidities),
-                'battery_range': (min(batteries), max(batteries)),
-                'battery_avg': sum(batteries) / len(batteries)
+                'record_count': len(df),
+                'first_reading': df['timestamp'].min(),
+                'last_reading': df['timestamp'].max(),
+                'temperature_range': (df['temperature'].min(), df['temperature'].max()),
+                'temperature_avg': df['temperature'].mean(),
+                'humidity_range': (df['humidity'].min(), df['humidity'].max()), 
+                'humidity_avg': df['humidity'].mean(),
+                'battery_range': (df['battery_mv'].min(), df['battery_mv'].max()),
+                'battery_avg': df['battery_mv'].mean()
             }
         
+        self._summary_cache = summary
         return summary
     
     def create_device_timeline(self, device_name: str, days_limit: Optional[int] = None) -> str:
@@ -80,27 +190,10 @@ class SimpleTemperatureVisualizer:
         Returns:
             Path to saved plot
         """
-        if device_name not in self.database.get('devices', {}):
-            raise ValueError(f"Device '{device_name}' not found in database")
+        df = self._get_device_dataframe(device_name)
         
-        device_data = self.database['devices'][device_name]
-        records = device_data.get('records', [])
-        
-        if not records:
+        if df.empty:
             raise ValueError(f"No data found for device '{device_name}'")
-        
-        # Convert to DataFrame
-        df_data = []
-        for record in records:
-            df_data.append({
-                'timestamp': pd.to_datetime(record['timestamp']),
-                'temperature': record['temperature'],
-                'humidity': record['humidity'],
-                'battery_mv': record['battery_mv']
-            })
-        
-        df = pd.DataFrame(df_data)
-        df = df.sort_values('timestamp')
         
         # Apply date limit if specified
         if days_limit:
@@ -165,37 +258,27 @@ class SimpleTemperatureVisualizer:
         
         fig, ax = plt.subplots(figsize=(14, 8))
         
-        colors = plt.cm.tab10(range(len(device_names)))
+        # Use simple color cycling
+        colors = ['blue', 'red', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'olive', 'cyan'] * 2
         
         for i, device_name in enumerate(device_names):
-            if device_name not in self.database.get('devices', {}):
+            try:
+                df = self._get_device_dataframe(device_name)
+                if df.empty:
+                    logger.warning(f"No data for device '{device_name}', skipping")
+                    continue
+                
+                # Apply date limit if specified
+                if days_limit:
+                    cutoff_date = df['timestamp'].max() - timedelta(days=days_limit)
+                    df = df[df['timestamp'] >= cutoff_date]
+                
+                if len(df) > 0:
+                    ax.plot(df['timestamp'], df['temperature'], 
+                           linewidth=1.5, label=device_name, color=colors[i], alpha=0.8)
+            except ValueError:
                 logger.warning(f"Device '{device_name}' not found, skipping")
                 continue
-            
-            records = self.database['devices'][device_name].get('records', [])
-            if not records:
-                logger.warning(f"No data for device '{device_name}', skipping")
-                continue
-            
-            # Convert to DataFrame
-            df_data = []
-            for record in records:
-                df_data.append({
-                    'timestamp': pd.to_datetime(record['timestamp']),
-                    'temperature': record['temperature']
-                })
-            
-            df = pd.DataFrame(df_data)
-            df = df.sort_values('timestamp')
-            
-            # Apply date limit if specified
-            if days_limit:
-                cutoff_date = df['timestamp'].max() - timedelta(days=days_limit)
-                df = df[df['timestamp'] >= cutoff_date]
-            
-            if len(df) > 0:
-                ax.plot(df['timestamp'], df['temperature'], 
-                       linewidth=1.5, label=device_name, color=colors[i], alpha=0.8)
         
         ax.set_xlabel('Time')
         ax.set_ylabel('Temperature (°C)')
@@ -328,12 +411,12 @@ class SimpleTemperatureVisualizer:
         latest_humidity = []
         
         for device_name in device_names:
-            records = self.database['devices'][device_name].get('records', [])
-            if records:
+            df = self._get_device_dataframe(device_name)
+            if not df.empty:
                 # Get the most recent record
-                latest_record = max(records, key=lambda x: pd.to_datetime(x['timestamp']))
-                latest_temps.append(latest_record['temperature'])
-                latest_humidity.append(latest_record['humidity'])
+                latest_idx = df['timestamp'].idxmax()
+                latest_temps.append(df.loc[latest_idx, 'temperature'])
+                latest_humidity.append(df.loc[latest_idx, 'humidity'])
         
         if latest_temps:
             bars1 = ax1.bar(device_names, latest_temps, color='orange', alpha=0.7)
@@ -424,6 +507,9 @@ def main():
         
         print("Simple Temperature Monitoring Visualizations")
         print("=" * 50)
+        
+        # Preload all device data for faster processing
+        visualizer.preload_all_devices()
         
         # Get summary of available data
         summary = visualizer.get_device_data_summary()

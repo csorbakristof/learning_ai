@@ -145,6 +145,11 @@ The Temperature Monitoring system provides several specialized tools:
 1. Run `setup.ps1` (one-time setup)
 2. Process data: `python src/main.py data/file.zip` (creates database)
 3. Generate clean charts: `python src/simple_visualizer.py` (uses database)
+4. Temperature difference heatmap (room vs ventillation intake):
+   - ./src/temperature_statistics.py
+   - ./src/simple_visualizer.py
+5. Temperature interactive GUI: .\temperature_gui.py (or launch_gui.py)
+
 
 ## Program Outputs
 

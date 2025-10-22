@@ -36,13 +36,14 @@ class TemperatureMonitoringApp:
         self.visualizer = TemperatureVisualizer()
         self.exporter = ExcelExporter()
     
-    def process_zip_file(self, zip_path: str, generate_reports: bool = True) -> List[Dict]:
+    def process_zip_file(self, zip_path: str, generate_reports: bool = True, generate_excel: bool = False) -> List[Dict]:
         """
         Process a ZIP file and optionally generate reports.
         
         Args:
             zip_path: Path to the ZIP file
-            generate_reports: Whether to generate visualizations and Excel reports
+            generate_reports: Whether to generate visualizations
+            generate_excel: Whether to generate Excel reports
             
         Returns:
             List of processed device data
@@ -60,7 +61,10 @@ class TemperatureMonitoringApp:
             logger.info(f"Successfully processed {len(device_data_list)} devices")
             
             if generate_reports:
-                self._generate_all_reports(device_data_list)
+                self._generate_visualizations(device_data_list)
+            
+            if generate_excel:
+                self._generate_excel_reports(device_data_list)
             
             return device_data_list
             
@@ -68,21 +72,18 @@ class TemperatureMonitoringApp:
             logger.error(f"Error processing ZIP file: {e}")
             raise
     
-    def _generate_all_reports(self, device_data_list: List[Dict]):
-        """Generate all reports for the processed data."""
-        logger.info("Generating reports...")
+    def _generate_visualizations(self, device_data_list: List[Dict]):
+        """Generate visualization reports for the processed data."""
+        logger.info("Generating visualizations...")
         
-        # Generate individual device reports
+        # Generate individual device timeline visualizations
         for device_data in device_data_list:
             try:
                 # Create timeline visualization
                 self.visualizer.create_temperature_timeline(device_data)
                 
-                # Export to Excel
-                self.exporter.export_device_data(device_data)
-                
             except Exception as e:
-                logger.error(f"Error generating reports for {device_data['device_name']}: {e}")
+                logger.error(f"Error generating visualization for {device_data['device_name']}: {e}")
         
         # Generate multi-device reports if multiple devices
         if len(device_data_list) > 1:
@@ -95,13 +96,34 @@ class TemperatureMonitoringApp:
                 # Statistics heatmap
                 self.visualizer.create_statistics_heatmap(device_data_list)
                 
+            except Exception as e:
+                logger.error(f"Error generating multi-device visualizations: {e}")
+        
+        logger.info("Visualization generation completed")
+    
+    def _generate_excel_reports(self, device_data_list: List[Dict]):
+        """Generate Excel reports for the processed data."""
+        logger.info("Generating Excel reports...")
+        
+        # Generate individual device Excel reports
+        for device_data in device_data_list:
+            try:
+                # Export to Excel
+                self.exporter.export_device_data(device_data)
+                
+            except Exception as e:
+                logger.error(f"Error generating Excel report for {device_data['device_name']}: {e}")
+        
+        # Generate combined Excel report if multiple devices
+        if len(device_data_list) > 1:
+            try:
                 # Combined Excel report
                 self.exporter.export_all_devices(device_data_list)
                 
             except Exception as e:
-                logger.error(f"Error generating multi-device reports: {e}")
+                logger.error(f"Error generating combined Excel report: {e}")
         
-        logger.info("Report generation completed")
+        logger.info("Excel report generation completed")
     
     def print_summary(self, device_data_list: List[Dict]):
         """Print a summary of the processed data."""
@@ -143,6 +165,8 @@ def main():
     parser.add_argument('zip_file', help='Path to the ZIP file containing CSV data')
     parser.add_argument('--no-reports', action='store_true', 
                        help='Skip generating visualizations and Excel reports')
+    parser.add_argument('--excel-reports', action='store_true', 
+                       help='Generate Excel reports (time-consuming, off by default)')
     parser.add_argument('--log-level', choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'], 
                        default='INFO', help='Set logging level')
     
@@ -163,7 +187,8 @@ def main():
     try:
         device_data_list = app.process_zip_file(
             str(zip_path), 
-            generate_reports=not args.no_reports
+            generate_reports=not args.no_reports,
+            generate_excel=args.excel_reports
         )
         
         # Print summary

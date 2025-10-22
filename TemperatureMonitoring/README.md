@@ -73,15 +73,20 @@ If you prefer manual setup or the automated script doesn't work:
 After running the setup script, you can start the application directly:
 
 ```bash
-# Process a ZIP file with full reports
+# Process a ZIP file with visualizations only (default)
 python src/main.py data/temperature_data.zip
 
-# Process without generating reports
+# Process with Excel reports (time-consuming)
+python src/main.py data/temperature_data.zip --excel-reports
+
+# Process without generating any reports
 python src/main.py data/temperature_data.zip --no-reports
 
 # Set logging level
 python src/main.py data/temperature_data.zip --log-level DEBUG
 ```
+
+**Note**: Excel report generation (`--excel-reports`) is **disabled by default** as it can be time-consuming for large datasets. Use this flag only when you specifically need detailed Excel files with statistics and formatted reports.
 
 ### GUI Application (if available)
 
@@ -109,7 +114,7 @@ The Temperature Monitoring application generates comprehensive reports and visua
 - **Content**: Multi-panel timeline showing temperature, humidity, and battery voltage over time for a single device
 - **Purpose**: Track individual device performance and identify patterns or anomalies
 
-**Excel Data Report**
+**Excel Data Report** *(Generated only with `--excel-reports` flag)*
 - **File**: `{device_name}_data.xlsx`
 - **Content**: 
   - Raw data with converted timestamps
@@ -141,7 +146,7 @@ The Temperature Monitoring application generates comprehensive reports and visua
 - **Content**: Color-coded matrix showing statistical measures (mean, std, min, max) for all devices
 - **Purpose**: Quick visual comparison of device performance characteristics
 
-**Combined Excel Report**
+**Combined Excel Report** *(Generated only with `--excel-reports` flag)*
 - **File**: `all_devices_data.xlsx`
 - **Content**: 
   - Consolidated data from all devices

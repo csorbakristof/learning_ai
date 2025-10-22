@@ -29,21 +29,48 @@ Time-Data=(A2/86400)+25569;Temp;Humi;Vbat
 
 ## Installation
 
+### Quick Setup (Recommended)
+
 1. **Clone or download** this project to your local machine
 
-2. **Install Python dependencies**:
+2. **Run the automated setup script**:
+   ```powershell
+   # Full setup with package verification
+   .\setup.ps1
+   
+   # Quick setup without verification tests
+   .\setup.ps1 -SkipTests
+   
+   # Show help and options
+   .\setup.ps1 -Help
+   ```
+
+The setup script will automatically:
+- Detect Python 3.8+ installation
+- Create and activate a virtual environment
+- Install all required dependencies
+- Create necessary data and output directories
+- Verify package installations (unless `-SkipTests` is used)
+
+### Manual Installation
+
+If you prefer manual setup or the automated script doesn't work:
+
+1. **Install Python dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Create data directories** (if not already present):
+2. **Create data directories** (if not already present):
    ```bash
    mkdir -p data output
    ```
 
 ## Usage
 
-### Command Line Interface
+### Console Application
+
+After running the setup script, you can start the application directly:
 
 ```bash
 # Process a ZIP file with full reports
@@ -55,6 +82,102 @@ python src/main.py data/temperature_data.zip --no-reports
 # Set logging level
 python src/main.py data/temperature_data.zip --log-level DEBUG
 ```
+
+### GUI Application (if available)
+
+To start the graphical user interface:
+
+```bash
+# Launch the GUI application
+python launch_gui.py
+```
+
+The GUI provides:
+- File selection dialog for ZIP files
+- Visual progress indicators
+- Interactive report generation options
+- Real-time log display
+
+## Program Outputs
+
+The Temperature Monitoring application generates comprehensive reports and visualizations in the `output/` directory. Here's a complete summary of all outputs and their purposes:
+
+### Individual Device Reports
+
+**Timeline Visualization**
+- **File**: `{device_name}_timeline.png`
+- **Content**: Multi-panel timeline showing temperature, humidity, and battery voltage over time for a single device
+- **Purpose**: Track individual device performance and identify patterns or anomalies
+
+**Excel Data Report**
+- **File**: `{device_name}_data.xlsx`
+- **Content**: 
+  - Raw data with converted timestamps
+  - Statistical summary (min, max, mean, std deviation)
+  - Hourly averages for trend analysis
+- **Purpose**: Detailed data analysis and further processing in Excel
+
+### Multi-Device Comparison Reports
+
+**Temperature Comparison**
+- **File**: `multi_device_temperature_comparison.png`
+- **Content**: Overlaid temperature timelines for all devices with different colors
+- **Purpose**: Compare temperature readings across multiple sensors to identify environmental variations
+
+**Humidity Comparison**
+- **File**: `multi_device_humidity_comparison.png`
+- **Content**: Overlaid humidity timelines for all devices
+- **Purpose**: Analyze humidity patterns and correlations between different monitoring locations
+
+**Battery Level Comparison**
+- **File**: `multi_device_battery_mv_comparison.png`
+- **Content**: Battery voltage timelines showing power consumption patterns
+- **Purpose**: Monitor device health and predict maintenance needs
+
+### Statistical Analysis
+
+**Statistics Heatmap**
+- **File**: `statistics_heatmap.png`
+- **Content**: Color-coded matrix showing statistical measures (mean, std, min, max) for all devices
+- **Purpose**: Quick visual comparison of device performance characteristics
+
+**Combined Excel Report**
+- **File**: `all_devices_data.xlsx`
+- **Content**: 
+  - Consolidated data from all devices
+  - Cross-device statistical comparisons
+  - Summary statistics table
+- **Purpose**: Comprehensive analysis and reporting for all monitored devices
+
+### Log Files
+
+**Application Log**
+- **File**: `temperature_monitoring.log`
+- **Content**: 
+  - Processing steps and timestamps
+  - Error messages and warnings
+  - Data validation results
+  - Performance metrics
+- **Purpose**: Debugging, monitoring, and audit trail
+
+### Console Output
+
+During execution, the application displays:
+- **Processing Status**: Files being processed and progress indicators
+- **Data Summary**: Device count, data points, and time range
+- **Validation Results**: Invalid data lines and error counts
+- **Report Generation**: Files created and their locations
+- **Statistics Overview**: Quick summary of key metrics for each device
+
+### Error Handling Outputs
+
+When issues occur, the application generates:
+- **Error Messages**: Clear descriptions of problems encountered
+- **Warning Messages**: Non-fatal issues (e.g., malformed data lines)
+- **Skipped Files**: List of files that couldn't be processed
+- **Validation Reports**: Details about data quality issues
+
+All outputs are designed to provide both immediate insights and detailed data for further analysis, making the application suitable for both quick monitoring and comprehensive research purposes.
 
 ### Python API
 

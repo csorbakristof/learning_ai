@@ -389,11 +389,11 @@ class SimpleTemperatureVisualizer:
         
         stats_text = f"""SUMMARY STATISTICS
 
-📊 Total Devices: {len(device_names)}
-📈 Total Records: {total_records:,}
-📅 Data Period: {oldest_reading.strftime('%Y-%m-%d')} to {newest_reading.strftime('%Y-%m-%d')}
-🌡️ Average Temperature: {avg_temp_all:.1f}°C
-💧 Average Humidity: {avg_humidity_all:.1f}%
+* Total Devices: {len(device_names)}
+* Total Records: {total_records:,}
+* Data Period: {oldest_reading.strftime('%Y-%m-%d')} to {newest_reading.strftime('%Y-%m-%d')}
+* Average Temperature: {avg_temp_all:.1f}°C
+* Average Humidity: {avg_humidity_all:.1f}%
 
 TOP DEVICES BY RECORDS:
 """
@@ -422,7 +422,7 @@ def main():
     try:
         visualizer = SimpleTemperatureVisualizer()
         
-        print("🎨 Simple Temperature Monitoring Visualizations")
+        print("Simple Temperature Monitoring Visualizations")
         print("=" * 50)
         
         # Get summary of available data
@@ -430,46 +430,46 @@ def main():
         device_names = list(summary.keys())
         
         if not device_names:
-            print("❌ No device data found in database!")
+            print("ERROR: No device data found in database!")
             return
         
-        print(f"📊 Found data for {len(device_names)} devices:")
+        print(f"Found data for {len(device_names)} devices:")
         for device in device_names:
             records = summary[device]['record_count']
             first = summary[device]['first_reading'].strftime('%Y-%m-%d')
             last = summary[device]['last_reading'].strftime('%Y-%m-%d')
             print(f"  • {device}: {records:,} records ({first} to {last})")
         
-        print("\n🎯 Generating visualizations...")
+        print("\nGenerating visualizations...")
         
         # Generate overview
         overview_path = visualizer.create_quick_overview()
-        print(f"✅ Quick overview: {Path(overview_path).name}")
+        print(f"✓ Quick overview: {Path(overview_path).name}")
         
         # Generate summary chart
         summary_path = visualizer.create_device_summary_chart()
-        print(f"✅ Device summary: {Path(summary_path).name}")
+        print(f"✓ Device summary: {Path(summary_path).name}")
         
         # Generate temperature comparison
         comparison_path = visualizer.create_temperature_comparison()
-        print(f"✅ Temperature comparison: {Path(comparison_path).name}")
+        print(f"✓ Temperature comparison: {Path(comparison_path).name}")
         
         # Generate individual device timelines for devices with enough data
         for device_name in device_names:
             if summary[device_name]['record_count'] > 50:  # Only for devices with sufficient data
                 try:
                     timeline_path = visualizer.create_device_timeline(device_name)
-                    print(f"✅ {device_name} timeline: {Path(timeline_path).name}")
+                    print(f"✓ {device_name} timeline: {Path(timeline_path).name}")
                 except Exception as e:
-                    print(f"⚠️ Could not create timeline for {device_name}: {e}")
+                    print(f"WARNING: Could not create timeline for {device_name}: {e}")
         
-        print(f"\n📁 All visualizations saved in: {visualizer.output_dir}")
+        print(f"\nAll visualizations saved in: {visualizer.output_dir}")
         
     except FileNotFoundError:
-        print("❌ Temperature database not found!")
+        print("ERROR: Temperature database not found!")
         print("Please run the data importer first to create the database.")
     except Exception as e:
-        print(f"❌ Error creating visualizations: {e}")
+        print(f"ERROR: Error creating visualizations: {e}")
         logger.error(f"Visualization error: {e}")
 
 

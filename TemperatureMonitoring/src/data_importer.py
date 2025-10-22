@@ -2,16 +2,19 @@
 Data Import Module (IN001) - Importing new data
 
 This module handles importing temperature data from multiple ZIP files into a central JSON database.
-It processes all ZIP files, merges data, and avoids duplicates based on device name, timestamp, and data content.
+It uses the TemperatureDataProcessor for CSV processing and focuses on database operations.
 """
 
 import json
 import os
 import logging
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Set, Tuple, Any
-import hashlib
+
+# Add src directory to path for imports
+sys.path.append(str(Path(__file__).parent))
 
 from temperature_processor import TemperatureDataProcessor
 
@@ -62,12 +65,6 @@ class TemperatureDataImporter:
         
         logger.info(f"Database saved to {self.json_db_path}")
     
-    def _create_record_hash(self, device_name: str, timestamp: str, temperature: float, 
-                           humidity: float, battery_mv: int) -> str:
-        """Create a unique hash for a data record to detect duplicates."""
-        data_string = f"{device_name}|{timestamp}|{temperature}|{humidity}|{battery_mv}"
-        return hashlib.md5(data_string.encode()).hexdigest()
-    
     def _process_device_data(self, device_data: Dict) -> Tuple[int, int]:
         """
         Process a single device's data and merge into database.
@@ -88,62 +85,60 @@ class TemperatureDataImporter:
                 "device_name": device_name,
                 "first_seen": datetime.now().isoformat(),
                 "records": [],
-                "record_hashes": set()
+                "existing_records": set()
             }
         
         device_db = self.database['devices'][device_name]
-        existing_hashes = set(device_db.get('record_hashes', []))
+        existing_records = set()
+        
+        # Build set of existing records for duplicate detection
+        for existing_record in device_db['records']:
+            record_key = (
+                existing_record['timestamp'],
+                existing_record['temperature'],
+                existing_record['humidity'],
+                existing_record['battery_mv']
+            )
+            existing_records.add(record_key)
         
         new_records = 0
         duplicates = 0
-        skipped_old_records = 0
-        
-        # Timestamp filtering: Skip records before January 1, 2020 (Unix timestamp 1577836800)
-        min_timestamp = datetime(2020, 1, 1)
         
         for record in records:
-            # Filter out records with timestamps before 2020
-            if record['timestamp'] < min_timestamp:
-                skipped_old_records += 1
-                continue
-            
             # Convert datetime to ISO string for JSON storage
             timestamp_str = record['timestamp'].isoformat()
             
-            # Create hash for duplicate detection
-            record_hash = self._create_record_hash(
-                device_name, 
+            # Create record key for duplicate detection (in-memory comparison)
+            record_key = (
                 timestamp_str,
                 record['temperature'],
-                record['humidity'], 
+                record['humidity'],
                 record['battery_mv']
             )
             
-            if record_hash not in existing_hashes:
+            if record_key not in existing_records:
                 # New record - add to database
                 json_record = {
                     "timestamp": timestamp_str,
                     "temperature": record['temperature'],
                     "humidity": record['humidity'],
-                    "battery_mv": record['battery_mv'],
-                    "hash": record_hash
+                    "battery_mv": record['battery_mv']
                 }
                 
                 device_db['records'].append(json_record)
-                existing_hashes.add(record_hash)
+                existing_records.add(record_key)
                 new_records += 1
             else:
                 duplicates += 1
         
         # Update device metadata
-        device_db['record_hashes'] = list(existing_hashes)
         device_db['total_records'] = len(device_db['records'])
         device_db['last_updated'] = datetime.now().isoformat()
         
         # Sort records by timestamp for better organization
         device_db['records'].sort(key=lambda x: x['timestamp'])
         
-        logger.info(f"Device {device_name}: {new_records} new records, {duplicates} duplicates skipped, {skipped_old_records} pre-2020 records skipped")
+        logger.info(f"Device {device_name}: {new_records} new records, {duplicates} duplicates skipped")
         return new_records, duplicates
     
     def import_zip_files(self, data_folder: str = "data") -> Dict[str, Any]:

@@ -14,6 +14,7 @@ sys.path.append(str(Path(__file__).parent))
 from temperature_processor import TemperatureDataProcessor
 from visualizer import TemperatureVisualizer
 from excel_exporter import ExcelExporter
+from data_importer import TemperatureDataImporter
 
 # Configure logging
 logging.basicConfig(
@@ -35,8 +36,9 @@ class TemperatureMonitoringApp:
         self.processor = TemperatureDataProcessor()
         self.visualizer = TemperatureVisualizer()
         self.exporter = ExcelExporter()
+        self.importer = TemperatureDataImporter()
     
-    def process_zip_file(self, zip_path: str, generate_reports: bool = True, generate_excel: bool = False) -> List[Dict]:
+    def process_zip_file(self, zip_path: str, generate_reports: bool = True, generate_excel: bool = False, save_to_database: bool = True) -> List[Dict]:
         """
         Process a ZIP file and optionally generate reports.
         
@@ -44,6 +46,7 @@ class TemperatureMonitoringApp:
             zip_path: Path to the ZIP file
             generate_reports: Whether to generate visualizations
             generate_excel: Whether to generate Excel reports
+            save_to_database: Whether to save data to JSON database
             
         Returns:
             List of processed device data
@@ -59,6 +62,9 @@ class TemperatureMonitoringApp:
                 return device_data_list
             
             logger.info(f"Successfully processed {len(device_data_list)} devices")
+            
+            if save_to_database:
+                self._save_to_database(device_data_list)
             
             if generate_reports:
                 self._generate_visualizations(device_data_list)
@@ -125,6 +131,29 @@ class TemperatureMonitoringApp:
         
         logger.info("Excel report generation completed")
     
+    def _save_to_database(self, device_data_list: List[Dict]):
+        """Save processed data to JSON database."""
+        logger.info("Saving data to JSON database...")
+        
+        total_new_records = 0
+        total_duplicates = 0
+        
+        for device_data in device_data_list:
+            try:
+                new_records, duplicates = self.importer._process_device_data(device_data)
+                total_new_records += new_records
+                total_duplicates += duplicates
+                
+            except Exception as e:
+                logger.error(f"Error saving data for device {device_data['device_name']}: {e}")
+        
+        # Save the database
+        try:
+            self.importer._save_database()
+            logger.info(f"Database saved: {total_new_records} new records, {total_duplicates} duplicates skipped")
+        except Exception as e:
+            logger.error(f"Error saving database: {e}")
+    
     def print_summary(self, device_data_list: List[Dict]):
         """Print a summary of the processed data."""
         if not device_data_list:
@@ -156,6 +185,7 @@ class TemperatureMonitoringApp:
         print(f"\nTotal devices: {len(device_data_list)}")
         print(f"Total records: {total_records}")
         print("\nReports generated in the 'output' directory.")
+        print("Data saved to JSON database: data/temperature_database.json")
         print("="*60)
 
 
@@ -167,6 +197,8 @@ def main():
                        help='Skip generating visualizations and Excel reports')
     parser.add_argument('--excel-reports', action='store_true', 
                        help='Generate Excel reports (time-consuming, off by default)')
+    parser.add_argument('--no-database', action='store_true', 
+                       help='Skip saving to JSON database (enabled by default)')
     parser.add_argument('--log-level', choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'], 
                        default='INFO', help='Set logging level')
     
@@ -188,7 +220,8 @@ def main():
         device_data_list = app.process_zip_file(
             str(zip_path), 
             generate_reports=not args.no_reports,
-            generate_excel=args.excel_reports
+            generate_excel=args.excel_reports,
+            save_to_database=not args.no_database
         )
         
         # Print summary

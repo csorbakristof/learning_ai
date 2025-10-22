@@ -127,12 +127,14 @@ class TemperatureDataProcessor:
             timestamp_seconds = int(csv_timestamp)
             
             # Check for reasonable timestamp range 
-            # Unix epoch: 1970-01-01, reasonable range: 1970 to 2100
-            min_timestamp = 0  # 1970-01-01
+            # Unix epoch: 1970-01-01, filter out faulty records before 2000
+            min_timestamp = 946684800  # 2000-01-01 UTC
             max_timestamp = 4102444800  # ~2100-01-01
             
-            if timestamp_seconds < min_timestamp or timestamp_seconds > max_timestamp:
-                raise ValueError(f"Timestamp {timestamp_seconds} is out of reasonable range (1970-2100)")
+            if timestamp_seconds < min_timestamp:
+                raise ValueError(f"Timestamp {timestamp_seconds} is before 2000 (likely faulty)")
+            if timestamp_seconds > max_timestamp:
+                raise ValueError(f"Timestamp {timestamp_seconds} is out of reasonable range (after 2100)")
             
             # Create datetime from Unix timestamp (UTC)
             return datetime.fromtimestamp(timestamp_seconds, tz=None)
@@ -148,22 +150,70 @@ class TemperatureDataProcessor:
             zip_path: Path to the ZIP file
             
         Returns:
-            List of processed data dictionaries
+            List of processed data dictionaries with merged device data
         """
         logger.info(f"Processing ZIP file: {zip_path}")
         
         # Extract CSV files
         extracted_files = self.extract_zip_files(zip_path)
         
+        # Dictionary to store merged device data
+        device_data_map = {}
+        
         # Process each CSV file
-        processed_data = []
         for csv_file in extracted_files:
             try:
                 data = self.parse_csv_file(str(csv_file))
-                processed_data.append(data)
-                logger.info(f"Processed {len(data['data'])} records from {data['device_name']}")
+                device_name = data['device_name']
+                
+                if device_name in device_data_map:
+                    # Merge data for existing device
+                    device_data_map[device_name]['data'].extend(data['data'])
+                    logger.info(f"Merged {len(data['data'])} records into existing device {device_name}")
+                else:
+                    # New device
+                    device_data_map[device_name] = data
+                    logger.info(f"Processed {len(data['data'])} records from new device {device_name}")
+                    
             except Exception as e:
                 logger.error(f"Failed to process {csv_file}: {e}")
+        
+        # Convert to list and remove duplicates for each device
+        processed_data = []
+        for device_name, device_data in device_data_map.items():
+            # Remove duplicate records based on timestamp and data values
+            unique_records = []
+            seen_records = set()
+            duplicates_removed = 0
+            faulty_records = 0
+            
+            for record in device_data['data']:
+                # Create a unique key from timestamp and all data values
+                record_key = (
+                    record['timestamp'].isoformat(),
+                    record['temperature'],
+                    record['humidity'],
+                    record['battery_mv']
+                )
+                
+                if record_key not in seen_records:
+                    seen_records.add(record_key)
+                    unique_records.append(record)
+                else:
+                    duplicates_removed += 1
+            
+            # Update device data with unique records
+            device_data['data'] = unique_records
+            
+            # Sort data by timestamp
+            device_data['data'].sort(key=lambda x: x['timestamp'])
+            processed_data.append(device_data)
+            
+            # Comprehensive logging
+            if duplicates_removed > 0:
+                logger.info(f"Device {device_name}: {len(unique_records)} unique records, {duplicates_removed} duplicates removed")
+            else:
+                logger.info(f"Device {device_name}: {len(unique_records)} total records (no duplicates found)")
                 
         return processed_data
 

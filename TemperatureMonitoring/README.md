@@ -130,6 +130,69 @@ python src/simple_visualizer.py
 - Clean individual device timelines
 - Professional-quality visualizations optimized for presentations
 
+### Heating Detection Analysis
+
+Analyze temperature data to detect heating cycles in different zones:
+
+```bash
+# Detect heating cycles from temperature database
+python detect_heating.py
+```
+
+**Note**: This tool requires a JSON database created by `main.py` first. It analyzes temperature patterns to identify when heating systems are active, using the following logic:
+- **Heating starts**: Temperature rises 5°C above the daily minimum
+- **Heating ends**: Temperature drops 1°C below the cycle maximum
+- **Gap merging**: Cycles separated by less than 15 minutes are merged
+
+**Outputs generated**:
+- `heating_cycles.json`: JSON file with detected heating cycles
+- `heating_cycle_per_day_Z1.png` / `heating_cycle_per_day_Z2.png`: Charts showing number of cycles per day
+- `heating_duration_per_day_Z1.png` / `heating_duration_per_day_Z2.png`: Charts showing heating duration per day
+- `heating_cycle_per_day_Z1.csv` / `heating_cycle_per_day_Z2.csv`: CSV data for cycles per day
+- `heating_duration_per_day_Z1.csv` / `heating_duration_per_day_Z2.csv`: CSV data for duration per day
+- `heating_analysis_summary.txt`: Summary report with statistics
+
+### Calendar Image Generation
+
+Create calendar heatmap visualizations for temperature and heating activity:
+
+```bash
+# Generate calendar heatmaps from database and heating cycles
+python generate_calendars.py
+```
+
+**Note**: This tool requires both `temperature_database.json` (from `main.py`) and `heating_cycles.json` (from `detect_heating.py`). It creates calendar-style heatmaps where:
+- **Rows**: Days
+- **Columns**: Time of day (288 samples per day, 5-minute intervals)
+- **Colors**: Temperature values (viridis colormap) or heating activity (red/white)
+
+**Outputs generated**:
+- `TempCal_Z1.png` / `TempCal_Z2.png`: Temperature calendars for Zone 1 and Zone 2
+- `Heating_Z1.png` / `Heating_Z2.png`: Heating activity calendars (red=heating, white=off)
+- `TempDiff.png`: Temperature difference calendar (T3_Kek - T2_Terasz)
+- `Temp_Outside.png`: Outside temperature calendar (T2_Terasz)
+
+### Heating Statistics Analysis
+
+Analyze heating patterns and their relationship to temperature differences:
+
+```bash
+# Analyze heating statistics from database and heating cycles
+python heating_statistics.py
+```
+
+**Note**: This tool requires both `temperature_database.json` (from `main.py`) and `heating_cycles.json` (from `detect_heating.py`). It analyzes the correlation between indoor/outdoor temperature differences and heating activity:
+- Compares internal temperature (T3_Kek) vs external temperature (T2_Terasz)
+- Correlates temperature differences with heating cycle frequency
+- Includes days with zero heating cycles as valid data points
+
+**Outputs generated**:
+- `MeanDiff_And_HeatingCycleCount_Plot.png`: Dual-axis time series plot (temperature difference vs heating cycles)
+- `MeanDiff_And_HeatingCycleCount_XY.png`: Scatter plot showing correlation
+- `MeanDiff_And_HeatingCycleCount_Plot.csv`: CSV data export
+- `MeanDiff_And_HeatingCycleCount_XY.csv`: CSV data export
+- `heating_statistics.txt`: Summary statistics and correlation analysis
+
 ### Available Tools Summary
 
 The Temperature Monitoring system provides several specialized tools:
@@ -138,6 +201,9 @@ The Temperature Monitoring system provides several specialized tools:
 |------|---------|-------|--------------|
 | `main.py` | **Primary processor** | ZIP files | Data processing, database creation, visualizations |
 | `simple_visualizer.py` | **Clean visualizations** | JSON database | Professional charts, overview summaries |
+| `detect_heating.py` | **Heating analysis** | JSON database | Cycle detection, daily statistics, duration charts |
+| `generate_calendars.py` | **Calendar heatmaps** | JSON database + heating cycles | Calendar visualizations, temperature/heating patterns |
+| `heating_statistics.py` | **Statistical analysis** | JSON database + heating cycles | Correlation analysis, temperature difference trends |
 | `data_importer.py` | **Batch processing** | Multiple ZIP files | Database building, import statistics |
 | `setup.ps1` | **Environment setup** | None | Automated dependency installation |
 
@@ -145,10 +211,13 @@ The Temperature Monitoring system provides several specialized tools:
 1. Run `setup.ps1` (one-time setup)
 2. Process data: `python src/main.py data/file.zip` (creates database)
 3. Generate clean charts: `python src/simple_visualizer.py` (uses database)
-4. Temperature difference heatmap (room vs ventillation intake):
+4. Detect heating cycles: `python detect_heating.py` (analyzes heating patterns)
+5. Generate calendar heatmaps: `python generate_calendars.py` (creates calendar visualizations)
+6. Analyze heating statistics: `python heating_statistics.py` (correlation analysis)
+7. Temperature difference heatmap (room vs ventillation intake):
    - ./src/temperature_statistics.py
-   - ./src/simple_visualizer.py
-5. Temperature interactive GUI: .\temperature_gui.py (or launch_gui.py)
+   - create_heatmap.py
+8. Temperature interactive GUI: .\temperature_gui.py (or launch_gui.py)
 
 
 ## Program Outputs

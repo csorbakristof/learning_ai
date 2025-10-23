@@ -8,6 +8,10 @@ Output filenames should match the code name of the feature in brackets in the he
 
 Also export a summary statistic into `heating_statistics.txt`.
 
+## Gas meter input data
+
+Gas meter values are available in the temperature_database.json under `gasmeter`. If it is not available, ask the user to run `loadGasmeterValuesIntoDatabase.py`.
+
 # Outputs
 
 ## [MeanDiff_And_HeatingCycleCount_Plot] Mean difference of internal and external temperature, and the number of daily heat cycles
@@ -19,3 +23,9 @@ Right vertical axis (red color): daily number of heating cycles for zone 2 (devi
 ## [MeanDiff_And_HeatingCycleCount_XY] Similar to MeanDiff_And_HeatingCycleCount_Plot, but with XY Plot
 
 This is a diagram has the same data as MeanDiff_And_HeatingCycleCount_Plot, but the daily mean temperature difference is on the horizontal axis and the number of daily heat cycles is on the vertical axis, so this is an X-Y plot. Dots should not be connected.
+
+## [GasVsCycleCount] Gas consumption vs heating cycle count
+
+This is an X-Y scatter plot, one dot for every gas meter measurement.
+X-axis: gasmeter value change since last measurement (difference)
+Y-axis: the total number of heating cycles since the last gasmeter measurement

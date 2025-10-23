@@ -193,6 +193,48 @@ python heating_statistics.py
 - `MeanDiff_And_HeatingCycleCount_XY.csv`: CSV data export
 - `heating_statistics.txt`: Summary statistics and correlation analysis
 
+### Gas Meter Data Loader
+
+Load gas meter readings from CSV files into the temperature database:
+
+```bash
+# Load gas meter data from CSV file
+python loadGasmeterValuesIntoDatabase.py data/gasmeter_readings.csv
+
+# Show help and usage information
+python loadGasmeterValuesIntoDatabase.py --help
+```
+
+**CSV file format**:
+- **Column 1**: Date (MM/DD/YYYY)
+- **Column 2**: Time (HH:MM)
+- **Column 3**: Gas meter value (float)
+
+**Note**: This tool loads gas meter readings and adds them to `temperature_database.json` under a `gasmeter` section alongside `devices`. Features include:
+- Automatic header detection and skipping
+- Duplicate detection (skips records with same timestamp)
+- Automatic sorting by timestamp
+- Metadata tracking (unit: m³, last updated, total records)
+
+**Database structure**:
+The gas meter data is stored in the database as:
+```json
+{
+  "gasmeter": {
+    "records": [
+      {"timestamp": "2024-11-01T07:38:00", "value": 5054.83},
+      ...
+    ],
+    "metadata": {
+      "description": "Gas meter readings",
+      "unit": "m³",
+      "last_updated": "...",
+      "total_records": 33
+    }
+  }
+}
+```
+
 ### Available Tools Summary
 
 The Temperature Monitoring system provides several specialized tools:
@@ -204,20 +246,22 @@ The Temperature Monitoring system provides several specialized tools:
 | `detect_heating.py` | **Heating analysis** | JSON database | Cycle detection, daily statistics, duration charts |
 | `generate_calendars.py` | **Calendar heatmaps** | JSON database + heating cycles | Calendar visualizations, temperature/heating patterns |
 | `heating_statistics.py` | **Statistical analysis** | JSON database + heating cycles | Correlation analysis, temperature difference trends |
+| `loadGasmeterValuesIntoDatabase.py` | **Gas meter loader** | CSV files | Load gas meter readings into database |
 | `data_importer.py` | **Batch processing** | Multiple ZIP files | Database building, import statistics |
 | `setup.ps1` | **Environment setup** | None | Automated dependency installation |
 
 **Typical workflow:**
 1. Run `setup.ps1` (one-time setup)
 2. Process data: `python src/main.py data/file.zip` (creates database)
-3. Generate clean charts: `python src/simple_visualizer.py` (uses database)
-4. Detect heating cycles: `python detect_heating.py` (analyzes heating patterns)
-5. Generate calendar heatmaps: `python generate_calendars.py` (creates calendar visualizations)
-6. Analyze heating statistics: `python heating_statistics.py` (correlation analysis)
-7. Temperature difference heatmap (room vs ventillation intake):
+3. Load gas meter data: `python loadGasmeterValuesIntoDatabase.py data/gasmeter.csv` (optional)
+4. Generate clean charts: `python src/simple_visualizer.py` (uses database)
+5. Detect heating cycles: `python detect_heating.py` (analyzes heating patterns)
+6. Generate calendar heatmaps: `python generate_calendars.py` (creates calendar visualizations)
+7. Analyze heating statistics: `python heating_statistics.py` (correlation analysis)
+8. Temperature difference heatmap (room vs ventillation intake):
    - ./src/temperature_statistics.py
    - create_heatmap.py
-8. Temperature interactive GUI: .\temperature_gui.py (or launch_gui.py)
+9. Temperature interactive GUI: .\temperature_gui.py (or launch_gui.py)
 
 
 ## Program Outputs

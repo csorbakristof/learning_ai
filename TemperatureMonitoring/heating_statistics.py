@@ -201,10 +201,24 @@ class HeatingStatisticsAnalyzer:
         ax2.plot(df['date'], df['cycle_count'], '.', color=color_cycles, markersize=5, label='Heating Cycles')
         ax2.tick_params(axis='y', labelcolor=color_cycles)
         
-        # Format x-axis
-        ax1.xaxis.set_major_locator(mdates.WeekdayLocator(interval=7))
+        # Format x-axis with better spacing
+        # Calculate appropriate tick interval based on date range
+        date_range_days = (df['date'].max() - df['date'].min()).days
+        if date_range_days <= 31:
+            # Show every 3 days for one month or less
+            ax1.xaxis.set_major_locator(mdates.DayLocator(interval=3))
+        elif date_range_days <= 90:
+            # Show weekly for up to 3 months
+            ax1.xaxis.set_major_locator(mdates.WeekdayLocator(interval=1))
+        elif date_range_days <= 180:
+            # Show bi-weekly for up to 6 months
+            ax1.xaxis.set_major_locator(mdates.WeekdayLocator(interval=2))
+        else:
+            # Show monthly for longer periods
+            ax1.xaxis.set_major_locator(mdates.MonthLocator(interval=1))
+        
         ax1.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
-        plt.xticks(rotation=45)
+        plt.xticks(rotation=45, ha='right')
         
         # Title
         plt.title(f'Mean Temperature Difference ({INTERNAL_TEMP_DEVICE} - {EXTERNAL_TEMP_DEVICE}) and Heating Cycles ({HEATING_ZONE_DEVICE})')
@@ -255,6 +269,106 @@ class HeatingStatisticsAnalyzer:
         # Save CSV (same data as dual-axis plot)
         csv_path = self.output_dir / "MeanDiff_And_HeatingCycleCount_XY.csv"
         df.to_csv(csv_path, index=False)
+        logger.info(f"Saved data CSV: {csv_path}")
+        
+        return str(plot_path), str(csv_path)
+    
+    def generate_gas_vs_cycle_count_plot(self) -> Tuple[str, str]:
+        """Generate scatter plot: gas consumption vs heating cycle count."""
+        logger.info("Generating gas consumption vs heating cycle count plot...")
+        
+        # Check if gas meter data is available
+        if 'gasmeter' not in self.temperature_db:
+            logger.error("Gas meter data not found in database")
+            logger.error("Please run 'loadGasmeterValuesIntoDatabase.py' first to load gas meter data.")
+            return "", ""
+        
+        gasmeter_records = self.temperature_db['gasmeter'].get('records', [])
+        if not gasmeter_records:
+            logger.error("No gas meter records found in database")
+            return "", ""
+        
+        logger.info(f"Found {len(gasmeter_records)} gas meter records")
+        
+        # Get heating cycles for the zone
+        cycles = self.heating_cycles.get(HEATING_ZONE_DEVICE, [])
+        if not cycles:
+            logger.warning(f"No heating cycles found for {HEATING_ZONE_DEVICE}")
+            return "", ""
+        
+        # Convert gas meter records to DataFrame
+        df_gas = pd.DataFrame(gasmeter_records)
+        df_gas['timestamp'] = pd.to_datetime(df_gas['timestamp'])
+        df_gas = df_gas.sort_values('timestamp').reset_index(drop=True)
+        
+        # Calculate gas consumption (difference from previous reading)
+        df_gas['gas_consumption'] = df_gas['value'].diff()
+        
+        # Calculate time since last measurement
+        df_gas['time_since_last'] = df_gas['timestamp'].diff()
+        
+        # For each gas meter measurement, count heating cycles since last measurement
+        data_points = []
+        
+        for i in range(1, len(df_gas)):  # Start from 1 since we need previous measurement
+            current_time = df_gas.iloc[i]['timestamp']
+            previous_time = df_gas.iloc[i-1]['timestamp']
+            gas_consumption = df_gas.iloc[i]['gas_consumption']
+            
+            # Skip if gas consumption is negative or NaN (could be meter reset)
+            if pd.isna(gas_consumption) or gas_consumption < 0:
+                logger.debug(f"Skipping invalid gas consumption at {current_time}")
+                continue
+            
+            # Count heating cycles between previous and current gas meter reading
+            cycle_count = 0
+            for cycle in cycles:
+                cycle_start = pd.to_datetime(cycle['start'])
+                # Count cycle if it started in this time period
+                if previous_time <= cycle_start < current_time:
+                    cycle_count += 1
+            
+            data_points.append({
+                'timestamp': current_time,
+                'gas_consumption': gas_consumption,
+                'cycle_count': cycle_count,
+                'days_between': (current_time - previous_time).total_seconds() / (24 * 3600)
+            })
+        
+        if not data_points:
+            logger.error("No valid data points for gas vs cycle count plot")
+            return "", ""
+        
+        df_plot = pd.DataFrame(data_points)
+        logger.info(f"Generated {len(df_plot)} data points for gas vs cycle count analysis")
+        
+        # Create the scatter plot
+        fig, ax = plt.subplots(figsize=(10, 8))
+        
+        # Plot scatter
+        ax.plot(df_plot['gas_consumption'], df_plot['cycle_count'], '.', 
+                markersize=8, color='tab:green', alpha=0.7)
+        
+        ax.set_xlabel('Gas Consumption (m³)\n(Change since last measurement)')
+        ax.set_ylabel(f'Number of Heating Cycles\n({HEATING_ZONE_DEVICE})\n(Since last gas meter reading)')
+        ax.set_title('Gas Consumption vs Heating Cycle Count')
+        ax.grid(True, alpha=0.3)
+        
+        # Set axes to start from 0
+        ax.set_xlim(left=0)
+        ax.set_ylim(bottom=0)
+        
+        plt.tight_layout()
+        
+        # Save plot
+        plot_path = self.output_dir / "GasVsCycleCount.png"
+        plt.savefig(plot_path, dpi=300, bbox_inches='tight')
+        plt.close(fig)
+        logger.info(f"Saved gas vs cycle count plot: {plot_path}")
+        
+        # Save CSV
+        csv_path = self.output_dir / "GasVsCycleCount.csv"
+        df_plot.to_csv(csv_path, index=False)
         logger.info(f"Saved data CSV: {csv_path}")
         
         return str(plot_path), str(csv_path)
@@ -333,6 +447,78 @@ class HeatingStatisticsAnalyzer:
             report_lines.append(f"  {row['date'].strftime('%Y-%m-%d')}: {row['mean_temp_diff']:.1f}°C, {row['cycle_count']:.0f} cycles")
         report_lines.append("")
         
+        # Gas consumption statistics (if available)
+        if 'gasmeter' in self.temperature_db and self.temperature_db['gasmeter'].get('records'):
+            gasmeter_records = self.temperature_db['gasmeter']['records']
+            df_gas = pd.DataFrame(gasmeter_records)
+            df_gas['timestamp'] = pd.to_datetime(df_gas['timestamp'])
+            df_gas = df_gas.sort_values('timestamp').reset_index(drop=True)
+            df_gas['gas_consumption'] = df_gas['value'].diff()
+            
+            # Filter out negative values (meter resets)
+            valid_consumption = df_gas[df_gas['gas_consumption'] > 0]['gas_consumption']
+            
+            if len(valid_consumption) > 0:
+                # Calculate gas consumption per heating cycle
+                # Get cycles for the heating zone
+                cycles = self.heating_cycles.get(HEATING_ZONE_DEVICE, [])
+                
+                # Calculate total cycles and gas consumption in the overlapping period
+                total_gas = valid_consumption.sum()
+                total_cycles = len(cycles)
+                gas_per_cycle = total_gas / total_cycles if total_cycles > 0 else 0
+                
+                # Also calculate from the GasVsCycleCount data for more accurate correlation
+                gas_cycle_data = []
+                for i in range(1, len(df_gas)):
+                    current_time = df_gas.iloc[i]['timestamp']
+                    previous_time = df_gas.iloc[i-1]['timestamp']
+                    gas_consumption = df_gas.iloc[i]['gas_consumption']
+                    
+                    if pd.isna(gas_consumption) or gas_consumption < 0:
+                        continue
+                    
+                    # Count heating cycles between readings
+                    cycle_count = 0
+                    for cycle in cycles:
+                        cycle_start = pd.to_datetime(cycle['start'])
+                        if previous_time <= cycle_start < current_time:
+                            cycle_count += 1
+                    
+                    if cycle_count > 0:  # Only include periods with heating
+                        gas_cycle_data.append({
+                            'gas_consumption': gas_consumption,
+                            'cycle_count': cycle_count,
+                            'gas_per_cycle': gas_consumption / cycle_count
+                        })
+                
+                df_gas_cycle = pd.DataFrame(gas_cycle_data)
+                
+                report_lines.append("GAS CONSUMPTION STATISTICS")
+                report_lines.append("-" * 60)
+                report_lines.append(f"Total Gas Meter Readings: {len(gasmeter_records)}")
+                report_lines.append(f"Date Range: {df_gas['timestamp'].min().strftime('%Y-%m-%d')} to {df_gas['timestamp'].max().strftime('%Y-%m-%d')}")
+                report_lines.append(f"Total Gas Consumed: {valid_consumption.sum():.2f} m³")
+                report_lines.append(f"Mean Consumption Per Reading: {valid_consumption.mean():.2f} m³")
+                report_lines.append(f"Median Consumption Per Reading: {valid_consumption.median():.2f} m³")
+                report_lines.append(f"Max Consumption Between Readings: {valid_consumption.max():.2f} m³")
+                report_lines.append(f"Min Consumption Between Readings: {valid_consumption.min():.2f} m³")
+                report_lines.append("")
+                report_lines.append(f"Total Heating Cycles (Zone {HEATING_ZONE_DEVICE}): {total_cycles}")
+                report_lines.append(f"Gas Consumption Per Heating Cycle (overall): {gas_per_cycle:.3f} m³/cycle")
+                
+                if len(df_gas_cycle) > 0:
+                    report_lines.append(f"Gas Consumption Per Heating Cycle (mean): {df_gas_cycle['gas_per_cycle'].mean():.3f} m³/cycle")
+                    report_lines.append(f"Gas Consumption Per Heating Cycle (median): {df_gas_cycle['gas_per_cycle'].median():.3f} m³/cycle")
+                    report_lines.append(f"Gas Consumption Per Heating Cycle (std dev): {df_gas_cycle['gas_per_cycle'].std():.3f} m³/cycle")
+                    
+                    # Correlation between gas consumption and heating cycles
+                    if len(df_gas_cycle) > 1:
+                        gas_cycle_corr = df_gas_cycle['gas_consumption'].corr(df_gas_cycle['cycle_count'])
+                        report_lines.append(f"Correlation (Gas vs Cycles): {gas_cycle_corr:.4f}")
+                
+                report_lines.append("")
+        
         # Save report
         report_path = self.output_dir / "heating_statistics.txt"
         with open(report_path, 'w', encoding='utf-8') as f:
@@ -369,6 +555,16 @@ class HeatingStatisticsAnalyzer:
                 print(f"✓ Data CSV: {Path(csv2_path).name}")
             else:
                 print("✗ Failed to generate X-Y plot")
+            print()
+            
+            # Generate gas consumption vs cycle count plot
+            print("Generating gas consumption vs cycle count plot...")
+            plot3_path, csv3_path = self.generate_gas_vs_cycle_count_plot()
+            if plot3_path:
+                print(f"✓ Gas vs cycle count plot: {Path(plot3_path).name}")
+                print(f"✓ Data CSV: {Path(csv3_path).name}")
+            else:
+                print("✗ Failed to generate gas vs cycle count plot")
             print()
             
             # Generate summary statistics

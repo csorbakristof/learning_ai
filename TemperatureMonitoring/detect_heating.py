@@ -6,16 +6,19 @@ Analyzes temperature data to detect heating cycles for two zones:
 - Zone 1: T8_Z1 device
 - Zone 2: T6_Z2 device
 
-Heating is considered active when temperature >= 30°C.
-Gaps shorter than 15 minutes between cycles are merged into a single cycle.
+Heating detection logic:
+- Heating starts when temperature rises +5°C above the daily minimum
+- Heating ends when temperature drops 1°C below the cycle maximum
+- Gaps shorter than 15 minutes between cycles are merged into a single cycle
 """
 
 import json
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 import pandas as pd
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Optional
 import logging
 
 # Set up logging
@@ -23,8 +26,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Configuration
-HEATING_THRESHOLD = 30.0  # Degrees Celsius
-MIN_GAP_MINUTES = 15     # Minimum gap between cycles to consider them separate
+TEMP_RISE_ABOVE_MIN = 5.0     # Degrees Celsius above daily minimum to start heating
+TEMP_DROP_BELOW_MAX = -1.0    # Degrees Celsius below cycle maximum to end heating
+MIN_GAP_MINUTES = 15          # Minimum gap between cycles to consider them separate
 ZONE_DEVICES = {
     'T8_Z1': 'Zone 1',
     'T6_Z2': 'Zone 2'
@@ -32,7 +36,7 @@ ZONE_DEVICES = {
 
 
 class HeatingDetector:
-    """Detects heating cycles from temperature monitoring data."""
+    """Detects heating cycles from temperature monitoring data using daily min/cycle max heuristics."""
     
     def __init__(self, json_db_path: str = "data/temperature_database.json", 
                  output_dir: str = "output"):
@@ -71,62 +75,127 @@ class HeatingDetector:
         df = pd.DataFrame(df_data)
         df = df.sort_values('timestamp').reset_index(drop=True)
         
+        # Add date column for daily grouping
+        df['date'] = df['timestamp'].dt.date
+        
         logger.info(f"Loaded {len(df)} records for device {device_name}")
         return df
     
-    def _detect_raw_cycles(self, df: pd.DataFrame) -> List[Tuple[datetime, datetime]]:
-        """Detect raw heating cycles before gap merging."""
-        if df.empty:
+    def _calculate_daily_minimums(self, df: pd.DataFrame) -> Dict[str, float]:
+        """Calculate minimum temperature for each day."""
+        daily_mins = {}
+        
+        for date, group in df.groupby('date'):
+            if not group.empty:
+                daily_mins[str(date)] = group['temperature'].min()
+                logger.debug(f"Daily minimum for {date}: {daily_mins[str(date)]:.1f}°C")
+        
+        return daily_mins
+    
+    def _detect_raw_cycles(self, df: pd.DataFrame) -> List[Dict]:
+        """Detect raw heating cycles using daily minimum and cycle maximum heuristics."""
+        if df.empty or len(df) < 2:
             return []
+        
+        logger.info(f"Processing {len(df)} temperature readings with daily min/cycle max detection")
+        
+        # Calculate daily minimums
+        daily_mins = self._calculate_daily_minimums(df)
         
         cycles = []
         in_cycle = False
         cycle_start = None
+        cycle_max_temp = None
+        cycle_start_temp = None
         
-        for _, row in df.iterrows():
-            timestamp = row['timestamp']
-            temperature = row['temperature']
-            is_heating = temperature >= HEATING_THRESHOLD
+        for i in range(len(df)):
+            current_timestamp = df.iloc[i]['timestamp']
+            current_temp = df.iloc[i]['temperature']
+            current_date = str(df.iloc[i]['date'])
             
-            if is_heating and not in_cycle:
-                # Start of new cycle
-                cycle_start = timestamp
-                in_cycle = True
-            elif not is_heating and in_cycle:
-                # End of cycle
-                if cycle_start:
-                    cycles.append((cycle_start, timestamp))
-                in_cycle = False
-                cycle_start = None
+            daily_min = daily_mins.get(current_date)
+            if daily_min is None:
+                logger.warning(f"No daily minimum found for {current_date}, skipping")
+                continue
+            
+            if not in_cycle:
+                # Check for heating start: temp >= daily_min + 5°C
+                heating_threshold = daily_min + TEMP_RISE_ABOVE_MIN
+                if current_temp >= heating_threshold:
+                    cycle_start = current_timestamp
+                    cycle_start_temp = current_temp
+                    cycle_max_temp = current_temp
+                    in_cycle = True
+                    logger.debug(f"Heating start at {current_timestamp}: {current_temp:.1f}°C "
+                               f"(daily min: {daily_min:.1f}°C, threshold: {heating_threshold:.1f}°C)")
+            else:
+                # Update cycle maximum
+                if cycle_max_temp is not None and current_temp > cycle_max_temp:
+                    cycle_max_temp = current_temp
+                    logger.debug(f"New cycle max at {current_timestamp}: {cycle_max_temp:.1f}°C")
+                
+                # Check for heating end: temp <= cycle_max - 1°C
+                if cycle_max_temp is not None:
+                    end_threshold = cycle_max_temp + TEMP_DROP_BELOW_MAX
+                    if current_temp <= end_threshold:
+                        if cycle_start:
+                            duration_minutes = (current_timestamp - cycle_start).total_seconds() / 60
+                            cycle_data = {
+                                'start': cycle_start,
+                                'end': current_timestamp,
+                                'max_temp': cycle_max_temp,
+                                'duration_minutes': duration_minutes
+                            }
+                            cycles.append(cycle_data)
+                            logger.debug(f"Heating end at {current_timestamp}: {current_temp:.1f}°C "
+                                       f"(cycle max: {cycle_max_temp:.1f}°C, threshold: {end_threshold:.1f}°C, "
+                                       f"duration: {duration_minutes:.1f}min)")
+                        
+                        in_cycle = False
+                        cycle_start = None
+                        cycle_max_temp = None
+                        cycle_start_temp = None
         
         # Handle case where data ends while in a cycle
         if in_cycle and cycle_start:
-            cycles.append((cycle_start, df.iloc[-1]['timestamp']))
+            duration_minutes = (df.iloc[-1]['timestamp'] - cycle_start).total_seconds() / 60
+            cycle_data = {
+                'start': cycle_start,
+                'end': df.iloc[-1]['timestamp'],
+                'max_temp': cycle_max_temp,
+                'duration_minutes': duration_minutes
+            }
+            cycles.append(cycle_data)
+            logger.debug(f"Heating cycle ended at data end: duration {duration_minutes:.1f}min")
         
+        logger.info(f"Detected {len(cycles)} raw heating cycles")
         return cycles
     
-    def _merge_cycles_with_gaps(self, raw_cycles: List[Tuple[datetime, datetime]]) -> List[Tuple[datetime, datetime]]:
+    def _merge_cycles_with_gaps(self, raw_cycles: List[Dict]) -> List[Dict]:
         """Merge cycles with gaps shorter than MIN_GAP_MINUTES."""
         if not raw_cycles:
             return []
         
         merged_cycles = []
-        current_start, current_end = raw_cycles[0]
+        current_cycle = raw_cycles[0].copy()
         
         for i in range(1, len(raw_cycles)):
-            next_start, next_end = raw_cycles[i]
-            gap_duration = (next_start - current_end).total_seconds() / 60  # minutes
+            next_cycle = raw_cycles[i]
+            gap_duration = (next_cycle['start'] - current_cycle['end']).total_seconds() / 60  # minutes
             
             if gap_duration <= MIN_GAP_MINUTES:
                 # Merge cycles - extend current cycle to include the next one
-                current_end = next_end
+                current_cycle['end'] = next_cycle['end']
+                current_cycle['max_temp'] = max(current_cycle['max_temp'], next_cycle['max_temp'])
+                current_cycle['duration_minutes'] = (current_cycle['end'] - current_cycle['start']).total_seconds() / 60
+                logger.debug(f"Merged cycles with {gap_duration:.1f}min gap, new duration: {current_cycle['duration_minutes']:.1f}min")
             else:
                 # Gap is too large, finalize current cycle and start new one
-                merged_cycles.append((current_start, current_end))
-                current_start, current_end = next_start, next_end
+                merged_cycles.append(current_cycle)
+                current_cycle = next_cycle.copy()
         
         # Add the final cycle
-        merged_cycles.append((current_start, current_end))
+        merged_cycles.append(current_cycle)
         
         return merged_cycles
     
@@ -135,7 +204,7 @@ class HeatingDetector:
         Detect heating cycles for a specific device.
         
         Returns:
-            List of cycles with start/end timestamps in ISO format
+            List of cycles with start/end timestamps, max temp, and duration
         """
         logger.info(f"Detecting heating cycles for {device_name}...")
         
@@ -153,10 +222,12 @@ class HeatingDetector:
         
         # Step 3: Convert to required format
         cycles = []
-        for start, end in merged_cycles:
+        for cycle in merged_cycles:
             cycles.append({
-                'start': start.isoformat(),
-                'end': end.isoformat()
+                'start': cycle['start'].isoformat(),
+                'end': cycle['end'].isoformat(),
+                'maxtemp': f"{cycle['max_temp']:.1f}",
+                'durationMinutes': f"{cycle['duration_minutes']:.0f}"
             })
         
         return cycles
@@ -171,11 +242,9 @@ class HeatingDetector:
                 all_cycles[device_name] = cycles
                 
                 if cycles:
-                    total_duration = sum(
-                        (pd.to_datetime(cycle['end']) - pd.to_datetime(cycle['start'])).total_seconds() / 3600
-                        for cycle in cycles
-                    )
-                    logger.info(f"{device_name}: {len(cycles)} cycles, total {total_duration:.1f} hours")
+                    total_duration = sum(float(cycle['durationMinutes']) for cycle in cycles) / 60  # Convert to hours
+                    avg_max_temp = sum(float(cycle['maxtemp']) for cycle in cycles) / len(cycles)
+                    logger.info(f"{device_name}: {len(cycles)} cycles, total {total_duration:.1f} hours, avg max temp {avg_max_temp:.1f}°C")
                 else:
                     logger.info(f"{device_name}: No heating cycles detected")
                     
@@ -195,6 +264,17 @@ class HeatingDetector:
         logger.info(f"Saved heating cycles to: {output_path}")
         return str(output_path)
     
+    def _get_full_date_range(self, cycles: List[Dict[str, str]]) -> pd.DatetimeIndex:
+        """Get complete date range from first to last cycle date."""
+        if not cycles:
+            return pd.DatetimeIndex([])
+        
+        dates = [pd.to_datetime(cycle['start']).date() for cycle in cycles]
+        min_date = min(dates)
+        max_date = max(dates)
+        
+        return pd.date_range(start=min_date, end=max_date, freq='D')
+    
     def _calculate_cycles_per_day(self, cycles: List[Dict[str, str]]) -> Dict[str, int]:
         """Calculate number of cycles per day."""
         cycles_per_day = {}
@@ -207,26 +287,77 @@ class HeatingDetector:
         
         return cycles_per_day
     
-    def create_daily_cycle_chart(self, device_name: str, cycles: List[Dict[str, str]]) -> str:
-        """Create a chart showing cycles per day for a device."""
+    def _calculate_cycles_per_day_complete(self, cycles: List[Dict[str, str]]) -> pd.DataFrame:
+        """Calculate number of cycles per day with complete date range (including zeros)."""
+        if not cycles:
+            return pd.DataFrame(columns=['date', 'cycles'])
+        
+        # Get basic cycles per day
         cycles_per_day = self._calculate_cycles_per_day(cycles)
         
-        if not cycles_per_day:
+        # Get complete date range
+        date_range = self._get_full_date_range(cycles)
+        
+        # Create complete DataFrame with zeros for missing days
+        complete_data = []
+        for date in date_range:
+            day_key = date.strftime('%Y-%m-%d')
+            cycle_count = cycles_per_day.get(day_key, 0)
+            complete_data.append({
+                'date': date,
+                'cycles': cycle_count
+            })
+        
+        return pd.DataFrame(complete_data)
+    
+    def _calculate_duration_per_day(self, cycles: List[Dict[str, str]]) -> Dict[str, float]:
+        """Calculate total heating duration per day in hours."""
+        duration_per_day = {}
+        
+        for cycle in cycles:
+            start_time = pd.to_datetime(cycle['start'])
+            duration_hours = float(cycle['durationMinutes']) / 60.0
+            
+            # Assign cycle to the day it started (as per specification)
+            day_key = start_time.strftime('%Y-%m-%d')
+            duration_per_day[day_key] = duration_per_day.get(day_key, 0) + duration_hours
+        
+        return duration_per_day
+        
+    def _calculate_duration_per_day_complete(self, cycles: List[Dict[str, str]]) -> pd.DataFrame:
+        """Calculate total heating duration per day with complete date range (including zeros)."""
+        if not cycles:
+            return pd.DataFrame(columns=['date', 'duration'])
+        
+        # Get basic duration per day
+        duration_per_day = self._calculate_duration_per_day(cycles)
+        
+        # Get complete date range
+        date_range = self._get_full_date_range(cycles)
+        
+        # Create complete DataFrame with zeros for missing days
+        complete_data = []
+        for date in date_range:
+            day_key = date.strftime('%Y-%m-%d')
+            duration_hours = duration_per_day.get(day_key, 0.0)
+            complete_data.append({
+                'date': date,
+                'duration': duration_hours
+            })
+        
+        return pd.DataFrame(complete_data)
+    
+    def create_daily_cycle_chart(self, device_name: str, cycles: List[Dict[str, str]]) -> str:
+        """Create a chart showing cycles per day for a device."""
+        df_plot = self._calculate_cycles_per_day_complete(cycles)
+        
+        if df_plot.empty:
             logger.warning(f"No cycles to plot for {device_name}")
             return ""
         
-        # Convert to DataFrame for easier plotting
-        dates = list(cycles_per_day.keys())
-        counts = list(cycles_per_day.values())
-        
-        df_plot = pd.DataFrame({
-            'date': pd.to_datetime(dates),
-            'cycles': counts
-        }).sort_values('date')
-        
         # Create the plot
         plt.figure(figsize=(14, 6))
-        plt.plot(df_plot['date'], df_plot['cycles'], 'b-', marker='o', linewidth=2, markersize=4)
+        plt.plot(df_plot['date'], df_plot['cycles'], 'b.', markersize=5)
         
         plt.title(f'Heating Cycles Per Day - {device_name} ({ZONE_DEVICES.get(device_name, "Unknown Zone")})')
         plt.xlabel('Date')
@@ -235,8 +366,11 @@ class HeatingDetector:
         
         # Format x-axis
         plt.xticks(rotation=45)
-        plt.gca().xaxis.set_major_locator(plt.matplotlib.dates.WeekdayLocator(interval=1))
-        plt.gca().xaxis.set_major_formatter(plt.matplotlib.dates.DateFormatter('%Y-%m-%d'))
+        plt.gca().xaxis.set_major_locator(mdates.WeekdayLocator(interval=7))  # Weekly ticks
+        plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+        
+        # Set y-axis to start from 0
+        plt.ylim(bottom=0)
         
         plt.tight_layout()
         
@@ -246,7 +380,53 @@ class HeatingDetector:
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.close()
         
+        # Save CSV data
+        csv_path = self.output_dir / f"heating_cycle_per_day_{zone_id}.csv"
+        df_plot.to_csv(csv_path, index=False)
+        
         logger.info(f"Saved daily cycles chart: {save_path}")
+        logger.info(f"Saved daily cycles data: {csv_path}")
+        return str(save_path)
+    
+    def create_daily_duration_chart(self, device_name: str, cycles: List[Dict[str, str]]) -> str:
+        """Create a chart showing heating duration per day for a device."""
+        df_plot = self._calculate_duration_per_day_complete(cycles)
+        
+        if df_plot.empty:
+            logger.warning(f"No duration data to plot for {device_name}")
+            return ""
+        
+        # Create the plot
+        plt.figure(figsize=(14, 6))
+        plt.plot(df_plot['date'], df_plot['duration'], 'r.', markersize=5)
+        
+        plt.title(f'Heating Duration Per Day - {device_name} ({ZONE_DEVICES.get(device_name, "Unknown Zone")})')
+        plt.xlabel('Date')
+        plt.ylabel('Heating Duration (hours)')
+        plt.grid(True, alpha=0.3)
+        
+        # Format x-axis
+        plt.xticks(rotation=45)
+        plt.gca().xaxis.set_major_locator(mdates.WeekdayLocator(interval=7))  # Weekly ticks
+        plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+        
+        # Set y-axis to start from 0
+        plt.ylim(bottom=0)
+        
+        plt.tight_layout()
+        
+        # Save the plot
+        zone_id = device_name.split('_')[-1]  # Extract Z1 or Z2
+        save_path = self.output_dir / f"heating_duration_per_day_{zone_id}.png"
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        # Save CSV data
+        csv_path = self.output_dir / f"heating_duration_per_day_{zone_id}.csv"
+        df_plot.to_csv(csv_path, index=False)
+        
+        logger.info(f"Saved daily duration chart: {save_path}")
+        logger.info(f"Saved daily duration data: {csv_path}")
         return str(save_path)
     
     def generate_summary_report(self, cycles_data: Dict[str, List[Dict[str, str]]]) -> str:
@@ -254,7 +434,8 @@ class HeatingDetector:
         report_lines = []
         report_lines.append("HEATING DETECTION ANALYSIS SUMMARY")
         report_lines.append("=" * 50)
-        report_lines.append(f"Heating threshold: >= {HEATING_THRESHOLD}°C")
+        report_lines.append(f"Heating start: temperature >= daily_min + {TEMP_RISE_ABOVE_MIN}°C")
+        report_lines.append(f"Heating end: temperature <= cycle_max {TEMP_DROP_BELOW_MAX}°C")
         report_lines.append(f"Gap merging threshold: <= {MIN_GAP_MINUTES} minutes")
         report_lines.append("")
         
@@ -269,25 +450,27 @@ class HeatingDetector:
             
             # Calculate statistics
             total_cycles = len(cycles)
-            durations = []
+            durations_minutes = [float(cycle['durationMinutes']) for cycle in cycles]
+            max_temps = [float(cycle['maxtemp']) for cycle in cycles]
             cycles_per_day = self._calculate_cycles_per_day(cycles)
+            duration_per_day = self._calculate_duration_per_day(cycles)
             
-            for cycle in cycles:
-                start = pd.to_datetime(cycle['start'])
-                end = pd.to_datetime(cycle['end'])
-                duration_hours = (end - start).total_seconds() / 3600
-                durations.append(duration_hours)
-            
-            total_heating_hours = sum(durations)
-            avg_cycle_duration = total_heating_hours / total_cycles if total_cycles > 0 else 0
+            total_heating_hours = sum(durations_minutes) / 60.0
+            avg_cycle_duration = sum(durations_minutes) / total_cycles if total_cycles > 0 else 0
+            avg_max_temp = sum(max_temps) / total_cycles if total_cycles > 0 else 0
             max_cycles_per_day = max(cycles_per_day.values()) if cycles_per_day else 0
             avg_cycles_per_day = sum(cycles_per_day.values()) / len(cycles_per_day) if cycles_per_day else 0
+            max_duration_per_day = max(duration_per_day.values()) if duration_per_day else 0
+            avg_duration_per_day = sum(duration_per_day.values()) / len(duration_per_day) if duration_per_day else 0
             
             report_lines.append(f"  Total cycles: {total_cycles}")
             report_lines.append(f"  Total heating time: {total_heating_hours:.1f} hours")
-            report_lines.append(f"  Average cycle duration: {avg_cycle_duration:.1f} hours")
+            report_lines.append(f"  Average cycle duration: {avg_cycle_duration:.1f} minutes")
+            report_lines.append(f"  Average maximum temperature: {avg_max_temp:.1f}°C")
             report_lines.append(f"  Max cycles per day: {max_cycles_per_day}")
             report_lines.append(f"  Average cycles per day: {avg_cycles_per_day:.1f}")
+            report_lines.append(f"  Max duration per day: {max_duration_per_day:.1f} hours")
+            report_lines.append(f"  Average duration per day: {avg_duration_per_day:.1f} hours")
             report_lines.append(f"  Date range: {min(cycles_per_day.keys())} to {max(cycles_per_day.keys())}")
             report_lines.append("")
         
@@ -307,7 +490,8 @@ def main():
         
         print("Heating Detection Analysis")
         print("=" * 40)
-        print(f"Threshold: >= {HEATING_THRESHOLD}°C")
+        print(f"Heating start: temp >= daily_min + {TEMP_RISE_ABOVE_MIN}°C")
+        print(f"Heating end: temp <= cycle_max {TEMP_DROP_BELOW_MAX}°C") 
         print(f"Gap merging: <= {MIN_GAP_MINUTES} minutes")
         print(f"Zones: {', '.join(f'{k} ({v})' for k, v in ZONE_DEVICES.items())}")
         print()
@@ -326,9 +510,23 @@ def main():
             if cycles:
                 chart_path = detector.create_daily_cycle_chart(device_name, cycles)
                 if chart_path:
-                    print(f"✓ Saved chart: {Path(chart_path).name}")
+                    zone_id = device_name.split('_')[-1]
+                    print(f"✓ Saved cycle chart: heating_cycle_per_day_{zone_id}.png")
+                    print(f"✓ Saved cycle data: heating_cycle_per_day_{zone_id}.csv")
             else:
                 print(f"⚠ No cycles to chart for {device_name}")
+        
+        # Generate daily duration charts
+        print("\nGenerating daily duration charts...")
+        for device_name, cycles in cycles_data.items():
+            if cycles:
+                duration_chart_path = detector.create_daily_duration_chart(device_name, cycles)
+                if duration_chart_path:
+                    zone_id = device_name.split('_')[-1]
+                    print(f"✓ Saved duration chart: heating_duration_per_day_{zone_id}.png")
+                    print(f"✓ Saved duration data: heating_duration_per_day_{zone_id}.csv")
+            else:
+                print(f"⚠ No duration data to chart for {device_name}")
         
         # Generate summary report
         report_path = detector.generate_summary_report(cycles_data)

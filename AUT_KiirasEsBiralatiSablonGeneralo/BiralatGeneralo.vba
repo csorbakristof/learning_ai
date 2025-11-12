@@ -521,18 +521,20 @@ Private Sub GenerateSingleDocument(wordApp As Object, studentWs As Worksheet, st
     
     ' First pass: Check for required placeholders and collect them
     Set placeholders = CreateObject("Scripting.Dictionary")
+    placeholders.CompareMode = 1 ' vbTextCompare (case-insensitive)
+    
     For col = 1 To lastCol
         headerName = Trim(CStr(studentWs.Cells(1, col).Value))
         If headerName <> "" Then
             placeholder = "[" & headerName & "]"
-            ' Check if this placeholder exists in the document
+            ' Check if this placeholder exists in the document (case-insensitive)
             With wordDoc.Content.Find
                 .ClearFormatting
                 .Text = placeholder
                 .Forward = True
                 .Wrap = 0 ' wdFindStop
                 .Format = False
-                .MatchCase = True
+                .MatchCase = False
                 .MatchWholeWord = False
                 
                 If .Execute Then
@@ -542,20 +544,25 @@ Private Sub GenerateSingleDocument(wordApp As Object, studentWs As Worksheet, st
                         wordDoc.Close False
                         Err.Raise vbObjectError + 6, , "Hiányzó érték a(z) '" & headerName & "' oszlopban a(z) " & studentRow & ". sorban."
                     End If
-                    placeholders.Add headerName, cellValue
+                    If Not placeholders.Exists(headerName) Then
+                        placeholders.Add headerName, cellValue
+                    End If
                 End If
             End With
         End If
     Next col
     
-    ' Second pass: Replace all placeholders
+    ' Check for placeholders in document that don't exist in worksheet
+    Call CheckForUnknownPlaceholders(wordDoc, studentWs, templateFile)
+    
+    ' Second pass: Replace all placeholders (case-insensitive)
     For col = 1 To lastCol
         headerName = Trim(CStr(studentWs.Cells(1, col).Value))
         If headerName <> "" And placeholders.Exists(headerName) Then
             placeholder = "[" & headerName & "]"
             cellValue = placeholders(headerName)
             
-            ' Replace all occurrences
+            ' Replace all occurrences (case-insensitive)
             With wordDoc.Content.Find
                 .ClearFormatting
                 .Replacement.ClearFormatting
@@ -564,7 +571,7 @@ Private Sub GenerateSingleDocument(wordApp As Object, studentWs As Worksheet, st
                 .Forward = True
                 .Wrap = 1 ' wdFindContinue
                 .Format = False
-                .MatchCase = True
+                .MatchCase = False
                 .MatchWholeWord = False
                 .MatchWildcards = False
                 .MatchSoundsLike = False
@@ -573,23 +580,6 @@ Private Sub GenerateSingleDocument(wordApp As Object, studentWs As Worksheet, st
             End With
         End If
     Next col
-    
-    ' Handle special placeholder [date]
-    With wordDoc.Content.Find
-        .ClearFormatting
-        .Text = "[date]"
-        .Forward = True
-        .Wrap = 1 ' wdFindContinue
-        .Format = False
-        .MatchCase = True
-        
-        Do While .Execute
-            Set findRange = wordDoc.Range(Start:=wordDoc.Content.Find.Found.Start, End:=wordDoc.Content.Find.Found.End)
-            findRange.Delete
-            findRange.Fields.Add Range:=findRange, Type:=31 ' wdFieldDate
-            findRange.Collapse Direction:=0 ' wdCollapseEnd
-        Loop
-    End With
     
     ' Save and close the document
     wordDoc.SaveAs2 outputFile
@@ -603,5 +593,75 @@ ErrorHandler:
         wordDoc.Close False
         Set wordDoc = Nothing
     End If
+    Err.Raise Err.Number, Err.Source, Err.Description
+End Sub
+
+' ==============================================================================
+' Check for placeholders in document that don't exist in worksheet
+' ==============================================================================
+Private Sub CheckForUnknownPlaceholders(wordDoc As Object, studentWs As Worksheet, templateFile As String)
+    Dim docText As String
+    Dim pos As Long
+    Dim startPos As Long
+    Dim endPos As Long
+    Dim placeholderName As String
+    Dim foundInWorksheet As Boolean
+    Dim col As Long
+    Dim lastCol As Long
+    Dim headerName As String
+    Dim unknownPlaceholders As String
+    
+    On Error GoTo ErrorHandler
+    
+    ' Get all text from document
+    docText = wordDoc.Content.Text
+    
+    ' Get last column in student worksheet
+    lastCol = studentWs.Cells(1, studentWs.Columns.Count).End(xlToLeft).Column
+    
+    ' Search for all [xxx] patterns
+    pos = 1
+    unknownPlaceholders = ""
+    
+    Do While pos <= Len(docText)
+        startPos = InStr(pos, docText, "[")
+        If startPos = 0 Then Exit Do
+        
+        endPos = InStr(startPos, docText, "]")
+        If endPos = 0 Then Exit Do
+        
+        ' Extract placeholder name (without brackets)
+        placeholderName = Mid(docText, startPos + 1, endPos - startPos - 1)
+        
+        ' Check if this placeholder name exists as a column in worksheet (case-insensitive)
+        foundInWorksheet = False
+        For col = 1 To lastCol
+            headerName = Trim(CStr(studentWs.Cells(1, col).Value))
+            If StrComp(headerName, placeholderName, vbTextCompare) = 0 Then
+                foundInWorksheet = True
+                Exit For
+            End If
+        Next col
+        
+        ' If not found, add to error list
+        If Not foundInWorksheet Then
+            If InStr(unknownPlaceholders, "[" & placeholderName & "]") = 0 Then
+                If unknownPlaceholders <> "" Then unknownPlaceholders = unknownPlaceholders & ", "
+                unknownPlaceholders = unknownPlaceholders & "[" & placeholderName & "]"
+            End If
+        End If
+        
+        pos = endPos + 1
+    Loop
+    
+    ' If unknown placeholders found, raise error
+    If unknownPlaceholders <> "" Then
+        Err.Raise vbObjectError + 7, , "A következő helyőrzők a sablonban találhatók, de nem léteznek oszlopként a 'GeneráltHallgatóiLista' munkalapon: " & _
+                  unknownPlaceholders & vbCrLf & vbCrLf & "Sablon fájl: " & templateFile
+    End If
+    
+    Exit Sub
+    
+ErrorHandler:
     Err.Raise Err.Number, Err.Source, Err.Description
 End Sub

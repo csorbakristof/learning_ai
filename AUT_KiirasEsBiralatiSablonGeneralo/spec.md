@@ -17,10 +17,12 @@ Input data are located in another Excel file located in the same directory as th
 - Hallgató neve: take "Hallgató neve" column from the source
 - Neptun kód: take "Hallg. nept" column from the source
 - Tárgykód: take "Tárgy nept" from the source
-- Dolgozat megnevezése: use a lookup formula "=IFERROR(VLOOKUP($C2,'Tantárgyi adatok'!B:D,2,FALSE),""nincs"")" where you adapt $C2 to the current row.
-- Szak megnevezése: use a lookup formula "=IFERROR(VLOOKUP($C2,'Tantárgyi adatok'!B:D,3,FALSE),""nincs"")" where you adapt $C2 to the current row.
+- Dolgozat megnevezése: use a lookup formula "=IFERROR(VLOOKUP($C2,'Tantárgyi adatok'!B:F,2,FALSE),""nincs"")" where you adapt $C2 to the current row.
+- Szak megnevezése: use a lookup formula "=IFERROR(VLOOKUP($C2,'Tantárgyi adatok'!B:F,3,FALSE),""nincs"")" where you adapt $C2 to the current row.
 - Konzulens neve: take "Konzulens" from the source, but if there is anything in brackets after the name, remove that.
-- Konzulens beosztása: leave empty for now
+- Degree level: use a lookup formula "=IFERROR(VLOOKUP($C2,'Tantárgyi adatok'!B:F,4,FALSE),""nincs"")" where you adapt $C2 to the current row.
+- Program name: use a lookup formula "=IFERROR(VLOOKUP($C2,'Tantárgyi adatok'!B:F,5,FALSE),""nincs"")" where you adapt $C2 to the current row.
+
 
 ## [CollectZvSegedData] Collecting additional information from "ZV segéd" export
 
@@ -67,10 +69,7 @@ The column "Kimeneti fájl sablon" contains the name template of the output file
 
 Everytime the macro generates a document based on a template, it should open the template, substitute placeholders, save the file, and close the document.
 
-Placeholders are texts in brackets like "[xyz]" found in the template documents. The "xyz" is the name of the placeholder. Every placeholder should be substituted by the value in "GeneráltHallgatóiLista" where the column matches exactly the placeholder's name. So for example the placeholer "[Bírálat nyelve]" should be replaced with the value in the column "Bírálat nyelve" of the current student's row in "GeneráltHallgatóiLista".
-
-There are special placeholders:
-- The placeholder "[date]", insert a Word field which always updates to the current date.
+Placeholders are texts in brackets like "[xyz]" found in the template documents. The "xyz" is the name of the placeholder. Every placeholder should be substituted by the value in "GeneráltHallgatóiLista" where the column matches exactly (case unsensitive) the placeholder's name. So for example the placeholer "[Bírálat nyelve]" should be replaced with the value in the column "Bírálat nyelve" of the current student's row in "GeneráltHallgatóiLista".
 
 ## Further details
 

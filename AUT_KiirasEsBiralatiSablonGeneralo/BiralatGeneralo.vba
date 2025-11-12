@@ -94,11 +94,11 @@ Private Sub CollectTerhelesExportData()
         
         ' Dolgozat megnevezése - using formula
         targetWs.Cells(targetRow, GetColumnNumber(targetWs, "Dolgozat megnevezése")).Formula = _
-            "=IFERROR(VLOOKUP($C" & targetRow & ",'Tantárgyi adatok'!B:D,2,FALSE),""nincs"")"
+            "=IFERROR(VLOOKUP($C" & targetRow & ",'Tantárgyi adatok'!B:F,2,FALSE),""nincs"")"
         
         ' Szak megnevezése - using formula (index 3 to get column D)
         targetWs.Cells(targetRow, GetColumnNumber(targetWs, "Szak megnevezése")).Formula = _
-            "=IFERROR(VLOOKUP($C" & targetRow & ",'Tantárgyi adatok'!B:D,3,FALSE),""nincs"")"
+            "=IFERROR(VLOOKUP($C" & targetRow & ",'Tantárgyi adatok'!B:F,3,FALSE),""nincs"")"
         
         ' Konzulens neve - remove text in brackets
         konzulensValue = CStr(konzultacioWs.Cells(sourceRow, GetColumnNumber(konzultacioWs, "Konzulens")).Value)
@@ -108,7 +108,13 @@ Private Sub CollectTerhelesExportData()
         End If
         targetWs.Cells(targetRow, GetColumnNumber(targetWs, "Konzulens neve")).Value = konzulensValue
         
-        ' Konzulens beosztása - leave empty for now
+        ' Degree level - using formula (index 4 to get column E)
+        targetWs.Cells(targetRow, GetColumnNumber(targetWs, "Degree level")).Formula = _
+            "=IFERROR(VLOOKUP($C" & targetRow & ",'Tantárgyi adatok'!B:F,4,FALSE),""nincs"")"
+        
+        ' Program name - using formula (index 5 to get column F)
+        targetWs.Cells(targetRow, GetColumnNumber(targetWs, "Program name")).Formula = _
+            "=IFERROR(VLOOKUP($C" & targetRow & ",'Tantárgyi adatok'!B:F,5,FALSE),""nincs"")"
         
         targetRow = targetRow + 1
     Next sourceRow

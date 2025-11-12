@@ -55,7 +55,7 @@ In this function, when locating the last row of the worksheet, take all columns 
 
 This feature is a separate macro called GenerateDocuments and should be triggered by Ctrl-Shift-G. It goes along every row in "GeneráltHallgatóiLista" and creates several Word documents using the data in the row and Word documents as template documents.
 
-If any value of "GeneráltHallgatóiLista" required for the generation of a document is missing, show an error message and stop. Check only for the presence of columns actually used.
+If any value of "GeneráltHallgatóiLista" required for the generation of a document is missing, show an error message and stop. Check only for the presence of columns actually used (for filename generation or any placeholder mentioned in the templates (checked dynamically)).
 
 ## Templates for the document generation
 
@@ -65,9 +65,9 @@ The column "Kimeneti fájl sablon" contains the name template of the output file
 
 ## Filling out the templates
 
-Everytime the macro generates a document based on a template, it should open the template, substitute placeholders, save the file, and close Microsoft Word.
+Everytime the macro generates a document based on a template, it should open the template, substitute placeholders, save the file, and close the document.
 
-Placeholders are texts in brackets like "[xyz]" found in the template documents. The "xyz" is the name of the placeholder. Every placeholder should be substituted by the value in "GeneráltHallgatóiLista" where the column matches exactly the placeholder's name. So for example the placeholer "[Bírálat nyelve]" should be replaced with the value in the column "StudentName" of the current student's row in "GeneráltHallgatóiLista".
+Placeholders are texts in brackets like "[xyz]" found in the template documents. The "xyz" is the name of the placeholder. Every placeholder should be substituted by the value in "GeneráltHallgatóiLista" where the column matches exactly the placeholder's name. So for example the placeholer "[Bírálat nyelve]" should be replaced with the value in the column "Bírálat nyelve" of the current student's row in "GeneráltHallgatóiLista".
 
 There are special placeholders:
 - The placeholder "[date]", insert a Word field which always updates to the current date.
@@ -78,8 +78,8 @@ There are special placeholders:
 - If a word document already exists, overwrite it.
 - String replacement should happen case sensitive and globally as we can be sure there will be only a single match.
 - If the word template file does not exist, issue an error.
-- Start Microsoft Word if needed and at the end, close it.
-- If there is an error, show a detailed error message and stop the processing of further rows.
+- For this macro, start a new instance of Microsoft Word and at the end, close it.
+- If there is an error, show a detailed error message and stop the processing entirely (finish the macro).
 - Show progress indication as this procedure may take a long time. Use the status bar in excel.
 - At the end, show a report what has been done and whether there were errors.
 - Word does not need to be visible.

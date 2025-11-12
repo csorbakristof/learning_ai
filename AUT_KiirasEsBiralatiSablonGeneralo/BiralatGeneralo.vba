@@ -386,3 +386,222 @@ Private Function MakeFilesystemFriendly(inputStr As String) As String
     
     MakeFilesystemFriendly = result
 End Function
+
+' ==============================================================================
+' [GenerateDocuments] Main Entry Point
+' ==============================================================================
+Public Sub GenerateDocuments()
+    Dim studentWs As Worksheet
+    Dim templateWs As Worksheet
+    Dim studentRow As Long, templateRow As Long
+    Dim lastStudentRow As Long, lastTemplateRow As Long
+    Dim studentName As String, advisorName As String
+    Dim outputDir As String
+    Dim templateFile As String, outputFile As String
+    Dim reviewLanguage As String
+    Dim templateColumn As String
+    Dim wordApp As Object
+    Dim processedCount As Long
+    Dim errorOccurred As Boolean
+    Dim errorMessage As String
+    
+    On Error GoTo ErrorHandler
+    
+    errorOccurred = False
+    processedCount = 0
+    
+    ' Get worksheets
+    Set studentWs = ThisWorkbook.Worksheets("GeneráltHallgatóiLista")
+    Set templateWs = ThisWorkbook.Worksheets("TemplatesAndFiles")
+    
+    ' Find last rows
+    lastStudentRow = studentWs.Cells(studentWs.Rows.Count, "A").End(xlUp).Row
+    lastTemplateRow = templateWs.Cells(templateWs.Rows.Count, "A").End(xlUp).Row
+    
+    ' Start a new Word instance
+    Set wordApp = CreateObject("Word.Application")
+    wordApp.Visible = False
+    
+    ' Process each student
+    For studentRow = 2 To lastStudentRow
+        Application.StatusBar = "Dokumentumok generálása: " & (studentRow - 1) & "/" & (lastStudentRow - 1) & " hallgató..."
+        
+        ' Get student information
+        studentName = CStr(studentWs.Cells(studentRow, GetColumnNumber(studentWs, "Hallgató neve")).Value)
+        advisorName = CStr(studentWs.Cells(studentRow, GetColumnNumber(studentWs, "Konzulens neve")).Value)
+        reviewLanguage = CStr(studentWs.Cells(studentRow, GetColumnNumber(studentWs, "Bírálat nyelve")).Value)
+        
+        ' Check if required fields are present
+        If Trim(studentName) = "" Or Trim(advisorName) = "" Then
+            errorMessage = "Hiba a(z) " & studentRow & ". sorban: Hiányzó hallgató vagy konzulens név."
+            GoTo CleanupAndExit
+        End If
+        
+        ' Create output directory
+        outputDir = ThisWorkbook.Path & "\" & MakeFilesystemFriendly(advisorName)
+        If Dir(outputDir, vbDirectory) = "" Then
+            MkDir outputDir
+        End If
+        
+        ' Process each template
+        For templateRow = 2 To lastTemplateRow
+            ' Determine which template to use
+            If LCase(Trim(reviewLanguage)) = "angol" Then
+                templateColumn = "Angol sablon"
+            Else
+                templateColumn = "Magyar sablon"
+            End If
+            
+            templateFile = ThisWorkbook.Path & "\" & CStr(templateWs.Cells(templateRow, GetColumnNumber(templateWs, templateColumn)).Value)
+            outputFile = outputDir & "\" & Replace(CStr(templateWs.Cells(templateRow, GetColumnNumber(templateWs, "Kimeneti fájl sablon")).Value), "name", MakeFilesystemFriendly(studentName))
+            
+            ' Check if template exists
+            If Dir(templateFile) = "" Then
+                errorMessage = "A sablon fájl nem található: " & templateFile
+                GoTo CleanupAndExit
+            End If
+            
+            ' Generate the document
+            Call GenerateSingleDocument(wordApp, studentWs, studentRow, templateFile, outputFile)
+            processedCount = processedCount + 1
+        Next templateRow
+    Next studentRow
+    
+CleanupAndExit:
+    ' Close Word
+    If Not wordApp Is Nothing Then
+        wordApp.Quit
+        Set wordApp = Nothing
+    End If
+    
+    Application.StatusBar = False
+    
+    ' Show summary
+    If errorMessage <> "" Then
+        MsgBox "Hiba történt a dokumentumok generálása során:" & vbCrLf & vbCrLf & errorMessage & vbCrLf & vbCrLf & _
+               "Sikeresen feldolgozott dokumentumok: " & processedCount, vbCritical, "Hiba"
+    Else
+        MsgBox "Dokumentumok generálása sikeresen befejezve!" & vbCrLf & vbCrLf & _
+               "Feldolgozott dokumentumok: " & processedCount, vbInformation, "Kész"
+    End If
+    
+    Exit Sub
+    
+ErrorHandler:
+    Application.StatusBar = False
+    If Not wordApp Is Nothing Then
+        wordApp.Quit
+        Set wordApp = Nothing
+    End If
+    MsgBox "Hiba történt a dokumentumok generálása során:" & vbCrLf & vbCrLf & _
+           "Hiba: " & Err.Description & vbCrLf & _
+           "Hibakód: " & Err.Number, vbCritical, "Hiba"
+End Sub
+
+' ==============================================================================
+' Generate a Single Document
+' ==============================================================================
+Private Sub GenerateSingleDocument(wordApp As Object, studentWs As Worksheet, studentRow As Long, templateFile As String, outputFile As String)
+    Dim wordDoc As Object
+    Dim col As Long
+    Dim headerName As String
+    Dim cellValue As String
+    Dim placeholder As String
+    Dim placeholders As Object
+    Dim findRange As Object
+    Dim lastCol As Long
+    
+    On Error GoTo ErrorHandler
+    
+    ' Open template
+    Set wordDoc = wordApp.Documents.Open(templateFile)
+    
+    ' Get last column in student worksheet
+    lastCol = studentWs.Cells(1, studentWs.Columns.Count).End(xlToLeft).Column
+    
+    ' First pass: Check for required placeholders and collect them
+    Set placeholders = CreateObject("Scripting.Dictionary")
+    For col = 1 To lastCol
+        headerName = Trim(CStr(studentWs.Cells(1, col).Value))
+        If headerName <> "" Then
+            placeholder = "[" & headerName & "]"
+            ' Check if this placeholder exists in the document
+            With wordDoc.Content.Find
+                .ClearFormatting
+                .Text = placeholder
+                .Forward = True
+                .Wrap = 0 ' wdFindStop
+                .Format = False
+                .MatchCase = True
+                .MatchWholeWord = False
+                
+                If .Execute Then
+                    ' Placeholder found, check if value is present
+                    cellValue = Trim(CStr(studentWs.Cells(studentRow, col).Value))
+                    If cellValue = "" Then
+                        wordDoc.Close False
+                        Err.Raise vbObjectError + 6, , "Hiányzó érték a(z) '" & headerName & "' oszlopban a(z) " & studentRow & ". sorban."
+                    End If
+                    placeholders.Add headerName, cellValue
+                End If
+            End With
+        End If
+    Next col
+    
+    ' Second pass: Replace all placeholders
+    For col = 1 To lastCol
+        headerName = Trim(CStr(studentWs.Cells(1, col).Value))
+        If headerName <> "" And placeholders.Exists(headerName) Then
+            placeholder = "[" & headerName & "]"
+            cellValue = placeholders(headerName)
+            
+            ' Replace all occurrences
+            With wordDoc.Content.Find
+                .ClearFormatting
+                .Replacement.ClearFormatting
+                .Text = placeholder
+                .Replacement.Text = cellValue
+                .Forward = True
+                .Wrap = 1 ' wdFindContinue
+                .Format = False
+                .MatchCase = True
+                .MatchWholeWord = False
+                .MatchWildcards = False
+                .MatchSoundsLike = False
+                .MatchAllWordForms = False
+                .Execute Replace:=2 ' wdReplaceAll
+            End With
+        End If
+    Next col
+    
+    ' Handle special placeholder [date]
+    With wordDoc.Content.Find
+        .ClearFormatting
+        .Text = "[date]"
+        .Forward = True
+        .Wrap = 1 ' wdFindContinue
+        .Format = False
+        .MatchCase = True
+        
+        Do While .Execute
+            Set findRange = wordDoc.Range(Start:=wordDoc.Content.Find.Found.Start, End:=wordDoc.Content.Find.Found.End)
+            findRange.Delete
+            findRange.Fields.Add Range:=findRange, Type:=31 ' wdFieldDate
+            findRange.Collapse Direction:=0 ' wdCollapseEnd
+        Loop
+    End With
+    
+    ' Save and close the document
+    wordDoc.SaveAs2 outputFile
+    wordDoc.Close False
+    Set wordDoc = Nothing
+    
+    Exit Sub
+    
+ErrorHandler:
+    If Not wordDoc Is Nothing Then
+        wordDoc.Close False
+        Set wordDoc = Nothing
+    End If
+    Err.Raise Err.Number, Err.Source, Err.Description
+End Sub

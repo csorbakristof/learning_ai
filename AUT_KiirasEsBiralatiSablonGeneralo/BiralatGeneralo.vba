@@ -209,6 +209,9 @@ Private Sub CollectZvSegedData()
         Next zvRow
     Next targetRow
     
+    ' Collect students with missing "Terhelés" entry
+    Call CollectStudentsWithoutAutPortalEntry(zvWs, targetWs, neptunColZv, lastZvRow)
+    
     ' Close the ZV file
     zvWb.Close False
     
@@ -218,6 +221,79 @@ ErrorHandler:
     If Not zvWb Is Nothing Then
         zvWb.Close False
     End If
+    Err.Raise Err.Number, Err.Source, Err.Description
+End Sub
+
+' ==============================================================================
+' Collect students with missing "Terhelés" entry
+' ==============================================================================
+Private Sub CollectStudentsWithoutAutPortalEntry(zvWs As Worksheet, targetWs As Worksheet, neptunColZv As Long, lastZvRow As Long)
+    Dim missingWs As Worksheet
+    Dim zvRow As Long, targetRow As Long
+    Dim zvNeptun As String, targetNeptun As String
+    Dim found As Boolean
+    Dim lastTargetRow As Long
+    Dim missingRow As Long
+    Dim studentNameCol As Long, advisorNameCol As Long
+    
+    On Error GoTo ErrorHandler
+    
+    ' Get or create the StudentsWithoutAutPortalEntry worksheet
+    On Error Resume Next
+    Set missingWs = ThisWorkbook.Worksheets("StudentsWithoutAutPortalEntry")
+    On Error GoTo ErrorHandler
+    
+    If missingWs Is Nothing Then
+        Set missingWs = ThisWorkbook.Worksheets.Add
+        missingWs.Name = "StudentsWithoutAutPortalEntry"
+    End If
+    
+    ' Clear the worksheet completely
+    missingWs.Cells.ClearContents
+    
+    ' Create headers (always)
+    missingWs.Cells(1, 1).Value = "Hallgató neve"
+    missingWs.Cells(1, 2).Value = "Neptun kód"
+    missingWs.Cells(1, 3).Value = "Konzulens neve"
+    
+    ' Get column numbers from ZV file
+    studentNameCol = GetColumnNumber(zvWs, "Hallgató")
+    advisorNameCol = GetColumnNumber(zvWs, "Témavezető")
+    
+    ' Find last row in target worksheet
+    lastTargetRow = targetWs.Cells(targetWs.Rows.Count, "A").End(xlUp).Row
+    
+    ' Start writing from row 2 in missing students worksheet
+    missingRow = 2
+    
+    ' For each student in ZV file, check if they exist in GeneráltHallgatóiLista
+    For zvRow = 2 To lastZvRow
+        zvNeptun = Trim(CStr(zvWs.Cells(zvRow, neptunColZv).Value))
+        
+        If zvNeptun <> "" Then
+            ' Search for this Neptun code in GeneráltHallgatóiLista
+            found = False
+            For targetRow = 2 To lastTargetRow
+                targetNeptun = Trim(CStr(targetWs.Cells(targetRow, GetColumnNumber(targetWs, "Neptun kód")).Value))
+                If targetNeptun = zvNeptun Then
+                    found = True
+                    Exit For
+                End If
+            Next targetRow
+            
+            ' If not found, add to missing students list
+            If Not found Then
+                missingWs.Cells(missingRow, 1).Value = zvWs.Cells(zvRow, studentNameCol).Value
+                missingWs.Cells(missingRow, 2).Value = zvNeptun
+                missingWs.Cells(missingRow, 3).Value = zvWs.Cells(zvRow, advisorNameCol).Value
+                missingRow = missingRow + 1
+            End If
+        End If
+    Next zvRow
+    
+    Exit Sub
+    
+ErrorHandler:
     Err.Raise Err.Number, Err.Source, Err.Description
 End Sub
 

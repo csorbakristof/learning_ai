@@ -34,6 +34,12 @@ Fill in the following columns of GeneráltHallgatóiLista based on the informati
 - "Dolgozat címe angolul": copy from column "Téma angol címe"
 - "Bírálat nyelve": set it to "angol" if column "Külföldi" contains the exact text "True", and set it to "magyar" in every other case (different content, empty field etc.).
 
+### [StudentWithoutAutPortalEntry] Students with missing "Terhelés" entry
+
+Collect the students (identified by Neptun code) who are present in the file "reviewTemplates_reports.xlsx" but it does not appear in GeneráltHallgatóiLista. List them into the worksheet "StudentsWithoutAutPortalEntry". (Clear that worksheet in the beginning!) Put their names (column "Hallgató" in "reviewTemplates_reports.xlsx"), Neptun code and the name of their advisor ("Témavezető" in "reviewTemplates_reports.xlsx") into this list.
+
+The worksheet "StudentsWithoutAutPortalEntry" may be completely empty. Create the column headers if needed.
+
 ## [CleanUpList] Clean up the list
 
 Remove all rows from "GeneráltHallgatóiLista" where the column "Dolgozat megnevezése" is either empty, contains "0" or "nincs", or column "Dolgozat címe magyarul" is empty.

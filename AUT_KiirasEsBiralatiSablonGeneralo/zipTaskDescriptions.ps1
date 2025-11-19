@@ -1,25 +1,25 @@
 # zipTaskDescriptions.ps1
-# Creates zip files for each subdirectory in the "kiirasok" folder
+# Creates zip files for each subdirectory in the "output" folder
 # Each zip file contains all the contents of its corresponding subdirectory
 
 # Get the script directory
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-# Define the kiirasok directory path
-$kiirasokDir = Join-Path $scriptDir "kiirasok"
+# Define the output directory path
+$outputDir = Join-Path $scriptDir "output"
 
-# Check if kiirasok directory exists
-if (-not (Test-Path $kiirasokDir -PathType Container)) {
-    Write-Host "Error: 'kiirasok' directory not found at: $kiirasokDir" -ForegroundColor Red
-    Write-Host "Please ensure the script is in the same directory as the 'kiirasok' folder." -ForegroundColor Yellow
+# Check if output directory exists
+if (-not (Test-Path $outputDir -PathType Container)) {
+    Write-Host "Error: 'output' directory not found at: $outputDir" -ForegroundColor Red
+    Write-Host "Please ensure the script is in the same directory as the 'output' folder." -ForegroundColor Yellow
     exit 1
 }
 
-# Get all subdirectories in kiirasok
-$subdirectories = Get-ChildItem -Path $kiirasokDir -Directory
+# Get all subdirectories in output
+$subdirectories = Get-ChildItem -Path $outputDir -Directory
 
 if ($subdirectories.Count -eq 0) {
-    Write-Host "No subdirectories found in 'kiirasok' folder." -ForegroundColor Yellow
+    Write-Host "No subdirectories found in 'output' folder." -ForegroundColor Yellow
     exit 0
 }
 
@@ -33,7 +33,7 @@ foreach ($subdir in $subdirectories) {
     $subdirName = $subdir.Name
     $subdirPath = $subdir.FullName
     $zipFileName = "$subdirName.zip"
-    $zipFilePath = Join-Path $kiirasokDir $zipFileName
+    $zipFilePath = Join-Path $outputDir $zipFileName
     
     Write-Host "Processing: $subdirName" -ForegroundColor Cyan
     
@@ -72,12 +72,12 @@ if ($errorCount -gt 0) {
     Write-Host "Errors encountered: $errorCount" -ForegroundColor Red
 }
 
-Write-Host "Zip files location: $kiirasokDir" -ForegroundColor Cyan
+Write-Host "Zip files location: $outputDir" -ForegroundColor Cyan
 
 if ($successCount -gt 0) {
     Write-Host ""
     Write-Host "Created zip files:" -ForegroundColor White
-    Get-ChildItem -Path $kiirasokDir -Filter "*.zip" | ForEach-Object {
+    Get-ChildItem -Path $outputDir -Filter "*.zip" | ForEach-Object {
         $size = [math]::Round($_.Length / 1KB, 1)
         Write-Host "  $($_.Name) ($size KB)" -ForegroundColor Gray
     }

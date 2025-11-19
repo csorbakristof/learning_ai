@@ -168,7 +168,7 @@ Private Sub CollectZvSegedData()
     angolCimCol = GetColumnNumber(targetWs, "Dolgozat címe angolul")
     biralNyelvCol = GetColumnNumber(targetWs, "Bírálat nyelve")
     
-    neptunColZv = GetColumnNumber(zvWs, "Neptun kód")
+    neptunColZv = GetColumnNumber(zvWs, "Hallgató Neptun")
     temaCimeCol = GetColumnNumber(zvWs, "Téma címe")
     temaAngolCol = GetColumnNumber(zvWs, "Téma angol címe")
     kulfoldiCol = GetColumnNumber(zvWs, "Külföldi")
@@ -443,33 +443,43 @@ Public Sub GenerateDocuments()
             GoTo CleanupAndExit
         End If
         
-        ' Create output directory
-        outputDir = ThisWorkbook.Path & "\" & MakeFilesystemFriendly(advisorName)
+        ' Create output directory structure: output/konzulensnev
+        outputDir = ThisWorkbook.Path & "\output\" & MakeFilesystemFriendly(advisorName)
+        
+        ' Create "output" directory if it doesn't exist
+        If Dir(ThisWorkbook.Path & "\output", vbDirectory) = "" Then
+            MkDir ThisWorkbook.Path & "\output"
+        End If
+        
+        ' Create advisor-specific subdirectory if it doesn't exist
         If Dir(outputDir, vbDirectory) = "" Then
             MkDir outputDir
         End If
         
         ' Process each template
         For templateRow = 2 To lastTemplateRow
-            ' Determine which template to use
-            If LCase(Trim(reviewLanguage)) = "angol" Then
-                templateColumn = "Angol sablon"
-            Else
-                templateColumn = "Magyar sablon"
+            ' Check if this template should be generated (Kell? 0/1 column)
+            If CStr(templateWs.Cells(templateRow, GetColumnNumber(templateWs, "Kell? 0/1")).Value) = "1" Then
+                ' Determine which template to use
+                If LCase(Trim(reviewLanguage)) = "angol" Then
+                    templateColumn = "Angol sablon"
+                Else
+                    templateColumn = "Magyar sablon"
+                End If
+                
+                templateFile = ThisWorkbook.Path & "\" & CStr(templateWs.Cells(templateRow, GetColumnNumber(templateWs, templateColumn)).Value)
+                outputFile = outputDir & "\" & Replace(CStr(templateWs.Cells(templateRow, GetColumnNumber(templateWs, "Kimeneti fájl sablon")).Value), "name", MakeFilesystemFriendly(studentName))
+                
+                ' Check if template exists
+                If Dir(templateFile) = "" Then
+                    errorMessage = "A sablon fájl nem található: " & templateFile
+                    GoTo CleanupAndExit
+                End If
+                
+                ' Generate the document
+                Call GenerateSingleDocument(wordApp, studentWs, studentRow, templateFile, outputFile)
+                processedCount = processedCount + 1
             End If
-            
-            templateFile = ThisWorkbook.Path & "\" & CStr(templateWs.Cells(templateRow, GetColumnNumber(templateWs, templateColumn)).Value)
-            outputFile = outputDir & "\" & Replace(CStr(templateWs.Cells(templateRow, GetColumnNumber(templateWs, "Kimeneti fájl sablon")).Value), "name", MakeFilesystemFriendly(studentName))
-            
-            ' Check if template exists
-            If Dir(templateFile) = "" Then
-                errorMessage = "A sablon fájl nem található: " & templateFile
-                GoTo CleanupAndExit
-            End If
-            
-            ' Generate the document
-            Call GenerateSingleDocument(wordApp, studentWs, studentRow, templateFile, outputFile)
-            processedCount = processedCount + 1
         Next templateRow
     Next studentRow
     

@@ -28,7 +28,7 @@ Input data are located in another Excel file located in the same directory as th
 
 The Excel file "reviewTemplates_reports.xlsx" is another data source which contributes to the data in the GeneráltHallgatóiLista worksheet.
 
-Fill in the following columns of GeneráltHallgatóiLista based on the information in this file. Copy the corresponding values, do not use Excel formulas here. For every row, match the records based on the column "Neptun kód" in GeneráltHallgatóiLista and "Neptun kód" in "reviewTemplates_reports.xlsx". If there is no match, leave the fields empty. You can assume that the following columns already exist.
+Fill in the following columns of GeneráltHallgatóiLista based on the information in this file. Copy the corresponding values, do not use Excel formulas here. For every row, match the records based on the column "Neptun kód" in GeneráltHallgatóiLista and "Hallgató Neptun" in "reviewTemplates_reports.xlsx". If there is no match, leave the fields empty. You can assume that the following columns already exist.
 
 - "Dolgozat címe magyarul": copy from column "Téma címe"
 - "Dolgozat címe angolul": copy from column "Téma angol címe"
@@ -43,14 +43,12 @@ In this function, when locating the last row of the worksheet, take all columns 
 ## Further details
 
 - The template documents and input excel files are located beside the controller Excel file.
-- Save the output documents into a subdirectory with the name of the advisor ("Konzulens neve") which is made filesystem friendly.
 - Clear GeneráltHallgatóiLista before populating it.
 - You can assume that worksheet headers are already present in row 1 in all Excel files and worksheets.
 - In case any error occures, show a detailed error message so that the user knows how to fix it and stop the procedure.
 - Use worksheet and column header names for identifying them.
 - No data validation is required.
 - Close all Excel files except the controller one after processing.
-- Filesystem friendly strings: use the following method to convert any string (like student name) to be filesystem friendly. Remove whitespaces and convert accents and special characters to english letters. Use PascalCasing, so for example "Csorba Kristóf" should be converted to "CsorbaKristof".
 - If any of the mentioned Excel files or worksheets inside them is missing, show a detailed error message and stop the macro.
 
 # [GenerateDocuments] Generate the documents
@@ -59,11 +57,20 @@ This feature is a separate macro called GenerateDocuments and should be triggere
 
 If any value of "GeneráltHallgatóiLista" required for the generation of a document is missing, show an error message and stop. Check only for the presence of columns actually used (for filename generation or any placeholder mentioned in the templates (checked dynamically)).
 
+## Output file locations
+
+Save the output documents into a subdirectory "output/konzulensnev" where "konzulensnev" is substituted with the name of the advisor ("Konzulens neve") which is made filesystem friendly.
+
+Filesystem friendly strings: use the following method to convert any string (like student name) to be filesystem friendly. Remove whitespaces and convert accents and special characters to english letters. Use PascalCasing, so for example "Csorba Kristóf" should be converted to "CsorbaKristof".
+
+
 ## Templates for the document generation
 
 For every row of "GeneráltHallgatóiLista", the macro should go along the rows (except header) of the worksheet "TemplatesAndFiles". Every row of this sheet corresponds to a Word document to create. If any of the columns mentioned below is missing, show an error message and stop.
 
-The column "Kimeneti fájl sablon" contains the name template of the output file. For the input template, use "Angol sablon" if "Bírálat nyelve" in "GeneráltHallgatóiLista" is "angol", use "Magyar sablon" in every other case. (These are the exact column names.) The filename templates are strings containing "name" which should be substituted by the student's name (made filesystem friendly). The student name is found in the column "Hallgató neve" in "GeneráltHallgatóiLista".
+The column "Kimeneti fájl sablon" contains the name template of the output file.
+If column "Kell? 0/1" is 1, the output file corresponding to this row should be generated. Otherwise, the row should be skipped.
+For the input template, use "Angol sablon" if "Bírálat nyelve" in "GeneráltHallgatóiLista" is "angol", use "Magyar sablon" in every other case. (These are the exact column names.) The filename templates are strings containing "name" which should be substituted by the student's name (made filesystem friendly). The student name is found in the column "Hallgató neve" in "GeneráltHallgatóiLista".
 
 ## Filling out the templates
 

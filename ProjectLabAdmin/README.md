@@ -60,14 +60,18 @@ cd app1_data_collector
 python main.py  # Executes DLXLS → DLNEP → DLFUSION → MKXLSX
 ```
 
-### Individual Feature Testing
+### Individual Feature Execution
 ```powershell
-# Test individual components
-python test_dlxls.py       # BME topic data collection
-python test_dlnep.py       # Neptun student data collection
-python test_dlfusion.py    # Data fusion (uses existing data)
-python test_mkxlsx.py      # Excel planning table creation
-python test_workflow.py   # Complete integrated workflow
+cd app1_data_collector
+
+# Run DLFUSION independently (lightweight, no Selenium dependencies)
+python dlfusion_processor.py    # Data fusion (uses existing data files)
+
+# Run complete workflow with all features
+python main.py                  # Full pipeline with web automation
+
+# Note: DLXLS and DLNEP require Selenium and manual login
+# DLFUSION and MKXLSX work with existing data files only
 ```
 
 ## 📁 Project Structure
@@ -121,7 +125,7 @@ neptun_downloads/*.xlsx (Course enrollments, student lists)
     ↓
 DLFUSION Processing
     ↓
-fused_student_data.json (Unified dataset with 221 students)
+fused_student_data.json (Unified dataset with 435 students)
     ↓
 MKXLSX Excel Creation
     ↓  
@@ -149,9 +153,9 @@ Web Automator → Automated session creation
 ### DLFUSION - Data Fusion Processing
 - **Purpose**: Combine DLXLS and DLNEP data into unified dataset
 - **Process**: Load existing files → Match by Neptun codes → Generate statistics
-- **Output**: `data/fused_student_data.json` with 221 student records
-- **Features**: No re-collection needed, comprehensive statistics
-- **Test**: `python test_dlfusion.py`
+- **Output**: `data/fused_student_data.json` with 435 student records
+- **Features**: No re-collection needed, comprehensive statistics, runs independently
+- **Run**: `python dlfusion_processor.py` (no web automation dependencies required)
 
 ### MKXLSX - Session Planning Excel Creation
 - **Purpose**: Create interactive Excel table for session planning
@@ -163,9 +167,9 @@ Web Automator → Automated session creation
 ## 🎯 Generated Files
 
 ### Core Data Files
-- **`data/bme_topic_data.xlsx`**: Clean BME topic data (10 students with assigned topics)
-- **`data/neptun_downloads/*.xlsx`**: Raw Neptun course enrollment files (8 courses)
-- **`data/fused_student_data.json`**: Unified dataset with 221 students
+- **`data/bme_topic_data.xlsx`**: Clean BME topic data (477 records, 416 in allowed courses)
+- **`data/neptun_downloads/*.xlsx`**: Raw Neptun course enrollment files (24 files, 16 allowed courses)
+- **`data/fused_student_data.json`**: Unified dataset with 435 students
 - **`data/session_planner.xlsx`**: Interactive planning table with 60 slots
 
 ### Automatic File Management
@@ -183,25 +187,21 @@ python main.py
 # Follow prompts for each feature: DLXLS → DLNEP → DLFUSION → MKXLSX
 ```
 
-### Individual Feature Testing
+### Running Individual Features
 ```powershell
-# Test BME data collection
-python test_dlxls.py
+cd app1_data_collector
 
-# Test Neptun data collection  
-python test_dlnep.py
+# DLFUSION - Data fusion (lightweight, no dependencies)
+python dlfusion_processor.py
 
-# Test data fusion
-python test_dlfusion.py
-
-# Test Excel planner creation
-python test_mkxlsx.py
+# Complete workflow (requires Selenium and manual login)
+python main.py
 ```
 
 ### Manual Login Required
-1. **DLXLS**: Login to BME portal when prompted
-2. **DLNEP**: Login to Neptun system when prompted
-3. **DLFUSION**: No login required (processes existing files)
+1. **DLXLS**: Manual login to BME portal required
+2. **DLNEP**: Manual login to Neptun system required
+3. **DLFUSION**: No login required (processes existing files, runs standalone)
 4. **MKXLSX**: No login required (processes existing files)
 
 ## 📋 Session Planning Workflow
@@ -213,8 +213,10 @@ python test_mkxlsx.py
 
 2. **Data Fusion** (DLFUSION)
    - Combine both datasets by Neptun codes
-   - Generate comprehensive statistics
+   - Filter by allowed course codes (22 courses)
+   - Generate comprehensive statistics (435 students)
    - Export unified JSON dataset
+   - **Run standalone**: `python dlfusion_processor.py`
 
 3. **Planning Table Creation** (MKXLSX)
    - Create Excel table with 60 planning slots
@@ -272,16 +274,16 @@ python test_mkxlsx.py
 ## 📊 Current Statistics
 
 ### Data Collection Results
-- **BME Topics**: 10 students with assigned topics collected
-- **Neptun Courses**: 8 courses processed (BMEVI prefix only)
-- **Total Students**: 221 unique students identified
-- **Data Fusion**: 100% success rate matching Neptun codes
+- **BME Topics**: 477 students with topic data (filtered to 416 in allowed courses)
+- **Neptun Courses**: 24 courses processed (BMEVI prefix, filtered to 16 allowed)
+- **Total Students**: 435 unique students identified in fused dataset
+- **Data Fusion**: 192 students with both topics and enrollments
 - **Planning Slots**: 60 session slots generated in Excel
 
 ### Performance Metrics
 - **DLXLS**: ~2-3 minutes (manual login + automated processing)
 - **DLNEP**: ~3-5 minutes (manual login + batch downloads)
-- **DLFUSION**: <30 seconds (no network requests)
+- **DLFUSION**: <5 seconds (lightweight, no dependencies, processes existing files)
 - **MKXLSX**: <15 seconds (Excel generation only)
 
 ## 🔄 Next Steps

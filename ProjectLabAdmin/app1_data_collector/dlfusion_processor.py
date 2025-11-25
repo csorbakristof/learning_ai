@@ -9,9 +9,18 @@ import re
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 import sys
+import logging
 
-sys.path.append(str(Path(__file__).parent.parent))
-from shared import setup_logging
+# Simple logging setup to avoid dependency issues
+def setup_logging(name: str) -> logging.Logger:
+    logger = logging.getLogger(name)
+    if not logger.handlers:
+        handler = logging.StreamHandler()
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+        logger.setLevel(logging.INFO)
+    return logger
 
 
 class DataFusionProcessor:

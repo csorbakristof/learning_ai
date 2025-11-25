@@ -22,6 +22,7 @@
 - Nagyon jól jön, ha a munkafázisoknak és featureöknek kódja van.
 - Kérésre felesleges fájlok törlése a workspace-ből...
 - InformationForAI.md bevezetése, amit magának rak össze, hogy később hasznos legyen.
+- Letöltés előtt törölte az esetleges régi fájlt. Igen ám, de file maszk alapján keresett rá és volt, amikor másik fájlt törölt le, nem azt, amelyiket kellett volna. (Mivel másik is tartalmazta a tárgy kódot, másik kurzus kóddal.)
 
 # Konkrét promptok
 

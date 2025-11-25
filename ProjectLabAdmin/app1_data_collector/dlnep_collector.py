@@ -231,16 +231,19 @@ class NeptunStudentDataCollector:
                 for row_idx, row in enumerate(rows):
                     try:
                         if row == header_row:  # Skip header row
+                            self.logger.debug(f"Row {row_idx}: Skipped (header row)")
                             continue
                             
                         cells = row.find_elements(By.TAG_NAME, "td")
                         if len(cells) < max(header_indices.values()) + 1:  # Not enough columns
+                            self.logger.debug(f"Row {row_idx}: Skipped (not enough columns: {len(cells)} < {max(header_indices.values()) + 1})")
                             continue
                         
                         # Check course code (must start with "BMEVI")
                         course_code_idx = header_indices.get('course_code', 0)
                         course_code = cells[course_code_idx].text.strip()
                         if not course_code.startswith("BMEVI"):
+                            self.logger.debug(f"Row {row_idx}: Skipped (course code '{course_code}' does not start with 'BMEVI')")
                             continue
                         
                         # Check requirement (must contain "Évközi jegy")
@@ -248,6 +251,7 @@ class NeptunStudentDataCollector:
                         if requirement_idx < len(cells):
                             requirement = cells[requirement_idx].text.strip()
                             if "Évközi jegy" not in requirement:
+                                self.logger.debug(f"Row {row_idx}: Skipped (course {course_code} - requirement '{requirement}' does not contain 'Évközi jegy')")
                                 continue
                         
                         # Check instructors (must contain "Dr. Csorba Kristóf")
@@ -255,13 +259,14 @@ class NeptunStudentDataCollector:
                         if instructors_idx < len(cells):
                             instructors = cells[instructors_idx].text.strip()
                             if "Dr. Csorba Kristóf" not in instructors:
+                                self.logger.debug(f"Row {row_idx}: Skipped (course {course_code} - instructor '{instructors}' is not 'Dr. Csorba Kristóf')")
                                 continue
                         
                         course_rows.append(row)
-                        self.logger.info(f"Found valid course row: {course_code}")
+                        self.logger.info(f"Row {row_idx}: Valid course found - {course_code}")
                         
                     except Exception as e:
-                        self.logger.warning(f"Error checking row {row_idx}: {str(e)}")
+                        self.logger.warning(f"Row {row_idx}: Error checking row - {str(e)}")
                         continue
                 
                 self.logger.info(f"Found {len(course_rows)} valid course rows")
@@ -300,31 +305,38 @@ class NeptunStudentDataCollector:
                             try:
                                 cells = row.find_elements(By.TAG_NAME, "td")
                                 if len(cells) < 3:
+                                    self.logger.debug(f"Re-scan: Skipped row (not enough columns: {len(cells)} < 3)")
                                     continue
                                 
                                 # Apply the same filtering criteria
                                 course_code_idx = header_indices.get('course_code', 1)
                                 if course_code_idx >= len(cells):
+                                    self.logger.debug(f"Re-scan: Skipped row (course_code index {course_code_idx} >= {len(cells)} cells)")
                                     continue
                                     
                                 course_code = cells[course_code_idx].text.strip()
                                 if not course_code.startswith("BMEVI"):
+                                    self.logger.debug(f"Re-scan: Skipped row (course '{course_code}' does not start with 'BMEVI')")
                                     continue
                                 
                                 requirement_idx = header_indices.get('requirement', 3)
                                 if requirement_idx < len(cells):
                                     requirement = cells[requirement_idx].text.strip()
                                     if "Évközi jegy" not in requirement:
+                                        self.logger.debug(f"Re-scan: Skipped row (course {course_code} - requirement '{requirement}' does not contain 'Évközi jegy')")
                                         continue
                                 
                                 instructors_idx = header_indices.get('instructors', 15)
                                 if instructors_idx < len(cells):
                                     instructors = cells[instructors_idx].text.strip()
                                     if "Dr. Csorba Kristóf" not in instructors:
+                                        self.logger.debug(f"Re-scan: Skipped row (course {course_code} - instructor '{instructors}' is not 'Dr. Csorba Kristóf')")
                                         continue
                                 
                                 current_course_rows.append(row)
-                            except:
+                                self.logger.debug(f"Re-scan: Valid course found - {course_code}")
+                            except Exception as e:
+                                self.logger.debug(f"Re-scan: Error checking row - {str(e)}")
                                 continue
                         
                         # Get the course at index i
@@ -453,14 +465,6 @@ class NeptunStudentDataCollector:
             course_code = course_info['course_code']
             self.logger.info(f"Downloading student list for course: {course_code}")
             
-            # Clear download folder of old files for this course
-            for file in self.download_folder.glob(f"*{course_code}*.xls*"):
-                try:
-                    file.unlink()
-                    self.logger.info(f"Removed old download: {file.name}")
-                except Exception as e:
-                    self.logger.warning(f"Could not remove old file {file.name}: {e}")
-            
             # Step 1: Click on the dropdown menu ("Lehetőségek") to open floating menu
             dropdown_element = course_info.get('dropdown_element')
             if not dropdown_element:
@@ -476,12 +480,12 @@ class NeptunStudentDataCollector:
                 # Try to click or focus to trigger A2.HandleClick event
                 try:
                     dropdown_element.click()
-                    self.logger.info(f"Clicked dropdown for course {course_code}")
+                    # self.logger.info(f"Clicked dropdown for course {course_code}")
                 except:
                     # If click doesn't work, try focus
                     try:
                         driver.execute_script("arguments[0].focus();", dropdown_element)
-                        self.logger.info(f"Focused dropdown for course {course_code}")
+                        # self.logger.info(f"Focused dropdown for course {course_code}")
                     except Exception as e:
                         self.logger.warning(f"Could not focus dropdown: {e}")
                 
@@ -525,7 +529,7 @@ class NeptunStudentDataCollector:
                 
                 # Click on "Jegybeírás"
                 jegybeiras_element.click()
-                self.logger.info(f"Clicked 'Jegybeírás' for course {course_code}")
+                # self.logger.info(f"Clicked 'Jegybeírás' for course {course_code}")
                 time.sleep(2)  # Wait 2 seconds for course details to load
                 
             except TimeoutException:
@@ -547,7 +551,7 @@ class NeptunStudentDataCollector:
                     # Try to select 500, or the highest available option
                     try:
                         select.select_by_value("500")
-                        self.logger.info(f"Selected page size 500 for course {course_code}")
+                        # self.logger.info(f"Selected page size 500 for course {course_code}")
                     except:
                         # If 500 is not available, select the last (highest) option
                         options = select.options
@@ -556,7 +560,7 @@ class NeptunStudentDataCollector:
                             option_value = last_option.get_attribute("value")
                             if option_value:
                                 select.select_by_value(option_value)
-                                self.logger.info(f"Selected page size {last_option.text} for course {course_code}")
+                                # self.logger.info(f"Selected page size {last_option.text} for course {course_code}")
                             else:
                                 self.logger.warning(f"Could not get value for last option in course {course_code}")
                     
@@ -573,7 +577,7 @@ class NeptunStudentDataCollector:
                     EC.element_to_be_clickable((By.XPATH, "//*[@alt='Exportálás Excel-fájlba' or contains(text(), 'Exportálás Excel-fájlba') or contains(@title, 'Exportálás Excel-fájlba')]"))
                 )
                 export_button.click()
-                self.logger.info(f"Clicked export button for course {course_code}")
+                # self.logger.info(f"Clicked export button for course {course_code}")
                 
                 # Wait for download to complete
                 downloaded_file = self._wait_for_download(course_code)
@@ -615,8 +619,8 @@ class NeptunStudentDataCollector:
         start_time = time.time()
         
         while time.time() - start_time < max_wait_time:
-            # Look for new Excel files
-            excel_files = list(self.download_folder.glob("*.xls*"))
+            # Look for Excel files containing the course code
+            excel_files = list(self.download_folder.glob(f"*{course_code}*.xls*"))
             
             for file in excel_files:
                 # Check if file is complete (not being downloaded)
@@ -624,10 +628,12 @@ class NeptunStudentDataCollector:
                     # Check if file was created recently (within last minute)
                     file_age = time.time() - file.stat().st_mtime
                     if file_age < 60:  # File created within last minute
+                        self.logger.debug(f"Found downloaded file for {course_code}: {file.name} (age: {file_age:.1f}s)")
                         return file
             
             time.sleep(1)
         
+        self.logger.warning(f"Download timeout for {course_code} after {max_wait_time}s")
         return None
     
     def collect_all_course_data(self) -> List[Dict[str, Any]]:
@@ -638,6 +644,20 @@ class NeptunStudentDataCollector:
             List of course information with download status
         """
         try:
+            # Step 0: Clean up old downloads
+            self.logger.info("Cleaning up old Excel files from download folder...")
+            old_files = list(self.download_folder.glob("*.xls*"))
+            for file in old_files:
+                try:
+                    if not file.name.endswith('.crdownload'):
+                        file.unlink()
+                        self.logger.debug(f"Removed old file: {file.name}")
+                except Exception as e:
+                    self.logger.warning(f"Could not remove old file {file.name}: {e}")
+            
+            if old_files:
+                self.logger.info(f"Removed {len([f for f in old_files if not f.name.endswith('.crdownload')])} old Excel files")
+            
             # Step 1: Login to Neptun
             if not self.login_to_neptun():
                 self.logger.error("Failed to login to Neptun system")

@@ -12,9 +12,18 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 import math
 import sys
+import logging
 
-sys.path.append(str(Path(__file__).parent.parent))
-from shared import setup_logging
+# Simple logging setup to avoid heavy dependencies
+def setup_logging(name: str) -> logging.Logger:
+    logger = logging.getLogger(name)
+    if not logger.handlers:
+        handler = logging.StreamHandler()
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+        logger.setLevel(logging.INFO)
+    return logger
 
 
 class SessionPlannerExcelCreator:
@@ -44,7 +53,7 @@ class SessionPlannerExcelCreator:
             'BMEVIAUMT00', 'BMEVIAUMT10', 'BMEVIAUMT12', 'BMEVIAUM026', 
             'BMEVIAUAL01', 'BMEVIAUAL03', 'BMEVIAUAL04', 'BMEVIAUAL05', 
             'BMEVIAUML10', 'BMEVIAUML12', 'BMEVIAUML11', 'BMEVIAUML13', 
-            'BMEVIAUM039', 'BMEVIAUAT02', 'BMEVIAUMT11'
+            'BMEVIAUM039'
         }
         
         # Session types from specification
@@ -182,14 +191,21 @@ class SessionPlannerExcelCreator:
             current_row += 1
             
             # Calculate topic category statistics from fused data
-            # Include all students with topics, regardless of course enrollment
+            # Only count students enrolled in STATISTICS_COURSE_CODES courses
             hungarian_topic_categories = {}
             english_student_count = 0
             
             if self.fused_data and 'students' in self.fused_data:
                 for student in self.fused_data['students']:
-                    # Count all students who have topics
-                    if student.get('has_topic') and student.get('topic_category'):
+                    # Check if student is enrolled in any of the statistics course codes
+                    enrolled_courses = student.get('enrolled_courses', [])
+                    has_relevant_course = any(
+                        course.get('course_code') in self.STATISTICS_COURSE_CODES 
+                        for course in enrolled_courses
+                    )
+                    
+                    # Only count students who are enrolled in relevant courses and have topics
+                    if has_relevant_course and student.get('has_topic') and student.get('topic_category'):
                         # Check if this is an English topic (Z-ENG prefix)
                         is_english_topic = student.get('is_english_topic', False)
                         

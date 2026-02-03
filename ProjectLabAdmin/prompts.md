@@ -23,6 +23,12 @@
 - Kérésre felesleges fájlok törlése a workspace-ből...
 - InformationForAI.md bevezetése, amit magának rak össze, hogy később hasznos legyen.
 - Letöltés előtt törölte az esetleges régi fájlt. Igen ám, de file maszk alapján keresett rá és volt, amikor másik fájlt törölt le, nem azt, amelyiket kellett volna. (Mivel másik is tartalmazta a tárgy kódot, másik kurzus kóddal.)
+- Planner xlsx leírásában masszív hallucinálás:
+"4. **Manual Session Planning**
+   - Open `session_planner.xlsx`
+   - Use dropdown menus to assign students to slots
+   - Monitor real-time statistics updates"
+Nem is hallgatókat kell itt szekciókhoz rendelni és nincsen real-time update.
 
 # Konkrét promptok
 

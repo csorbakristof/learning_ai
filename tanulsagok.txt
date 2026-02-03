@@ -18,3 +18,51 @@ I have extended #spec.md with a file attachment feature for both SingleSend and 
 
 Excel formula beszúrásakor a VBA kódba az angol neveket kell beírni (nálam legalábbis) még akkor is, ha a felületen magyarul jelenik meg...
  
+---
+
+Benedek Olivér hallgatónál: A „500042XXXX" fájlnévben az LLM egyből sablonra gondolt (mivel szinte mindig ez van), de most kivételesen az X-eknek fixen ott kellett volna maradnia.
+- A helyzet megoldása csak többszöri, fokozatos pontosítással sikerült.
+
+Matematikai, konkrt példa a megoldás:
+"Hasonló félreértés jelent meg a tűréshatároknál. A cél az volt, hogy az elvárt értéknél vízszintes vonal legyen, ehhez képest két további vízszintes vonal jelezze az expected ± tolerance értékeket, a measured pontok pedig ezek körül helyezkedjenek el. Amíg ezt csak szövegesen írtam le, a modell a felső és alsó tűrést sokszor önálló határértékként kezelte. A fordulópont az volt, amikor konkrét számokkal fogalmaztam: „azt szeretném látni, hogy a 38.1 expectednél legyen egy vízszintes vonal, ehhez képest 0.25-tel felfelé és lefelé egy-egy új vonal, vagyis 38.35 és 37.85, és erre rajzold rá a measured értékeket”. A numerikus példa kényszerítette ki, hogy a modell ténylegesen az expected köré építse a tűrésvonalakat, ne pedig elszakítva kezelje őket."
+
+Feladat feldarabolása a megoldás:
+"Az idődimenzió kezelése szintén félrecsúszott, amíg nem bontottam szét lépéseire. A dátum információ nem az adatblokkban, hanem a fejléc negyedik sorában szerepelt, „Date:” előtaggal. Kezdetben a modell egyszerűen indexet rajzolt az x tengelyre, figyelmen kívül hagyva a valódi időbélyegeket. Ezt úgy sikerült helyrehozni, hogy külön iterációban csak a fejléc parse-olását kértem, egy másikban azt, hogy a megtalált dátumot minden sorhoz adja hozzá, és egy harmadikban azt, hogy a teljes adattáblát rendezze idő szerint. Csak ezután kértem min és max dátum szerinti szűrést, illetve „max darabszám a diagramon” paramétert. "
+
+"nem elég a feladatot megfogalmazni, a gondolkodási folyamatot is át kell adni: az egyes lépések célját el kell különíteni, az elvárásokat számszerűen rögzíteni, és a félreértésekre azonnal, konkrét promptokkal kell reagálni."
+
+Pszeudo-kódos magyarázat, az AI egyszerűbben akarta megoldani:
+"A megoldást a pszeudokódos magyarázat és a modulo művelet kombinációja adta, amely biztosította a váltakozó feldolgozást. A folyamat során az AI hajlamos volt egyszerűsíteni az utasításokat, átlagolással próbálta követni a kopást, ezért minden részletet világosan kellett megadni a promptban."
+
+Az AI-nek a kontextus értelmezésében kell segíteni, utána a scriptet már helyesen írja:
+"A legfontosabb tanulság, hogy a komplex, valós adatokkal dolgozó rendszereknél a „Zero-shot” promptolás ritkán működik. A siker kulcsa a fokozatos építkezés (Least-to-Most) és a folyamatos, emberi validáció volt. Az AI kiválóan kezelte a szintaktikai és algoritmikus feladatokat (pandas csoportosítás, Excel írás), de a kontextust – hogy mi számít érvényes technológiának vagy miért fontos a sablon formázásának megőrzése – a fejlesztőnek kellett iteratívan a modell „tudásába” építenie."
+
+Példa alapú promptolás hatékonyabb, mint csak a szabályok leírása.
+"Kiemelten fontos tapasztalat volt továbbá a példaalapú promptolás (Few-Shot Prompting) hatékonysága. Amikor részletesen, elméleti síkon próbáltam elmagyarázni a logikát, a modell gyakran félreértette az utasításokat. Ezzel szemben, amikor konkrét példát mutattam a kívánt kimenetre – például: „Így nézzen ki egy sor: TermékA | Gép1 | X” –, az AI sokkal gyorsabban és pontosabban ismerte fel a mintázatot. A vizuális példák és a konkrét adatsorok megadása drasztikusan csökkentette a félreértéseket, bizonyítva, hogy a modell gyakran jobban tanul a mintákból, mint a szabályleírásokból."
+
+Senior fejlesztős szerepkör kikötése után sokkal dekomponáltabb, profibb a kód:
+"A promptot a „Role: Senior Python engineer (no AI usage)” utasítással indítottam. A szakirodalom például ezt a megközelítést Persona Pattern-nek nevezi. Ennek jelentősége nem csupán stilisztikai: amikor a modellt arra utasítottam, hogy senior mérnökként viselkedjen, és explicit módon kikötöttem, hogy ne használjon külső AI szolgáltatásokat, azzal beállítottam a generálandó kód minőségi elvárásait. A tapasztalat azt mutatta, hogy ennek hatására a modell azonnal alkalmazta a Python típusosságát, a Google-stílusú dokumentációs kommenteket és a moduláris felépítést, amelyeket egy kezdő szintű kódgenerálásnál gyakran elhagy."
+
+Acceptance Criteria használata:
+"„Acceptance Criteria” (AC) pontok részletes felsorolása volt a promptban. Pontosan definiáltam, hogy mit tekintünk sikernek: például „AC2: Detects irregular patches” vagy „AC6: Completes on a workbook with a sheet of 100k rows”. "
+
+Sok nyereség a mérnöki szintű, gondosan összerakott promptokkal:
+"Ennél a projektnél bebizonyosodott, hogy bár a természetes nyelvű programozás lehetőséget ad a laza specifikációra, a mérnöki pontosságú, korlátokat és kritériumokat tartalmazó promptok képesek kiváltani a hosszú iterációs folyamatokat, és azonnal ipari minőségű kódot eredményeznek. A strukturált promptok használata, kombinálva a szerepjáték és a kényszerek explicit megfogalmazásával, drasztikusan csökkentette a fejlesztési időt és növelte a kód megbízhatóságát, különösen olyan esetekben, ahol a problématér jól definiált, de a megvalósítás algoritmikusan összetett."
+
+Tényeket sok nyelven kereső feladatnál human-in-the-loop elengedhetetlensége:
+"Azonban ahogy bővítettem az országok listáját, súlyos problémákba ütköztem, és a modell szinte minden lehetséges hibatípust elkövetett. A leggyakoribb és legmegtévesztőbb hiba az volt, amikor az AI összekeverte a személyi azonosító számot a fizikai igazolvány okmányszámával, amely fejlesztői szempontból értéktelen volt. Gyakran előfordult, hogy a generált reguláris kifejezés szintaktikailag helyes volt, de nem fedte le a valós formátumot, a javítási kísérletek pedig még rosszabb, pánikszerűen kitalált eredményeket szültek. Szintén problémát jelentett az elavult információk megjelenése, valamint a legveszélyesebb hiba, a matematikai ellenőrző összegek hallucinálása, amikor a modell magabiztosan állított valótlan algoritmusokat."
+
+Tényfeltárásnál csak akkor nyer időt, ha fejből tudom validálni:
+"Ezzel szemben a tényfeltárást igénylő feladatoknál, mint a PII kutatás, az AI használata gyakran inkább hátráltató tényező volt. A hallucinált adatok kiszűrése és a korrekciók néha több időt emésztettek fel, mintha manuálisan végeztem volna a kutatást. Az AI asszisztencia itt csak akkor hatékony, ha a fejlesztő már rendelkezik a validáláshoz szükséges domain-tudással."
+
+Kikényszerített kódolási stílus mellett jól karbantartható kód:
+"Fontos tapasztalat, hogy az AI-val generált kód karbantarthatósága jó, mivel a kikényszerített tiszta kódolási elveknek köszönhetően a forráskód olvasható és módosítható maradt."
+
+-----
+
+Kristófnál masszív hallucináció az önlab beszámoló beosztás planner XLSX-ében, amibe a script a futáskor beírja az adatokat és utána szekció blokkokat lehet kialakítani, hallgató hozzárendelés vagy real-time update nélkük:
+"4. **Manual Session Planning**
+   - Open `session_planner.xlsx`
+   - Use dropdown menus to assign students to slots
+   - Monitor real-time statistics updates"
+Nyilván tipikusan ilyen featureökkel szokás reklámozni egy hasonló renszert...

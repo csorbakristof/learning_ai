@@ -13,6 +13,8 @@ The script detected failed download, although the files may have been received. 
 
 I have extended #spec.md, look at git status to see the changes. Ask clarification questions if needed for the implementation.
 
+As there were no new files, the script did not create the output xlsx. Update the script so that the output should be regenerated even if there are no new downloads.
+
 # Very nice own reaction of AI:
 
 Clarification Questions

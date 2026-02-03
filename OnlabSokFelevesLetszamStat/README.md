@@ -6,7 +6,8 @@ This project downloads university course statistics from the AUT BME website and
 
 - **[DL] Download Excel Files**: Automatically downloads course statistics Excel files for all available semesters
 - **[XLS2JSON] Extract and Merge Data**: Processes all downloaded files, looks up course aliases, and creates a consolidated Excel output
-- **[StatMatrix] Statistics Matrix**: Creates a matrix showing student counts by semester and course with a stacked column chart
+- **[CourseHeadCountMatrix] Statistics Matrix**: Creates a matrix showing student counts by semester and course with a stacked column chart
+- **[PopulationTimelines] Population Timelines**: Creates a time-shifted view of the data to visualize progression patterns
 
 ## Requirements
 
@@ -63,12 +64,13 @@ python extractor.py
 
 ### Download Process [DL]
 
-1. The script cleans the `downloads/` folder
-2. Opens Chrome browser and navigates to the first semester URL
+1. Creates `downloads/` folder if it doesn't exist (preserves existing files)
+2. Opens Chrome browser and navigates to https://www.aut.bme.hu/Tasks/TaskManagement.aspx for login
 3. Waits for you to manually login (press ENTER after login)
-4. Iterates through all semester IDs (starting from 1)
-5. Downloads Excel files for each semester
-6. Stops when it detects 3 consecutive failures (indicating no more semesters)
+4. Iterates through all semester IDs (starting from 1) downloading from TaskGradeExport.aspx URLs
+5. Renames downloaded files to `PortalResults_SemesterIdXX.xlsx`
+6. Skips download if file already exists (incremental download)
+7. Stops when it detects 3 consecutive failures (indicating no more semesters)
 
 ### Extraction Process [XLS2JSON]
 
@@ -77,39 +79,62 @@ python extractor.py
 3. Extracts semester name from cell A1 (between quotes)
 4. Reads data from row 5 onwards (row 4 is header)
 5. Collects columns: StudentNeptunCode, CourseName, CourseNeptunCode, Grade, GradedBy
-6. Looks up CourseAlias for each CourseNeptunCode (stops with error if not found)
-7. Skips rows where Grade or GradedBy is missing or contains only "-"
-8. Stops at the first empty row
-9. Merges all data into worksheet "AllSemesterData" in `output/AllSemesterProjectStats.xlsx`
+6. Looks up CourseAlias and CoursesSemesterIndex for each CourseNeptunCode (stops with error if not found)
+7. **Filters out rows where CourseAlias is "NA"**
+8. Skips rows where Grade or GradedBy is missing or contains only "-"
+9. Stops at the first empty row
+10. Merges all data into worksheet "AllSemesterData" in `output/AllSemesterProjectStats.xlsx`
 
 ### Statistics Matrix [StatMatrix]
 
 1. Creates a "CourseHeadCounts" worksheet in the output file
 2. Generates a matrix with:
    - Rows: Semester names
-   - Columns: Course aliases
+   - Columns: CoursesSemesterIndex values
    - Values: Count of students in each semester/course combination
 3. Adds a stacked column chart titled "Evolution of headcounts"
 4. Chart shows semester progression with all courses stacked
 
+### Population Timelines [PopulationTimelines]
+
+1. Creates a "PopulationTimelines" worksheet in the output file
+2. Generates a time-shifted matrix to visualize progression patterns:
+   - Rows: SemesterIds (instead of semester names)
+   - Columns: CoursesSemesterIndex values (same as CourseHeadCounts)
+   - Each row is shifted right by N cells, where N = (max SemesterId - current row's SemesterId)
+   - This creates a diagonal pattern showing how courses align across time
+3. Helps visualize temporal relationships between semesters and courses
+
 ## Output Format
 
-The output file `AllSemesterProjectStats.xlsx` contains two worksheets:
+The output file `AllSemesterProjectStats.xlsx` contains three worksheets:
 
 ### Worksheet 1: AllSemesterData
 
-| Column A | Column B | Column C | Column D | Column E | Column F | Column G |
-|----------|----------|----------|----------|----------|----------|----------|
-| SemesterName | StudentNeptunCode | CourseName | CourseNeptunCode | Grade | GradedBy | CourseAlias |
+Data is sorted by SemesterId in ascending order.
+
+| Column A | Column B | Column C | Column D | Column E | Column F | Column G | Column H | Column I |
+|----------|----------|----------|----------|----------|----------|----------|----------|----------|
+| SemesterName | SemesterId | StudentNeptunCode | CourseName | CourseNeptunCode | Grade | GradedBy | CourseAlias | CoursesSemesterIndex |
 
 ### Worksheet 2: CourseHeadCounts
 
 A matrix showing student counts with:
 - Rows: Semester names
-- Columns: Course aliases
+- Columns: CoursesSemesterIndex values
 - Values: Number of students
 
 Plus a stacked column chart visualizing the evolution of headcounts over time.
+
+### Worksheet 3: PopulationTimelines
+
+A time-shifted matrix showing student counts with:
+- Rows: SemesterIds
+- Columns: CoursesSemesterIndex values (with shifts applied)
+- Values: Number of students
+- Each row is shifted right to create a diagonal alignment pattern
+
+This view helps identify temporal patterns and course progression relationships.
 
 ## Directory Structure
 

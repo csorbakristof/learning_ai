@@ -22,11 +22,8 @@ def main():
         print("\n[Step 1/2] Downloading Excel files from website...")
         print("-"*60)
         base_url = "https://www.aut.bme.hu/Tasks/TaskGradeExport.aspx?SemesterId={semester_id}"
-        num_downloaded = download_semester_files(base_url)
-        
-        if num_downloaded == 0:
-            print("\n✗ No files were downloaded. Exiting.")
-            return 1
+        login_url = "https://www.aut.bme.hu/Tasks/TaskManagement.aspx"
+        num_downloaded = download_semester_files(base_url, login_url=login_url)
         
         # Step 2: Extract and merge data
         print("\n[Step 2/2] Extracting and merging data...")

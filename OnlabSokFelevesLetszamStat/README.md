@@ -5,7 +5,8 @@ This project downloads university course statistics from the AUT BME website and
 ## Features
 
 - **[DL] Download Excel Files**: Automatically downloads course statistics Excel files for all available semesters
-- **[XLS2JSON] Extract and Merge Data**: Processes all downloaded files and creates a consolidated Excel output
+- **[XLS2JSON] Extract and Merge Data**: Processes all downloaded files, looks up course aliases, and creates a consolidated Excel output
+- **[StatMatrix] Statistics Matrix**: Creates a matrix showing student counts by semester and course with a stacked column chart
 
 ## Requirements
 
@@ -72,33 +73,57 @@ python extractor.py
 ### Extraction Process [XLS2JSON]
 
 1. Reads all Excel files from `downloads/` folder
-2. Extracts semester name from cell A1 (between quotes)
-3. Reads data from row 5 onwards (row 4 is header)
-4. Collects columns: StudentNeptunCode, CourseName, CourseNeptunCode, Grade, GradedBy
-5. Skips rows where Grade or GradedBy is missing or contains only "-"
-6. Stops at the first empty row
-7. Merges all data into a single Excel file: `output/AllSemesterProjectStats.xlsx`
+2. Loads course aliases from `CourseAliases.xlsx`
+3. Extracts semester name from cell A1 (between quotes)
+4. Reads data from row 5 onwards (row 4 is header)
+5. Collects columns: StudentNeptunCode, CourseName, CourseNeptunCode, Grade, GradedBy
+6. Looks up CourseAlias for each CourseNeptunCode (stops with error if not found)
+7. Skips rows where Grade or GradedBy is missing or contains only "-"
+8. Stops at the first empty row
+9. Merges all data into worksheet "AllSemesterData" in `output/AllSemesterProjectStats.xlsx`
+
+### Statistics Matrix [StatMatrix]
+
+1. Creates a "CourseHeadCounts" worksheet in the output file
+2. Generates a matrix with:
+   - Rows: Semester names
+   - Columns: Course aliases
+   - Values: Count of students in each semester/course combination
+3. Adds a stacked column chart titled "Evolution of headcounts"
+4. Chart shows semester progression with all courses stacked
 
 ## Output Format
 
-The output file `AllSemesterProjectStats.xlsx` contains:
+The output file `AllSemesterProjectStats.xlsx` contains two worksheets:
 
-| Column A | Column B | Column C | Column D | Column E | Column F |
-|----------|----------|----------|----------|----------|----------|
-| SemesterName | StudentNeptunCode | CourseName | CourseNeptunCode | Grade | GradedBy |
+### Worksheet 1: AllSemesterData
+
+| Column A | Column B | Column C | Column D | Column E | Column F | Column G |
+|----------|----------|----------|----------|----------|----------|----------|
+| SemesterName | StudentNeptunCode | CourseName | CourseNeptunCode | Grade | GradedBy | CourseAlias |
+
+### Worksheet 2: CourseHeadCounts
+
+A matrix showing student counts with:
+- Rows: Semester names
+- Columns: Course aliases
+- Values: Number of students
+
+Plus a stacked column chart visualizing the evolution of headcounts over time.
 
 ## Directory Structure
 
 ```
 OnlabSokFelevesLetszamStat/
-├── main.py              # Main orchestration script
-├── downloader.py        # Download module [DL]
-├── extractor.py         # Extraction module [XLS2JSON]
-├── requirements.txt     # Python dependencies
-├── README.md           # This file
-├── spec.md             # Project specification
-├── downloads/          # Downloaded Excel files (auto-created)
-└── output/            # Merged output file (auto-created)
+├── main.py                 # Main orchestration script
+├── downloader.py           # Download module [DL]
+├── extractor.py            # Extraction module [XLS2JSON] and statistics [StatMatrix]
+├── requirements.txt        # Python dependencies
+├── README.md              # This file
+├── spec.md                # Project specification
+├── CourseAliases.xlsx     # Course alias lookup table
+├── downloads/             # Downloaded Excel files (auto-created)
+└── output/               # Merged output file (auto-created)
 ```
 
 ## Troubleshooting
@@ -119,6 +144,11 @@ OnlabSokFelevesLetszamStat/
 - Check that the base URL is correct
 - Verify your login credentials
 - Ensure you have access to the course statistics
+
+**Missing course alias error:**
+- Check that `CourseAliases.xlsx` exists in the project directory
+- Verify that all CourseNeptunCodes in the downloaded data have corresponding entries
+- Add missing entries to `CourseAliases.xlsx` if needed
 
 ## Error Handling
 

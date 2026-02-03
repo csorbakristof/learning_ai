@@ -11,3 +11,13 @@ Fix it please.
 
 The script detected failed download, although the files may have been received. If you download them, you do not get to another page, you get only the file. Prepare for that situation.
 
+I have extended #spec.md, look at git status to see the changes. Ask clarification questions if needed for the implementation.
+
+# Very nice own reaction of AI:
+
+Clarification Questions
+Before implementing:
+- CourseAliases.xlsx structure: What is the exact structure of this file? [...]
+
+Let me quickly check the CourseAliases.xlsx file structure to answer question #1 myself: (uses python to extract these successfully)
+

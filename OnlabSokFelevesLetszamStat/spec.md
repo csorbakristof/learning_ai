@@ -17,7 +17,7 @@ As the website requires login, the script should launch a browser and navigate t
 
 # [XLS2JSON] Extracting the data from the excel files
 
-This step extracts the data from the souce excel files from above and merges them into a new Excel file.
+This step extracts the data from the souce excel files from above and merges them into a new Excel file on a worksheet called "AllSemesterData".
 
 The source excel files contain a table with some other rows before and after it. The Semester name (referred to as SemesterName) is stored in the A1 cell between citation marks like "2025-2026 ősz" in the form:
 "2025-2026 ősz" félév - téma osztályzatok
@@ -39,8 +39,21 @@ Collect all these data from all the source excel tables and export them into a s
 - Column D: CourseNeptunCode
 - Column E: Grade
 - Column F: GradedBy
+- Column G: CourseAlias
+
+CourseAlias is assigned via a lookup based on CourseNeptunCode.
+The lookup table is located in the excel file "CourseAlieses.xlsx". If a Neptun code is missing, show an error message with it and stop.
 
 The name of the resulting Excel table should be AllSemesterProjectStats.xlsx
+
+# [StatMatrix] Statistics matrix
+
+On a separate worksheet (called CourseHeadCounts) in the resulting XLSX create a matrix with the following statistics:
+- Rows should be the SemesterName
+- Columns should be the CourseAlies
+- Cell values should be the number of rows in AllSemesterData belonging to this SemesterName and CourseAlias.
+
+In this worksheet insert a graph showing the semester name as the horizontal axis and the student counts for every CourseAlies stacked over each other (stacked column chart). The title should be "Evolution of headcounts".
 
 # Answers on the clarification questions of the AI
 

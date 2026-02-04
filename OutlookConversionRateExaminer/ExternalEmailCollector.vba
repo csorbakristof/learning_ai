@@ -10,7 +10,7 @@ Sub CollectExternalEmails()
     
     ' Define folder names to search in
     Dim folderNames As Variant
-    folderNames = Array("Sent Items", "Beérkezett üzenetek", "Archive")
+    folderNames = Array("ai-edih-archivum")
     
     ' Get user inputs
     senderEmail = InputBox("Enter the sender's email address:", "Sender Email", "csorba.kristof@vik.bme.hu")

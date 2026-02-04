@@ -15,7 +15,8 @@ import html
 import json
 
 # === CONFIGURATION ===
-CLIENT_ID = "YOUR_CLIENT_ID_HERE"  # replace with your app id
+# Using Microsoft's public client ID for CLI applications
+CLIENT_ID = "14d82eec-204b-4c2f-b7e8-296a70dab67e"  # Microsoft Graph PowerShell public client
 TENANT = "organizations"
 SCOPES = ["User.Read", "Team.ReadBasic.All"]
 
@@ -50,6 +51,9 @@ for t in teams:
     tid = t["id"]
     link = f"https://teams.microsoft.com/l/team/{tid}/conversations?groupId={tid}"
     team_data.append({"name": name, "link": link})
+
+# Sort teams alphabetically by name
+team_data.sort(key=lambda x: x["name"].lower())
 
 html_content = f"""<!DOCTYPE html>
 <html lang="en">

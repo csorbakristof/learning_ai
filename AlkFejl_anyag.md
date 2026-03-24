@@ -8,6 +8,12 @@ Task 1: Create Section 2 of this document where you summarize the experiences an
 
 Task 2: Create a teaching material in the form of a list of slides which cover the contents of Section 2. Put these into Section 3 and follow the format of the example there. You will need to create a title, a compact text content for the audience to read, a prompt for creating a suitable illustration picture for the slide, and you should add detailed comments for the presenter which only they will read before the presentation.
 
+Further details:
+- The target audience is hungarian, so create the summaries and slides in hungarian.
+- They are IT engineering students with software development skills. They already used ChatGPT for some simple tasks but they need to improve their prompting skills. This is the current goal.
+- Use all subprojects in this directory to create the teaching material.
+- Focus on all aspects after each other like: Technical lessons (what works/doesn't work with AI), Process/workflow insights, Best practices for prompting, Common pitfalls and how to avoid them. These can be all a nice group of slides.
+
 # Section 2: Summary of the projects, conclusions and experiences
 
 # Section 3: Teaching material slides

@@ -94,7 +94,7 @@ Stílusjegyek (kötelezően alkalmazandók):
 Forma:
 - Hossz: 20-24 sor (5-6 versszak x 4 sor)
 - Rímséma: páros rím (AABB) vagy ölelkező (ABBA)
--規則: Szabályos ütemhangsúlyos ritmus
+- Ritmus: Szabályos ütemhangsúlyos ritmus
 
 Tartalom:
 - Történet: egy karakter (pl. 'Az ifjú lovag' = fiatal programozó) aki nem védi adatait
@@ -191,7 +191,7 @@ Perszona Minta - "Te vagy a kalóz professzor!" (Dráma & Pszichológia)
 
 **Koncepció:** Specifikus szerep, háttér és hangnem kiosztása.
 
-**A feladat:** Hozz létre három különböző "oktatót" egy nehéz konceptushoz (pl. Fotoszintézis)—egy Kalózt, perszonát Professzort és egy "ELI5" (Magyarázd el, mintha ötéves lennék) specialistát.
+**A feladat:** Hozz létre három különböző "oktatót" egy nehéz konceptushoz (pl. Fotoszintézis)—egy Kalóz perszónát, egy Professzort és egy "ELI5" (Magyarázd el, mintha ötéves lennék) specialistát.
 
 **Felismerés:** Figyeld meg, hogyan változik a szóhasználat a perszona korlátozás alapján.
 
@@ -200,7 +200,7 @@ Perszona Minta - "Te vagy a kalóz professzor!" (Dráma & Pszichológia)
 • **Adaptivitás** - Ugyanaz a tartalom különböző közönségeknek különböző módon
 • **Hangnem kontroll** - Formális vs. informális, egyszerű vs. szakmai nyelv
 • **Célközönség tudatosítás** - Ki fogja olvasni/hallani ezt?
-• **Kerativitás a tanításban** - Unalmas témák érdekessé tétele perszonával
+• **Kreativitás a tanításban** - Unalmas témák érdekessé tétele perszonával
 
 ### Megjegyzés az előadónak
 
@@ -481,7 +481,7 @@ Chain of Density - "Jobbat, nem többet!" (Újságírás)
 
 ### Megjegyzés az előadónak
 
-Ez egy újságírókból ihletett technika - a lényeg: NE csak törölj szavakat, hanem CSERÉLD ÁT az általános kifejezéseket specifikusabbakra. Például: "sok ember" → "több mint 50,000 főember". A Chain of Density kifejezés MIT-s kutatásból származik (2023). A trükk: minden körben 1) rövidebb 2) több entitás (nevek, számok, dátumok, helyek). Gyakorlati alkalmazás: executive summary-k, absztraktok, social media posztok. Figyelmeztető példa: van egy határ - ha túl sűrű, nehéz olvasni (információs túlterhelés). A cél ÉRthető ÉS tömör szöveg. Demo ötlet: vegyetek egy hosszú bekezdést, tömörítsékráidben 3 körben - látni fogjátok a különbséget. Ez megtanítja: szerkesztés ≠ törlés, hanem = optimalizálás.
+Ez egy újsagírókból ihletett technika - a lényeg: NE csak törölj szavakat, hanem CSERÉLD ÁT az általános kifejezéseket specifikusabbakra. Például: "sok ember" → "több mint 50,000 főember". A Chain of Density kifejezés MIT-s kutatásból származik (2023). A trükk: minden körben 1) rövidebb 2) több entitás (nevek, számok, dátumok, helyek). Gyakorlati alkalmazás: executive summary-k, absztraktok, social media posztok. Figyelmeztető példa: van egy határ - ha túl sűrű, nehéz olvasni (információs túlterhélés). A cél ÉRthető ÉS tömör szöveg. Demo ötlet: vegyetek egy hosszú bekezdést, tömörítsék azt 3 körben - látni fogjátok a különbséget. Ez megtanítja: szerkesztés ≠ törlés, hanem = optimalizálás.
 
 ### Példa prompt 1
 
@@ -515,7 +515,7 @@ Minimalizáld a mellékneveket és általános kifejezéseket!"
 
 ### Címsor
 
-Történelmi Jelenet Rekonstrukció - Éled a múlt! (Történelem & Művészet)
+Történelmi Jelenet Rekonstrukció - Megelevenedik a múlt! (Történelem & Művészet)
 
 ### Feladat leírása
 
@@ -587,7 +587,7 @@ Molekuláris Struktúra Vizualizáló - Lásd a láthatatlan! (Kémia)
 
 ### Tanulság, mire jó
 
-• **Absztrakt → Vizuális fordítás** - Molekulaszerkezet leírása láthatatásával
+• **Absztrakt → Vizuális fordítás** - Molekulaszerkezet leírása láthatóvá tételével
 • **Tudományos kommunikáció** - Szakmai terminológia + vizuális leírók kombinálása
 • **3D térbeli gondolkodás** - Atomok elrendezése, kötésszögek, térbeli struktúra
 • **Pedagógiai vizualizáció** - Tanítási eszközök készítése komplex fogalmakhoz
@@ -608,7 +608,7 @@ Molekuláris struktúra:
 - Metilcsoportok (CH3) jelölése
 
 Vizuális stílus:
-- Fehér vagy világoskék清nen háttér
+- Fehér vagy világoskék tiszta háttér
 - Soft shadows (lágy árnyékok) a mélység érzékeltetésére
 - Tudományos/oktatási diagram stílus
 - Opcionális: átlátszó molekuláris felület overlay
@@ -682,7 +682,7 @@ Ez kreatív ÉS analitikai feladat egyben! Először a diákoknak meg kell érte
 
 Vizuális elemek:
 - Központi motívum: stilizált szem sziluettje (Lucifer/megfigyelő perspektíva)
-- Körülötte: hatból spirálisan elhelyezett szimbólumok (Édenkert/fa, Egyiptom/piramis, Athén/oszlop, Róma/kard, Párizs/guillotine, London/gyár) geometrikus vonalakkal
+- Körülötte: hat spirálisan elhelyezett szimbólum (Édenkert/fa, Egyiptom/piramis, Athén/oszlop, Róma/kard, Párizs/guillotine, London/gyár) geometrikus vonalakkal
 - Háttér: sötétkék gradiens csillagmintával, kozmikus érzet
 
 Tipográfia:
@@ -735,7 +735,7 @@ Fizikai Koncepció Vizualizáció - Metafóra tér az absztraktnak (Fizika & Tud
 • **Absztrakt fizikai megértése** - Láthatatlan folyamatok vizualizálása
 • **Metaforikus gondolkodás** - Analógiák használata (entrópia = rendezetlen asztal)
 • **Tudománykommunikáció** - Komplex fogalmak egyszerűsítése laikus közönségnek
-• **Pedagógiai innovációció** - Új tanítási eszközök kísérletezése
+• **Pedagógiai innováció** - Új tanítási eszközök kísérletezése
 
 ### Megjegyzés az előadónak
 
@@ -836,7 +836,7 @@ Zenei jellemzők:
 - Hangnem: c-moll kezdődés, moduláció C-dúrra a gyors részben
 - Ritmus: Karakterisztikus magyar szinkópák (bokázó ritmus), 2/4 ütem
 - Melodika: Gyors futatok (forgó, szálló), tizenhatód tremolók
-- Dinamika: Forte krezendók, hirtelen kontasztok
+- Dinamika: Forte crescendók, hirtelen kontrasztok
 - Hangulat: Tüzes, toborzó katonai lelkesedés, hazafias pátosz
 
 Hangzásvilág: 18. századi magyar verbó tánczenének megfelelő, népies-nemesi keverék, kuruc hagyomány"

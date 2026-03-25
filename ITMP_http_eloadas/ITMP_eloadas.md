@@ -1,11 +1,3 @@
-# Témakörök
-
-- Prompt engineering minták (Kristóf)
-    - Perszónák, one/few shot prompting, chain of thought, visszakérdezés kérése 
-    - Gyakorlati feladat: pár konkrét feladat és mellé prompt minták, amikkel növelni lehet a megoldás minőségét
-- Képek, videók, zene generálása (Kristóf)
-    - Gyakorlati feladat is
-
 # Using LLMs
 
 Practice, prompting patterns and the transiton from asking to collaborating with the AI.
@@ -26,6 +18,21 @@ The "Zero-Shot to Chain-of-Thought" Scale
 - Level 5: Meta-Prompting (Asking the AI to write the best prompt for a specific task).
 
 Plus one: ask the AI to evaluate your prompt, rate it on a 1-10 scale, and suggest improvements.
+
+Patterns at a Glance
+
+- Persona: "Who are you?, Tone, style, and specialized jargon
+- Few-Shot: "Follow my lead.", Data formatting and classification.
+- Chain of Thought: "Slow down and think.", Logic, math, and complex reasoning.
+- Constraints: "Stay inside the lines.", Adhering to strict project requirements.
+- Iterative Refinement: "Better, not more.", Summarization and professional editing.
+
+Wise Usage Checklist for Students
+
+- Role Play: Assign a persona to set the context.
+- Fact-Check: Verify at least one claim using an external source.
+- Ethics Check: Look for bias or excluded groups in the output.
+- Attribution: Clearly label AI-generated sections in final work.
 
 ## Cross-Curricular Creative Tasks
 
@@ -61,7 +68,7 @@ CS Focus: Input/Output Boundaries. Understanding that the AI is a brainstorming 
 
 Focus: Structural Engineering of AI Interactions.
 
-### Persona  (Drama & Psychology)
+### Persona Pattern (Drama & Psychology)
 
 Concept: Assigning a specific role, background, and tone.
 
@@ -69,7 +76,7 @@ Task: Create three distinct "tutors" for a difficult concept (e.g., Photosynthes
 
 Insight: Observe how lexical choice changes based on the persona constraint.
 
-### Few-Shot (Linguistics & Math)
+### Few-Shot Pattern (Linguistics & Math)
 
 Concept: Providing 2–5 examples of the desired format before the final request.
 
@@ -77,7 +84,7 @@ Task: Build a "Sentiment Analyzer." Provide three examples: [Quote] -> [Speaker]
 
 Insight: Teaches that pattern matching often beats long descriptions.
 
-### Chain of Thought (Physics & Logic)
+### Chain of Thought Pattern (Physics & Logic)
 
 Concept: Forcing the AI to "think step-by-step" before providing a final answer.
 
@@ -85,7 +92,7 @@ Task: Solve a multi-step Physics word problem. Compare a "direct answer" prompt 
 
 Insight: Demonstrates how "scratchpad" space improves LLM reasoning.
 
-### Constraint/Negative (Art & Design)
+### Constraint/Negative Pattern (Art & Design)
 
 Concept: Using strict boundaries (e.g., "Do not use...", "Max 50 words").
 
@@ -93,7 +100,7 @@ Task: Summarize a Shakespearean play without using the main characters' names or
 
 Insight: Teaches how to delimit the output space for professional or safety-conscious applications.
 
-### Chain of Density (Journalism)
+### Chain of Density Pattern (Journalism)
 
 Concept: Iteratively making text more information-dense without increasing length.
 
@@ -101,22 +108,59 @@ Task: Start with a 200-word summary. Repeatedly prompt the AI to rewrite it in 1
 
 Insight: Demonstrates token efficiency and information synthesis.
 
-## Summaries
-
-Patterns at a Glance
-
-- Persona: "Who are you?, Tone, style, and specialized jargon
-- Few-Shot: "Follow my lead.", Data formatting and classification.
-- Chain of Thought: "Slow down and think.", Logic, math, and complex reasoning.
-- Constraints: "Stay inside the lines.", Adhering to strict project requirements.
-- Iterative Refinement: "Better, not more.", Summarization and professional editing.
-
-Wise Usage Checklist for Students
-
-- Role Play: Assign a persona to set the context.
-- Fact-Check: Verify at least one claim using an external source.
-- Ethics Check: Look for bias or excluded groups in the output.
-- Attribution: Clearly label AI-generated sections in final work.
-
 # Image and music generation
+
+Focus: Multimodal AI, Prompt Engineering for Visual/Audio Content, and Cross-Domain Application.
+
+### Historical Scene Reconstruction (History & Art)
+
+The Task: Use an image generation AI (e.g., DALL-E, Midjourney, Stable Diffusion) to recreate a specific historical event or period setting.
+
+Prompt Challenge: Students describe a scene from World War II, Renaissance Florence, or Ancient Rome, including architectural details, clothing styles, and atmospheric elements.
+
+CS Focus: Descriptive Precision. Students must iterate on their prompts to refine details (lighting, perspective, historical accuracy).
+
+Critical Thinking: Compare generated images with historical photographs or paintings. Identify anachronisms or artistic liberties.
+
+### Molecular Structure Visualizer (Chemistry)
+
+The Task: Generate visual representations of chemical molecules or reactions using descriptive prompts.
+
+Prompt Challenge: Describe a complex molecule (e.g., caffeine, DNA helix, glucose) or a chemical process (oxidation, crystallization) in natural language.
+
+CS Focus: Translating Scientific Language. Students learn to bridge technical terminology with visual descriptors (shapes, colors, spatial relationships).
+
+Extension: Compare AI-generated visuals with standard chemistry diagrams. Discuss limitations and strengths for educational purposes.
+
+### Literary Cover Art Designer (Literature & Design)
+
+The Task: Create book cover art based on a novel's themes, mood, and key symbols without directly illustrating characters.
+
+Prompt Challenge: Design covers for classics like "1984", "Pride and Prejudice", or "The Metamorphosis" using only symbolic and atmospheric elements.
+
+CS Focus: Abstract Representation. Students translate narrative themes into visual metaphors and mood descriptors.
+
+Critical Analysis: Evaluate how different prompt styles (minimalist vs. detailed) affect the commercial appeal and thematic accuracy.
+
+### Physics Concept Visualization (Physics & Science Communication)
+
+The Task: Generate educational illustrations of abstract physics concepts that are difficult to photograph.
+
+Prompt Challenge: Create visuals for quantum superposition, electromagnetic fields, entropy, or relativity effects using analogies and metaphors.
+
+CS Focus: Concept-to-Visual Translation. Students must find creative ways to represent invisible forces and abstract principles.
+
+Discussion Point: Assess whether AI-generated images help or hinder understanding compared to traditional diagrams or animations.
+
+### Period-Appropriate Soundtrack Composer (Music & History)
+
+The Task: Use AI music generation tools (e.g., Suno, MusicGen) to create short musical pieces fitting specific historical periods or literary moods.
+
+Prompt Challenge: Generate a 30-second piece that sounds like Baroque court music, 1920s jazz, medieval folk, or film noir atmosphere.
+
+CS Focus: Stylistic Constraint Engineering. Students specify instrumentation, tempo, mood, and cultural markers in their prompts.
+
+Interdisciplinary Connection: Pair generated music with historical events or literary scenes. Discuss authenticity vs. creative interpretation.
+
+Critical Reflection: Compare AI compositions with actual period recordings. Identify what the AI captures well and what it misses about cultural authenticity.
 

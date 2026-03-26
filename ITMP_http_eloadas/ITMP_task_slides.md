@@ -135,7 +135,7 @@ Ez talán a LEGFONTOSABB kritikus gondolkodási feladat! Az AI-k többnyire nyug
 
 "Készíts egy táblázatot 10 híres tudósról, aki megfelel ezeknek a kritériumoknak:
 - Földrajzi diverzitás: 2 európai, 2 ázsiai, 2 afrikai/afro-amerikai, 2 latin-amerikai, 2 közel-keleti/óceániai
-- Nemi egyensúly: minimum 5 nő
+- Nemi egyensúly: minimum 3 nő
 - Időbeli elosztás: 5 a 20. század előttről, 5 a 20-21. századból
 - Különböző tudományágak (fizika, biológia, kémia, matematika, orvostudomány)
 Formátum: Név | Származás | Szakterület | Fő eredmény | Évszám"

@@ -37,7 +37,7 @@ This will actually hide matching teams.
 - Keep Chrome running while script executes
 - Check `E:\learning_ai\TeamsUnsubscriber\teams_hidden_log.txt` for detailed logs
 - Run dry-run first to preview changes
-- Script processes first 10 teams at a time
+- Script will hide up to 100 matching teams per run (checks as many as needed)
 
 ### ❌ Don't Do This
 - Don't close Chrome while script is running
@@ -64,10 +64,12 @@ Run dry-run mode - it will show how many teams were found.
 **In `teams_auto_hide_simple.py`:**
 - **Browser**: Chrome with DevTools Protocol (CDP)
 - **Port**: 9222 (remote debugging)
-- **Max Teams**: 10 per run (change `MAX_TEAMS_TO_PROCESS`)
+- **Max Teams to Hide**: 100 per run (change `MAX_TEAMS_TO_HIDE`)
 - **Patterns**: 8 predefined patterns (case-insensitive)
 - **Logging**: Console + `teams_hidden_log.txt`
 - **Dry-run**: Available with `--dry-run` flag
+
+**Note:** The script counts only actually hidden teams toward the limit, not all checked teams.
 
 **Matched Patterns:**
 1. "Project Laboratory"
@@ -83,11 +85,12 @@ Run dry-run mode - it will show how many teams were found.
 
 ## Customization
 
-### Change Number of Teams to Process
+### Change Number of Teams to Hide
 Edit `teams_auto_hide_simple.py`:
 ```python
-MAX_TEAMS_TO_PROCESS = 10  # Change to 20, 50, etc.
+MAX_TEAMS_TO_HIDE = 100  # Change to 20, 50, 200, etc.
 ```
+**Note:** This is the maximum number of teams that will be *hidden*, not checked. The script will continue checking teams until it hides this many or runs out of teams.
 
 ### Add/Remove Patterns
 Edit the `PATTERNS` list:

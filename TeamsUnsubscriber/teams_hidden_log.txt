@@ -460,3 +460,2355 @@ Log: E:\learning_ai\TeamsUnsubscriber\teams_hidden_log.txt
 [18:11:18] INFO:   - Önálló laboratórium - BMEVIAUBL00-HUActivate
 [18:11:18] INFO: 
 Log: E:\learning_ai\TeamsUnsubscriber\teams_hidden_log.txt
+[18:17:32] INFO: ======================================================================
+[18:17:32] INFO: MS Teams Auto-Hide - Simple CDP Connection
+[18:17:32] INFO: Mode: LIVE
+[18:17:32] INFO: ======================================================================
+[18:17:33] INFO: Connecting to Chrome...
+[18:17:33] SUCCESS: Connected!
+[18:17:33] INFO: Current page: https://teams.microsoft.com/v2/
+[18:17:35] INFO: Looking for teams...
+[18:17:36] INFO: Found 780 teams using data-tid selector
+[18:17:36] INFO: Found 780 teams
+[18:17:36] INFO: Processing all 780 teams...
+[18:17:36] INFO: ----------------------------------------------------------------------
+[18:17:36] INFO: 
+[2/780] Join or create team
+[18:17:36] INFO: Skipped
+[18:17:36] INFO: 
+[4/780] [SKIPPED: Container element with 17365 chars]
+[18:17:36] INFO: 
+[5/780] Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:17:36] WARNING: MATCHED!
+[18:17:36] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:17:39] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:17:41] INFO: 
+[7/780] Production supervision with AI
+[18:17:41] INFO: Skipped
+[18:17:41] INFO: 
+[9/780] TddTemalabor
+[18:17:41] INFO: Skipped
+[18:17:42] INFO: 
+[11/780] Eseményvezérelt és vizuális programozás - BMEVIAUBB01-HU
+[18:17:42] INFO: Skipped
+[18:17:42] INFO: 
+[13/780] Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:17:42] WARNING: MATCHED!
+[18:17:42] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:17:45] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:17:46] INFO: 
+[15/780] Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:17:46] WARNING: MATCHED!
+[18:17:46] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:17:49] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:17:50] INFO: 
+[17/780] Eseményvezérelt és vizuális programozás 2021 - BMEVIAUBB01-HU
+[18:17:50] INFO: Skipped
+[18:17:52] INFO: 
+[19/780] Project Laboratory - BMEVIAUAL03-ENActivate
+[18:17:52] WARNING: MATCHED!
+[18:17:52] INFO: Hovering over team: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:17:55] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:17:57] INFO: 
+[21/780] Informatics 2 - BMEVIAUAB01-EN
+[18:17:57] WARNING: MATCHED!
+[18:17:57] INFO: Hovering over team: Informatics 2 - BMEVIAUAB01-EN
+[18:18:00] SUCCESS: Hidden: Informatics 2 - BMEVIAUAB01-EN
+[18:18:01] INFO: 
+[23/780] BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:18:01] WARNING: MATCHED!
+[18:18:01] INFO: Hovering over team: BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:18:04] SUCCESS: Hidden: BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:18:05] INFO: 
+[25/780] IoT szolgáltatások és alkalmazások fejlesztése - BMEVIAUAV36-HU
+[18:18:05] INFO: Skipped
+[18:18:06] INFO: 
+[27/780] Témalaboratórium - BMEVIAUBB07-HUActivate
+[18:18:06] INFO: Skipped
+[18:18:07] INFO: 
+[29/780] Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:18:07] WARNING: MATCHED!
+[18:18:07] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:18:10] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:18:12] INFO: 
+[31/780] Project Laboratory - BMEVIAUAL03-ENActivate
+[18:18:12] WARNING: MATCHED!
+[18:18:12] INFO: Hovering over team: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:18:15] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:18:16] INFO: 
+[33/780] Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[18:18:16] WARNING: MATCHED!
+[18:18:16] INFO: Hovering over team: Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[18:18:19] SUCCESS: Hidden: Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[18:18:20] INFO: 
+[35/780] Research Work 3 - BMEVIAUDK03-EN
+[18:18:20] WARNING: MATCHED!
+[18:18:20] INFO: Hovering over team: Research Work 3 - BMEVIAUDK03-EN
+[18:18:24] SUCCESS: Hidden: Research Work 3 - BMEVIAUDK03-EN
+[18:18:25] INFO: 
+[37/780] Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:18:25] WARNING: MATCHED!
+[18:18:25] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:18:28] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:18:29] INFO: 
+[39/780] Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:18:29] WARNING: MATCHED!
+[18:18:29] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:18:33] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:18:33] INFO: 
+[41/780] Development of Software Applications - BMEVIAUMA09-EN
+[18:18:33] INFO: Skipped
+[18:18:35] INFO: 
+[43/780] Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:18:35] WARNING: MATCHED!
+[18:18:35] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:18:38] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:18:38] INFO: 
+[45/780] Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:18:38] WARNING: MATCHED!
+[18:18:38] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:18:43] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:18:44] INFO: 
+[47/780] Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:18:44] WARNING: MATCHED!
+[18:18:44] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:18:47] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:18:48] INFO: 
+[49/780] Training Project Laboratory - BMEVIAUAL02-ENActivate
+[18:18:48] WARNING: MATCHED!
+[18:18:48] INFO: Hovering over team: Training Project Laboratory - BMEVIAUAL02-ENActivate
+[18:18:52] SUCCESS: Hidden: Training Project Laboratory - BMEVIAUAL02-ENActivate
+[18:18:53] INFO: 
+[51/780] Project Laboratory - BMEVIAUAL03-ENActivate
+[18:18:53] WARNING: MATCHED!
+[18:18:53] INFO: Hovering over team: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:18:56] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:18:57] INFO: 
+[53/780] Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:18:57] WARNING: MATCHED!
+[18:18:57] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:19:01] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:19:02] INFO: 
+[55/780] BSc Thesis Project - BMEVIAUAT00-ENActivate
+[18:19:02] WARNING: MATCHED!
+[18:19:02] INFO: Hovering over team: BSc Thesis Project - BMEVIAUAT00-ENActivate
+[18:19:05] SUCCESS: Hidden: BSc Thesis Project - BMEVIAUAT00-ENActivate
+[18:19:06] INFO: 
+[57/780] Eseményvezérelt és vizuális programozás 2022 - BMEVIAUBB01-HU
+[18:19:06] INFO: Skipped
+[18:19:07] INFO: 
+[59/780] BME-VIK-AUT AutMI Deep Learning szeminárium
+[18:19:07] INFO: Skipped
+[18:19:07] INFO: 
+[61/780] Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:19:07] WARNING: MATCHED!
+[18:19:07] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:19:11] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:19:11] INFO: 
+[63/780] Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:19:11] WARNING: MATCHED!
+[18:19:11] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:19:14] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:19:16] INFO: 
+[65/780] Project Laboratory - BMEVIAUAL01-ENActivate
+[18:19:16] WARNING: MATCHED!
+[18:19:16] INFO: Hovering over team: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:19:19] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:19:20] INFO: 
+[67/780] Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:19:20] WARNING: MATCHED!
+[18:19:20] INFO: Hovering over team: Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:19:23] SUCCESS: Hidden: Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:19:24] INFO: 
+[69/780] Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:19:24] WARNING: MATCHED!
+[18:19:24] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:19:28] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:19:29] INFO: 
+[71/780] Projektgyakorlat - BMEVIAUBL01-HUActivate
+[18:19:29] INFO: Skipped
+[18:19:29] INFO: 
+[73/780] Eseményvezérelt és vizuális programozás - BMEVIAUBB01-HU
+[18:19:30] INFO: Skipped
+[18:19:30] INFO: 
+[75/780] Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:19:30] WARNING: MATCHED!
+[18:19:30] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:19:33] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:19:34] INFO: 
+[77/780] Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:19:34] WARNING: MATCHED!
+[18:19:34] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:19:38] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:19:39] INFO: 
+[79/780] Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:19:39] WARNING: MATCHED!
+[18:19:39] INFO: Hovering over team: Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:19:42] SUCCESS: Hidden: Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:19:43] INFO: 
+[81/780] Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:19:43] WARNING: MATCHED!
+[18:19:43] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:19:46] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:19:47] INFO: 
+[83/780] Research Work 2 - BMEVIAUDK02-ENActivate
+[18:19:47] WARNING: MATCHED!
+[18:19:47] INFO: Hovering over team: Research Work 2 - BMEVIAUDK02-ENActivate
+[18:19:51] SUCCESS: Hidden: Research Work 2 - BMEVIAUDK02-ENActivate
+[18:19:52] INFO: 
+[85/780] Alkalmazásfejlesztés 2024T - BMEVIAUMB07-HU
+[18:19:52] INFO: Skipped
+[18:19:52] INFO: 
+[87/780] 2025-26-2 Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:19:52] WARNING: MATCHED!
+[18:19:52] INFO: Hovering over team: 2025-26-2 Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:19:55] SUCCESS: Hidden: 2025-26-2 Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:19:56] INFO: 
+[89/780] Témalaboratórium - BMEVIAUAL00-HUActivate
+[18:19:56] INFO: Skipped
+[18:19:58] INFO: 
+[91/780] Project Laboratory - BMEVIAUAL01-ENActivate
+[18:19:58] WARNING: MATCHED!
+[18:19:58] INFO: Hovering over team: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:20:01] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:20:02] INFO: 
+[93/780] BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:20:02] WARNING: MATCHED!
+[18:20:02] INFO: Hovering over team: BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:20:06] SUCCESS: Hidden: BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:20:07] INFO: 
+[95/780] Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:20:07] WARNING: MATCHED!
+[18:20:07] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:20:10] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:20:12] INFO: 
+[97/780] 2025-26-2 Alkalmazásfejlesztés - BMEVIAUMB07-HU
+[18:20:12] INFO: Skipped
+[18:20:13] INFO: 
+[99/780] Önálló laboratórium - BMEVIAUAL04-HUActivate
+[18:20:13] WARNING: MATCHED!
+[18:20:13] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL04-HUActivate
+[18:20:16] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL04-HUActivate
+[18:20:17] INFO: 
+[101/780] Project Laboratory - BMEVIAUAL01-ENActivate
+[18:20:17] WARNING: MATCHED!
+[18:20:17] INFO: Hovering over team: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:20:20] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:20:21] INFO: 
+[103/780] 2025-26-2 Research Work 8 - BMEVIAUDK08-ENActivate
+[18:20:21] WARNING: MATCHED!
+[18:20:21] INFO: Hovering over team: 2025-26-2 Research Work 8 - BMEVIAUDK08-ENActivate
+[18:20:24] SUCCESS: Hidden: 2025-26-2 Research Work 8 - BMEVIAUDK08-ENActivate
+[18:20:26] INFO: 
+[105/780] Diploma Thesis Design 2 - BMEVIAUMT11-ENActivate
+[18:20:26] WARNING: MATCHED!
+[18:20:26] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT11-ENActivate
+[18:20:29] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT11-ENActivate
+[18:20:32] INFO: 
+[107/780] Témalaboratórium - BMEVIAUAL02-HU
+[18:20:32] INFO: Skipped
+[18:20:32] INFO: 
+[109/780] Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:20:32] WARNING: MATCHED!
+[18:20:32] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:20:35] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:20:36] INFO: 
+[111/780] Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:20:36] WARNING: MATCHED!
+[18:20:36] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:20:39] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:20:41] INFO: 
+[113/780] Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:20:41] WARNING: MATCHED!
+[18:20:41] INFO: Hovering over team: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:20:44] SUCCESS: Hidden: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:20:44] INFO: 
+[115/780] 2025-26-2 Project Laboratory 1 - BMEVIAUML10-ENActivate
+[18:20:44] WARNING: MATCHED!
+[18:20:44] INFO: Hovering over team: 2025-26-2 Project Laboratory 1 - BMEVIAUML10-ENActivate
+[18:20:48] SUCCESS: Hidden: 2025-26-2 Project Laboratory 1 - BMEVIAUML10-ENActivate
+[18:20:49] INFO: 
+[117/780] Informatika 2 - 2024T BMEVIAUAB01-HU
+[18:20:49] INFO: Skipped
+[18:20:50] INFO: 
+[119/780] Research Work 2 - BMEVIAUDK02-ENActivate
+[18:20:50] WARNING: MATCHED!
+[18:20:50] INFO: Hovering over team: Research Work 2 - BMEVIAUDK02-ENActivate
+[18:20:53] SUCCESS: Hidden: Research Work 2 - BMEVIAUDK02-ENActivate
+[18:20:54] INFO: 
+[121/780] Alkalmazásfejlesztési környezetek - BMEVIAUAC04-HU
+[18:20:54] INFO: Skipped
+[18:20:55] INFO: 
+[123/780] Diploma Thesis Design 2 - BMEVIAUMT11-ENActivate
+[18:20:55] WARNING: MATCHED!
+[18:20:55] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT11-ENActivate
+[18:20:58] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT11-ENActivate
+[18:20:58] INFO: 
+[125/780] Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:20:58] WARNING: MATCHED!
+[18:20:58] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:21:02] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:21:03] INFO: 
+[127/780] Kutatás 2. - BMEVIAUDK02-HUActivate
+[18:21:03] INFO: Skipped
+[18:21:04] INFO: 
+[129/780] Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:21:04] WARNING: MATCHED!
+[18:21:04] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:21:07] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:21:08] INFO: 
+[131/780] Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[18:21:08] WARNING: MATCHED!
+[18:21:08] INFO: Hovering over team: Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[18:21:11] SUCCESS: Hidden: Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[18:21:12] INFO: 
+[133/780] Témalaboratórium - BMEVIAUBB07-HUActivate
+[18:21:12] INFO: Skipped
+[18:21:12] INFO: 
+[135/780] Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[18:21:12] WARNING: MATCHED!
+[18:21:12] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[18:21:15] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[18:21:16] INFO: 
+[137/780] Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:21:16] WARNING: MATCHED!
+[18:21:16] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:21:19] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:21:21] INFO: 
+[139/780] Final Project - BMEVIAUA019-ENActivate
+[18:21:21] INFO: Skipped
+[18:21:21] INFO: 
+[141/780] Project Laboratory - BMEVIAUAL01-ENActivate
+[18:21:21] WARNING: MATCHED!
+[18:21:21] INFO: Hovering over team: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:21:24] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:21:26] INFO: 
+[143/780] 2025-26-2 Project Laboratory - BMEVIAUAL05-ENActivate
+[18:21:26] WARNING: MATCHED!
+[18:21:26] INFO: Hovering over team: 2025-26-2 Project Laboratory - BMEVIAUAL05-ENActivate
+[18:21:29] SUCCESS: Hidden: 2025-26-2 Project Laboratory - BMEVIAUAL05-ENActivate
+[18:21:31] INFO: 
+[145/780] Informatika 2 - BMEVIAUAB01-HUActivate
+[18:21:31] INFO: Skipped
+[18:21:31] INFO: 
+[147/780] Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:21:31] WARNING: MATCHED!
+[18:21:31] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:21:34] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:21:35] INFO: 
+[149/780] Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:21:35] WARNING: MATCHED!
+[18:21:35] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:21:38] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:21:39] INFO: 
+[151/780] Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:21:39] WARNING: MATCHED!
+[18:21:39] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:21:43] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:21:44] INFO: 
+[153/780] Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:21:44] WARNING: MATCHED!
+[18:21:44] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:21:47] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:21:48] INFO: 
+[155/780] Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:21:48] WARNING: MATCHED!
+[18:21:48] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:21:51] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:21:52] INFO: 
+[157/780] Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:21:52] WARNING: MATCHED!
+[18:21:52] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:21:55] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:21:55] INFO: 
+[159/780] Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:21:55] WARNING: MATCHED!
+[18:21:55] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:22:00] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:22:01] INFO: 
+[161/780] Research Work 5 - BMEVIAUDK05-ENActivate
+[18:22:01] WARNING: MATCHED!
+[18:22:01] INFO: Hovering over team: Research Work 5 - BMEVIAUDK05-ENActivate
+[18:22:05] SUCCESS: Hidden: Research Work 5 - BMEVIAUDK05-ENActivate
+[18:22:06] INFO: 
+[163/780] Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:22:06] WARNING: MATCHED!
+[18:22:06] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:22:09] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:22:11] INFO: 
+[165/780] Project Laboratory 1 - BMEVIAUML12-ENActivate
+[18:22:11] WARNING: MATCHED!
+[18:22:11] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML12-ENActivate
+[18:22:14] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML12-ENActivate
+[18:22:15] INFO: 
+[167/780] Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:22:15] WARNING: MATCHED!
+[18:22:15] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:22:18] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:22:20] INFO: 
+[169/780] Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:22:20] WARNING: MATCHED!
+[18:22:20] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:22:23] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:22:24] INFO: 
+[171/780] Diploma Thesis Design 1 - BMEVIAUMT10-ENActivate
+[18:22:24] WARNING: MATCHED!
+[18:22:24] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT10-ENActivate
+[18:22:27] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT10-ENActivate
+[18:22:28] INFO: 
+[173/780] Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[18:22:28] INFO: Skipped
+[18:22:28] INFO: 
+[175/780] BSc Thesis Project - BMEVIAUAT02-ENActivate
+[18:22:28] WARNING: MATCHED!
+[18:22:28] INFO: Hovering over team: BSc Thesis Project - BMEVIAUAT02-ENActivate
+[18:22:31] SUCCESS: Hidden: BSc Thesis Project - BMEVIAUAT02-ENActivate
+[18:22:32] INFO: 
+[177/780] Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:22:32] WARNING: MATCHED!
+[18:22:32] INFO: Hovering over team: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:22:35] SUCCESS: Hidden: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:22:36] INFO: 
+[179/780] Témalaboratórium - BMEVIAUBB05-HUActivate
+[18:22:36] INFO: Skipped
+[18:22:38] INFO: 
+[181/780] Research Work 7 - BMEVIAUDK07-ENActivate
+[18:22:38] WARNING: MATCHED!
+[18:22:38] INFO: Hovering over team: Research Work 7 - BMEVIAUDK07-ENActivate
+[18:22:41] SUCCESS: Hidden: Research Work 7 - BMEVIAUDK07-ENActivate
+[18:22:43] INFO: 
+[183/780] Project Laboratory - BMEVIAUAL01-ENActivate
+[18:22:43] WARNING: MATCHED!
+[18:22:43] INFO: Hovering over team: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:22:46] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:22:47] INFO: 
+[185/780] Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:22:47] WARNING: MATCHED!
+[18:22:47] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:22:51] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:22:53] INFO: 
+[187/780] Projektfeladat mechatronikusoknak - BMEVIAUM039-HU - 2025Activate
+[18:22:53] INFO: Skipped
+[18:22:53] INFO: 
+[189/780] Final Project - BMEVIAUA019-ENActivate
+[18:22:53] INFO: Skipped
+[18:22:54] INFO: 
+[191/780] Project Laboratory 1 - BMEVIAUML10-ENActivate
+[18:22:54] WARNING: MATCHED!
+[18:22:54] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML10-ENActivate
+[18:22:57] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML10-ENActivate
+[18:22:57] INFO: 
+[193/780] Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:22:57] WARNING: MATCHED!
+[18:22:57] INFO: Hovering over team: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:23:01] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:23:03] INFO: 
+[195/780] Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:23:03] WARNING: MATCHED!
+[18:23:03] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:23:06] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:23:07] INFO: 
+[197/780] Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:23:07] WARNING: MATCHED!
+[18:23:07] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:23:11] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:23:12] INFO: 
+[199/780] Témalaboratórium - BMEVIAUAL00-HUActivate
+[18:23:12] INFO: Skipped
+[18:23:12] INFO: 
+[201/780] Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:23:12] WARNING: MATCHED!
+[18:23:12] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:23:15] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:23:17] INFO: 
+[203/780] Project Laboratory - BMEVIAUAL03-ENActivate
+[18:23:17] WARNING: MATCHED!
+[18:23:17] INFO: Hovering over team: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:23:20] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:23:20] INFO: 
+[205/780] Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:23:20] WARNING: MATCHED!
+[18:23:20] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:23:24] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:23:24] INFO: 
+[207/780] Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:23:24] WARNING: MATCHED!
+[18:23:24] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:23:28] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:23:29] INFO: 
+[209/780] Informatics 2 - BMEVIAUAB01-ENActivate
+[18:23:29] WARNING: MATCHED!
+[18:23:29] INFO: Hovering over team: Informatics 2 - BMEVIAUAB01-ENActivate
+[18:23:32] SUCCESS: Hidden: Informatics 2 - BMEVIAUAB01-ENActivate
+[18:23:33] INFO: 
+[211/780] Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:23:33] WARNING: MATCHED!
+[18:23:33] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:23:36] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:23:37] INFO: 
+[213/780] Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:23:37] WARNING: MATCHED!
+[18:23:37] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:23:40] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:23:41] INFO: 
+[215/780] Diplomatervezés 2 - BMEVIAUMT13-HUActivate
+[18:23:41] WARNING: MATCHED!
+[18:23:41] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT13-HUActivate
+[18:23:44] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT13-HUActivate
+[18:23:45] INFO: 
+[217/780] Diploma Thesis Design 2 - BMEVIAUMT11-ENActivate
+[18:23:45] WARNING: MATCHED!
+[18:23:45] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT11-ENActivate
+[18:23:49] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT11-ENActivate
+[18:23:51] INFO: 
+[219/780] Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:23:51] WARNING: MATCHED!
+[18:23:51] INFO: Hovering over team: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:23:54] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:23:55] INFO: 
+[221/780] 2025-26-2 Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:23:55] WARNING: MATCHED!
+[18:23:55] INFO: Hovering over team: 2025-26-2 Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:23:58] SUCCESS: Hidden: 2025-26-2 Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:23:59] INFO: 
+[223/780] Informatika 2 - 2023 BMEVIAUAB01-HU
+[18:23:59] INFO: Skipped
+[18:24:00] INFO: 
+[225/780] Training Project Laboratory - BMEVIAUAL00-EN
+[18:24:00] WARNING: MATCHED!
+[18:24:00] INFO: Hovering over team: Training Project Laboratory - BMEVIAUAL00-EN
+[18:24:03] SUCCESS: Hidden: Training Project Laboratory - BMEVIAUAL00-EN
+[18:24:04] INFO: 
+[227/780] Témalaboratórium - BMEVIAUAL00-HUActivate
+[18:24:04] INFO: Skipped
+[18:24:05] INFO: 
+[229/780] Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[18:24:05] WARNING: MATCHED!
+[18:24:05] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[18:24:08] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[18:24:08] INFO: 
+[231/780] Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:24:08] WARNING: MATCHED!
+[18:24:08] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:24:11] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:24:13] INFO: 
+[233/780] Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:24:13] WARNING: MATCHED!
+[18:24:13] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:24:16] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:24:16] INFO: 
+[235/780] Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:24:16] WARNING: MATCHED!
+[18:24:16] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:24:19] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:24:20] INFO: 
+[237/780] Témalaboratórium - BMEVIAUAL00-HUActivate
+[18:24:20] INFO: Skipped
+[18:24:21] INFO: 
+[239/780] Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:24:21] WARNING: MATCHED!
+[18:24:21] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:24:24] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:24:25] INFO: 
+[241/780] Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:24:25] WARNING: MATCHED!
+[18:24:25] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:24:28] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:24:29] INFO: 
+[243/780] Project Laboratory 2 - BMEVIAUML13-ENActivate
+[18:24:29] WARNING: MATCHED!
+[18:24:29] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML13-ENActivate
+[18:24:32] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML13-ENActivate
+[18:24:33] INFO: 
+[245/780] Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:24:33] WARNING: MATCHED!
+[18:24:33] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:24:36] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:24:36] INFO: 
+[247/780] Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:24:36] WARNING: MATCHED!
+[18:24:36] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:24:40] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:24:41] INFO: 
+[249/780] Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:24:41] WARNING: MATCHED!
+[18:24:41] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:24:44] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:24:45] INFO: 
+[251/780] Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:24:45] WARNING: MATCHED!
+[18:24:45] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:24:48] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:24:49] INFO: 
+[253/780] Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:24:49] WARNING: MATCHED!
+[18:24:49] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:24:52] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:24:53] INFO: 
+[255/780] Témalaboratórium - BMEVIAUBB05-HUActivate
+[18:24:53] INFO: Skipped
+[18:24:53] INFO: 
+[257/780] Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:24:53] WARNING: MATCHED!
+[18:24:53] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:24:56] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:24:57] INFO: 
+[259/780] Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:24:57] WARNING: MATCHED!
+[18:24:57] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:25:00] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:25:02] INFO: 
+[261/780] Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:25:02] WARNING: MATCHED!
+[18:25:02] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:25:05] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:25:06] INFO: 
+[263/780] Alkalmazásfejlesztési környezetek 2021 ősz - BMEVIAUAC04-HUActivate
+[18:25:06] INFO: Skipped
+[18:25:06] INFO: 
+[265/780] Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:25:06] WARNING: MATCHED!
+[18:25:06] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:25:09] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:25:10] INFO: 
+[267/780] Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:25:10] WARNING: MATCHED!
+[18:25:10] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:25:13] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:25:14] INFO: 
+[269/780] Témalaboratórium - BMEVIAUAL02-HU
+[18:25:14] INFO: Skipped
+[18:25:14] INFO: 
+[271/780] Diplomatervezés 2 - BMEVIAUM023-HUActivate
+[18:25:14] WARNING: MATCHED!
+[18:25:14] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUM023-HUActivate
+[18:25:17] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUM023-HUActivate
+[18:25:18] INFO: 
+[273/780] Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:25:18] WARNING: MATCHED!
+[18:25:18] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:25:21] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:25:22] INFO: 
+[275/780] Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:25:22] WARNING: MATCHED!
+[18:25:22] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:25:25] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUA019-HUActivate
+[18:25:26] INFO: 
+[277/780] BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:25:26] WARNING: MATCHED!
+[18:25:26] INFO: Hovering over team: BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:25:29] SUCCESS: Hidden: BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:25:30] INFO: 
+[279/780] Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:25:30] WARNING: MATCHED!
+[18:25:30] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:25:33] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML00-HUActivate
+[18:25:34] INFO: 
+[281/780] Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:25:34] WARNING: MATCHED!
+[18:25:34] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:25:37] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:25:38] INFO: 
+[283/780] Project Laboratory - BMEVIAUAL01-ENActivate
+[18:25:38] WARNING: MATCHED!
+[18:25:38] INFO: Hovering over team: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:25:41] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:25:42] INFO: 
+[285/780] Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:25:42] WARNING: MATCHED!
+[18:25:42] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:25:45] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT00-HUActivate
+[18:25:46] INFO: 
+[287/780] Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:25:46] WARNING: MATCHED!
+[18:25:46] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:25:49] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:25:49] INFO: 
+[289/780] Diploma Thesis Design A - BMEVIAUM026-ENActivate
+[18:25:49] WARNING: MATCHED!
+[18:25:50] INFO: Hovering over team: Diploma Thesis Design A - BMEVIAUM026-ENActivate
+[18:25:53] SUCCESS: Hidden: Diploma Thesis Design A - BMEVIAUM026-ENActivate
+[18:25:53] INFO: 
+[291/780] Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:25:53] WARNING: MATCHED!
+[18:25:53] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:25:56] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:25:58] INFO: 
+[293/780] Kutatás 2. - BMEVIAUDK02-HUActivate
+[18:25:58] INFO: Skipped
+[18:25:58] INFO: 
+[295/780] Alkalmazásfejlesztési környezetek - 2024T BMEVIAUAC04-HU
+[18:25:58] INFO: Skipped
+[18:25:59] INFO: 
+[297/780] Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:25:59] WARNING: MATCHED!
+[18:25:59] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:26:02] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:26:03] INFO: 
+[299/780] Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:26:03] WARNING: MATCHED!
+[18:26:03] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:26:06] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:26:07] INFO: 
+[301/780] Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:26:07] WARNING: MATCHED!
+[18:26:07] INFO: Hovering over team: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:26:10] SUCCESS: Hidden: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:26:11] INFO: 
+[303/780] Önálló laboratórium 2 - BMEVIAUML13-HUActivate
+[18:26:11] WARNING: MATCHED!
+[18:26:11] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML13-HUActivate
+[18:26:14] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML13-HUActivate
+[18:26:14] INFO: 
+[305/780] Project Laboratory - BMEVIAUAL01-ENActivate
+[18:26:14] WARNING: MATCHED!
+[18:26:14] INFO: Hovering over team: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:26:18] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:26:19] INFO: 
+[307/780] Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:26:19] WARNING: MATCHED!
+[18:26:19] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:26:22] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:26:23] INFO: 
+[309/780] Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:26:23] WARNING: MATCHED!
+[18:26:23] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:26:26] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:26:26] INFO: 
+[311/780] Diploma Thesis Design 1 - BMEVIAUMT12-ENActivate
+[18:26:26] WARNING: MATCHED!
+[18:26:26] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT12-ENActivate
+[18:26:29] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT12-ENActivate
+[18:26:30] INFO: 
+[313/780] Témalaboratórium - BMEVIAUAL00-HUActivate
+[18:26:30] INFO: Skipped
+[18:26:31] INFO: 
+[315/780] Eseményvezérelt és vizuális programozás 2025 - BMEVIAUBB01-HU
+[18:26:31] INFO: Skipped
+[18:26:32] INFO: 
+[317/780] Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:26:32] WARNING: MATCHED!
+[18:26:32] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:26:35] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:26:35] INFO: 
+[319/780] Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:26:35] WARNING: MATCHED!
+[18:26:35] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:26:38] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:26:39] INFO: 
+[321/780] Projektgyakorlat - BMEVIAUBL01-HUActivate
+[18:26:39] INFO: Skipped
+[18:26:40] INFO: 
+[323/780] Kutatás 5. - BMEVIAUDK05-HUActivate
+[18:26:40] INFO: Skipped
+[18:26:40] INFO: 
+[325/780] Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:26:40] WARNING: MATCHED!
+[18:26:40] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:26:43] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML10-HUActivate
+[18:26:44] INFO: 
+[327/780] Final Project - BMEVIAUA019-ENActivate
+[18:26:44] INFO: Skipped
+[18:26:44] INFO: 
+[329/780] Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:26:44] WARNING: MATCHED!
+[18:26:44] INFO: Hovering over team: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:26:47] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:26:49] INFO: 
+[331/780] Project Laboratory 1 - BMEVIAUML10-ENActivate
+[18:26:49] WARNING: MATCHED!
+[18:26:49] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML10-ENActivate
+[18:26:52] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML10-ENActivate
+[18:26:54] INFO: 
+[333/780] Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:26:54] WARNING: MATCHED!
+[18:26:54] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:26:56] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:26:57] INFO: 
+[335/780] Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:26:57] WARNING: MATCHED!
+[18:26:57] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:27:00] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:27:01] INFO: 
+[337/780] Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:27:01] WARNING: MATCHED!
+[18:27:01] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:27:04] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:27:05] INFO: 
+[339/780] Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:27:05] WARNING: MATCHED!
+[18:27:05] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:27:08] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:27:09] INFO: 
+[341/780] Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:27:09] WARNING: MATCHED!
+[18:27:09] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:27:13] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:27:13] INFO: 
+[343/780] Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:27:13] WARNING: MATCHED!
+[18:27:13] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:27:16] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:27:17] INFO: 
+[345/780] Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:27:17] WARNING: MATCHED!
+[18:27:17] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:27:20] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:27:21] INFO: 
+[347/780] Diploma Thesis Design 1 - BMEVIAUMT10-ENActivate
+[18:27:21] WARNING: MATCHED!
+[18:27:21] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT10-ENActivate
+[18:27:24] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT10-ENActivate
+[18:27:24] INFO: 
+[349/780] Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:27:24] WARNING: MATCHED!
+[18:27:24] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:27:27] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:27:28] INFO: 
+[351/780] Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:27:28] WARNING: MATCHED!
+[18:27:28] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:27:31] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:27:32] INFO: 
+[353/780] Diplomatervezés 1 - BMEVIAUMT12-HUActivate
+[18:27:32] WARNING: MATCHED!
+[18:27:32] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT12-HUActivate
+[18:27:35] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT12-HUActivate
+[18:27:35] INFO: 
+[355/780] Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:27:35] WARNING: MATCHED!
+[18:27:35] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:27:39] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:27:39] INFO: 
+[357/780] Alkalmazásfejlesztési környezetek 2023 - BMEVIAUAC04-HU
+[18:27:39] INFO: Skipped
+[18:27:40] INFO: 
+[359/780] BSc Thesis Project - BMEVIAUAT00-ENActivate
+[18:27:40] WARNING: MATCHED!
+[18:27:40] INFO: Hovering over team: BSc Thesis Project - BMEVIAUAT00-ENActivate
+[18:27:43] SUCCESS: Hidden: BSc Thesis Project - BMEVIAUAT00-ENActivate
+[18:27:43] INFO: 
+[361/780] Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[18:27:43] INFO: Skipped
+[18:27:44] INFO: 
+[363/780] Research Work 8 - BMEVIAUDK08-EN
+[18:27:44] WARNING: MATCHED!
+[18:27:44] INFO: Hovering over team: Research Work 8 - BMEVIAUDK08-EN
+[18:27:47] SUCCESS: Hidden: Research Work 8 - BMEVIAUDK08-EN
+[18:27:48] INFO: 
+[365/780] Diplomatervezés 2 - BMEVIAUMT13-HUActivate
+[18:27:48] WARNING: MATCHED!
+[18:27:48] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT13-HUActivate
+[18:27:51] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT13-HUActivate
+[18:27:52] INFO: 
+[367/780] Project Laboratory 1 - BMEVIAUML12-ENActivate
+[18:27:52] WARNING: MATCHED!
+[18:27:52] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML12-ENActivate
+[18:27:55] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML12-ENActivate
+[18:27:56] INFO: 
+[369/780] Szakdolgozat-készítés - BMEVIAUAT02-HUActivate
+[18:27:56] WARNING: MATCHED!
+[18:27:56] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT02-HUActivate
+[18:27:59] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT02-HUActivate
+[18:28:00] INFO: 
+[371/780] Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:28:00] WARNING: MATCHED!
+[18:28:00] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:28:04] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:28:05] INFO: 
+[373/780] Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:28:05] WARNING: MATCHED!
+[18:28:05] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:28:08] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:28:09] INFO: 
+[375/780] Alkalmazásfejlesztés 2023 ősz - BMEVIAUMA09-HU
+[18:28:09] INFO: Skipped
+[18:28:09] INFO: 
+[377/780] Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:28:09] WARNING: MATCHED!
+[18:28:09] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:28:13] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:28:14] INFO: 
+[379/780] Training Project Laboratory - BMEVIAUAL00-EN
+[18:28:14] WARNING: MATCHED!
+[18:28:14] INFO: Hovering over team: Training Project Laboratory - BMEVIAUAL00-EN
+[18:28:16] SUCCESS: Hidden: Training Project Laboratory - BMEVIAUAL00-EN
+[18:28:17] INFO: 
+[381/780] Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:28:17] WARNING: MATCHED!
+[18:28:17] INFO: Hovering over team: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:28:20] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:28:21] INFO: 
+[383/780] Training Project Laboratory - BMEVIAUAL02-EN (2021)
+[18:28:21] WARNING: MATCHED!
+[18:28:21] INFO: Hovering over team: Training Project Laboratory - BMEVIAUAL02-EN (2021)
+[18:28:24] SUCCESS: Hidden: Training Project Laboratory - BMEVIAUAL02-EN (2021)
+[18:28:25] INFO: 
+[385/780] Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:28:25] WARNING: MATCHED!
+[18:28:25] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:28:28] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:28:29] INFO: 
+[387/780] Informatika 2 - BMEVIAUAB01-HUActivate
+[18:28:29] INFO: Skipped
+[18:28:29] INFO: 
+[389/780] Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:28:29] WARNING: MATCHED!
+[18:28:29] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:28:32] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:28:33] INFO: 
+[391/780] Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:28:33] WARNING: MATCHED!
+[18:28:33] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:28:36] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:28:37] INFO: 
+[393/780] Research Work 1 - BMEVIAUDK01-ENActivate
+[18:28:37] WARNING: MATCHED!
+[18:28:37] INFO: Hovering over team: Research Work 1 - BMEVIAUDK01-ENActivate
+[18:28:40] SUCCESS: Hidden: Research Work 1 - BMEVIAUDK01-ENActivate
+[18:28:40] INFO: 
+[395/780] BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:28:40] WARNING: MATCHED!
+[18:28:40] INFO: Hovering over team: BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:28:44] SUCCESS: Hidden: BSc Thesis Project - BMEVIAUAT01-ENActivate
+[18:28:44] INFO: 
+[397/780] Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:28:44] WARNING: MATCHED!
+[18:28:44] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:28:47] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:28:48] INFO: 
+[399/780] Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[18:28:48] WARNING: MATCHED!
+[18:28:48] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[18:28:51] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[18:28:52] INFO: 
+[401/780] 2025-26-2 Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[18:28:52] INFO: Skipped
+[18:28:54] INFO: 
+[403/780] Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:28:54] WARNING: MATCHED!
+[18:28:54] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:28:57] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML03-ENActivate
+[18:28:57] INFO: 
+[405/780] Projektgyakorlat - BMEVIAUBL01-HUActivate
+[18:28:57] INFO: Skipped
+[18:28:58] INFO: 
+[407/780] Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[18:28:58] INFO: Skipped
+[18:28:58] INFO: 
+[409/780] Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:28:58] WARNING: MATCHED!
+[18:28:58] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:29:01] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL03-HUActivate
+[18:29:02] INFO: 
+[411/780] Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:29:02] WARNING: MATCHED!
+[18:29:02] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:29:05] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:29:06] INFO: 
+[413/780] Final Project - BMEVIAUA019-ENActivate
+[18:29:06] INFO: Skipped
+[18:29:07] INFO: 
+[415/780] Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:29:07] WARNING: MATCHED!
+[18:29:07] INFO: Hovering over team: Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:29:10] SUCCESS: Hidden: Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:29:11] INFO: 
+[417/780] Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:29:11] WARNING: MATCHED!
+[18:29:11] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:29:14] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:29:14] INFO: 
+[419/780] AUDI Project
+[18:29:14] INFO: Skipped
+[18:29:15] INFO: 
+[421/780] Oktatástechnológia
+[18:29:15] INFO: Skipped
+[18:29:16] INFO: 
+[423/780] BME-VIK-AUT
+[18:29:16] INFO: Skipped
+[18:29:16] INFO: 
+[425/780] BME-VIK-AUT Tantárgyak
+[18:29:16] INFO: Skipped
+[18:29:17] INFO: 
+[427/780] BME-VIK-AUT-Hallgatók
+[18:29:17] INFO: Skipped
+[18:29:17] INFO: 
+[429/780] Beton CT (Teams csoport)
+[18:29:17] INFO: Skipped
+[18:29:18] INFO: 
+[431/780] DotNET Oktatók
+[18:29:18] INFO: Skipped
+[18:29:18] INFO: 
+[433/780] BME-VIK IMSC felelősök
+[18:29:18] INFO: Skipped
+[18:29:19] INFO: 
+[435/780] AUT Terhelésszámítás 1.
+[18:29:19] INFO: Skipped
+[18:29:19] INFO: 
+[437/780] AUT Terhelésszámítás PhD
+[18:29:19] INFO: Skipped
+[18:29:20] INFO: 
+[439/780] VIKkids - Szülők klubja
+[18:29:20] INFO: Skipped
+[18:29:20] INFO: 
+[441/780] VIK Közösség
+[18:29:20] INFO: Skipped
+[18:29:21] INFO: 
+[443/780] Pharmatech Lab
+[18:29:21] INFO: Skipped
+[18:29:21] INFO: 
+[445/780] MI-EDIH Projekt
+[18:29:21] INFO: Skipped
+[18:29:22] INFO: 
+[447/780] BME-VIK
+[18:29:22] INFO: Skipped
+[18:29:22] INFO: 
+[449/780] BME VIK online
+[18:29:22] INFO: Skipped
+[18:29:23] INFO: 
+[451/780] MI EDIH Régi
+[18:29:23] INFO: Skipped
+[18:29:23] INFO: 
+[453/780] Deep-Fake Working Group
+[18:29:23] INFO: Skipped
+[18:29:24] INFO: 
+[455/780] Sorjaméret meghatározás
+[18:29:24] INFO: Skipped
+[18:29:25] INFO: 
+[457/780] AI EDIH Tananyagfejlesztés
+[18:29:25] INFO: Skipped
+[18:29:25] INFO: 
+[459/780] Digital Coach INTELLIGENCE
+[18:29:25] INFO: Skipped
+[18:29:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(460)
+
+[18:30:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(461)
+
+[18:30:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(462)
+
+[18:31:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(463)
+
+[18:31:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(464)
+
+[18:32:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(465)
+
+[18:32:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(466)
+
+[18:33:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(467)
+
+[18:33:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(468)
+
+[18:34:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(469)
+
+[18:34:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(470)
+
+[18:35:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(471)
+
+[18:35:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(472)
+
+[18:36:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(473)
+
+[18:36:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(474)
+
+[18:37:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(475)
+
+[18:37:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(476)
+
+[18:38:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(477)
+
+[18:38:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(478)
+
+[18:39:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(479)
+
+[18:39:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(480)
+
+[18:40:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(481)
+
+[18:40:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(482)
+
+[18:41:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(483)
+
+[18:41:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(484)
+
+[18:42:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(485)
+
+[18:42:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(486)
+
+[18:43:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(487)
+
+[18:43:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(488)
+
+[18:44:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(489)
+
+[18:44:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(490)
+
+[18:45:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(491)
+
+[18:45:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(492)
+
+[18:46:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(493)
+
+[18:46:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(494)
+
+[18:47:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(495)
+
+[18:47:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(496)
+
+[18:48:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(497)
+
+[18:48:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(498)
+
+[18:49:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(499)
+
+[18:49:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(500)
+
+[18:50:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(501)
+
+[18:50:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(502)
+
+[18:51:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(503)
+
+[18:51:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(504)
+
+[18:52:17] INFO: ======================================================================
+[18:52:17] INFO: MS Teams Auto-Hide - Simple CDP Connection
+[18:52:17] INFO: Mode: LIVE
+[18:52:17] INFO: ======================================================================
+[18:52:18] INFO: Connecting to Chrome...
+[18:52:18] SUCCESS: Connected!
+[18:52:18] INFO: Current page: https://teams.microsoft.com/v2/
+[18:52:20] INFO: Looking for teams...
+[18:52:20] INFO: Found 460 teams using data-tid selector
+[18:52:20] INFO: Found 460 teams
+[18:52:20] INFO: Processing all 460 teams...
+[18:52:20] INFO: ----------------------------------------------------------------------
+[18:52:20] INFO: 
+[2/460] Join or create team
+[18:52:20] INFO: Skipped
+[18:52:21] INFO: 
+[4/460] [SKIPPED: Container element with 10200 chars]
+[18:52:21] INFO: 
+[5/460] TDK 2020 Intelligens rendszerek szekció
+[18:52:21] INFO: Skipped
+[18:52:21] INFO: 
+[7/460] Production supervision with AI
+[18:52:21] INFO: Skipped
+[18:52:22] INFO: 
+[9/460] TddTemalabor
+[18:52:22] INFO: Skipped
+[18:52:22] INFO: 
+[11/460] Eseményvezérelt és vizuális programozás - BMEVIAUBB01-HU
+[18:52:22] INFO: Skipped
+[18:52:23] INFO: 
+[13/460] Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:52:23] WARNING: MATCHED!
+[18:52:23] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:52:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(505)
+
+[18:52:26] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:52:27] INFO: 
+[15/460] Eseményvezérelt és vizuális programozás 2021 - BMEVIAUBB01-HU
+[18:52:27] INFO: Skipped
+[18:52:28] INFO: 
+[17/460] Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:52:28] WARNING: MATCHED!
+[18:52:28] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:52:31] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:52:31] INFO: 
+[19/460] IoT szolgáltatások és alkalmazások fejlesztése - BMEVIAUAV36-HU
+[18:52:31] INFO: Skipped
+[18:52:32] INFO: 
+[21/460] Project Laboratory - BMEVIAUAL04-ENActivate
+[18:52:32] WARNING: MATCHED!
+[18:52:32] INFO: Hovering over team: Project Laboratory - BMEVIAUAL04-ENActivate
+[18:52:35] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL04-ENActivate
+[18:52:37] INFO: 
+[23/460] Informatics 2 - BMEVIAUAB01-ENActivate
+[18:52:37] WARNING: MATCHED!
+[18:52:37] INFO: Hovering over team: Informatics 2 - BMEVIAUAB01-ENActivate
+[18:52:40] SUCCESS: Hidden: Informatics 2 - BMEVIAUAB01-ENActivate
+[18:52:40] INFO: 
+[25/460] Research Work 3 - BMEVIAUDK03-EN
+[18:52:40] WARNING: MATCHED!
+[18:52:40] INFO: Hovering over team: Research Work 3 - BMEVIAUDK03-EN
+[18:52:43] SUCCESS: Hidden: Research Work 3 - BMEVIAUDK03-EN
+[18:52:44] INFO: 
+[27/460] Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:52:44] WARNING: MATCHED!
+[18:52:44] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:52:47] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:52:48] INFO: 
+[29/460] Alkalmazásfejlesztési környezetek - BMEVIAUAC04-HU
+[18:52:48] INFO: Skipped
+[18:52:49] INFO: 
+[31/460] Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:52:49] WARNING: MATCHED!
+[18:52:49] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:52:52] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:52:52] INFO: 
+[33/460] Training Project Laboratory - BMEVIAUAL02-ENActivate
+[18:52:52] WARNING: MATCHED!
+[18:52:52] INFO: Hovering over team: Training Project Laboratory - BMEVIAUAL02-ENActivate
+[18:52:55] SUCCESS: Hidden: Training Project Laboratory - BMEVIAUAL02-ENActivate
+[18:52:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(506)
+
+[18:52:56] INFO: 
+[35/460] Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[18:52:56] WARNING: MATCHED!
+[18:52:56] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[18:52:59] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[18:53:00] INFO: 
+[37/460] Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:53:00] WARNING: MATCHED!
+[18:53:00] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:53:03] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:53:04] INFO: 
+[39/460] BME-VIK-AUT AutMI Deep Learning szeminárium
+[18:53:04] INFO: Skipped
+[18:53:05] INFO: 
+[41/460] Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:53:05] WARNING: MATCHED!
+[18:53:05] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:53:08] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:53:08] INFO: 
+[43/460] Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:53:08] WARNING: MATCHED!
+[18:53:08] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:53:12] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[18:53:12] INFO: 
+[45/460] Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:53:12] WARNING: MATCHED!
+[18:53:12] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:53:15] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[18:53:17] INFO: 
+[47/460] Eseményvezérelt és vizuális programozás - BMEVIAUBB01-HU
+[18:53:17] INFO: Skipped
+[18:53:17] INFO: 
+[49/460] Alkalmazásfejlesztési környezetek - 2022T - BMEVIAUAC04-HU
+[18:53:17] INFO: Skipped
+[18:53:18] INFO: 
+[51/460] Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[18:53:18] INFO: Skipped
+[18:53:18] INFO: 
+[53/460] Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:53:18] WARNING: MATCHED!
+[18:53:18] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:53:21] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML12-HUActivate
+[18:53:22] INFO: 
+[55/460] Alkalmazásfejlesztési környezetek - BMEVIAUAC04-HUActivate
+[18:53:22] INFO: Skipped
+[18:53:23] INFO: 
+[57/460] Alkalmazásfejlesztés 2024T - BMEVIAUMB07-HU
+[18:53:23] INFO: Skipped
+[18:53:23] INFO: 
+[59/460] Témalaboratórium - BMEVIAUAL00-HUActivate
+[18:53:23] INFO: Skipped
+[18:53:24] INFO: 
+[61/460] Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[18:53:24] WARNING: MATCHED!
+[18:53:24] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[18:53:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(507)
+
+[18:53:27] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[18:53:27] INFO: 
+[63/460] Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:53:27] WARNING: MATCHED!
+[18:53:27] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:53:30] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:53:31] INFO: 
+[65/460] Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:53:31] WARNING: MATCHED!
+[18:53:31] INFO: Hovering over team: Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:53:34] SUCCESS: Hidden: Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:53:35] INFO: 
+[67/460] Diploma Thesis Design 1 - BMEVIAUMT10-ENActivate
+[18:53:35] WARNING: MATCHED!
+[18:53:35] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT10-ENActivate
+[18:53:38] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT10-ENActivate
+[18:53:39] INFO: 
+[69/460] Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:53:39] WARNING: MATCHED!
+[18:53:39] INFO: Hovering over team: Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:53:42] SUCCESS: Hidden: Diplomatervezés B - BMEVIAUM027-HUActivate
+[18:53:43] INFO: 
+[71/460] Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[18:53:43] WARNING: MATCHED!
+[18:53:43] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[18:53:46] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[18:53:46] INFO: 
+[73/460] Project Laboratory - BMEVIAUAL03-ENActivate
+[18:53:46] WARNING: MATCHED!
+[18:53:46] INFO: Hovering over team: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:53:49] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:53:50] INFO: 
+[75/460] Informatika 2 - 2024T BMEVIAUAB01-HU
+[18:53:50] INFO: Skipped
+[18:53:50] INFO: 
+[77/460] Research Work 3 - BMEVIAUDK03-ENActivate
+[18:53:50] WARNING: MATCHED!
+[18:53:50] INFO: Hovering over team: Research Work 3 - BMEVIAUDK03-ENActivate
+[18:53:53] SUCCESS: Hidden: Research Work 3 - BMEVIAUDK03-ENActivate
+[18:53:54] INFO: 
+[79/460] Alkalmazásfejlesztési környezetek - BMEVIAUAC04-HU
+[18:53:54] INFO: Skipped
+[18:53:54] INFO: 
+[81/460] Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:53:54] WARNING: MATCHED!
+[18:53:54] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:53:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(508)
+
+[18:53:58] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:53:59] INFO: 
+[83/460] Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:53:59] WARNING: MATCHED!
+[18:53:59] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:54:01] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:54:02] INFO: 
+[85/460] Témalaboratórium - BMEVIAUBB07-HUActivate
+[18:54:02] INFO: Skipped
+[18:54:02] INFO: 
+[87/460] Diplomatervezés 2 - BMEVIAUM023-HUActivate
+[18:54:02] WARNING: MATCHED!
+[18:54:02] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUM023-HUActivate
+[18:54:05] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUM023-HUActivate
+[18:54:06] INFO: 
+[89/460] BSc Thesis Project - BMEVIAUAT00-ENActivate
+[18:54:06] WARNING: MATCHED!
+[18:54:06] INFO: Hovering over team: BSc Thesis Project - BMEVIAUAT00-ENActivate
+[18:54:09] SUCCESS: Hidden: BSc Thesis Project - BMEVIAUAT00-ENActivate
+[18:54:10] INFO: 
+[91/460] Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:54:10] WARNING: MATCHED!
+[18:54:10] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:54:13] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:54:14] INFO: 
+[93/460] Informatika 2 - BMEVIAUAC10-HU
+[18:54:14] INFO: Skipped
+[18:54:15] INFO: 
+[95/460] Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:54:15] WARNING: MATCHED!
+[18:54:15] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:54:18] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:54:18] INFO: 
+[97/460] Projektgyakorlat - BMEVIAUBL01-HUActivate
+[18:54:18] INFO: Skipped
+[18:54:19] INFO: 
+[99/460] Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:54:19] WARNING: MATCHED!
+[18:54:19] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:54:22] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:54:23] INFO: 
+[101/460] Research Work 5 - BMEVIAUDK05-ENActivate
+[18:54:23] WARNING: MATCHED!
+[18:54:23] INFO: Hovering over team: Research Work 5 - BMEVIAUDK05-ENActivate
+[18:54:26] SUCCESS: Hidden: Research Work 5 - BMEVIAUDK05-ENActivate
+[18:54:26] INFO: 
+[103/460] Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:54:26] WARNING: MATCHED!
+[18:54:26] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:54:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(509)
+
+[18:54:29] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:54:30] INFO: 
+[105/460] 2025-26-2 Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:54:30] WARNING: MATCHED!
+[18:54:30] INFO: Hovering over team: 2025-26-2 Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:54:33] SUCCESS: Hidden: 2025-26-2 Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:54:34] INFO: 
+[107/460] Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[18:54:34] WARNING: MATCHED!
+[18:54:34] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[18:54:38] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[18:54:39] INFO: 
+[109/460] Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:54:39] WARNING: MATCHED!
+[18:54:39] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:54:42] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:54:42] INFO: 
+[111/460] Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:54:42] WARNING: MATCHED!
+[18:54:42] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:54:45] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:54:46] INFO: 
+[113/460] Alkalmazásfejlesztés 2023Ősz új nem induló - BMEVIAUMB07-HUActivate
+[18:54:46] INFO: Skipped
+[18:54:46] INFO: 
+[115/460] 2025-26-2 Mesterséges intelligencia alapú szoftverek és szolgáltatások fejlesztése - BMEVIAUBXAV081-00-HU
+[18:54:46] INFO: Skipped
+[18:54:47] INFO: 
+[117/460] Project Laboratory - BMEVIAUAL03-ENActivate
+[18:54:47] WARNING: MATCHED!
+[18:54:47] INFO: Hovering over team: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:54:50] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL03-ENActivate
+[18:54:50] INFO: 
+[119/460] Final Project - BMEVIAUA019-ENActivate
+[18:54:50] INFO: Skipped
+[18:54:51] INFO: 
+[121/460] Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:54:51] WARNING: MATCHED!
+[18:54:51] INFO: Hovering over team: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:54:54] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[18:54:55] INFO: 
+[123/460] Final Project - BMEVIAUA019-ENActivate
+[18:54:55] INFO: Skipped
+[18:54:55] INFO: 
+[125/460] Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:54:55] WARNING: MATCHED!
+[18:54:55] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:54:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(510)
+
+[18:54:58] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[18:55:00] INFO: 
+[127/460] Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[18:55:00] WARNING: MATCHED!
+[18:55:00] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[18:55:02] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[18:55:03] INFO: 
+[129/460] Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:55:03] WARNING: MATCHED!
+[18:55:03] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:55:06] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:55:07] INFO: 
+[131/460] Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:55:07] WARNING: MATCHED!
+[18:55:07] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:55:10] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:55:10] INFO: 
+[133/460] Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[18:55:10] WARNING: MATCHED!
+[18:55:10] INFO: Hovering over team: Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[18:55:14] SUCCESS: Hidden: Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[18:55:15] INFO: 
+[135/460] Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:55:15] WARNING: MATCHED!
+[18:55:15] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:55:18] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[18:55:18] INFO: 
+[137/460] Kutatás 8. - BMEVIAUDK08-HUActivate
+[18:55:18] INFO: Skipped
+[18:55:19] INFO: 
+[139/460] Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[18:55:19] INFO: Skipped
+[18:55:20] INFO: 
+[141/460] Témalaboratórium - BMEVIAUAL00-HUActivate
+[18:55:20] INFO: Skipped
+[18:55:20] INFO: 
+[143/460] Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:55:20] WARNING: MATCHED!
+[18:55:20] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:55:23] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:55:24] INFO: 
+[145/460] Diplomatervezés 1 - BMEVIAUM022-HUActivate
+[18:55:24] WARNING: MATCHED!
+[18:55:24] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUM022-HUActivate
+[18:55:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(511)
+
+[18:55:26] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUM022-HUActivate
+[18:55:28] INFO: 
+[147/460] Témalaboratórium - BMEVIAUAL00-HUActivate
+[18:55:28] INFO: Skipped
+[18:55:28] INFO: 
+[149/460] Alkalmazásfejlesztés 2020Ősz - BMEVIAUMA09-HU
+[18:55:28] INFO: Skipped
+[18:55:29] INFO: 
+[151/460] Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:55:29] WARNING: MATCHED!
+[18:55:29] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:55:32] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:55:32] INFO: 
+[153/460] Kutatás 8. - BMEVIAUDK08-HUActivate
+[18:55:32] INFO: Skipped
+[18:55:33] INFO: 
+[155/460] Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:55:33] WARNING: MATCHED!
+[18:55:33] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:55:36] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:55:37] INFO: 
+[157/460] Alkalmazásfejlesztés 2022 - BMEVIAUMA09-HU
+[18:55:37] INFO: Skipped
+[18:55:38] INFO: 
+[159/460] Research Work 4 - BMEVIAUDK04-EN
+[18:55:38] WARNING: MATCHED!
+[18:55:38] INFO: Hovering over team: Research Work 4 - BMEVIAUDK04-EN
+[18:55:40] SUCCESS: Hidden: Research Work 4 - BMEVIAUDK04-EN
+[18:55:41] INFO: 
+[161/460] Témalaboratórium - BMEVIAUBB05-HUActivate
+[18:55:41] INFO: Skipped
+[18:55:41] INFO: 
+[163/460] Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:55:41] WARNING: MATCHED!
+[18:55:41] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:55:45] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT00-ENActivate
+[18:55:45] INFO: 
+[165/460] Alkalmazásfejlesztési környezetek 2021 ősz - BMEVIAUAC04-HUActivate
+[18:55:45] INFO: Skipped
+[18:55:46] INFO: 
+[167/460] Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:55:46] WARNING: MATCHED!
+[18:55:46] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:55:49] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:55:49] INFO: 
+[169/460] Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:55:49] WARNING: MATCHED!
+[18:55:49] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:55:52] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:55:53] INFO: 
+[171/460] Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:55:53] WARNING: MATCHED!
+[18:55:53] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:55:56] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML00-ENActivate
+[18:55:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(512)
+
+[18:55:57] INFO: 
+[173/460] Kutatás 7. - BMEVIAUDK07-HUActivate
+[18:55:57] INFO: Skipped
+[18:55:58] INFO: 
+[175/460] Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:55:58] WARNING: MATCHED!
+[18:55:58] INFO: Hovering over team: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:56:00] SUCCESS: Hidden: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:56:01] INFO: 
+[177/460] Project Laboratory - BMEVIAUAL01-ENActivate
+[18:56:01] WARNING: MATCHED!
+[18:56:01] INFO: Hovering over team: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:56:04] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL01-ENActivate
+[18:56:04] INFO: 
+[179/460] Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:56:04] WARNING: MATCHED!
+[18:56:04] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:56:07] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:56:08] INFO: 
+[181/460] Témalaboratórium - BMEVIAUAL00-HUActivate
+[18:56:08] INFO: Skipped
+[18:56:08] INFO: 
+[183/460] Kutatás 2. - BMEVIAUDK02-HUActivate
+[18:56:08] INFO: Skipped
+[18:56:09] INFO: 
+[185/460] Alkalmazásfejlesztési környezetek - 2024T BMEVIAUAC04-HU
+[18:56:09] INFO: Skipped
+[18:56:09] INFO: 
+[187/460] Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:56:09] WARNING: MATCHED!
+[18:56:09] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:56:12] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:56:13] INFO: 
+[189/460] Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:56:13] WARNING: MATCHED!
+[18:56:13] INFO: Hovering over team: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:56:15] SUCCESS: Hidden: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:56:17] INFO: 
+[191/460] Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:56:17] WARNING: MATCHED!
+[18:56:17] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:56:19] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT03-ENActivate
+[18:56:20] INFO: 
+[193/460] Diploma Thesis Design 1 - BMEVIAUMT12-ENActivate
+[18:56:20] WARNING: MATCHED!
+[18:56:20] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT12-ENActivate
+[18:56:23] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT12-ENActivate
+[18:56:24] INFO: 
+[195/460] Témalaboratórium - BMEVIAUAL00-HUActivate
+[18:56:24] INFO: Skipped
+[18:56:25] INFO: 
+[197/460] Eseményvezérelt és vizuális programozás 2025 - BMEVIAUBB01-HU
+[18:56:25] INFO: Skipped
+[18:56:25] INFO: 
+[199/460] Diplomatervezés 1 - BMEVIAUMT12-HUActivate
+[18:56:25] WARNING: MATCHED!
+[18:56:25] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT12-HUActivate
+[18:56:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(513)
+
+[18:56:28] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT12-HUActivate
+[18:56:28] INFO: 
+[201/460] Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:56:28] WARNING: MATCHED!
+[18:56:28] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:56:31] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[18:56:32] INFO: 
+[203/460] Kutatás 5. - BMEVIAUDK05-HUActivate
+[18:56:32] INFO: Skipped
+[18:56:32] INFO: 
+[205/460] Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:56:32] WARNING: MATCHED!
+[18:56:32] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:56:36] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:56:37] INFO: 
+[207/460] Kutatás 8. - BMEVIAUDK08-HUActivate
+[18:56:37] INFO: Skipped
+[18:56:37] INFO: 
+[209/460] Project Laboratory 2 - BMEVIAUML13-ENActivate
+[18:56:37] WARNING: MATCHED!
+[18:56:37] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML13-ENActivate
+[18:56:40] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML13-ENActivate
+[18:56:41] INFO: 
+[211/460] Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:56:41] WARNING: MATCHED!
+[18:56:41] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:56:43] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT10-HUActivate
+[18:56:44] INFO: 
+[213/460] Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:56:44] WARNING: MATCHED!
+[18:56:44] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:56:47] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:56:48] INFO: 
+[215/460] Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:56:48] WARNING: MATCHED!
+[18:56:48] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:56:52] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML11-ENActivate
+[18:56:52] INFO: 
+[217/460] Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:56:52] WARNING: MATCHED!
+[18:56:52] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:56:55] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT02-ENActivate
+[18:56:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(514)
+
+[18:56:56] INFO: 
+[219/460] Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:56:56] WARNING: MATCHED!
+[18:56:56] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:56:59] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT00-HUActivate
+[18:57:00] INFO: 
+[221/460] Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:57:00] WARNING: MATCHED!
+[18:57:00] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:57:03] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[18:57:04] INFO: 
+[223/460] Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:57:04] WARNING: MATCHED!
+[18:57:04] INFO: Hovering over team: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:57:07] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUAL01-HUActivate
+[18:57:07] INFO: 
+[225/460] Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:57:07] WARNING: MATCHED!
+[18:57:07] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:57:10] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUMT02-HUActivate
+[18:57:10] INFO: 
+[227/460] Project Laboratory 1 - BMEVIAUML12-ENActivate
+[18:57:10] WARNING: MATCHED!
+[18:57:10] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML12-ENActivate
+[18:57:14] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML12-ENActivate
+[18:57:14] INFO: 
+[229/460] Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:57:14] WARNING: MATCHED!
+[18:57:14] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:57:17] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[18:57:18] INFO: 
+[231/460] Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:57:18] WARNING: MATCHED!
+[18:57:18] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:57:21] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT13-ENActivate
+[18:57:22] INFO: 
+[233/460] Project Laboratory 2 - BMEVIAUML13-ENActivate
+[18:57:22] WARNING: MATCHED!
+[18:57:22] INFO: Hovering over team: Project Laboratory 2 - BMEVIAUML13-ENActivate
+[18:57:24] SUCCESS: Hidden: Project Laboratory 2 - BMEVIAUML13-ENActivate
+[18:57:25] INFO: 
+[235/460] Diploma Thesis Design 1 - BMEVIAUMT12-ENActivate
+[18:57:25] WARNING: MATCHED!
+[18:57:25] INFO: Hovering over team: Diploma Thesis Design 1 - BMEVIAUMT12-ENActivate
+[18:57:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(515)
+
+[18:57:28] SUCCESS: Hidden: Diploma Thesis Design 1 - BMEVIAUMT12-ENActivate
+[18:57:29] INFO: 
+[237/460] Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:57:29] WARNING: MATCHED!
+[18:57:29] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:57:32] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[18:57:32] INFO: 
+[239/460] Research Work 1 - BMEVIAUDK01-ENActivate
+[18:57:32] WARNING: MATCHED!
+[18:57:32] INFO: Hovering over team: Research Work 1 - BMEVIAUDK01-ENActivate
+[18:57:35] SUCCESS: Hidden: Research Work 1 - BMEVIAUDK01-ENActivate
+[18:57:35] INFO: 
+[241/460] 2025-26-2 Projektgyakorlat - BMEVIAUBL01-HUActivate
+[18:57:35] INFO: Skipped
+[18:57:36] INFO: 
+[243/460] 2025-26-2 Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[18:57:36] INFO: Skipped
+[18:57:36] INFO: 
+[245/460] Szakdolgozat-készítés - BMEVIAUAT03-HUActivate
+[18:57:36] WARNING: MATCHED!
+[18:57:36] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT03-HUActivate
+[18:57:39] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT03-HUActivate
+[18:57:40] INFO: 
+[247/460] Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:57:40] WARNING: MATCHED!
+[18:57:40] INFO: Hovering over team: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:57:43] SUCCESS: Hidden: Diplomatervezés A - BMEVIAUM026-HUActivate
+[18:57:43] INFO: 
+[249/460] Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[18:57:43] INFO: Skipped
+[18:57:44] INFO: 
+[251/460] Training Project Laboratory - BMEVIAUAL00-EN
+[18:57:44] WARNING: MATCHED!
+[18:57:44] INFO: Hovering over team: Training Project Laboratory - BMEVIAUAL00-EN
+[18:57:47] SUCCESS: Hidden: Training Project Laboratory - BMEVIAUAL00-EN
+[18:57:47] INFO: 
+[253/460] Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[18:57:47] WARNING: MATCHED!
+[18:57:47] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[18:57:50] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[18:57:51] INFO: 
+[255/460] AUDI Project
+[18:57:51] INFO: Skipped
+[18:57:51] INFO: 
+[257/460] Oktatástechnológia
+[18:57:51] INFO: Skipped
+[18:57:52] INFO: 
+[259/460] BME-VIK-AUT
+[18:57:52] INFO: Skipped
+[18:57:52] INFO: 
+[261/460] BME-VIK-AUT Tantárgyak
+[18:57:52] INFO: Skipped
+[18:57:53] INFO: 
+[263/460] BME-VIK-AUT-Hallgatók
+[18:57:53] INFO: Skipped
+[18:57:53] INFO: 
+[265/460] Beton CT (Teams csoport)
+[18:57:53] INFO: Skipped
+[18:57:54] INFO: 
+[267/460] DotNET Oktatók
+[18:57:54] INFO: Skipped
+[18:57:54] INFO: 
+[269/460] BME-VIK IMSC felelősök
+[18:57:54] INFO: Skipped
+[18:57:55] INFO: 
+[271/460] AUT Terhelésszámítás 1.
+[18:57:55] INFO: Skipped
+[18:57:55] INFO: 
+[273/460] AUT Terhelésszámítás PhD
+[18:57:55] INFO: Skipped
+[18:57:56] INFO: 
+[275/460] VIKkids - Szülők klubja
+[18:57:56] INFO: Skipped
+[18:57:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(516)
+
+[18:57:56] INFO: 
+[277/460] VIK Közösség
+[18:57:56] INFO: Skipped
+[18:57:57] INFO: 
+[279/460] Pharmatech Lab
+[18:57:57] INFO: Skipped
+[18:57:57] INFO: 
+[281/460] MI-EDIH Projekt
+[18:57:57] INFO: Skipped
+[18:57:58] INFO: 
+[283/460] BME-VIK
+[18:57:58] INFO: Skipped
+[18:57:58] INFO: 
+[285/460] BME VIK online
+[18:57:58] INFO: Skipped
+[18:57:59] INFO: 
+[287/460] MI EDIH Régi
+[18:57:59] INFO: Skipped
+[18:58:00] INFO: 
+[289/460] Deep-Fake Working Group
+[18:58:00] INFO: Skipped
+[18:58:00] INFO: 
+[291/460] Sorjaméret meghatározás
+[18:58:00] INFO: Skipped
+[18:58:01] INFO: 
+[293/460] AI EDIH Tananyagfejlesztés
+[18:58:01] INFO: Skipped
+[18:58:01] INFO: 
+[295/460] Digital Coach INTELLIGENCE
+[18:58:01] INFO: Skipped
+[18:58:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(517)
+
+[18:58:32] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(296)
+
+[18:58:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(518)
+
+[18:59:02] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(297)
+
+[18:59:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(519)
+
+[18:59:32] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(298)
+
+[18:59:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(520)
+
+[19:00:02] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(299)
+
+[19:00:26] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(521)
+
+[19:00:32] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(300)
+
+[19:00:56] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(522)
+
+[19:01:02] ERROR: Error: Locator.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-tid*=\"team\"]").nth(301)
+
+[19:01:44] INFO: ======================================================================
+[19:01:44] INFO: MS Teams Auto-Hide - Simple CDP Connection
+[19:01:44] INFO: Mode: LIVE
+[19:01:44] INFO: ======================================================================
+[19:01:45] INFO: Connecting to Chrome...
+[19:01:45] SUCCESS: Connected!
+[19:01:45] INFO: Current page: https://teams.microsoft.com/v2/
+[19:01:47] INFO: Looking for teams...
+[19:01:47] INFO: Found 296 teams using data-tid selector
+[19:01:47] INFO: Found 296 teams
+[19:01:47] INFO: Processing first 100...
+[19:01:47] INFO: ----------------------------------------------------------------------
+[19:01:47] INFO: 
+[2/100] Join or create team
+[19:01:47] INFO: Skipped
+[19:01:48] INFO: 
+[4/100] [SKIPPED: Container element with 6567 chars]
+[19:01:48] INFO: 
+[5/100] TDK 2020 Intelligens rendszerek szekció
+[19:01:48] INFO: Skipped
+[19:01:49] INFO: 
+[7/100] Production supervision with AI
+[19:01:49] INFO: Skipped
+[19:01:49] INFO: 
+[9/100] TddTemalabor
+[19:01:49] INFO: Skipped
+[19:01:50] INFO: 
+[11/100] Eseményvezérelt és vizuális programozás - BMEVIAUBB01-HU
+[19:01:50] INFO: Skipped
+[19:01:50] INFO: 
+[13/100] Eseményvezérelt és vizuális programozás 2021 - BMEVIAUBB01-HU
+[19:01:50] INFO: Skipped
+[19:01:51] INFO: 
+[15/100] Mesterséges intelligencia alapú szoftverek és szolgáltatások fejlesztése - BMEVIAUBXAV081-00-HU
+[19:01:51] INFO: Skipped
+[19:01:51] INFO: 
+[17/100] Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[19:01:51] WARNING: MATCHED!
+[19:01:51] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[19:01:54] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[19:01:54] INFO: 
+[19/100] IoT szolgáltatások és alkalmazások fejlesztése - BMEVIAUAV36-HU
+[19:01:54] INFO: Skipped
+[19:01:55] INFO: 
+[21/100] Témalaboratórium - BMEVIAUBB07-HUActivate
+[19:01:55] INFO: Skipped
+[19:01:56] INFO: 
+[23/100] Diplomatervezés A - BMEVIAUM026-HUActivate
+[19:01:56] WARNING: MATCHED!
+[19:01:56] INFO: Hovering over team: Diplomatervezés A - BMEVIAUM026-HUActivate
+[19:01:59] SUCCESS: Hidden: Diplomatervezés A - BMEVIAUM026-HUActivate
+[19:02:00] INFO: 
+[25/100] Alkalmazásfejlesztési környezetek - BMEVIAUAC04-HU
+[19:02:00] INFO: Skipped
+[19:02:00] INFO: 
+[27/100] Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[19:02:00] WARNING: MATCHED!
+[19:02:00] INFO: Hovering over team: Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[19:02:03] SUCCESS: Hidden: Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[19:02:04] INFO: 
+[29/100] Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[19:02:04] WARNING: MATCHED!
+[19:02:04] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[19:02:07] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[19:02:07] INFO: 
+[31/100] BME-VIK-AUT AutMI Deep Learning szeminárium
+[19:02:07] INFO: Skipped
+[19:02:08] INFO: 
+[33/100] Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[19:02:08] WARNING: MATCHED!
+[19:02:08] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[19:02:11] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[19:02:11] INFO: 
+[35/100] Kutatás 6. - BMEVIAUDK06-HUActivate
+[19:02:11] INFO: Skipped
+[19:02:12] INFO: 
+[37/100] Eseményvezérelt és vizuális programozás - BMEVIAUBB01-HU
+[19:02:12] INFO: Skipped
+[19:02:13] INFO: 
+[39/100] Alkalmazásfejlesztési környezetek - 2022T - BMEVIAUAC04-HU
+[19:02:13] INFO: Skipped
+[19:02:13] INFO: 
+[41/100] Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[19:02:13] INFO: Skipped
+[19:02:14] INFO: 
+[43/100] Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[19:02:14] WARNING: MATCHED!
+[19:02:14] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[19:02:16] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[19:02:17] INFO: 
+[45/100] Alkalmazásfejlesztési környezetek - BMEVIAUAC04-HUActivate
+[19:02:17] INFO: Skipped
+[19:02:18] INFO: 
+[47/100] Témalaboratórium - BMEVIAUAL00-HUActivate
+[19:02:18] INFO: Skipped
+[19:02:18] INFO: 
+[49/100] Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[19:02:18] WARNING: MATCHED!
+[19:02:18] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[19:02:21] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[19:02:22] INFO: 
+[51/100] Önálló laboratórium 2 - BMEVIAUML13-HUActivate
+[19:02:22] WARNING: MATCHED!
+[19:02:22] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML13-HUActivate
+[19:02:25] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML13-HUActivate
+[19:02:25] INFO: 
+[53/100] Diplomatervezés B - BMEVIAUM027-HUActivate
+[19:02:25] WARNING: MATCHED!
+[19:02:25] INFO: Hovering over team: Diplomatervezés B - BMEVIAUM027-HUActivate
+[19:02:29] SUCCESS: Hidden: Diplomatervezés B - BMEVIAUM027-HUActivate
+[19:02:29] INFO: 
+[55/100] Informatika 2 - 2024T BMEVIAUAB01-HU
+[19:02:29] INFO: Skipped
+[19:02:30] INFO: 
+[57/100] Diplomatervezés 1 - BMEVIAUM022-HUActivate
+[19:02:30] WARNING: MATCHED!
+[19:02:30] INFO: Hovering over team: Diplomatervezés 1 - BMEVIAUM022-HUActivate
+[19:02:33] SUCCESS: Hidden: Diplomatervezés 1 - BMEVIAUM022-HUActivate
+[19:02:33] INFO: 
+[59/100] Önálló laboratórium - BMEVIAUBL00-HUActivate
+[19:02:33] WARNING: MATCHED!
+[19:02:33] INFO: Hovering over team: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[19:02:36] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[19:02:36] INFO: 
+[61/100] Kutatás 2. - BMEVIAUDK02-HUActivate
+[19:02:36] INFO: Skipped
+[19:02:37] INFO: 
+[63/100] Project Laboratory 1 - BMEVIAUML02-ENActivate
+[19:02:37] WARNING: MATCHED!
+[19:02:37] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[19:02:40] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[19:02:40] INFO: 
+[65/100] Research Work 6 - BMEVIAUDK06-ENActivate
+[19:02:40] WARNING: MATCHED!
+[19:02:40] INFO: Hovering over team: Research Work 6 - BMEVIAUDK06-ENActivate
+[19:02:43] SUCCESS: Hidden: Research Work 6 - BMEVIAUDK06-ENActivate
+[19:02:44] INFO: 
+[67/100] Informatika 2 - BMEVIAUAB01-HUActivate
+[19:02:44] INFO: Skipped
+[19:02:44] INFO: 
+[69/100] Informatika 2 - BMEVIAUAC10-HU
+[19:02:44] INFO: Skipped
+[19:02:45] INFO: 
+[71/100] Projektgyakorlat - BMEVIAUBL01-HUActivate
+[19:02:45] INFO: Skipped
+[19:02:45] INFO: 
+[73/100] Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[19:02:45] WARNING: MATCHED!
+[19:02:45] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[19:02:48] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[19:02:49] INFO: 
+[75/100] Témalaboratórium - BMEVIAUAL02-HUActivate
+[19:02:49] INFO: Skipped
+[19:02:50] INFO: 
+[77/100] Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[19:02:50] WARNING: MATCHED!
+[19:02:50] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[19:02:52] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[19:02:53] INFO: 
+[79/100] Témalaboratórium - BMEVIAUBB05-HUActivate
+[19:02:53] INFO: Skipped
+[19:02:54] INFO: 
+[81/100] Alkalmazásfejlesztés 2023Ősz új nem induló - BMEVIAUMB07-HUActivate
+[19:02:54] INFO: Skipped
+[19:02:54] INFO: 
+[83/100] 2025-26-2 Mesterséges intelligencia alapú szoftverek és szolgáltatások fejlesztése - BMEVIAUBXAV081-00-HU
+[19:02:54] INFO: Skipped
+[19:02:55] INFO: 
+[85/100] Projektfeladat mechatronikusoknak - BMEVIAUM039-HU - 2025Activate
+[19:02:55] INFO: Skipped
+[19:02:55] INFO: 
+[87/100] Final Project - BMEVIAUA019-ENActivate
+[19:02:55] INFO: Skipped
+[19:02:56] INFO: 
+[89/100] Önálló laboratórium - BMEVIAUBL00-HUActivate
+[19:02:56] WARNING: MATCHED!
+[19:02:56] INFO: Hovering over team: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[19:02:58] SUCCESS: Hidden: Önálló laboratórium - BMEVIAUBL00-HUActivate
+[19:02:59] INFO: 
+[91/100] Témalaboratórium - BMEVIAUAL00-HUActivate
+[19:02:59] INFO: Skipped
+[19:03:00] INFO: 
+[93/100] Research Work 5 - BMEVIAUDK05-EN
+[19:03:00] WARNING: MATCHED!
+[19:03:00] INFO: Hovering over team: Research Work 5 - BMEVIAUDK05-EN
+[19:03:02] SUCCESS: Hidden: Research Work 5 - BMEVIAUDK05-EN
+[19:03:03] INFO: 
+[95/100] Project Laboratory - BMEVIAUAL01-ENActivate
+[19:03:03] WARNING: MATCHED!
+[19:03:03] INFO: Hovering over team: Project Laboratory - BMEVIAUAL01-ENActivate
+[19:03:06] SUCCESS: Hidden: Project Laboratory - BMEVIAUAL01-ENActivate
+[19:03:06] INFO: 
+[97/100] Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[19:03:06] WARNING: MATCHED!
+[19:03:06] INFO: Hovering over team: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[19:03:09] SUCCESS: Hidden: Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[19:03:10] INFO: 
+[99/100] Informatika 2 - 2023 BMEVIAUAB01-HU
+[19:03:10] INFO: Skipped
+[19:03:11] INFO: 
+======================================================================
+[19:03:11] INFO: SUMMARY
+[19:03:11] INFO: ======================================================================
+[19:03:11] INFO: Teams processed: 100
+[19:03:11] INFO: Hidden: 19
+[19:03:11] INFO: Skipped: 30
+[19:03:11] INFO: Errors: 0
+[19:03:11] INFO: 
+✓ HIDDEN:
+[19:03:11] INFO:   - Diplomatervezés 2 - BMEVIAUMT03-HUActivate
+[19:03:11] INFO:   - Diplomatervezés A - BMEVIAUM026-HUActivate
+[19:03:11] INFO:   - Önálló laboratórium 1 - BMEVIAUML02-HUActivate
+[19:03:11] INFO:   - Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[19:03:11] INFO:   - Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[19:03:11] INFO:   - Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[19:03:11] INFO:   - Szakdolgozat-készítés - BMEVIAUAT01-HUActivate
+[19:03:11] INFO:   - Önálló laboratórium 2 - BMEVIAUML13-HUActivate
+[19:03:11] INFO:   - Diplomatervezés B - BMEVIAUM027-HUActivate
+[19:03:11] INFO:   - Diplomatervezés 1 - BMEVIAUM022-HUActivate
+[19:03:11] INFO:   - Önálló laboratórium - BMEVIAUBL00-HUActivate
+[19:03:11] INFO:   - Project Laboratory 1 - BMEVIAUML02-ENActivate
+[19:03:11] INFO:   - Research Work 6 - BMEVIAUDK06-ENActivate
+[19:03:11] INFO:   - Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[19:03:11] INFO:   - Önálló laboratórium 2 - BMEVIAUML11-HUActivate
+[19:03:11] INFO:   - Önálló laboratórium - BMEVIAUBL00-HUActivate
+[19:03:11] INFO:   - Research Work 5 - BMEVIAUDK05-EN
+[19:03:11] INFO:   - Project Laboratory - BMEVIAUAL01-ENActivate
+[19:03:11] INFO:   - Diploma Thesis Design 2 - BMEVIAUMT01-ENActivate
+[19:03:11] INFO: 
+Log: E:\learning_ai\TeamsUnsubscriber\teams_hidden_log.txt
+[19:05:54] INFO: ======================================================================
+[19:05:54] INFO: MS Teams Auto-Hide - Simple CDP Connection
+[19:05:54] INFO: Mode: LIVE
+[19:05:54] INFO: ======================================================================
+[19:05:55] INFO: Connecting to Chrome...
+[19:05:55] SUCCESS: Connected!
+[19:05:55] INFO: Current page: https://teams.microsoft.com/v2/
+[19:05:57] INFO: Looking for teams...
+[19:05:57] INFO: Found 258 teams using data-tid selector
+[19:05:57] INFO: Found 258 teams
+[19:05:57] INFO: Processing first 100...
+[19:05:57] INFO: ----------------------------------------------------------------------
+[19:05:57] INFO: 
+[2/100] Join or create team
+[19:05:57] INFO: Skipped
+[19:05:57] INFO: 
+[4/100] [SKIPPED: Container element with 5744 chars]
+[19:05:57] INFO: 
+[5/100] TDK 2020 Intelligens rendszerek szekció
+[19:05:57] INFO: Skipped
+[19:05:58] INFO: 
+[7/100] Production supervision with AI
+[19:05:58] INFO: Skipped
+[19:05:58] INFO: 
+[9/100] TddTemalabor
+[19:05:58] INFO: Skipped
+[19:05:59] INFO: 
+[11/100] Eseményvezérelt és vizuális programozás - BMEVIAUBB01-HU
+[19:05:59] INFO: Skipped
+[19:06:00] INFO: 
+[13/100] Eseményvezérelt és vizuális programozás 2021 - BMEVIAUBB01-HU
+[19:06:00] INFO: Skipped
+[19:06:00] INFO: 
+[15/100] Mesterséges intelligencia alapú szoftverek és szolgáltatások fejlesztése - BMEVIAUBXAV081-00-HU
+[19:06:00] INFO: Skipped
+[19:06:01] INFO: 
+[17/100] IoT szolgáltatások és alkalmazások fejlesztése - BMEVIAUAV36-HU
+[19:06:01] INFO: Skipped
+[19:06:01] INFO: 
+[19/100] Témalaboratórium - BMEVIAUBB07-HUActivate
+[19:06:01] INFO: Skipped
+[19:06:02] INFO: 
+[21/100] Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[19:06:02] WARNING: MATCHED!
+[19:06:02] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[19:06:04] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[19:06:05] INFO: 
+[23/100] Alkalmazásfejlesztési környezetek - BMEVIAUAC04-HU
+[19:06:05] INFO: Skipped
+[19:06:06] INFO: 
+[25/100] Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[19:06:06] WARNING: MATCHED!
+[19:06:06] INFO: Hovering over team: Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[19:06:09] SUCCESS: Hidden: Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[19:06:09] INFO: 
+[27/100] Eseményvezérelt és vizuális programozás 2022 - BMEVIAUBB01-HU
+[19:06:09] INFO: Skipped
+[19:06:10] INFO: 
+[29/100] Kutatás 6. - BMEVIAUDK06-HUActivate
+[19:06:10] INFO: Skipped
+[19:06:10] INFO: 
+[31/100] Projektgyakorlat - BMEVIAUBL01-HUActivate
+[19:06:10] INFO: Skipped
+[19:06:11] INFO: 
+[33/100] Eseményvezérelt és vizuális programozás - BMEVIAUBB01-HU
+[19:06:11] INFO: Skipped
+[19:06:11] INFO: 
+[35/100] Alkalmazásfejlesztési környezetek - 2022T - BMEVIAUAC04-HU
+[19:06:11] INFO: Skipped
+[19:06:12] INFO: 
+[37/100] Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[19:06:12] INFO: Skipped
+[19:06:12] INFO: 
+[39/100] Alkalmazásfejlesztési környezetek - BMEVIAUAC04-HUActivate
+[19:06:12] INFO: Skipped
+[19:06:13] INFO: 
+[41/100] Alkalmazásfejlesztés 2024T - BMEVIAUMB07-HU
+[19:06:13] INFO: Skipped
+[19:06:13] INFO: 
+[43/100] Témalaboratórium - BMEVIAUAL00-HUActivate
+[19:06:13] INFO: Skipped
+[19:06:14] INFO: 
+[45/100] 2025-26-2 Alkalmazásfejlesztés - BMEVIAUMB07-HU
+[19:06:14] INFO: Skipped
+[19:06:14] INFO: 
+[47/100] Diplomatervezés B - BMEVIAUM027-HUActivate
+[19:06:14] WARNING: MATCHED!
+[19:06:14] INFO: Hovering over team: Diplomatervezés B - BMEVIAUM027-HUActivate
+[19:06:17] SUCCESS: Hidden: Diplomatervezés B - BMEVIAUM027-HUActivate
+[19:06:18] INFO: 
+[49/100] Informatika 2 - 2024T BMEVIAUAB01-HU
+[19:06:18] INFO: Skipped
+[19:06:18] INFO: 
+[51/100] Alkalmazásfejlesztési környezetek - BMEVIAUAC04-HU
+[19:06:18] INFO: Skipped
+[19:06:19] INFO: 
+[53/100] Kutatás 2. - BMEVIAUDK02-HUActivate
+[19:06:19] INFO: Skipped
+[19:06:19] INFO: 
+[55/100] Project Laboratory 1 - BMEVIAUML02-ENActivate
+[19:06:19] WARNING: MATCHED!
+[19:06:19] INFO: Hovering over team: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[19:06:22] SUCCESS: Hidden: Project Laboratory 1 - BMEVIAUML02-ENActivate
+[19:06:23] INFO: 
+[57/100] BSc Thesis Project - BMEVIAUAT00-ENActivate
+[19:06:23] WARNING: MATCHED!
+[19:06:23] INFO: Hovering over team: BSc Thesis Project - BMEVIAUAT00-ENActivate
+[19:06:25] SUCCESS: Hidden: BSc Thesis Project - BMEVIAUAT00-ENActivate
+[19:06:26] INFO: 
+[59/100] Projektgyakorlat - BMEVIAUBL01-HUActivate
+[19:06:26] INFO: Skipped
+[19:06:26] INFO: 
+[61/100] Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[19:06:26] WARNING: MATCHED!
+[19:06:26] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[19:06:29] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[19:06:30] INFO: 
+[63/100] Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[19:06:30] WARNING: MATCHED!
+[19:06:30] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[19:06:33] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[19:06:33] INFO: 
+[65/100] Témalaboratórium - BMEVIAUBB05-HUActivate
+[19:06:33] INFO: Skipped
+[19:06:34] INFO: 
+[67/100] Alkalmazásfejlesztés 2023Ősz új nem induló - BMEVIAUMB07-HUActivate
+[19:06:34] INFO: Skipped
+[19:06:34] INFO: 
+[69/100] 2025-26-2 Mesterséges intelligencia alapú szoftverek és szolgáltatások fejlesztése - BMEVIAUBXAV081-00-HU
+[19:06:34] INFO: Skipped
+[19:06:35] INFO: 
+[71/100] Projektfeladat mechatronikusoknak - BMEVIAUM039-HU - 2025Activate
+[19:06:35] INFO: Skipped
+[19:06:35] INFO: 
+[73/100] Final Project - BMEVIAUA019-ENActivate
+[19:06:35] INFO: Skipped
+[19:06:36] INFO: 
+[75/100] Final Project - BMEVIAUA019-ENActivate
+[19:06:36] INFO: Skipped
+[19:06:36] INFO: 
+[77/100] Témalaboratórium - BMEVIAUAL00-HUActivate
+[19:06:36] INFO: Skipped
+[19:06:37] INFO: 
+[79/100] Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[19:06:37] WARNING: MATCHED!
+[19:06:37] INFO: Hovering over team: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[19:06:39] SUCCESS: Hidden: Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[19:06:40] INFO: 
+[81/100] Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[19:06:40] WARNING: MATCHED!
+[19:06:40] INFO: Hovering over team: Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[19:06:43] SUCCESS: Hidden: Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[19:06:43] INFO: 
+[83/100] Projektfeladat mechatronikusoknak - BMEVIAUM039-HUActivate
+[19:06:43] INFO: Skipped
+[19:06:44] INFO: 
+[85/100] Témalaboratórium - BMEVIAUAL00-HUActivate
+[19:06:44] INFO: Skipped
+[19:06:44] INFO: 
+[87/100] Kutatás 7. - BMEVIAUDK07-HUActivate
+[19:06:44] INFO: Skipped
+[19:06:45] INFO: 
+[89/100] Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[19:06:45] WARNING: MATCHED!
+[19:06:45] INFO: Hovering over team: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[19:06:48] SUCCESS: Hidden: Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[19:06:48] INFO: 
+[91/100] Alkalmazásfejlesztés 2020Ősz - BMEVIAUMA09-HU
+[19:06:48] INFO: Skipped
+[19:06:49] INFO: 
+[93/100] Kutatás 8. - BMEVIAUDK08-HUActivate
+[19:06:49] INFO: Skipped
+[19:06:49] INFO: 
+[95/100] Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[19:06:49] WARNING: MATCHED!
+[19:06:49] INFO: Hovering over team: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[19:06:52] SUCCESS: Hidden: Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[19:06:52] INFO: 
+[97/100] Alkalmazásfejlesztés 2022 - BMEVIAUMA09-HU
+[19:06:52] INFO: Skipped
+[19:06:53] INFO: 
+[99/100] Témalaboratórium - BMEVIAUBB05-HUActivate
+[19:06:53] INFO: Skipped
+[19:06:54] INFO: 
+======================================================================
+[19:06:54] INFO: SUMMARY
+[19:06:54] INFO: ======================================================================
+[19:06:54] INFO: Teams processed: 100
+[19:06:54] INFO: Hidden: 11
+[19:06:54] INFO: Skipped: 38
+[19:06:54] INFO: Errors: 0
+[19:06:54] INFO: 
+✓ HIDDEN:
+[19:06:54] INFO:   - Önálló laboratórium 2 - BMEVIAUML03-HUActivate
+[19:06:54] INFO:   - Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[19:06:54] INFO:   - Diplomatervezés B - BMEVIAUM027-HUActivate
+[19:06:54] INFO:   - Project Laboratory 1 - BMEVIAUML02-ENActivate
+[19:06:54] INFO:   - BSc Thesis Project - BMEVIAUAT00-ENActivate
+[19:06:54] INFO:   - Szakdolgozat-készítés - BMEVIAUBT00-HUActivate
+[19:06:54] INFO:   - Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[19:06:54] INFO:   - Szakdolgozat-készítés - BMEVIAUA406-HUActivate
+[19:06:54] INFO:   - Diploma Thesis Design B - BMEVIAUM027-ENActivate
+[19:06:54] INFO:   - Önálló laboratórium 2 - BMEVIAUML01-HUActivate
+[19:06:54] INFO:   - Diplomatervezés 2 - BMEVIAUMT01-HUActivate
+[19:06:54] INFO: 
+Log: E:\learning_ai\TeamsUnsubscriber\teams_hidden_log.txt

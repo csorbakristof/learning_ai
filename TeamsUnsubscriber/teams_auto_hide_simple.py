@@ -20,7 +20,7 @@ PATTERNS = [
     "Diploma Thesis Design"
 ]
 
-MAX_TEAMS_TO_PROCESS = 10000  # Process all teams
+MAX_TEAMS_TO_HIDE = 100  # Only count actually hidden teams
 # Save log file in the same directory as this script
 SCRIPT_DIR = Path(__file__).parent
 LOG_FILE = SCRIPT_DIR / "teams_hidden_log.txt"
@@ -172,14 +172,16 @@ def main():
                 return
             
             logger.info(f"Found {len(teams)} teams")
-            teams_to_process = teams[:MAX_TEAMS_TO_PROCESS]
-            if len(teams_to_process) == len(teams):
-                logger.info(f"Processing all {len(teams_to_process)} teams...")
-            else:
-                logger.info(f"Processing first {len(teams_to_process)}...")
+            logger.info(f"Will hide up to {MAX_TEAMS_TO_HIDE} matching teams...")
             logger.info("-"*70)
             
-            for i, team in enumerate(teams_to_process):
+            teams_checked = 0
+            for i, team in enumerate(teams):
+                # Stop if we've hidden enough teams
+                if len(hidden_teams) >= MAX_TEAMS_TO_HIDE:
+                    logger.info(f"\nReached limit of {MAX_TEAMS_TO_HIDE} hidden teams. Stopping.")
+                    break
+                
                 try:
                     team_name = team.text_content().strip()
                     
@@ -189,10 +191,11 @@ def main():
                     
                     # Skip container elements with huge concatenated text (> 500 chars means it's likely a container)
                     if len(team_name) > 500:
-                        logger.info(f"\n[{i+1}/{len(teams_to_process)}] [SKIPPED: Container element with {len(team_name)} chars]")
+                        logger.info(f"\n[Checked: {teams_checked+1}/{len(teams)}] [Hidden: {len(hidden_teams)}/{MAX_TEAMS_TO_HIDE}] [SKIPPED: Container element with {len(team_name)} chars]")
                         continue
                     
-                    logger.info(f"\n[{i+1}/{len(teams_to_process)}] {team_name}")
+                    teams_checked += 1
+                    logger.info(f"\n[Checked: {teams_checked}/{len(teams)}] [Hidden: {len(hidden_teams)}/{MAX_TEAMS_TO_HIDE}] {team_name}")
                     
                     if matches_pattern(team_name):
                         logger.warning("MATCHED!")
@@ -214,7 +217,7 @@ def main():
             logger.info("\n" + "="*70)
             logger.info("SUMMARY")
             logger.info("="*70)
-            logger.info(f"Teams processed: {len(teams_to_process)}")
+            logger.info(f"Teams checked: {teams_checked}")
             logger.info(f"Hidden: {len(hidden_teams)}")
             logger.info(f"Skipped: {len(skipped_teams)}")
             logger.info(f"Errors: {len(error_teams)}")

@@ -1,0 +1,128 @@
+[17:25:51] INFO: ======================================================================
+[17:25:51] INFO: MS Teams Auto-Hide Script Started
+[17:25:51] INFO: Mode: DRY RUN (no actual changes)
+[17:25:51] INFO: Max teams to process: 10
+[17:25:51] INFO: Target patterns: Project Laboratory, Thesis Project, Diplomatervezés, Research Work, Önálló laboratórium, Informatics, Szakdolgozat-készítés, Diploma Thesis Design
+[17:25:51] INFO: ======================================================================
+[17:25:51] INFO: Using Chrome profile: C:\Users\kristof\AppData\Local\Google\Chrome\User Data
+[17:25:51] WARNING: Please ensure Chrome is closed before continuing...
+[17:25:59] INFO: Launching Chrome browser...
+[17:28:04] ERROR: Failed to launch browser: BrowserType.launch_persistent_context: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --user-data-dir=C:\Users\kristof\AppData\Local\Google\Chrome\User Data --remote-debugging-pipe about:blank
+<launched> pid=11540
+[pid=11540][err] 
+[pid=11540][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+[pid=11540][err] [11540:12392:0331/172602.000:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[pid=11540][err] [11540:12392:0331/172622.797:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[pid=11540][err] [11540:12392:0331/172711.296:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Call log:
+  - <launching> C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --user-data-dir=C:\Users\kristof\AppData\Local\Google\Chrome\User Data --remote-debugging-pipe about:blank
+  - <launched> pid=11540
+  - [pid=11540][err]
+  - [pid=11540][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+  - [pid=11540][err] [11540:12392:0331/172602.000:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+  - [pid=11540][err] [11540:12392:0331/172622.797:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+  - [pid=11540][err] [11540:12392:0331/172711.296:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+  - [pid=11540] <gracefully close start>
+  - [pid=11540] <kill>
+  - [pid=11540] <will force kill>
+  - [pid=11540] taskkill stderr: ERROR: The process "11540" not found.
+  - [pid=11540] <process did exit: exitCode=0, signal=null>
+  - [pid=11540] starting temporary directories cleanup
+  - [pid=11540] finished temporary directories cleanup
+  - [pid=11540] <gracefully close end>
+
+[17:28:04] ERROR: Make sure Chrome is completely closed.
+[17:28:25] INFO: ======================================================================
+[17:28:25] INFO: MS Teams Auto-Hide Script Started
+[17:28:25] INFO: Mode: DRY RUN (no actual changes)
+[17:28:25] INFO: Max teams to process: 10
+[17:28:25] INFO: Target patterns: Project Laboratory, Thesis Project, Diplomatervezés, Research Work, Önálló laboratórium, Informatics, Szakdolgozat-készítés, Diploma Thesis Design
+[17:28:25] INFO: ======================================================================
+[17:28:25] INFO: Using Chrome profile: C:\Users\kristof\AppData\Local\Google\Chrome\User Data
+[17:28:25] WARNING: Please ensure Chrome is closed before continuing...
+[17:28:26] INFO: Launching Chrome browser...
+[17:28:26] INFO: This may take 10-20 seconds if Chrome is not already open...
+[17:28:58] ERROR: Failed to launch browser: BrowserType.launch_persistent_context: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --user-data-dir=C:\Users\kristof\AppData\Local\Google\Chrome\User Data --remote-debugging-pipe about:blank
+<launched> pid=2864
+[pid=2864][err] 
+[pid=2864][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+[pid=2864][err] [2864:6064:0331/172829.592:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[pid=2864][err] [2864:6064:0331/172858.314:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Call log:
+  - <launching> C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --user-data-dir=C:\Users\kristof\AppData\Local\Google\Chrome\User Data --remote-debugging-pipe about:blank
+  - <launched> pid=2864
+  - [pid=2864][err]
+  - [pid=2864][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+  - [pid=2864][err] [2864:6064:0331/172829.592:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+  - [pid=2864][err] [2864:6064:0331/172858.314:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+  - [pid=2864] <gracefully close start>
+  - [pid=2864] <kill>
+  - [pid=2864] <will force kill>
+  - [pid=2864] taskkill stderr: ERROR: The process "2864" not found.
+  - [pid=2864] <process did exit: exitCode=0, signal=null>
+  - [pid=2864] starting temporary directories cleanup
+  - [pid=2864] finished temporary directories cleanup
+  - [pid=2864] <gracefully close end>
+
+[17:28:58] ERROR: Make sure Chrome is completely closed.
+[17:28:58] ERROR: If Chrome is closed, try waiting 10 seconds and running again.
+[17:29:10] INFO: ======================================================================
+[17:29:10] INFO: MS Teams Auto-Hide Script Started
+[17:29:10] INFO: Mode: DRY RUN (no actual changes)
+[17:29:10] INFO: Max teams to process: 10
+[17:29:10] INFO: Target patterns: Project Laboratory, Thesis Project, Diplomatervezés, Research Work, Önálló laboratórium, Informatics, Szakdolgozat-készítés, Diploma Thesis Design
+[17:29:10] INFO: ======================================================================
+[17:29:10] INFO: Using Chrome profile: C:\Users\kristof\AppData\Local\Google\Chrome\User Data
+[17:29:10] WARNING: Please ensure Chrome is closed before continuing...
+[17:29:11] INFO: Launching Chrome browser...
+[17:29:11] INFO: This may take 10-20 seconds if Chrome is not already open...
+[17:30:41] ERROR: Failed to launch browser: BrowserType.launch_persistent_context: Timeout 60000ms exceeded.
+Call log:
+  - <launching> C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --user-data-dir=C:\Users\kristof\AppData\Local\Google\Chrome\User Data --remote-debugging-pipe about:blank
+  - <launched> pid=8420
+  - [pid=8420][err]
+  - [pid=8420][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+  - [pid=8420][err] [8420:17316:0331/172914.164:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+  - [pid=8420][err] [8420:17316:0331/172934.383:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+
+[17:30:41] ERROR: Make sure Chrome is completely closed.
+[17:30:41] ERROR: If Chrome is closed, try waiting 10 seconds and running again.
+[17:35:24] INFO: ======================================================================
+[17:35:24] INFO: MS Teams Auto-Hide - Simple CDP Connection
+[17:35:24] INFO: Mode: DRY RUN
+[17:35:24] INFO: ======================================================================
+[17:35:25] INFO: Connecting to Chrome...
+[17:35:25] ERROR: Failed to connect: BrowserType.connect_over_cdp: connect ECONNREFUSED ::1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+
+[17:35:25] ERROR: Make sure Chrome is running with:
+[17:35:25] ERROR:   chrome.exe --remote-debugging-port=9222
+[17:40:51] INFO: ======================================================================
+[17:40:51] INFO: MS Teams Auto-Hide - Simple CDP Connection
+[17:40:51] INFO: Mode: DRY RUN
+[17:40:51] INFO: ======================================================================
+[17:40:52] INFO: Connecting to Chrome...
+[17:40:53] ERROR: Failed to connect: BrowserType.connect_over_cdp: connect ECONNREFUSED ::1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+
+[17:40:53] ERROR: Make sure Chrome is running with:
+[17:40:53] ERROR:   chrome.exe --remote-debugging-port=9222
+[17:43:27] INFO: ======================================================================
+[17:43:27] INFO: MS Teams Auto-Hide - Simple CDP Connection
+[17:43:27] INFO: Mode: DRY RUN
+[17:43:27] INFO: ======================================================================
+[17:43:29] INFO: Connecting to Chrome...
+[17:43:29] ERROR: Failed to connect: BrowserType.connect_over_cdp: connect ECONNREFUSED ::1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+
+[17:43:29] ERROR: Make sure Chrome is running with:
+[17:43:29] ERROR:   chrome.exe --remote-debugging-port=9222

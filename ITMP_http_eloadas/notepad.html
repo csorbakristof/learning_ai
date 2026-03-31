@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jegyzettömb</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --textarea-bg: #f8f9fa;
+            --border-color: #dee2e6;
+            --button-bg: #007bff;
+            --button-hover: #0056b3;
+            --status-bg: #f1f3f5;
+            --success-color: #28a745;
+        }
+
+        body.dark-mode {
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --textarea-bg: #2d2d2d;
+            --border-color: #404040;
+            --button-bg: #0d6efd;
+            --button-hover: #0a58ca;
+            --status-bg: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header {
+            padding: 15px 20px;
+            background-color: var(--status-bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .dark-mode-toggle {
+            background-color: #6c757d;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #5a6268;
+        }
+
+        .editor-container {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        textarea {
+            flex: 1;
+            width: 100%;
+            padding: 20px;
+            background-color: var(--textarea-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+            font-family: 'Consolas', 'Monaco', monospace;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        textarea:focus {
+            border-color: var(--button-bg);
+        }
+
+        .status-bar {
+            padding: 12px 20px;
+            background-color: var(--status-bg);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .status-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .save-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .save-indicator.saved {
+            color: var(--success-color);
+        }
+
+        .checkmark {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .checkmark.show {
+            opacity: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .saving {
+            animation: pulse 1s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .controls {
+                justify-content: stretch;
+            }
+
+            button {
+                flex: 1;
+            }
+
+            .status-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .status-info {
+                flex-direction: column;
+                gap: 5px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📝 Jegyzettömb</h1>
+        <div class="controls">
+            <button id="newNote" title="Új jegyzet létrehozása">🗒️ Új jegyzet</button>
+            <button id="download" title="Letöltés .txt fájlként">💾 Letöltés</button>
+            <button id="copy" title="Másolás vágólapra">📋 Másolás</button>
+            <button id="darkMode" class="dark-mode-toggle" title="Sötét mód váltása">🌓 Mód váltása</button>
+        </div>
+    </div>
+
+    <div class="editor-container">
+        <textarea id="notepad" placeholder="Kezdj el gépelni..."></textarea>
+    </div>
+
+    <div class="status-bar">
+        <div class="status-info">
+            <div class="save-indicator">
+                <span class="checkmark" id="checkmark">✓</span>
+                <span id="lastSaved">Még nem mentve</span>
+            </div>
+            <div>
+                <span id="charCount">0</span> karakter
+            </div>
+            <div>
+                <span id="wordCount">0</span> szó
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM elemek
+        const notepad = document.getElementById('notepad');
+        const lastSavedEl = document.getElementById('lastSaved');
+        const charCountEl = document.getElementById('charCount');
+        const wordCountEl = document.getElementById('wordCount');
+        const checkmarkEl = document.getElementById('checkmark');
+        const newNoteBtn = document.getElementById('newNote');
+        const downloadBtn = document.getElementById('download');
+        const copyBtn = document.getElementById('copy');
+        const darkModeBtn = document.getElementById('darkMode');
+
+        // LocalStorage kulcsok
+        const CONTENT_KEY = 'notepad_content';
+        const DARKMODE_KEY = 'notepad_darkmode';
+
+        // Debounce timer
+        let saveTimer = null;
+
+        // Inicializálás
+        function init() {
+            // Dark mode betöltése
+            const darkMode = localStorage.getItem(DARKMODE_KEY) === 'true';
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Tartalom betöltése
+            const savedContent = localStorage.getItem(CONTENT_KEY);
+            if (savedContent) {
+                notepad.value = savedContent;
+                updateStats();
+                lastSavedEl.textContent = 'Utoljára mentve: ' + getLastSavedTime();
+            }
+        }
+
+        // Statisztikák frissítése
+        function updateStats() {
+            const text = notepad.value;
+            const charCount = text.length;
+            const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+
+            charCountEl.textContent = charCount.toLocaleString('hu-HU');
+            wordCountEl.textContent = wordCount.toLocaleString('hu-HU');
+        }
+
+        // Mentés localStorage-ba
+        function saveContent() {
+            const content = notepad.value;
+            localStorage.setItem(CONTENT_KEY, content);
+            
+            // Mentési idő megjelenítése
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('hu-HU', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            });
+            lastSavedEl.textContent = 'Utoljára mentve: ' + timeString;
+            
+            // Vizuális visszajelzés
+            checkmarkEl.classList.add('show');
+            setTimeout(() => {
+                checkmarkEl.classList.remove('show');
+            }, 1000);
+        }
+
+        // Utolsó mentés idejének lekérése
+        function getLastSavedTime() {
+            const now = new Date();
+            return now.toLocaleTimeString('hu-HU', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            });
+        }
+
+        // Input esemény kezelése (debounce-szal)
+        notepad.addEventListener('input', () => {
+            updateStats();
+            
+            // Timer törlése és újraindítása
+            if (saveTimer) {
+                clearTimeout(saveTimer);
+            }
+            
+            saveTimer = setTimeout(() => {
+                saveContent();
+            }, 1000);
+        });
+
+        // Új jegyzet
+        newNoteBtn.addEventListener('click', () => {
+            if (notepad.value.trim() === '' || confirm('Biztosan törölni szeretnéd az aktuális jegyzetet?')) {
+                notepad.value = '';
+                localStorage.removeItem(CONTENT_KEY);
+                updateStats();
+                lastSavedEl.textContent = 'Még nem mentve';
+                notepad.focus();
+            }
+        });
+
+        // Letöltés .txt fájlként
+        downloadBtn.addEventListener('click', () => {
+            const content = notepad.value;
+            if (content.trim() === '') {
+                alert('Nincs letölthető tartalom!');
+                return;
+            }
+
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            
+            const now = new Date();
+            const filename = `jegyzet_${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}.txt`;
+            
+            a.href = url;
+            a.download = filename;
+            a.click();
+            
+            URL.revokeObjectURL(url);
+        });
+
+        // Másolás vágólapra
+        copyBtn.addEventListener('click', async () => {
+            const content = notepad.value;
+            if (content.trim() === '') {
+                alert('Nincs másolható tartalom!');
+                return;
+            }
+
+            try {
+                await navigator.clipboard.writeText(content);
+                
+                // Vizuális visszajelzés
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = '✓ Másolva!';
+                copyBtn.style.backgroundColor = '#28a745';
+                
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    copyBtn.style.backgroundColor = '';
+                }, 2000);
+            } catch (err) {
+                // Fallback régebbi böngészőkhöz
+                notepad.select();
+                document.execCommand('copy');
+                alert('Tartalom vágólapra másolva!');
+            }
+        });
+
+        // Dark mode váltása
+        darkModeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem(DARKMODE_KEY, isDark);
+        });
+
+        // Tab billentyű kezelése (textarea-ban maradjon)
+        notepad.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = notepad.selectionStart;
+                const end = notepad.selectionEnd;
+                
+                notepad.value = notepad.value.substring(0, start) + '    ' + notepad.value.substring(end);
+                notepad.selectionStart = notepad.selectionEnd = start + 4;
+                
+                // Trigger input event a mentéshez
+                notepad.dispatchEvent(new Event('input'));
+            }
+        });
+
+        // Inicializálás
+        init();
+
+        // Fókusz a textarea-ra
+        notepad.focus();
+    </script>
+</body>
+</html>

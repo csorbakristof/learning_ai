@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Színkeverő Játék</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .colors-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .color-box {
+            text-align: center;
+        }
+
+        .color-box h3 {
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .color-square {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid #ddd;
+        }
+
+        .sliders-container {
+            margin-bottom: 30px;
+        }
+
+        .slider-group {
+            margin-bottom: 20px;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .slider-label.red { color: #e74c3c; }
+        .slider-label.green { color: #27ae60; }
+        .slider-label.blue { color: #3498db; }
+
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            border: none;
+        }
+
+        #redSlider {
+            background: linear-gradient(to right, #000, #ff0000);
+        }
+
+        #greenSlider {
+            background: linear-gradient(to right, #000, #00ff00);
+        }
+
+        #blueSlider {
+            background: linear-gradient(to right, #000, #0000ff);
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            flex: 1;
+            padding: 15px 30px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 150px;
+        }
+
+        #checkButton {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        #checkButton:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        #newGameButton {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        #newGameButton:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .result-text {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .result-rating {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .stats-container {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stats-text {
+            font-size: 1em;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .color-square {
+                width: 150px;
+                height: 150px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Színkeverő Játék</h1>
+        
+        <div class="colors-container">
+            <div class="color-box">
+                <h3>Célszín</h3>
+                <div id="targetColor" class="color-square"></div>
+            </div>
+            <div class="color-box">
+                <h3>Te színed</h3>
+                <div id="currentColor" class="color-square"></div>
+            </div>
+        </div>
+
+        <div class="sliders-container">
+            <div class="slider-group">
+                <div class="slider-label red">
+                    <span>🔴 Piros</span>
+                    <span id="redValue">128</span>
+                </div>
+                <input type="range" id="redSlider" min="0" max="255" value="128">
+            </div>
+
+            <div class="slider-group">
+                <div class="slider-label green">
+                    <span>🟢 Zöld</span>
+                    <span id="greenValue">128</span>
+                </div>
+                <input type="range" id="greenSlider" min="0" max="255" value="128">
+            </div>
+
+            <div class="slider-group">
+                <div class="slider-label blue">
+                    <span>🔵 Kék</span>
+                    <span id="blueValue">128</span>
+                </div>
+                <input type="range" id="blueSlider" min="0" max="255" value="128">
+            </div>
+        </div>
+
+        <div class="buttons-container">
+            <button id="checkButton">✓ Ellenőrzés</button>
+            <button id="newGameButton">🔄 Új játék</button>
+        </div>
+
+        <div class="result-container" id="resultContainer" style="display: none;">
+            <div class="result-text" id="resultText"></div>
+            <div class="result-rating" id="resultRating"></div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stats-text" id="statsText">Játssz egy kört az átlagpontszám megjelenítéséhez!</div>
+        </div>
+    </div>
+
+    <script>
+        // Játék állapot változók
+        let targetR, targetG, targetB;
+        let scores = [];
+        let currentR = 128;
+        let currentG = 128;
+        let currentB = 128;
+
+        // DOM elemek
+        const targetColorDiv = document.getElementById('targetColor');
+        const currentColorDiv = document.getElementById('currentColor');
+        const redSlider = document.getElementById('redSlider');
+        const greenSlider = document.getElementById('greenSlider');
+        const blueSlider = document.getElementById('blueSlider');
+        const redValue = document.getElementById('redValue');
+        const greenValue = document.getElementById('greenValue');
+        const blueValue = document.getElementById('blueValue');
+        const checkButton = document.getElementById('checkButton');
+        const newGameButton = document.getElementById('newGameButton');
+        const resultContainer = document.getElementById('resultContainer');
+        const resultText = document.getElementById('resultText');
+        const resultRating = document.getElementById('resultRating');
+        const statsText = document.getElementById('statsText');
+
+        // Véletlenszerű célszín generálása
+        function generateTargetColor() {
+            targetR = Math.floor(Math.random() * 256);
+            targetG = Math.floor(Math.random() * 256);
+            targetB = Math.floor(Math.random() * 256);
+            targetColorDiv.style.backgroundColor = `rgb(${targetR}, ${targetG}, ${targetB})`;
+            
+            // Eredmény elrejtése új játéknál
+            resultContainer.style.display = 'none';
+        }
+
+        // Aktuális szín frissítése
+        function updateCurrentColor() {
+            currentR = parseInt(redSlider.value);
+            currentG = parseInt(greenSlider.value);
+            currentB = parseInt(blueSlider.value);
+            
+            currentColorDiv.style.backgroundColor = `rgb(${currentR}, ${currentG}, ${currentB})`;
+            redValue.textContent = currentR;
+            greenValue.textContent = currentG;
+            blueValue.textContent = currentB;
+        }
+
+        // Színek közötti távolság számítása
+        function calculateColorDistance() {
+            const dr = targetR - currentR;
+            const dg = targetG - currentG;
+            const db = targetB - currentB;
+            return Math.sqrt(dr * dr + dg * dg + db * db);
+        }
+
+        // Pontszám kiszámítása és megjelenítése
+        function checkColor() {
+            const distance = calculateColorDistance();
+            const maxDistance = Math.sqrt(255 * 255 + 255 * 255 + 255 * 255); // ≈ 441
+            const score = Math.round(100 * (1 - distance / maxDistance));
+            
+            // Pontszám mentése
+            scores.push(score);
+            
+            // Értékelés meghatározása
+            let rating = '';
+            if (score >= 95) rating = '🏆 Tökéletes!';
+            else if (score >= 85) rating = '⭐ Kiváló!';
+            else if (score >= 70) rating = '👍 Nagyon jó!';
+            else if (score >= 50) rating = '😊 Jó!';
+            else if (score >= 30) rating = '🤔 Közepes';
+            else rating = '💪 Próbáld újra!';
+            
+            // Eredmény megjelenítése
+            resultText.textContent = `${score} pont`;
+            resultRating.textContent = rating;
+            resultContainer.style.display = 'flex';
+            
+            // Átlagpontszám frissítése
+            updateStats();
+        }
+
+        // Statisztikák frissítése
+        function updateStats() {
+            if (scores.length === 0) {
+                statsText.textContent = 'Játssz egy kört az átlagpontszám megjelenítéséhez!';
+            } else {
+                const average = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+                const gamesPlayed = scores.length;
+                statsText.textContent = `📊 Játékok száma: ${gamesPlayed} | Átlagpontszám: ${average}`;
+            }
+        }
+
+        // Event listener-ek a sliderekhez
+        redSlider.addEventListener('input', updateCurrentColor);
+        greenSlider.addEventListener('input', updateCurrentColor);
+        blueSlider.addEventListener('input', updateCurrentColor);
+
+        // Gomb event listener-ek
+        checkButton.addEventListener('click', checkColor);
+        newGameButton.addEventListener('click', () => {
+            generateTargetColor();
+            // Sliderek reset középre
+            redSlider.value = 128;
+            greenSlider.value = 128;
+            blueSlider.value = 128;
+            updateCurrentColor();
+        });
+
+        // Kezdeti állapot beállítása
+        generateTargetColor();
+        updateCurrentColor();
+    </script>
+</body>
+</html>

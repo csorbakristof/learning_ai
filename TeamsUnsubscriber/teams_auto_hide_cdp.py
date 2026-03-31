@@ -25,7 +25,9 @@ PATTERNS = [
 
 # Settings
 MAX_TEAMS_TO_PROCESS = 10
-LOG_FILE = "teams_hidden_log.txt"
+# Save log file in the same directory as this script
+SCRIPT_DIR = Path(__file__).parent
+LOG_FILE = SCRIPT_DIR / "teams_hidden_log.txt"
 CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 if not os.path.exists(CHROME_PATH):
     CHROME_PATH = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"

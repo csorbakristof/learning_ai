@@ -35,7 +35,7 @@ This will actually hide matching teams.
 
 ### ✅ Do This
 - Keep Chrome running while script executes
-- Check `teams_hidden_log.txt` for detailed logs
+- Check `E:\learning_ai\TeamsUnsubscriber\teams_hidden_log.txt` for detailed logs
 - Run dry-run first to preview changes
 - Script processes first 10 teams at a time
 
@@ -134,13 +134,13 @@ time.sleep(0.5)  # Adjust delay between actions (seconds)
 
 ---
 
-## File Overview
+**File Overview
 
 - `teams_auto_hide_simple.py` - **Main automation script (CDP approach)**
 - `START_CHROME_AUTOMATION.bat` - **Chrome launcher with debugging**
-- `teams_hidden_log.txt` - Execution log (created after run)
+- `teams_hidden_log.txt` - Execution log in `TeamsUnsubscriber` folder (created after run)
 - `SimpleBrowserBasedUnsubscribe.md` - Full documentation
 - `QUICK_START.md` - This file
 
 **Debug files (created as needed):**
-- `debug.png` - Screenshot when errors occur
+- `debug.png` - Screenshot when errors occur (in `TeamsUnsubscriber` folder)

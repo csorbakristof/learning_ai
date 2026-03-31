@@ -24,7 +24,9 @@ PATTERNS = [
 
 # Settings
 MAX_TEAMS_TO_PROCESS = 10
-LOG_FILE = "teams_hidden_log.txt"
+# Save log file in the same directory as this script
+SCRIPT_DIR = Path(__file__).parent
+LOG_FILE = SCRIPT_DIR / "teams_hidden_log.txt"
 CHROME_PROFILE_PATH = os.path.join(os.environ['LOCALAPPDATA'], r'Google\Chrome\User Data')
 
 

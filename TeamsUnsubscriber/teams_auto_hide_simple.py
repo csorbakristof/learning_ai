@@ -6,6 +6,7 @@ from playwright.sync_api import sync_playwright
 import time
 import sys
 from datetime import datetime
+from pathlib import Path
 
 # Configuration
 PATTERNS = [
@@ -19,8 +20,10 @@ PATTERNS = [
     "Diploma Thesis Design"
 ]
 
-MAX_TEAMS_TO_PROCESS = 10
-LOG_FILE = "teams_hidden_log.txt"
+MAX_TEAMS_TO_PROCESS = 10000  # Process all teams
+# Save log file in the same directory as this script
+SCRIPT_DIR = Path(__file__).parent
+LOG_FILE = SCRIPT_DIR / "teams_hidden_log.txt"
 REMOTE_DEBUGGING_PORT = 9222
 
 
@@ -170,7 +173,10 @@ def main():
             
             logger.info(f"Found {len(teams)} teams")
             teams_to_process = teams[:MAX_TEAMS_TO_PROCESS]
-            logger.info(f"Processing first {len(teams_to_process)}...")
+            if len(teams_to_process) == len(teams):
+                logger.info(f"Processing all {len(teams_to_process)} teams...")
+            else:
+                logger.info(f"Processing first {len(teams_to_process)}...")
             logger.info("-"*70)
             
             for i, team in enumerate(teams_to_process):

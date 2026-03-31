@@ -17,6 +17,12 @@ PATTERNS = [
     "Önálló laboratórium",
     "Informatics",
     "Szakdolgozat-készítés",
+    "Kutatás",
+    "Final Project",
+    "Témalaboratórium",
+    "Projektfeladat",
+    "Development of Software Applications",
+    "Alkalmazásfejlesztési környezetek",
     "Diploma Thesis Design"
 ]
 
@@ -34,7 +40,7 @@ class Logger:
     def log(self, message, level="INFO"):
         timestamp = datetime.now().strftime("%H:%M:%S")
         formatted_msg = f"[{timestamp}] {level}: {message}"
-        print(formatted_msg)
+        print(formatted_msg, flush=True)  # Flush immediately so output appears right away
         
         with open(self.log_file, 'a', encoding='utf-8') as f:
             f.write(formatted_msg + "\n")
@@ -57,7 +63,7 @@ def hide_team(page, team, team_name, dry_run, logger):
             return True
         
         logger.info(f"Hovering over team: {team_name}")
-        team.hover()
+        team.hover(timeout=5000)
         time.sleep(0.5)
         
         # Find options button
@@ -69,7 +75,7 @@ def hide_team(page, team, team_name, dry_run, logger):
             logger.error(f"Could not find options button")
             return False
         
-        options_button.click()
+        options_button.click(timeout=5000)
         time.sleep(0.8)
         
         # Click Hide
@@ -79,7 +85,7 @@ def hide_team(page, team, team_name, dry_run, logger):
             page.keyboard.press('Escape')
             return False
         
-        hide_button.click()
+        hide_button.click(timeout=5000)
         time.sleep(1)
         
         logger.success(f"Hidden: {team_name}")
@@ -87,6 +93,10 @@ def hide_team(page, team, team_name, dry_run, logger):
         
     except Exception as e:
         logger.error(f"Error: {str(e)}")
+        try:
+            page.keyboard.press('Escape')
+        except:
+            pass
         return False
 
 
@@ -138,6 +148,9 @@ def main():
             logger.info("Looking for teams...")
             teams = []
             
+            # Set default timeout for all page operations (2 seconds)
+            page.set_default_timeout(2000)
+            
             # Try multiple selector strategies for the new Teams UI
             try:
                 # Strategy 1: Cards with team information
@@ -176,6 +189,7 @@ def main():
             logger.info("-"*70)
             
             teams_checked = 0
+            teams_disappeared = 0
             for i, team in enumerate(teams):
                 # Stop if we've hidden enough teams
                 if len(hidden_teams) >= MAX_TEAMS_TO_HIDE:
@@ -183,7 +197,7 @@ def main():
                     break
                 
                 try:
-                    team_name = team.text_content().strip()
+                    team_name = team.text_content(timeout=1500).strip()
                     
                     # Skip empty or very short names
                     if not team_name or len(team_name) < 3:
@@ -191,11 +205,11 @@ def main():
                     
                     # Skip container elements with huge concatenated text (> 500 chars means it's likely a container)
                     if len(team_name) > 500:
-                        logger.info(f"\n[Checked: {teams_checked+1}/{len(teams)}] [Hidden: {len(hidden_teams)}/{MAX_TEAMS_TO_HIDE}] [SKIPPED: Container element with {len(team_name)} chars]")
+                        logger.info(f"\n[Checked: {teams_checked+1}/{len(teams)-teams_disappeared}] [Hidden: {len(hidden_teams)}/{MAX_TEAMS_TO_HIDE}] [SKIPPED: Container element with {len(team_name)} chars]")
                         continue
                     
                     teams_checked += 1
-                    logger.info(f"\n[Checked: {teams_checked}/{len(teams)}] [Hidden: {len(hidden_teams)}/{MAX_TEAMS_TO_HIDE}] {team_name}")
+                    logger.info(f"\n[Checked: {teams_checked}/{len(teams)-teams_disappeared}] [Hidden: {len(hidden_teams)}/{MAX_TEAMS_TO_HIDE}] {team_name}")
                     
                     if matches_pattern(team_name):
                         logger.warning("MATCHED!")
@@ -206,18 +220,28 @@ def main():
                     else:
                         logger.info("Skipped")
                         skipped_teams.append(team_name)
-                    
-                    time.sleep(0.5)
-                        
                 except Exception as e:
-                    logger.error(f"Error: {e}")
-                    error_teams.append("Unknown")
+                    # Team element no longer exists (was hidden/removed from page)
+                    # This is normal - when we hide teams, indices shift
+                    if "Timeout" in str(e) or "Target" in str(e):
+                        teams_disappeared += 1
+                        logger.info(f"[Team {i} disappeared/timeout - continuing...]")
+                        continue
+                    else:
+                        # Unexpected error - log it
+                        logger.error(f"Error at team {i}: {e}")
+                        error_teams.append("Unknown")
+                        continue
+                
+                time.sleep(0.5)
             
             # Summary
             logger.info("\n" + "="*70)
             logger.info("SUMMARY")
             logger.info("="*70)
+            logger.info(f"Teams found initially: {len(teams)}")
             logger.info(f"Teams checked: {teams_checked}")
+            logger.info(f"Teams disappeared (already hidden): {teams_disappeared}")
             logger.info(f"Hidden: {len(hidden_teams)}")
             logger.info(f"Skipped: {len(skipped_teams)}")
             logger.info(f"Errors: {len(error_teams)}")
@@ -238,7 +262,7 @@ def main():
                 logger.info("\nDRY RUN - no actual changes")
                 logger.info("Run without --dry-run to hide teams")
             
-            input("\nPress Enter to finish...")
+            logger.info("\nFinished!")
             browser.close()
             
     except Exception as e:

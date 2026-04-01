@@ -736,3 +736,209 @@ Plan the implementation steps of the game. Create a step-by-step plan here, whic
 10. Test and polish (Phase 10)
 11. Add advanced features as desired (Phase 11)
 
+---
+
+# Development Milestones
+
+This section breaks down the MVP implementation into **4 testable milestones**. Each milestone produces working, testable code that builds upon the previous one.
+
+## Milestone 1: Foundation - Maze Environment
+**Phases: 1-2 (Project Setup, Grid System, Static Elements)**
+
+**Goal:** Create the basic game window with a visible maze that has walls and soft blocks arranged in the classic Bomberman pattern.
+
+**Includes:**
+- Project structure setup (directories, requirements.txt)
+- Basic game window with pygame initialization
+- Game loop with event handling and FPS control
+- Constants and configuration file (config.py)
+- Grid coordinate system and conversion functions
+- Wall sprites (indestructible) with grid placement
+- Soft block sprites (destructible) with random placement
+- Level generation with classic Bomberman pattern:
+  - Outer border walls
+  - Checkerboard pattern of inner walls
+  - Random soft blocks in empty spaces
+  - Clear 3x3 starting area
+
+**Deliverable:** A window displaying a Bomberman-style maze with gray walls and brown soft blocks on a grid.
+
+**Test Criteria:**
+- Window opens at correct size (e.g., 960x640)
+- Game loop runs at stable 60 FPS
+- Maze displays with proper grid alignment
+- Can close window with X button
+- Level pattern matches classic Bomberman layout
+- Starting area (top-left) is clear of obstacles
+
+**Files Created:**
+- `main.py` - game loop
+- `config.py` - constants and settings
+- `sprites.py` - Wall and SoftBlock classes (or separate files)
+- `requirements.txt` - pygame dependency
+
+---
+
+## Milestone 2: Player Character and Movement
+**Phases: 3 (Player Character)**
+
+**Goal:** Add a controllable player character that can navigate the maze with proper collision detection.
+
+**Includes:**
+- Player sprite class with initial position
+- Grid-based movement system (smooth or snap-to-grid)
+- Input handling for movement (arrow keys or WASD)
+- Collision detection with walls and soft blocks
+- Player can only move to empty grid cells
+- Visual representation (colored rectangle/circle as placeholder)
+- Player stats initialization (speed, max bombs, bomb range, lives)
+
+**Deliverable:** A player character that moves around the maze using keyboard controls, correctly blocked by walls and soft blocks.
+
+**Test Criteria:**
+- Player renders at starting position (grid 1,1)
+- Arrow keys/WASD move player in 4 directions
+- Movement is smooth and properly aligned to grid
+- Player cannot walk through walls
+- Player cannot walk through soft blocks
+- Player movement feels responsive (no lag)
+
+**Files Modified:**
+- `sprites.py` - Add Player class
+- `main.py` - Add player creation and input handling
+
+---
+
+## Milestone 3: Bombs and Explosions
+**Phases: 4 (Bomb Mechanics)**
+
+**Goal:** Implement the core gameplay mechanic - placing bombs that explode in a cross pattern, destroying soft blocks and affecting the player.
+
+**Includes:**
+- Bomb sprite class with timer
+- Bomb placement input (spacebar)
+- Bomb placement rules:
+  - Max bombs limit (initially 1)
+  - Cannot place bomb where one exists
+  - Must be grid-aligned
+- Bomb timer (3 seconds countdown)
+- Explosion sprite class
+- Explosion pattern generation:
+  - Cross pattern (4 directions)
+  - Range-based extension
+  - Stops at indestructible walls
+  - Destroys soft blocks (stops after hitting)
+- Explosion effects:
+  - Destroys soft blocks on contact
+  - Damages player on contact (loses life)
+- Explosion duration and cleanup
+- Bomb counter management (return bomb after explosion)
+
+**Deliverable:** Fully functional bomb system where player can place bombs that explode in cross patterns, destroy soft blocks, and can hurt the player.
+
+**Test Criteria:**
+- Spacebar places bomb at player position
+- Bomb appears on grid
+- Bomb explodes after ~3 seconds
+- Explosion extends in 4 directions (up, down, left, right)
+- Explosion stops at walls
+- Explosion destroys soft blocks and stops
+- Soft blocks disappear when hit by explosion
+- Player takes damage when caught in explosion
+- Can only place 1 bomb at a time initially
+- After explosion, can place another bomb
+- Multiple bombs can exist if power-up collected (later)
+
+**Files Modified:**
+- `sprites.py` - Add Bomb and Explosion classes
+- `main.py` - Add bomb placement logic and collision checks
+- `config.py` - Add bomb/explosion timing constants
+
+---
+
+## Milestone 4: Complete MVP - Enemies and Game States
+**Phases: 5 (Enemy Implementation) + 7 Basic (Win/Lose Conditions)**
+
+**Goal:** Add enemies with basic AI and implement win/lose conditions to create a complete, playable game.
+
+**Includes:**
+
+**Enemy System:**
+- Enemy sprite class with random movement AI
+- Enemy spawning at valid positions (away from player)
+- Random movement behavior:
+  - Choose random direction periodically
+  - Move until hitting obstacle
+  - Change direction when blocked
+- Enemy collision with player (player loses life)
+- Enemy destruction by explosions
+- Multiple enemies on screen (2-4 for testing)
+
+**Game State Management:**
+- Player lives tracking (3 lives)
+- Life loss on collision or explosion damage
+- Basic respawn system or immediate game over
+- Win condition: All enemies defeated
+- Lose condition: Player lives reach zero
+- Victory message display
+- Game over message display
+- Basic score tracking (enemies defeated + blocks destroyed)
+- Score display on screen
+- Lives display on screen
+- Option to restart after win/lose
+
+**Deliverable:** A fully playable Bomberman game where you must defeat all enemies while avoiding their touch and your own bombs. Game ends with win or lose screen.
+
+**Test Criteria:**
+- Enemies appear on screen at valid positions
+- Enemies move randomly around maze
+- Enemies avoid walls and soft blocks
+- Touching enemy damages player (loses 1 life)
+- Explosions destroy enemies
+- Game ends (win) when all enemies defeated
+- Victory message displays with score
+- Game ends (lose) when player loses all lives
+- Game over message displays
+- Score updates when destroying blocks and enemies
+- Lives counter displays and updates correctly
+- Can restart game after winning or losing
+
+**Files Modified:**
+- `sprites.py` - Add Enemy class
+- `main.py` - Add game state management, win/lose logic, score/lives display
+- `config.py` - Add enemy and game state constants
+
+---
+
+## Post-MVP Enhancement Path
+
+After completing all 4 milestones, you'll have a fully playable Bomberman MVP. The recommended enhancement order:
+
+1. **Add Power-ups (Phase 6)** - Increases replayability and strategy
+2. **Improve UI (Phase 8)** - Add menus, HUD, pause functionality
+3. **Add Audio (Phase 9.1-9.2)** - Sound effects and background music
+4. **Visual Polish (Phase 9.3-9.4)** - Replace placeholders with sprites and animations
+5. **Testing & Balancing (Phase 10)** - Fine-tune difficulty and fix bugs
+6. **Advanced Features (Phase 11)** - Optional enhancements as desired
+
+---
+
+## How to Use These Milestones
+
+**When implementing**, work through the milestones sequentially:
+- Complete all tasks in Milestone 1, test it works
+- Move to Milestone 2, test movement works
+- Move to Milestone 3, test bombs work
+- Complete Milestone 4 for full MVP
+
+**Each milestone should be:**
+- Fully functional and testable
+- Runnable as a standalone state of the game
+- Building upon the previous milestone
+
+**Prompt examples:**
+- "Implement Milestone 1 - Foundation"
+- "Start working on Milestone 2"
+- "Let's add the player character (Milestone 2)"
+- "Implement the bomb system (Milestone 3)"
+

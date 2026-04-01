@@ -203,6 +203,80 @@ def create_enemy_sprite():
     return surface
 
 
+def create_fast_enemy_sprite():
+    """Create fast enemy sprite image (orange/yellow)"""
+    surface = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
+    
+    center = TILE_SIZE // 2
+    
+    # Orange/yellow body (circular)
+    pygame.draw.circle(surface, (255, 165, 0), (center, center), TILE_SIZE // 2 - 8)
+    
+    # Darker outline
+    pygame.draw.circle(surface, (200, 100, 0), (center, center), TILE_SIZE // 2 - 8, 3)
+    
+    # Wild eyes (wider apart)
+    eye_y = center - 5
+    # White of eyes
+    pygame.draw.circle(surface, WHITE, (center - 12, eye_y), 6)
+    pygame.draw.circle(surface, WHITE, (center + 12, eye_y), 6)
+    # Large pupils (excited look)
+    pygame.draw.circle(surface, BLACK, (center - 12, eye_y), 4)
+    pygame.draw.circle(surface, BLACK, (center + 12, eye_y), 4)
+    
+    # Speed lines behind head (motion effect)
+    pygame.draw.line(surface, (255, 200, 0), (8, center - 8), (15, center - 10), 2)
+    pygame.draw.line(surface, (255, 200, 0), (8, center), (15, center), 2)
+    pygame.draw.line(surface, (255, 200, 0), (8, center + 8), (15, center + 10), 2)
+    
+    # Excited mouth (open)
+    pygame.draw.circle(surface, BLACK, (center, center + 8), 6)
+    pygame.draw.circle(surface, (200, 50, 50), (center, center + 10), 4)
+    
+    # Highlight
+    pygame.draw.circle(surface, (255, 220, 100), (center - 8, center - 8), 8)
+    
+    return surface
+
+
+def create_smart_enemy_sprite():
+    """Create smart enemy sprite image (purple)"""
+    surface = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
+    
+    center = TILE_SIZE // 2
+    
+    # Purple body (circular)
+    pygame.draw.circle(surface, (150, 50, 200), (center, center), TILE_SIZE // 2 - 8)
+    
+    # Darker outline
+    pygame.draw.circle(surface, (100, 20, 150), (center, center), TILE_SIZE // 2 - 8, 3)
+    
+    # Intelligent eyes (focused)
+    eye_y = center - 4
+    # White of eyes
+    pygame.draw.circle(surface, WHITE, (center - 10, eye_y), 5)
+    pygame.draw.circle(surface, WHITE, (center + 10, eye_y), 5)
+    # Sharp pupils
+    pygame.draw.circle(surface, BLACK, (center - 10, eye_y), 3)
+    pygame.draw.circle(surface, BLACK, (center + 10, eye_y), 3)
+    
+    # Thinking expression (straight mouth)
+    pygame.draw.line(surface, BLACK, (center - 8, center + 10), (center + 8, center + 10), 3)
+    
+    # Brain pattern on forehead (wavy lines)
+    pygame.draw.arc(surface, (200, 150, 255), (center - 12, center - 18, 10, 8), 0, 3.14, 2)
+    pygame.draw.arc(surface, (200, 150, 255), (center + 2, center - 18, 10, 8), 0, 3.14, 2)
+    
+    # Antenna/thinking symbol
+    pygame.draw.circle(surface, (200, 100, 255), (center, center - 22), 3)
+    pygame.draw.line(surface, (180, 80, 220), (center, center - 19), (center, center - 14), 2)
+    
+    # Highlight
+    pygame.draw.circle(surface, (200, 150, 255), (center - 8, center - 8), 8)
+    
+    return surface
+
+
 def create_powerup_bomb_sprite():
     """Create Bomb Up power-up sprite"""
     surface = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
@@ -294,6 +368,8 @@ class SpriteCache:
         self.bomb_frames = [create_bomb_sprite(i / 10) for i in range(11)]  # 11 frames
         self.explosion = create_explosion_sprite()
         self.enemy = create_enemy_sprite()
+        self.fast_enemy = create_fast_enemy_sprite()
+        self.smart_enemy = create_smart_enemy_sprite()
         self.powerup_bomb = create_powerup_bomb_sprite()
         self.powerup_fire = create_powerup_fire_sprite()
         self.powerup_speed = create_powerup_speed_sprite()

@@ -5,7 +5,7 @@ Main game file
 import pygame
 import random
 from config import *
-from sprites import Wall, SoftBlock, Player, Bomb, Explosion, Enemy, PowerUp
+from sprites import Wall, SoftBlock, Player, Bomb, Explosion, Enemy, FastEnemy, SmartEnemy, PowerUp
 from ui import Menu, InstructionsScreen, PauseMenu, LevelTransitionScreen, draw_hud, draw_game_over_screen, draw_victory_screen
 from levels import get_level, get_total_levels, is_final_level
 
@@ -172,7 +172,19 @@ def spawn_enemies(num_enemies, walls_group, soft_blocks_group, bombs_group, play
         
         # Spawn enemy if position is valid
         if not is_blocked:
-            enemy = Enemy(x, y, walls_group, soft_blocks_group, bombs_group, speed_multiplier)
+            # Randomly choose enemy type based on probability
+            enemy_type = random.random()
+            
+            if enemy_type < 0.5:
+                # 50% chance: Normal enemy
+                enemy = Enemy(x, y, walls_group, soft_blocks_group, bombs_group, speed_multiplier)
+            elif enemy_type < 0.75:
+                # 25% chance: Fast enemy
+                enemy = FastEnemy(x, y, walls_group, soft_blocks_group, bombs_group)
+            else:
+                # 25% chance: Smart enemy
+                enemy = SmartEnemy(x, y, walls_group, soft_blocks_group, bombs_group, player)
+            
             enemies_group.add(enemy)
             spawned += 1
 

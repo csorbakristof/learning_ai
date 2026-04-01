@@ -335,3 +335,79 @@ class Enemy(pygame.sprite.Sprite):
                     return True
         
         return False
+
+
+class FastEnemy(Enemy):
+    """Fast enemy that moves quickly and changes direction more frequently"""
+    
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group):
+        # Initialize with 2x speed multiplier
+        super().__init__(grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, speed_multiplier=2.0)
+        
+        # Faster direction changes
+        self.direction_change_interval = 500  # Change direction every 0.5 seconds
+        
+        # Load fast enemy sprite
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.fast_enemy.copy()
+
+
+class SmartEnemy(Enemy):
+    """Smart enemy that tracks the player and moves toward them"""
+    
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, player):
+        # Initialize with normal speed
+        super().__init__(grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, speed_multiplier=1.2)
+        
+        self.player = player
+        self.direction_change_interval = 800  # Update path every 0.8 seconds
+        
+        # Load smart enemy sprite
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.smart_enemy.copy()
+    
+    def choose_random_direction(self):
+        """Choose direction toward player (smart AI)"""
+        import random
+        
+        # Calculate direction to player
+        dx_to_player = self.player.grid_x - self.grid_x
+        dy_to_player = self.player.grid_y - self.grid_y
+        
+        # Prioritize directions toward player
+        directions = []
+        
+        # Add horizontal direction if needed
+        if dx_to_player > 0:
+            directions.append((1, 0))  # Right
+        elif dx_to_player < 0:
+            directions.append((-1, 0))  # Left
+        
+        # Add vertical direction if needed
+        if dy_to_player > 0:
+            directions.append((0, 1))  # Down
+        elif dy_to_player < 0:
+            directions.append((0, -1))  # Up
+        
+        # Add other directions with lower priority
+        all_directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+        for d in all_directions:
+            if d not in directions:
+                directions.append(d)
+        
+        # Add stay as last option
+        directions.append((0, 0))
+        
+        # Try directions in order of priority
+        for dx, dy in directions:
+            new_grid_x = self.grid_x + dx
+            new_grid_y = self.grid_y + dy
+            
+            # Check if position is valid
+            if not self.is_position_blocked(new_grid_x, new_grid_y):
+                self.target_x = new_grid_x * TILE_SIZE
+                self.target_y = new_grid_y * TILE_SIZE + HEADER_HEIGHT
+                self.moving = True
+                self.current_direction = (dx, dy)
+                break
+

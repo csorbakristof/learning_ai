@@ -3,6 +3,7 @@ Sprite classes for game objects
 """
 import pygame
 from config import *
+from assets import get_sprite_cache
 
 
 class Player(pygame.sprite.Sprite):
@@ -22,14 +23,9 @@ class Player(pygame.sprite.Sprite):
         self.speed = PLAYER_SPEED
         self.bombs_available = self.max_bombs
         
-        # Create visual representation (blue circle on white square)
-        self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
-        self.image.fill(GREEN)  # Transparent background matches field
-        pygame.draw.circle(self.image, BLUE, 
-                          (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//2 - 8)
-        # Add white outline
-        pygame.draw.circle(self.image, WHITE, 
-                          (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//2 - 8, 3)
+        # Load sprite image
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.player.copy()
         
         # Set position
         self.rect = self.image.get_rect()
@@ -106,45 +102,14 @@ class PowerUp(pygame.sprite.Sprite):
         self.grid_y = grid_y
         self.powerup_type = powerup_type
         
-        # Create visual representation based on type
-        self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
-        self.image.fill(GREEN)  # Transparent background
-        
+        # Load sprite image based on type
+        sprite_cache = get_sprite_cache()
         if powerup_type == POWERUP_BOMB:
-            # Bomb Up - Cyan/Blue icon
-            pygame.draw.circle(self.image, (0, 200, 255), 
-                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3)
-            pygame.draw.circle(self.image, WHITE, 
-                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3, 3)
-            # Draw "B" for bomb
-            font = pygame.font.Font(None, 32)
-            text = font.render("B", True, WHITE)
-            text_rect = text.get_rect(center=(TILE_SIZE//2, TILE_SIZE//2))
-            self.image.blit(text, text_rect)
-            
+            self.image = sprite_cache.powerup_bomb.copy()
         elif powerup_type == POWERUP_FIRE:
-            # Fire Up - Orange/Red icon
-            pygame.draw.circle(self.image, ORANGE, 
-                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3)
-            pygame.draw.circle(self.image, YELLOW, 
-                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3, 3)
-            # Draw "F" for fire
-            font = pygame.font.Font(None, 32)
-            text = font.render("F", True, WHITE)
-            text_rect = text.get_rect(center=(TILE_SIZE//2, TILE_SIZE//2))
-            self.image.blit(text, text_rect)
-            
+            self.image = sprite_cache.powerup_fire.copy()
         elif powerup_type == POWERUP_SPEED:
-            # Speed Up - Green icon
-            pygame.draw.circle(self.image, (0, 255, 100), 
-                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3)
-            pygame.draw.circle(self.image, WHITE, 
-                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3, 3)
-            # Draw "S" for speed
-            font = pygame.font.Font(None, 32)
-            text = font.render("S", True, WHITE)
-            text_rect = text.get_rect(center=(TILE_SIZE//2, TILE_SIZE//2))
-            self.image.blit(text, text_rect)
+            self.image = sprite_cache.powerup_speed.copy()
         
         # Set position
         self.rect = self.image.get_rect()
@@ -160,11 +125,9 @@ class Wall(pygame.sprite.Sprite):
         self.grid_x = grid_x
         self.grid_y = grid_y
         
-        # Create visual representation
-        self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
-        self.image.fill(DARK_GRAY)
-        # Add a border for visual distinction
-        pygame.draw.rect(self.image, GRAY, self.image.get_rect(), 3)
+        # Load sprite image
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.wall.copy()
         
         # Set position
         self.rect = self.image.get_rect()
@@ -180,16 +143,9 @@ class SoftBlock(pygame.sprite.Sprite):
         self.grid_x = grid_x
         self.grid_y = grid_y
         
-        # Create visual representation
-        self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
-        self.image.fill(BROWN)
-        # Add pattern for visual interest
-        pygame.draw.rect(self.image, LIGHT_BROWN, self.image.get_rect(), 4)
-        # Draw a simple cross pattern
-        pygame.draw.line(self.image, LIGHT_BROWN, 
-                        (TILE_SIZE//2, 10), (TILE_SIZE//2, TILE_SIZE-10), 3)
-        pygame.draw.line(self.image, LIGHT_BROWN, 
-                        (10, TILE_SIZE//2), (TILE_SIZE-10, TILE_SIZE//2), 3)
+        # Load sprite image
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.soft_block.copy()
         
         # Set position
         self.rect = self.image.get_rect()
@@ -211,14 +167,10 @@ class Bomb(pygame.sprite.Sprite):
         self.placed_time = pygame.time.get_ticks()
         self.timer = BOMB_TIMER
         
-        # Create visual representation (black circle that pulses)
-        self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
-        self.image.fill(GREEN)  # Transparent background
-        pygame.draw.circle(self.image, BLACK, 
-                          (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3)
-        # Add fuse (small red circle on top)
-        pygame.draw.circle(self.image, RED, 
-                          (TILE_SIZE//2, TILE_SIZE//4), 5)
+        # Load initial sprite image
+        sprite_cache = get_sprite_cache()
+        self.sprite_cache = sprite_cache  # Store reference for animation
+        self.image = sprite_cache.get_bomb_frame(0)
         
         # Set position
         self.rect = self.image.get_rect()
@@ -232,23 +184,11 @@ class Bomb(pygame.sprite.Sprite):
         current_time = pygame.time.get_ticks()
         time_left = self.timer - (current_time - self.placed_time)
         
-        # Pulse effect - make bomb blink faster as timer runs out
+        # Animate bomb with pulsing effect based on time remaining
         if time_left > 0:
-            blink_rate = max(100, time_left // 10)
-            if (current_time // blink_rate) % 2 == 0:
-                # Redraw bomb with different size for pulse effect
-                self.image.fill(GREEN)
-                size = TILE_SIZE//3 + 3
-                pygame.draw.circle(self.image, BLACK, 
-                                  (TILE_SIZE//2, TILE_SIZE//2), size)
-                pygame.draw.circle(self.image, RED, 
-                                  (TILE_SIZE//2, TILE_SIZE//4), 5)
-            else:
-                self.image.fill(GREEN)
-                pygame.draw.circle(self.image, BLACK, 
-                                  (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3)
-                pygame.draw.circle(self.image, RED, 
-                                  (TILE_SIZE//2, TILE_SIZE//4), 5)
+            # Calculate pulse value (0.0 to 1.0)
+            pulse_value = (current_time % 500) / 500.0  # Pulse every 500ms
+            self.image = self.sprite_cache.get_bomb_frame(pulse_value)
         
         # Check if timer expired
         if time_left <= 0 and not self.exploded:
@@ -271,22 +211,9 @@ class Explosion(pygame.sprite.Sprite):
         self.created_time = pygame.time.get_ticks()
         self.duration = EXPLOSION_DURATION
         
-        # Create visual representation (orange/yellow fire)
-        self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
-        self.image.fill(GREEN)
-        
-        if is_center:
-            # Center explosion is larger
-            pygame.draw.circle(self.image, ORANGE, 
-                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//2 - 5)
-            pygame.draw.circle(self.image, YELLOW, 
-                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3)
-        else:
-            # Side explosions are more directional
-            pygame.draw.circle(self.image, ORANGE, 
-                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//2 - 8)
-            pygame.draw.circle(self.image, YELLOW, 
-                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//4)
+        # Load sprite image
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.explosion.copy()
         
         # Set position
         self.rect = self.image.get_rect()
@@ -321,17 +248,9 @@ class Enemy(pygame.sprite.Sprite):
         self.direction_change_interval = 1000  # Change direction every 1 second
         self.current_direction = (0, 0)
         
-        # Create visual representation (red circle)
-        self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
-        self.image.fill(GREEN)  # Transparent background
-        pygame.draw.circle(self.image, RED, 
-                          (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//2 - 8)
-        # Add angry eyes
-        eye_y = TILE_SIZE//2 - 5
-        pygame.draw.circle(self.image, WHITE, (TILE_SIZE//2 - 8, eye_y), 4)
-        pygame.draw.circle(self.image, WHITE, (TILE_SIZE//2 + 8, eye_y), 4)
-        pygame.draw.circle(self.image, BLACK, (TILE_SIZE//2 - 8, eye_y), 2)
-        pygame.draw.circle(self.image, BLACK, (TILE_SIZE//2 + 8, eye_y), 2)
+        # Load sprite image
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.enemy.copy()
         
         # Set position
         self.rect = self.image.get_rect()

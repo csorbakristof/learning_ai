@@ -31,3 +31,5 @@ Now implement all milestones mentioned in the section Enhanced Version Implement
 Válasz: "I'll implement all 4 Enhancement Milestones systematically. Let me start by creating a todo tracker and then implement each milestone in order. ..."
 
 Please create a file "WhereWeAre.md" where you summarize what is ready and what is not.
+
+I want to focus on visual polish (Phase 9.3 and 9.4 among "After Enhanced Version"). Please replace basic graphics with sprites.

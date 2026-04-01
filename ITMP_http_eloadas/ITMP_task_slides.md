@@ -485,30 +485,30 @@ Ez egy újsagírókból ihletett technika - a lényeg: NE csak törölj szavakat
 
 ### Példa prompt 1
 
-"Itt van egy 200 szavas összefoglaló az 1848-as forradalomról:
+"Itt van egy 200 szavas összefoglaló a nándorfehérvári győzelemről:
 
-'1848 tavaszán jelentős történelmi események zajlottak Magyarországon. A fiatalok követeléseket fogalmaztak meg a kormánnyal szemben. Fontos reformok születtek, amelyek megváltoztatták az országot. Katonai konfliktusok is kialakultak, amelyek tragikusan végződtek. A forradalom hatással volt a későbbi évtizedekre is.'
+'A 15. században jelentős katonai siker született a Balkánon. Magyar és szövetséges csapatok fontos erődítményt védtek meg az oszmán haderővel szemben. A védekezésben tapasztalt katonai vezető és befolyásos egyházi személy is részt vettek. A csata során az ostromlók hatalmas erőfölénye ellenére a védők sikeresen tartották a várat. A győzelem döntő fordulópontot jelentett a térségben, megállította az előrenyomulást. Az esemény sokáig emlékezetes maradt Európában, harangszó is őrzi az emlékezetet.'
 
-Írd át pontosan 150 szóban. Növeld az információsűrűséget: 
-- Cseréld 'fiatalok' -> konkrét nevek (Petőfi, Jókai, stb.)
-- Cseréld 'jelentős események' -> pontos dátumok (március 15.)
-- Cseréld 'reformok' -> konkrét törvények (jobbágyfelszabadítás, sajtószabadság)
-- Cseréld 'katonai konfliktusok' -> csaták nevei (Pákozd, Isaszeg)
-- Add hozzá: számok, helyszínek, kimenet
+Írd át pontosan 150 szóban. Növeld az információsűrűséget:
+- Cseréld 'jelentős katonai siker' -> pontos dátum és eseménynév (1456. július 21-22., nándorfehérvári diadal)
+- Cseréld 'katonai vezető' és 'egyházi személy' -> konkrét nevek (Hunyadi János, Kapisztrán Szent János)
+- Cseréld 'oszmán haderő' -> konkrét vezető és létszám (II. Mehmed szultán, 60,000+ katona)
+- Cseréld 'fontos erődítmény' -> helyszín (Nándorfehérvár, ma Belgrád)
+- Add hozzá: védők létszáma, a győzelem európai jelentőségét (déli harangszó emléke)
 Ne csak törölj szavakat, hanem CSERÉLD az általánost specifikusra!"
 
 ### Példa prompt 2
 
-"Ez a 180 szavas cikk a Trianoni békeszerződésről szól:
+"Ez a 180 szavas cikk magyar Nobel-díjasokról szól:
 
-'A történelmi békeegyezmény jelentős változásokat hozott Magyarországnak. Hatalmas területeket veszített el az ország, amelyek korábban hozzá tartoztak. Sok város és település került új államok fennhatósága alá. A szerződés hosszú távú hatásokkal járt. A gazdaság, demográfia és politika minden területén érezhetőek voltak a következmények évtizedeken keresztül.'
+'Magyarország több kiemelkedő tudóst adott a világnak, akik nemzetközi elismerést nyertek. Különböző tudományterületeken alkottak maradandót. Néhányan természettudományi területen dolgoztak, mások orvostudományi kutatásokat végeztek. Volt, aki nukleáris fizikával, más kémiával foglalkozott. Eredményeik az egyetemes tudomány részévé váltak. Kutatásaik különböző külföldi és hazai intézményekben zajlottak. A díjakat a 20. század folyamán kapták.'
 
 Írd át 120 szóban és tartalmazza KÖTELEZŐEN:
-- Aláírás pontos dátuma (1920. június 4.)
-- Területvesztés százalékban (67%) és négyzetkilométerben
-- Minimum 5 elveszített város nevével (Pozsony, Kolozsvár, Kassa, Nagyvárad, Fiume)
-- Népességvesztés számokban
-- 3 konkrét következmény (gazdasági, társadalmi, politikai)
+- Minimum 5 díjazott teljes neve (pl. Szent-Györgyi Albert, Hevesy György, Wigner Jenő, Gábor Dénes, Oláh György)
+- Pontos évszámok, mikor kapták a díjat
+- Tudományterületek (fizika, kémia, orvostudomány, közgazdaságtan)
+- Konkrét felfedezések/eredmények (C-vitamin, izotópjelzés, kvantummechanika, holográfia, stb.)
+- Legalább 2 esetben az intézmény neve (Szegedi Egyetem, Princeton, stb.)
 Minimalizáld a mellékneveket és általános kifejezéseket!"
 
 # Feladat 10: Történelmi Jelenet Rekonstrukció

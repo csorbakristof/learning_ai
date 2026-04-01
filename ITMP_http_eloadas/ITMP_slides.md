@@ -37,7 +37,7 @@ Az AI-val való kommunikáció mint új kompetencia
 
 ### Illusztráció promptja
 
-Infografika stílusú kép: bal oldalon "Régen" felirattal egy egyszerű kérdőjel, jobb oldalon "Ma" felirattal összetett párbeszéd buborékok hálózata. Középen át egy nyíl, ami az evolúciót mutatja. Modern, tiszta dizájn, professzionális oktatási stílus.
+Infografika stílusú kép: alul "Régen" felirattal egy egyszerű kérdőjel, felette  "Ma" felirattal összetett párbeszéd buborékok hálózata. Középen át egy nyíl, ami az evolúciót mutatja. Modern, tiszta dizájn, professzionális oktatási stílus. Portarait orientáció.
 
 ### Megjegyzések az előadónak
 
@@ -61,7 +61,7 @@ A Jó Prompt Építőkövei: Kontextus-Feladat-Korlátozás
 
 ### Illusztráció promptja
 
-Öt színes építőkocka piramis formában egymásra helyezve, mindegyiken egy-egy ikon: korona (Perszona), cselekvés nyíl (Feladat), kontextus puzzle (Kontextus), kerítés (Korlátozások), sablon (Formátum). Világos, oktatási infografika stílus.
+Öt színes építőkocka piramis formában egymásra helyezve, mindegyiken egy-egy ikon: korona (Perszona), cselekvés nyíl (Feladat), kontextus puzzle (Kontextus), kerítés (Korlátozások), sablon (Formátum). Világos, oktatási infografika stílus. A zárójeles szövegek megjelennek a képen is. Portrait orientáció a cél.
 
 ### Megjegyzések az előadónak
 
@@ -94,7 +94,7 @@ _AI írja meg a legjobb promptot_
 
 ### Illusztráció promptja
 
-Lépcsőzetes diagram, öt fokozattal, minden fokozaton egy ikon: 1) egyszerű kérdőjel, 2) három példa kártya, 3) agyi hálózat gondolkodás közben, 4) körkörös nyilak (iteráció), 5) meta-szintű spirál. Felfelé mutató trend nyíl a komplexitás növekedését mutatja. Oktatási színek.
+Lépcsőzetes diagram, öt fokozattal, minden fokozaton egy ikon: 1) egyszerű kérdőjel, 2) három példa kártya, 3) agyi hálózat gondolkodás közben, 4) körkörös nyilak (iteráció), 5) meta-szintű spirál. Felfelé mutató trend nyíl a komplexitás növekedését mutatja. Oktatási színek. Portrait orientáció a cél. Feliratok ne legyenek a képen, csak ikonok és nyíl.
 
 ### Megjegyzések az előadónak
 

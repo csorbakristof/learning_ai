@@ -28,7 +28,7 @@ Minták áttekintése
 - Korlátozások: "Maradj a határokon belül.", Szigorú projekt követelmények betartása.
 - Iteratív Finomítás: "Jobbat, ne többet.", Összefoglalás és professzionális szerkesztés.
 
-Bölcs Használati Ellenőrzőlista Diákoknak
+Használati Ellenőrzőlista Diákoknak
 
 - Szerepjáték: Rendelj hozzá egy perszonát a kontextus beállításához.
 - Tényfelderítés: Ellenőrizz legalább egy állítást külső forrás használatával.
@@ -151,9 +151,9 @@ Koncepció: Iteratív módon növeli a szöveg információsűrűségét, anélk
 
 Feladat: Kezdj egy 200 szavas összefoglalóval. Ismételten kérd az AI-t, hogy írja át 150 szóban, miközben több konkrét tényt és entitást adsz hozzá.
 
-Példa prompt 1: "Itt van egy 200 szavas összefoglaló az 1848-as forradalomról: [beillesztett szöveg]. Írd át pontosan 150 szóban, miközben több konkrét dátumot, kulcsfontosságú személyt és eseményt adsz hozzá. Növeld az információsűrűséget azzal, hogy a homályos kifejezéseket pontos entitásokkal helyettesíted."
+Példa prompt 1: "Itt van egy 200 szavas összefoglaló a nándorfehérvári győzelemről: 'A 15. században jelentős katonai siker született. Magyar csapatok fontos támaszpontot védtek meg az oszmán haderővel szemben. A védekezésben katonai vezetők és egyházi személyek is részt vettek. A csata döntő fordulópontot jelentett a térségben. A győzelem sokáig emlékezetes maradt Európában.' Írd át pontosan 150 szóban, miközben több konkrét dátumot, nevet, számadatot és helyszínt adsz hozzá. Növeld az információsűrűséget: cseréld az általános kifejezéseket specifikus entitásokra."
 
-Példa prompt 2: "Ez a 180 szavas cikk a Trianoni békeszerződésről szól. Írd át 120 szóban, de tartalmazza: konkrét területvesztési számokat, elveszített városok neveit, pontos dátumokat, és legalább 3 konkrét következményt. Minden szónak számítania kell."
+Példa prompt 2: "Ez a 180 szavas cikk magyar Nobel-díjasokról szól. Írd át 120 szóban, de tartalmazza KÖTELEZŐEN: minimum 5 díjazott teljes nevét, pontos évszámokat (mikor kapták a díjat), tudományterületeket, konkrét felfedezéseket/eredményeket, és legalább 2 díjazott esetében azt is, melyik intézményben dolgoztak. Ne használj általános kifejezéseket, csak konkrét adatokat és neveket."
 
 Felismerés: Demonstrálja a token hatékonyságot és az információszintézist.
 

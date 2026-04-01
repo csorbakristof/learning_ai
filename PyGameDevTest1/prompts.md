@@ -10,3 +10,16 @@ válasz: "Break the MVP into 4 testable milestones: ..."
 
 Update #task.md and add these milestones.
 
+Implement milestone 1.
+
+Válasz: elkészíti, utána leírja, mit próbáljak ki. Aztán zárjam be a játék ablakát és mehetünk tovább.
+
+OK, well done. Now implement milestone 2.
+
+Válasz: megint leírta, mint próbáljak ki, aztán mehetünk tovább.
+
+OK. Proceed with milestone 3.
+
+Válasz: megint leírta, mint próbáljak ki, aztán mehetünk tovább.
+
+OK. Proceed with milestone 4.

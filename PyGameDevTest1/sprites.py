@@ -9,12 +9,13 @@ from assets import get_sprite_cache
 class Player(pygame.sprite.Sprite):
     """Player character"""
     
-    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group):
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group):
         super().__init__()
         self.grid_x = grid_x
         self.grid_y = grid_y
         self.walls = walls_group
         self.soft_blocks = soft_blocks_group
+        self.bombs = bombs_group
         
         # Player stats
         self.lives = INITIAL_LIVES
@@ -79,7 +80,7 @@ class Player(pygame.sprite.Sprite):
         self.moving = True
     
     def is_position_blocked(self, grid_x, grid_y):
-        """Check if a grid position is blocked by walls or soft blocks"""
+        """Check if a grid position is blocked by walls, soft blocks, or bombs"""
         # Check walls
         for wall in self.walls:
             if wall.grid_x == grid_x and wall.grid_y == grid_y:
@@ -89,6 +90,13 @@ class Player(pygame.sprite.Sprite):
         for block in self.soft_blocks:
             if block.grid_x == grid_x and block.grid_y == grid_y:
                 return True
+        
+        # Check bombs (but allow moving away from current position)
+        for bomb in self.bombs:
+            if bomb.grid_x == grid_x and bomb.grid_y == grid_y:
+                # Allow moving away from current position (e.g., after placing bomb)
+                if grid_x != self.grid_x or grid_y != self.grid_y:
+                    return True
         
         return False
 
@@ -230,12 +238,13 @@ class Explosion(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     """Enemy with random movement AI"""
     
-    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, speed_multiplier=1.0):
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, speed_multiplier=1.0):
         super().__init__()
         self.grid_x = grid_x
         self.grid_y = grid_y
         self.walls = walls_group
         self.soft_blocks = soft_blocks_group
+        self.bombs = bombs_group
         
         # Movement properties
         self.speed = int(ENEMY_SPEED * speed_multiplier)
@@ -307,7 +316,7 @@ class Enemy(pygame.sprite.Sprite):
                 break
     
     def is_position_blocked(self, grid_x, grid_y):
-        """Check if a grid position is blocked by walls or soft blocks"""
+        """Check if a grid position is blocked by walls, soft blocks, or bombs"""
         # Check walls
         for wall in self.walls:
             if wall.grid_x == grid_x and wall.grid_y == grid_y:
@@ -317,5 +326,12 @@ class Enemy(pygame.sprite.Sprite):
         for block in self.soft_blocks:
             if block.grid_x == grid_x and block.grid_y == grid_y:
                 return True
+        
+        # Check bombs (but allow moving away from current position)
+        for bomb in self.bombs:
+            if bomb.grid_x == grid_x and bomb.grid_y == grid_y:
+                # Allow moving away from current position
+                if grid_x != self.grid_x or grid_y != self.grid_y:
+                    return True
         
         return False

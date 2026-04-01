@@ -33,3 +33,14 @@ Válasz: "I'll implement all 4 Enhancement Milestones systematically. Let me sta
 Please create a file "WhereWeAre.md" where you summarize what is ready and what is not.
 
 I want to focus on visual polish (Phase 9.3 and 9.4 among "After Enhanced Version"). Please replace basic graphics with sprites.
+
+Well done! The statistics and counters in the upper left corner are overlapping with the playing field. Please move them to a header status bar so that they do not cover anything. Text size can be significantly smaller.
+
+The "Instructions" menu shows how to play the game but the end of the text is outside the window. Please make the text smaller so it fits inside the area.
+
+The player and the enemies can now move over the bombs. Do not allow them to move on the field of the bomb. If the player or a monster is on a field which contains a bomb (for example just after the player placed the bomb), allow them to move away but do not allow entering a field occupied by a bomb.
+
+Válasz: nem sikerült javítani...
+
+The player can still move on a bomb.
+

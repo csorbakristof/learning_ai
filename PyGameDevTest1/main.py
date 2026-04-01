@@ -119,7 +119,7 @@ def create_explosion(grid_x, grid_y, bomb_range, walls_group, soft_blocks_group,
     return destroyed_blocks
 
 
-def spawn_enemies(num_enemies, walls_group, soft_blocks_group, player, enemies_group, speed_multiplier=1.0):
+def spawn_enemies(num_enemies, walls_group, soft_blocks_group, bombs_group, player, enemies_group, speed_multiplier=1.0):
     """
     Spawn enemies at random valid positions away from player
     
@@ -172,7 +172,7 @@ def spawn_enemies(num_enemies, walls_group, soft_blocks_group, player, enemies_g
         
         # Spawn enemy if position is valid
         if not is_blocked:
-            enemy = Enemy(x, y, walls_group, soft_blocks_group, speed_multiplier)
+            enemy = Enemy(x, y, walls_group, soft_blocks_group, bombs_group, speed_multiplier)
             enemies_group.add(enemy)
             spawned += 1
 
@@ -203,7 +203,7 @@ def init_game(level_config, previous_player_stats=None):
     generate_level(walls, soft_blocks, level_config.soft_block_density)
     
     # Create player at starting position (grid 1, 1)
-    player = Player(1, 1, walls, soft_blocks)
+    player = Player(1, 1, walls, soft_blocks, bombs)
     
     # Carry over player stats from previous level if provided
     if previous_player_stats:
@@ -214,7 +214,7 @@ def init_game(level_config, previous_player_stats=None):
         player.speed = previous_player_stats.get('speed', PLAYER_SPEED)
     
     # Spawn enemies with level-specific speed multiplier
-    spawn_enemies(level_config.num_enemies, walls, soft_blocks, player, enemies, 
+    spawn_enemies(level_config.num_enemies, walls, soft_blocks, bombs, player, enemies, 
                   level_config.enemy_speed_multiplier)
     
     # Add all sprites to the main group for rendering

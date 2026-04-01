@@ -375,7 +375,9 @@ def main():
         
         elif current_state == STATE_PAUSED:
             # Draw the paused game in background
-            screen.fill(GREEN)
+            screen.fill(BLACK)  # Fill entire screen with black
+            game_area = pygame.Rect(0, HEADER_HEIGHT, SCREEN_WIDTH, GAME_AREA_HEIGHT)
+            pygame.draw.rect(screen, GREEN, game_area)  # Game field background
             game_state['all_sprites'].draw(screen)
             draw_hud(screen, game_state['player'], game_state['score'], 
                     len(game_state['enemies']), current_level)
@@ -483,7 +485,7 @@ def main():
                         # Respawn player at starting position
                         player = game_state['player']
                         player.rect.x = 1 * TILE_SIZE
-                        player.rect.y = 1 * TILE_SIZE
+                        player.rect.y = 1 * TILE_SIZE + HEADER_HEIGHT
                         player.grid_x = 1
                         player.grid_y = 1
                         player.target_x = player.rect.x
@@ -500,7 +502,7 @@ def main():
                         # Respawn player at starting position
                         player = game_state['player']
                         player.rect.x = 1 * TILE_SIZE
-                        player.rect.y = 1 * TILE_SIZE
+                        player.rect.y = 1 * TILE_SIZE + HEADER_HEIGHT
                         player.grid_x = 1
                         player.grid_y = 1
                         player.target_x = player.rect.x
@@ -531,7 +533,9 @@ def main():
                     game_state['victory'] = True
             
             # Render game
-            screen.fill(GREEN)  # Background color (grass)
+            screen.fill(BLACK)  # Fill entire screen with black
+            game_area = pygame.Rect(0, HEADER_HEIGHT, SCREEN_WIDTH, GAME_AREA_HEIGHT)
+            pygame.draw.rect(screen, GREEN, game_area)  # Game field background (grass)
             game_state['all_sprites'].draw(screen)
             
             # Draw enhanced HUD

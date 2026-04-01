@@ -4,7 +4,9 @@ Game Configuration and Constants
 
 # Screen settings
 SCREEN_WIDTH = 960
-SCREEN_HEIGHT = 640
+HEADER_HEIGHT = 50  # Height of status bar at top
+GAME_AREA_HEIGHT = 640  # Height of actual game field
+SCREEN_HEIGHT = GAME_AREA_HEIGHT + HEADER_HEIGHT  # Total screen height
 FPS = 60
 
 # Grid settings

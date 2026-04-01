@@ -30,7 +30,7 @@ class Player(pygame.sprite.Sprite):
         # Set position
         self.rect = self.image.get_rect()
         self.rect.x = grid_x * TILE_SIZE
-        self.rect.y = grid_y * TILE_SIZE
+        self.rect.y = grid_y * TILE_SIZE + HEADER_HEIGHT
         
         # Movement state
         self.moving = False
@@ -53,7 +53,7 @@ class Player(pygame.sprite.Sprite):
         # Update grid position when aligned
         if self.rect.x == self.target_x and self.rect.y == self.target_y:
             self.grid_x = self.rect.x // TILE_SIZE
-            self.grid_y = self.rect.y // TILE_SIZE
+            self.grid_y = (self.rect.y - HEADER_HEIGHT) // TILE_SIZE
             self.moving = False
     
     def move(self, dx, dy):
@@ -75,7 +75,7 @@ class Player(pygame.sprite.Sprite):
         
         # Set movement target
         self.target_x = new_grid_x * TILE_SIZE
-        self.target_y = new_grid_y * TILE_SIZE
+        self.target_y = new_grid_y * TILE_SIZE + HEADER_HEIGHT
         self.moving = True
     
     def is_position_blocked(self, grid_x, grid_y):
@@ -114,7 +114,7 @@ class PowerUp(pygame.sprite.Sprite):
         # Set position
         self.rect = self.image.get_rect()
         self.rect.x = grid_x * TILE_SIZE
-        self.rect.y = grid_y * TILE_SIZE
+        self.rect.y = grid_y * TILE_SIZE + HEADER_HEIGHT
 
 
 class Wall(pygame.sprite.Sprite):
@@ -132,7 +132,7 @@ class Wall(pygame.sprite.Sprite):
         # Set position
         self.rect = self.image.get_rect()
         self.rect.x = grid_x * TILE_SIZE
-        self.rect.y = grid_y * TILE_SIZE
+        self.rect.y = grid_y * TILE_SIZE + HEADER_HEIGHT
 
 
 class SoftBlock(pygame.sprite.Sprite):
@@ -150,7 +150,7 @@ class SoftBlock(pygame.sprite.Sprite):
         # Set position
         self.rect = self.image.get_rect()
         self.rect.x = grid_x * TILE_SIZE
-        self.rect.y = grid_y * TILE_SIZE
+        self.rect.y = grid_y * TILE_SIZE + HEADER_HEIGHT
 
 
 class Bomb(pygame.sprite.Sprite):
@@ -175,7 +175,7 @@ class Bomb(pygame.sprite.Sprite):
         # Set position
         self.rect = self.image.get_rect()
         self.rect.x = grid_x * TILE_SIZE
-        self.rect.y = grid_y * TILE_SIZE
+        self.rect.y = grid_y * TILE_SIZE + HEADER_HEIGHT
         
         self.exploded = False
     
@@ -218,7 +218,7 @@ class Explosion(pygame.sprite.Sprite):
         # Set position
         self.rect = self.image.get_rect()
         self.rect.x = grid_x * TILE_SIZE
-        self.rect.y = grid_y * TILE_SIZE
+        self.rect.y = grid_y * TILE_SIZE + HEADER_HEIGHT
     
     def update(self):
         """Update explosion - it disappears after duration"""
@@ -255,7 +255,7 @@ class Enemy(pygame.sprite.Sprite):
         # Set position
         self.rect = self.image.get_rect()
         self.rect.x = grid_x * TILE_SIZE
-        self.rect.y = grid_y * TILE_SIZE
+        self.rect.y = grid_y * TILE_SIZE + HEADER_HEIGHT
     
     def update(self):
         """Update enemy position and AI"""
@@ -275,7 +275,7 @@ class Enemy(pygame.sprite.Sprite):
         # Update grid position when aligned
         if self.rect.x == self.target_x and self.rect.y == self.target_y:
             self.grid_x = self.rect.x // TILE_SIZE
-            self.grid_y = self.rect.y // TILE_SIZE
+            self.grid_y = (self.rect.y - HEADER_HEIGHT) // TILE_SIZE
             self.moving = False
         
         # AI: Choose and move in random direction periodically
@@ -301,7 +301,7 @@ class Enemy(pygame.sprite.Sprite):
             # Check if position is valid
             if not self.is_position_blocked(new_grid_x, new_grid_y):
                 self.target_x = new_grid_x * TILE_SIZE
-                self.target_y = new_grid_y * TILE_SIZE
+                self.target_y = new_grid_y * TILE_SIZE + HEADER_HEIGHT
                 self.moving = True
                 self.current_direction = (dx, dy)
                 break

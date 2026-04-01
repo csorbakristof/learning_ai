@@ -180,55 +180,78 @@ class PauseMenu:
 
 
 def draw_hud(screen, player, score, enemies_remaining, level_num=1):
-    """Draw enhanced HUD"""
-    font = pygame.font.Font(None, 32)
-    font_small = pygame.font.Font(None, 24)
+    """Draw enhanced HUD in horizontal header bar"""
+    # Draw header background
+    header_rect = pygame.Rect(0, 0, SCREEN_WIDTH, HEADER_HEIGHT)
+    pygame.draw.rect(screen, BLACK, header_rect)
+    pygame.draw.line(screen, GRAY, (0, HEADER_HEIGHT), (SCREEN_WIDTH, HEADER_HEIGHT), 2)
     
-    # Level indicator (top center)
-    level_text = font.render(f"LEVEL {level_num}", True, YELLOW)
-    level_rect = level_text.get_rect(center=(SCREEN_WIDTH//2, 20))
-    pygame.draw.rect(screen, BLACK, level_rect.inflate(20, 10))
+    # Use smaller fonts for compact header
+    font = pygame.font.Font(None, 24)
+    font_tiny = pygame.font.Font(None, 18)
+    
+    # Starting x position
+    x = 10
+    y = HEADER_HEIGHT // 2
+    
+    # Level indicator (left side)
+    level_text = font.render(f"LV{level_num}", True, YELLOW)
+    level_rect = level_text.get_rect(midleft=(x, y))
     screen.blit(level_text, level_rect)
+    x += 60
     
-    # Lives (with heart icons)
-    x, y = 10, 10
-    lives_label = font.render("Lives:", True, WHITE)
-    pygame.draw.rect(screen, BLACK, (x-5, y-5, 200, 35))
-    screen.blit(lives_label, (x, y))
+    # Lives (with small hearts)
+    lives_text = font_tiny.render("Lives:", True, WHITE)
+    lives_rect = lives_text.get_rect(midleft=(x, y))
+    screen.blit(lives_text, lives_rect)
+    x += 40
     
-    # Draw hearts
-    heart_x = x + 80
+    # Draw small hearts
     for i in range(player.lives):
-        pygame.draw.circle(screen, RED, (heart_x + i*25, y+15), 8)
-        pygame.draw.circle(screen, RED, (heart_x + i*25 + 10, y+15), 8)
-        points = [(heart_x + i*25 + 5, y+25), (heart_x + i*25 - 5, y+18), (heart_x + i*25 + 15, y+18)]
+        heart_x = x + i * 20
+        heart_y = y
+        pygame.draw.circle(screen, RED, (heart_x, heart_y), 5)
+        pygame.draw.circle(screen, RED, (heart_x + 6, heart_y), 5)
+        points = [(heart_x + 3, heart_y + 7), (heart_x - 3, heart_y + 2), (heart_x + 9, heart_y + 2)]
         pygame.draw.polygon(screen, RED, points)
+    x += player.lives * 20 + 20
+    
+    # Separator
+    pygame.draw.line(screen, GRAY, (x, 8), (x, HEADER_HEIGHT - 8), 1)
+    x += 15
     
     # Bombs
-    y += 40
     bombs_text = font.render(f"Bombs: {player.bombs_available}/{player.max_bombs}", True, WHITE)
-    pygame.draw.rect(screen, BLACK, (x-5, y-5, 200, 35))
-    screen.blit(bombs_text, (x, y))
+    bombs_rect = bombs_text.get_rect(midleft=(x, y))
+    screen.blit(bombs_text, bombs_rect)
+    x += 120
     
-    # Power-ups (Bomb Range, Speed)
-    y += 40
-    pygame.draw.rect(screen, BLACK, (x-5, y-5, 200, 60))
-    fire_text = font_small.render(f"Fire Range: {player.bomb_range}", True, ORANGE)
-    screen.blit(fire_text, (x, y))
-    speed_text = font_small.render(f"Speed: {player.speed}", True, (0, 255, 100))
-    screen.blit(speed_text, (x, y+25))
+    # Fire range
+    fire_text = font.render(f"Fire: {player.bomb_range}", True, ORANGE)
+    fire_rect = fire_text.get_rect(midleft=(x, y))
+    screen.blit(fire_text, fire_rect)
+    x += 80
     
-    # Score
-    y += 70
+    # Speed
+    speed_text = font.render(f"Speed: {player.speed}", True, (0, 255, 100))
+    speed_rect = speed_text.get_rect(midleft=(x, y))
+    screen.blit(speed_text, speed_rect)
+    x += 100
+    
+    # Separator
+    pygame.draw.line(screen, GRAY, (x, 8), (x, HEADER_HEIGHT - 8), 1)
+    x += 15
+    
+    # Score (centered-right area)
     score_text = font.render(f"Score: {score}", True, YELLOW)
-    pygame.draw.rect(screen, BLACK, (x-5, y-5, 200, 35))
-    screen.blit(score_text, (x, y))
+    score_rect = score_text.get_rect(midleft=(x, y))
+    screen.blit(score_text, score_rect)
+    x += 130
     
-    # Enemies remaining
-    y += 40
+    # Enemies remaining (right side)
     enemies_text = font.render(f"Enemies: {enemies_remaining}", True, RED)
-    pygame.draw.rect(screen, BLACK, (x-5, y-5, 200, 35))
-    screen.blit(enemies_text, (x, y))
+    enemies_rect = enemies_text.get_rect(midleft=(x, y))
+    screen.blit(enemies_text, enemies_rect)
 
 
 def draw_game_over_screen(screen, score, blocks_destroyed, enemies_defeated):

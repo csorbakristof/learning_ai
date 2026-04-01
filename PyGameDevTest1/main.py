@@ -6,7 +6,8 @@ import pygame
 import random
 from config import *
 from sprites import Wall, SoftBlock, Player, Bomb, Explosion, Enemy, PowerUp
-from ui import Menu, InstructionsScreen, PauseMenu, draw_hud, draw_game_over_screen, draw_victory_screen
+from ui import Menu, InstructionsScreen, PauseMenu, LevelTransitionScreen, draw_hud, draw_game_over_screen, draw_victory_screen
+from levels import get_level, get_total_levels, is_final_level
 
 
 def grid_to_pixel(grid_x, grid_y):
@@ -19,13 +20,18 @@ def pixel_to_grid(pixel_x, pixel_y):
     return pixel_x // TILE_SIZE, pixel_y // TILE_SIZE
 
 
-def generate_level(walls_group, soft_blocks_group):
+def generate_level(walls_group, soft_blocks_group, soft_block_density=0.6):
     """
     Generate classic Bomberman level layout
     - Outer border walls
     - Checkerboard pattern of inner walls
     - Random soft blocks in empty spaces
     - Clear 3x3 area at starting position (top-left)
+    
+    Args:
+        walls_group: Sprite group for walls
+        soft_blocks_group: Sprite group for soft blocks
+        soft_block_density: Percentage of available spaces to fill (0.0-1.0)
     """
     # Create border walls
     for x in range(GRID_WIDTH):
@@ -55,8 +61,8 @@ def generate_level(walls_group, soft_blocks_group):
             if (x, y) in starting_area:
                 continue
             
-            # Random chance to place soft block (about 60% coverage)
-            if random.random() < 0.6:
+            # Random chance to place soft block based on density
+            if random.random() < soft_block_density:
                 soft_blocks_group.add(SoftBlock(x, y))
 
 
@@ -113,9 +119,17 @@ def create_explosion(grid_x, grid_y, bomb_range, walls_group, soft_blocks_group,
     return destroyed_blocks
 
 
-def spawn_enemies(num_enemies, walls_group, soft_blocks_group, player, enemies_group):
+def spawn_enemies(num_enemies, walls_group, soft_blocks_group, player, enemies_group, speed_multiplier=1.0):
     """
     Spawn enemies at random valid positions away from player
+    
+    Args:
+        num_enemies: Number of enemies to spawn
+        walls_group: Sprite group for walls
+        soft_blocks_group: Sprite group for soft blocks
+        player: Player object
+        enemies_group: Sprite group for enemies
+        speed_multiplier: Speed multiplier for enemy difficulty scaling
     """
     spawned = 0
     max_attempts = 100
@@ -158,14 +172,24 @@ def spawn_enemies(num_enemies, walls_group, soft_blocks_group, player, enemies_g
         
         # Spawn enemy if position is valid
         if not is_blocked:
-            enemy = Enemy(x, y, walls_group, soft_blocks_group)
+            enemy = Enemy(x, y, walls_group, soft_blocks_group, speed_multiplier)
             enemies_group.add(enemy)
             spawned += 1
 
 
 
-def init_game():
-    """Initialize game with fresh state"""
+def init_game(level_config, previous_player_stats=None):
+    """
+    Initialize game with fresh state for a specific level
+    
+    Args:
+        level_config: LevelConfig object defining the level parameters
+        previous_player_stats: Optional dict with player stats to carry over from previous level
+            Keys: 'lives', 'max_bombs', 'bomb_range', 'speed', 'score'
+    
+    Returns:
+        Dictionary containing game state
+    """
     # Create sprite groups
     all_sprites = pygame.sprite.Group()
     walls = pygame.sprite.Group()
@@ -175,15 +199,23 @@ def init_game():
     enemies = pygame.sprite.Group()
     powerups = pygame.sprite.Group()
     
-    # Generate level
-    generate_level(walls, soft_blocks)
+    # Generate level with specified density
+    generate_level(walls, soft_blocks, level_config.soft_block_density)
     
     # Create player at starting position (grid 1, 1)
     player = Player(1, 1, walls, soft_blocks)
     
-    # Spawn enemies
-    num_enemies = 3  # Start with 3 enemies for MVP
-    spawn_enemies(num_enemies, walls, soft_blocks, player, enemies)
+    # Carry over player stats from previous level if provided
+    if previous_player_stats:
+        player.lives = previous_player_stats.get('lives', INITIAL_LIVES)
+        player.max_bombs = previous_player_stats.get('max_bombs', INITIAL_MAX_BOMBS)
+        player.bombs_available = player.max_bombs  # Reset available bombs
+        player.bomb_range = previous_player_stats.get('bomb_range', INITIAL_BOMB_RANGE)
+        player.speed = previous_player_stats.get('speed', PLAYER_SPEED)
+    
+    # Spawn enemies with level-specific speed multiplier
+    spawn_enemies(level_config.num_enemies, walls, soft_blocks, player, enemies, 
+                  level_config.enemy_speed_multiplier)
     
     # Add all sprites to the main group for rendering
     all_sprites.add(walls)
@@ -193,6 +225,8 @@ def init_game():
     all_sprites.add(player)
     
     # Game state
+    score = previous_player_stats.get('score', 0) if previous_player_stats else 0
+    
     game_state = {
         'all_sprites': all_sprites,
         'walls': walls,
@@ -202,12 +236,13 @@ def init_game():
         'enemies': enemies,
         'powerups': powerups,
         'player': player,
-        'score': 0,
-        'blocks_destroyed': 0,
+        'score': score,
+        'blocks_destroyed': 0,  # Reset per-level stats
         'enemies_defeated': 0,
         'game_over': False,
         'victory': False,
-        'space_pressed': False
+        'space_pressed': False,
+        'level_num': level_config.level_num
     }
     
     return game_state
@@ -238,6 +273,9 @@ def main():
     instructions_screen = InstructionsScreen(screen)
     pause_menu = PauseMenu(screen)
     
+    # Level tracking
+    current_level = 1
+    
     # Game state (will be initialized when starting game)
     game_state = None
     
@@ -254,7 +292,10 @@ def main():
                 if current_state == STATE_MENU:
                     action = menu.handle_input(event)
                     if action == "start":
-                        game_state = init_game()
+                        # Start from level 1
+                        current_level = 1
+                        level_config = get_level(current_level)
+                        game_state = init_game(level_config)
                         current_state = STATE_PLAYING
                     elif action == "instructions":
                         current_state = STATE_INSTRUCTIONS
@@ -269,13 +310,39 @@ def main():
                 # Playing state
                 elif current_state == STATE_PLAYING:
                     # Pause game
-                    if event.key in (pygame.K_ESCAPE, pygame.K_p):
+                    if event.key in (pygame.K_ESCAPE, pygame.K_p) and not (game_state['game_over'] or game_state['victory']):
                         current_state = STATE_PAUSED
                     
                     # Game over or victory - restart or return to menu
-                    elif game_state['game_over'] or game_state['victory']:
+                    elif game_state['game_over']:
                         if event.key == pygame.K_r:
-                            game_state = init_game()
+                            # Restart from level 1
+                            current_level = 1
+                            level_config = get_level(current_level)
+                            game_state = init_game(level_config)
+                        elif event.key == pygame.K_m:
+                            current_state = STATE_MENU
+                            game_state = None
+                    
+                    # Victory - advance to next level or complete game
+                    elif game_state['victory']:
+                        if event.key == pygame.K_SPACE and not is_final_level(current_level):
+                            # Advance to next level, carrying over player stats
+                            current_level += 1
+                            level_config = get_level(current_level)
+                            player_stats = {
+                                'lives': game_state['player'].lives,
+                                'max_bombs': game_state['player'].max_bombs,
+                                'bomb_range': game_state['player'].bomb_range,
+                                'speed': game_state['player'].speed,
+                                'score': game_state['score']
+                            }
+                            game_state = init_game(level_config, player_stats)
+                        elif event.key == pygame.K_r:
+                            # Restart from level 1
+                            current_level = 1
+                            level_config = get_level(current_level)
+                            game_state = init_game(level_config)
                         elif event.key == pygame.K_m:
                             current_state = STATE_MENU
                             game_state = None
@@ -290,7 +357,10 @@ def main():
                         if action == "resume":
                             current_state = STATE_PLAYING
                         elif action == "restart":
-                            game_state = init_game()
+                            # Restart from level 1
+                            current_level = 1
+                            level_config = get_level(current_level)
+                            game_state = init_game(level_config)
                             current_state = STATE_PLAYING
                         elif action == "menu":
                             current_state = STATE_MENU
@@ -308,7 +378,7 @@ def main():
             screen.fill(GREEN)
             game_state['all_sprites'].draw(screen)
             draw_hud(screen, game_state['player'], game_state['score'], 
-                    len(game_state['enemies']))
+                    len(game_state['enemies']), current_level)
             
             # Draw pause menu overlay
             pause_menu.draw()
@@ -466,7 +536,7 @@ def main():
             
             # Draw enhanced HUD
             draw_hud(screen, game_state['player'], game_state['score'], 
-                    len(game_state['enemies']))
+                    len(game_state['enemies']), current_level)
             
             # Draw game over or victory screen
             if game_state['game_over']:
@@ -476,7 +546,8 @@ def main():
             elif game_state['victory']:
                 draw_victory_screen(screen, game_state['score'], 
                                    game_state['blocks_destroyed'], 
-                                   game_state['enemies_defeated'])
+                                   game_state['enemies_defeated'],
+                                   is_final_level(current_level))
         
         # Update display
         pygame.display.flip()

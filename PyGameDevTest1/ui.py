@@ -179,10 +179,16 @@ class PauseMenu:
         return None
 
 
-def draw_hud(screen, player, score, enemies_remaining):
+def draw_hud(screen, player, score, enemies_remaining, level_num=1):
     """Draw enhanced HUD"""
     font = pygame.font.Font(None, 32)
     font_small = pygame.font.Font(None, 24)
+    
+    # Level indicator (top center)
+    level_text = font.render(f"LEVEL {level_num}", True, YELLOW)
+    level_rect = level_text.get_rect(center=(SCREEN_WIDTH//2, 20))
+    pygame.draw.rect(screen, BLACK, level_rect.inflate(20, 10))
+    screen.blit(level_text, level_rect)
     
     # Lives (with heart icons)
     x, y = 10, 10
@@ -260,8 +266,58 @@ def draw_game_over_screen(screen, score, blocks_destroyed, enemies_defeated):
     screen.blit(menu_text, menu_rect)
 
 
-def draw_victory_screen(screen, score, blocks_destroyed, enemies_defeated):
-    """Draw victory screen"""
+class LevelTransitionScreen:
+    """Level transition screen - shows when player completes a level"""
+    
+    def __init__(self, screen):
+        self.screen = screen
+        self.font_large = pygame.font.Font(None, 72)
+        self.font_medium = pygame.font.Font(None, 48)
+        self.font_small = pygame.font.Font(None, 36)
+    
+    def draw(self, level_num, score, blocks_destroyed, enemies_defeated):
+        """Draw level complete screen"""
+        # Semi-transparent overlay
+        overlay = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
+        overlay.set_alpha(200)
+        overlay.fill(BLACK)
+        self.screen.blit(overlay, (0, 0))
+        
+        # Level complete text
+        title = self.font_large.render(f"LEVEL {level_num} COMPLETE!", True, YELLOW)
+        title_rect = title.get_rect(center=(SCREEN_WIDTH//2, 120))
+        self.screen.blit(title, title_rect)
+        
+        # Level stats
+        y = 220
+        score_text = self.font_medium.render(f"Score: {score}", True, WHITE)
+        score_rect = score_text.get_rect(center=(SCREEN_WIDTH//2, y))
+        self.screen.blit(score_text, score_rect)
+        
+        y += 60
+        blocks_text = self.font_small.render(f"Blocks Destroyed: {blocks_destroyed}", True, WHITE)
+        blocks_rect = blocks_text.get_rect(center=(SCREEN_WIDTH//2, y))
+        self.screen.blit(blocks_text, blocks_rect)
+        
+        y += 50
+        enemies_text = self.font_small.render(f"Enemies Defeated: {enemies_defeated}", True, WHITE)
+        enemies_rect = enemies_text.get_rect(center=(SCREEN_WIDTH//2, y))
+        self.screen.blit(enemies_text, enemies_rect)
+        
+        # Instructions
+        y += 100
+        continue_text = self.font_medium.render("Press SPACE for Next Level", True, YELLOW)
+        continue_rect = continue_text.get_rect(center=(SCREEN_WIDTH//2, y))
+        self.screen.blit(continue_text, continue_rect)
+        
+        y += 60
+        menu_text = self.font_small.render("Press M for Main Menu", True, GRAY)
+        menu_rect = menu_text.get_rect(center=(SCREEN_WIDTH//2, y))
+        self.screen.blit(menu_text, menu_rect)
+
+
+def draw_victory_screen(screen, score, blocks_destroyed, enemies_defeated, is_final_level=False):
+    """Draw victory screen (level complete or game complete)"""
     font_large = pygame.font.Font(None, 72)
     font_medium = pygame.font.Font(None, 36)
     
@@ -271,25 +327,42 @@ def draw_victory_screen(screen, score, blocks_destroyed, enemies_defeated):
     overlay.fill(BLACK)
     screen.blit(overlay, (0, 0))
     
-    # Victory text
-    victory_text = font_large.render("VICTORY!", True, YELLOW)
-    victory_rect = victory_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 - 80))
+    # Victory text - different if final level
+    if is_final_level:
+        victory_text = font_large.render("GAME COMPLETE!", True, YELLOW)
+        subtitle = font_medium.render("You defeated all enemies!", True, WHITE)
+    else:
+        victory_text = font_large.render("LEVEL COMPLETE!", True, YELLOW)
+        subtitle = font_medium.render("", True, WHITE)
+    
+    victory_rect = victory_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 - 100))
     screen.blit(victory_text, victory_rect)
+    
+    if is_final_level:
+        subtitle_rect = subtitle.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 - 50))
+        screen.blit(subtitle, subtitle_rect)
     
     # Stats
     final_score = font_medium.render(f"Final Score: {score}", True, WHITE)
-    final_score_rect = final_score.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 - 10))
+    final_score_rect = final_score.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
     screen.blit(final_score, final_score_rect)
     
     stats = font_medium.render(f"Blocks: {blocks_destroyed} | Enemies: {enemies_defeated}", True, WHITE)
-    stats_rect = stats.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 30))
+    stats_rect = stats.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 40))
     screen.blit(stats, stats_rect)
     
     # Instructions
+    y_offset = 100 if is_final_level else 90
+    if not is_final_level:
+        next_text = font_medium.render("Press SPACE for Next Level", True, YELLOW)
+        next_rect = next_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + y_offset))
+        screen.blit(next_text, next_rect)
+        y_offset += 40
+    
     restart_text = font_medium.render("Press R to Restart", True, YELLOW)
-    restart_rect = restart_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 90))
+    restart_rect = restart_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + y_offset))
     screen.blit(restart_text, restart_rect)
     
-    menu_text = font_medium.render("Press M for Main Menu", True, YELLOW)
-    menu_rect = menu_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 130))
+    menu_text = font_medium.render("Press M for Main Menu", True, GRAY)
+    menu_rect = menu_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + y_offset + 40))
     screen.blit(menu_text, menu_rect)

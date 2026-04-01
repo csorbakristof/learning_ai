@@ -27,3 +27,7 @@ OK. Proceed with milestone 4.
 Now add milestones for "Enhanced version" mentioned in the priority summary.
 
 Now implement all milestones mentioned in the section Enhanced Version Implementation Order.
+
+Válasz: "I'll implement all 4 Enhancement Milestones systematically. Let me start by creating a todo tracker and then implement each milestone in order. ..."
+
+Please create a file "WhereWeAre.md" where you summarize what is ready and what is not.

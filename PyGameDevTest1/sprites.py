@@ -303,7 +303,7 @@ class Explosion(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     """Enemy with random movement AI"""
     
-    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group):
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, speed_multiplier=1.0):
         super().__init__()
         self.grid_x = grid_x
         self.grid_y = grid_y
@@ -311,7 +311,7 @@ class Enemy(pygame.sprite.Sprite):
         self.soft_blocks = soft_blocks_group
         
         # Movement properties
-        self.speed = ENEMY_SPEED
+        self.speed = int(ENEMY_SPEED * speed_multiplier)
         self.moving = False
         self.target_x = grid_x * TILE_SIZE
         self.target_y = grid_y * TILE_SIZE

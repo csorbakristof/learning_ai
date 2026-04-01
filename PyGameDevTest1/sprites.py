@@ -243,3 +243,105 @@ class Explosion(pygame.sprite.Sprite):
         current_time = pygame.time.get_ticks()
         if current_time - self.created_time >= self.duration:
             self.kill()  # Remove from all groups
+
+
+class Enemy(pygame.sprite.Sprite):
+    """Enemy with random movement AI"""
+    
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group):
+        super().__init__()
+        self.grid_x = grid_x
+        self.grid_y = grid_y
+        self.walls = walls_group
+        self.soft_blocks = soft_blocks_group
+        
+        # Movement properties
+        self.speed = ENEMY_SPEED
+        self.moving = False
+        self.target_x = grid_x * TILE_SIZE
+        self.target_y = grid_y * TILE_SIZE
+        
+        # AI properties
+        self.direction_timer = 0
+        self.direction_change_interval = 1000  # Change direction every 1 second
+        self.current_direction = (0, 0)
+        
+        # Create visual representation (red circle)
+        self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
+        self.image.fill(GREEN)  # Transparent background
+        pygame.draw.circle(self.image, RED, 
+                          (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//2 - 8)
+        # Add angry eyes
+        eye_y = TILE_SIZE//2 - 5
+        pygame.draw.circle(self.image, WHITE, (TILE_SIZE//2 - 8, eye_y), 4)
+        pygame.draw.circle(self.image, WHITE, (TILE_SIZE//2 + 8, eye_y), 4)
+        pygame.draw.circle(self.image, BLACK, (TILE_SIZE//2 - 8, eye_y), 2)
+        pygame.draw.circle(self.image, BLACK, (TILE_SIZE//2 + 8, eye_y), 2)
+        
+        # Set position
+        self.rect = self.image.get_rect()
+        self.rect.x = grid_x * TILE_SIZE
+        self.rect.y = grid_y * TILE_SIZE
+    
+    def update(self):
+        """Update enemy position and AI"""
+        current_time = pygame.time.get_ticks()
+        
+        # Update position - smooth movement towards target
+        if self.rect.x < self.target_x:
+            self.rect.x = min(self.rect.x + self.speed, self.target_x)
+        elif self.rect.x > self.target_x:
+            self.rect.x = max(self.rect.x - self.speed, self.target_x)
+        
+        if self.rect.y < self.target_y:
+            self.rect.y = min(self.rect.y + self.speed, self.target_y)
+        elif self.rect.y > self.target_y:
+            self.rect.y = max(self.rect.y - self.speed, self.target_y)
+        
+        # Update grid position when aligned
+        if self.rect.x == self.target_x and self.rect.y == self.target_y:
+            self.grid_x = self.rect.x // TILE_SIZE
+            self.grid_y = self.rect.y // TILE_SIZE
+            self.moving = False
+        
+        # AI: Choose and move in random direction periodically
+        if not self.moving:
+            if current_time - self.direction_timer >= self.direction_change_interval:
+                self.choose_random_direction()
+                self.direction_timer = current_time
+    
+    def choose_random_direction(self):
+        """Choose a random valid direction and try to move"""
+        import random
+        
+        # Possible directions: up, down, left, right, stay
+        directions = [(0, -1), (0, 1), (-1, 0), (1, 0), (0, 0)]
+        
+        # Shuffle directions to try random ones first
+        random.shuffle(directions)
+        
+        for dx, dy in directions:
+            new_grid_x = self.grid_x + dx
+            new_grid_y = self.grid_y + dy
+            
+            # Check if position is valid
+            if not self.is_position_blocked(new_grid_x, new_grid_y):
+                self.target_x = new_grid_x * TILE_SIZE
+                self.target_y = new_grid_y * TILE_SIZE
+                self.moving = True
+                self.current_direction = (dx, dy)
+                break
+    
+    def is_position_blocked(self, grid_x, grid_y):
+        """Check if a grid position is blocked by walls or soft blocks"""
+        # Check walls
+        for wall in self.walls:
+            if wall.grid_x == grid_x and wall.grid_y == grid_y:
+                return True
+        
+        # Check soft blocks
+        for block in self.soft_blocks:
+            if block.grid_x == grid_x and block.grid_y == grid_y:
+                return True
+        
+        return False

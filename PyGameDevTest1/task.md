@@ -942,3 +942,281 @@ After completing all 4 milestones, you'll have a fully playable Bomberman MVP. T
 - "Let's add the player character (Milestone 2)"
 - "Implement the bomb system (Milestone 3)"
 
+---
+
+# Enhanced Version Milestones
+
+After completing the MVP, these milestones add depth and polish to create a more complete gaming experience. Each enhancement milestone builds upon the MVP foundation.
+
+## Enhancement Milestone 1: Power-up System
+**Phase: 6 (Power-ups)**
+
+**Goal:** Add collectible power-ups that enhance player abilities, increasing strategic depth and replayability.
+
+**Includes:**
+
+**Power-up Types:**
+- **Bomb Up** - Increases maximum bombs player can place simultaneously
+- **Fire Up** - Increases explosion range of bombs
+- **Speed Up** - Increases player movement speed
+
+**Power-up Mechanics:**
+- Power-up sprite class with visual distinction for each type
+- Random power-up spawning when soft blocks destroyed (~30% chance)
+- Power-up appears at destroyed block's position
+- Collision detection between player and power-ups
+- Power-up collection effects:
+  - Bomb Up: max_bombs += 1
+  - Fire Up: bomb_range += 1
+  - Speed Up: speed += 1 (with reasonable cap)
+- Visual feedback on collection
+- Power-up tracking in player stats
+- Power-ups remain on ground until collected (don't disappear)
+
+**Deliverable:** Players can collect power-ups from destroyed blocks, gaining permanent ability enhancements that make later levels easier.
+
+**Test Criteria:**
+- Destroying soft blocks sometimes spawns power-ups
+- Power-ups appear as distinct colored icons
+- Can distinguish between power-up types visually
+- Walking over power-up collects it
+- Bomb Up allows placing multiple bombs simultaneously
+- Fire Up increases explosion range visibly
+- Speed Up makes player move faster
+- Can see current power-up levels in stats/UI
+- Power-ups persist on field until collected
+- Game balance: power-ups make player stronger but not overpowered
+
+**Files Modified:**
+- `sprites.py` - Add PowerUp class with subtypes
+- `main.py` - Add power-up spawning logic and collection handling
+- `config.py` - Add power-up constants (spawn rate, max values)
+
+---
+
+## Enhancement Milestone 2: Enhanced UI & Menus
+**Phase: 8 (UI Elements)**
+
+**Goal:** Create professional menus and improved HUD for better user experience.
+
+**Includes:**
+
+**Main Menu:**
+- Title screen with game logo/name
+- Menu options:
+  - Start Game
+  - Instructions/How to Play
+  - Quit
+- Keyboard navigation (arrow keys + Enter)
+- Visual selection indicator
+
+**Instructions Screen:**
+- Controls explanation
+- Gameplay objectives
+- Power-up descriptions
+- Back to menu option
+
+**Enhanced HUD:**
+- Better visual design for stats display
+- Icons for lives (hearts)
+- Icons for bombs
+- Power-up indicators showing current levels
+- Level number display
+- Timer (optional - for speedrun mode)
+
+**Pause System:**
+- Pause/unpause with ESC or P key
+- Game freezes when paused
+- Semi-transparent pause overlay
+- Pause menu options:
+  - Resume
+  - Restart Level
+  - Main Menu
+
+**Enhanced End Screens:**
+- Better styled victory/game over screens
+- Animated text or effects
+- More detailed statistics:
+  - Time taken
+  - Accuracy (blocks hit vs bombs placed)
+  - Perfect clear bonus
+- Buttons for: Restart, Next Level, Main Menu
+
+**Deliverable:** Professional-looking game interface with menus, pause functionality, and polished UI elements.
+
+**Test Criteria:**
+- Game starts at main menu (not directly in-game)
+- Can navigate menu with keyboard
+- Instructions screen shows all necessary info
+- Can start game from menu
+- HUD displays all info clearly with icons
+- ESC/P pauses the game
+- Game state freezes during pause
+- Can resume, restart, or quit from pause menu
+- End screens look polished with all statistics
+- Can navigate back to main menu from anywhere
+
+**Files Modified:**
+- `main.py` - Add menu system, game states, pause logic
+- Create `ui.py` - Menu and HUD rendering functions
+- `config.py` - Add UI constants (colors, fonts, layouts)
+
+---
+
+## Enhancement Milestone 3: Level Progression System
+**Phase: 7 Full (Complete Game State Management)**
+
+**Goal:** Implement multiple levels with increasing difficulty and proper progression.
+
+**Includes:**
+
+**Level System:**
+- Multiple levels (start with 3-5)
+- Level progression after defeating all enemies
+- Level number tracking
+- Different level configurations:
+  - Level 1: 3 enemies, 60% soft blocks
+  - Level 2: 4 enemies, 50% soft blocks, faster enemies
+  - Level 3: 5 enemies, 40% soft blocks, even faster
+  - Level 4+: Progressive difficulty increase
+
+**Level Transitions:**
+- Victory screen shows "Level Complete"
+- Button/key to advance to next level
+- Player stats carry over between levels
+- Brief level intro screen showing level number
+
+**Difficulty Scaling:**
+- More enemies per level
+- Fewer soft blocks (less cover)
+- Enemy speed increases
+- Different maze patterns per level
+- Boss enemy on final level (optional)
+
+**Game Completion:**
+- Special victory screen after beating all levels
+- Overall game statistics
+- Congratulations message
+- High score saving (optional)
+
+**Lives Between Levels:**
+- Lives carry over between levels
+- Bonus life every 2-3 levels (optional)
+- Can continue from last level or restart all
+
+**Deliverable:** Complete game progression through multiple challenging levels with increasing difficulty.
+
+**Test Criteria:**
+- Beating level 1 advances to level 2
+- Level difficulty increases noticeably
+- Level number displays correctly
+- Player power-ups persist between levels
+- Can complete all levels in sequence
+- Final victory screen appears after last level
+- Each level feels distinct and progressively harder
+- Game doesn't reset stats between levels
+
+**Files Modified:**
+- `main.py` - Add level management, progression logic
+- Create `levels.py` - Level configurations and generation
+- `config.py` - Add level parameters and difficulty settings
+
+---
+
+## Enhancement Milestone 4: Audio Integration
+**Phase: 9.1-9.2 (Sound Effects and Background Music)**
+
+**Goal:** Add immersive audio to enhance gameplay experience.
+
+**Includes:**
+
+**Sound Effects:**
+- Bomb placement sound (low beep)
+- Bomb explosion sound (boom)
+- Block destruction sound (crumble)
+- Power-up collection sound (positive chime)
+- Player hit/death sound (negative sound)
+- Enemy defeat sound (defeat jingle)
+- Menu selection sound (click)
+- Victory fanfare
+- Game over sound
+
+**Background Music:**
+- Main menu music (looping)
+- Gameplay music (energetic, looping)
+- Victory music (short, triumphant)
+- Game over music (short, sad)
+
+**Audio Management:**
+- Volume control system
+- Separate volume for music and SFX
+- Mute option
+- Audio settings persist between sessions
+- Smooth music transitions between game states
+
+**Sound File Options:**
+- Use free sound libraries (freesound.org, OpenGameArt)
+- Or simple generated sounds using pygame.sndarray
+- Keep file sizes reasonable
+
+**Deliverable:** Fully audio-enhanced game with sound effects for all actions and appropriate background music.
+
+**Test Criteria:**
+- All game actions have corresponding sounds
+- Background music plays and loops correctly
+- Music changes appropriately for different game states
+- Sounds are balanced (not too loud/quiet)
+- Can adjust volume or mute
+- No audio lag or stuttering
+- Audio adds to experience without being annoying
+- Music loops seamlessly
+
+**Files Modified:**
+- `main.py` - Add audio loading and playback
+- Create `audio.py` - Audio management system
+- `config.py` - Add audio file paths and volume settings
+- Create `assets/sounds/` directory with sound files
+- Create `assets/music/` directory with music files
+
+---
+
+## Enhanced Version Implementation Order
+
+**Recommended sequence for enhanced features:**
+
+1. **Enhancement Milestone 1 (Power-ups)** 
+   - Most impactful gameplay addition
+   - Adds strategic depth and replay value
+   - Relatively straightforward to implement
+
+2. **Enhancement Milestone 2 (UI & Menus)**
+   - Makes game feel professional
+   - Improves user experience significantly
+   - Sets foundation for settings/options
+
+3. **Enhancement Milestone 3 (Level Progression)**
+   - Extends gameplay time significantly  
+   - Builds on power-up system naturally
+   - Creates sense of achievement
+
+4. **Enhancement Milestone 4 (Audio)**
+   - Polish that brings game to life
+   - Can be added at any point
+   - Optional but highly recommended
+
+**After Enhanced Version, consider:**
+- Visual Polish (Phase 9.3-9.4) - Replace basic graphics with sprites
+- Testing & Balancing (Phase 10) - Fine-tune all systems
+- Advanced Features (Phase 11) - Local multiplayer, level editor, etc.
+
+---
+
+## Prompt Examples for Enhanced Version
+
+When ready to implement enhanced features, use prompts like:
+- "Implement Enhancement Milestone 1 - Power-ups"
+- "Add the power-up system (Enhancement Milestone 1)"
+- "Let's add menus and UI (Enhancement Milestone 2)"
+- "Implement level progression (Enhancement Milestone 3)"
+- "Add audio to the game (Enhancement Milestone 4)"
+

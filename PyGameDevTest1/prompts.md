@@ -23,3 +23,7 @@ OK. Proceed with milestone 3.
 Válasz: megint leírta, mint próbáljak ki, aztán mehetünk tovább.
 
 OK. Proceed with milestone 4.
+
+Now add milestones for "Enhanced version" mentioned in the priority summary.
+
+Now implement all milestones mentioned in the section Enhanced Version Implementation Order.

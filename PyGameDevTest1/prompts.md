@@ -44,3 +44,6 @@ Válasz: nem sikerült javítani...
 
 The player can still move on a bomb.
 
+Válasz: javította, a játékos ütközés logikájából még hiányzott a bomba vizsgálata.
+
+Allow secondary explosions: if a bomb is hit by the explosion of another bomb, make that bomb explode immediately too, so that chain explosions are possible.

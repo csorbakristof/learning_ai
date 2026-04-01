@@ -438,6 +438,18 @@ def main():
                             game_state['walls'], game_state['soft_blocks'], game_state['explosions']
                         )
                         
+                        # Add explosions to sprite groups
+                        game_state['all_sprites'].add(game_state['explosions'])
+                        
+                        # Check for chain explosions: trigger other bombs hit by this explosion
+                        for other_bomb in game_state['bombs'].copy():
+                            if other_bomb != bomb and not other_bomb.exploded:
+                                # Check if other bomb is in explosion range
+                                explosion_hits = pygame.sprite.spritecollide(other_bomb, game_state['explosions'], False)
+                                if explosion_hits:
+                                    # Trigger immediate explosion
+                                    other_bomb.exploded = True
+                        
                         # Remove destroyed soft blocks and update score
                         for block in destroyed_blocks:
                             # Spawn power-up with chance
@@ -453,9 +465,6 @@ def main():
                             game_state['soft_blocks'].remove(block)
                             game_state['blocks_destroyed'] += 1
                             game_state['score'] += 10  # 10 points per block
-                        
-                        # Add explosions to sprite groups
-                        game_state['all_sprites'].add(game_state['explosions'])
                         
                         # Return bomb to player
                         bomb.owner.bombs_available += 1

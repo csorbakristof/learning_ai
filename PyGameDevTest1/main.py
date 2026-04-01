@@ -5,7 +5,8 @@ Main game file
 import pygame
 import random
 from config import *
-from sprites import Wall, SoftBlock, Player, Bomb, Explosion, Enemy
+from sprites import Wall, SoftBlock, Player, Bomb, Explosion, Enemy, PowerUp
+from ui import Menu, InstructionsScreen, PauseMenu, draw_hud, draw_game_over_screen, draw_victory_screen
 
 
 def grid_to_pixel(grid_x, grid_y):
@@ -163,21 +164,8 @@ def spawn_enemies(num_enemies, walls_group, soft_blocks_group, player, enemies_g
 
 
 
-def main():
-    """Main game function"""
-    # Initialize Pygame
-    pygame.init()
-    
-    # Create game window
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    pygame.display.set_caption(WINDOW_TITLE)
-    
-    # Create clock for FPS control
-    clock = pygame.time.Clock()
-    
-    # Create font for UI
-    font = pygame.font.Font(None, 36)
-    
+def init_game():
+    """Initialize game with fresh state"""
     # Create sprite groups
     all_sprites = pygame.sprite.Group()
     walls = pygame.sprite.Group()
@@ -185,6 +173,7 @@ def main():
     bombs = pygame.sprite.Group()
     explosions = pygame.sprite.Group()
     enemies = pygame.sprite.Group()
+    powerups = pygame.sprite.Group()
     
     # Generate level
     generate_level(walls, soft_blocks)
@@ -199,18 +188,58 @@ def main():
     # Add all sprites to the main group for rendering
     all_sprites.add(walls)
     all_sprites.add(soft_blocks)
+    all_sprites.add(powerups)
     all_sprites.add(enemies)
     all_sprites.add(player)
     
     # Game state
-    score = 0
-    blocks_destroyed = 0
-    enemies_defeated = 0
-    game_over = False
-    victory = False
+    game_state = {
+        'all_sprites': all_sprites,
+        'walls': walls,
+        'soft_blocks': soft_blocks,
+        'bombs': bombs,
+        'explosions': explosions,
+        'enemies': enemies,
+        'powerups': powerups,
+        'player': player,
+        'score': 0,
+        'blocks_destroyed': 0,
+        'enemies_defeated': 0,
+        'game_over': False,
+        'victory': False,
+        'space_pressed': False
+    }
     
-    # Track key press for bomb placement (to avoid continuous placement)
-    space_pressed = False
+    return game_state
+
+
+def main():
+    """Main game function"""
+    # Initialize Pygame
+    pygame.init()
+    
+    # Create game window
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    pygame.display.set_caption(WINDOW_TITLE)
+    
+    # Create clock for FPS control
+    clock = pygame.time.Clock()
+    
+    # Game states
+    STATE_MENU = "menu"
+    STATE_PLAYING = "playing"
+    STATE_PAUSED = "paused"
+    STATE_INSTRUCTIONS = "instructions"
+    
+    current_state = STATE_MENU
+    
+    # Create UI objects
+    menu = Menu(screen)
+    instructions_screen = InstructionsScreen(screen)
+    pause_menu = PauseMenu(screen)
+    
+    # Game state (will be initialized when starting game)
+    game_state = None
     
     # Main game loop
     running = True
@@ -219,211 +248,235 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            # Restart game on R key press after game over or victory
+            
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_r and (game_over or victory):
-                    # Restart the game
-                    main()
-                    return
+                # Menu state
+                if current_state == STATE_MENU:
+                    action = menu.handle_input(event)
+                    if action == "start":
+                        game_state = init_game()
+                        current_state = STATE_PLAYING
+                    elif action == "instructions":
+                        current_state = STATE_INSTRUCTIONS
+                    elif action == "quit":
+                        running = False
+                
+                # Instructions state
+                elif current_state == STATE_INSTRUCTIONS:
+                    if event.key == pygame.K_ESCAPE:
+                        current_state = STATE_MENU
+                
+                # Playing state
+                elif current_state == STATE_PLAYING:
+                    # Pause game
+                    if event.key in (pygame.K_ESCAPE, pygame.K_p):
+                        current_state = STATE_PAUSED
+                    
+                    # Game over or victory - restart or return to menu
+                    elif game_state['game_over'] or game_state['victory']:
+                        if event.key == pygame.K_r:
+                            game_state = init_game()
+                        elif event.key == pygame.K_m:
+                            current_state = STATE_MENU
+                            game_state = None
+                
+                # Paused state
+                elif current_state == STATE_PAUSED:
+                    # Resume with ESC or P
+                    if event.key in (pygame.K_ESCAPE, pygame.K_p):
+                        current_state = STATE_PLAYING
+                    else:
+                        action = pause_menu.handle_input(event)
+                        if action == "resume":
+                            current_state = STATE_PLAYING
+                        elif action == "restart":
+                            game_state = init_game()
+                            current_state = STATE_PLAYING
+                        elif action == "menu":
+                            current_state = STATE_MENU
+                            game_state = None
         
-        # Only process game logic if not game over or victory
-        if not game_over and not victory:
-            # Input handling - continuous key checking for smooth movement
-            keys = pygame.key.get_pressed()
+        # Update and Render based on current state
+        if current_state == STATE_MENU:
+            menu.draw()
+        
+        elif current_state == STATE_INSTRUCTIONS:
+            instructions_screen.draw()
+        
+        elif current_state == STATE_PAUSED:
+            # Draw the paused game in background
+            screen.fill(GREEN)
+            game_state['all_sprites'].draw(screen)
+            draw_hud(screen, game_state['player'], game_state['score'], 
+                    len(game_state['enemies']))
             
-            # Arrow keys
-            if keys[pygame.K_UP]:
-                player.move(0, -1)
-            elif keys[pygame.K_DOWN]:
-                player.move(0, 1)
-            elif keys[pygame.K_LEFT]:
-                player.move(-1, 0)
-            elif keys[pygame.K_RIGHT]:
-                player.move(1, 0)
-            
-            # WASD keys
-            if keys[pygame.K_w]:
-                player.move(0, -1)
-            elif keys[pygame.K_s]:
-                player.move(0, 1)
-            elif keys[pygame.K_a]:
-                player.move(-1, 0)
-            elif keys[pygame.K_d]:
-                player.move(1, 0)
-            
-            # Bomb placement with spacebar (only when player is aligned to grid)
-            if keys[pygame.K_SPACE] and not space_pressed:
-                if not player.moving and player.bombs_available > 0:
-                    if can_place_bomb(player.grid_x, player.grid_y, bombs):
-                        bomb = Bomb(player.grid_x, player.grid_y, player.bomb_range, player)
-                        bombs.add(bomb)
-                        all_sprites.add(bomb)
-                        player.bombs_available -= 1
-                        space_pressed = True
-            
-            # Reset space key tracking
-            if not keys[pygame.K_SPACE]:
-                space_pressed = False
-            
-            # Update
-            all_sprites.update()
-            
-            # Check for bombs ready to explode
-            for bomb in bombs.copy():
-                if bomb.is_ready_to_explode():
-                    # Create explosion
-                    destroyed_blocks = create_explosion(
-                        bomb.grid_x, bomb.grid_y, bomb.bomb_range,
-                        walls, soft_blocks, explosions
-                    )
-                    
-                    # Remove destroyed soft blocks and update score
-                    for block in destroyed_blocks:
-                        block.kill()
-                        all_sprites.remove(block)
-                        soft_blocks.remove(block)
-                        blocks_destroyed += 1
-                        score += 10  # 10 points per block
-                    
-                    # Add explosions to sprite groups
-                    all_sprites.add(explosions)
-                    
-                    # Return bomb to player
-                    bomb.owner.bombs_available += 1
-                    
-                    # Remove bomb
-                    bomb.kill()
-                    bombs.remove(bomb)
-                    all_sprites.remove(bomb)
-            
-            # Check collision between enemies and explosions
-            for enemy in enemies.copy():
-                explosion_hits = pygame.sprite.spritecollide(enemy, explosions, False)
+            # Draw pause menu overlay
+            pause_menu.draw()
+        
+        elif current_state == STATE_PLAYING and game_state:
+            # Only process game logic if not game over or victory
+            if not game_state['game_over'] and not game_state['victory']:
+                # Input handling - continuous key checking for smooth movement
+                keys = pygame.key.get_pressed()
+                
+                # Arrow keys
+                if keys[pygame.K_UP]:
+                    game_state['player'].move(0, -1)
+                elif keys[pygame.K_DOWN]:
+                    game_state['player'].move(0, 1)
+                elif keys[pygame.K_LEFT]:
+                    game_state['player'].move(-1, 0)
+                elif keys[pygame.K_RIGHT]:
+                    game_state['player'].move(1, 0)
+                
+                # WASD keys
+                if keys[pygame.K_w]:
+                    game_state['player'].move(0, -1)
+                elif keys[pygame.K_s]:
+                    game_state['player'].move(0, 1)
+                elif keys[pygame.K_a]:
+                    game_state['player'].move(-1, 0)
+                elif keys[pygame.K_d]:
+                    game_state['player'].move(1, 0)
+                
+                # Bomb placement with spacebar (only when player is aligned to grid)
+                if keys[pygame.K_SPACE] and not game_state['space_pressed']:
+                    player = game_state['player']
+                    if not player.moving and player.bombs_available > 0:
+                        if can_place_bomb(player.grid_x, player.grid_y, game_state['bombs']):
+                            bomb = Bomb(player.grid_x, player.grid_y, player.bomb_range, player)
+                            game_state['bombs'].add(bomb)
+                            game_state['all_sprites'].add(bomb)
+                            player.bombs_available -= 1
+                            game_state['space_pressed'] = True
+                
+                # Reset space key tracking
+                if not keys[pygame.K_SPACE]:
+                    game_state['space_pressed'] = False
+                
+                # Update
+                game_state['all_sprites'].update()
+                
+                # Check for bombs ready to explode
+                for bomb in game_state['bombs'].copy():
+                    if bomb.is_ready_to_explode():
+                        # Create explosion
+                        destroyed_blocks = create_explosion(
+                            bomb.grid_x, bomb.grid_y, bomb.bomb_range,
+                            game_state['walls'], game_state['soft_blocks'], game_state['explosions']
+                        )
+                        
+                        # Remove destroyed soft blocks and update score
+                        for block in destroyed_blocks:
+                            # Spawn power-up with chance
+                            if random.random() < POWERUP_SPAWN_CHANCE:
+                                # Random power-up type
+                                powerup_type = random.choice([POWERUP_BOMB, POWERUP_FIRE, POWERUP_SPEED])
+                                powerup = PowerUp(block.grid_x, block.grid_y, powerup_type)
+                                game_state['powerups'].add(powerup)
+                                game_state['all_sprites'].add(powerup)
+                            
+                            block.kill()
+                            game_state['all_sprites'].remove(block)
+                            game_state['soft_blocks'].remove(block)
+                            game_state['blocks_destroyed'] += 1
+                            game_state['score'] += 10  # 10 points per block
+                        
+                        # Add explosions to sprite groups
+                        game_state['all_sprites'].add(game_state['explosions'])
+                        
+                        # Return bomb to player
+                        bomb.owner.bombs_available += 1
+                        
+                        # Remove bomb
+                        bomb.kill()
+                        game_state['bombs'].remove(bomb)
+                        game_state['all_sprites'].remove(bomb)
+                
+                # Check collision between enemies and explosions
+                for enemy in game_state['enemies'].copy():
+                    explosion_hits = pygame.sprite.spritecollide(enemy, game_state['explosions'], False)
+                    if explosion_hits:
+                        enemy.kill()
+                        game_state['enemies'].remove(enemy)
+                        game_state['all_sprites'].remove(enemy)
+                        game_state['enemies_defeated'] += 1
+                        game_state['score'] += 100  # 100 points per enemy
+                
+                # Check collision between player and explosions
+                explosion_hits = pygame.sprite.spritecollide(game_state['player'], game_state['explosions'], False)
                 if explosion_hits:
-                    enemy.kill()
-                    enemies.remove(enemy)
-                    all_sprites.remove(enemy)
-                    enemies_defeated += 1
-                    score += 100  # 100 points per enemy
+                    game_state['player'].lives -= 1
+                    if game_state['player'].lives <= 0:
+                        game_state['game_over'] = True
+                    else:
+                        # Respawn player at starting position
+                        player = game_state['player']
+                        player.rect.x = 1 * TILE_SIZE
+                        player.rect.y = 1 * TILE_SIZE
+                        player.grid_x = 1
+                        player.grid_y = 1
+                        player.target_x = player.rect.x
+                        player.target_y = player.rect.y
+                        player.moving = False
+                
+                # Check collision between player and enemies
+                enemy_hits = pygame.sprite.spritecollide(game_state['player'], game_state['enemies'], False)
+                if enemy_hits:
+                    game_state['player'].lives -= 1
+                    if game_state['player'].lives <= 0:
+                        game_state['game_over'] = True
+                    else:
+                        # Respawn player at starting position
+                        player = game_state['player']
+                        player.rect.x = 1 * TILE_SIZE
+                        player.rect.y = 1 * TILE_SIZE
+                        player.grid_x = 1
+                        player.grid_y = 1
+                        player.target_x = player.rect.x
+                        player.target_y = player.rect.y
+                        player.moving = False
+                
+                # Check collision between player and power-ups
+                powerup_hits = pygame.sprite.spritecollide(game_state['player'], game_state['powerups'], True)
+                for powerup in powerup_hits:
+                    player = game_state['player']
+                    # Apply power-up effect
+                    if powerup.powerup_type == POWERUP_BOMB:
+                        if player.max_bombs < MAX_BOMBS:
+                            player.max_bombs += 1
+                            player.bombs_available += 1
+                    elif powerup.powerup_type == POWERUP_FIRE:
+                        if player.bomb_range < MAX_BOMB_RANGE:
+                            player.bomb_range += 1
+                    elif powerup.powerup_type == POWERUP_SPEED:
+                        if player.speed < MAX_SPEED:
+                            player.speed += 1
+                    # Remove from all_sprites
+                    game_state['all_sprites'].remove(powerup)
+                    game_state['score'] += 50  # Bonus points for collecting power-up
+                
+                # Check win condition - all enemies defeated
+                if len(game_state['enemies']) == 0:
+                    game_state['victory'] = True
             
-            # Check collision between player and explosions
-            explosion_hits = pygame.sprite.spritecollide(player, explosions, False)
-            if explosion_hits:
-                player.lives -= 1
-                if player.lives <= 0:
-                    game_over = True
-                else:
-                    # Respawn player at starting position
-                    player.rect.x = 1 * TILE_SIZE
-                    player.rect.y = 1 * TILE_SIZE
-                    player.grid_x = 1
-                    player.grid_y = 1
-                    player.target_x = player.rect.x
-                    player.target_y = player.rect.y
-                    player.moving = False
+            # Render game
+            screen.fill(GREEN)  # Background color (grass)
+            game_state['all_sprites'].draw(screen)
             
-            # Check collision between player and enemies
-            enemy_hits = pygame.sprite.spritecollide(player, enemies, False)
-            if enemy_hits:
-                player.lives -= 1
-                if player.lives <= 0:
-                    game_over = True
-                else:
-                    # Respawn player at starting position
-                    player.rect.x = 1 * TILE_SIZE
-                    player.rect.y = 1 * TILE_SIZE
-                    player.grid_x = 1
-                    player.grid_y = 1
-                    player.target_x = player.rect.x
-                    player.target_y = player.rect.y
-                    player.moving = False
+            # Draw enhanced HUD
+            draw_hud(screen, game_state['player'], game_state['score'], 
+                    len(game_state['enemies']))
             
-            # Check win condition - all enemies defeated
-            if len(enemies) == 0:
-                victory = True
-        
-        # Render
-        screen.fill(GREEN)  # Background color (grass)
-        all_sprites.draw(screen)
-        
-        # Draw UI - Lives, Bombs, Score, and Enemies remaining
-        lives_text = font.render(f"Lives: {player.lives}", True, WHITE)
-        bombs_text = font.render(f"Bombs: {player.bombs_available}/{player.max_bombs}", True, WHITE)
-        score_text = font.render(f"Score: {score}", True, WHITE)
-        enemies_text = font.render(f"Enemies: {len(enemies)}", True, WHITE)
-        
-        # Draw text with black background for readability
-        lives_rect = lives_text.get_rect(topleft=(10, 10))
-        bombs_rect = bombs_text.get_rect(topleft=(10, 50))
-        score_rect = score_text.get_rect(topleft=(10, 90))
-        enemies_rect = enemies_text.get_rect(topleft=(10, 130))
-        
-        pygame.draw.rect(screen, BLACK, lives_rect.inflate(10, 5))
-        pygame.draw.rect(screen, BLACK, bombs_rect.inflate(10, 5))
-        pygame.draw.rect(screen, BLACK, score_rect.inflate(10, 5))
-        pygame.draw.rect(screen, BLACK, enemies_rect.inflate(10, 5))
-        
-        screen.blit(lives_text, lives_rect)
-        screen.blit(bombs_text, bombs_rect)
-        screen.blit(score_text, score_rect)
-        screen.blit(enemies_text, enemies_rect)
-        
-        # Draw game over or victory screen
-        if game_over:
-            # Semi-transparent overlay
-            overlay = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
-            overlay.set_alpha(200)
-            overlay.fill(BLACK)
-            screen.blit(overlay, (0, 0))
-            
-            # Game over text
-            game_over_font = pygame.font.Font(None, 72)
-            game_over_text = game_over_font.render("GAME OVER", True, RED)
-            game_over_rect = game_over_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 - 50))
-            screen.blit(game_over_text, game_over_rect)
-            
-            # Final score
-            final_score_text = font.render(f"Final Score: {score}", True, WHITE)
-            final_score_rect = final_score_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 20))
-            screen.blit(final_score_text, final_score_rect)
-            
-            # Stats
-            stats_text = font.render(f"Blocks: {blocks_destroyed} | Enemies: {enemies_defeated}", True, WHITE)
-            stats_rect = stats_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 60))
-            screen.blit(stats_text, stats_rect)
-            
-            # Restart instruction
-            restart_text = font.render("Press R to Restart or ESC to Quit", True, YELLOW)
-            restart_rect = restart_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 110))
-            screen.blit(restart_text, restart_rect)
-        
-        elif victory:
-            # Semi-transparent overlay
-            overlay = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
-            overlay.set_alpha(200)
-            overlay.fill(BLACK)
-            screen.blit(overlay, (0, 0))
-            
-            # Victory text
-            victory_font = pygame.font.Font(None, 72)
-            victory_text = victory_font.render("VICTORY!", True, YELLOW)
-            victory_rect = victory_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 - 50))
-            screen.blit(victory_text, victory_rect)
-            
-            # Final score
-            final_score_text = font.render(f"Final Score: {score}", True, WHITE)
-            final_score_rect = final_score_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 20))
-            screen.blit(final_score_text, final_score_rect)
-            
-            # Stats
-            stats_text = font.render(f"Blocks: {blocks_destroyed} | Enemies: {enemies_defeated}", True, WHITE)
-            stats_rect = stats_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 60))
-            screen.blit(stats_text, stats_rect)
-            
-            # Restart instruction
-            restart_text = font.render("Press R to Restart or ESC to Quit", True, YELLOW)
-            restart_rect = restart_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 110))
-            screen.blit(restart_text, restart_rect)
+            # Draw game over or victory screen
+            if game_state['game_over']:
+                draw_game_over_screen(screen, game_state['score'], 
+                                     game_state['blocks_destroyed'], 
+                                     game_state['enemies_defeated'])
+            elif game_state['victory']:
+                draw_victory_screen(screen, game_state['score'], 
+                                   game_state['blocks_destroyed'], 
+                                   game_state['enemies_defeated'])
         
         # Update display
         pygame.display.flip()

@@ -39,5 +39,15 @@ INITIAL_LIVES = 3
 # Power-up spawn chance (0.0 to 1.0)
 POWERUP_SPAWN_CHANCE = 0.3
 
+# Power-up types
+POWERUP_BOMB = "bomb_up"
+POWERUP_FIRE = "fire_up"
+POWERUP_SPEED = "speed_up"
+
+# Power-up limits
+MAX_BOMB_RANGE = 5
+MAX_BOMBS = 5
+MAX_SPEED = 6
+
 # Window title
 WINDOW_TITLE = "Dynablaster - Bomberman Clone"

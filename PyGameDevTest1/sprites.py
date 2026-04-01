@@ -97,6 +97,61 @@ class Player(pygame.sprite.Sprite):
         return False
 
 
+class PowerUp(pygame.sprite.Sprite):
+    """Power-up that enhances player abilities"""
+    
+    def __init__(self, grid_x, grid_y, powerup_type):
+        super().__init__()
+        self.grid_x = grid_x
+        self.grid_y = grid_y
+        self.powerup_type = powerup_type
+        
+        # Create visual representation based on type
+        self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
+        self.image.fill(GREEN)  # Transparent background
+        
+        if powerup_type == POWERUP_BOMB:
+            # Bomb Up - Cyan/Blue icon
+            pygame.draw.circle(self.image, (0, 200, 255), 
+                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3)
+            pygame.draw.circle(self.image, WHITE, 
+                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3, 3)
+            # Draw "B" for bomb
+            font = pygame.font.Font(None, 32)
+            text = font.render("B", True, WHITE)
+            text_rect = text.get_rect(center=(TILE_SIZE//2, TILE_SIZE//2))
+            self.image.blit(text, text_rect)
+            
+        elif powerup_type == POWERUP_FIRE:
+            # Fire Up - Orange/Red icon
+            pygame.draw.circle(self.image, ORANGE, 
+                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3)
+            pygame.draw.circle(self.image, YELLOW, 
+                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3, 3)
+            # Draw "F" for fire
+            font = pygame.font.Font(None, 32)
+            text = font.render("F", True, WHITE)
+            text_rect = text.get_rect(center=(TILE_SIZE//2, TILE_SIZE//2))
+            self.image.blit(text, text_rect)
+            
+        elif powerup_type == POWERUP_SPEED:
+            # Speed Up - Green icon
+            pygame.draw.circle(self.image, (0, 255, 100), 
+                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3)
+            pygame.draw.circle(self.image, WHITE, 
+                              (TILE_SIZE//2, TILE_SIZE//2), TILE_SIZE//3, 3)
+            # Draw "S" for speed
+            font = pygame.font.Font(None, 32)
+            text = font.render("S", True, WHITE)
+            text_rect = text.get_rect(center=(TILE_SIZE//2, TILE_SIZE//2))
+            self.image.blit(text, text_rect)
+        
+        # Set position
+        self.rect = self.image.get_rect()
+        self.rect.x = grid_x * TILE_SIZE
+        self.rect.y = grid_y * TILE_SIZE
+
+
 class Wall(pygame.sprite.Sprite):
     """Indestructible wall block"""
     

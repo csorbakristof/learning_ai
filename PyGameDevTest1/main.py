@@ -313,6 +313,26 @@ def main():
                     if event.key in (pygame.K_ESCAPE, pygame.K_p) and not (game_state['game_over'] or game_state['victory']):
                         current_state = STATE_PAUSED
                     
+                    # Cheat codes (only during active gameplay)
+                    elif not (game_state['game_over'] or game_state['victory']):
+                        player = game_state['player']
+                        
+                        # B key: Increase bomb count
+                        if event.key == pygame.K_b:
+                            if player.max_bombs < MAX_BOMBS:
+                                player.max_bombs += 1
+                                player.bombs_available += 1
+                        
+                        # F key: Increase fire/blast distance
+                        elif event.key == pygame.K_f:
+                            if player.bomb_range < MAX_BOMB_RANGE:
+                                player.bomb_range += 1
+                        
+                        # S key: Increase speed (note: also used for WASD down movement)
+                        elif event.key == pygame.K_s:
+                            if player.speed < MAX_SPEED:
+                                player.speed += 1
+                    
                     # Game over or victory - restart or return to menu
                     elif game_state['game_over']:
                         if event.key == pygame.K_r:
@@ -399,16 +419,6 @@ def main():
                 elif keys[pygame.K_LEFT]:
                     game_state['player'].move(-1, 0)
                 elif keys[pygame.K_RIGHT]:
-                    game_state['player'].move(1, 0)
-                
-                # WASD keys
-                if keys[pygame.K_w]:
-                    game_state['player'].move(0, -1)
-                elif keys[pygame.K_s]:
-                    game_state['player'].move(0, 1)
-                elif keys[pygame.K_a]:
-                    game_state['player'].move(-1, 0)
-                elif keys[pygame.K_d]:
                     game_state['player'].move(1, 0)
                 
                 # Bomb placement with spacebar (only when player is aligned to grid)

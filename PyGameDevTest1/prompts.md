@@ -47,3 +47,9 @@ The player can still move on a bomb.
 Válasz: javította, a játékos ütközés logikájából még hiányzott a bomba vizsgálata.
 
 Allow secondary explosions: if a bomb is hit by the explosion of another bomb, make that bomb explode immediately too, so that chain explosions are possible.
+
+Introduce cheat codes where certain key presses increase some counters:
+- b increases the number of bombs
+- s increases the players speed
+- f increases the bombs blast distance
+

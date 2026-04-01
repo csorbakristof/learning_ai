@@ -85,7 +85,7 @@ class InstructionsScreen:
         instructions = [
             "",
             "CONTROLS:",
-            "  Arrow Keys / WASD - Move",
+            "  Arrow Keys - Move",
             "  Spacebar - Place Bomb",
             "  ESC / P - Pause",
             "",

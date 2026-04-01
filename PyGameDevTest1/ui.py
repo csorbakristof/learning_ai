@@ -68,9 +68,9 @@ class InstructionsScreen:
     
     def __init__(self, screen):
         self.screen = screen
-        self.font_large = pygame.font.Font(None, 60)
-        self.font_medium = pygame.font.Font(None, 36)
-        self.font_small = pygame.font.Font(None, 28)
+        self.font_large = pygame.font.Font(None, 48)
+        self.font_medium = pygame.font.Font(None, 32)
+        self.font_small = pygame.font.Font(None, 24)
     
     def draw(self):
         """Draw instructions"""
@@ -78,7 +78,7 @@ class InstructionsScreen:
         
         # Title
         title = self.font_large.render("HOW TO PLAY", True, YELLOW)
-        title_rect = title.get_rect(center=(SCREEN_WIDTH//2, 50))
+        title_rect = title.get_rect(center=(SCREEN_WIDTH//2, 40))
         self.screen.blit(title, title_rect)
         
         # Instructions
@@ -102,7 +102,7 @@ class InstructionsScreen:
             "  Touching enemies",
         ]
         
-        y = 120
+        y = 90
         for line in instructions:
             if line.startswith("  "):
                 text = self.font_small.render(line, True, WHITE)
@@ -110,7 +110,7 @@ class InstructionsScreen:
                 text = self.font_medium.render(line, True, YELLOW if line.endswith(":") else WHITE)
             text_rect = text.get_rect(left=150, top=y)
             self.screen.blit(text, text_rect)
-            y += 35
+            y += 30
         
         # Back instruction
         back_text = self.font_medium.render("Press ESC to return", True, GRAY)

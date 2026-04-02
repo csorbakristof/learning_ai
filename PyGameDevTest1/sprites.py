@@ -2,6 +2,7 @@
 Sprite classes for game objects
 """
 import pygame
+import random
 from config import *
 from assets import get_sprite_cache
 from enums import EnemyType, WallType, WeaponType, PowerUpType, EntityCategory, PassabilityCondition
@@ -9,7 +10,7 @@ from behaviors import (
     MovementBehavior, RandomMovement, TrackingMovement, WallEatingMovement,
     ExplosionBehavior, CrossExplosion,
     PassabilityRule, AlwaysBlockRule, EntityTypeRule,
-    WeaponBehavior, StandardBombBehavior
+    WeaponBehavior, StandardBombBehavior, RemoteBombBehavior, TimeBombBehavior, KickBombBehavior, LandmineBehavior
 )
 
 
@@ -34,6 +35,16 @@ class Player(pygame.sprite.Sprite):
         self.bomb_range = INITIAL_BOMB_RANGE
         self.speed = PLAYER_SPEED
         self.bombs_available = self.max_bombs
+        
+        # Weapon selection
+        self.current_weapon = WeaponType.STANDARD
+        self.weapon_names = {
+            WeaponType.STANDARD: "Standard",
+            WeaponType.REMOTE: "Remote",
+            WeaponType.TIMED: "Time Bomb",
+            WeaponType.KICK: "Kick Bomb",
+            WeaponType.LANDMINE: "Landmine"
+        }
         
         # Special abilities (for future extensions)
         self.can_pass_bombs = False
@@ -87,6 +98,14 @@ class Player(pygame.sprite.Sprite):
         # Calculate target grid position
         new_grid_x = self.grid_x + dx
         new_grid_y = self.grid_y + dy
+        
+        # Check for kick bombs first
+        for bomb in self.bombs:
+            if bomb.grid_x == new_grid_x and bomb.grid_y == new_grid_y:
+                # If it's a kick bomb and not already sliding, kick it
+                if bomb.weapon_type == WeaponType.KICK and not bomb.sliding:
+                    bomb.kick((dx, dy))
+                    return  # Don't move player, just kick the bomb
         
         # Check if target position is valid (not blocked)
         if self.is_position_blocked(new_grid_x, new_grid_y):
@@ -234,7 +253,7 @@ class SoftBlock(pygame.sprite.Sprite):
 class Bomb(pygame.sprite.Sprite):
     """Bomb that explodes after a timer"""
     
-    def __init__(self, grid_x, grid_y, bomb_range, owner, weapon_type=None, weapon_behavior=None, explosion_behavior=None):
+    def __init__(self, grid_x, grid_y, bomb_range, owner, weapon_type=None, weapon_behavior=None, explosion_behavior=None, walls_group=None, soft_blocks_group=None):
         super().__init__()
         
         # Type classification for extensibility
@@ -249,6 +268,10 @@ class Bomb(pygame.sprite.Sprite):
         self.grid_y = grid_y
         self.bomb_range = bomb_range
         self.owner = owner  # Reference to player who placed it
+        
+        # References for collision detection (used by kick bombs)
+        self.walls = walls_group
+        self.soft_blocks = soft_blocks_group
         
         # Timer
         self.placed_time = pygame.time.get_ticks()
@@ -266,6 +289,13 @@ class Bomb(pygame.sprite.Sprite):
         
         self.exploded = False
         
+        # Sliding state for kick bombs
+        self.sliding = False
+        self.slide_direction = None
+        self.slide_speed = 4  # Pixels per frame
+        self.target_grid_x = grid_x
+        self.target_grid_y = grid_y
+        
         # Call behavior initialization
         self.weapon_behavior.on_place(self)
     
@@ -280,6 +310,10 @@ class Bomb(pygame.sprite.Sprite):
             pulse_value = (current_time % 500) / 500.0  # Pulse every 500ms
             self.image = self.sprite_cache.get_bomb_frame(pulse_value)
         
+        # Handle sliding for kick bombs
+        if self.sliding and self.slide_direction:
+            self._update_sliding()
+        
         # Call behavior update
         self.weapon_behavior.on_update(self)
         
@@ -288,6 +322,73 @@ class Bomb(pygame.sprite.Sprite):
             self.exploded = True
         elif self.weapon_behavior.should_explode(self):
             self.exploded = True
+    
+    def _update_sliding(self):
+        """Handle sliding movement for kick bombs"""
+        dx, dy = self.slide_direction
+        
+        # Calculate target position
+        target_x = self.target_grid_x * TILE_SIZE
+        target_y = self.target_grid_y * TILE_SIZE + HEADER_HEIGHT
+        
+        # Move towards target
+        if self.rect.x < target_x:
+            self.rect.x = min(self.rect.x + self.slide_speed, target_x)
+        elif self.rect.x > target_x:
+            self.rect.x = max(self.rect.x - self.slide_speed, target_x)
+        
+        if self.rect.y < target_y:
+            self.rect.y = min(self.rect.y + self.slide_speed, target_y)
+        elif self.rect.y > target_y:
+            self.rect.y = max(self.rect.y - self.slide_speed, target_y)
+        
+        # Check if reached target grid position
+        if self.rect.x == target_x and self.rect.y == target_y:
+            # Update grid position
+            self.grid_x = self.target_grid_x
+            self.grid_y = self.target_grid_y
+            
+            # Try to continue sliding to next tile
+            next_grid_x = self.grid_x + dx
+            next_grid_y = self.grid_y + dy
+            
+            # Check if next position is blocked
+            if self._can_slide_to(next_grid_x, next_grid_y):
+                self.target_grid_x = next_grid_x
+                self.target_grid_y = next_grid_y
+            else:
+                # Stop sliding if blocked
+                self.sliding = False
+                self.slide_direction = None
+    
+    def _can_slide_to(self, grid_x, grid_y):
+        """Check if bomb can slide to a grid position"""
+        # Check bounds
+        if grid_x < 0 or grid_x >= GRID_WIDTH or grid_y < 0 or grid_y >= GRID_HEIGHT:
+            return False
+        
+        # Check for walls
+        if self.walls:
+            for wall in self.walls:
+                if wall.grid_x == grid_x and wall.grid_y == grid_y:
+                    return False
+        
+        # Check for soft blocks
+        if self.soft_blocks:
+            for block in self.soft_blocks:
+                if block.grid_x == grid_x and block.grid_y == grid_y:
+                    return False
+        
+        return True
+    
+    def kick(self, direction):
+        """Start sliding in a direction"""
+        if hasattr(self.weapon_behavior, 'kick'):
+            self.weapon_behavior.kick(direction)
+            self.sliding = True
+            self.slide_direction = direction
+            self.target_grid_x = self.grid_x + direction[0]
+            self.target_grid_y = self.grid_y + direction[1]
     
     def is_ready_to_explode(self):
         """Check if bomb should explode"""
@@ -627,7 +728,8 @@ class BombLayerEnemy(Enemy):
             bomb_exists = any(b.grid_x == self.grid_x and b.grid_y == self.grid_y 
                             for b in self.game_state['bombs'])
             if not bomb_exists:
-                bomb = Bomb(self.grid_x, self.grid_y, 1, self)  # Range 1, owner is enemy
+                bomb = Bomb(self.grid_x, self.grid_y, 1, self, 
+                          walls_group=self.walls, soft_blocks_group=self.soft_blocks)  # Range 1, owner is enemy
                 bomb.timer = 2000  # 2 second timer for enemy bombs
                 self.game_state['bombs'].add(bomb)
                 self.game_state['all_sprites'].add(bomb)

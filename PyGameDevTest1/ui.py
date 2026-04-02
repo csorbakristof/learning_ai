@@ -3,6 +3,7 @@ UI and Menu System
 """
 import pygame
 from config import *
+from enums import WeaponType
 
 
 class Menu:
@@ -86,8 +87,16 @@ class InstructionsScreen:
             "",
             "CONTROLS:",
             "  Arrow Keys - Move",
-            "  Spacebar - Place Bomb",
+            "  Spacebar - Place Bomb / Detonate Remote",
+            "  1-5 Keys - Select Weapon",
             "  ESC / P - Pause",
+            "",
+            "WEAPONS:",
+            "  1 - Standard Bomb (3s timer)",
+            "  2 - Remote Bomb (detonate with Space)",
+            "  3 - Time Bomb (5s timer)",
+            "  4 - Kick Bomb (can be kicked)",
+            "  5 - Landmine (invisible, enemy trigger)",
             "",
             "OBJECTIVE:",
             "  Defeat all enemies to win!",
@@ -339,8 +348,31 @@ def draw_hud(screen, player, score, enemies_remaining, level_num=1):
     speed_text = font.render(f"Speed: {player.speed}", True, (0, 255, 100))
     speed_rect = speed_text.get_rect(midleft=(x, y))
     screen.blit(speed_text, speed_rect)
-    x += 100
+    x += 100    
+    # Separator
+    pygame.draw.line(screen, GRAY, (x, 8), (x, HEADER_HEIGHT - 8), 1)
+    x += 15
     
+    # Current weapon
+    weapon_name = player.weapon_names.get(player.current_weapon, "Unknown")
+    weapon_text = font.render(f"Weapon: {weapon_name}", True, (100, 200, 255))
+    weapon_rect = weapon_text.get_rect(midleft=(x, y))
+    screen.blit(weapon_text, weapon_rect)
+    
+    # Show key hint below weapon name
+    weapon_key_map = {
+        WeaponType.STANDARD: "1",
+        WeaponType.REMOTE: "2",
+        WeaponType.TIMED: "3",
+        WeaponType.KICK: "4",
+        WeaponType.LANDMINE: "5"
+    }
+    key_hint = weapon_key_map.get(player.current_weapon, "?")
+    key_hint_text = font_tiny.render(f"[{key_hint}]", True, (80, 160, 200))
+    key_hint_rect = key_hint_text.get_rect(midleft=(x + 5, y + 12))
+    screen.blit(key_hint_text, key_hint_rect)
+    
+    x += 160    
     # Separator
     pygame.draw.line(screen, GRAY, (x, 8), (x, HEADER_HEIGHT - 8), 1)
     x += 15

@@ -5,7 +5,9 @@ Main game file
 import pygame
 import random
 from config import *
+from enums import WeaponType
 from sprites import Wall, SoftBlock, Player, Bomb, Explosion, Enemy, FastEnemy, SmartEnemy, PowerUp, WallBreakerEnemy, TankEnemy, BombLayerEnemy, GhostEnemy, SplitterEnemy
+from behaviors import StandardBombBehavior, RemoteBombBehavior, TimeBombBehavior, KickBombBehavior, LandmineBehavior
 from ui import Menu, InstructionsScreen, GuideScreen, PauseMenu, LevelTransitionScreen, draw_hud, draw_game_over_screen, draw_victory_screen
 from levels import get_level, get_total_levels, is_final_level
 
@@ -376,6 +378,18 @@ def main():
                         elif event.key == pygame.K_s:
                             if player.speed < MAX_SPEED:
                                 player.speed += 1
+                        
+                        # Number keys 1-5: Select weapon
+                        elif event.key == pygame.K_1:
+                            player.current_weapon = WeaponType.STANDARD
+                        elif event.key == pygame.K_2:
+                            player.current_weapon = WeaponType.REMOTE
+                        elif event.key == pygame.K_3:
+                            player.current_weapon = WeaponType.TIMED
+                        elif event.key == pygame.K_4:
+                            player.current_weapon = WeaponType.KICK
+                        elif event.key == pygame.K_5:
+                            player.current_weapon = WeaponType.LANDMINE
                     
                     # Game over or victory - restart or return to menu
                     elif game_state['game_over']:
@@ -489,9 +503,36 @@ def main():
                 # Bomb placement with spacebar (only when player is aligned to grid)
                 if keys[pygame.K_SPACE] and not game_state['space_pressed']:
                     player = game_state['player']
-                    if not player.moving and player.bombs_available > 0:
+                    
+                    # Check if we should trigger remote bombs
+                    has_remote_bombs = any(bomb.weapon_type == WeaponType.REMOTE for bomb in game_state['bombs'])
+                    
+                    if has_remote_bombs and player.current_weapon == WeaponType.REMOTE:
+                        # Trigger all remote bombs
+                        for bomb in game_state['bombs']:
+                            if bomb.weapon_type == WeaponType.REMOTE:
+                                bomb.weapon_behavior.trigger()
+                        game_state['space_pressed'] = True
+                    elif not player.moving and player.bombs_available > 0:
                         if can_place_bomb(player.grid_x, player.grid_y, game_state['bombs']):
-                            bomb = Bomb(player.grid_x, player.grid_y, player.bomb_range, player)
+                            # Create bomb with selected weapon type
+                            weapon_behavior = None
+                            weapon_type = player.current_weapon
+                            
+                            if weapon_type == WeaponType.STANDARD:
+                                weapon_behavior = StandardBombBehavior()
+                            elif weapon_type == WeaponType.REMOTE:
+                                weapon_behavior = RemoteBombBehavior()
+                            elif weapon_type == WeaponType.TIMED:
+                                weapon_behavior = TimeBombBehavior(5000)  # 5 second timer
+                            elif weapon_type == WeaponType.KICK:
+                                weapon_behavior = KickBombBehavior()
+                            elif weapon_type == WeaponType.LANDMINE:
+                                weapon_behavior = LandmineBehavior()
+                            
+                            bomb = Bomb(player.grid_x, player.grid_y, player.bomb_range, player,
+                                      weapon_type=weapon_type, weapon_behavior=weapon_behavior,
+                                      walls_group=game_state['walls'], soft_blocks_group=game_state['soft_blocks'])
                             game_state['bombs'].add(bomb)
                             game_state['all_sprites'].add(bomb)
                             player.bombs_available -= 1
@@ -541,8 +582,9 @@ def main():
                             game_state['blocks_destroyed'] += 1
                             game_state['score'] += 10  # 10 points per block
                         
-                        # Return bomb to player
-                        bomb.owner.bombs_available += 1
+                        # Return bomb to player (only if owner is player, not enemy)
+                        if hasattr(bomb.owner, 'bombs_available'):
+                            bomb.owner.bombs_available += 1
                         
                         # Remove bomb
                         bomb.kill()

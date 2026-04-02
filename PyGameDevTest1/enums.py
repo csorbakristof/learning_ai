@@ -33,6 +33,7 @@ class WeaponType(Enum):
     MOVING = auto()           # Bomb that slides until hitting obstacle
     REMOTE = auto()           # Explodes on command
     TIMED = auto()            # Custom timer length
+    KICK = auto()             # Bomb that can be kicked to slide
     LANDMINE = auto()         # Explodes when enemy steps on it
     PENETRATING = auto()      # Explosion passes through soft blocks
     DIRECTIONAL = auto()      # Explodes in one direction only

@@ -96,3 +96,38 @@ Eredmény hibás: "NameError: name 'WallEatingMovement' is not defined" amikor e
 
 I tried to start the game in the terminal window but I got an error. Have a look at it.
 
+Now implement the weapon selection: number keys 1-5 should select weapon and current one should be visible in the HUD. For now, all weapons should be available all the time.
+
+Válaszban kicsit hirtelen feature ötlet: "Let me add a small indicator showing the key numbers below the weapon name to help players remember the controls. I'll also add a note in the instructions screen about weapon selection." és "Let me just create a note about how to test it since the game is running in the background and I can't directly control it. Let me add one more feature - show which key corresponds to which weapon in the HUD."
+
+Közben: Megint beragadt a venv és "melyik könyvtárban vagyok" dolgokba...
+
+Create a start.cmd file for me to start the game properly.
+
+I started the game but it throw an error when I chose to start the game in the main menu. See the terminal output.
+
+I played with the game but keys 1-5 do not seem to change the weapon.
+
+Válasza: "The user says that keys 1-5 do not change the weapon. Let me check the key event handling in main.py to see if the weapon selection code is working properly.
+
+Let me look at where the number key handling is in the code.
+
+Searched for text pygame.K_1 (**/main.py), no results
+
+Ah! The number key handling code isn't there. Let me check where I added it - I thought I did, but it seems the code didn't get added properly. Let me search for the part where the cheat codes are."
+
+During gameplay I got an error: "  File "E:\_learning_ai\PyGameDevTest1\main.py", line 585, in main
+    bomb.owner.bombs_available += 1
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'BombLayerEnemy' object has no attribute 'bombs_available'"
+
+Válasz: "Fixed! The issue was that the code assumed all bombs are owned by the Player, but now BombLayerEnemy can also place bombs. I've added a check to only restore bomb counts if the owner has a bombs_available attribute (which only the Player has, not enemies)."
+
+The kick bomb does not seem to work. It is just like a normal bomb.
+
+Válasz: "I see the issue. The KickBombBehavior has the structure to handle kicking, but:
+
+The kick() method exists but is never called
+The Bomb class needs to implement the sliding logic
+There's no player collision detection to trigger the kick"
+

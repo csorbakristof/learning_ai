@@ -1745,6 +1745,26 @@ The game architecture is now **fully prepared** for rapid extension with:
 
 ---
 
+### Additional enemy and weapon types
+
+First create a list here for 5 additional enemy and 5 weapon types with short descriptions.
+
+Enemy types:
+- **Wall Breaker (Green)**: Destroys soft blocks while moving through them, leaving a trail of destruction. Cannot destroy indestructible walls. Slower than normal enemies but creates dangerous paths.
+- **Bomb Layer (Yellow)**: Periodically places its own bombs (with shorter timer) to trap and corner the player. Places bombs every 5-7 seconds at its current position.
+- **Ghost (Cyan/Translucent)**: Can temporarily phase through walls for short bursts. Teleports to random nearby positions when cornered. Unpredictable movement pattern.
+- **Tank (Gray/Armored)**: Very slow but extremely durable - requires 2-3 explosions to defeat. Takes first hit and becomes "damaged" (visual change), second hit defeats it. Pushes bombs aside when walking.
+- **Splitter (Pink)**: When destroyed by explosion, splits into 2-3 smaller "Mini" enemies that are faster but have less health. Creates chaos when defeated in groups.
+
+Weapon types:
+- **Line Bomb**: Explodes in a single direction (the direction player was facing when placed). Extended range in that direction only. Good for targeting specific paths.
+- **Time Bomb**: Player can set custom detonation timer (1-5 seconds) when placing. Hold spacebar to select timer, release to place. Visual indicator shows timer setting.
+- **Remote Bomb**: Doesn't explode on timer - only when player presses detonation key (Enter/Return). Can detonate multiple remote bombs simultaneously. Strategic placement required.
+- **Kick Bomb**: Standard bomb that can be kicked by walking into it - slides in that direction until hitting obstacle. Useful for reaching distant targets or enemies.
+- **Landmine**: Invisible/semi-transparent bomb that doesn't show timer. Explodes immediately when any enemy steps on it. Player can see faint outline. Strategic trap placement.
+
+
+
 ## Bug Fix: Lives System
 
 ### ✅ FIXED - April 2, 2026

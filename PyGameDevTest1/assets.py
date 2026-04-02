@@ -277,6 +277,224 @@ def create_smart_enemy_sprite():
     return surface
 
 
+def create_wall_breaker_enemy_sprite():
+    """Create wall breaker enemy sprite (green with pick-axe symbol)"""
+    surface = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
+    
+    center = TILE_SIZE // 2
+    
+    # Green body (circular)
+    pygame.draw.circle(surface, (50, 180, 50), (center, center), TILE_SIZE // 2 - 8)
+    
+    # Darker outline
+    pygame.draw.circle(surface, (30, 120, 30), (center, center), TILE_SIZE // 2 - 8, 3)
+    
+    # Determined eyes
+    eye_y = center - 4
+    pygame.draw.circle(surface, WHITE, (center - 10, eye_y), 5)
+    pygame.draw.circle(surface, WHITE, (center + 10, eye_y), 5)
+    pygame.draw.circle(surface, BLACK, (center - 10, eye_y), 3)
+    pygame.draw.circle(surface, BLACK, (center + 10, eye_y), 3)
+    
+    # Pick-axe symbol on body
+    # Handle
+    pygame.draw.line(surface, (139, 69, 19), (center - 5, center + 15), (center + 8, center + 2), 3)
+    # Pickaxe head
+    points = [(center + 6, center), (center + 12, center - 2), (center + 10, center + 4)]
+    pygame.draw.polygon(surface, (128, 128, 128), points)
+    
+    # Angry/tough mouth
+    pygame.draw.arc(surface, BLACK, (center - 8, center + 8, 16, 8), 3.14, 6.28, 3)
+    
+    # Highlight
+    pygame.draw.circle(surface, (120, 230, 120), (center - 8, center - 8), 8)
+    
+    return surface
+
+
+def create_tank_enemy_sprite():
+    """Create tank enemy sprite (gray, armored)"""
+    surface = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
+    
+    center = TILE_SIZE // 2
+    
+    # Gray armored body (rectangular-ish)
+    pygame.draw.rect(surface, (100, 100, 100), (center - 18, center - 18, 36, 36))
+    
+    # Darker outline
+    pygame.draw.rect(surface, (60, 60, 60), (center - 18, center - 18, 36, 36), 3)
+    
+    # Armor plating details (horizontal lines)
+    pygame.draw.line(surface, (80, 80, 80), (center - 15, center - 10), (center + 15, center - 10), 2)
+    pygame.draw.line(surface, (80, 80, 80), (center - 15, center), (center + 15, center), 2)
+    pygame.draw.line(surface, (80, 80, 80), (center - 15, center + 10), (center + 15, center + 10), 2)
+    
+    # Small slit eyes (menacing)
+    eye_y = center - 5
+    pygame.draw.line(surface, (200, 50, 50), (center - 12, eye_y), (center - 6, eye_y), 3)
+    pygame.draw.line(surface, (200, 50, 50), (center + 6, eye_y), (center + 12, eye_y), 3)
+    
+    # Rivets/bolts on corners
+    pygame.draw.circle(surface, (120, 120, 120), (center - 14, center - 14), 3)
+    pygame.draw.circle(surface, (120, 120, 120), (center + 14, center - 14), 3)
+    pygame.draw.circle(surface, (120, 120, 120), (center - 14, center + 14), 3)
+    pygame.draw.circle(surface, (120, 120, 120), (center + 14, center + 14), 3)
+    
+    # Highlight (metallic gleam)
+    pygame.draw.circle(surface, (160, 160, 160), (center - 6, center - 10), 6)
+    
+    return surface
+
+
+def create_tank_enemy_damaged_sprite():
+    """Create damaged tank enemy sprite (cracked armor)"""
+    surface = create_tank_enemy_sprite()
+    
+    center = TILE_SIZE // 2
+    
+    # Add crack lines to show damage
+    pygame.draw.line(surface, (40, 40, 40), (center - 10, center - 15), (center - 5, center + 10), 2)
+    pygame.draw.line(surface, (40, 40, 40), (center + 5, center - 12), (center + 10, center + 8), 2)
+    pygame.draw.line(surface, (40, 40, 40), (center - 8, center + 5), (center + 8, center + 2), 2)
+    
+    return surface
+
+
+def create_bomb_layer_enemy_sprite():
+    """Create bomb layer enemy sprite (yellow with bomb symbol)"""
+    surface = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
+    
+    center = TILE_SIZE // 2
+    
+    # Yellow body (circular)
+    pygame.draw.circle(surface, (220, 200, 50), (center, center), TILE_SIZE // 2 - 8)
+    
+    # Darker outline
+    pygame.draw.circle(surface, (180, 160, 30), (center, center), TILE_SIZE // 2 - 8, 3)
+    
+    # Focused eyes
+    eye_y = center - 4
+    pygame.draw.circle(surface, WHITE, (center - 10, eye_y), 5)
+    pygame.draw.circle(surface, WHITE, (center + 10, eye_y), 5)
+    pygame.draw.circle(surface, BLACK, (center - 10, eye_y), 3)
+    pygame.draw.circle(surface, BLACK, (center + 10, eye_y), 3)
+    
+    # Small bomb symbol on body
+   # Bomb body
+    pygame.draw.circle(surface, BLACK, (center, center + 8), 6)
+    # Fuse
+    pygame.draw.line(surface, (139, 69, 19), (center - 3, center + 3), (center - 6, center - 2), 2)
+    # Spark
+    pygame.draw.circle(surface, (255, 100, 0), (center - 6, center - 2), 2)
+    
+    # Mischievous grin
+    pygame.draw.arc(surface, BLACK, (center - 8, center + 12, 16, 8), 3.14, 6.28, 3)
+    
+    # Highlight
+    pygame.draw.circle(surface, (255, 240, 120), (center - 8, center - 8), 8)
+    
+    return surface
+
+
+def create_ghost_enemy_sprite():
+    """Create ghost enemy sprite (cyan, ethereal)"""
+    surface = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
+    
+    center = TILE_SIZE // 2
+    
+    # Cyan ghostly body (wavy bottom)
+    # Draw wavy bottom edge
+    points = [
+        (center - 18, center - 18),
+        (center - 18, center + 10),
+        (center - 12, center + 18),
+        (center - 6, center + 14),
+        (center, center + 18),
+        (center + 6, center + 14),
+        (center + 12, center + 18),
+        (center + 18, center + 10),
+        (center + 18, center - 18)
+    ]
+    pygame.draw.polygon(surface, (100, 220, 220), points)
+    pygame.draw.polygon(surface, (60, 180, 180), points, 2)
+    
+    # Large spooky eyes
+    eye_y = center - 2
+    pygame.draw.ellipse(surface, (50, 50, 80), (center - 16, eye_y - 8, 10, 14))
+    pygame.draw.ellipse(surface, (50, 50, 80), (center + 6, eye_y - 8, 10, 14))
+    
+    # Hollow mouth (O shape)
+    pygame.draw.ellipse(surface, (50, 50, 80), (center - 6, center + 8, 12, 10))
+    
+    # Ethereal aura particles
+    pygame.draw.circle(surface, (150, 255, 255), (center - 20, center - 10), 2)
+    pygame.draw.circle(surface, (150, 255, 255), (center + 20, center + 5), 2)
+    pygame.draw.circle(surface, (150, 255, 255), (center - 15, center + 15), 2)
+    
+    # Highlight
+    pygame.draw.circle(surface, (180, 255, 255), (center - 6, center - 10), 8)
+    
+    return surface
+
+
+def create_splitter_enemy_sprite():
+    """Create splitter enemy sprite (pink with division symbol)"""
+    surface = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
+    
+    center = TILE_SIZE // 2
+    
+    # Pink body (circular)
+    pygame.draw.circle(surface, (255, 120, 200), (center, center), TILE_SIZE // 2 - 8)
+    
+    # Darker outline
+    pygame.draw.circle(surface, (200, 80, 150), (center, center), TILE_SIZE // 2 - 8, 3)
+    
+    # Wide eyes
+    eye_y = center - 4
+    pygame.draw.circle(surface, WHITE, (center - 10, eye_y), 5)
+    pygame.draw.circle(surface, WHITE, (center + 10, eye_y), 5)
+    pygame.draw.circle(surface, BLACK, (center - 10, eye_y), 3)
+    pygame.draw.circle(surface, BLACK, (center + 10, eye_y), 3)
+    
+    # Division symbol on body
+    # Horizontal line
+    pygame.draw.line(surface, (200, 50, 150), (center - 10, center + 6), (center + 10, center + 6), 3)
+    # Top dot
+    pygame.draw.circle(surface, (200, 50, 150), (center, center + 1), 3)
+    # Bottom dot
+    pygame.draw.circle(surface, (200, 50, 150), (center, center + 11), 3)
+    
+    # Nervous smile
+    pygame.draw.arc(surface, BLACK, (center - 8, center + 14, 16, 8), 3.14, 6.28, 2)
+    
+    # Highlight
+    pygame.draw.circle(surface, (255, 180, 230), (center - 8, center - 8), 8)
+    
+    return surface
+
+
+def create_mini_enemy_sprite():
+    """Create mini enemy sprite (small pink)"""
+    surface = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
+    
+    center = TILE_SIZE // 2
+    
+    # Smaller pink body
+    radius = TILE_SIZE // 3 - 4
+    pygame.draw.circle(surface, (255, 150, 220), (center, center), radius)
+    pygame.draw.circle(surface, (200, 100, 170), (center, center), radius, 2)
+    
+    # Tiny eyes
+    eye_y = center - 2
+    pygame.draw.circle(surface, BLACK, (center - 4, eye_y), 2)
+    pygame.draw.circle(surface, BLACK, (center + 4, eye_y), 2)
+    
+    # Small mouth
+    pygame.draw.arc(surface, BLACK, (center - 4, center + 3, 8, 5), 3.14, 6.28, 2)
+    
+    return surface
+
+
 def create_powerup_bomb_sprite():
     """Create Bomb Up power-up sprite"""
     surface = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
@@ -370,6 +588,13 @@ class SpriteCache:
         self.enemy = create_enemy_sprite()
         self.fast_enemy = create_fast_enemy_sprite()
         self.smart_enemy = create_smart_enemy_sprite()
+        self.wall_breaker_enemy = create_wall_breaker_enemy_sprite()
+        self.tank_enemy = create_tank_enemy_sprite()
+        self.tank_enemy_damaged = create_tank_enemy_damaged_sprite()
+        self.bomb_layer_enemy = create_bomb_layer_enemy_sprite()
+        self.ghost_enemy = create_ghost_enemy_sprite()
+        self.splitter_enemy = create_splitter_enemy_sprite()
+        self.mini_enemy = create_mini_enemy_sprite()
         self.powerup_bomb = create_powerup_bomb_sprite()
         self.powerup_fire = create_powerup_fire_sprite()
         self.powerup_speed = create_powerup_speed_sprite()

@@ -90,14 +90,32 @@ class TrackingMovement(MovementBehavior):
 class WallEatingMovement(MovementBehavior):
     """Movement that can destroy soft blocks"""
     
-    def __init__(self, eat_chance=0.3):
-        self.eat_chance = eat_chance
+    def __init__(self):
+        pass
     
     def choose_direction(self, entity, **kwargs):
-        """Choose direction, potentially eating through walls"""
-        # TODO: Implement wall eating logic
-        # For now, use random movement
-        return RandomMovement().choose_direction(entity, **kwargs)
+        """Choose direction - can move through soft blocks"""
+        # Similar to random movement but doesn't check soft blocks
+        directions = [(0, -1), (0, 1), (-1, 0), (1, 0), (0, 0)]
+        random.shuffle(directions)
+        
+        walls = kwargs.get('walls_group')
+        for dx, dy in directions:
+            new_grid_x = entity.grid_x + dx
+            new_grid_y = entity.grid_y + dy
+            
+            # Only check hard walls, ignore soft blocks
+            blocked = False
+            if walls:
+                for wall in walls:
+                    if wall.grid_x == new_grid_x and wall.grid_y == new_grid_y:
+                        blocked = True
+                        break
+            
+            if not blocked:
+                return (dx, dy)
+        
+        return (0, 0)
 
 
 class ExplosionBehavior(ABC):
@@ -305,3 +323,80 @@ class RemoteBombBehavior(WeaponBehavior):
     def trigger(self):
         """Manually trigger detonation"""
         self.detonation_triggered = True
+
+
+class KickBombBehavior(WeaponBehavior):
+    """Bomb that can be kicked to slide"""
+    
+    def __init__(self):
+        self.kicked = False
+        self.kick_direction = None
+        self.sliding = False
+    
+    def on_place(self, weapon, **kwargs):
+        """Initialize kick state"""
+        self.kicked = False
+        self.sliding = False
+    
+    def on_update(self, weapon, **kwargs):
+        """Handle sliding motion"""
+        if self.sliding and self.kick_direction:
+            # Bomb should slide - handled in Bomb class
+            pass
+    
+    def should_explode(self, weapon, **kwargs):
+        """Explode on timer"""
+        return StandardBombBehavior().should_explode(weapon, **kwargs)
+    
+    def kick(self, direction):
+        """Kick the bomb in a direction"""
+        self.kicked = True
+        self.kick_direction = direction
+        self.sliding = True
+
+
+class LandmineBehavior(WeaponBehavior):
+    """Bomb that triggers on enemy contact"""
+    
+    def __init__(self):
+        self.triggered_by_enemy = False
+    
+    def on_place(self, weapon, **kwargs):
+        """Initialize"""
+        self.triggered_by_enemy = False
+    
+    def on_update(self, weapon, **kwargs):
+        """Check for enemy collision"""
+        # Check if any enemy is on this tile
+        enemies = kwargs.get('enemies_group')
+        if enemies and hasattr(weapon, 'grid_x'):
+            for enemy in enemies:
+                if enemy.grid_x == weapon.grid_x and enemy.grid_y == weapon.grid_y:
+                    self.triggered_by_enemy = True
+                    break
+    
+    def should_explode(self, weapon, **kwargs):
+        """Explode when enemy steps on it"""
+        return self.triggered_by_enemy
+
+
+class TimeBombBehavior(WeaponBehavior):
+    """Bomb with customizable timer"""
+    
+    def __init__(self, custom_timer=3000):
+        self.custom_timer = custom_timer
+    
+    def on_place(self, weapon, **kwargs):
+        """Set custom timer"""
+        weapon.timer = self.custom_timer
+    
+    def on_update(self, weapon, **kwargs):
+        """Update timer"""
+        pass
+    
+    def should_explode(self, weapon, **kwargs):
+        """Check if custom timer expired"""
+        import pygame
+        current_time = pygame.time.get_ticks()
+        time_left = weapon.timer - (current_time - weapon.placed_time)
+        return time_left <= 0 or weapon.exploded

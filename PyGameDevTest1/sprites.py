@@ -6,7 +6,7 @@ from config import *
 from assets import get_sprite_cache
 from enums import EnemyType, WallType, WeaponType, PowerUpType, EntityCategory, PassabilityCondition
 from behaviors import (
-    MovementBehavior, RandomMovement, TrackingMovement,
+    MovementBehavior, RandomMovement, TrackingMovement, WallEatingMovement,
     ExplosionBehavior, CrossExplosion,
     PassabilityRule, AlwaysBlockRule, EntityTypeRule,
     WeaponBehavior, StandardBombBehavior
@@ -511,3 +511,226 @@ class SmartEnemy(Enemy):
             self.moving = True
             self.current_direction = (dx, dy)
 
+class WallBreakerEnemy(Enemy):
+    """Wall breaker enemy that destroys soft blocks while moving"""
+    
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group):
+        # Initialize with wall-eating behavior
+        super().__init__(
+            grid_x, grid_y, walls_group, soft_blocks_group, bombs_group,
+            speed_multiplier=0.8,  # Slower than normal
+            enemy_type=EnemyType.WALL_EATER,
+            movement_behavior=WallEatingMovement()
+        )
+        
+        self.can_eat_walls = True
+        self.direction_change_interval = 1200  # Change direction every 1.2 seconds
+        
+        # Load wall breaker sprite  
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.wall_breaker_enemy.copy()
+    
+    def choose_random_direction(self):
+        """Choose direction - can move through soft blocks"""
+        # Use behavior pattern with walls context
+        direction = self.movement_behavior.choose_direction(self, walls_group=self.walls)
+        
+        if direction:
+            dx, dy = direction
+            new_grid_x = self.grid_x + dx
+            new_grid_y = self.grid_y + dy
+            
+            # Check if there's a soft block to destroy
+            for block in self.soft_blocks.copy():
+                if block.grid_x == new_grid_x and block.grid_y == new_grid_y:
+                    # Destroy the soft block
+                    block.kill()
+                    self.soft_blocks.remove(block)
+                    break
+            
+            # Apply the chosen direction
+            self.target_x = new_grid_x * TILE_SIZE
+            self.target_y = new_grid_y * TILE_SIZE + HEADER_HEIGHT
+            self.moving = True
+            self.current_direction = (dx, dy)
+
+
+class TankEnemy(Enemy):
+    """Tank enemy that requires multiple hits to defeat"""
+    
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group):
+        super().__init__(
+            grid_x, grid_y, walls_group, soft_blocks_group, bombs_group,
+            speed_multiplier=0.5,  # Very slow
+            enemy_type=EnemyType.NORMAL,  # Use NORMAL for now
+            movement_behavior=RandomMovement()
+        )
+        
+        self.health = 2  # Requires 2 hits
+        self.max_health = 2
+        self.damaged = False
+        self.direction_change_interval = 1500  # Change direction every 1.5 seconds
+        
+        # Load tank sprite
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.tank_enemy.copy()
+    
+    def take_damage(self):
+        """Take one point of damage"""
+        self.health -= 1
+        if self.health == 1 and not self.damaged:
+            self.damaged = True
+            # Change sprite to damaged version
+            sprite_cache = get_sprite_cache()
+            self.image = sprite_cache.tank_enemy_damaged.copy()
+        return self.health > 0  # Return True if still alive
+
+
+class BombLayerEnemy(Enemy):
+    """Enemy that places bombs periodically"""
+    
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, game_state=None):
+        super().__init__(
+            grid_x, grid_y, walls_group, soft_blocks_group, bombs_group,
+            speed_multiplier=1.0,
+            enemy_type=EnemyType.BOMB_PLACER,
+            movement_behavior=RandomMovement()
+        )
+        
+        self.can_place_bombs = True
+        self.last_bomb_time = 0
+        self.bomb_interval = 5000  # Place bomb every 5 seconds
+        self.game_state = game_state
+        self.direction_change_interval = 1000
+        
+        # Load sprite
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.bomb_layer_enemy.copy()
+    
+    def update(self):
+        """Update enemy and check if should place bomb"""
+        super().update()
+        
+        # Check if should place bomb
+        if self.game_state and self.can_place_bombs:
+            import pygame
+            current_time = pygame.time.get_ticks()
+            if current_time - self.last_bomb_time >= self.bomb_interval:
+                self.place_bomb()
+                self.last_bomb_time = current_time
+    
+    def place_bomb(self):
+        """Place a bomb at current position"""
+        if self.game_state:
+            from sprites import Bomb
+            # Check if there's already a bomb here
+            bomb_exists = any(b.grid_x == self.grid_x and b.grid_y == self.grid_y 
+                            for b in self.game_state['bombs'])
+            if not bomb_exists:
+                bomb = Bomb(self.grid_x, self.grid_y, 1, self)  # Range 1, owner is enemy
+                bomb.timer = 2000  # 2 second timer for enemy bombs
+                self.game_state['bombs'].add(bomb)
+                self.game_state['all_sprites'].add(bomb)
+
+
+class GhostEnemy(Enemy):
+    """Ghost enemy that can phase through walls"""
+    
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group):
+        super().__init__(
+            grid_x, grid_y, walls_group, soft_blocks_group, bombs_group,
+            speed_multiplier=1.1,
+            enemy_type=EnemyType.TELEPORTER,
+            movement_behavior=RandomMovement()
+        )
+        
+        self.can_teleport = True
+        self.phasing = False
+        self.phase_cooldown = 0
+        self.direction_change_interval = 900
+        
+        # Load sprite
+        sprite_cache = get_sprite_cache()
+        self.image = sprite_cache.ghost_enemy.copy()
+        self.image.set_alpha(180)  # Semi-transparent
+    
+    def is_position_blocked(self, grid_x, grid_y):
+        """Ghost can phase through walls occasionally"""
+        import pygame
+        current_time = pygame.time.get_ticks()
+        
+        # Check if phasing is on cooldown
+        if current_time < self.phase_cooldown:
+            return super().is_position_blocked(grid_x, grid_y)
+        
+        # 30% chance to phase through walls
+        if random.random() < 0.3:
+            self.phasing = True
+            self.phase_cooldown = current_time + 3000  # 3 second cooldown
+            # Only check bombs, ignore walls
+            for bomb in self.bombs:
+                if bomb.grid_x == grid_x and bomb.grid_y == grid_y:
+                    if grid_x != self.grid_x or grid_y != self.grid_y:
+                        return True
+            return False
+        
+        return super().is_position_blocked(grid_x, grid_y)
+
+
+class SplitterEnemy(Enemy):
+    """Enemy that splits into smaller enemies when destroyed"""
+    
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, game_state=None, is_mini=False):
+        super().__init__(
+            grid_x, grid_y, walls_group, soft_blocks_group, bombs_group,
+            speed_multiplier=1.3 if is_mini else 0.9,
+            enemy_type=EnemyType.NORMAL,
+            movement_behavior=RandomMovement()
+        )
+        
+        self.is_mini = is_mini
+        self.game_state = game_state
+        self.direction_change_interval = 800 if is_mini else 1100
+        
+        # Load sprite
+        sprite_cache = get_sprite_cache()
+        if is_mini:
+            self.image = sprite_cache.mini_enemy.copy()
+        else:
+            self.image = sprite_cache.splitter_enemy.copy()
+    
+    def split(self):
+        """Split into 2-3 mini enemies"""
+        if self.is_mini or not self.game_state:
+            return []
+        
+        # Create 2-3 mini enemies near this position
+        mini_enemies = []
+        num_minis = random.randint(2, 3)
+        
+        # Try to place minis in adjacent cells
+        directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+        random.shuffle(directions)
+        
+        for i in range(min(num_minis, len(directions))):
+            dx, dy = directions[i]
+            new_x = self.grid_x + dx
+            new_y = self.grid_y + dy
+            
+            # Check if position is valid
+            blocked = False
+            for wall in self.walls:
+                if wall.grid_x == new_x and wall.grid_y == new_y:
+                    blocked = True
+                    break
+            for block in self.soft_blocks:
+                if block.grid_x == new_x and block.grid_y == new_y:
+                    blocked = True
+                    break
+            
+            if not blocked:
+                mini = SplitterEnemy(new_x, new_y, self.walls, self.soft_blocks, 
+                                    self.bombs, self.game_state, is_mini=True)
+                mini_enemies.append(mini)
+        
+        return mini_enemies

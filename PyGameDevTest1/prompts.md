@@ -86,3 +86,13 @@ I have discovered an error: if I still have 3 lives but get killed, the game is 
 
 Válasz: "I found the bug! The issue is that there's no invulnerability period after taking damage. When the player gets hit, they can be hit multiple times in rapid succession (even in the same frame if they collide with both an explosion and an enemy). This causes multiple life losses very quickly. ..."
 
+Add additional enemy and weapon types to the section of #file:task.md into section "Additional enemy and weapon types".
+
+Implement the new enemy and weapon types. Also add an overview of them in the main menu so the player can learn them in advance.
+
+Válaszban gondolkodás közben említi: "I'll implement the new enemy and weapon types, along with adding an overview in the main menu. This is a substantial feature addition, so let me break it down systematically."
+
+Eredmény hibás: "NameError: name 'WallEatingMovement' is not defined" amikor el akarom indítani.
+
+I tried to start the game in the terminal window but I got an error. Have a look at it.
+

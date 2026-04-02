@@ -5,8 +5,8 @@ Main game file
 import pygame
 import random
 from config import *
-from sprites import Wall, SoftBlock, Player, Bomb, Explosion, Enemy, FastEnemy, SmartEnemy, PowerUp
-from ui import Menu, InstructionsScreen, PauseMenu, LevelTransitionScreen, draw_hud, draw_game_over_screen, draw_victory_screen
+from sprites import Wall, SoftBlock, Player, Bomb, Explosion, Enemy, FastEnemy, SmartEnemy, PowerUp, WallBreakerEnemy, TankEnemy, BombLayerEnemy, GhostEnemy, SplitterEnemy
+from ui import Menu, InstructionsScreen, GuideScreen, PauseMenu, LevelTransitionScreen, draw_hud, draw_game_over_screen, draw_victory_screen
 from levels import get_level, get_total_levels, is_final_level
 
 
@@ -119,7 +119,7 @@ def create_explosion(grid_x, grid_y, bomb_range, walls_group, soft_blocks_group,
     return destroyed_blocks
 
 
-def spawn_enemies(num_enemies, walls_group, soft_blocks_group, bombs_group, player, enemies_group, speed_multiplier=1.0):
+def spawn_enemies(num_enemies, walls_group, soft_blocks_group, bombs_group, player, enemies_group, speed_multiplier=1.0, game_state=None):
     """
     Spawn enemies at random valid positions away from player
     
@@ -127,9 +127,11 @@ def spawn_enemies(num_enemies, walls_group, soft_blocks_group, bombs_group, play
         num_enemies: Number of enemies to spawn
         walls_group: Sprite group for walls
         soft_blocks_group: Sprite group for soft blocks
+        bombs_group: Sprite group for bombs
         player: Player object
         enemies_group: Sprite group for enemies
         speed_multiplier: Speed multiplier for enemy difficulty scaling
+        game_state: Game state dict (required for some enemy types like BombLayerEnemy)
     """
     spawned = 0
     max_attempts = 100
@@ -172,18 +174,33 @@ def spawn_enemies(num_enemies, walls_group, soft_blocks_group, bombs_group, play
         
         # Spawn enemy if position is valid
         if not is_blocked:
-            # Randomly choose enemy type based on probability
+            # Randomly choose enemy type - expanded with new types
             enemy_type = random.random()
             
-            if enemy_type < 0.5:
-                # 50% chance: Normal enemy
+            if enemy_type < 0.25:
+                # 25% chance: Normal enemy
                 enemy = Enemy(x, y, walls_group, soft_blocks_group, bombs_group, speed_multiplier)
-            elif enemy_type < 0.75:
-                # 25% chance: Fast enemy
+            elif enemy_type < 0.40:
+                # 15% chance: Fast enemy
                 enemy = FastEnemy(x, y, walls_group, soft_blocks_group, bombs_group)
-            else:
-                # 25% chance: Smart enemy
+            elif enemy_type < 0.55:
+                # 15% chance: Smart enemy
                 enemy = SmartEnemy(x, y, walls_group, soft_blocks_group, bombs_group, player)
+            elif enemy_type < 0.70:
+                # 15% chance: Wall Breaker enemy
+                enemy = WallBreakerEnemy(x, y, walls_group, soft_blocks_group, bombs_group)
+            elif enemy_type < 0.80:
+                # 10% chance: Tank enemy
+                enemy = TankEnemy(x, y, walls_group, soft_blocks_group, bombs_group)
+            elif enemy_type < 0.90:
+                # 10% chance: Ghost enemy
+                enemy = GhostEnemy(x, y, walls_group, soft_blocks_group, bombs_group)
+            elif enemy_type < 0.95:
+                # 5% chance: Bomb Layer enemy
+                enemy = BombLayerEnemy(x, y, walls_group, soft_blocks_group, bombs_group, game_state)
+            else:
+                # 5% chance: Splitter enemy
+                enemy = SplitterEnemy(x, y, walls_group, soft_blocks_group, bombs_group, game_state)
             
             enemies_group.add(enemy)
             spawned += 1
@@ -230,20 +247,10 @@ def init_game(level_config, previous_player_stats=None):
     player.invulnerable_until = 0
     player.last_hit_time = 0
     
-    # Spawn enemies with level-specific speed multiplier
-    spawn_enemies(level_config.num_enemies, walls, soft_blocks, bombs, player, enemies, 
-                  level_config.enemy_speed_multiplier)
-    
-    # Add all sprites to the main group for rendering
-    all_sprites.add(walls)
-    all_sprites.add(soft_blocks)
-    all_sprites.add(powerups)
-    all_sprites.add(enemies)
-    all_sprites.add(player)
-    
-    # Game state
+    # Initialize score
     score = previous_player_stats.get('score', 0) if previous_player_stats else 0
     
+    # Create preliminary game_state for enemies that need it
     game_state = {
         'all_sprites': all_sprites,
         'walls': walls,
@@ -261,6 +268,17 @@ def init_game(level_config, previous_player_stats=None):
         'space_pressed': False,
         'level_num': level_config.level_num
     }
+    
+    # Spawn enemies with level-specific speed multiplier
+    spawn_enemies(level_config.num_enemies, walls, soft_blocks, bombs, player, enemies, 
+                  level_config.enemy_speed_multiplier, game_state)
+    
+    # Add all sprites to the main group for rendering
+    all_sprites.add(walls)
+    all_sprites.add(soft_blocks)
+    all_sprites.add(powerups)
+    all_sprites.add(enemies)
+    all_sprites.add(player)
     
     return game_state
 
@@ -282,12 +300,14 @@ def main():
     STATE_PLAYING = "playing"
     STATE_PAUSED = "paused"
     STATE_INSTRUCTIONS = "instructions"
+    STATE_GUIDE = "guide"
     
     current_state = STATE_MENU
     
     # Create UI objects
     menu = Menu(screen)
     instructions_screen = InstructionsScreen(screen)
+    guide_screen = GuideScreen(screen)
     pause_menu = PauseMenu(screen)
     
     # Level tracking
@@ -316,11 +336,18 @@ def main():
                         current_state = STATE_PLAYING
                     elif action == "instructions":
                         current_state = STATE_INSTRUCTIONS
+                    elif action == "guide":
+                        current_state = STATE_GUIDE
                     elif action == "quit":
                         running = False
                 
                 # Instructions state
                 elif current_state == STATE_INSTRUCTIONS:
+                    if event.key == pygame.K_ESCAPE:
+                        current_state = STATE_MENU
+                
+                # Guide state
+                elif current_state == STATE_GUIDE:
                     if event.key == pygame.K_ESCAPE:
                         current_state = STATE_MENU
                 
@@ -409,6 +436,9 @@ def main():
         
         elif current_state == STATE_INSTRUCTIONS:
             instructions_screen.draw()
+        
+        elif current_state == STATE_GUIDE:
+            guide_screen.draw()
         
         elif current_state == STATE_PAUSED:
             # Draw the paused game in background
@@ -523,11 +553,29 @@ def main():
                 for enemy in game_state['enemies'].copy():
                     explosion_hits = pygame.sprite.spritecollide(enemy, game_state['explosions'], False)
                     if explosion_hits:
+                        # Check if enemy has health system (Tank enemy)
+                        if hasattr(enemy, 'take_damage'):
+                            if not enemy.take_damage():
+                                # Enemy survived, continue
+                                continue
+                        
+                        # Check if enemy splits (Splitter enemy)
+                        should_split = hasattr(enemy, 'split') and hasattr(enemy, 'is_mini') and not enemy.is_mini
+                        mini_enemies = []
+                        if should_split:
+                            mini_enemies = enemy.split()
+                        
+                        # Kill the enemy
                         enemy.kill()
                         game_state['enemies'].remove(enemy)
                         game_state['all_sprites'].remove(enemy)
                         game_state['enemies_defeated'] += 1
                         game_state['score'] += 100  # 100 points per enemy
+                        
+                        # Add mini enemies if splitter
+                        for mini in mini_enemies:
+                            game_state['enemies'].add(mini)
+                            game_state['all_sprites'].add(mini)
                 
                 # Check collision between player and explosions
                 player = game_state['player']

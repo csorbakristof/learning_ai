@@ -14,7 +14,7 @@ class Menu:
         self.font_medium = pygame.font.Font(None, 48)
         self.font_small = pygame.font.Font(None, 36)
         self.selected_index = 0
-        self.options = ["Start Game", "Instructions", "Quit"]
+        self.options = ["Start Game", "Instructions", "Guide", "Quit"]
     
     def draw(self):
         """Draw main menu"""
@@ -58,7 +58,7 @@ class Menu:
                 self.selected_index = (self.selected_index + 1) % len(self.options)
             elif event.key == pygame.K_RETURN:
                 # Return action keys instead of full text
-                actions = ["start", "instructions", "quit"]
+                actions = ["start", "instructions", "guide", "quit"]
                 return actions[self.selected_index]
         return None
 
@@ -96,6 +96,11 @@ class InstructionsScreen:
             "  Red - Normal speed, random movement",
             "  Orange - Fast movement",
             "  Purple - Smart, tracks player",
+            "  Green - Wall Breaker, destroys blocks",
+            "  Gray - Tank, needs multiple hits",
+            "  Yellow - Bomb Layer, places bombs",
+            "  Cyan - Ghost, phases through walls",
+            "  Pink - Splitter, splits when destroyed",
             "",
             "POWER-UPS:",
             "  [B] Bomb Up - Place more bombs",
@@ -116,6 +121,99 @@ class InstructionsScreen:
             text_rect = text.get_rect(left=150, top=y)
             self.screen.blit(text, text_rect)
             y += 30
+        
+        # Back instruction
+        back_text = self.font_medium.render("Press ESC to return", True, GRAY)
+        back_rect = back_text.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT - 40))
+        self.screen.blit(back_text, back_rect)
+    
+    def handle_input(self, event):
+        """Handle input"""
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                return "back"
+        return None
+
+
+class GuideScreen:
+    """Enemy and Weapon Guide screen"""
+    
+    def __init__(self, screen):
+        self.screen = screen
+        self.font_large = pygame.font.Font(None, 48)
+        self.font_medium = pygame.font.Font(None, 28)
+        self.font_small = pygame.font.Font(None, 22)
+    
+    def draw(self):
+        """Draw enemy and weapon guide"""
+        self.screen.fill(BLACK)
+        
+        # Title
+        title = self.font_large.render("ENEMY & WEAPON GUIDE", True, YELLOW)
+        title_rect = title.get_rect(center=(SCREEN_WIDTH//2, 30))
+        self.screen.blit(title, title_rect)
+        
+        # Two column layout
+        left_x = 50
+        right_x = SCREEN_WIDTH // 2 + 30
+        
+        # --- ENEMIES SECTION ---
+        y = 80
+        enemies_title = self.font_medium.render("ENEMIES:", True, (255, 100, 100))
+        self.screen.blit(enemies_title, (left_x, y))
+        y += 35
+        
+        enemies = [
+            ("Red - Normal:", "Random movement, normal speed"),
+            ("Orange - Fast:", "Fast random movement"),
+            ("Purple - Smart:", "Tracks and chases player"),
+            ("Green - Wall Breaker:", "Destroys soft blocks while moving"),
+            ("Gray - Tank:", "Requires 2-3 hits to defeat"),
+            ("Yellow - Bomb Layer:", "Places bombs periodically"),
+            ("Cyan - Ghost:", "Can phase through walls"),
+            ("Pink - Splitter:", "Splits into mini enemies when destroyed"),
+        ]
+        
+        for name, desc in enemies:
+            # Name in color
+            name_text = self.font_small.render(name, True, YELLOW)
+            self.screen.blit(name_text, (left_x + 10, y))
+            y += 22
+            # Description
+            desc_text = self.font_small.render(desc, True, WHITE)
+            self.screen.blit(desc_text, (left_x + 20, y))
+            y += 30
+        
+        # --- WEAPONS SECTION ---
+        y = 80
+        weapons_title = self.font_medium.render("WEAPONS:", True, (100, 150, 255))
+        self.screen.blit(weapons_title, (right_x, y))
+        y += 35
+        
+        weapons = [
+            ("Standard Bomb:", "3-second timer, cross explosion"),
+            ("Line Bomb:", "Directional explosion in a line"),
+            ("Time Bomb:", "Customizable timer"),
+            ("Remote Bomb:", "Detonates with spacebar"),
+            ("Kick Bomb:", "Can be kicked to slide"),
+            ("Landmine:", "Invisible, triggers on enemy contact"),
+        ]
+        
+        for name, desc in weapons:
+            # Name in color
+            name_text = self.font_small.render(name, True, (100, 255, 200))
+            self.screen.blit(name_text, (right_x + 10, y))
+            y += 22
+            # Description
+            desc_text = self.font_small.render(desc, True, WHITE)
+            self.screen.blit(desc_text, (right_x + 20, y))
+            y += 30
+        
+        # Note about weapon selection
+        note_y = SCREEN_HEIGHT - 100
+        note = self.font_small.render("(Weapon selection coming in future update)", True, GRAY)
+        note_rect = note.get_rect(center=(SCREEN_WIDTH//2, note_y))
+        self.screen.blit(note, note_rect)
         
         # Back instruction
         back_text = self.font_medium.render("Press ESC to return", True, GRAY)

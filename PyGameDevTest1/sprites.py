@@ -541,6 +541,9 @@ class Enemy(pygame.sprite.Sprite):
         # Check bombs (but allow moving away from current position)
         for bomb in self.bombs:
             if bomb.grid_x == grid_x and bomb.grid_y == grid_y:
+                # Landmines are passable - enemies can walk over them
+                if hasattr(bomb, 'weapon_type') and bomb.weapon_type == WeaponType.LANDMINE:
+                    continue  # Allow passing through landmines
                 # Allow moving away from current position
                 if grid_x != self.grid_x or grid_y != self.grid_y:
                     return True
@@ -778,9 +781,12 @@ class GhostEnemy(Enemy):
         if random.random() < 0.3:
             self.phasing = True
             self.phase_cooldown = current_time + 3000  # 3 second cooldown
-            # Only check bombs, ignore walls
+            # Only check bombs, ignore walls (but landmines are passable)
             for bomb in self.bombs:
                 if bomb.grid_x == grid_x and bomb.grid_y == grid_y:
+                    # Landmines are passable
+                    if hasattr(bomb, 'weapon_type') and bomb.weapon_type == WeaponType.LANDMINE:
+                        continue
                     if grid_x != self.grid_x or grid_y != self.grid_y:
                         return True
             return False

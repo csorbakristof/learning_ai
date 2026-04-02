@@ -138,3 +138,10 @@ Now the animation of the normal bombs are blinking while they wait for the timer
 Válasz: "Fixed! The blinking was caused by the animation using a sawtooth wave pattern that jumped suddenly from one frame back to the start. I changed it to use a smooth triangle wave that pulses gradually from 0 → 1 → 0 without any sudden jumps."
 
 The enemies seem to avoid the landmine bombs. Can they hit them at all (unlike normal bombs which they cannot pass)? Or should we change the logic so that if an enemy is beside a landmind bomb, that makes it detonate?
+
+Válasz 2 opció, amiből válasszak: "Option 1 (Recommended): Make landmines passable by enemies
+...
+Option 2: Adjacent detection"
+
+OK, implement option 1.
+

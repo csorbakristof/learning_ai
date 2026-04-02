@@ -298,30 +298,39 @@ class Bomb(pygame.sprite.Sprite):
         
         # Call behavior initialization
         self.weapon_behavior.on_place(self)
+        
+        # Make landmines semi-transparent
+        if self.weapon_type == WeaponType.LANDMINE:
+            self.image.set_alpha(80)  # Very faint
     
-    def update(self):
+    def update(self, enemies_group=None):
         """Update bomb timer and check for explosion"""
         current_time = pygame.time.get_ticks()
         time_left = self.timer - (current_time - self.placed_time)
         
-        # Animate bomb with pulsing effect based on time remaining
-        if time_left > 0:
-            # Calculate pulse value (0.0 to 1.0)
-            pulse_value = (current_time % 500) / 500.0  # Pulse every 500ms
+        # Animate bomb with pulsing effect based on time remaining (not for landmines)
+        if time_left > 0 and self.weapon_type != WeaponType.LANDMINE:
+            # Calculate smooth pulse value (0.0 to 1.0 and back) using triangle wave
+            pulse_value = abs(((current_time % 1000) / 500.0) - 1.0)
             self.image = self.sprite_cache.get_bomb_frame(pulse_value)
         
         # Handle sliding for kick bombs
         if self.sliding and self.slide_direction:
             self._update_sliding()
         
-        # Call behavior update
-        self.weapon_behavior.on_update(self)
+        # Call behavior update with enemies group
+        self.weapon_behavior.on_update(self, enemies_group=enemies_group)
         
         # Check if timer expired or behavior says to explode
-        if time_left <= 0 and not self.exploded:
-            self.exploded = True
-        elif self.weapon_behavior.should_explode(self):
-            self.exploded = True
+        # Landmines should not explode on timer, only on enemy contact
+        if self.weapon_type == WeaponType.LANDMINE:
+            if self.weapon_behavior.should_explode(self, enemies_group=enemies_group):
+                self.exploded = True
+        else:
+            if time_left <= 0 and not self.exploded:
+                self.exploded = True
+            elif self.weapon_behavior.should_explode(self):
+                self.exploded = True
     
     def _update_sliding(self):
         """Handle sliding movement for kick bombs"""

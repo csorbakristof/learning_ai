@@ -131,3 +131,10 @@ The kick() method exists but is never called
 The Bomb class needs to implement the sliding logic
 There's no player collision detection to trigger the kick"
 
+OK. Now the landmine weapon does not work either. It looks and behaves like a normal bomb.
+
+Now the animation of the normal bombs are blinking while they wait for the timer. Can you fix it?
+
+Válasz: "Fixed! The blinking was caused by the animation using a sawtooth wave pattern that jumped suddenly from one frame back to the start. I changed it to use a smooth triangle wave that pulses gradually from 0 → 1 → 0 without any sudden jumps."
+
+The enemies seem to avoid the landmine bombs. Can they hit them at all (unlike normal bombs which they cannot pass)? Or should we change the logic so that if an enemy is beside a landmind bomb, that makes it detonate?

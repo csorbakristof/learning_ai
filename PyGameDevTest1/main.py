@@ -542,8 +542,12 @@ def main():
                 if not keys[pygame.K_SPACE]:
                     game_state['space_pressed'] = False
                 
-                # Update
-                game_state['all_sprites'].update()
+                # Update all sprites, passing enemies to bombs for landmine detection
+                for sprite in game_state['all_sprites']:
+                    if isinstance(sprite, Bomb):
+                        sprite.update(enemies_group=game_state['enemies'])
+                    else:
+                        sprite.update()
                 
                 # Check for bombs ready to explode
                 for bomb in game_state['bombs'].copy():

@@ -42,6 +42,7 @@
 - **Lose condition** (0 lives remaining)
 - **Score tracking** (10 points per block, 100 per enemy)
 - **Professional HUD** (lives, bombs, score, enemies remaining)
+- **Invulnerability system** (2-second grace period after taking damage with visual flashing)
 
 ---
 
@@ -258,6 +259,7 @@ assets/               ⬜ Directory for game assets (optional)
 - ✅ Enemy AI with random movement
 - ✅ Collision detection (player vs enemies, explosions)
 - ✅ Lives system with respawning
+- ✅ **Invulnerability system** (2-second grace period after damage with flashing)
 - ✅ Score tracking and statistics
 - ✅ 5-level progression with difficulty scaling
 - ✅ Complete menu system
@@ -359,7 +361,10 @@ e:\_learning_ai\.venv\Scripts\python.exe main.py
 - ✅ Restart and menu navigation working
 
 ### Known Issues
-- None currently identified
+- ~~Lives could be lost instantly due to no invulnerability period~~ ✅ FIXED (April 2, 2026)
+  - Added 2-second invulnerability after taking damage
+  - Visual flashing feedback during invulnerability
+  - Prevents rapid life loss from persistent collisions
 
 ### Not Yet Tested
 - ⬜ Audio system (not implemented)

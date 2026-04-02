@@ -61,4 +61,28 @@ Update the #file:task.md and #file:WhereWeAre.md documents to contain the curren
 
 I added a new task to the end of the file in the secion "Extending the palette of enemies and weapons". Please implement it.
 
+Válasza:
+---
+✅ Architecture Extensibility - Completed
+I've successfully refactored the game architecture to support future extensions without changing any gameplay functionality. The game still works exactly as before, but is now ready for rapid feature expansion.
+
+New Files Created
+enums.py - Type definitions for:
+
+Enemy types (Normal, Fast, Smart, Wall-Eater, Bomb-Placer, Obstacle-Creator, Teleporter)
+Wall types (Indestructible, Destructible, Monster-Only, Player-Only, Conditional, Temporary, One-Way)
+Weapon types (Standard, Moving, Remote, Timed, Landmine, Penetrating, Directional)
+Power-up types (10+ types including Shield, Teleport, Wall-Pass, etc.)
+behaviors.py - Behavior strategies using composition:
+
+Movement behaviors (Random, Tracking, Wall-Eating)
+Explosion patterns (Cross, Directional, Penetrating)
+Passability rules (Always-Block, Entity-Type, Conditional)
+Weapon behaviors (Standard, Moving, Remote)
+ARCHITECTURE.md - Complete extensibility guide with examples
+---
+
 I have discovered an error: if I still have 3 lives but get killed, the game is over.
+
+Válasz: "I found the bug! The issue is that there's no invulnerability period after taking damage. When the player gets hit, they can be hit multiple times in rapid succession (even in the same frame if they collide with both an explosion and an enemy). This causes multiple life losses very quickly. ..."
+

@@ -1743,3 +1743,54 @@ The game architecture is now **fully prepared** for rapid extension with:
 
 **No functionality changed - pure architectural preparation!**
 
+---
+
+## Bug Fix: Lives System
+
+### ✅ FIXED - April 2, 2026
+
+**Issue:** Player could lose all lives instantly when taking damage, even when starting with 3 lives. Game would end immediately on first hit.
+
+**Root Cause:** 
+- No invulnerability period after taking damage
+- Player could be hit multiple times per frame (explosion + enemy collision)
+- Collisions persisting across frames caused rapid life loss
+- A collision lasting 3 frames would drain all 3 lives instantly
+
+**Solution Implemented:**
+1. **Invulnerability System:**
+   - Added `invulnerable` flag to player
+   - Added `invulnerable_until` timestamp (2000ms after hit)
+   - Added `last_hit_time` tracking
+   - Player cannot take damage while invulnerable
+
+2. **Visual Feedback:**
+   - Player sprite flashes during invulnerability
+   - Alternates between semi-transparent (alpha=100) and fully visible (alpha=255)
+   - Flash cycle every 100ms (4 phases)
+   - Works in both playing and paused states
+
+3. **Collision Logic Updates:**
+   - Both explosion and enemy collision checks now respect invulnerability
+   - Invulnerability activated on any hit (explosion or enemy)
+   - 2-second grace period after taking damage
+   - Prevents multiple hits from same collision event
+
+**Code Changes:**
+- Modified `init_game_state()` to initialize invulnerability properties
+- Updated explosion collision handling
+- Updated enemy collision handling
+- Added visual flashing effect in render loop
+
+**Testing:**
+- ✅ Game runs without errors
+- ✅ Player can take multiple hits across 2+ second intervals
+- ✅ Visual feedback clearly shows invulnerability status
+- ✅ Lives system now works correctly (3 lives = 3 hits with spacing)
+
+**Gameplay Impact:**
+- Players now have fair chance to react after taking damage
+- No more instant death from 3 lives
+- 2-second invulnerability window for strategic retreat
+- Visual feedback improves player awareness
+

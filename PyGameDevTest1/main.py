@@ -225,6 +225,11 @@ def init_game(level_config, previous_player_stats=None):
         player.bomb_range = previous_player_stats.get('bomb_range', INITIAL_BOMB_RANGE)
         player.speed = previous_player_stats.get('speed', PLAYER_SPEED)
     
+    # Add invulnerability tracking for player
+    player.invulnerable = False
+    player.invulnerable_until = 0
+    player.last_hit_time = 0
+    
     # Spawn enemies with level-specific speed multiplier
     spawn_enemies(level_config.num_enemies, walls, soft_blocks, bombs, player, enemies, 
                   level_config.enemy_speed_multiplier)
@@ -410,7 +415,25 @@ def main():
             screen.fill(BLACK)  # Fill entire screen with black
             game_area = pygame.Rect(0, HEADER_HEIGHT, SCREEN_WIDTH, GAME_AREA_HEIGHT)
             pygame.draw.rect(screen, GREEN, game_area)  # Game field background
+            
+            # Apply invulnerability visual effect (flashing) even when paused
+            if game_state:
+                player = game_state['player']
+                if player.invulnerable:
+                    flash_cycle = (pygame.time.get_ticks() // 100) % 4
+                    if flash_cycle < 2:
+                        player.image.set_alpha(100)
+                    else:
+                        player.image.set_alpha(255)
+                else:
+                    player.image.set_alpha(255)
+            
             game_state['all_sprites'].draw(screen)
+            
+            # Restore alpha after drawing
+            if game_state and game_state['player'].invulnerable:
+                game_state['player'].image.set_alpha(255)
+            
             draw_hud(screen, game_state['player'], game_state['score'], 
                     len(game_state['enemies']), current_level)
             
@@ -507,14 +530,24 @@ def main():
                         game_state['score'] += 100  # 100 points per enemy
                 
                 # Check collision between player and explosions
-                explosion_hits = pygame.sprite.spritecollide(game_state['player'], game_state['explosions'], False)
-                if explosion_hits:
-                    game_state['player'].lives -= 1
-                    if game_state['player'].lives <= 0:
+                player = game_state['player']
+                current_time = pygame.time.get_ticks()
+                
+                # Update invulnerability status
+                if player.invulnerable and current_time >= player.invulnerable_until:
+                    player.invulnerable = False
+                
+                explosion_hits = pygame.sprite.spritecollide(player, game_state['explosions'], False)
+                if explosion_hits and not player.invulnerable:
+                    player.lives -= 1
+                    player.invulnerable = True
+                    player.invulnerable_until = current_time + 2000  # 2 seconds invulnerability
+                    player.last_hit_time = current_time
+                    
+                    if player.lives <= 0:
                         game_state['game_over'] = True
                     else:
                         # Respawn player at starting position
-                        player = game_state['player']
                         player.rect.x = 1 * TILE_SIZE
                         player.rect.y = 1 * TILE_SIZE + HEADER_HEIGHT
                         player.grid_x = 1
@@ -524,14 +557,17 @@ def main():
                         player.moving = False
                 
                 # Check collision between player and enemies
-                enemy_hits = pygame.sprite.spritecollide(game_state['player'], game_state['enemies'], False)
-                if enemy_hits:
-                    game_state['player'].lives -= 1
-                    if game_state['player'].lives <= 0:
+                enemy_hits = pygame.sprite.spritecollide(player, game_state['enemies'], False)
+                if enemy_hits and not player.invulnerable:
+                    player.lives -= 1
+                    player.invulnerable = True
+                    player.invulnerable_until = current_time + 2000  # 2 seconds invulnerability
+                    player.last_hit_time = current_time
+                    
+                    if player.lives <= 0:
                         game_state['game_over'] = True
                     else:
                         # Respawn player at starting position
-                        player = game_state['player']
                         player.rect.x = 1 * TILE_SIZE
                         player.rect.y = 1 * TILE_SIZE + HEADER_HEIGHT
                         player.grid_x = 1
@@ -567,7 +603,25 @@ def main():
             screen.fill(BLACK)  # Fill entire screen with black
             game_area = pygame.Rect(0, HEADER_HEIGHT, SCREEN_WIDTH, GAME_AREA_HEIGHT)
             pygame.draw.rect(screen, GREEN, game_area)  # Game field background (grass)
+            
+            # Apply invulnerability visual effect (flashing)
+            player = game_state['player']
+            original_alpha = 255
+            if player.invulnerable:
+                # Flash effect - make player semi-transparent during invulnerability
+                flash_cycle = (pygame.time.get_ticks() // 100) % 4  # Flash every 100ms
+                if flash_cycle < 2:  # Half the time visible, half transparent
+                    player.image.set_alpha(100)  # Semi-transparent
+                else:
+                    player.image.set_alpha(255)  # Fully visible
+            else:
+                player.image.set_alpha(255)  # Fully visible
+            
             game_state['all_sprites'].draw(screen)
+            
+            # Restore alpha after drawing
+            if player.invulnerable:
+                player.image.set_alpha(255)
             
             # Draw enhanced HUD
             draw_hud(screen, game_state['player'], game_state['score'], 

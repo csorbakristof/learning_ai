@@ -1548,3 +1548,198 @@ After completing the enhanced version milestones, the following additional impro
 - Optional: Particle effects, screen shake, advanced features
 
 ---
+
+## Extending the palette of enemies and weapons
+
+### ✅ COMPLETED - April 2, 2026
+
+Prepared the game architecture to support several types of enemies (smart ones, ones eating walls, ones creating obstacles or placing bombs etc.), weapons (moving bombs, remote controllable bomb, protective shield for the player, teleportation of the player), and walls (only passable for monsters or the player, passable only if the player acquired some object or satisfies some kind of condition).
+
+**Implementation approach:** Architectural refactoring without changing any functionality, preparing the source code base so that these improvements will be easier to implement.
+
+### Changes Made
+
+#### 1. New Type System (enums.py) ✅
+Created comprehensive enum types for categorizing all game objects:
+
+- **EnemyType** - NORMAL, FAST, SMART, WALL_EATER, BOMB_PLACER, OBSTACLE_CREATOR, TELEPORTER
+- **WallType** - INDESTRUCTIBLE, DESTRUCTIBLE, MONSTER_ONLY, PLAYER_ONLY, CONDITIONAL, TEMPORARY, ONE_WAY
+- **WeaponType** - STANDARD, MOVING, REMOTE, TIMED, LANDMINE, PENETRATING, DIRECTIONAL
+- **PowerUpType** - BOMB_UP, FIRE_UP, SPEED_UP, SHIELD, TELEPORT, WALL_PASS, BOMB_PASS, KICK_BOMB, THROW_BOMB, REMOTE_DETONATOR
+- **EntityCategory** - PLAYER, ENEMY, WALL, WEAPON, POWERUP, PROJECTILE
+- **PassabilityCondition** - For conditional wall access rules
+
+#### 2. Behavior Composition System (behaviors.py) ✅
+Implemented strategy pattern for pluggable behaviors:
+
+**Movement Behaviors:**
+- `MovementBehavior` - Abstract base class
+- `RandomMovement` - Random direction AI (current normal enemy)
+- `TrackingMovement` - Chases player (current smart enemy)
+- `WallEatingMovement` - Can move through/destroy soft blocks (ready for implementation)
+
+**Explosion Behaviors:**
+- `ExplosionBehavior` - Abstract base class
+- `CrossExplosion` - Standard cross pattern (current behavior)
+- `DirectionalExplosion` - Single direction blast
+- `PenetratingExplosion` - Passes through soft blocks
+
+**Passability Rules:**
+- `PassabilityRule` - Abstract base class
+- `AlwaysBlockRule` - Walls block everything (current indestructible walls)
+- `EntityTypeRule` - Allow specific entity categories only
+- `ConditionalRule` - Custom condition checking
+
+**Weapon Behaviors:**
+- `WeaponBehavior` - Abstract base class
+- `StandardBombBehavior` - Timed explosion (current behavior)
+- `MovingBombBehavior` - Slides until hitting obstacle
+- `RemoteBombBehavior` - Explodes on command
+
+#### 3. Enhanced Entity Classes ✅
+
+**Player Class:**
+- Added `entity_category = EntityCategory.PLAYER`
+- Added special ability flags:
+  - `can_pass_bombs` - Walk through bombs
+  - `can_pass_walls` - Walk through soft blocks
+  - `has_shield` - Protected from explosions
+  - `can_kick_bombs` - Kick bombs to move them
+  - `can_remote_detonate` - Trigger remote bombs
+- Enhanced `is_position_blocked()` to use passability rules
+- Added `_can_pass_wall()` method for extensible wall checking
+
+**Enemy Class:**
+- Added `entity_category = EntityCategory.ENEMY`
+- Added `enemy_type` attribute (defaults to EnemyType.NORMAL)
+- Added `movement_behavior` composition (defaults to RandomMovement())
+- Added special ability flags:
+  - `can_eat_walls` - Destroy/pass through soft blocks
+  - `can_place_bombs` - Place bombs like player
+  - `can_teleport` - Short-range teleportation
+- Refactored `choose_random_direction()` to use behavior pattern
+- Enhanced `is_position_blocked()` to support wall-eating
+- Added `_can_pass_wall()` method for extensible checking
+
+**FastEnemy & SmartEnemy:**
+- Updated to use new type system (`EnemyType.FAST`, `EnemyType.SMART`)
+- Updated to use behavior composition (`RandomMovement`, `TrackingMovement`)
+- Maintains exact same functionality as before
+
+**Bomb Class:**
+- Added `entity_category = EntityCategory.WEAPON`
+- Added `weapon_type` attribute (defaults to WeaponType.STANDARD)
+- Added `weapon_behavior` composition (defaults to StandardBombBehavior())
+- Added `explosion_behavior` composition (defaults to CrossExplosion())
+- Updated `update()` to call behavior methods
+- Updated `is_ready_to_explode()` to use behavior checking
+- Calls `weapon_behavior.on_place()` on initialization
+
+**Wall Class:**
+- Added `entity_category = EntityCategory.WALL`
+- Added `wall_type` attribute (defaults to WallType.INDESTRUCTIBLE)
+- Added `passability_rule` composition (defaults to AlwaysBlockRule())
+- Constructor accepts optional `wall_type` and `passability_rule` parameters
+
+**SoftBlock Class:**
+- Added `entity_category = EntityCategory.WALL`
+- Added `wall_type = WallType.DESTRUCTIBLE`
+
+**PowerUp Class:**
+- Added `entity_category = EntityCategory.POWERUP`
+- Added `powerup_enum` attribute (PowerUpType enum)
+- Added `_string_to_enum()` conversion method
+
+#### 4. Backward Compatibility ✅
+
+**All existing code works unchanged:**
+- Default parameters maintain current behavior
+- Optional parameters enable extensions
+- No breaking changes to existing API
+- Game tested and verified functional
+
+**Examples:**
+```python
+# Old code still works (uses defaults)
+wall = Wall(3, 4)
+enemy = Enemy(5, 6, walls, blocks, bombs)
+bomb = Bomb(1, 1, 2, player)
+
+# New extended code (when ready to implement)
+special_wall = Wall(3, 4, wall_type=WallType.PLAYER_ONLY, passability_rule=custom_rule)
+wall_eater = Enemy(5, 6, walls, blocks, bombs, enemy_type=EnemyType.WALL_EATER, movement_behavior=WallEatingMovement())
+remote_bomb = Bomb(1, 1, 2, player, weapon_type=WeaponType.REMOTE, weapon_behavior=RemoteBombBehavior())
+```
+
+#### 5. Documentation ✅
+
+Created **ARCHITECTURE.md** with:
+- Complete architecture overview
+- Type system explanation
+- How to create new enemy types
+- How to create new weapon types
+- How to create special walls
+- Code examples for all extensions
+- Usage patterns and best practices
+
+### Testing ✅
+
+- ✅ Game runs without errors
+- ✅ All existing functionality preserved
+- ✅ No performance degradation
+- ✅ No visual changes
+- ✅ Level progression works
+- ✅ Enemy AI unchanged
+- ✅ Bomb mechanics unchanged
+- ✅ Collision detection works
+
+### Future Implementation Path
+
+When ready to add new features, the process is now:
+
+1. **Choose feature type** (e.g., wall-eating enemy)
+2. **Create sprites** if needed (in assets.py)
+3. **Implement behavior** if needed (in behaviors.py)
+4. **Instantiate entity** with new type/behavior
+5. **Add spawn logic** to game
+
+**No refactoring required** - architecture is ready!
+
+### Examples of Ready Features
+
+**Wall-Eating Enemy:**
+```python
+wall_eater = Enemy(x, y, walls, blocks, bombs,
+                   enemy_type=EnemyType.WALL_EATER,
+                   movement_behavior=WallEatingMovement())
+wall_eater.can_eat_walls = True
+```
+
+**Remote-Controlled Bomb:**
+```python
+remote_bomb = Bomb(x, y, range, player,
+                   weapon_type=WeaponType.REMOTE,
+                   weapon_behavior=RemoteBombBehavior())
+# Trigger with: remote_bomb.weapon_behavior.trigger()
+```
+
+**Player-Only Wall:**
+```python
+from behaviors import EntityTypeRule
+special_wall = Wall(x, y,
+                    wall_type=WallType.PLAYER_ONLY,
+                    passability_rule=EntityTypeRule([EntityCategory.PLAYER]))
+```
+
+### Summary
+
+The game architecture is now **fully prepared** for rapid extension with:
+- ✅ Multiple enemy types with different behaviors
+- ✅ Multiple weapon types with different mechanics
+- ✅ Multiple wall types with passability rules
+- ✅ Special player abilities (shields, teleportation, wall-passing)
+- ✅ Power-up system extensions
+- ✅ 100% backward compatibility
+
+**No functionality changed - pure architectural preparation!**
+

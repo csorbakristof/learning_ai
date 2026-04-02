@@ -4,6 +4,13 @@ Sprite classes for game objects
 import pygame
 from config import *
 from assets import get_sprite_cache
+from enums import EnemyType, WallType, WeaponType, PowerUpType, EntityCategory, PassabilityCondition
+from behaviors import (
+    MovementBehavior, RandomMovement, TrackingMovement,
+    ExplosionBehavior, CrossExplosion,
+    PassabilityRule, AlwaysBlockRule, EntityTypeRule,
+    WeaponBehavior, StandardBombBehavior
+)
 
 
 class Player(pygame.sprite.Sprite):
@@ -11,6 +18,10 @@ class Player(pygame.sprite.Sprite):
     
     def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group):
         super().__init__()
+        
+        # Type classification for extensibility
+        self.entity_category = EntityCategory.PLAYER
+        
         self.grid_x = grid_x
         self.grid_y = grid_y
         self.walls = walls_group
@@ -23,6 +34,13 @@ class Player(pygame.sprite.Sprite):
         self.bomb_range = INITIAL_BOMB_RANGE
         self.speed = PLAYER_SPEED
         self.bombs_available = self.max_bombs
+        
+        # Special abilities (for future extensions)
+        self.can_pass_bombs = False
+        self.can_pass_walls = False
+        self.has_shield = False
+        self.can_kick_bombs = False
+        self.can_remote_detonate = False
         
         # Load sprite image
         sprite_cache = get_sprite_cache()
@@ -81,24 +99,48 @@ class Player(pygame.sprite.Sprite):
     
     def is_position_blocked(self, grid_x, grid_y):
         """Check if a grid position is blocked by walls, soft blocks, or bombs"""
-        # Check walls
+        # Check walls (with passability rules)
         for wall in self.walls:
             if wall.grid_x == grid_x and wall.grid_y == grid_y:
-                return True
+                # Check if player can pass through this wall
+                if not self._can_pass_wall(wall):
+                    return True
         
-        # Check soft blocks
+        # Check soft blocks (with passability rules)
         for block in self.soft_blocks:
             if block.grid_x == grid_x and block.grid_y == grid_y:
-                return True
+                # Check if player can pass through soft blocks
+                if not self.can_pass_walls:  # can_pass_walls also allows soft blocks
+                    return True
         
         # Check bombs (but allow moving away from current position)
         for bomb in self.bombs:
             if bomb.grid_x == grid_x and bomb.grid_y == grid_y:
                 # Allow moving away from current position (e.g., after placing bomb)
                 if grid_x != self.grid_x or grid_y != self.grid_y:
-                    return True
+                    # Check if player can pass through bombs
+                    if not self.can_pass_bombs:
+                        return True
         
         return False
+    
+    def _can_pass_wall(self, wall):
+        """Check if player can pass through a specific wall"""
+        # Use wall's passability rule if it has one
+        if hasattr(wall, 'passability_rule'):
+            return wall.passability_rule.can_pass(self, wall)
+        
+        # Default: cannot pass indestructible walls
+        if hasattr(wall, 'wall_type'):
+            if wall.wall_type == WallType.INDESTRUCTIBLE:
+                return False
+            elif wall.wall_type == WallType.PLAYER_ONLY:
+                return True
+            elif wall.wall_type == WallType.MONSTER_ONLY:
+                return False
+        
+        # Fallback: hard walls block, unless player has ability
+        return self.can_pass_walls
 
 
 class PowerUp(pygame.sprite.Sprite):
@@ -106,6 +148,11 @@ class PowerUp(pygame.sprite.Sprite):
     
     def __init__(self, grid_x, grid_y, powerup_type):
         super().__init__()
+        
+        # Type classification for extensibility
+        self.entity_category = EntityCategory.POWERUP
+        self.powerup_enum = self._string_to_enum(powerup_type)
+        
         self.grid_x = grid_x
         self.grid_y = grid_y
         self.powerup_type = powerup_type
@@ -123,13 +170,31 @@ class PowerUp(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = grid_x * TILE_SIZE
         self.rect.y = grid_y * TILE_SIZE + HEADER_HEIGHT
+    
+    def _string_to_enum(self, powerup_type):
+        """Convert string type to enum for extensibility"""
+        if powerup_type == POWERUP_BOMB:
+            return PowerUpType.BOMB_UP
+        elif powerup_type == POWERUP_FIRE:
+            return PowerUpType.FIRE_UP
+        elif powerup_type == POWERUP_SPEED:
+            return PowerUpType.SPEED_UP
+        return None
 
 
 class Wall(pygame.sprite.Sprite):
     """Indestructible wall block"""
     
-    def __init__(self, grid_x, grid_y):
+    def __init__(self, grid_x, grid_y, wall_type=None, passability_rule=None):
         super().__init__()
+        
+        # Type classification for extensibility
+        self.entity_category = EntityCategory.WALL
+        self.wall_type = wall_type if wall_type else WallType.INDESTRUCTIBLE
+        
+        # Passability rule for conditional walls
+        self.passability_rule = passability_rule if passability_rule else AlwaysBlockRule()
+        
         self.grid_x = grid_x
         self.grid_y = grid_y
         
@@ -148,6 +213,11 @@ class SoftBlock(pygame.sprite.Sprite):
     
     def __init__(self, grid_x, grid_y):
         super().__init__()
+        
+        # Type classification for extensibility
+        self.entity_category = EntityCategory.WALL
+        self.wall_type = WallType.DESTRUCTIBLE
+        
         self.grid_x = grid_x
         self.grid_y = grid_y
         
@@ -164,8 +234,17 @@ class SoftBlock(pygame.sprite.Sprite):
 class Bomb(pygame.sprite.Sprite):
     """Bomb that explodes after a timer"""
     
-    def __init__(self, grid_x, grid_y, bomb_range, owner):
+    def __init__(self, grid_x, grid_y, bomb_range, owner, weapon_type=None, weapon_behavior=None, explosion_behavior=None):
         super().__init__()
+        
+        # Type classification for extensibility
+        self.entity_category = EntityCategory.WEAPON
+        self.weapon_type = weapon_type if weapon_type else WeaponType.STANDARD
+        
+        # Behavior composition for extensibility
+        self.weapon_behavior = weapon_behavior if weapon_behavior else StandardBombBehavior()
+        self.explosion_behavior = explosion_behavior if explosion_behavior else CrossExplosion()
+        
         self.grid_x = grid_x
         self.grid_y = grid_y
         self.bomb_range = bomb_range
@@ -186,6 +265,9 @@ class Bomb(pygame.sprite.Sprite):
         self.rect.y = grid_y * TILE_SIZE + HEADER_HEIGHT
         
         self.exploded = False
+        
+        # Call behavior initialization
+        self.weapon_behavior.on_place(self)
     
     def update(self):
         """Update bomb timer and check for explosion"""
@@ -198,13 +280,18 @@ class Bomb(pygame.sprite.Sprite):
             pulse_value = (current_time % 500) / 500.0  # Pulse every 500ms
             self.image = self.sprite_cache.get_bomb_frame(pulse_value)
         
-        # Check if timer expired
+        # Call behavior update
+        self.weapon_behavior.on_update(self)
+        
+        # Check if timer expired or behavior says to explode
         if time_left <= 0 and not self.exploded:
+            self.exploded = True
+        elif self.weapon_behavior.should_explode(self):
             self.exploded = True
     
     def is_ready_to_explode(self):
         """Check if bomb should explode"""
-        return self.exploded
+        return self.exploded or self.weapon_behavior.should_explode(self)
 
 
 class Explosion(pygame.sprite.Sprite):
@@ -238,8 +325,16 @@ class Explosion(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     """Enemy with random movement AI"""
     
-    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, speed_multiplier=1.0):
+    def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, speed_multiplier=1.0, enemy_type=None, movement_behavior=None):
         super().__init__()
+        
+        # Type classification for extensibility
+        self.entity_category = EntityCategory.ENEMY
+        self.enemy_type = enemy_type if enemy_type else EnemyType.NORMAL
+        
+        # Behavior composition for extensibility
+        self.movement_behavior = movement_behavior if movement_behavior else RandomMovement()
+        
         self.grid_x = grid_x
         self.grid_y = grid_y
         self.walls = walls_group
@@ -256,6 +351,11 @@ class Enemy(pygame.sprite.Sprite):
         self.direction_timer = 0
         self.direction_change_interval = 1000  # Change direction every 1 second
         self.current_direction = (0, 0)
+        
+        # Special abilities (for future enemy types)
+        self.can_eat_walls = False
+        self.can_place_bombs = False
+        self.can_teleport = False
         
         # Load sprite image
         sprite_cache = get_sprite_cache()
@@ -295,37 +395,38 @@ class Enemy(pygame.sprite.Sprite):
     
     def choose_random_direction(self):
         """Choose a random valid direction and try to move"""
-        import random
+        # Use behavior pattern for extensibility
+        direction = self.movement_behavior.choose_direction(self)
         
-        # Possible directions: up, down, left, right, stay
-        directions = [(0, -1), (0, 1), (-1, 0), (1, 0), (0, 0)]
-        
-        # Shuffle directions to try random ones first
-        random.shuffle(directions)
-        
-        for dx, dy in directions:
+        if direction:
+            dx, dy = direction
             new_grid_x = self.grid_x + dx
             new_grid_y = self.grid_y + dy
             
-            # Check if position is valid
-            if not self.is_position_blocked(new_grid_x, new_grid_y):
-                self.target_x = new_grid_x * TILE_SIZE
-                self.target_y = new_grid_y * TILE_SIZE + HEADER_HEIGHT
-                self.moving = True
-                self.current_direction = (dx, dy)
-                break
+            # Apply the chosen direction (already validated by behavior)
+            self.target_x = new_grid_x * TILE_SIZE
+            self.target_y = new_grid_y * TILE_SIZE + HEADER_HEIGHT
+            self.moving = True
+            self.current_direction = (dx, dy)
     
     def is_position_blocked(self, grid_x, grid_y):
         """Check if a grid position is blocked by walls, soft blocks, or bombs"""
-        # Check walls
+        # Check walls (with passability rules)
         for wall in self.walls:
             if wall.grid_x == grid_x and wall.grid_y == grid_y:
-                return True
+                # Check if enemy can pass through this wall
+                if not self._can_pass_wall(wall):
+                    # Special case: wall-eating enemies can pass soft blocks
+                    if self.can_eat_walls and hasattr(wall, 'wall_type') and wall.wall_type == WallType.DESTRUCTIBLE:
+                        continue  # Can pass
+                    return True
         
         # Check soft blocks
         for block in self.soft_blocks:
             if block.grid_x == grid_x and block.grid_y == grid_y:
-                return True
+                # Wall-eating enemies can pass through soft blocks
+                if not self.can_eat_walls:
+                    return True
         
         # Check bombs (but allow moving away from current position)
         for bomb in self.bombs:
@@ -335,14 +436,37 @@ class Enemy(pygame.sprite.Sprite):
                     return True
         
         return False
+    
+    def _can_pass_wall(self, wall):
+        """Check if enemy can pass through a specific wall"""
+        # Use wall's passability rule if it has one
+        if hasattr(wall, 'passability_rule'):
+            return wall.passability_rule.can_pass(self, wall)
+        
+        # Default: check wall type
+        if hasattr(wall, 'wall_type'):
+            if wall.wall_type == WallType.INDESTRUCTIBLE:
+                return False
+            elif wall.wall_type == WallType.MONSTER_ONLY:
+                return True
+            elif wall.wall_type == WallType.PLAYER_ONLY:
+                return False
+        
+        # Fallback: walls block enemies
+        return False
 
 
 class FastEnemy(Enemy):
     """Fast enemy that moves quickly and changes direction more frequently"""
     
     def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group):
-        # Initialize with 2x speed multiplier
-        super().__init__(grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, speed_multiplier=2.0)
+        # Initialize with 2x speed multiplier and type
+        super().__init__(
+            grid_x, grid_y, walls_group, soft_blocks_group, bombs_group,
+            speed_multiplier=2.0,
+            enemy_type=EnemyType.FAST,
+            movement_behavior=RandomMovement()
+        )
         
         # Faster direction changes
         self.direction_change_interval = 500  # Change direction every 0.5 seconds
@@ -356,8 +480,13 @@ class SmartEnemy(Enemy):
     """Smart enemy that tracks the player and moves toward them"""
     
     def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, player):
-        # Initialize with normal speed
-        super().__init__(grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, speed_multiplier=1.2)
+        # Initialize with tracking behavior
+        super().__init__(
+            grid_x, grid_y, walls_group, soft_blocks_group, bombs_group,
+            speed_multiplier=1.2,
+            enemy_type=EnemyType.SMART,
+            movement_behavior=TrackingMovement()
+        )
         
         self.player = player
         self.direction_change_interval = 800  # Update path every 0.8 seconds
@@ -367,47 +496,18 @@ class SmartEnemy(Enemy):
         self.image = sprite_cache.smart_enemy.copy()
     
     def choose_random_direction(self):
-        """Choose direction toward player (smart AI)"""
-        import random
+        """Choose direction toward player (smart AI) - override to pass player context"""
+        # Use behavior pattern with player context
+        direction = self.movement_behavior.choose_direction(self, player=self.player)
         
-        # Calculate direction to player
-        dx_to_player = self.player.grid_x - self.grid_x
-        dy_to_player = self.player.grid_y - self.grid_y
-        
-        # Prioritize directions toward player
-        directions = []
-        
-        # Add horizontal direction if needed
-        if dx_to_player > 0:
-            directions.append((1, 0))  # Right
-        elif dx_to_player < 0:
-            directions.append((-1, 0))  # Left
-        
-        # Add vertical direction if needed
-        if dy_to_player > 0:
-            directions.append((0, 1))  # Down
-        elif dy_to_player < 0:
-            directions.append((0, -1))  # Up
-        
-        # Add other directions with lower priority
-        all_directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
-        for d in all_directions:
-            if d not in directions:
-                directions.append(d)
-        
-        # Add stay as last option
-        directions.append((0, 0))
-        
-        # Try directions in order of priority
-        for dx, dy in directions:
+        if direction:
+            dx, dy = direction
             new_grid_x = self.grid_x + dx
             new_grid_y = self.grid_y + dy
             
-            # Check if position is valid
-            if not self.is_position_blocked(new_grid_x, new_grid_y):
-                self.target_x = new_grid_x * TILE_SIZE
-                self.target_y = new_grid_y * TILE_SIZE + HEADER_HEIGHT
-                self.moving = True
-                self.current_direction = (dx, dy)
-                break
+            # Apply the chosen direction (already validated by behavior)
+            self.target_x = new_grid_x * TILE_SIZE
+            self.target_y = new_grid_y * TILE_SIZE + HEADER_HEIGHT
+            self.moving = True
+            self.current_direction = (dx, dy)
 

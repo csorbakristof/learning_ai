@@ -59,3 +59,6 @@ Introduce additional enemies with different colors. A faster and a smarter one.
 
 Update the #file:task.md and #file:WhereWeAre.md documents to contain the current state and feature set.
 
+I added a new task to the end of the file in the secion "Extending the palette of enemies and weapons". Please implement it.
+
+I have discovered an error: if I still have 3 lives but get killed, the game is over.

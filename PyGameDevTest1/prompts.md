@@ -1,3 +1,5 @@
+[Modell: Claude Sonnet 4.5, 2026.04.01.]
+
 Have a look at this file and start working on 1st Task.
 
 I updated the results of the 1st task. Read it. Also have a look at the 2nd Task and start working on it. {Töröltem a multiplayer módot.}
@@ -201,3 +203,12 @@ Válasz: "Fixed! The issue was that explosions persist for multiple frames (thei
 I added a damage cooldown of 600ms to the TankEnemy. "
 
 When the game is over, allow the Esc key to return to the main menu.
+
+We made several changes lately. Update the #task.md and #ARCHITECTURE.md to reflect all the changes. Look at the chat history as well to find the changes.
+
+[Itt elértem a Claude Sonnet 4.5 limitjét a GitHub Copilot oktatói előfizetésben.]
+
+The in-game "Instructions" page has too many text and it does not fit into the window. Make it fit there. Remove information also available in the "Guide" menu item.
+
+I do not see the "E" hotkey in the instructions page. Add it.
+

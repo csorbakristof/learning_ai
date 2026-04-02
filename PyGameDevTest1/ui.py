@@ -89,39 +89,27 @@ class InstructionsScreen:
             "  Arrow Keys - Move",
             "  Spacebar - Place Bomb / Detonate Remote",
             "  1-5 Keys - Select Weapon",
+            "  E - Spawn random enemy (test)",
             "  ESC / P - Pause",
             "",
-            "WEAPONS:",
-            "  1 - Standard Bomb (3s timer)",
-            "  2 - Remote Bomb (detonate with Space)",
-            "  3 - Time Bomb (5s timer)",
-            "  4 - Kick Bomb (can be kicked)",
-            "  5 - Landmine (invisible, enemy trigger)",
-            "",
             "OBJECTIVE:",
-            "  Defeat all enemies to win!",
-            "",
-            "ENEMIES:",
-            "  Red - Normal speed, random movement",
-            "  Orange - Fast movement",
-            "  Purple - Smart, tracks player",
-            "  Green - Wall Breaker, destroys blocks",
-            "  Gray - Tank, needs multiple hits",
-            "  Yellow - Bomb Layer, fast, places bombs",
-            "  Cyan - Ghost, passes through soft blocks",
-            "  Pink - Splitter, splits when destroyed",
+            "  Defeat all enemies to clear the level",
+            "  Reach the final level to win the game",
             "",
             "POWER-UPS:",
             "  [B] Bomb Up - Place more bombs",
             "  [F] Fire Up - Larger explosions",
             "  [S] Speed Up - Move faster",
             "",
-            "AVOID:",
-            "  Your own explosions",
-            "  Touching enemies",
+            "SURVIVAL TIPS:",
+            "  Avoid your own explosions",
+            "  Avoid enemy contact",
+            "  Use pause (ESC/P) when needed",
+            "",
+            "See GUIDE for enemy and weapon details.",
         ]
         
-        y = 90
+        y = 85
         for line in instructions:
             if line.startswith("  "):
                 text = self.font_small.render(line, True, WHITE)
@@ -129,7 +117,7 @@ class InstructionsScreen:
                 text = self.font_medium.render(line, True, YELLOW if line.endswith(":") else WHITE)
             text_rect = text.get_rect(left=150, top=y)
             self.screen.blit(text, text_rect)
-            y += 30
+            y += 24
         
         # Back instruction
         back_text = self.font_medium.render("Press ESC to return", True, GRAY)
@@ -200,12 +188,11 @@ class GuideScreen:
         y += 35
         
         weapons = [
-            ("Standard Bomb:", "3-second timer, cross explosion"),
-            ("Line Bomb:", "Directional explosion in a line"),
-            ("Time Bomb:", "Customizable timer"),
-            ("Remote Bomb:", "Detonates with spacebar"),
-            ("Kick Bomb:", "Can be kicked to slide"),
-            ("Landmine:", "Invisible, triggers on enemy contact"),
+            ("1 - Standard Bomb:", "3-second timer, cross explosion"),
+            ("2 - Remote Bomb:", "Detonates with spacebar"),
+            ("3 - Time Bomb:", "5-second timer"),
+            ("4 - Kick Bomb:", "Can be kicked to slide"),
+            ("5 - Landmine:", "Invisible, triggers on enemy contact"),
         ]
         
         for name, desc in weapons:
@@ -218,9 +205,9 @@ class GuideScreen:
             self.screen.blit(desc_text, (right_x + 20, y))
             y += 30
         
-        # Note about weapon selection
+        # Weapon selection hint
         note_y = SCREEN_HEIGHT - 100
-        note = self.font_small.render("(Weapon selection coming in future update)", True, GRAY)
+        note = self.font_small.render("Select weapons with keys 1-5 during gameplay", True, GRAY)
         note_rect = note.get_rect(center=(SCREEN_WIDTH//2, note_y))
         self.screen.blit(note, note_rect)
         

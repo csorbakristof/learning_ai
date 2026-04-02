@@ -1,3 +1,136 @@
+# Task - Dynablaster (Current Status)
+
+This file documents the CURRENT implementation state of the project (updated after recent gameplay, enemy, weapon, and UX changes).
+
+## Project Goal
+
+Build a Dynablaster/Bomberman-style single-player game in Python with PyGame, including:
+
+- Grid-based movement and level structure
+- Bomb mechanics and chain explosions
+- Multiple enemy archetypes
+- Multiple weapon behaviors
+- Power-ups and level progression
+
+## Implemented Scope
+
+### Core Gameplay
+
+- Single-player campaign loop
+- Multi-level flow with level transition and final victory state
+- Classic map composition:
+  - Hard (indestructible) walls
+  - Soft (destructible) blocks
+  - Safe spawn area around player start
+- Explosion cross-pattern logic with wall/soft-block stopping rules
+- Chain explosion handling (bombs can trigger bombs)
+- Score tracking and enemy/block scoring
+- 3 lives system with temporary invulnerability after hit
+
+### Menus and States
+
+- Main menu, instructions screen, guide screen, pause menu
+- Game Over and Victory overlays
+- Keyboard state transitions implemented:
+  - Main Menu: ESC exits game
+  - Instructions/Guide: ESC returns to main menu
+  - Playing: ESC or P pauses (if not game over/victory)
+  - Paused: ESC or P resumes
+  - Game Over: R restart, M or ESC to main menu
+  - Victory: SPACE next level (if any), R restart, M or ESC to main menu
+
+### Player and Controls
+
+- Movement: Arrow keys
+- Bomb action: SPACE (place bomb or trigger remote bombs)
+- Weapon selection: keys 1-5
+- Debug/testing hotkeys during active gameplay:
+  - B: increase max bombs
+  - F: increase blast range
+  - S: increase speed
+  - E: spawn one random enemy type at least 5 Manhattan tiles away from player
+
+### Weapon System (Implemented)
+
+1. Standard Bomb
+  - Default timed bomb
+2. Remote Bomb
+  - Detonates via SPACE when remote weapon is selected and remote bombs exist
+3. Time Bomb
+  - 5-second timer
+4. Kick Bomb
+  - Can be kicked by player movement into bomb tile
+  - Slides until blocked by wall/soft block/bounds
+5. Landmine
+  - Semi-transparent visual
+  - No timer detonation
+  - Detonates when enemy steps on same tile
+  - Enemies may move through landmines (unlike normal bombs)
+
+### Enemies (Implemented)
+
+1. Normal Enemy
+  - Random movement
+2. Fast Enemy
+  - Faster random movement
+3. Smart Enemy
+  - Tracking movement toward player
+4. Wall Breaker Enemy
+  - Can destroy/move through soft blocks
+5. Tank Enemy
+  - 2 HP
+  - Damaged sprite on first hit
+  - Damage cooldown to avoid multi-hit from one explosion lifetime
+6. Bomb Layer Enemy
+  - Places bombs periodically
+  - Tuned for survivability:
+    - Faster movement
+    - Faster direction changes
+    - Longer bomb timer (enemy bombs)
+7. Ghost Enemy
+  - Passes through soft blocks always
+  - Never passes through hard walls
+8. Splitter Enemy
+  - Splits into 2-3 mini enemies on death (non-mini only)
+
+### HUD and UX
+
+- Header HUD displays:
+  - Level
+  - Lives
+  - Bombs available/max
+  - Fire range
+  - Speed
+  - Current weapon + key hint
+  - Score
+  - Remaining enemies
+
+## Recent Fixes Included
+
+- Fixed weapon selection handling (1-5)
+- Fixed kick bomb behavior so kicked bombs slide
+- Fixed landmine logic to be enemy-triggered only
+- Fixed bomb update pipeline to pass enemy group into bomb updates
+- Fixed standard bomb pulse animation to smooth pulse (no harsh blink)
+- Fixed ghost behavior to ignore soft blocks permanently
+- Fixed testing hotkey E (random enemy spawn)
+- Fixed Tank damage flow (survives first hit, dies second) and added hit cooldown
+- Added ESC exits from main menu
+- Added ESC return-to-menu for Game Over and Victory states
+
+## Out of Scope / Not Implemented Yet
+
+- Multiplayer mode
+- Throw-bomb, shield, teleport, and other extended power-up mechanics
+- Dedicated authored level editor
+- Audio pipeline polish (SFX/music balancing and complete event coverage)
+- Full automated test suite
+
+## Notes
+
+- This file is intentionally implementation-focused (not a theoretical plan).
+- If gameplay behavior changes, update this file and ARCHITECTURE.md together.
+
 # Task description
 
 Help me create a Dynablaster-style game using Python and the PyGame package.

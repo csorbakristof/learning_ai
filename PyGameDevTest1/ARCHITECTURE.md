@@ -1,3 +1,175 @@
+# Architecture - Dynablaster (Current)
+
+This document describes the current runtime architecture and extension points of the game.
+
+## 1. High-Level Design
+
+The project uses a modular PyGame architecture with:
+
+- A central game loop in main.py
+- Sprite-based entities in sprites.py
+- Strategy-style behaviors in behaviors.py
+- Strong typed enums in enums.py
+- UI screens and HUD rendering in ui.py
+- Generated/cached art assets in assets.py
+
+Core principle: behavior composition over rigid inheritance where possible.
+
+## 2. Main Runtime Flow
+
+## 2.1 State Machine
+
+Main states:
+
+- menu
+- instructions
+- guide
+- playing
+- paused
+
+State transitions are keyboard-driven and centralized in main.py.
+
+## 2.2 Update Loop (Playing)
+
+During active gameplay:
+
+1. Process continuous input (movement + SPACE bomb action)
+2. Spawn/place bombs based on selected weapon
+3. Update sprites
+     - Bombs updated explicitly with enemies_group for landmine logic
+     - Other sprites updated via their update method
+4. Resolve bomb explosions and chain triggers
+5. Resolve block destruction and power-up spawn
+6. Resolve enemy hits by explosions
+7. Resolve player hits by explosions/enemies
+8. Resolve power-up pickups
+9. Evaluate level completion and end states
+
+Important detail: bomb update needs enemy context, so bombs are not updated as blind sprites.
+
+## 3. Module Responsibilities
+
+## 3.1 main.py
+
+- Game initialization (groups, level generation, state dictionary)
+- Event handling and state transitions
+- Bomb placement, detonation, and chain logic
+- Collision resolution and scoring
+- Debug utility hooks (including enemy spawn hotkey)
+
+## 3.2 sprites.py
+
+- Entity definitions:
+    - Player, Wall, SoftBlock, PowerUp
+    - Bomb, Explosion
+    - Enemy classes (Normal/Fast/Smart/WallBreaker/Tank/BombLayer/Ghost/Splitter)
+- Entity movement and blocking rules
+- Specialized behavior per concrete enemy class
+
+## 3.3 behaviors.py
+
+- Movement strategies:
+    - RandomMovement
+    - TrackingMovement
+    - WallEatingMovement
+- Weapon strategies:
+    - StandardBombBehavior
+    - RemoteBombBehavior
+    - TimeBombBehavior
+    - KickBombBehavior
+    - LandmineBehavior
+- Explosion and passability rule abstractions
+
+## 3.4 enums.py
+
+- Type classification for extensibility:
+    - EnemyType
+    - WallType
+    - WeaponType
+    - PowerUpType
+    - EntityCategory
+
+## 3.5 ui.py
+
+- Main menu and sub-screens
+- Pause menu
+- HUD rendering
+- Game over/victory overlay rendering
+
+## 4. Game State and Sprite Groups
+
+Main group layout:
+
+- all_sprites
+- walls
+- soft_blocks
+- bombs
+- explosions
+- enemies
+- powerups
+
+game_state dictionary in main.py stores all runtime mutable objects and counters.
+
+## 5. Behavior Rules (Current)
+
+## 5.1 Bombs and Weapons
+
+- Standard: timed explosion
+- Remote: explicit trigger path
+- Timed: custom timer value
+- Kick: player can kick into sliding motion
+- Landmine:
+    - non-timer behavior
+    - triggers only from enemy tile overlap
+    - enemies can pass through landmines
+
+## 5.2 Enemy Blocking Rules
+
+- Most enemies are blocked by hard walls, soft blocks, and bombs
+- Landmines are special-cased as passable for enemies
+- Ghost enemy:
+    - blocked by hard walls
+    - ignores soft blocks completely
+
+## 5.3 Tank Damage Model
+
+- Tank has health pool (2)
+- First hit damages sprite/state
+- Second hit kills
+- Per-hit cooldown prevents taking multiple damage ticks from one explosion lifetime
+
+## 5.4 BombLayer Survival Tuning
+
+- Faster movement multiplier
+- Faster direction reevaluation
+- Longer self-bomb timer for escape chance
+
+## 6. Input Map (Current)
+
+- Arrow keys: move
+- SPACE: place bomb / detonate remote
+- 1-5: weapon select
+- ESC/P in playing: pause
+- ESC in menu: exit game
+- ESC in game over/victory: return to main menu
+- B/F/S: gameplay stat cheats (during active play)
+- E: spawn random enemy for testing (distance constrained)
+
+## 7. Extension Points
+
+The existing abstractions support adding features with low coupling:
+
+- New enemy behavior: add movement strategy + sprite class
+- New weapon type: add WeaponBehavior + selection hook
+- New passability logic: add PassabilityRule and assign wall types
+- New explosion pattern: implement ExplosionBehavior and attach to bomb
+
+## 8. Known Documentation Caveat
+
+Guide screen text in ui.py still contains a legacy weapon label path (Line Bomb reference), while runtime weapon selection currently uses the five active weapons listed in controls/HUD.
+
+If desired, this can be normalized in a follow-up UI cleanup.
+
 # Architecture Extensibility Guide
 
 This document explains the refactored game architecture that supports extensible enemies, weapons, and walls.

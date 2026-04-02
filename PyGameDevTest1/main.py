@@ -121,6 +121,68 @@ def create_explosion(grid_x, grid_y, bomb_range, walls_group, soft_blocks_group,
     return destroyed_blocks
 
 
+def spawn_single_test_enemy(walls_group, soft_blocks_group, bombs_group, player, enemies_group, all_sprites, game_state):
+    """Spawn a single random enemy for testing purposes, at least 5 tiles from player"""
+    max_attempts = 100
+    attempts = 0
+    
+    while attempts < max_attempts:
+        attempts += 1
+        
+        # Choose random position
+        x = random.randint(1, GRID_WIDTH - 2)
+        y = random.randint(1, GRID_HEIGHT - 2)
+        
+        # Check if position is valid (not blocked and at least 5 tiles from player)
+        is_blocked = False
+        
+        # Check walls
+        for wall in walls_group:
+            if wall.grid_x == x and wall.grid_y == y:
+                is_blocked = True
+                break
+        
+        # Check soft blocks
+        if not is_blocked:
+            for block in soft_blocks_group:
+                if block.grid_x == x and block.grid_y == y:
+                    is_blocked = True
+                    break
+        
+        # Check distance from player (should be at least 5 tiles away)
+        player_distance = abs(x - player.grid_x) + abs(y - player.grid_y)
+        if player_distance < 5:
+            is_blocked = True
+        
+        # Check if another enemy is already there
+        if not is_blocked:
+            for enemy in enemies_group:
+                if enemy.grid_x == x and enemy.grid_y == y:
+                    is_blocked = True
+                    break
+        
+        # Spawn enemy if position is valid
+        if not is_blocked:
+            # Randomly choose enemy type - all types have equal chance for testing
+            enemy_types = [
+                lambda: Enemy(x, y, walls_group, soft_blocks_group, bombs_group, 1.0),
+                lambda: FastEnemy(x, y, walls_group, soft_blocks_group, bombs_group),
+                lambda: SmartEnemy(x, y, walls_group, soft_blocks_group, bombs_group, player),
+                lambda: WallBreakerEnemy(x, y, walls_group, soft_blocks_group, bombs_group),
+                lambda: TankEnemy(x, y, walls_group, soft_blocks_group, bombs_group),
+                lambda: GhostEnemy(x, y, walls_group, soft_blocks_group, bombs_group),
+                lambda: BombLayerEnemy(x, y, walls_group, soft_blocks_group, bombs_group, game_state),
+                lambda: SplitterEnemy(x, y, walls_group, soft_blocks_group, bombs_group, game_state)
+            ]
+            
+            enemy = random.choice(enemy_types)()
+            enemies_group.add(enemy)
+            all_sprites.add(enemy)
+            return True
+    
+    return False  # Failed to find valid position
+
+
 def spawn_enemies(num_enemies, walls_group, soft_blocks_group, bombs_group, player, enemies_group, speed_multiplier=1.0, game_state=None):
     """
     Spawn enemies at random valid positions away from player
@@ -329,19 +391,23 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 # Menu state
                 if current_state == STATE_MENU:
-                    action = menu.handle_input(event)
-                    if action == "start":
-                        # Start from level 1
-                        current_level = 1
-                        level_config = get_level(current_level)
-                        game_state = init_game(level_config)
-                        current_state = STATE_PLAYING
-                    elif action == "instructions":
-                        current_state = STATE_INSTRUCTIONS
-                    elif action == "guide":
-                        current_state = STATE_GUIDE
-                    elif action == "quit":
+                    # ESC exits the game from main menu
+                    if event.key == pygame.K_ESCAPE:
                         running = False
+                    else:
+                        action = menu.handle_input(event)
+                        if action == "start":
+                            # Start from level 1
+                            current_level = 1
+                            level_config = get_level(current_level)
+                            game_state = init_game(level_config)
+                            current_state = STATE_PLAYING
+                        elif action == "instructions":
+                            current_state = STATE_INSTRUCTIONS
+                        elif action == "guide":
+                            current_state = STATE_GUIDE
+                        elif action == "quit":
+                            running = False
                 
                 # Instructions state
                 elif current_state == STATE_INSTRUCTIONS:
@@ -390,6 +456,18 @@ def main():
                             player.current_weapon = WeaponType.KICK
                         elif event.key == pygame.K_5:
                             player.current_weapon = WeaponType.LANDMINE
+                        
+                        # E key: Spawn random test enemy (at least 5 tiles from player)
+                        elif event.key == pygame.K_e:
+                            spawn_single_test_enemy(
+                                game_state['walls'],
+                                game_state['soft_blocks'],
+                                game_state['bombs'],
+                                player,
+                                game_state['enemies'],
+                                game_state['all_sprites'],
+                                game_state
+                            )
                     
                     # Game over or victory - restart or return to menu
                     elif game_state['game_over']:
@@ -398,7 +476,7 @@ def main():
                             current_level = 1
                             level_config = get_level(current_level)
                             game_state = init_game(level_config)
-                        elif event.key == pygame.K_m:
+                        elif event.key == pygame.K_m or event.key == pygame.K_ESCAPE:
                             current_state = STATE_MENU
                             game_state = None
                     
@@ -421,7 +499,7 @@ def main():
                             current_level = 1
                             level_config = get_level(current_level)
                             game_state = init_game(level_config)
-                        elif event.key == pygame.K_m:
+                        elif event.key == pygame.K_m or event.key == pygame.K_ESCAPE:
                             current_state = STATE_MENU
                             game_state = None
                 
@@ -601,8 +679,8 @@ def main():
                     if explosion_hits:
                         # Check if enemy has health system (Tank enemy)
                         if hasattr(enemy, 'take_damage'):
-                            if not enemy.take_damage():
-                                # Enemy survived, continue
+                            if enemy.take_damage():
+                                # Enemy survived (health > 0), continue
                                 continue
                         
                         # Check if enemy splits (Splitter enemy)

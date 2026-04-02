@@ -684,18 +684,32 @@ class TankEnemy(Enemy):
         self.damaged = False
         self.direction_change_interval = 1500  # Change direction every 1.5 seconds
         
+        # Damage cooldown to prevent multiple hits from same explosion
+        self.damage_cooldown = 0
+        self.damage_cooldown_duration = 600  # 600ms invulnerability after taking damage
+        
         # Load tank sprite
         sprite_cache = get_sprite_cache()
         self.image = sprite_cache.tank_enemy.copy()
     
     def take_damage(self):
         """Take one point of damage"""
+        import pygame
+        current_time = pygame.time.get_ticks()
+        
+        # Check if still on cooldown from previous damage
+        if current_time < self.damage_cooldown:
+            return True  # Still alive, but can't take damage yet
+        
         self.health -= 1
+        self.damage_cooldown = current_time + self.damage_cooldown_duration
+        
         if self.health == 1 and not self.damaged:
             self.damaged = True
             # Change sprite to damaged version
             sprite_cache = get_sprite_cache()
             self.image = sprite_cache.tank_enemy_damaged.copy()
+        
         return self.health > 0  # Return True if still alive
 
 
@@ -705,7 +719,7 @@ class BombLayerEnemy(Enemy):
     def __init__(self, grid_x, grid_y, walls_group, soft_blocks_group, bombs_group, game_state=None):
         super().__init__(
             grid_x, grid_y, walls_group, soft_blocks_group, bombs_group,
-            speed_multiplier=1.0,
+            speed_multiplier=1.3,  # Faster movement to escape own bombs
             enemy_type=EnemyType.BOMB_PLACER,
             movement_behavior=RandomMovement()
         )
@@ -714,7 +728,7 @@ class BombLayerEnemy(Enemy):
         self.last_bomb_time = 0
         self.bomb_interval = 5000  # Place bomb every 5 seconds
         self.game_state = game_state
-        self.direction_change_interval = 1000
+        self.direction_change_interval = 700  # Change direction more frequently
         
         # Load sprite
         sprite_cache = get_sprite_cache()
@@ -742,7 +756,7 @@ class BombLayerEnemy(Enemy):
             if not bomb_exists:
                 bomb = Bomb(self.grid_x, self.grid_y, 1, self, 
                           walls_group=self.walls, soft_blocks_group=self.soft_blocks)  # Range 1, owner is enemy
-                bomb.timer = 2000  # 2 second timer for enemy bombs
+                bomb.timer = 4500  # 4.5 second timer - gives enemy time to escape
                 self.game_state['bombs'].add(bomb)
                 self.game_state['all_sprites'].add(bomb)
 
@@ -769,29 +783,27 @@ class GhostEnemy(Enemy):
         self.image.set_alpha(180)  # Semi-transparent
     
     def is_position_blocked(self, grid_x, grid_y):
-        """Ghost can phase through walls occasionally"""
-        import pygame
-        current_time = pygame.time.get_ticks()
+        """Ghost always passes through soft blocks, blocked by hard walls"""
+        # Check walls (with passability rules)
+        for wall in self.walls:
+            if wall.grid_x == grid_x and wall.grid_y == grid_y:
+                # Check if enemy can pass through this wall
+                if not self._can_pass_wall(wall):
+                    return True  # Blocked by hard walls
         
-        # Check if phasing is on cooldown
-        if current_time < self.phase_cooldown:
-            return super().is_position_blocked(grid_x, grid_y)
+        # Ghost NEVER checks soft blocks - they can always pass through them
         
-        # 30% chance to phase through walls
-        if random.random() < 0.3:
-            self.phasing = True
-            self.phase_cooldown = current_time + 3000  # 3 second cooldown
-            # Only check bombs, ignore walls (but landmines are passable)
-            for bomb in self.bombs:
-                if bomb.grid_x == grid_x and bomb.grid_y == grid_y:
-                    # Landmines are passable
-                    if hasattr(bomb, 'weapon_type') and bomb.weapon_type == WeaponType.LANDMINE:
-                        continue
-                    if grid_x != self.grid_x or grid_y != self.grid_y:
-                        return True
-            return False
+        # Check bombs (but allow moving away from current position)
+        for bomb in self.bombs:
+            if bomb.grid_x == grid_x and bomb.grid_y == grid_y:
+                # Landmines are passable
+                if hasattr(bomb, 'weapon_type') and bomb.weapon_type == WeaponType.LANDMINE:
+                    continue
+                # Allow moving away from current position
+                if grid_x != self.grid_x or grid_y != self.grid_y:
+                    return True
         
-        return super().is_position_blocked(grid_x, grid_y)
+        return False
 
 
 class SplitterEnemy(Enemy):

@@ -107,8 +107,8 @@ class InstructionsScreen:
             "  Purple - Smart, tracks player",
             "  Green - Wall Breaker, destroys blocks",
             "  Gray - Tank, needs multiple hits",
-            "  Yellow - Bomb Layer, places bombs",
-            "  Cyan - Ghost, phases through walls",
+            "  Yellow - Bomb Layer, fast, places bombs",
+            "  Cyan - Ghost, passes through soft blocks",
             "  Pink - Splitter, splits when destroyed",
             "",
             "POWER-UPS:",
@@ -178,8 +178,8 @@ class GuideScreen:
             ("Purple - Smart:", "Tracks and chases player"),
             ("Green - Wall Breaker:", "Destroys soft blocks while moving"),
             ("Gray - Tank:", "Requires 2-3 hits to defeat"),
-            ("Yellow - Bomb Layer:", "Places bombs periodically"),
-            ("Cyan - Ghost:", "Can phase through walls"),
+            ("Yellow - Bomb Layer:", "Fast movement, places bombs periodically"),
+            ("Cyan - Ghost:", "Passes through soft blocks"),
             ("Pink - Splitter:", "Splits into mini enemies when destroyed"),
         ]
         

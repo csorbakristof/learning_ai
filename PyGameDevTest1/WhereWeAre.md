@@ -1,7 +1,7 @@
 # Dynablaster Game - Current Status
 
 **Project:** Bomberman-style game using Python and PyGame  
-**Last Updated:** April 1, 2026
+**Last Updated:** April 2, 2026
 
 ---
 
@@ -16,9 +16,9 @@
 - **Sprite rendering** (all objects drawn correctly)
 
 #### Milestone 2: Player Character ✅
-- **Grid-based movement** (arrow keys + WASD support)
+- **Grid-based movement** (arrow keys only, WASD removed for cleaner controls)
 - **Smooth interpolation** (fluid movement between grid positions)
-- **Collision detection** (walls and soft blocks)
+- **Collision detection** (walls, soft blocks, and bombs)
 - **Lives system** (3 lives, respawn at starting position)
 
 #### Milestone 3: Bombs & Explosions ✅
@@ -28,14 +28,20 @@
 - **Soft block destruction** (blocks destroyed by explosions)
 - **Player damage** from own explosions
 - **Bomb limit system** (max bombs at once)
+- **Collision blocking** (players and enemies cannot walk through bombs)
+- **Chain explosions** (bombs can trigger other bombs for cascading reactions)
 
 #### Milestone 4: Enemies & Game States ✅
-- **Enemy AI** (random movement, 1-second direction changes)
+- **Three enemy types with distinct AI:**
+  - 🔴 **Normal Enemy (Red)**: Random movement, 1.0x speed, changes direction every 1 second
+  - 🟠 **Fast Enemy (Orange)**: Random movement, 2.0x speed, changes direction every 0.5 seconds
+  - 🟣 **Smart Enemy (Purple)**: Tracks player, 1.2x speed, updates path every 0.8 seconds
+- **Enemy spawning** (50% normal, 25% fast, 25% smart distribution)
 - **Enemy collision** (with player and explosions)
 - **Win condition** (all enemies defeated)
 - **Lose condition** (0 lives remaining)
 - **Score tracking** (10 points per block, 100 per enemy)
-- **Basic HUD** (lives, bombs, score, enemies remaining)
+- **Professional HUD** (lives, bombs, score, enemies remaining)
 
 ---
 
@@ -60,9 +66,11 @@
   - Yellow selection indicator with arrow
   
 - **Instructions Screen:**
-  - Complete controls explanation
+  - Complete controls explanation (arrow keys only)
   - Game objectives
+  - **Enemy type descriptions** (Normal/Fast/Smart)
   - Power-up descriptions
+  - Optimized text size (fits within 690px screen height)
   - ESC to return to menu
   
 - **Pause System:**
@@ -72,13 +80,16 @@
   - Game state fully frozen during pause
   
 - **Enhanced HUD:**
+  - ✨ **Header bar system** (50px dedicated status area, non-overlapping)
   - ❤️ Heart icons for lives display
   - Bombs counter (available/max)
   - Fire range and speed stats
   - Score display
   - Enemies remaining counter
   - **Level indicator** (yellow "LEVEL X" at top center)
-  - Black backgrounds for readability
+  - Compact fonts (24px/18px) for efficient space usage
+  - Gray separators between sections
+  - Black background with gray border
   
 - **Polished End Screens:**
   - Game Over screen (red styling)
@@ -195,7 +206,12 @@ assets/               ⬜ Directory for game assets (optional)
 - ✅ Complete menu system
 - ✅ Pause functionality
 - ✅ Game state management
-- ✅ **Professional sprite graphics with animations** (NEW!)
+- **Professional sprite graphics with animations**
+- **Intelligent collision system** (bombs block movement)
+- **Chain reaction mechanics** (explosions trigger other bombs)
+- **Three distinct enemy types** (Normal/Fast/Smart AI)
+- **Cheat code system** (B/F/S keys for quick power-ups)
+- **Optimized UI layout** (dedicated header bar, no overlap)
 
 ### Gameplay Balance ✅
 - ✅ Starting stats: 3 lives, 1 bomb, range 1, normal speed
@@ -204,6 +220,10 @@ assets/               ⬜ Directory for game assets (optional)
 - ✅ Explosion duration: 500ms
 - ✅ Enemy speed scaling: 1.0x → 1.8x across levels
 - ✅ Soft block density: 60% → 30% across levels
+- ✅ **Enemy variety:** 50% normal (red), 25% fast (orange), 25% smart (purple)
+- ✅ **Chain explosions:** Bombs can trigger each other for strategic combinations
+- ✅ **Collision blocking:** Cannot move onto bomb tiles (except when moving away)
+- ✅ **Screen dimensions:** 960x690 (640px game area + 50px header)
 
 ---
 
@@ -221,13 +241,17 @@ e:\_learning_ai\.venv\Scripts\python.exe main.py
 ```
 
 ### Controls
-- **Movement:** Arrow Keys or WASD
+- **Movement:** Arrow Keys (WASD removed for cleaner controls)
 - **Place Bomb:** Spacebar
 - **Pause:** ESC or P
 - **Menu Navigation:** Arrow Keys + Enter
 - **Restart (Game Over):** R
 - **Main Menu:** M
 - **Next Level (Victory):** SPACE
+- **Cheat Codes (during gameplay):**
+  - **B** - Increase max bombs (+1, up to 5)
+  - **F** - Increase fire/blast range (+1, up to 5)
+  - **S** - Increase player speed (+1, up to 6)
 
 ---
 
@@ -291,6 +315,7 @@ e:\_learning_ai\.venv\Scripts\python.exe main.py
 |----------|--------|------------|
 | **MVP Features** | ✅ Complete | 100% (4/4 milestones) |
 | **Enhanced Features** | 🔄 In Progress | 80% (4/5 milestones) |
+| **Gameplay Polish** | ✅ Complete | 100% (all extras) |
 | **Overall Project** | 🔄 Near Complete | 88.9% (8/9 milestones) |
 
 **Milestone Breakdown:**
@@ -309,13 +334,15 @@ e:\_learning_ai\.venv\Scripts\python.exe main.py
 ## 🎨 POLISH & OPTIONAL FEATURES
 
 ### Potential Future Enhancements (Beyond Scope)
-- Visual graphics replacement (sprite sheets instead of basic shapes)
+- ~~Visual graphics replacement~~ ✅ DONE (procedural sprites)
+- ~~Different enemy types~~ ✅ DONE (Normal/Fast/Smart)
+- ~~Chain explosions~~ ✅ DONE
 - Particle effects for explosions
 - Screen shake on explosions
 - Local multiplayer mode (2-4 players)
 - Level editor
 - High score persistence
-- Different enemy types (wandering, chasing, patrolling)
+- More enemy types (patrolling, teleporting)
 - Boss battles
 - Special bombs (remote control, landmines)
 - Destructible corner walls
@@ -348,7 +375,7 @@ e:\_learning_ai\.venv\Scripts\python.exe main.py
 ## 📝 SUMMARY
 
 **What We Have:**
-A fully playable Bomberman clone with 5 levels, complete menu system, power-ups, progressive difficulty, and **professional sprite-based graphics**. All core gameplay mechanics are implemented and polished with detailed visual sprites. The game features smooth animations, 3D shading effects, and distinctive character designs. Ready for play-testing and only needs audio to be 100% complete.
+A fully playable Bomberman clone with 5 levels, complete menu system, power-ups, progressive difficulty, **professional sprite-based graphics**, and **three distinct enemy types** with unique AI behaviors. All core gameplay mechanics are implemented and polished with detailed visual sprites, chain explosion mechanics, intelligent collision detection, and a dedicated header bar UI. The game features smooth animations, 3D shading effects, distinctive character designs for each enemy type, and strategic depth through cheat codes and enemy variety. Ready for play-testing and only needs audio to be 100% complete.
 
 **What's Missing:**
 Only the audio system remains. The game is fully playable and visually polished without sound, but adding audio effects and music would complete the professional experience.
@@ -356,11 +383,14 @@ Only the audio system remains. The game is fully playable and visually polished 
 **Project Quality:**
 High-quality implementation with clean code architecture, professional-looking sprite graphics, and smooth animations. Following best practices for game development with PyGame. The game is stable, bug-free, visually appealing, and ready for distribution (pending audio).
 
-**Recent Additions:**
-- ✨ **Visual Polish Complete**: All basic shapes replaced with detailed, procedurally-generated sprites
-- 🎨 Professional sprite system with 3D effects, textures, and animations
-- 💾 Efficient sprite caching for optimal performance
-- 🎭 Distinctive visual identity for each game object
+**Recent Additions (April 2, 2026):**
+- 🎮 **Three Enemy Types**: Normal (red), Fast (orange), Smart (purple) with distinct AI behaviors
+- 💣 **Chain Explosions**: Bombs can trigger other bombs for cascading reactions
+- 🚫 **Bomb Collision**: Players and enemies blocked by bombs (except when moving away)
+- 🎯 **Cheat Codes**: B/F/S keys for instant power-ups during gameplay
+- 📊 **Header Bar UI**: 50px dedicated status area with compact layout (non-overlapping)
+- ⌨️ **Simplified Controls**: Arrow keys only (WASD removed for cleaner input)
+- 📐 **Optimized Layout**: Screen increased to 960x690 (640 game + 50 header)
 
 ---
 

@@ -53,3 +53,9 @@ Introduce cheat codes where certain key presses increase some counters:
 - s increases the players speed
 - f increases the bombs blast distance
 
+Remove the WASD based controls. So that the cheat key s has a single function. Arrows will be sufficient for the control.
+
+Introduce additional enemies with different colors. A faster and a smarter one.
+
+Update the #file:task.md and #file:WhereWeAre.md documents to contain the current state and feature set.
+

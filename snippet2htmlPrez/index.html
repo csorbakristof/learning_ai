@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor és Observer minta</title>
+    
+    <!-- Reveal.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+    
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+    
+    <style>
+        .reveal pre {
+            width: 100%;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .reveal pre code {
+            max-height: 550px;
+            overflow-y: auto;
+            padding: 20px;
+            font-size: 0.65em;
+            line-height: 1.5;
+            background-color: #f6f8fa;
+            border: 1px solid #d0d7de;
+        }
+        
+        .reveal h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+        }
+        
+        .reveal h2 {
+            font-size: 1.8em;
+            color: #34495e;
+        }
+        
+        .reveal h3 {
+            font-size: 1.3em;
+            color: #555;
+        }
+        
+        .reveal ul, .reveal ol {
+            font-size: 0.9em;
+        }
+        
+        .highlight-line {
+            background-color: #ffffcc;
+            font-weight: bold;
+        }
+        
+        .mermaid {
+            background-color: white;
+        }
+        
+        .quiz-card {
+            background: #f8f9fa;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 0.85em;
+            text-align: left;
+        }
+        
+        .quiz-answer {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 0.8em;
+        }
+        
+        .output-box {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: monospace;
+            text-align: left;
+            font-size: 0.7em;
+            line-height: 1.6;
+        }
+        
+        .pattern-badge {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slide 1: Címlap -->
+            <section>
+                <h1>Visitor és Observer minta</h1>
+                <p>Design Patterns C++ példán keresztül</p>
+                <p><span class="pattern-badge">Visitor Pattern</span> <span class="pattern-badge">Observer Pattern</span></p>
+                <aside class="notes">
+                    Bemutatkozás. Két tervezési mintát fogunk együtt látni egy komplex példán keresztül.
+                    Mindkettőt már ismerhetik külön-külön, most az együttes alkalmazást látjuk.
+                </aside>
+            </section>
+
+            <!-- Slide 2: Áttekintés -->
+            <section>
+                <h2>Mit fogunk látni?</h2>
+                <ul>
+                    <li class="fragment"><strong>Visitor minta:</strong> Új művelet hozzáadása meglévő osztályokhoz azok módosítása nélkül</li>
+                    <li class="fragment"><strong>Observer minta:</strong> Automatikus értesítés állapotváltozásról</li>
+                    <li class="fragment"><strong>Együttes alkalmazás:</strong> Elemeket tárolunk, módosítjuk őket visitorokkal, és az observerek értesülnek a változásokról</li>
+                    <li class="fragment"><strong>Gyakorlati példa:</strong> int és string értékek tárolása és manipulálása</li>
+                </ul>
+                <aside class="notes">
+                    Két pattern együtt - a Visitor új műveleteket ad, az Observer értesít.
+                    Konkrét példa: ElementContainer tárol elemeket, Visitor műveleteket hajt végre rajtuk, Observer figyeli őket.
+                </aside>
+            </section>
+
+            <!-- Slide 3: VisitorBase ősosztály -->
+            <section>
+                <h2>VisitorBase ősosztály</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h3>UML</h3>
+                        <div class="mermaid">
+classDiagram
+    class VisitorBase {
+        &lt;&lt;abstract&gt;&gt;
+        +Visit(ElementInt)
+        +Visit(ElementString)
+    }
+    class ElementInt
+    class ElementString
+    VisitorBase ..> ElementInt
+    VisitorBase ..> ElementString
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Forráskód</h3>
+                        <pre><code class="cpp" data-trim>
+class VisitorBase
+{
+public:
+    virtual void Visit(ElementInt& element) = 0;
+    virtual void Visit(ElementString& element) = 0;
+};
+                        </code></pre>
+                        <p style="font-size: 0.7em; margin-top: 20px;">
+                            A visitor leszármazottai végrehajtanak műveleteket az elemeken.
+                            Minden elemtípushoz külön Visit metódus.
+                        </p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Visitor alapelve: minden elemtípushoz külön Visit metódus.
+                    Az elemek meghívják a visitort önmagukra (double dispatch).
+                </aside>
+            </section>
+
+            <!-- Slide 4: ObserverBase ősosztály -->
+            <section>
+                <h2>ObserverBase ősosztály</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h3>UML</h3>
+                        <div class="mermaid">
+classDiagram
+    class ObserverBase {
+        &lt;&lt;abstract&gt;&gt;
+        +ValueChanged(int, int)
+        +ValueChanged(string, string)
+    }
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Forráskód</h3>
+                        <pre><code class="cpp" data-trim>
+class ObserverBase
+{
+public:
+    virtual void ValueChanged(int oldValue, 
+                            int newValue) = 0;
+    virtual void ValueChanged(string oldValue, 
+                            string newValue) = 0;
+};
+                        </code></pre>
+                        <p style="font-size: 0.7em; margin-top: 20px;">
+                            Az observerek értesülnek az elemek állapotváltozásáról.
+                            Overloading: különböző típusokhoz külön metódus.
+                        </p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Observer pattern: publish-subscribe mechanizmus.
+                    Amikor változik egy elem értéke, minden regisztrált observer értesül.
+                </aside>
+            </section>
+
+            <!-- Slide 5: ElementBase ősosztály -->
+            <section>
+                <h2>ElementBase ősosztály</h2>
+                <pre><code class="cpp" data-trim data-line-numbers="|3|5-6|8-11">
+class ElementBase
+{
+protected:
+    vector&lt;ObserverBase*&gt; observers;
+public:
+    virtual void Show() = 0;
+    virtual void Accept(VisitorBase& visitor) = 0;
+
+    void RegisterObserver(ObserverBase *observer)
+    {
+        observers.push_back(observer);
+    }
+};
+                </code></pre>
+                <ul style="font-size: 0.8em;">
+                    <li class="fragment">Tárolja a regisztrált observereket</li>
+                    <li class="fragment">Accept: visitor minta kulcsa (double dispatch)</li>
+                    <li class="fragment">Show: megjelenítés a konzolon</li>
+                </ul>
+                <aside class="notes">
+                    Ez az alap minden elem számára. Observers vektor tárolja a figyelőket.
+                    Accept metódus fog visszahívni a visitorra.
+                </aside>
+            </section>
+
+            <!-- Slide 6: ElementInt osztály -->
+            <section>
+                <h2>ElementInt osztály</h2>
+                <pre><code class="cpp" data-trim data-line-numbers="|3|5-13|18-21">
+class ElementInt : public ElementBase
+{
+    int value;
+public:
+    int GetValue() { return value; }
+    void SetValue(int newValue)
+    {
+        int oldValue = value;
+        value = newValue;
+        for(auto observer : observers)
+        {
+            observer->ValueChanged(oldValue, newValue);
+        }
+    }
+
+    ElementInt(const int value = 0) : value(value) {}
+
+    virtual void Accept(VisitorBase& visitor) override
+    {
+        visitor.Visit(*this);
+    }
+
+    virtual void Show() override
+    {
+        cout &lt;&lt; "ElementInt: " &lt;&lt; value &lt;&lt; endl;
+    }
+};
+                </code></pre>
+                <aside class="notes">
+                    Figyeljük meg: SetValue értesíti az összes observert.
+                    Accept visszahívja a visitort, így automatikusan a megfelelő Visit hívódik.
+                </aside>
+            </section>
+
+            <!-- Slide 7: ElementString osztály -->
+            <section>
+                <h2>ElementString osztály</h2>
+                <pre><code class="cpp" data-trim data-line-numbers="|3|5-13|18-21">
+class ElementString : public ElementBase
+{
+    string value;
+public:
+    string GetValue() { return value; }
+    void SetValue(string newValue)
+    {
+        string oldValue = value;
+        value = newValue;
+        for(auto observer : observers)
+        {
+            observer->ValueChanged(oldValue, newValue);
+        }
+    }
+
+    ElementString(const string value) : value(value) {}
+
+    virtual void Accept(VisitorBase& visitor) override
+    {
+        visitor.Visit(*this);
+    }
+
+    virtual void Show() override
+    {
+        cout &lt;&lt; "ElementString: " &lt;&lt; value &lt;&lt; endl;
+    }
+};
+                </code></pre>
+                <p class="fragment" style="font-size: 0.8em; color: #27ae60;">
+                    ⚠️ Azonos szerkezet, csak más típussal - ez a visitor minta ereje!
+                </p>
+                <aside class="notes">
+                    Szinte ugyanaz, mint az ElementInt, csak string típussal.
+                    A visitor automatikusan a megfelelő típust kapja.
+                </aside>
+            </section>
+
+            <!-- Slide 8: Konkrét Visitor -->
+            <section>
+                <h2>Konkrét Visitor implementáció</h2>
+                <pre><code class="cpp" data-trim data-line-numbers="|5|9">
+class Visitor : public VisitorBase
+{
+public:
+    virtual void Visit(ElementInt& element) override
+    {
+        element.SetValue(element.GetValue() + 100);
+    }
+
+    virtual void Visit(ElementString& element) override
+    {
+        element.SetValue(element.GetValue() + "+100");
+    }
+};
+                </code></pre>
+                <div class="fragment" style="margin-top: 30px;">
+                    <h3>Visitor minta előnyei</h3>
+                    <ul style="font-size: 0.85em;">
+                        <li>Új művelet = új visitor osztály</li>
+                        <li>Nem kell módosítani az Element osztályokat</li>
+                        <li>Típusbiztos (fordítási időben ellenőrzött)</li>
+                    </ul>
+                </div>
+                <aside class="notes">
+                    Ez a művelet: +100 minden int értékhez, "+100" string minden stringhez.
+                    Ha új műveletet akarunk, csak új visitor osztályt írunk, az elemeket nem bántjuk.
+                </aside>
+            </section>
+
+            <!-- Slide 9: Konkrét Observer -->
+            <section>
+                <h2>Konkrét Observer implementáció</h2>
+                <pre><code class="cpp" data-trim>
+class Observer : public ObserverBase
+{
+public:
+    virtual void ValueChanged(int oldValue, 
+                            int newValue) override
+    {
+        cout &lt;&lt; "Int value changed from " 
+             &lt;&lt; oldValue &lt;&lt; " to " 
+             &lt;&lt; newValue &lt;&lt; endl;
+    }
+
+    virtual void ValueChanged(string oldValue, 
+                            string newValue) override
+    {
+        cout &lt;&lt; "String value changed from " 
+             &lt;&lt; oldValue &lt;&lt; " to " 
+             &lt;&lt; newValue &lt;&lt; endl;
+    }
+};
+                </code></pre>
+                <p class="fragment" style="font-size: 0.8em; margin-top: 20px;">
+                    Egyszerű implementáció: kiírja a változásokat a konzolra.
+                    Több observer is lehet, mindegyik értesül!
+                </p>
+                <aside class="notes">
+                    Ez egy egyszerű observer, csak konzolra ír.
+                    Valós alkalmazásban lehet logger, UI frissítő, bármi.
+                </aside>
+            </section>
+
+            <!-- Slide 10: ElementContainer -->
+            <section>
+                <h2>ElementContainer osztály</h2>
+                <pre><code class="cpp" data-trim data-line-numbers="|3|6-9|11-16|18-23">
+class ElementContainer
+{
+    vector&lt;std::unique_ptr&lt;ElementBase&gt;&gt; elements;
+public:
+    void AddAndTakeOwnership(
+        std::unique_ptr&lt;ElementBase&gt;& element)
+    {
+        elements.push_back(std::move(element));
+    }
+
+    void Show()
+    {
+        for(auto& element : elements)
+        {
+            element->Show();
+        }
+    }
+
+    void Accept(VisitorBase& visitor)
+    {
+        for(auto& element : elements)
+        {
+            element->Accept(visitor);
+        }
+    }
+};
+                </code></pre>
+                <aside class="notes">
+                    unique_ptr: automatikus memóriakezelés, ownership szemantika.
+                    std::move: az ownership átvitele, másolás nem lehetséges.
+                    Accept továbbítja a visitort minden elemnek.
+                </aside>
+            </section>
+
+            <!-- Slide 11: Smart Pointerek -->
+            <section>
+                <h2>Smart Pointer részletek</h2>
+                <h3>unique_ptr és move semantics</h3>
+                <ul style="font-size: 0.85em;">
+                    <li class="fragment"><code>unique_ptr</code> = exkluzív ownership</li>
+                    <li class="fragment">Nem másolható, csak mozgatható (<code>std::move</code>)</li>
+                    <li class="fragment">Mozgatás után az eredeti pointer <code>nullptr</code></li>
+                    <li class="fragment">Automatikus memóriafelszabadítás</li>
+                </ul>
+                <div class="fragment" style="margin-top: 30px;">
+                    <pre><code class="cpp" data-trim>
+// Így működik:
+unique_ptr&lt;ElementBase&gt; elem = make_unique&lt;ElementInt&gt;(42);
+container.AddAndTakeOwnership(elem);  // elem átadva
+// elem már nullptr, container birtokolja az objektumot
+elem = make_unique&lt;ElementString&gt;("new"); // újrahasznosítható!
+                    </code></pre>
+                </div>
+                <aside class="notes">
+                    Modern C++ fontos eleme. Biztonságos memóriakezelés, nincs memory leak.
+                    Move semantics miatt hatékony, nincs felesleges másolás.
+                </aside>
+            </section>
+
+            <!-- Slide 12: Főprogram - létrehozás -->
+            <section>
+                <h2>Főprogram - elemek létrehozása</h2>
+                <pre><code class="cpp" data-trim data-line-numbers="|1-2|4-6|8-10|12-17">
+ElementContainer container;
+Observer observer;
+
+unique_ptr&lt;ElementBase&gt; newElement = make_unique&lt;ElementInt&gt;(1);
+newElement->RegisterObserver(&observer);
+container.AddAndTakeOwnership(newElement);
+
+newElement = make_unique&lt;ElementString&gt;("1");
+newElement->RegisterObserver(&observer);
+container.AddAndTakeOwnership(newElement);
+
+newElement = make_unique&lt;ElementInt&gt;(2);
+newElement->RegisterObserver(&observer);
+container.AddAndTakeOwnership(newElement);
+
+newElement = make_unique&lt;ElementString&gt;("2");
+newElement->RegisterObserver(&observer);
+container.AddAndTakeOwnership(newElement);
+                </code></pre>
+                <p class="fragment" style="font-size: 0.8em;">
+                    <strong>Érdekes:</strong> A <code>newElement</code> újrahasznosítható, 
+                    mert a move után nullptr-re áll!
+                </p>
+                <aside class="notes">
+                    4 elem: 2 int, 2 string. Mindhez regisztráljuk az observert.
+                    A newElement változó újrahasznosítása mutatja a move szemantika előnyét.
+                </aside>
+            </section>
+
+            <!-- Slide 13: Főprogram - működés -->
+            <section>
+                <h2>Főprogram - teljes futás</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.75em;">
+                    <div>
+                        <pre><code class="cpp" data-trim>
+cout &lt;&lt; "--- Before visit:" &lt;&lt; endl;
+container.Show();
+                        </code></pre>
+                        <div class="output-box fragment">
+--- Before visit:<br>
+ElementInt: 1<br>
+ElementString: 1<br>
+ElementInt: 2<br>
+ElementString: 2
+                        </div>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="cpp" data-trim>
+cout &lt;&lt; "--- During visit:" &lt;&lt; endl;
+Visitor visitor;
+container.Accept(visitor);
+                        </code></pre>
+                        <div class="output-box fragment">
+--- During visit:<br>
+Int value changed from 1 to 101<br>
+String value changed from 1 to 1+100<br>
+Int value changed from 2 to 102<br>
+String value changed from 2 to 2+100
+                        </div>
+                    </div>
+                </div>
+                <div class="fragment" style="margin-top: 20px;">
+                    <pre><code class="cpp" data-trim>
+cout &lt;&lt; "--- After visit:" &lt;&lt; endl;
+container.Show();
+                    </code></pre>
+                    <div class="output-box fragment">
+--- After visit:<br>
+ElementInt: 101<br>
+ElementString: 1+100<br>
+ElementInt: 102<br>
+ElementString: 2+100
+                    </div>
+                </div>
+                <aside class="notes">
+                    Látjuk a teljes folyamatot: kezdeti értékek → visitor módosít → observerek értesülnek → végeredmény.
+                    A visitor SetValue-t hív, ami trigger-eli az observereket.
+                </aside>
+            </section>
+
+            <!-- Slide 14: Teljes UML diagram -->
+            <section>
+                <h2>Teljes osztálystruktúra</h2>
+                <div class="mermaid" style="font-size: 0.5em;">
+classDiagram
+    class ElementBase {
+        &lt;&lt;abstract&gt;&gt;
+        #observers
+        +Show()
+        +Accept(VisitorBase)
+        +RegisterObserver(ObserverBase)
+    }
+    
+    class ElementInt {
+        -int value
+        +GetValue()
+        +SetValue(int)
+        +Accept(VisitorBase)
+        +Show()
+    }
+    
+    class ElementString {
+        -string value
+        +GetValue()
+        +SetValue(string)
+        +Accept(VisitorBase)
+        +Show()
+    }
+    
+    class VisitorBase {
+        &lt;&lt;abstract&gt;&gt;
+        +Visit(ElementInt)
+        +Visit(ElementString)
+    }
+    
+    class Visitor {
+        +Visit(ElementInt)
+        +Visit(ElementString)
+    }
+    
+    class ObserverBase {
+        &lt;&lt;abstract&gt;&gt;
+        +ValueChanged(int,int)
+        +ValueChanged(string,string)
+    }
+    
+    class Observer {
+        +ValueChanged(int,int)
+        +ValueChanged(string,string)
+    }
+    
+    class ElementContainer {
+        -elements
+        +AddAndTakeOwnership()
+        +Show()
+        +Accept(VisitorBase)
+    }
+    
+    ElementBase <|-- ElementInt
+    ElementBase <|-- ElementString
+    ElementBase o-- ObserverBase
+    VisitorBase <|-- Visitor
+    ObserverBase <|-- Observer
+    ElementContainer o-- ElementBase
+    Visitor ..> ElementInt
+    Visitor ..> ElementString
+                </div>
+                <aside class="notes">
+                    Átfogó kép: látjuk az összes kapcsolatot.
+                    Öröklődés, aggregáció, függőség - minden benne van.
+                </aside>
+            </section>
+
+            <!-- Slide 15: Összefoglalás -->
+            <section>
+                <h2>Összefoglalás</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div>
+                        <h3>Visitor Pattern</h3>
+                        <ul style="font-size: 0.8em;">
+                            <li>Új művelet meglévő osztályokhoz</li>
+                            <li>Osztályok módosítása nélkül</li>
+                            <li>Double dispatch</li>
+                            <li>Típusbiztos</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Observer Pattern</h3>
+                        <ul style="font-size: 0.8em;">
+                            <li>Automatikus értesítés</li>
+                            <li>Publish-subscribe</li>
+                            <li>Lazán csatolt komponensek</li>
+                            <li>Több observer is lehet</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fragment" style="margin-top: 40px; padding: 20px; background: #ecf0f1; border-radius: 10px;">
+                    <h3>Együttes alkalmazás előnyei</h3>
+                    <p style="font-size: 0.85em;">
+                        A <strong>Visitor</strong> flexibilis műveletvégzést biztosít,<br>
+                        az <strong>Observer</strong> pedig átlátható állapotkezelést.<br>
+                        Modern C++ technikákkal (smart pointers) biztonságos megoldás.
+                    </p>
+                </div>
+                <aside class="notes">
+                    Két pattern együtt használva erőteljes eszköz.
+                    Visitor: bővíthetőség. Observer: reaktivitás.
+                    Smart pointerek: biztonság.
+                </aside>
+            </section>
+
+            <!-- Slide 16-20: Ellenőrző kérdések -->
+            <section>
+                <h2>Ellenőrző kérdések</h2>
+                <p style="font-size: 0.8em; color: #7f8c8d;">Teszteljük a megértést! (Kattints a válaszhoz)</p>
+            </section>
+
+            <section>
+                <div class="quiz-card">
+                    <h3>1. Kérdés</h3>
+                    <p><strong>Mi a Visitor minta fő előnye?</strong></p>
+                </div>
+                <div class="quiz-answer fragment">
+                    <strong>Válasz:</strong> Új művelet hozzáadása meglévő osztályokhoz azok módosítása nélkül. 
+                    Új visitor osztályt írunk, az Element osztályokat nem kell megváltoztatni. 
+                    Ez követi az Open-Closed Principle-t.
+                </div>
+            </section>
+
+            <section>
+                <div class="quiz-card">
+                    <h3>2. Kérdés</h3>
+                    <p><strong>Hogyan és mikor értesülnek az observerek az értékváltozásról?</strong></p>
+                </div>
+                <div class="quiz-answer fragment">
+                    <strong>Válasz:</strong> A <code>SetValue</code> metódus végigmegy az <code>observers</code> vektoron 
+                    és meghívja mindegyik observer <code>ValueChanged</code> metódusát az új és régi értékkel. 
+                    Ez azonnal történik, amikor az érték változik.
+                </div>
+            </section>
+
+            <section>
+                <div class="quiz-card">
+                    <h3>3. Kérdés</h3>
+                    <p><strong>Miért fontos az Accept metódusban a visitor visszahívása?</strong></p>
+                </div>
+                <div class="quiz-answer fragment">
+                    <strong>Válasz:</strong> Ez a "double dispatch" mechanizmus lényege. 
+                    Az <code>Accept</code> meghívja <code>visitor.Visit(*this)</code>, ami miatt automatikusan 
+                    a megfelelő típusú Visit metódus hívódik (ElementInt → Visit(ElementInt&), 
+                    ElementString → Visit(ElementString&)). Így fordítási időben típusbiztos.
+                </div>
+            </section>
+
+            <section>
+                <div class="quiz-card">
+                    <h3>4. Kérdés</h3>
+                    <p><strong>Mit csinál a unique_ptr move semantika?</strong></p>
+                </div>
+                <div class="quiz-answer fragment">
+                    <strong>Válasz:</strong> A <code>std::move</code> átadja az ownership-et a célnak. 
+                    Az eredeti <code>unique_ptr</code> nullptr-re áll, a cél pedig átveszi az objektum birtoklását. 
+                    Így garantált, hogy mindig pontosan egy unique_ptr birtokolja az objektumot, 
+                    és nem lehet véletlenül sem lemásolni.
+                </div>
+            </section>
+
+            <section>
+                <div class="quiz-card">
+                    <h3>5. Kérdés</h3>
+                    <p><strong>Milyen előnye van a két minta együttes alkalmazásának ebben a példában?</strong></p>
+                </div>
+                <div class="quiz-answer fragment">
+                    <strong>Válasz:</strong> A <strong>Visitor</strong> lehetővé teszi új műveletek (pl. +100, *2, log, export stb.) 
+                    hozzáadását az elemekhez kód duplikáció és Element módosítás nélkül. 
+                    Az <strong>Observer</strong> pedig automatikusan értesít minden változásról (logging, UI frissítés, validáció stb.), 
+                    így a komponensek lazán csatoltak maradnak. Együtt: rugalmas, bővíthető és reaktív rendszer.
+                </div>
+            </section>
+
+            <!-- Vége -->
+            <section>
+                <h1>Köszönöm a figyelmet!</h1>
+                <p>Kérdések?</p>
+                <div style="margin-top: 50px; font-size: 0.7em; color: #7f8c8d;">
+                    <p>Forráskód: <a href="https://github.com/csorbakristof/alkalmazasfejlesztes/tree/master/VisitorObserverPelda">GitHub</a></p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+    
+    <!-- Mermaid.js -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#ecf0f1',
+                primaryTextColor: '#2c3e50',
+                primaryBorderColor: '#3498db',
+                lineColor: '#34495e',
+                secondaryColor: '#e8f4f8',
+                tertiaryColor: '#fff'
+            }
+        });
+    </script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            center: true,
+            width: 1200,
+            height: 800,
+            margin: 0.04,
+            plugins: [ RevealHighlight, RevealNotes ]
+        });
+    </script>
+</body>
+</html>

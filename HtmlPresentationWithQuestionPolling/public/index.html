@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOLID Principles - Interactive Presentation</title>
+  
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/black.css">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+  
+  <!-- Socket.io -->
+  <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.6.1/dist/socket.io.min.js"></script>
+  
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <!-- Slide 1: Title -->
+      <section>
+        <h1>SOLID Principles</h1>
+        <h3>Writing Better Object-Oriented Code</h3>
+        <p><small>Interactive Presentation with Live Polling</small></p>
+      </section>
+
+      <!-- Slide 2: Introduction to SOLID -->
+      <section>
+        <h2>What is SOLID?</h2>
+        <p>SOLID is an acronym for five design principles that make software designs more understandable, flexible, and maintainable.</p>
+        <ul>
+          <li><strong>S</strong> - Single Responsibility Principle</li>
+          <li><strong>O</strong> - Open/Closed Principle</li>
+          <li><strong>L</strong> - Liskov Substitution Principle</li>
+          <li><strong>I</strong> - Interface Segregation Principle</li>
+          <li><strong>D</strong> - Dependency Inversion Principle</li>
+        </ul>
+        <p><small>Introduced by Robert C. Martin (Uncle Bob)</small></p>
+      </section>
+
+      <!-- Slide 3: Single Responsibility & Open/Closed -->
+      <section>
+        <h2>S & O Principles</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left;">
+          <div>
+            <h3>Single Responsibility</h3>
+            <p><em>"A class should have one, and only one, reason to change."</em></p>
+            <pre><code class="javascript">// Bad: Multiple responsibilities
+class User {
+  saveToDatabase() {}
+  sendEmail() {}
+  generateReport() {}
+}
+
+// Good: Single responsibility
+class User {}
+class UserRepository {}
+class EmailService {}
+class ReportGenerator {}</code></pre>
+          </div>
+          <div>
+            <h3>Open/Closed</h3>
+            <p><em>"Software entities should be open for extension, but closed for modification."</em></p>
+            <pre><code class="javascript">// Use inheritance/composition
+class Shape {
+  area() {}
+}
+
+class Circle extends Shape {
+  area() { return Math.PI * r * r; }
+}
+
+class Rectangle extends Shape {
+  area() { return width * height; }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Liskov Substitution & Interface Segregation -->
+      <section>
+        <h2>L & I Principles</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left;">
+          <div>
+            <h3>Liskov Substitution</h3>
+            <p><em>"Objects should be replaceable with instances of their subtypes without altering program correctness."</em></p>
+            <pre><code class="javascript">class Bird {
+  fly() {}
+}
+
+// Bad: Penguin can't fly!
+class Penguin extends Bird {
+  fly() { 
+    throw new Error("Can't fly");
+  }
+}
+
+// Good: Better abstraction
+class Bird {}
+class FlyingBird extends Bird {
+  fly() {}
+}</code></pre>
+          </div>
+          <div>
+            <h3>Interface Segregation</h3>
+            <p><em>"Clients should not be forced to depend on interfaces they don't use."</em></p>
+            <pre><code class="javascript">// Bad: Fat interface
+interface Worker {
+  work();
+  eat();
+  sleep();
+}
+
+// Good: Segregated interfaces
+interface Workable {
+  work();
+}
+
+interface Eatable {
+  eat();
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Dependency Inversion -->
+      <section>
+        <h2>D - Dependency Inversion</h2>
+        <p><em>"Depend on abstractions, not concretions."</em></p>
+        <div style="text-align: left;">
+          <pre><code class="javascript">// Bad: High-level module depends on low-level module
+class EmailNotification {
+  send(message) { /* ... */ }
+}
+
+class UserService {
+  constructor() {
+    this.notification = new EmailNotification(); // Tight coupling
+  }
+}
+
+// Good: Depend on abstraction
+interface NotificationService {
+  send(message);
+}
+
+class UserService {
+  constructor(notificationService) {
+    this.notification = notificationService; // Dependency injection
+  }
+}</code></pre>
+        </div>
+        <p><strong>Benefits:</strong> Flexibility, testability, loose coupling</p>
+      </section>
+
+      <!-- Question 1 -->
+      <section data-question="question1">
+        <h2>Question 1</h2>
+        <p style="font-size: 1.5em; margin-bottom: 1em;">
+          Which SOLID principle states that "a class should have only one reason to change"?
+        </p>
+        <div class="question-options">
+          <div class="option">A) Open/Closed Principle</div>
+          <div class="option">B) Single Responsibility Principle</div>
+          <div class="option">C) Liskov Substitution Principle</div>
+          <div class="option">D) Dependency Inversion Principle</div>
+        </div>
+        <div class="vote-section">
+          <div id="qr-container-1" class="qr-container"></div>
+          <canvas id="chart-question1" class="vote-chart"></canvas>
+        </div>
+      </section>
+
+      <!-- Question 2 -->
+      <section data-question="question2">
+        <h2>Question 2</h2>
+        <p style="font-size: 1.5em; margin-bottom: 1em;">
+          What is the main benefit of following the Dependency Inversion Principle?
+        </p>
+        <div class="question-options">
+          <div class="option">A) Faster code execution</div>
+          <div class="option">B) Better testability and flexibility</div>
+          <div class="option">C) Reduced memory usage</div>
+        </div>
+        <div class="vote-section">
+          <div id="qr-container-2" class="qr-container"></div>
+          <canvas id="chart-question2" class="vote-chart"></canvas>
+        </div>
+      </section>
+
+      <!-- Question 3 -->
+      <section data-question="question3">
+        <h2>Question 3</h2>
+        <p style="font-size: 1.5em; margin-bottom: 1em;">
+          Which principle is violated when a subclass cannot properly replace its parent class?
+        </p>
+        <div class="question-options">
+          <div class="option">A) Interface Segregation Principle</div>
+          <div class="option">B) Open/Closed Principle</div>
+          <div class="option">C) Liskov Substitution Principle</div>
+          <div class="option">D) Single Responsibility Principle</div>
+        </div>
+        <div class="vote-section">
+          <div id="qr-container-3" class="qr-container"></div>
+          <canvas id="chart-question3" class="vote-chart"></canvas>
+        </div>
+      </section>
+
+      <!-- Thank You Slide -->
+      <section>
+        <h1>Thank You!</h1>
+        <h3>Questions?</h3>
+        <p style="margin-top: 2em;">
+          <small>Remember: SOLID principles are guidelines, not strict rules.</small><br>
+          <small>Apply them thoughtfully to improve code quality.</small>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  
+  <!-- Custom presentation script -->
+  <script src="presentation.js"></script>
+</body>
+</html>

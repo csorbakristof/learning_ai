@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vote - SOLID Principles</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    .question-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .question-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .option-button {
+      background: #f7f7f7;
+      border: 2px solid #e0e0e0;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+    }
+
+    .option-button:hover {
+      background: #667eea;
+      border-color: #667eea;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .option-button:active {
+      transform: translateY(0);
+    }
+
+    .option-button.voted {
+      background: #4ade80;
+      border-color: #4ade80;
+      color: white;
+      cursor: not-allowed;
+    }
+
+    .option-button.voted::after {
+      content: " ✓";
+      float: right;
+    }
+
+    .success-message {
+      background: #4ade80;
+      color: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .footer {
+      text-align: center;
+      color: white;
+      opacity: 0.8;
+      margin-top: auto;
+      padding-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📊 Live Poll</h1>
+      <p>SOLID Principles Presentation</p>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="question-card">
+      <div class="question-title">
+        Q1: Which SOLID principle states that "a class should have only one reason to change"?
+      </div>
+      <div class="options">
+        <button class="option-button" data-question="question1" data-answer="A">
+          A) Open/Closed Principle
+        </button>
+        <button class="option-button" data-question="question1" data-answer="B">
+          B) Single Responsibility Principle
+        </button>
+        <button class="option-button" data-question="question1" data-answer="C">
+          C) Liskov Substitution Principle
+        </button>
+        <button class="option-button" data-question="question1" data-answer="D">
+          D) Dependency Inversion Principle
+        </button>
+      </div>
+      <div class="success-message" id="success-question1"></div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question-card">
+      <div class="question-title">
+        Q2: What is the main benefit of following the Dependency Inversion Principle?
+      </div>
+      <div class="options">
+        <button class="option-button" data-question="question2" data-answer="A">
+          A) Faster code execution
+        </button>
+        <button class="option-button" data-question="question2" data-answer="B">
+          B) Better testability and flexibility
+        </button>
+        <button class="option-button" data-question="question2" data-answer="C">
+          C) Reduced memory usage
+        </button>
+      </div>
+      <div class="success-message" id="success-question2"></div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question-card">
+      <div class="question-title">
+        Q3: Which principle is violated when a subclass cannot properly replace its parent class?
+      </div>
+      <div class="options">
+        <button class="option-button" data-question="question3" data-answer="A">
+          A) Interface Segregation Principle
+        </button>
+        <button class="option-button" data-question="question3" data-answer="B">
+          B) Open/Closed Principle
+        </button>
+        <button class="option-button" data-question="question3" data-answer="C">
+          C) Liskov Substitution Principle
+        </button>
+        <button class="option-button" data-question="question3" data-answer="D">
+          D) Single Responsibility Principle
+        </button>
+      </div>
+      <div class="success-message" id="success-question3"></div>
+    </div>
+
+    <div class="footer">
+      <p>Your votes are being counted in real-time!</p>
+    </div>
+  </div>
+
+  <script>
+    // Generate a unique session ID for this voter
+    const sessionId = 'voter_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+
+    // Track which questions this user has voted on
+    const votedQuestions = new Set();
+
+    // Load voted questions from localStorage
+    const storedVotes = localStorage.getItem('votedQuestions');
+    if (storedVotes) {
+      JSON.parse(storedVotes).forEach(q => votedQuestions.add(q));
+      // Mark already voted buttons
+      votedQuestions.forEach(questionId => {
+        const buttons = document.querySelectorAll(`[data-question="${questionId}"]`);
+        buttons.forEach(btn => {
+          btn.classList.add('voted');
+          btn.disabled = true;
+        });
+      });
+    }
+
+    // Add click handlers to all option buttons
+    document.querySelectorAll('.option-button').forEach(button => {
+      button.addEventListener('click', async function() {
+        const questionId = this.dataset.question;
+        const answer = this.dataset.answer;
+
+        // Check if already voted
+        if (votedQuestions.has(questionId)) {
+          return;
+        }
+
+        try {
+          // Send vote to server
+          const response = await fetch('/api/vote', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              questionId,
+              answer,
+              sessionId
+            })
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            // Mark as voted
+            votedQuestions.add(questionId);
+            localStorage.setItem('votedQuestions', JSON.stringify([...votedQuestions]));
+
+            // Disable all buttons for this question
+            const buttons = document.querySelectorAll(`[data-question="${questionId}"]`);
+            buttons.forEach(btn => {
+              btn.classList.add('voted');
+              btn.disabled = true;
+            });
+
+            // Show success message
+            const successMsg = document.getElementById(`success-${questionId}`);
+            successMsg.textContent = '✓ Vote recorded! Thank you!';
+            successMsg.classList.add('show');
+          } else {
+            alert(data.error || 'Failed to submit vote');
+          }
+        } catch (error) {
+          console.error('Error submitting vote:', error);
+          alert('Failed to submit vote. Please try again.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

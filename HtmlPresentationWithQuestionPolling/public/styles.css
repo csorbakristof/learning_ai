@@ -1,0 +1,98 @@
+/* Custom styles for the presentation */
+
+.reveal h1, .reveal h2, .reveal h3 {
+  text-transform: none;
+}
+
+.reveal pre {
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.reveal pre code {
+  max-height: 400px;
+  padding: 1rem;
+  font-size: 0.55em;
+  line-height: 1.4;
+}
+
+.question-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.option {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  font-size: 1.2em;
+}
+
+.vote-section {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.qr-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.qr-container p {
+  margin-top: 0.5rem;
+  color: #333;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.vote-chart {
+  max-width: 600px;
+  max-height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* Reset button styling */
+.reset-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+  z-index: 1000;
+  transition: all 0.2s;
+}
+
+.reset-button:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.5);
+}
+
+.reset-button:active {
+  transform: translateY(0);
+}

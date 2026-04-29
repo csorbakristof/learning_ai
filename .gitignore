@@ -12,3 +12,6 @@
 /OnlabSokFelevesLetszamStat/backup/*
 /TeamsUnsubscriber/teams_hidden_log.txt
 /PyGameDevTest1/__pycache__/*
+/HtmlPrezWithVoting/node_modules/
+/HtmlPrezWithVoting/votes.csv
+/HtmlPrezWithVoting/*.log

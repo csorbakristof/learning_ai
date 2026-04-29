@@ -32,6 +32,29 @@ An interactive presentation system that lets presenters embed multiple-choice qu
 - 🔒 **Vote Limiting**: Configurable maximum votes per question
 - 📊 **Toggle Display**: Show/hide detailed results with 'V' key
 
+## Project Structure
+
+```
+HtmlPrezWithVoting/
+├── server.js                    # Node.js backend server
+├── package.json                 # Dependencies configuration
+├── presentation.html            # Main presentation file (content only)
+├── presentation.css             # Custom styles for voting system
+├── voting-system.js             # Voting integration logic
+├── start.bat                    # Windows startup script
+├── votes.csv                    # Vote history log (auto-generated)
+├── README.md                    # This file
+├── TESTING.md                   # Testing guide
+├── PROJECT_SUMMARY.md           # Technical documentation
+└── spec.md                      # Original specification
+```
+
+**Clean Architecture:**
+- `presentation.html` - Contains **only** your presentation content (slides)
+- `presentation.css` - All styling (isolated from content)
+- `voting-system.js` - All voting logic (isolated from content)
+- This separation makes it easy to modify presentation content without touching framework code
+
 ## Phase 1 Complete ✓ - Server Backend
 ## Phase 2 Complete ✓ - Reveal.js Presentation
 ## Phase 3 Complete ✓ - Startup Script
@@ -231,6 +254,65 @@ The system is production-ready and includes:
 - ✓ Complete testing guide
 - ✓ CSS animations and polish
 - ✓ Error handling and fallbacks
+
+## Customization
+
+### Working with Clean Content Files
+
+The presentation has been refactored for maximum clarity:
+- **Edit `presentation.html`** for slide content only (no framework code!)
+- **Edit `presentation.css`** to customize styling
+- **Edit `voting-system.js`** to modify voting behavior
+
+This clean separation means you can focus on your presentation content without worrying about breaking the voting system.
+
+### Adding New Question Slides
+
+The vote display component is now **automatically injected** into question slides. To add a new question:
+
+1. Open `presentation.html`
+2. Add a new `<section>` with the `data-question-slide="true"` attribute:
+
+```html
+<section class="question-slide" data-question-slide="true" data-question-title="Your Question Title">
+    <h2>Question 4: Your question here?</h2>
+    <ul>
+        <li><strong>A)</strong> Option A</li>
+        <li><strong>B)</strong> Option B</li>
+        <li><strong>C)</strong> Option C</li>
+        <li><strong>D)</strong> Option D</li>
+    </ul>
+    <!-- Vote display is automatically added by JavaScript -->
+</section>
+```
+
+**Key attributes:**
+- `data-question-slide="true"` - Marks this as a question slide (vote display will be auto-injected)
+- `data-question-title="..."` - (Optional) Custom question title for vote logging
+- `class="question-slide"` - Applies question slide styling
+
+**No copy-pasting needed!** The `injectVoteDisplays()` function automatically adds the vote display component to all slides with `data-question-slide="true"`.
+
+### Modifying the Vote Display Component
+
+To change how the vote display looks or behaves:
+
+1. **For HTML structure**: Edit the `createVoteDisplayComponent()` function in [voting-system.js](voting-system.js)
+2. **For styling**: Edit the `.vote-display` styles in [presentation.css](presentation.css)
+3. **For behavior**: Modify other functions in [voting-system.js](voting-system.js)
+
+All changes propagate to every question slide automatically!
+
+### Adding Non-Question Slides
+
+Regular slides (intro, content, outro) don't need any special attributes:
+
+```html
+<section>
+    <h2>Regular Slide Title</h2>
+    <p>Your content here...</p>
+</section>
+```
 
 ### Future Enhancements (Optional)
 

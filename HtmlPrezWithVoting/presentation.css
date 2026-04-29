@@ -1,0 +1,212 @@
+/* Custom styles for Interactive Presentation with Voting */
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes countUp {
+    0% {
+        color: #4CAF50;
+        transform: scale(1.2);
+    }
+    100% {
+        color: #4CAF50;
+        transform: scale(1);
+    }
+}
+
+/* ============================================
+   VOTE DISPLAY COMPONENT
+   ============================================ */
+
+.vote-display {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 15px 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    min-width: 180px;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.vote-display h4 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 5px;
+}
+
+.total-votes {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.total-votes.updated {
+    animation: pulse 0.5s ease-in-out;
+}
+
+.detailed-votes {
+    margin-top: 10px;
+    font-size: 16px;
+    animation: slideDown 0.3s ease-out;
+    transition: all 0.3s ease;
+}
+
+.detailed-votes div {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+    padding: 3px 5px;
+    border-radius: 4px;
+}
+
+.detailed-votes div:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.detailed-votes .vote-label {
+    font-weight: bold;
+    color: #555;
+    min-width: 30px;
+}
+
+.detailed-votes .vote-count {
+    font-weight: bold;
+    color: #2196F3;
+    min-width: 30px;
+    text-align: right;
+    transition: all 0.3s ease;
+}
+
+.detailed-votes .vote-count.updated {
+    animation: countUp 0.4s ease-out;
+}
+
+.toggle-details {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    width: 100%;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toggle-details:hover {
+    background: #45a049;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.toggle-details:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ============================================
+   QR CODE STYLING
+   ============================================ */
+
+.qr-code-container {
+    text-align: center;
+    padding: 40px;
+}
+
+.qr-code-container img {
+    max-width: 400px;
+    border: 5px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.qr-code-container h3 {
+    margin-top: 30px;
+    color: #4CAF50;
+}
+
+.qr-code-container p {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* ============================================
+   QUESTION SLIDE STYLING
+   ============================================ */
+
+.question-slide {
+    text-align: left;
+}
+
+.question-slide h2 {
+    color: #2196F3;
+    margin-bottom: 30px;
+}
+
+.question-slide ul {
+    font-size: 24px;
+    line-height: 1.8;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.hidden {
+    display: none !important;
+}
+
+/* ============================================
+   VOTING STATUS INDICATOR
+   ============================================ */
+
+.voting-status {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 15px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.voting-status.closed {
+    background: #f44336;
+}

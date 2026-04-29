@@ -65,14 +65,24 @@ HtmlPrezWithVoting/
 ├── server.js              # Express server (500+ lines)
 ├── package.json           # Dependencies configuration
 ├── package-lock.json      # Locked dependency versions
-├── presentation.html      # Reveal.js presentation (600+ lines)
+├── presentation.html      # Presentation content only (125 lines) ⭐
+├── presentation.css       # Custom styles (220 lines) ⭐
+├── voting-system.js       # Voting logic (350+ lines) ⭐
 ├── start.bat              # Windows startup script
-├── votes.csv             # Vote history (auto-generated)
-├── README.md             # User documentation
-├── TESTING.md            # Testing guide
-├── spec.md               # Original specification
-└── node_modules/         # npm dependencies (gitignored)
+├── votes.csv              # Vote history (auto-generated)
+├── README.md              # User documentation
+├── TESTING.md             # Testing guide
+├── PROJECT_SUMMARY.md     # This file
+├── spec.md                # Original specification
+└── node_modules/          # npm dependencies (gitignored)
 ```
+
+**⭐ Clean Architecture**: The presentation files have been refactored to separate concerns:
+- **presentation.html** - Pure content (slides only, no embedded CSS/JS)
+- **presentation.css** - All styling isolated in one file
+- **voting-system.js** - All voting logic in one reusable module
+
+This makes it easy for users to customize their presentations without touching framework code.
 
 ## API Endpoints
 
@@ -95,6 +105,13 @@ HtmlPrezWithVoting/
 6. **History**: All votes automatically saved to `votes.csv`
 
 ## Key Design Decisions
+
+### Why Separate CSS/JS Files?
+- **Separation of concerns**: Content, styling, and logic are independent
+- **Easier maintenance**: Modify presentation without touching framework code
+- **Better readability**: Each file has a single, clear purpose
+- **Reusability**: voting-system.js can be used with different presentations
+- **Cleaner version control**: Changes to content don't mix with framework changes
 
 ### Why Node.js over Python?
 - Single dependency (Node.js) instead of two (Python + Node.js for tunnel)

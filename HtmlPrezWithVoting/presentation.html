@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation with Voting</title>
+    
+    <!-- Reveal.js CSS from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+    
+    <!-- Custom styles for vote display -->
+    <style>
+        .vote-display {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 15px 20px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            min-width: 180px;
+        }
+        
+        .vote-display h4 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+        }
+        
+        .total-votes {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .detailed-votes {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        
+        .detailed-votes div {
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .detailed-votes .vote-label {
+            font-weight: bold;
+            color: #555;
+            min-width: 30px;
+        }
+        
+        .detailed-votes .vote-count {
+            font-weight: bold;
+            color: #2196F3;
+            min-width: 30px;
+            text-align: right;
+        }
+        
+        .toggle-details {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            width: 100%;
+        }
+        
+        .toggle-details:hover {
+            background: #45a049;
+        }
+        
+        .qr-code-container {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .qr-code-container img {
+            max-width: 400px;
+            border: 5px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .qr-code-container h3 {
+            margin-top: 30px;
+            color: #4CAF50;
+        }
+        
+        .qr-code-container p {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        
+        /* Question slide styling */
+        .question-slide {
+            text-align: left;
+        }
+        
+        .question-slide h2 {
+            color: #2196F3;
+            margin-bottom: 30px;
+        }
+        
+        .question-slide ul {
+            font-size: 24px;
+            line-height: 1.8;
+        }
+        
+        /* Hidden class for vote details */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Voting status indicator */
+        .voting-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .voting-status.closed {
+            background: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Title Slide -->
+            <section>
+                <h1>Welcome to Interactive Presentation</h1>
+                <h3>Real-time Audience Voting Demo</h3>
+                <p style="margin-top: 50px;">Press <strong>→</strong> to begin</p>
+            </section>
+            
+            <!-- QR Code Slide -->
+            <section>
+                <h2>Join the Voting!</h2>
+                <div class="qr-code-container">
+                    <img id="qrCodeImage" src="/qr-code" alt="QR Code for Voting">
+                    <h3>Scan with your smartphone</h3>
+                    <p>Vote on upcoming questions!</p>
+                </div>
+            </section>
+            
+            <!-- Content Slide 1 -->
+            <section>
+                <h2>About This Demo</h2>
+                <ul>
+                    <li>Real-time audience voting system</li>
+                    <li>Built with Reveal.js and Node.js</li>
+                    <li>Questions appear on screen</li>
+                    <li>Audience votes via smartphones</li>
+                    <li>Results shown in real-time</li>
+                </ul>
+            </section>
+            
+            <!-- Content Slide 2 -->
+            <section>
+                <h2>How It Works</h2>
+                <ol>
+                    <li>Scan the QR code with your phone</li>
+                    <li>Wait for questions to appear</li>
+                    <li>Select A, B, C, or D on your device</li>
+                    <li>See total votes update live</li>
+                    <li>Presenter reveals detailed results</li>
+                </ol>
+            </section>
+            
+            <!-- Question Slide 1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="What is 2+2?">
+                <h2>Question 1: What is 2+2?</h2>
+                <ul>
+                    <li><strong>A)</strong> 3</li>
+                    <li><strong>B)</strong> 4</li>
+                    <li><strong>C)</strong> 5</li>
+                    <li><strong>D)</strong> 22</li>
+                </ul>
+                
+                <!-- Vote Display Component -->
+                <div class="vote-display">
+                    <h4>Live Votes</h4>
+                    <div class="total-votes">
+                        Total: <span class="vote-total">0</span>
+                    </div>
+                    <div class="detailed-votes hidden">
+                        <div>
+                            <span class="vote-label">A:</span>
+                            <span class="vote-count vote-a">0</span>
+                        </div>
+                        <div>
+                            <span class="vote-label">B:</span>
+                            <span class="vote-count vote-b">0</span>
+                        </div>
+                        <div>
+                            <span class="vote-label">C:</span>
+                            <span class="vote-count vote-c">0</span>
+                        </div>
+                        <div>
+                            <span class="vote-label">D:</span>
+                            <span class="vote-count vote-d">0</span>
+                        </div>
+                    </div>
+                    <button class="toggle-details" onclick="toggleVoteDetails()">
+                        Show Details (or press V)
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Question Slide 2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Capital of France?">
+                <h2>Question 2: What is the capital of France?</h2>
+                <ul>
+                    <li><strong>A)</strong> London</li>
+                    <li><strong>B)</strong> Berlin</li>
+                    <li><strong>C)</strong> Paris</li>
+                    <li><strong>D)</strong> Madrid</li>
+                </ul>
+                
+                <!-- Vote Display Component -->
+                <div class="vote-display">
+                    <h4>Live Votes</h4>
+                    <div class="total-votes">
+                        Total: <span class="vote-total">0</span>
+                    </div>
+                    <div class="detailed-votes hidden">
+                        <div>
+                            <span class="vote-label">A:</span>
+                            <span class="vote-count vote-a">0</span>
+                        </div>
+                        <div>
+                            <span class="vote-label">B:</span>
+                            <span class="vote-count vote-b">0</span>
+                        </div>
+                        <div>
+                            <span class="vote-label">C:</span>
+                            <span class="vote-count vote-c">0</span>
+                        </div>
+                        <div>
+                            <span class="vote-label">D:</span>
+                            <span class="vote-count vote-d">0</span>
+                        </div>
+                    </div>
+                    <button class="toggle-details" onclick="toggleVoteDetails()">
+                        Show Details (or press V)
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Question Slide 3 -->
+            <section class="question-slide" data-question-slide="true">
+                <h2>Question 3: Which is a programming language?</h2>
+                <ul>
+                    <li><strong>A)</strong> HTML</li>
+                    <li><strong>B)</strong> JavaScript</li>
+                    <li><strong>C)</strong> CSS</li>
+                    <li><strong>D)</strong> JSON</li>
+                </ul>
+                
+                <!-- Vote Display Component -->
+                <div class="vote-display">
+                    <h4>Live Votes</h4>
+                    <div class="total-votes">
+                        Total: <span class="vote-total">0</span>
+                    </div>
+                    <div class="detailed-votes hidden">
+                        <div>
+                            <span class="vote-label">A:</span>
+                            <span class="vote-count vote-a">0</span>
+                        </div>
+                        <div>
+                            <span class="vote-label">B:</span>
+                            <span class="vote-count vote-b">0</span>
+                        </div>
+                        <div>
+                            <span class="vote-label">C:</span>
+                            <span class="vote-count vote-c">0</span>
+                        </div>
+                        <div>
+                            <span class="vote-label">D:</span>
+                            <span class="vote-count vote-d">0</span>
+                        </div>
+                    </div>
+                    <button class="toggle-details" onclick="toggleVoteDetails()">
+                        Show Details (or press V)
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Thank You Slide -->
+            <section>
+                <h1>Thank You!</h1>
+                <h3>Questions?</h3>
+                <p style="margin-top: 50px;">Thanks for participating!</p>
+            </section>
+            
+        </div>
+    </div>
+
+    <!-- Reveal.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    
+    <!-- Custom voting integration script -->
+    <script>
+        // Initialize Reveal.js
+        Reveal.initialize({
+            hash: true,
+            center: true,
+            transition: 'slide',
+            slideNumber: true,
+            showNotes: false
+        });
+        
+        // Voting system state
+        let currentSlide = null;
+        let pollingInterval = null;
+        let isQuestionSlide = false;
+        const SERVER_URL = 'http://localhost:8000';
+        const POLL_INTERVAL = 1000; // 1 second
+        
+        /**
+         * Get question title from slide
+         */
+        function getQuestionTitle(slide) {
+            // Check for data-question-title attribute
+            const customTitle = slide.getAttribute('data-question-title');
+            if (customTitle) {
+                return customTitle;
+            }
+            
+            // Otherwise use h2 content
+            const h2 = slide.querySelector('h2');
+            if (h2) {
+                return h2.textContent.trim();
+            }
+            
+            return 'Untitled question';
+        }
+        
+        /**
+         * Notify server about new question
+         */
+        async function notifyNewQuestion(questionTitle) {
+            try {
+                const response = await fetch(`${SERVER_URL}/new-question`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ title: questionTitle })
+                });
+                
+                const data = await response.json();
+                console.log('New question set:', data);
+                
+                // Reset vote display
+                updateVoteDisplay({ total: 0, A: 0, B: 0, C: 0, D: 0 });
+                
+            } catch (error) {
+                console.error('Error notifying new question:', error);
+            }
+        }
+        
+        /**
+         * Update vote display with current counts
+         */
+        function updateVoteDisplay(results) {
+            const slide = Reveal.getCurrentSlide();
+            const voteDisplay = slide.querySelector('.vote-display');
+            
+            if (!voteDisplay) return;
+            
+            // Update total
+            const totalSpan = voteDisplay.querySelector('.vote-total');
+            if (totalSpan) {
+                totalSpan.textContent = results.total || 0;
+            }
+            
+            // Update individual counts
+            const voteA = voteDisplay.querySelector('.vote-a');
+            const voteB = voteDisplay.querySelector('.vote-b');
+            const voteC = voteDisplay.querySelector('.vote-c');
+            const voteD = voteDisplay.querySelector('.vote-d');
+            
+            if (voteA) voteA.textContent = results.A || 0;
+            if (voteB) voteB.textContent = results.B || 0;
+            if (voteC) voteC.textContent = results.C || 0;
+            if (voteD) voteD.textContent = results.D || 0;
+        }
+        
+        /**
+         * Poll server for vote results
+         */
+        async function pollResults() {
+            try {
+                const response = await fetch(`${SERVER_URL}/results`);
+                const data = await response.json();
+                
+                updateVoteDisplay(data);
+                
+            } catch (error) {
+                console.error('Error polling results:', error);
+            }
+        }
+        
+        /**
+         * Start polling for vote results
+         */
+        function startPolling() {
+            if (pollingInterval) {
+                clearInterval(pollingInterval);
+            }
+            
+            // Poll immediately
+            pollResults();
+            
+            // Then poll every second
+            pollingInterval = setInterval(pollResults, POLL_INTERVAL);
+            console.log('Started polling for results');
+        }
+        
+        /**
+         * Stop polling for vote results
+         */
+        function stopPolling() {
+            if (pollingInterval) {
+                clearInterval(pollingInterval);
+                pollingInterval = null;
+                console.log('Stopped polling for results');
+            }
+        }
+        
+        /**
+         * Toggle visibility of detailed vote breakdown
+         */
+        function toggleVoteDetails() {
+            const slide = Reveal.getCurrentSlide();
+            const detailedVotes = slide.querySelector('.detailed-votes');
+            const button = slide.querySelector('.toggle-details');
+            
+            if (detailedVotes) {
+                detailedVotes.classList.toggle('hidden');
+                
+                if (button) {
+                    if (detailedVotes.classList.contains('hidden')) {
+                        button.textContent = 'Show Details (or press V)';
+                    } else {
+                        button.textContent = 'Hide Details (or press V)';
+                    }
+                }
+            }
+        }
+        
+        /**
+         * Handle slide change events
+         */
+        function onSlideChanged(event) {
+            const slide = event.currentSlide;
+            const isQuestion = slide.hasAttribute('data-question-slide');
+            
+            // Stop polling from previous slide
+            stopPolling();
+            
+            if (isQuestion) {
+                // This is a question slide
+                isQuestionSlide = true;
+                const questionTitle = getQuestionTitle(slide);
+                
+                console.log('Entered question slide:', questionTitle);
+                
+                // Notify server about new question
+                notifyNewQuestion(questionTitle);
+                
+                // Start polling for results
+                startPolling();
+                
+                // Ensure details are hidden initially
+                const detailedVotes = slide.querySelector('.detailed-votes');
+                const button = slide.querySelector('.toggle-details');
+                if (detailedVotes) {
+                    detailedVotes.classList.add('hidden');
+                }
+                if (button) {
+                    button.textContent = 'Show Details (or press V)';
+                }
+                
+            } else {
+                isQuestionSlide = false;
+                console.log('Left question slide');
+            }
+        }
+        
+        /**
+         * Handle keyboard events
+         */
+        function onKeyPress(event) {
+            // Check for 'V' key press
+            if (event.key === 'v' || event.key === 'V') {
+                if (isQuestionSlide) {
+                    toggleVoteDetails();
+                    event.preventDefault();
+                }
+            }
+        }
+        
+        // Register event listeners
+        Reveal.on('slidechanged', onSlideChanged);
+        document.addEventListener('keydown', onKeyPress);
+        
+        // Handle initial slide if it's a question
+        Reveal.on('ready', () => {
+            const initialSlide = Reveal.getCurrentSlide();
+            if (initialSlide.hasAttribute('data-question-slide')) {
+                onSlideChanged({ currentSlide: initialSlide });
+            }
+        });
+        
+        // Make toggle function globally accessible for onclick handlers
+        window.toggleVoteDetails = toggleVoteDetails;
+        
+        console.log('Voting system initialized');
+        console.log('Press V on question slides to toggle detailed vote counts');
+    </script>
+</body>
+</html>

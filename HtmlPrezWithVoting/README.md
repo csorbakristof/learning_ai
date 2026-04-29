@@ -2,9 +2,10 @@
 
 A real-time audience voting system for HTML presentations using Reveal.js.
 
-## Phase 1 Complete ✓
+## Phase 1 Complete ✓ - Server Backend
+## Phase 2 Complete ✓ - Reveal.js Presentation
 
-The Node.js server backend is now implemented with the following features:
+The complete voting system is now implemented with the following features:
 
 ### Features Implemented
 
@@ -21,6 +22,27 @@ The Node.js server backend is now implemented with the following features:
 - **CSV Logging**: Automatic backup of all vote data with timestamps
 - **Mobile-Friendly Voting Page**: Clean, responsive UI with light background
 - **Graceful Shutdown**: Saves pending votes and closes tunnel on Ctrl+C
+
+### Phase 2 - Presentation Features
+
+- **Reveal.js Integration**: Loaded via CDN (no local files needed)
+- **Interactive Slides**: Example presentation with title, content, and question slides
+- **QR Code Display**: Dedicated slide showing voting URL for audience
+- **Question Slides**: 
+  - Marked with `data-question-slide="true"` attribute
+  - Optional `data-question-title` for custom titles
+  - Auto-detects question title from `<h2>` element
+- **Vote Display Component**:
+  - Shows total votes in real-time
+  - Toggle detailed breakdown with 'V' key or button
+  - Updates every 1 second via polling
+  - Positioned at bottom-right of slides
+- **Automatic Question Management**:
+  - Detects slide changes
+  - Notifies server when entering question slides
+  - Resets votes automatically for each new question
+  - Starts/stops polling based on slide type
+- **Keyboard Controls**: Press 'V' to show/hide detailed vote counts
 
 ### Installation
 
@@ -114,10 +136,11 @@ Check voting status.
 
 ```
 HtmlPrezWithVoting/
-├── server.js          # Main Express server
-├── package.json       # Node.js dependencies
-├── votes.csv         # Vote history (auto-created)
-└── README.md         # This file
+├── server.js              # Main Express server
+├── package.json           # Node.js dependencies
+├── presentation.html      # Reveal.js presentation with voting
+├── votes.csv             # Vote history (auto-created)
+└── README.md             # This file
 ```
 
 ### CSV Format
@@ -141,10 +164,92 @@ Vote data is saved with the following columns:
 
 ### Next Steps (Not Yet Implemented)
 
-- **Phase 2**: Reveal.js presentation template
-- **Phase 3**: JavaScript integration for real-time updates in slides
-- **Phase 4**: Startup batch file for Windows
-- **Phase 5**: Complete documentation and testing
+- **Phase 3**: Startup batch file for Windows (start.bat)
+- **Phase 4**: Additional testing and polish
+- **Phase 5**: Complete documentation
+
+## Using the Presentation
+
+1. **Start the server**:
+   ```bash
+   node server.js
+   ```
+
+2. **Open the presentation**:
+   - Navigate to http://localhost:8000/presentation.html
+   - Or the server will show you the URL in the console
+
+3. **Show QR code to audience**:
+   - Navigate to the QR code slide (slide 2)
+   - Audience scans and opens voting page on their phones
+
+4. **Navigate through slides**:
+   - Use arrow keys or space bar
+   - When you reach a question slide, voting starts automatically
+
+5. **View vote results**:
+   - Total votes update in real-time
+   - Press **V** key to show/hide detailed breakdown (A, B, C, D counts)
+   - Or click the "Show Details" button
+
+6. **Move to next question**:
+   - Simply navigate to the next question slide
+   - Votes reset automatically and previous results are saved to CSV
+
+### Creating Your Own Presentation
+
+To create your own presentation with voting:
+
+1. **Copy presentation.html** as a template
+
+2. **Add regular slides** (without voting):
+   ```html
+   <section>
+       <h2>Your Content</h2>
+       <p>Regular slide content</p>
+   </section>
+   ```
+
+3. **Add question slides** (with voting):
+   ```html
+   <section class="question-slide" data-question-slide="true" data-question-title="Custom Title">
+       <h2>Your Question?</h2>
+       <ul>
+           <li><strong>A)</strong> Option A</li>
+           <li><strong>B)</strong> Option B</li>
+           <li><strong>C)</strong> Option C</li>
+           <li><strong>D)</strong> Option D</li>
+       </ul>
+       
+       <!-- Copy this vote display component -->
+       <div class="vote-display">
+           <h4>Live Votes</h4>
+           <div class="total-votes">
+               Total: <span class="vote-total">0</span>
+           </div>
+           <div class="detailed-votes hidden">
+               <div><span class="vote-label">A:</span><span class="vote-count vote-a">0</span></div>
+               <div><span class="vote-label">B:</span><span class="vote-count vote-b">0</span></div>
+               <div><span class="vote-label">C:</span><span class="vote-count vote-c">0</span></div>
+               <div><span class="vote-label">D:</span><span class="vote-count vote-d">0</span></div>
+           </div>
+           <button class="toggle-details" onclick="toggleVoteDetails()">
+               Show Details (or press V)
+           </button>
+       </div>
+   </section>
+   ```
+
+4. **Customize the QR code slide** (keep it or remove it):
+   ```html
+   <section>
+       <h2>Join the Voting!</h2>
+       <div class="qr-code-container">
+           <img id="qrCodeImage" src="/qr-code" alt="QR Code for Voting">
+           <h3>Scan with your smartphone</h3>
+       </div>
+   </section>
+   ```
 
 ### Testing the Server
 
@@ -172,6 +277,36 @@ Vote data is saved with the following columns:
      -H "Content-Type: application/json" \
      -d '{"title":"Test Question"}'
    ```
+
+### Testing the Complete System
+
+1. **Start the server**:
+   ```bash
+   node server.js
+   ```
+
+2. **Open presentation** in your browser:
+   - Go to http://localhost:8000/presentation.html
+
+3. **Open voting page** on another device (or browser tab):
+   - Go to http://localhost:8000/ (or scan QR code from slide 2)
+
+4. **Navigate to a question slide** in the presentation:
+   - Watch vote counter initialize to 0
+
+5. **Submit votes** from the voting page:
+   - Click A, B, C, or D
+   - Watch total votes update in presentation (every 1 second)
+
+6. **Press V key** in presentation:
+   - See detailed breakdown of A, B, C, D votes
+
+7. **Navigate to next question slide**:
+   - Previous votes should be saved to votes.csv
+   - Vote counters reset to 0
+
+8. **Check votes.csv**:
+   - Verify previous question data was saved
 
 ### Troubleshooting
 

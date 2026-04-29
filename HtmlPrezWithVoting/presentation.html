@@ -12,6 +12,39 @@
     
     <!-- Custom styles for vote display -->
     <style>
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes countUp {
+            0% {
+                color: #4CAF50;
+                transform: scale(1.2);
+            }
+            100% {
+                color: #4CAF50;
+                transform: scale(1);
+            }
+        }
+        
         .vote-display {
             position: absolute;
             bottom: 20px;
@@ -23,6 +56,7 @@
             font-family: Arial, sans-serif;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             min-width: 180px;
+            animation: fadeIn 0.3s ease-in;
         }
         
         .vote-display h4 {
@@ -39,11 +73,18 @@
             color: #4CAF50;
             margin-bottom: 10px;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .total-votes.updated {
+            animation: pulse 0.5s ease-in-out;
         }
         
         .detailed-votes {
             margin-top: 10px;
             font-size: 16px;
+            animation: slideDown 0.3s ease-out;
+            transition: all 0.3s ease;
         }
         
         .detailed-votes div {
@@ -51,6 +92,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background-color 0.2s ease;
+            padding: 3px 5px;
+            border-radius: 4px;
+        }
+        
+        .detailed-votes div:hover {
+            background-color: rgba(76, 175, 80, 0.1);
         }
         
         .detailed-votes .vote-label {
@@ -64,6 +112,11 @@
             color: #2196F3;
             min-width: 30px;
             text-align: right;
+            transition: all 0.3s ease;
+        }
+        
+        .detailed-votes .vote-count.updated {
+            animation: countUp 0.4s ease-out;
         }
         
         .toggle-details {
@@ -76,10 +129,19 @@
             cursor: pointer;
             font-size: 12px;
             width: 100%;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .toggle-details:hover {
             background: #45a049;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+        }
+        
+        .toggle-details:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .qr-code-container {
@@ -157,7 +219,15 @@
             <section>
                 <h2>Join the Voting!</h2>
                 <div class="qr-code-container">
-                    <img id="qrCodeImage" src="/qr-code" alt="QR Code for Voting">
+                    <img id="qrCodeImage" 
+                         src="/qr-code" 
+                         alt="QR Code for Voting"
+                         onerror="this.style.display='none'; document.getElementById('qrError').style.display='block';">
+                    <div id="qrError" style="display:none; padding:20px; background:#fff3cd; border:2px solid #ffc107; border-radius:8px;">
+                        <h3 style="color:#856404;">⚠️ QR Code Loading...</h3>
+                        <p style="color:#856404;">Please wait a few seconds for the tunnel to initialize, then refresh the page.</p>
+                        <p style="color:#856404; font-size:14px;">Or share this URL manually: <strong>Check server console</strong></p>
+                    </div>
                     <h3>Scan with your smartphone</h3>
                     <p>Vote on upcoming questions!</p>
                 </div>
@@ -335,6 +405,7 @@
         let currentSlide = null;
         let pollingInterval = null;
         let isQuestionSlide = false;
+        let previousVoteCount = 0; // Track previous vote count for animation
         const SERVER_URL = 'http://localhost:8000';
         const POLL_INTERVAL = 1000; // 1 second
         
@@ -390,22 +461,47 @@
             
             if (!voteDisplay) return;
             
-            // Update total
+            // Update total with animation
             const totalSpan = voteDisplay.querySelector('.vote-total');
             if (totalSpan) {
-                totalSpan.textContent = results.total || 0;
+                const newTotal = results.total || 0;
+                const oldTotal = parseInt(totalSpan.textContent) || 0;
+                
+                if (newTotal !== oldTotal) {
+                    // Add animation class
+                    const totalContainer = voteDisplay.querySelector('.total-votes');
+                    if (totalContainer) {
+                        totalContainer.classList.add('updated');
+                        setTimeout(() => totalContainer.classList.remove('updated'), 500);
+                    }
+                }
+                
+                totalSpan.textContent = newTotal;
             }
             
-            // Update individual counts
-            const voteA = voteDisplay.querySelector('.vote-a');
-            const voteB = voteDisplay.querySelector('.vote-b');
-            const voteC = voteDisplay.querySelector('.vote-c');
-            const voteD = voteDisplay.querySelector('.vote-d');
+            // Update individual counts with animation
+            const voteElements = {
+                A: voteDisplay.querySelector('.vote-a'),
+                B: voteDisplay.querySelector('.vote-b'),
+                C: voteDisplay.querySelector('.vote-c'),
+                D: voteDisplay.querySelector('.vote-d')
+            };
             
-            if (voteA) voteA.textContent = results.A || 0;
-            if (voteB) voteB.textContent = results.B || 0;
-            if (voteC) voteC.textContent = results.C || 0;
-            if (voteD) voteD.textContent = results.D || 0;
+            ['A', 'B', 'C', 'D'].forEach(letter => {
+                const element = voteElements[letter];
+                if (element) {
+                    const newCount = results[letter] || 0;
+                    const oldCount = parseInt(element.textContent) || 0;
+                    
+                    if (newCount !== oldCount) {
+                        // Add animation class
+                        element.classList.add('updated');
+                        setTimeout(() => element.classList.remove('updated'), 400);
+                    }
+                    
+                    element.textContent = newCount;
+                }
+            });
         }
         
         /**
@@ -413,13 +509,28 @@
          */
         async function pollResults() {
             try {
-                const response = await fetch(`${SERVER_URL}/results`);
-                const data = await response.json();
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
                 
+                const response = await fetch(`${SERVER_URL}/results`, {
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+                
+                if (!response.ok) {
+                    throw new Error(`Server returned ${response.status}`);
+                }
+                
+                const data = await response.json();
                 updateVoteDisplay(data);
                 
             } catch (error) {
-                console.error('Error polling results:', error);
+                if (error.name === 'AbortError') {
+                    console.warn('Polling timeout - server may be slow');
+                } else {
+                    console.error('Error polling results:', error.message);
+                    // Show error in console but don't disrupt presentation
+                }
             }
         }
         

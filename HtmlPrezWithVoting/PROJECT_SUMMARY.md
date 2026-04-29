@@ -57,6 +57,7 @@ All planned features have been successfully implemented and tested.
 - QR code fallback messaging
 - User-friendly error messages
 - Complete documentation
+- Correct answer highlighting feature
 
 ## File Structure
 
@@ -142,6 +143,13 @@ This makes it easy for users to customize their presentations without touching f
 - No server-side session management
 - Privacy-friendly (no user tracking)
 - Works offline
+
+### Why Optional Correct Answers?
+- Allows educators to reveal correct answers after voting
+- Visual feedback (green highlighting + checkmark)
+- Non-intrusive (optional `data-correct-answer` attribute)
+- Presenter controls when to reveal (press 'V' key)
+- No impact on voting process
 
 ## Performance Characteristics
 

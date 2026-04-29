@@ -43,6 +43,8 @@ This document provides a comprehensive testing checklist and procedures for the 
    - [ ] Submit vote from voting page
    - [ ] Total vote count updates within 1-2 seconds in presentation
    - [ ] Press 'V' key to show detailed breakdown
+   - [ ] Correct answer is highlighted in green with checkmark (✓)
+   - [ ] "Correct Answer: [letter]" indicator appears at bottom
 
 ## Complete Testing Checklist
 
@@ -157,6 +159,8 @@ This document provides a comprehensive testing checklist and procedures for the 
 #### 2.6 Keyboard Controls
 - [ ] 'V' key works only on question slides
 - [ ] Toggles detailed view correctly
+- [ ] Correct answer is highlighted when showing details (green background + checkmark)
+- [ ] Correct answer indicator appears at bottom of details
 - [ ] Doesn't interfere with Reveal.js navigation
 - [ ] Button and key press do the same action
 

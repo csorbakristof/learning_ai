@@ -31,6 +31,7 @@ An interactive presentation system that lets presenters embed multiple-choice qu
 - 🎨 **Smooth Animations**: Visual feedback for vote updates
 - 🔒 **Vote Limiting**: Configurable maximum votes per question
 - 📊 **Toggle Display**: Show/hide detailed results with 'V' key
+- ✅ **Correct Answers**: Highlight the correct answer when revealing results
 
 ## Project Structure
 
@@ -274,7 +275,9 @@ The vote display component is now **automatically injected** into question slide
 2. Add a new `<section>` with the `data-question-slide="true"` attribute:
 
 ```html
-<section class="question-slide" data-question-slide="true" data-question-title="Your Question Title">
+<section class="question-slide" data-question-slide="true" 
+         data-question-title="Your Question Title"
+         data-correct-answer="B">
     <h2>Question 4: Your question here?</h2>
     <ul>
         <li><strong>A)</strong> Option A</li>
@@ -289,9 +292,15 @@ The vote display component is now **automatically injected** into question slide
 **Key attributes:**
 - `data-question-slide="true"` - Marks this as a question slide (vote display will be auto-injected)
 - `data-question-title="..."` - (Optional) Custom question title for vote logging
+- `data-correct-answer="A|B|C|D"` - (Optional) Marks the correct answer (highlighted when pressing V)
 - `class="question-slide"` - Applies question slide styling
 
 **No copy-pasting needed!** The `injectVoteDisplays()` function automatically adds the vote display component to all slides with `data-question-slide="true"`.
+
+**Correct Answer Feature:** When you press 'V' to show detailed results, the correct answer will be:
+- Highlighted with a green background
+- Marked with a checkmark (✓)
+- Displayed at the bottom of the details section
 
 ### Modifying the Vote Display Component
 
@@ -338,7 +347,10 @@ If you want to extend the system, consider:
    - ✓ Install dependencies automatically (if not installed)
    - ✓ Start the server
    - ✓ Open the presentation in your browser
+   - ✓ Display helpful error messages if something goes wrong
 3. Follow the on-screen instructions
+
+**Note**: If the server fails to start (e.g., port already in use), the script will automatically display troubleshooting suggestions to help you resolve the issue.
 
 That's it! The presentation will open automatically.
 
@@ -485,6 +497,33 @@ To create your own presentation with voting:
    - Verify previous question data was saved
 
 ### Troubleshooting
+
+### Port Already in Use (EADDRINUSE)
+
+If you see this error:
+```
+Error: listen EADDRINUSE: address already in use :::8000
+```
+
+**Solutions:**
+1. **Kill all Node processes** (easiest):
+   ```bash
+   taskkill /F /IM node.exe
+   ```
+   Then run `start.bat` again
+
+2. **Use a different port**:
+   ```bash
+   node server.js --port 3000
+   ```
+
+3. **Find and kill specific process**:
+   ```bash
+   netstat -ano | findstr :8000
+   taskkill /PID <process_id> /F
+   ```
+
+The `start.bat` script will automatically display these solutions if it encounters errors.
 
 **Problem**: start.bat shows "Node.js is not installed"
 - **Solution**: Install Node.js from https://nodejs.org/ and restart

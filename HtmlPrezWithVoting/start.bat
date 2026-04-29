@@ -45,19 +45,14 @@ if not exist "node_modules\" (
 )
 echo.
 
-REM Start the server in background
+REM Start the server
 echo [3/4] Starting server...
 echo     Server will run on port 8000
 echo     Press Ctrl+C in this window to stop the server
 echo.
-start /B node server.js
 
-REM Wait for server to initialize
-echo     Waiting for server to initialize...
+REM Wait a moment before opening browser
 timeout /t 3 /nobreak >nul
-
-echo     [OK]
-echo.
 
 REM Open presentation in default browser
 echo [4/4] Opening presentation in browser...
@@ -70,7 +65,7 @@ echo   SERVER IS RUNNING
 echo ============================================================
 echo.
 echo Presentation URL: http://localhost:8000/presentation.html
-echo Voting URL: Check the tunnel URL in the server output above
+echo Voting URL: Check the tunnel URL in the server output below
 echo.
 echo INSTRUCTIONS:
 echo   1. The presentation should have opened in your browser
@@ -84,10 +79,41 @@ echo.
 echo ============================================================
 echo.
 
-REM Keep the window open and show server output
+REM Start the server (this will show server output)
 node server.js
 
-REM This line will only execute if the server stops
+REM This line will only execute if the server stops or encounters an error
 echo.
-echo Server has stopped.
+if %ERRORLEVEL% NEQ 0 (
+    echo ============================================================
+    echo   ERROR: Server failed to start
+    echo ============================================================
+    echo.
+    echo COMMON ISSUES AND SOLUTIONS:
+    echo.
+    echo 1. PORT ALREADY IN USE (EADDRINUSE):
+    echo    - Another server is already running on port 8000
+    echo    - Solution A: Kill all Node processes
+    echo      Command: taskkill /F /IM node.exe
+    echo    - Solution B: Use a different port
+    echo      Command: node server.js --port 3000
+    echo.
+    echo 2. MISSING DEPENDENCIES:
+    echo    - Run: npm install
+    echo.
+    echo 3. NODE.JS VERSION ISSUE:
+    echo    - Requires Node.js v14 or higher
+    echo    - Current version: %NODE_VERSION%
+    echo.
+    echo 4. INTERNET CONNECTION:
+    echo    - Localtunnel requires internet access
+    echo    - Check your network connection
+    echo.
+    echo To try again: Just run start.bat again
+    echo.
+    echo ============================================================
+) else (
+    echo Server has stopped normally.
+)
+echo.
 pause

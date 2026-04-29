@@ -22,21 +22,24 @@ function createVoteDisplayComponent() {
             Total: <span class="vote-total">0</span>
         </div>
         <div class="detailed-votes hidden">
-            <div>
+            <div data-option="A">
                 <span class="vote-label">A:</span>
                 <span class="vote-count vote-a">0</span>
             </div>
-            <div>
+            <div data-option="B">
                 <span class="vote-label">B:</span>
                 <span class="vote-count vote-b">0</span>
             </div>
-            <div>
+            <div data-option="C">
                 <span class="vote-label">C:</span>
                 <span class="vote-count vote-c">0</span>
             </div>
-            <div>
+            <div data-option="D">
                 <span class="vote-label">D:</span>
                 <span class="vote-count vote-d">0</span>
+            </div>
+            <div class="correct-answer-indicator" style="display:none;">
+                Correct Answer: <span class="correct-answer-letter"></span>
             </div>
         </div>
         <button class="toggle-details" onclick="toggleVoteDetails()">
@@ -238,6 +241,7 @@ function toggleVoteDetails() {
     const button = slide.querySelector('.toggle-details');
     
     if (detailedVotes) {
+        const isCurrentlyHidden = detailedVotes.classList.contains('hidden');
         detailedVotes.classList.toggle('hidden');
         
         if (button) {
@@ -245,8 +249,42 @@ function toggleVoteDetails() {
                 button.textContent = 'Show Details (or press V)';
             } else {
                 button.textContent = 'Hide Details (or press V)';
+                // When showing details, highlight correct answer
+                highlightCorrectAnswer(slide);
             }
         }
+    }
+}
+
+/**
+ * Highlight the correct answer in the vote display
+ * @param {HTMLElement} slide - The current slide element
+ */
+function highlightCorrectAnswer(slide) {
+    const correctAnswer = slide.getAttribute('data-correct-answer');
+    
+    if (!correctAnswer) return; // No correct answer specified
+    
+    const voteDisplay = slide.querySelector('.vote-display');
+    if (!voteDisplay) return;
+    
+    // Remove any existing highlighting
+    voteDisplay.querySelectorAll('.correct-answer').forEach(el => {
+        el.classList.remove('correct-answer');
+    });
+    
+    // Highlight the correct answer row
+    const correctRow = voteDisplay.querySelector(`[data-option="${correctAnswer}"]`);
+    if (correctRow) {
+        correctRow.classList.add('correct-answer');
+    }
+    
+    // Show correct answer indicator
+    const indicator = voteDisplay.querySelector('.correct-answer-indicator');
+    const indicatorLetter = voteDisplay.querySelector('.correct-answer-letter');
+    if (indicator && indicatorLetter) {
+        indicatorLetter.textContent = correctAnswer;
+        indicator.style.display = 'block';
     }
 }
 

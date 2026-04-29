@@ -30,7 +30,7 @@ An interactive presentation system that lets presenters embed multiple-choice qu
 - 🚀 **One-Click Start**: Simple batch file launches everything
 - 🎨 **Smooth Animations**: Visual feedback for vote updates
 - 🔒 **Vote Limiting**: Configurable maximum votes per question
-- 📊 **Toggle Display**: Show/hide detailed results with 'V' key
+- 📊 **Toggle Display**: Show/hide detailed results with 'D' key
 - ✅ **Correct Answers**: Highlight the correct answer when revealing results
 
 ## Project Structure
@@ -297,7 +297,7 @@ The vote display component is now **automatically injected** into question slide
 
 **No copy-pasting needed!** The `injectVoteDisplays()` function automatically adds the vote display component to all slides with `data-question-slide="true"`.
 
-**Correct Answer Feature:** When you press 'V' to show detailed results, the correct answer will be:
+**Correct Answer Feature:** When you press 'D' to show detailed results, the correct answer will be:
 - Highlighted with a green background
 - Marked with a checkmark (✓)
 - Displayed at the bottom of the details section
@@ -377,12 +377,28 @@ If you prefer to start manually or are on Mac/Linux:
 
 5. **View vote results**:
    - Total votes update in real-time
-   - Press **V** key to show/hide detailed breakdown (A, B, C, D counts)
+   - Press **D** key to show/hide detailed breakdown (A, B, C, D counts)
    - Or click the "Show Details" button
 
 6. **Move to next question**:
    - Simply navigate to the next question slide
    - Votes reset automatically and previous results are saved to CSV
+
+### Keyboard Controls
+
+**Voting System Controls:**
+- **D** - Toggle detailed vote breakdown (show/hide A, B, C, D counts with correct answer)
+  - Only works on question slides
+  - Highlights the correct answer when showing details
+
+**Reveal.js Standard Controls:**
+- **Arrow keys** / **Space** - Navigate slides
+- **F** - Fullscreen mode
+- **S** - Speaker notes view
+- **O** / **ESC** - Overview mode
+- **B** / **.** - Pause/black screen
+
+**Note:** We use **D** for "Details" instead of V to avoid conflicts with Reveal.js built-in shortcuts.
 
 ### Creating Your Own Presentation
 
@@ -422,7 +438,7 @@ To create your own presentation with voting:
                <div><span class="vote-label">D:</span><span class="vote-count vote-d">0</span></div>
            </div>
            <button class="toggle-details" onclick="toggleVoteDetails()">
-               Show Details (or press V)
+               Show Details (or press D)
            </button>
        </div>
    </section>

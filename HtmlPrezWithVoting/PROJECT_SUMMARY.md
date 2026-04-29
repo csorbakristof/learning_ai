@@ -39,7 +39,7 @@ All planned features have been successfully implemented and tested.
 - Reveal.js-powered slides
 - Automatic question detection
 - Real-time vote display (1-second polling)
-- Keyboard control ('V' to toggle details)
+- Keyboard control ('D' to toggle details)
 - QR code slide for easy access
 - Smooth animations and transitions
 

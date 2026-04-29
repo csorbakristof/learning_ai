@@ -157,7 +157,7 @@ This document provides a comprehensive testing checklist and procedures for the 
 - [ ] Multiple question slides work sequentially
 
 #### 2.6 Keyboard Controls
-- [ ] 'V' key works only on question slides
+- [ ] 'D' key works only on question slides
 - [ ] Toggles detailed view correctly
 - [ ] Correct answer is highlighted when showing details (green background + checkmark)
 - [ ] Correct answer indicator appears at bottom of details

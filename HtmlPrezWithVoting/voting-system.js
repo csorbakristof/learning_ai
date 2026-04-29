@@ -43,7 +43,7 @@ function createVoteDisplayComponent() {
             </div>
         </div>
         <button class="toggle-details" onclick="toggleVoteDetails()">
-            Show Details (or press V)
+            Show Details (or press D)
         </button>
     `;
     return container;
@@ -246,9 +246,9 @@ function toggleVoteDetails() {
         
         if (button) {
             if (detailedVotes.classList.contains('hidden')) {
-                button.textContent = 'Show Details (or press V)';
+                button.textContent = 'Show Details (or press D)';
             } else {
-                button.textContent = 'Hide Details (or press V)';
+                button.textContent = 'Hide Details (or press D)';
                 // When showing details, highlight correct answer
                 highlightCorrectAnswer(slide);
             }
@@ -354,7 +354,7 @@ function onSlideChanged(event) {
             detailedVotes.classList.add('hidden');
         }
         if (button) {
-            button.textContent = 'Show Details (or press V)';
+            button.textContent = 'Show Details (or press D)';
         }
         
     } else {
@@ -368,8 +368,8 @@ function onSlideChanged(event) {
  * @param {KeyboardEvent} event - Keyboard event
  */
 function onKeyPress(event) {
-    // Check for 'V' key press
-    if (event.key === 'v' || event.key === 'V') {
+    // Check for 'D' key press (Details)
+    if (event.key === 'd' || event.key === 'D') {
         if (isQuestionSlide) {
             toggleVoteDetails();
             event.preventDefault();
@@ -397,4 +397,4 @@ Reveal.on('ready', () => {
 window.toggleVoteDetails = toggleVoteDetails;
 
 console.log('Voting system initialized');
-console.log('Press V on question slides to toggle detailed vote counts');
+console.log('Press D on question slides to toggle detailed vote counts');

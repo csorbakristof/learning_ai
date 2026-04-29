@@ -91,7 +91,7 @@ if %ERRORLEVEL% NEQ 0 (
     echo.
     echo COMMON ISSUES AND SOLUTIONS:
     echo.
-    echo 1. PORT ALREADY IN USE (EADDRINUSE):
+    echo 1. PORT ALREADY IN USE ^(EADDRINUSE^):
     echo    - Another server is already running on port 8000
     echo    - Solution A: Kill all Node processes
     echo      Command: taskkill /F /IM node.exe
@@ -103,7 +103,7 @@ if %ERRORLEVEL% NEQ 0 (
     echo.
     echo 3. NODE.JS VERSION ISSUE:
     echo    - Requires Node.js v14 or higher
-    echo    - Current version: %NODE_VERSION%
+    echo    - Check your version with: node --version
     echo.
     echo 4. INTERNET CONNECTION:
     echo    - Localtunnel requires internet access

@@ -4,6 +4,7 @@ A real-time audience voting system for HTML presentations using Reveal.js.
 
 ## Phase 1 Complete ✓ - Server Backend
 ## Phase 2 Complete ✓ - Reveal.js Presentation
+## Phase 3 Complete ✓ - Startup Script
 
 The complete voting system is now implemented with the following features:
 
@@ -44,6 +45,16 @@ The complete voting system is now implemented with the following features:
   - Starts/stops polling based on slide type
 - **Keyboard Controls**: Press 'V' to show/hide detailed vote counts
 
+### Phase 3 - Startup Automation
+
+- **start.bat**: Windows batch file for easy startup
+  - Checks Node.js installation
+  - Automatically installs dependencies if needed
+  - Starts server in background
+  - Opens presentation in default browser
+  - Shows helpful instructions
+  - One-click launch solution
+
 ### Installation
 
 1. Install Node.js (if not already installed):
@@ -53,8 +64,21 @@ The complete voting system is now implemented with the following features:
    ```bash
    npm install
    ```
+   
+   Or simply run `start.bat` - it will install dependencies automatically!
 
 ### Usage
+
+**Easy Way (Windows):**
+Simply double-click `start.bat` in Windows Explorer!
+
+The script will:
+- Check Node.js installation
+- Install dependencies if needed
+- Start the server
+- Open the presentation in your browser
+
+**Manual Way:**
 
 Start the server:
 ```bash
@@ -139,6 +163,7 @@ HtmlPrezWithVoting/
 ├── server.js              # Main Express server
 ├── package.json           # Node.js dependencies
 ├── presentation.html      # Reveal.js presentation with voting
+├── start.bat              # Windows startup script
 ├── votes.csv             # Vote history (auto-created)
 └── README.md             # This file
 ```
@@ -162,13 +187,33 @@ Vote data is saved with the following columns:
 - **Vote Storage**: In-memory (resets on server restart)
 - **Static Files**: Serves files from current directory
 
-### Next Steps (Not Yet Implemented)
+### Next Steps (Optional Enhancements)
 
-- **Phase 3**: Startup batch file for Windows (start.bat)
-- **Phase 4**: Additional testing and polish
-- **Phase 5**: Complete documentation
+- Additional themes and styling options
+- Support for more question types
+- Admin dashboard for monitoring votes
+- Export results to different formats
+- Multi-language support
 
 ## Using the Presentation
+
+### Quick Start with start.bat
+
+**For Windows users**, the easiest way to start the system:
+
+1. **Double-click `start.bat`** in Windows Explorer
+2. The script will:
+   - ✓ Check if Node.js is installed
+   - ✓ Install dependencies automatically (if not installed)
+   - ✓ Start the server
+   - ✓ Open the presentation in your browser
+3. Follow the on-screen instructions
+
+That's it! The presentation will open automatically.
+
+### Manual Start
+
+If you prefer to start manually or are on Mac/Linux:
 
 1. **Start the server**:
    ```bash
@@ -310,6 +355,12 @@ To create your own presentation with voting:
 
 ### Troubleshooting
 
+**Problem**: start.bat shows "Node.js is not installed"
+- **Solution**: Install Node.js from https://nodejs.org/ and restart
+
+**Problem**: start.bat fails with npm install error
+- **Solution**: Open command prompt, navigate to folder, run `npm install` manually to see detailed error
+
 **Problem**: Localtunnel fails to start
 - **Solution**: Check internet connection, try restarting server
 
@@ -321,6 +372,12 @@ To create your own presentation with voting:
 
 **Problem**: QR code doesn't display
 - **Solution**: Wait for tunnel to initialize (can take 5-10 seconds)
+
+**Problem**: How do I stop the server when using start.bat?
+- **Solution**: Press Ctrl+C in the command window that opened
+
+**Problem**: Browser doesn't open automatically
+- **Solution**: Manually open http://localhost:8000/presentation.html
 
 ### Development Notes
 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation with Voting</title>
+    
+    <!-- Reveal.js CSS from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+    
+    <!-- Custom presentation styles -->
+    <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Title Slide -->
+            <section>
+                <h1>Welcome to Interactive Presentation</h1>
+                <h3>Real-time Audience Voting Demo</h3>
+                <p style="margin-top: 50px;">Press <strong>→</strong> to begin</p>
+            </section>
+            
+            <!-- QR Code Slide -->
+            <section>
+                <h2>Join the Voting!</h2>
+                <div class="qr-code-container">
+                    <img id="qrCodeImage" 
+                         src="/qr-code" 
+                         alt="QR Code for Voting"
+                         onerror="this.style.display='none'; document.getElementById('qrError').style.display='block';">
+                    <div id="qrError" style="display:none; padding:20px; background:#fff3cd; border:2px solid #ffc107; border-radius:8px;">
+                        <h3 style="color:#856404;">⚠️ QR Code Loading...</h3>
+                        <p style="color:#856404;">Please wait a few seconds for the tunnel to initialize, then refresh the page.</p>
+                        <p style="color:#856404; font-size:14px;">Or share this URL manually: <strong>Check server console</strong></p>
+                    </div>
+                    <h3>Scan with your smartphone</h3>
+                    <p>Vote on upcoming questions!</p>
+                </div>
+            </section>
+            
+            <!-- Content Slide 1 -->
+            <section>
+                <h2>About This Demo</h2>
+                <ul>
+                    <li>Real-time audience voting system</li>
+                    <li>Built with Reveal.js and Node.js</li>
+                    <li>Questions appear on screen</li>
+                    <li>Audience votes via smartphones</li>
+                    <li>Results shown in real-time</li>
+                </ul>
+            </section>
+            
+            <!-- Content Slide 2 -->
+            <section>
+                <h2>How It Works</h2>
+                <ol>
+                    <li>Scan the QR code with your phone</li>
+                    <li>Wait for questions to appear</li>
+                    <li>Select A, B, C, or D on your device</li>
+                    <li>See total votes update live</li>
+                    <li>Presenter reveals detailed results</li>
+                </ol>
+            </section>
+            
+            <!-- Question Slide 1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="What is 2+2?" data-correct-answer="B">
+                <h2>Question 1: What is 2+2?</h2>
+                <ul>
+                    <li><strong>A)</strong> 3</li>
+                    <li><strong>B)</strong> 4</li>
+                    <li><strong>C)</strong> 5</li>
+                    <li><strong>D)</strong> 22</li>
+                </ul>
+                <!-- Vote display will be automatically added by JavaScript -->
+            </section>
+            
+            <!-- Question Slide 2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Capital of France?" data-correct-answer="C">
+                <h2>Question 2: What is the capital of France?</h2>
+                <ul>
+                    <li><strong>A)</strong> London</li>
+                    <li><strong>B)</strong> Berlin</li>
+                    <li><strong>C)</strong> Paris</li>
+                    <li><strong>D)</strong> Madrid</li>
+                </ul>
+                <!-- Vote display will be automatically added by JavaScript -->
+            </section>
+            
+            <!-- Question Slide 3 -->
+            <section class="question-slide" data-question-slide="true" data-correct-answer="B">
+                <h2>Question 3: Which is a programming language?</h2>
+                <ul>
+                    <li><strong>A)</strong> HTML</li>
+                    <li><strong>B)</strong> JavaScript</li>
+                    <li><strong>C)</strong> CSS</li>
+                    <li><strong>D)</strong> JSON</li>
+                </ul>
+                <!-- Vote display will be automatically added by JavaScript -->
+            </section>
+            
+            <!-- Thank You Slide -->
+            <section>
+                <h1>Thank You!</h1>
+                <h3>Questions?</h3>
+                <p style="margin-top: 50px;">Thanks for participating!</p>
+            </section>
+            
+        </div>
+    </div>
+
+    <!-- Reveal.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    
+    <!-- Custom voting integration -->
+    <script src="voting-system.js"></script>
+</body>
+</html>

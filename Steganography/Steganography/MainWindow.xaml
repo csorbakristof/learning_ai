@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Steganography.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Steganography"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Steganography Application">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Image Selection -->
+        <StackPanel Grid.Row="0" Spacing="8" Margin="0,0,0,16">
+            <TextBlock Text="Image Selection" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <Grid ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBox x:Name="ImagePathTextBox" 
+                         PlaceholderText="Select a PNG image..." 
+                         IsReadOnly="True"
+                         Grid.Column="0"/>
+                <Button x:Name="OpenImageButton" 
+                        Content="Open Image" 
+                        Click="OpenImageButton_Click"
+                        Grid.Column="1"/>
+            </Grid>
+            
+            <TextBlock x:Name="CapacityTextBlock" 
+                       Text="No image loaded" 
+                       Foreground="Gray"/>
+        </StackPanel>
+
+        <!-- XOR Key -->
+        <StackPanel Grid.Row="1" Spacing="8" Margin="0,0,0,16">
+            <TextBlock Text="Encryption (Optional)" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <Grid ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Text="XOR Key (0-255):" 
+                           VerticalAlignment="Center"
+                           Grid.Column="0"/>
+                <NumberBox x:Name="XorKeyNumberBox" 
+                           Minimum="0" 
+                           Maximum="255" 
+                           Value="0"
+                           SpinButtonPlacementMode="Inline"
+                           Grid.Column="1"/>
+                <TextBlock Text="Set to 0 to disable encryption" 
+                           VerticalAlignment="Center"
+                           Foreground="Gray"
+                           Margin="8,0,0,0"
+                           Grid.Column="2"/>
+            </Grid>
+        </StackPanel>
+
+        <!-- Action Tabs -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,8">
+            <TextBlock Text="Operation Mode" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,0,0,8"/>
+        </StackPanel>
+
+        <!-- Tab View -->
+        <TabView Grid.Row="3" Margin="0,0,0,16">
+            <TabView.TabItems>
+                <TabViewItem Header="Hide Text">
+                    <Grid Padding="16" RowSpacing="12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Enter text to hide in the image:" Grid.Row="0"/>
+                        
+                        <TextBox x:Name="InputTextBox" 
+                                 PlaceholderText="Type your secret message here..."
+                                 TextWrapping="Wrap"
+                                 AcceptsReturn="True"
+                                 Height="200"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 Grid.Row="1"/>
+
+                        <InfoBar x:Name="HideWarningInfoBar"
+                                 IsOpen="False"
+                                 Severity="Warning"
+                                 Title="Capacity Warning"
+                                 Message="The text is too large for this image!"
+                                 IsClosable="False"
+                                 Margin="0,8,0,0"
+                                 Grid.Row="2"/>
+
+                        <Button x:Name="HideTextButton" 
+                                Content="Hide Text in Image" 
+                                Click="HideTextButton_Click"
+                                Style="{StaticResource AccentButtonStyle}"
+                                HorizontalAlignment="Right"
+                                Grid.Row="3"/>
+                    </Grid>
+                </TabViewItem>
+
+                <TabViewItem Header="Extract Text">
+                    <Grid Padding="16" RowSpacing="12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Extracted text:" Grid.Row="0"/>
+                        
+                        <TextBox x:Name="OutputTextBox" 
+                                 PlaceholderText="Extracted text will appear here..."
+                                 TextWrapping="Wrap"
+                                 IsReadOnly="True"
+                                 AcceptsReturn="True"
+                                 Height="200"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 Grid.Row="1"/>
+
+                        <Button x:Name="ExtractTextButton" 
+                                Content="Extract Text from Image" 
+                                Click="ExtractTextButton_Click"
+                                Style="{StaticResource AccentButtonStyle}"
+                                HorizontalAlignment="Right"
+                                Grid.Row="2"/>
+                    </Grid>
+                </TabViewItem>
+            </TabView.TabItems>
+        </TabView>
+
+        <!-- Status Bar -->
+        <InfoBar x:Name="StatusInfoBar"
+                 IsOpen="False"
+                 Grid.Row="4"/>
+    </Grid>
+</Window>

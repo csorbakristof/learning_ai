@@ -43,7 +43,7 @@ function createVoteDisplayComponent() {
             </div>
         </div>
         <button class="toggle-details" onclick="toggleVoteDetails()">
-            Show Details (or press D)
+            Details (D)
         </button>
     `;
     return container;
@@ -54,14 +54,13 @@ function createVoteDisplayComponent() {
  * This runs once on page load to automatically add the component
  */
 function injectVoteDisplays() {
-    const questionSlides = document.querySelectorAll('[data-question-slide="true"]');
-    questionSlides.forEach(slide => {
-        // Only inject if not already present
-        if (!slide.querySelector('.vote-display')) {
-            const voteDisplay = createVoteDisplayComponent();
-            slide.appendChild(voteDisplay);
-        }
-    });
+    // Create a single global vote display outside the slides container
+    // This ensures position:fixed works correctly (not affected by Reveal's transforms)
+    if (!document.querySelector('.vote-display')) {
+        const voteDisplay = createVoteDisplayComponent();
+        voteDisplay.style.display = 'none'; // Hidden by default
+        document.body.appendChild(voteDisplay);
+    }
 }
 
 // ============================================
@@ -185,7 +184,7 @@ async function pollResults() {
  */
 function updateVoteDisplay(results) {
     const slide = Reveal.getCurrentSlide();
-    const voteDisplay = slide.querySelector('.vote-display');
+    const voteDisplay = document.querySelector('.vote-display');
     
     if (!voteDisplay) return;
     
@@ -237,8 +236,12 @@ function updateVoteDisplay(results) {
  */
 function toggleVoteDetails() {
     const slide = Reveal.getCurrentSlide();
-    const detailedVotes = slide.querySelector('.detailed-votes');
-    const button = slide.querySelector('.toggle-details');
+    const voteDisplay = document.querySelector('.vote-display');
+    
+    if (!voteDisplay) return;
+    
+    const detailedVotes = voteDisplay.querySelector('.detailed-votes');
+    const button = voteDisplay.querySelector('.toggle-details');
     
     if (detailedVotes) {
         const isCurrentlyHidden = detailedVotes.classList.contains('hidden');
@@ -246,9 +249,9 @@ function toggleVoteDetails() {
         
         if (button) {
             if (detailedVotes.classList.contains('hidden')) {
-                button.textContent = 'Show Details (or press D)';
+                button.textContent = 'Details (D)';
             } else {
-                button.textContent = 'Hide Details (or press D)';
+                button.textContent = 'Hide (D)';
                 // When showing details, highlight correct answer
                 highlightCorrectAnswer(slide);
             }
@@ -265,7 +268,7 @@ function highlightCorrectAnswer(slide) {
     
     if (!correctAnswer) return; // No correct answer specified
     
-    const voteDisplay = slide.querySelector('.vote-display');
+    const voteDisplay = document.querySelector('.vote-display');
     if (!voteDisplay) return;
     
     // Remove any existing highlighting
@@ -331,6 +334,9 @@ function onSlideChanged(event) {
     const slide = event.currentSlide;
     const isQuestion = slide.hasAttribute('data-question-slide');
     
+    // Get the global vote display
+    const voteDisplay = document.querySelector('.vote-display');
+    
     // Stop polling from previous slide
     stopPolling();
     
@@ -341,6 +347,11 @@ function onSlideChanged(event) {
         
         console.log('Entered question slide:', questionTitle);
         
+        // Show the vote display
+        if (voteDisplay) {
+            voteDisplay.style.display = 'block';
+        }
+        
         // Notify server about new question
         notifyNewQuestion(questionTitle);
         
@@ -348,18 +359,23 @@ function onSlideChanged(event) {
         startPolling();
         
         // Ensure details are hidden initially
-        const detailedVotes = slide.querySelector('.detailed-votes');
-        const button = slide.querySelector('.toggle-details');
+        const detailedVotes = voteDisplay.querySelector('.detailed-votes');
+        const button = voteDisplay.querySelector('.toggle-details');
         if (detailedVotes) {
             detailedVotes.classList.add('hidden');
         }
         if (button) {
-            button.textContent = 'Show Details (or press D)';
+            button.textContent = 'Details (D)';
         }
         
     } else {
         isQuestionSlide = false;
         console.log('Left question slide');
+        
+        // Hide the vote display
+        if (voteDisplay) {
+            voteDisplay.style.display = 'none';
+        }
     }
 }
 

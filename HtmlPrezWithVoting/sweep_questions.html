@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Fundamentals Quiz - Interactive Presentation</title>
+    
+    <!-- Reveal.js CSS from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+    
+    <!-- Custom presentation styles -->
+    <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Title Slide -->
+            <section>
+                <h1>Computer Science Fundamentals Quiz</h1>
+                <h3>Interactive Knowledge Check</h3>
+                <p style="margin-top: 50px;">Press <strong>→</strong> to begin</p>
+            </section>
+            
+            <!-- QR Code Slide -->
+            <section>
+                <h2>Join the Voting!</h2>
+                <div class="qr-code-container">
+                    <img id="qrCodeImage" 
+                         src="/qr-code" 
+                         alt="QR Code for Voting"
+                         onerror="this.style.display='none'; document.getElementById('qrError').style.display='block';">
+                    <div id="qrError" style="display:none; padding:20px; background:#fff3cd; border:2px solid #ffc107; border-radius:8px;">
+                        <h3 style="color:#856404;">⚠️ QR Code Loading...</h3>
+                        <p style="color:#856404;">Please wait a few seconds for the tunnel to initialize, then refresh the page.</p>
+                        <p style="color:#856404; font-size:14px;">Or share this URL manually: <strong>Check server console</strong></p>
+                    </div>
+                    <h3>Scan with your smartphone</h3>
+                    <p>Vote on upcoming questions!</p>
+                </div>
+            </section>
+            
+            <!-- Category Introduction: Filesystem & Storage -->
+            <section>
+                <h2>Category 1</h2>
+                <h3>Filesystem & Storage</h3>
+            </section>
+            
+            <!-- Question 1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="What happens to the physical bits of a file on a hard drive when you delete it from the trash bin?" data-correct-answer="B">
+                <h2>Q1: What happens to the physical bits of a file on a hard drive when you "delete" it from the trash bin?</h2>
+                <ul>
+                    <li><strong>A)</strong> Every bit is immediately overwritten with a random sequence of 1s and 0s.</li>
+                    <li><strong>B)</strong> The bits remain, but the filesystem marks the space as available for new data.</li>
+                    <li><strong>C)</strong> The hardware physically demagnetizes that section of the disk to clear it.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: OS & Processes -->
+            <section>
+                <h2>Category 2</h2>
+                <h3>OS & Processes</h3>
+            </section>
+            
+            <!-- Question 2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="How can a computer with a single-core CPU appear to run dozens of applications at the exact same time?" data-correct-answer="B">
+                <h2>Q2: How can a computer with a single-core CPU appear to run dozens of applications at the exact same time?</h2>
+                <ul>
+                    <li><strong>A)</strong> The applications are compressed into tiny segments that fit in the cache together.</li>
+                    <li><strong>B)</strong> The OS rapidly switches the CPU's attention between programs (context switching).</li>
+                    <li><strong>C)</strong> Most applications are "paused" and only run when you move the mouse over them.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Hardware-Software Interface -->
+            <section>
+                <h2>Category 3</h2>
+                <h3>Hardware-Software Interface</h3>
+            </section>
+            
+            <!-- Question 3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Which of the following storage locations is the FASTEST for a CPU to read from?" data-correct-answer="C">
+                <h2>Q3: Which of the following storage locations is the FASTEST for a CPU to read from?</h2>
+                <ul>
+                    <li><strong>A)</strong> L3 Cache.</li>
+                    <li><strong>B)</strong> System RAM.</li>
+                    <li><strong>C)</strong> CPU Registers.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Network Fundamentals -->
+            <section>
+                <h2>Category 4</h2>
+                <h3>Network Fundamentals</h3>
+            </section>
+            
+            <!-- Question 4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="If an application is listening on 127.0.0.1:8080, who can connect to it?" data-correct-answer="A">
+                <h2>Q4: If an application is listening on 127.0.0.1:8080, who can connect to it?</h2>
+                <ul>
+                    <li><strong>A)</strong> Only users/processes on the same physical computer.</li>
+                    <li><strong>B)</strong> Anyone on the same Local Area Network (LAN).</li>
+                    <li><strong>C)</strong> Anyone on the public internet who knows the IP.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Build & Runtime -->
+            <section>
+                <h2>Category 5</h2>
+                <h3>Build & Runtime</h3>
+            </section>
+            
+            <!-- Question 5 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="What is the primary purpose of JIT (Just-In-Time) compilation in the .NET environment?" data-correct-answer="C">
+                <h2>Q5: What is the primary purpose of JIT (Just-In-Time) compilation in the .NET environment?</h2>
+                <ul>
+                    <li><strong>A)</strong> To check the source code for syntax errors while the user is typing.</li>
+                    <li><strong>B)</strong> To compress the .dll files so they take up less space on the disk.</li>
+                    <li><strong>C)</strong> To convert Intermediate Language (IL) into native machine code at runtime.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Git & Versioning -->
+            <section>
+                <h2>Category 6</h2>
+                <h3>Git & Versioning</h3>
+            </section>
+            
+            <!-- Question 6 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="What is the actual consequence of deleting the hidden .git folder inside your project directory?" data-correct-answer="B">
+                <h2>Q6: What is the actual consequence of deleting the hidden .git folder inside your project directory?</h2>
+                <ul>
+                    <li><strong>A)</strong> The project is deleted from GitHub's servers immediately.</li>
+                    <li><strong>B)</strong> The project is no longer a Git repository; all local history and branches are lost.</li>
+                    <li><strong>C)</strong> All your source code files (.cs, .html) are permanently deleted.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Memory Management -->
+            <section>
+                <h2>Category 7</h2>
+                <h3>Memory Management</h3>
+            </section>
+            
+            <!-- Question 7 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="In a 64-bit C# application, what is the size of a reference variable?" data-correct-answer="B">
+                <h2>Q7: In a 64-bit C# application, what is the size of a reference variable (a "pointer" to an object)?</h2>
+                <ul>
+                    <li><strong>A)</strong> 4 bytes (32 bits).</li>
+                    <li><strong>B)</strong> 8 bytes (64 bits).</li>
+                    <li><strong>C)</strong> It depends on the size of the object it points to.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Threading & Event Loop -->
+            <section>
+                <h2>Category 8</h2>
+                <h3>Threading & Event Loop</h3>
+            </section>
+            
+            <!-- Question 8 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Why does a long-running while(true) loop on the UI Thread make a WinUI window freeze?" data-correct-answer="A">
+                <h2>Q8: Why does a long-running while(true) loop on the UI Thread make a WinUI window "freeze" and stop responding to clicks?</h2>
+                <ul>
+                    <li><strong>A)</strong> The UI Thread is busy executing the loop and cannot process the "click" events in the queue.</li>
+                    <li><strong>B)</strong> The CPU detects an infinite loop and shuts down the application's graphics.</li>
+                    <li><strong>C)</strong> Windows automatically lowers the priority of busy windows to save energy.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Data Representation -->
+            <section>
+                <h2>Category 9</h2>
+                <h3>Data Representation</h3>
+            </section>
+            
+            <!-- Question 9 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Why might the expression (0.1 + 0.2 == 0.3) return false?" data-correct-answer="C">
+                <h2>Q9: Why might the expression (0.1 + 0.2 == 0.3) return false in many programming languages?</h2>
+                <ul>
+                    <li><strong>A)</strong> The + operator has a higher priority than the == operator in this context.</li>
+                    <li><strong>B)</strong> Computers use base-10 math internally which cannot represent 0.3 exactly.</li>
+                    <li><strong>C)</strong> Floating-point numbers are stored in binary, leading to tiny rounding imprecisions.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Managed Runtime -->
+            <section>
+                <h2>Category 10</h2>
+                <h3>Managed Runtime</h3>
+            </section>
+            
+            <!-- Question 10 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="What does it mean for code to be Managed in the context of .NET?" data-correct-answer="B">
+                <h2>Q10: What does it mean for code to be "Managed" in the context of .NET?</h2>
+                <ul>
+                    <li><strong>A)</strong> The code is written and maintained by a professional project manager.</li>
+                    <li><strong>B)</strong> The runtime (CLR) handles memory management and provides a layer of security.</li>
+                    <li><strong>C)</strong> The code can only be executed if the user has Administrator privileges.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Archives & Terminal -->
+            <section>
+                <h2>Category 11</h2>
+                <h3>Archives & Terminal</h3>
+            </section>
+            
+            <!-- Question 11 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Why is it often impossible to run a complex application directly from inside a .zip file?" data-correct-answer="A">
+                <h2>Q11: Why is it often impossible to run a complex application directly from inside a .zip file without extracting it first?</h2>
+                <ul>
+                    <li><strong>A)</strong> The app needs to write temporary files or load DLLs from the relative path on the real disk.</li>
+                    <li><strong>B)</strong> The .zip format encrypts the executable so the CPU cannot read the instructions.</li>
+                    <li><strong>C)</strong> Windows prevents running files from "Red" colored folders for security reasons.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Shells & Kernels -->
+            <section>
+                <h2>Category 12</h2>
+                <h3>Shells & Kernels</h3>
+            </section>
+            
+            <!-- Question 12 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Which statement best describes the relationship between a Terminal and the OS Kernel?" data-correct-answer="C">
+                <h2>Q12: Which statement best describes the relationship between a Terminal (like CMD) and the OS Kernel?</h2>
+                <ul>
+                    <li><strong>A)</strong> The Terminal is the core part of the Kernel that controls the hardware directly.</li>
+                    <li><strong>B)</strong> The Terminal is a hardware-based chip that translates keyboard input into code.</li>
+                    <li><strong>C)</strong> The Terminal is a user-mode app that sends requests (system calls) to the Kernel.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Category Introduction: Toolchains & Deployment -->
+            <section>
+                <h2>Category 13</h2>
+                <h3>Toolchains & Deployment</h3>
+            </section>
+            
+            <!-- Question 13 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="When you Publish a .NET app as Self-Contained, what is included?" data-correct-answer="B">
+                <h2>Q13: When you "Publish" a .NET app as "Self-Contained," what is included in the output folder?</h2>
+                <ul>
+                    <li><strong>A)</strong> Only the source code files so the user can compile them on their own.</li>
+                    <li><strong>B)</strong> The executable plus all the necessary .NET runtime libraries to run on a clean PC.</li>
+                    <li><strong>C)</strong> A link to the Microsoft website where the user must download the runtime.</li>
+                    <li><strong>D)</strong> I do not know.</li>
+                </ul>
+            </section>
+            
+            <!-- Thank You Slide -->
+            <section>
+                <h1>Thank You!</h1>
+                <h3>Great Job Completing the Quiz!</h3>
+                <p style="margin-top: 50px;">Questions?</p>
+            </section>
+            
+        </div>
+    </div>
+
+    <!-- Reveal.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    
+    <!-- Custom voting integration -->
+    <script src="voting-system.js"></script>
+</body>
+</html>

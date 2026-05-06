@@ -1,10 +1,18 @@
 @echo off
 REM Presentation Voting System - Startup Script
 REM This script starts the Node.js server and opens the presentation
+REM Usage: start.bat [presentation_filename]
+REM Example: start.bat sweep_questions.html
+
+REM Set presentation file (default to presentation.html)
+set PRESENTATION_FILE=%~1
+if "%PRESENTATION_FILE%"=="" set PRESENTATION_FILE=presentation.html
 
 echo ============================================================
 echo   PRESENTATION VOTING SYSTEM - STARTUP
 echo ============================================================
+echo.
+echo Presentation file: %PRESENTATION_FILE%
 echo.
 
 REM Check if Node.js is installed
@@ -56,7 +64,7 @@ timeout /t 3 /nobreak >nul
 
 REM Open presentation in default browser
 echo [4/4] Opening presentation in browser...
-start http://localhost:8000/presentation.html
+start http://localhost:8000/%PRESENTATION_FILE%
 echo     [OK]
 echo.
 
@@ -64,7 +72,7 @@ echo ============================================================
 echo   SERVER IS RUNNING
 echo ============================================================
 echo.
-echo Presentation URL: http://localhost:8000/presentation.html
+echo Presentation URL: http://localhost:8000/%PRESENTATION_FILE%
 echo Voting URL: Check the tunnel URL in the server output below
 echo.
 echo INSTRUCTIONS:
@@ -80,7 +88,7 @@ echo ============================================================
 echo.
 
 REM Start the server (this will show server output)
-node server.js
+node server.js --presentation %PRESENTATION_FILE%
 
 REM This line will only execute if the server stops or encounters an error
 echo.

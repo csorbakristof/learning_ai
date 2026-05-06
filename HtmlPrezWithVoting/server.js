@@ -15,6 +15,7 @@ const path = require('path');
 const args = process.argv.slice(2);
 let port = 8000;
 let maxVotes = 500;
+let presentationFile = 'presentation.html';
 
 for (let i = 0; i < args.length; i++) {
     if (args[i] === '--port' && args[i + 1]) {
@@ -22,6 +23,9 @@ for (let i = 0; i < args.length; i++) {
         i++;
     } else if (args[i] === '--max-votes' && args[i + 1]) {
         maxVotes = parseInt(args[i + 1]);
+        i++;
+    } else if (args[i] === '--presentation' && args[i + 1]) {
+        presentationFile = args[i + 1];
         i++;
     }
 }
@@ -472,7 +476,7 @@ async function startServer() {
     // Start Express server
     app.listen(port, () => {
         console.log('\n✓ Server starting...');
-        console.log(`✓ Presentation URL: http://localhost:${port}/presentation.html`);
+        console.log(`✓ Presentation URL: http://localhost:${port}/${presentationFile}`);
         console.log(`✓ Voting URL: ${tunnelUrl}`);
         console.log('\nPress Ctrl+C to stop the server\n');
     });

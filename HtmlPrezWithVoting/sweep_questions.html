@@ -42,224 +42,697 @@
                 </div>
             </section>
             
-            <!-- Category Introduction: Filesystem & Storage -->
+            <!-- Category Introduction: 1. Fájlrendszer és tárolási mechanizmusok -->
             <section>
-                <h2>Category 1</h2>
-                <h3>Filesystem & Storage</h3>
+                <h2>1. kategória</h2>
+                <h3>Fájlrendszer és tárolási mechanizmusok</h3>
             </section>
-            
-            <!-- Question 1 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="What happens to the physical bits of a file on a hard drive when you delete it from the trash bin?" data-correct-answer="B">
-                <h2>Q1: What happens to the physical bits of a file on a hard drive when you "delete" it from the trash bin?</h2>
+
+            <!-- C1Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi történik a fájlok fizikai bitjeivel a merevlemezen, amikor &quot;törlöd&quot; őket a lomtárból?" data-correct-answer="B">
+                <h2>C1Q1: Mi történik a fájlok fizikai bitjeivel a merevlemezen, amikor "törlöd" őket a lomtárból?</h2>
                 <ul>
-                    <li><strong>A)</strong> Every bit is immediately overwritten with a random sequence of 1s and 0s.</li>
-                    <li><strong>B)</strong> The bits remain, but the filesystem marks the space as available for new data.</li>
-                    <li><strong>C)</strong> The hardware physically demagnetizes that section of the disk to clear it.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> Minden bit azonnal felülíródik véletlenszerű 1-esekkel és 0-kkal.</li>
+                    <li><strong>B)</strong> A bitek megmaradnak, de a fájlrendszer szabadnak jelöli a helyet az új adatok számára.</li>
+                    <li><strong>C)</strong> A hardver fizikailag lemágnesezi a lemez adott szektorait a törléshez.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: OS & Processes -->
-            <section>
-                <h2>Category 2</h2>
-                <h3>OS & Processes</h3>
-            </section>
-            
-            <!-- Question 2 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="How can a computer with a single-core CPU appear to run dozens of applications at the exact same time?" data-correct-answer="B">
-                <h2>Q2: How can a computer with a single-core CPU appear to run dozens of applications at the exact same time?</h2>
+
+            <!-- C1Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az elsődleges különbség az abszolút elérési út és a szimbolikus link (parancsikon) között?" data-correct-answer="A">
+                <h2>C1Q2: Mi az elsődleges különbség az abszolút elérési út és a szimbolikus link (parancsikon) között?</h2>
                 <ul>
-                    <li><strong>A)</strong> The applications are compressed into tiny segments that fit in the cache together.</li>
-                    <li><strong>B)</strong> The OS rapidly switches the CPU's attention between programs (context switching).</li>
-                    <li><strong>C)</strong> Most applications are "paused" and only run when you move the mouse over them.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> Az abszolút út a tényleges lemezcím; a szimbolikus link egy apró fájl, ami erre a címre mutat.</li>
+                    <li><strong>B)</strong> Az abszolút út a fájl másolata; a szimbolikus link az eredeti fájl.</li>
+                    <li><strong>C)</strong> Az OS szempontjából teljesen azonos módon kezelődnek.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Hardware-Software Interface -->
-            <section>
-                <h2>Category 3</h2>
-                <h3>Hardware-Software Interface</h3>
-            </section>
-            
-            <!-- Question 3 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="Which of the following storage locations is the FASTEST for a CPU to read from?" data-correct-answer="C">
-                <h2>Q3: Which of the following storage locations is the FASTEST for a CPU to read from?</h2>
+
+            <!-- C1Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miért fejeződik be a USB meghajtó &quot;Gyorsformázása&quot; másodpercek alatt, míg a &quot;Teljes formázás&quot; sokáig tart?" data-correct-answer="C">
+                <h2>C1Q3: Miért fejeződik be a USB meghajtó "Gyorsformázása" másodpercek alatt, míg a "Teljes formázás" sokáig tart?</h2>
                 <ul>
-                    <li><strong>A)</strong> L3 Cache.</li>
-                    <li><strong>B)</strong> System RAM.</li>
-                    <li><strong>C)</strong> CPU Registers.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> A teljes formázás titkosítja a meghajtót, a gyorsformázás nem.</li>
+                    <li><strong>B)</strong> A gyorsformázás csak a mappákat törli, a fájlokat nem.</li>
+                    <li><strong>C)</strong> A gyorsformázás csak a "Tartalomjegyzéket" (FAT/MFT) törli; a teljes formázás minden szektort ellenőriz.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Network Fundamentals -->
-            <section>
-                <h2>Category 4</h2>
-                <h3>Network Fundamentals</h3>
-            </section>
-            
-            <!-- Question 4 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="If an application is listening on 127.0.0.1:8080, who can connect to it?" data-correct-answer="A">
-                <h2>Q4: If an application is listening on 127.0.0.1:8080, who can connect to it?</h2>
+
+            <!-- C1Q4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Ha átnevezel egy fájlt notes.txt-ről notes.exe-re, mi történik a fájl belső adatszerkezetével?" data-correct-answer="A">
+                <h2>C1Q4: Ha átnevezel egy fájlt notes.txt-ről notes.exe-re, mi történik a fájl belső adatszerkezetével?</h2>
                 <ul>
-                    <li><strong>A)</strong> Only users/processes on the same physical computer.</li>
-                    <li><strong>B)</strong> Anyone on the same Local Area Network (LAN).</li>
-                    <li><strong>C)</strong> Anyone on the public internet who knows the IP.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> Semmi nem történik az adatokkal; csak a címke (kiterjesztés) változik meg, amit az OS a program kiválasztásához használ.</li>
+                    <li><strong>B)</strong> Az OS automatikusan átalakítja a szöveget gépi kódú utasításokká.</li>
+                    <li><strong>C)</strong> A fájl megsérül, mert a bitek újrarendeződnek.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Build & Runtime -->
+
+            <!-- Category Introduction: 2. Operációs rendszer és folyamatkezelés -->
             <section>
-                <h2>Category 5</h2>
-                <h3>Build & Runtime</h3>
+                <h2>2. kategória</h2>
+                <h3>Operációs rendszer és folyamatkezelés</h3>
             </section>
-            
-            <!-- Question 5 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="What is the primary purpose of JIT (Just-In-Time) compilation in the .NET environment?" data-correct-answer="C">
-                <h2>Q5: What is the primary purpose of JIT (Just-In-Time) compilation in the .NET environment?</h2>
+
+            <!-- C2Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Az OS melyik komponense felelős a hardver közvetlen kezeléséért és fut védett, kiváltságos módban?" data-correct-answer="C">
+                <h2>C2Q1: Az OS melyik komponense felelős a hardver közvetlen kezeléséért és fut védett, kiváltságos módban?</h2>
                 <ul>
-                    <li><strong>A)</strong> To check the source code for syntax errors while the user is typing.</li>
-                    <li><strong>B)</strong> To compress the .dll files so they take up less space on the disk.</li>
-                    <li><strong>C)</strong> To convert Intermediate Language (IL) into native machine code at runtime.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> A felhasználói módú Shell.</li>
+                    <li><strong>B)</strong> A Rendszerleíró adatbázis (Registry).</li>
+                    <li><strong>C)</strong> A Kernel (rendszermag).</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Git & Versioning -->
-            <section>
-                <h2>Category 6</h2>
-                <h3>Git & Versioning</h3>
-            </section>
-            
-            <!-- Question 6 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="What is the actual consequence of deleting the hidden .git folder inside your project directory?" data-correct-answer="B">
-                <h2>Q6: What is the actual consequence of deleting the hidden .git folder inside your project directory?</h2>
+
+            <!-- C2Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Hogyan képes egy egymagos CPU látszólag több alkalmazást futtatni egyszerre?" data-correct-answer="A">
+                <h2>C2Q2: Hogyan képes egy egymagos CPU látszólag több alkalmazást futtatni egyszerre?</h2>
                 <ul>
-                    <li><strong>A)</strong> The project is deleted from GitHub's servers immediately.</li>
-                    <li><strong>B)</strong> The project is no longer a Git repository; all local history and branches are lost.</li>
-                    <li><strong>C)</strong> All your source code files (.cs, .html) are permanently deleted.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> "Kontextusváltás" (Context Switching) használatával, ami gyorsan cserélgeti a CPU-t használó folyamatokat.</li>
+                    <li><strong>B)</strong> A CPU mag virtuális al-magokra bontásával minden app számára.</li>
+                    <li><strong>C)</strong> Az összes app egyidejű futtatásával egy közös memóriaterületen.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Memory Management -->
-            <section>
-                <h2>Category 7</h2>
-                <h3>Memory Management</h3>
-            </section>
-            
-            <!-- Question 7 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="In a 64-bit C# application, what is the size of a reference variable?" data-correct-answer="B">
-                <h2>Q7: In a 64-bit C# application, what is the size of a reference variable (a "pointer" to an object)?</h2>
+
+            <!-- C2Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi a célja a PATH környezeti változónak a shellben?" data-correct-answer="A">
+                <h2>C2Q3: Mi a célja a PATH környezeti változónak a shellben?</h2>
                 <ul>
-                    <li><strong>A)</strong> 4 bytes (32 bits).</li>
-                    <li><strong>B)</strong> 8 bytes (64 bits).</li>
-                    <li><strong>C)</strong> It depends on the size of the object it points to.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> Megad egy listát azokról a könyvtárakról, ahol az OS-nek keresnie kell a futtatható programokat.</li>
+                    <li><strong>B)</strong> Eltárolja a felhasználó által beírt összes parancs előzményeit.</li>
+                    <li><strong>C)</strong> Meghatározza a terminál ablak vizuális témáját és színeit.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Threading & Event Loop -->
-            <section>
-                <h2>Category 8</h2>
-                <h3>Threading & Event Loop</h3>
-            </section>
-            
-            <!-- Question 8 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="Why does a long-running while(true) loop on the UI Thread make a WinUI window freeze?" data-correct-answer="A">
-                <h2>Q8: Why does a long-running while(true) loop on the UI Thread make a WinUI window "freeze" and stop responding to clicks?</h2>
+
+            <!-- C2Q4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mik azok a stdout és stderr egy futó folyamat kontextusában?" data-correct-answer="B">
+                <h2>C2Q4: Mik azok a stdout és stderr egy futó folyamat kontextusában?</h2>
                 <ul>
-                    <li><strong>A)</strong> The UI Thread is busy executing the loop and cannot process the "click" events in the queue.</li>
-                    <li><strong>B)</strong> The CPU detects an infinite loop and shuts down the application's graphics.</li>
-                    <li><strong>C)</strong> Windows automatically lowers the priority of busy windows to save energy.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> Két rejtett mappa, ahol az OS az ideiglenes alkalmazásadatokat tárolja.</li>
+                    <li><strong>B)</strong> Két szabványos szöveges folyam: egy a normál kimenetnek, egy pedig a hibaüzeneteknek.</li>
+                    <li><strong>C)</strong> Minden C# konzolalkalmazás két fő szálának neve.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Data Representation -->
-            <section>
-                <h2>Category 9</h2>
-                <h3>Data Representation</h3>
-            </section>
-            
-            <!-- Question 9 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="Why might the expression (0.1 + 0.2 == 0.3) return false?" data-correct-answer="C">
-                <h2>Q9: Why might the expression (0.1 + 0.2 == 0.3) return false in many programming languages?</h2>
+
+            <!-- C2Q5 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Az alábbiak közül melyik írja le legjobban a &quot;Bootloader&quot;-t?" data-correct-answer="A">
+                <h2>C2Q5: Az alábbiak közül melyik írja le legjobban a "Bootloader"-t?</h2>
                 <ul>
-                    <li><strong>A)</strong> The + operator has a higher priority than the == operator in this context.</li>
-                    <li><strong>B)</strong> Computers use base-10 math internally which cannot represent 0.3 exactly.</li>
-                    <li><strong>C)</strong> Floating-point numbers are stored in binary, leading to tiny rounding imprecisions.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> Egy apró kódrészlet, amely megkeresi és betölti a fő OS Kernelt a memóriába.</li>
+                    <li><strong>B)</strong> Egy program, amely frissítéseket tölt le az internetről az OS indulása előtt.</li>
+                    <li><strong>C)</strong> A BIOS azon része, amely lehetővé teszi a rendszeróra átállítását.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Managed Runtime -->
+
+            <!-- Category Introduction: 3. Hardver-szoftver interfész -->
             <section>
-                <h2>Category 10</h2>
-                <h3>Managed Runtime</h3>
+                <h2>3. kategória</h2>
+                <h3>Hardver-szoftver interfész</h3>
             </section>
-            
-            <!-- Question 10 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="What does it mean for code to be Managed in the context of .NET?" data-correct-answer="B">
-                <h2>Q10: What does it mean for code to be "Managed" in the context of .NET?</h2>
+
+            <!-- C3Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="A memóriahierarchiában melyik tároló található fizikailag a CPU-n belül, és nyújtja a legnagyobb sebességet?" data-correct-answer="A">
+                <h2>C3Q1: A memóriahierarchiában melyik tároló található fizikailag a CPU-n belül, és nyújtja a legnagyobb sebességet?</h2>
                 <ul>
-                    <li><strong>A)</strong> The code is written and maintained by a professional project manager.</li>
-                    <li><strong>B)</strong> The runtime (CLR) handles memory management and provides a layer of security.</li>
-                    <li><strong>C)</strong> The code can only be executed if the user has Administrator privileges.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> Regiszterek.</li>
+                    <li><strong>B)</strong> L3 Cache.</li>
+                    <li><strong>C)</strong> RAM (Random Access Memory).</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Archives & Terminal -->
-            <section>
-                <h2>Category 11</h2>
-                <h3>Archives & Terminal</h3>
-            </section>
-            
-            <!-- Question 11 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="Why is it often impossible to run a complex application directly from inside a .zip file?" data-correct-answer="A">
-                <h2>Q11: Why is it often impossible to run a complex application directly from inside a .zip file without extracting it first?</h2>
+
+            <!-- C3Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mire utal az &quot;x64&quot; kifejezés a CPU architektúrák kapcsán?" data-correct-answer="C">
+                <h2>C3Q2: Mire utal az "x64" kifejezés a CPU architektúrák kapcsán?</h2>
                 <ul>
-                    <li><strong>A)</strong> The app needs to write temporary files or load DLLs from the relative path on the real disk.</li>
-                    <li><strong>B)</strong> The .zip format encrypts the executable so the CPU cannot read the instructions.</li>
-                    <li><strong>C)</strong> Windows prevents running files from "Red" colored folders for security reasons.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> Az egyszerre futtatható programok maximális számára.</li>
+                    <li><strong>B)</strong> A processzor maximális órajelére Gigahertzben.</li>
+                    <li><strong>C)</strong> A CPU regisztereinek szélességére és az általa kezelt memóriacímek méretére.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Shells & Kernels -->
-            <section>
-                <h2>Category 12</h2>
-                <h3>Shells & Kernels</h3>
-            </section>
-            
-            <!-- Question 12 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="Which statement best describes the relationship between a Terminal and the OS Kernel?" data-correct-answer="C">
-                <h2>Q12: Which statement best describes the relationship between a Terminal (like CMD) and the OS Kernel?</h2>
+
+            <!-- C3Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Az alábbiak közül melyik állítás igaz a &quot;Veremre&quot; (Stack) és a &quot;Kupacra&quot; (Heap)?" data-correct-answer="C">
+                <h2>C3Q3: Az alábbiak közül melyik állítás igaz a "Veremre" (Stack) és a "Kupacra" (Heap)?</h2>
                 <ul>
-                    <li><strong>A)</strong> The Terminal is the core part of the Kernel that controls the hardware directly.</li>
-                    <li><strong>B)</strong> The Terminal is a hardware-based chip that translates keyboard input into code.</li>
-                    <li><strong>C)</strong> The Terminal is a user-mode app that sends requests (system calls) to the Kernel.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> A Vermet nagy fájlok tárolására, a Kupacot kis számokra használják.</li>
+                    <li><strong>B)</strong> A C# minden változót a Vermen tárol a nagy teljesítmény érdekében.</li>
+                    <li><strong>C)</strong> A Verem gyors és a lokális változókat kezeli; a Kupac rugalmas és a hosszú életű objektumokat kezeli.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
-            
-            <!-- Category Introduction: Toolchains & Deployment -->
-            <section>
-                <h2>Category 13</h2>
-                <h3>Toolchains & Deployment</h3>
-            </section>
-            
-            <!-- Question 13 -->
-            <section class="question-slide" data-question-slide="true" data-question-title="When you Publish a .NET app as Self-Contained, what is included?" data-correct-answer="B">
-                <h2>Q13: When you "Publish" a .NET app as "Self-Contained," what is included in the output folder?</h2>
+
+            <!-- C3Q4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az a &quot;Rendszerhívás&quot; (syscall)?" data-correct-answer="A">
+                <h2>C3Q4: Mi az a "Rendszerhívás" (syscall)?</h2>
                 <ul>
-                    <li><strong>A)</strong> Only the source code files so the user can compile them on their own.</li>
-                    <li><strong>B)</strong> The executable plus all the necessary .NET runtime libraries to run on a clean PC.</li>
-                    <li><strong>C)</strong> A link to the Microsoft website where the user must download the runtime.</li>
-                    <li><strong>D)</strong> I do not know.</li>
+                    <li><strong>A)</strong> Egy alkalmazás kérése a Kernel felé egy hardverszintű feladat elvégzésére.</li>
+                    <li><strong>B)</strong> Egy telefonhívás az IT részleg felé egy szerverhiba javítására.</li>
+                    <li><strong>C)</strong> Egy hibaüzenet, ami akkor keletkezik, ha a CPU túlmelegszik.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- Category Introduction: 4. Hálózati alapok -->
+            <section>
+                <h2>4. kategória</h2>
+                <h3>Hálózati alapok</h3>
+            </section>
+
+            <!-- C4Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mit jelent a 127.0.0.1 IP-cím (localhost)?" data-correct-answer="B">
+                <h2>C4Q1: Mit jelent a 127.0.0.1 IP-cím (localhost)?</h2>
+                <ul>
+                    <li><strong>A)</strong> A legközelebbi DNS szerver címe.</li>
+                    <li><strong>B)</strong> Egy loopback cím, amely magára a lokális gépre utal.</li>
+                    <li><strong>C)</strong> A helyi Wi-Fi hálózat alapértelmezett átjárója (gateway).</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C4Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi a &quot;Port&quot; szerepe a hálózatkezelésben?" data-correct-answer="C">
+                <h2>C4Q2: Mi a "Port" szerepe a hálózatkezelésben?</h2>
+                <ul>
+                    <li><strong>A)</strong> Meghatározza az internetre való csatlakozáshoz használt fizikai kábelt.</li>
+                    <li><strong>B)</strong> Meghatározza az adatátvitel maximális sebességét.</li>
+                    <li><strong>C)</strong> Al-címként szolgál a forgalom irányításához egy adott gépen futó alkalmazáshoz.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C4Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi a DNS (Domain Name System) szerver elsődleges feladata?" data-correct-answer="A">
+                <h2>C4Q3: Mi a DNS (Domain Name System) szerver elsődleges feladata?</h2>
+                <ul>
+                    <li><strong>A)</strong> Az ember által olvasható nevek (pl. bme.hu) lefordítása IP-címekre.</li>
+                    <li><strong>B)</strong> A weboldalak fájljainak tárolása (pl. google.com).</li>
+                    <li><strong>C)</strong> A helyi hálózat védelme az illetéktelen hackerektől.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- Category Introduction: 5. Build és Runtime folyamat -->
+            <section>
+                <h2>5. kategória</h2>
+                <h3>Build és Runtime folyamat</h3>
+            </section>
+
+            <!-- C5Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi a transzformációs sorrend egy C# programnál a forráskódtól a végrehajtásig?" data-correct-answer="C">
+                <h2>C5Q1: Mi a transzformációs sorrend egy C# programnál a forráskódtól a végrehajtásig?</h2>
+                <ul>
+                    <li><strong>A)</strong> Forráskód -&gt; Gépi kód -&gt; IL.</li>
+                    <li><strong>B)</strong> Forráskód -&gt; Assembly -&gt; Java Bytecode.</li>
+                    <li><strong>C)</strong> Forráskód -&gt; IL (CIL) -&gt; Gépi kód (JIT-en keresztül).</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C5Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi történik egy DLL &quot;Dinamikus linkelése&quot; során?" data-correct-answer="C">
+                <h2>C5Q2: Mi történik egy DLL "Dinamikus linkelése" során?</h2>
+                <ul>
+                    <li><strong>A)</strong> A könyvtár kódja fizikailag beleírodik az .exe fájlba a fordítás során.</li>
+                    <li><strong>B)</strong> A könyvtár letöltődik az internetről minden alkalommal, amikor az app fut.</li>
+                    <li><strong>C)</strong> A könyvtár kódja csak akkor töltődik be a memóriába, amikor az alkalmazás elindul vagy szüksége van rá.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C5Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miért kezeli jobban az UTF-8 kódolású fájl az emojikat, mint az ASCII kódolású?" data-correct-answer="A">
+                <h2>C5Q3: Miért kezeli jobban az UTF-8 kódolású fájl az emojikat, mint az ASCII kódolású?</h2>
+                <ul>
+                    <li><strong>A)</strong> Az UTF-8 több bájtot használ több ezer karakter ábrázolásához; az ASCII 128-ra van korlátozva.</li>
+                    <li><strong>B)</strong> Az UTF-8 gyorsabb tömörítési algoritmust használ.</li>
+                    <li><strong>C)</strong> Az ASCII-t csak számokhoz tervezték, míg az UTF-8-at művészeti célokra.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- Category Introduction: 6. Git és verziókezelési mechanizmusok -->
+            <section>
+                <h2>6. kategória</h2>
+                <h3>Git és verziókezelési mechanizmusok</h3>
+            </section>
+
+            <!-- C6Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Ha letörlöd a rejtett .git mappát a projektedben, mi történik a korábbi commit-jaiddal?" data-correct-answer="B">
+                <h2>C6Q1: Ha letörlöd a rejtett .git mappát a projektedben, mi történik a korábbi commit-jaiddal?</h2>
+                <ul>
+                    <li><strong>A)</strong> Biztonságban vannak a felhőben (GitHub), és automatikusan újra megjelennek.</li>
+                    <li><strong>B)</strong> Végleg elvesznek a lokális gépedről a teljes verziótörténettel együtt.</li>
+                    <li><strong>C)</strong> Áthelyeződnek a rendszer ideiglenes "visszavonási" pufferrébe 30 napra.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C6Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az a Git &quot;Commit Hash&quot; (pl. a1b2c3d...)?" data-correct-answer="B">
+                <h2>C6Q2: Mi az a Git "Commit Hash" (pl. a1b2c3d...)?</h2>
+                <ul>
+                    <li><strong>A)</strong> Egy véletlenszerű jelszó, amit a fejlesztőhöz rendeltek.</li>
+                    <li><strong>B)</strong> Egy egyedi azonosító, amely a fájlok pontos állapotából generálódik abban a commitban.</li>
+                    <li><strong>C)</strong> A fejlesztő e-mail címének titkosított változata.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C6Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Hogyan tárolja a Git belsőleg a változásokat?" data-correct-answer="C">
+                <h2>C6Q3: Hogyan tárolja a Git belsőleg a változásokat?</h2>
+                <ul>
+                    <li><strong>A)</strong> Minden egyes commit-hoz eltárolja minden egyes fájl teljes másolatát.</li>
+                    <li><strong>B)</strong> A fájlokat titkosított ZIP archívumként menti a Windows Registry-be.</li>
+                    <li><strong>C)</strong> Elsősorban "snapshot"-okat (pillanatképeket) tárol, és tömörítést/deltákat használ a helytakarékossághoz.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C6Q4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi a &quot;Branch&quot; (ág) a Git-ben?" data-correct-answer="A">
+                <h2>C6Q4: Mi a "Branch" (ág) a Git-ben?</h2>
+                <ul>
+                    <li><strong>A)</strong> Egy könnyűsúlyú mutató egy adott commit-ra.</li>
+                    <li><strong>B)</strong> A teljes projekt egy teljes másolati mappája.</li>
+                    <li><strong>C)</strong> Egy külön felhasználói fiók a GitHub weboldalán.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C6Q5 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mit jelentenek az olyan jelölők a fájlban, mint a &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD?" data-correct-answer="B">
+                <h2>C6Q5: Mit jelentenek az olyan jelölők a fájlban, mint a &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD?</h2>
+                <ul>
+                    <li><strong>A)</strong> Speciális komment típus dokumentációs célokra.</li>
+                    <li><strong>B)</strong> Egy Merge Conflict-ot (összefűzési konfliktus), amit a fejlesztőnek manuálisan kell feloldania.</li>
+                    <li><strong>C)</strong> Egy parancs, ami arra utasítja a fordítót, hogy ugorjon át egy kódblokkot.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C6Q6 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi a fő különbség a Git és a GitHub között?" data-correct-answer="C">
+                <h2>C6Q6: Mi a fő különbség a Git és a GitHub között?</h2>
+                <ul>
+                    <li><strong>A)</strong> A Git a Windows-hoz van; a GitHub a Mac/Linux-hoz.</li>
+                    <li><strong>B)</strong> A GitHub a Git szoftver legújabb verziója.</li>
+                    <li><strong>C)</strong> A Git a lokális verziókezelő eszköz; a GitHub egy felhőplatform a repozitóriumok hosztolásához.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- Category Introduction: 7. Memóriakezelés és objektum életciklus -->
+            <section>
+                <h2>7. kategória</h2>
+                <h3>Memóriakezelés és objektum életciklus</h3>
+            </section>
+
+            <!-- C7Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Egy 64 bites rendszeren mennyi memóriát foglal egy C# referencia (mutató)?" data-correct-answer="A">
+                <h2>C7Q1: Egy 64 bites rendszeren mennyi memóriát foglal egy C# referencia (mutató)?</h2>
+                <ul>
+                    <li><strong>A)</strong> 8 bájt.</li>
+                    <li><strong>B)</strong> 4 bájt.</li>
+                    <li><strong>C)</strong> Változó, az osztály méretétől függően.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C7Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mikor szabadítja fel a C# Garbage Collector (GC) egy objektum által használt memóriát?" data-correct-answer="C">
+                <h2>C7Q2: Mikor szabadítja fel a C# Garbage Collector (GC) egy objektum által használt memóriát?</h2>
+                <ul>
+                    <li><strong>A)</strong> Azonnal, amint a változó kikerül a hatókörből (scope).</li>
+                    <li><strong>B)</strong> Csak akkor, ha a felhasználó manuálisan meghívja az Object.Dispose()-t.</li>
+                    <li><strong>C)</strong> Egy későbbi időpontban, amit a GC belső heurisztikái és a memórianyomás határoz meg.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C7Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi a new kulcsszó &quot;költsége&quot; C#-ban?" data-correct-answer="A">
+                <h2>C7Q3: Mi a new kulcsszó "költsége" C#-ban?</h2>
+                <ul>
+                    <li><strong>A)</strong> Megköveteli a runtime-tól, hogy találjon és lefoglaljon egy összefüggő területet a Kupacban.</li>
+                    <li><strong>B)</strong> 1 centbe kerül felhő alapú licencdíjként.</li>
+                    <li><strong>C)</strong> Arra kényszeríti a CPU-t, hogy indítsa újra a szálat a memóriaszivárgások megelőzése érdekében.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C7Q4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi a NullReferenceException a hardver szintjén?" data-correct-answer="B">
+                <h2>C7Q4: Mi a NullReferenceException a hardver szintjén?</h2>
+                <ul>
+                    <li><strong>A)</strong> A RAM chip válaszadási hibája egy kérésre.</li>
+                    <li><strong>B)</strong> A CPU megpróbál olvasni egy olyan memóriacímről, ami valójában nulla (0x0).</li>
+                    <li><strong>C)</strong> Hiba, ahol a fejlesztő elfelejtett nevet adni egy változónak.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C7Q5 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi történik az objA = objB utasítás végrehajtásakor két osztálypéldány esetén C#-ban?" data-correct-answer="C">
+                <h2>C7Q5: Mi történik az objA = objB utasítás végrehajtásakor két osztálypéldány esetén C#-ban?</h2>
+                <ul>
+                    <li><strong>A)</strong> Az objB-ben lévő adatok átmásolódnak az objA memóriahelyére.</li>
+                    <li><strong>B)</strong> A két objektum egyetlen nagyobb objektummá vonódik össze.</li>
+                    <li><strong>C)</strong> Az objB által tartott memóriacím (referencia) másolódik át az objA-ba.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- Category Introduction: 8. Szálkezelés és az Event Loop -->
+            <section>
+                <h2>8. kategória</h2>
+                <h3>Szálkezelés és az Event Loop</h3>
+            </section>
+
+            <!-- C8Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miért okozza egy hosszú számítás a UI szálon az ablak &quot;Nem válaszol&quot; állapotát?" data-correct-answer="A">
+                <h2>C8Q1: Miért okozza egy hosszú számítás a UI szálon az ablak "Nem válaszol" állapotát?</h2>
+                <ul>
+                    <li><strong>A)</strong> A szál elakadt a ciklusban, és nem tudja feldolgozni a sorban álló "Paint" vagy "Click" eseményeket.</li>
+                    <li><strong>B)</strong> Az OS azt hiszi, hogy az app halott, és lekapcsolja az áramellátását.</li>
+                    <li><strong>C)</strong> A RAM túlságosan felforrósodik a nagy sebességű számítástól.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C8Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az &quot;overhead&quot; (többletköltség) egy fizikai Szál (Thread) létrehozásakor egy Task-hoz képest?" data-correct-answer="B">
+                <h2>C8Q2: Mi az "overhead" (többletköltség) egy fizikai Szál (Thread) létrehozásakor egy Task-hoz képest?</h2>
+                <ul>
+                    <li><strong>A)</strong> A Szál valójában olcsóbb, mint a Task, mert "natív".</li>
+                    <li><strong>B)</strong> A Szál jelentős memóriát (pl. 1MB stack) és OS szintű kezelést igényel.</li>
+                    <li><strong>C)</strong> Nincs különbség; csak két különböző név ugyanarra a dologra.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C8Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az a &quot;Race Condition&quot;?" data-correct-answer="C">
+                <h2>C8Q3: Mi az a "Race Condition"?</h2>
+                <ul>
+                    <li><strong>A)</strong> Verseny a fejlesztők között egy funkció leggyorsabb befejezéséért.</li>
+                    <li><strong>B)</strong> Amikor egy program gyorsabban fut, mint amit a hálózat kezelni tud.</li>
+                    <li><strong>C)</strong> Amikor a végeredmény több szál kiszámíthatatlan időzítésétől függ.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C8Q4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi történik Holtpont (Deadlock) esetén?" data-correct-answer="A">
+                <h2>C8Q4: Mi történik Holtpont (Deadlock) esetén?</h2>
+                <ul>
+                    <li><strong>A)</strong> Két vagy több szál örökre elakad, mindegyik olyan erőforrásra várva, amit a másik tart fogva.</li>
+                    <li><strong>B)</strong> A számítógép merevlemeze megáll.</li>
+                    <li><strong>C)</strong> Az alkalmazás befejezi a munkáját és megfelelően leáll.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C8Q5 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Az await kulcsszó C#-ban minden esetben létrehoz egy új fizikai szálat?" data-correct-answer="A">
+                <h2>C8Q5: Az await kulcsszó C#-ban minden esetben létrehoz egy új fizikai szálat?</h2>
+                <ul>
+                    <li><strong>A)</strong> Nem; gyakran csak "átadja" (yield) a jelenlegi szálat, amíg a munka be nem fejeződik.</li>
+                    <li><strong>B)</strong> Igen, ez az aszinkron programozás definíciója.</li>
+                    <li><strong>C)</strong> Csak akkor, ha a számítógépnek több mint 4 CPU magja van.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- Category Introduction: 9. Adatábrázolás és szerializáció -->
+            <section>
+                <h2>9. kategória</h2>
+                <h3>Adatábrázolás és szerializáció</h3>
+            </section>
+
+            <!-- C9Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mit ír le az &quot;Endianness&quot; (Little Endian vs. Big Endian)?" data-correct-answer="C">
+                <h2>C9Q1: Mit ír le az "Endianness" (Little Endian vs. Big Endian)?</h2>
+                <ul>
+                    <li><strong>A)</strong> A fájlok sorrendjét egy mappában.</li>
+                    <li><strong>B)</strong> Azt, hogy egy program a fájl elején vagy végén kezdődik.</li>
+                    <li><strong>C)</strong> A bájtok sorrendjét, ahogyan egy többájtos érték eltárolódik a memóriában.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C9Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miért tudod elolvasni az XML fájlt Notepadben, de egy képfájl &quot;halandzsának&quot; tűnik?" data-correct-answer="A">
+                <h2>C9Q2: Miért tudod elolvasni az XML fájlt Notepadben, de egy képfájl "halandzsának" tűnik?</h2>
+                <ul>
+                    <li><strong>A)</strong> Az XML szövegként (kódolt karakterek) tárolódik; a képek nyers bináris adatként.</li>
+                    <li><strong>B)</strong> Az XML fájlok kisebbek, mint a képfájlok.</li>
+                    <li><strong>C)</strong> A Notepad csak a Microsoft által készített fájlokat támogatja.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C9Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miért kell &quot;escape&quot;-elni a karaktereket, mint pl. a &lt; jelet XML-ben vagy a &quot; jelet egy C# stringben?" data-correct-answer="A">
+                <h2>C9Q3: Miért kell "escape"-elni a karaktereket, mint pl. a &lt; jelet XML-ben vagy a " jelet egy C# stringben?</h2>
+                <ul>
+                    <li><strong>A)</strong> Mert ezeknek a karaktereknek speciális jelentése van a parser/fordító számára.</li>
+                    <li><strong>B)</strong> Mert ezek a karakterek illegálisak a modern operációs rendszerekben.</li>
+                    <li><strong>C)</strong> Hogy a kódot nehezebb legyen elolvasni a hackerek számára.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C9Q4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miért nem egyenlő gyakran a 0.1 + 0.2 a 0.3-mal C# double változók esetén?" data-correct-answer="C">
+                <h2>C9Q4: Miért nem egyenlő gyakran a 0.1 + 0.2 a 0.3-mal C# double változók esetén?</h2>
+                <ul>
+                    <li><strong>A)</strong> A számítógép rossz az alapvető összeadásban.</li>
+                    <li><strong>B)</strong> A + operátor a legközelebbi egész számra kerekít.</li>
+                    <li><strong>C)</strong> A 2-es alapú bináris lebegőpontos ábrázolás nem tud pontosan reprezentálni néhány tizedestörtet.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C9Q5 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az a &quot;Buffer Overflow&quot;?" data-correct-answer="A">
+                <h2>C9Q5: Mi az a "Buffer Overflow"?</h2>
+                <ul>
+                    <li><strong>A)</strong> Amikor az adatokat a lefoglalt memóriapuffer határán túlra írják.</li>
+                    <li><strong>B)</strong> Amikor az internetkapcsolat gyorsabb, mint amit a számítógép kezelni tud.</li>
+                    <li><strong>C)</strong> Amikor egy mappa több mint 1000 fájlt tartalmaz.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- Category Introduction: 10. Menedzselt futtatókörnyezet -->
+            <section>
+                <h2>10. kategória</h2>
+                <h3>Menedzselt futtatókörnyezet</h3>
+            </section>
+
+            <!-- C10Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az az &quot;Unmanaged Code&quot; (nem menedzselt kód) a .NET kontextusában?" data-correct-answer="B">
+                <h2>C10Q1: Mi az az "Unmanaged Code" (nem menedzselt kód) a .NET kontextusában?</h2>
+                <ul>
+                    <li><strong>A)</strong> Projektmenedzser nélkül írt kód.</li>
+                    <li><strong>B)</strong> Olyan kód (mint a C++ vagy assembly), amely közvetlenül az OS-en fut GC vagy biztonsági ellenőrzések nélkül.</li>
+                    <li><strong>C)</strong> Olyan kód, amelyet a Microsoft "elavultnak" (deprecated) jelölt.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C10Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az Intermediate Language (IL) elsődleges előnye?" data-correct-answer="A">
+                <h2>C10Q2: Mi az Intermediate Language (IL) elsődleges előnye?</h2>
+                <ul>
+                    <li><strong>A)</strong> Lehetővé teszi, hogy ugyanaz a lefordított kód bármilyen platformon fusson, ahol van kompatibilis runtime.</li>
+                    <li><strong>B)</strong> Gyorsabbá teszi a programot a natív kódhoz képest.</li>
+                    <li><strong>C)</strong> Megakadályozza, hogy a forráskódot ellopják más fejlesztők.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C10Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miért lassabb néha egy .NET app legelső alkalommal, amikor egy függvényt meghívunk?" data-correct-answer="B">
+                <h2>C10Q3: Miért lassabb néha egy .NET app legelső alkalommal, amikor egy függvényt meghívunk?</h2>
+                <ul>
+                    <li><strong>A)</strong> A számítógép éppen "felébreszti" a merevlemezt.</li>
+                    <li><strong>B)</strong> A JIT fordító éppen lefordítja az IL-t gépi kódra az adott függvényhez.</li>
+                    <li><strong>C)</strong> Az OS éppen ellenőrzi a felhasználó licenckulcsát.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C10Q4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az a &quot;Reflekció&quot; (Reflection) C#-ban?" data-correct-answer="B">
+                <h2>C10Q4: Mi az a "Reflekció" (Reflection) C#-ban?</h2>
+                <ul>
+                    <li><strong>A)</strong> A képesség, hogy látod az arcodat a laptop képernyőjén.</li>
+                    <li><strong>B)</strong> Egy program képessége, hogy futásidőben vizsgálja a saját metaadatait, típusait és metódusait.</li>
+                    <li><strong>C)</strong> Egy technika a képek vízszintes tükrözésére a UI-ban.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C10Q5 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi volt a Global Assembly Cache (GAC) célja?" data-correct-answer="A">
+                <h2>C10Q5: Mi volt a Global Assembly Cache (GAC) célja?</h2>
+                <ul>
+                    <li><strong>A)</strong> Központi DLL-ek megosztása sok különböző alkalmazás között egy gépen.</li>
+                    <li><strong>B)</strong> Az egész C: meghajtó biztonsági mentésének tárolása.</li>
+                    <li><strong>C)</strong> Nagy sebességű gyorsítótárként szolgált a böngésző képeihez.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- Category Introduction: 11. Archívumok, tömörítés és terminál ismeretek -->
+            <section>
+                <h2>11. kategória</h2>
+                <h3>Archívumok, tömörítés és terminál ismeretek</h3>
+            </section>
+
+            <!-- C11Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miért nem lehet általában egy összetett .NET appot közvetlenül egy ZIP-ből futtatni kicsomagolás nélkül?" data-correct-answer="C">
+                <h2>C11Q1: Miért nem lehet általában egy összetett .NET appot közvetlenül egy ZIP-ből futtatni kicsomagolás nélkül?</h2>
+                <ul>
+                    <li><strong>A)</strong> A ZIP fájlok alapértelmezés szerint titkosítottak.</li>
+                    <li><strong>B)</strong> A Windows tiltja a .zip végződésű fájlok futtatását.</li>
+                    <li><strong>C)</strong> Az app nem találja a függőségeit (DLL-ek), vagy nem tud lokális konfigurációs fájlokat írni.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- Category Introduction: 12. Shell-ek, Kernelek és Userland -->
+            <section>
+                <h2>12. kategória</h2>
+                <h3>Shell-ek, Kernelek és Userland</h3>
+            </section>
+
+            <!-- C12Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miben különbözik alapvetően a PowerShell a régi CMD-től?" data-correct-answer="A">
+                <h2>C12Q1: Miben különbözik alapvetően a PowerShell a régi CMD-től?</h2>
+                <ul>
+                    <li><strong>A)</strong> A PowerShell "Objektumokat" ad át a parancsok között; a CMD "Stringeket" (szöveget).</li>
+                    <li><strong>B)</strong> A PowerShell-nek kék háttere van fekete helyett.</li>
+                    <li><strong>C)</strong> A PowerShell csak szervereken érhető el.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C12Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="A terminál ablak (cmd.exe) része az operációs rendszer Kernelének?" data-correct-answer="C">
+                <h2>C12Q2: A terminál ablak (cmd.exe) része az operációs rendszer Kernelének?</h2>
+                <ul>
+                    <li><strong>A)</strong> Igen, ez az OS legalacsonyabb szintje.</li>
+                    <li><strong>B)</strong> Attól függ, hogy Administrator-ként futtatod-e.</li>
+                    <li><strong>C)</strong> Nem; ez csak egy rendes alkalmazás, ami a "Userland"-ben (felhasználói módban) fut.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C12Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az a &quot;Szolgáltatás&quot; (Service vagy Daemon) a számítógépen?" data-correct-answer="B">
+                <h2>C12Q3: Mi az a "Szolgáltatás" (Service vagy Daemon) a számítógépen?</h2>
+                <ul>
+                    <li><strong>A)</strong> Egy személy, aki kijön megjavítani a hardvert.</li>
+                    <li><strong>B)</strong> Egy program, amely a háttérben fut felhasználói felület nélkül.</li>
+                    <li><strong>C)</strong> Egy speciális típusú nagy sebességű internetkapcsolat.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C12Q4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Hogyan &quot;indít el&quot; a Shell egy programot, amikor beírod a nevét?" data-correct-answer="C">
+                <h2>C12Q4: Hogyan "indít el" a Shell egy programot, amikor beírod a nevét?</h2>
+                <ul>
+                    <li><strong>A)</strong> Átmásolja a program kódját a saját memóriaterületére.</li>
+                    <li><strong>B)</strong> Üzenetet küld a BIOS-nak a CPU újraindítására.</li>
+                    <li><strong>C)</strong> Rendszerhívást (system call) intéz a Kernel felé egy új folyamat (Process) létrehozására.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C12Q5 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miért nem tud egy &quot;Felhasználói alkalmazás&quot; beleolvasni egy másik futó alkalmazás memóriájába?" data-correct-answer="A">
+                <h2>C12Q5: Miért nem tud egy "Felhasználói alkalmazás" beleolvasni egy másik futó alkalmazás memóriájába?</h2>
+                <ul>
+                    <li><strong>A)</strong> Az OS Kernel minden folyamatnak saját, izolált virtuális címtartományt ad a biztonság érdekében.</li>
+                    <li><strong>B)</strong> Mert a memória minden app számára titkosított.</li>
+                    <li><strong>C)</strong> Nincs elég hely a buszon, hogy két app egyszerre beszélgessen.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- Category Introduction: 13. Eszközláncok és Deployment -->
+            <section>
+                <h2>13. kategória</h2>
+                <h3>Eszközláncok és Deployment</h3>
+            </section>
+
+            <!-- C13Q1 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Miért bukik el gyakran, ha csak az .exe fájlt másolod át a Debug mappádból egy másik PC-re?" data-correct-answer="B">
+                <h2>C13Q1: Miért bukik el gyakran, ha csak az .exe fájlt másolod át a Debug mappádból egy másik PC-re?</h2>
+                <ul>
+                    <li><strong>A)</strong> Mert az .exe fájl a te konkrét CPU-dhoz van kötve.</li>
+                    <li><strong>B)</strong> Hiányoznak a szükséges DLL-ek és konfigurációs fájlok (függőségek).</li>
+                    <li><strong>C)</strong> A Visual Studio "próbaidőszakot" ad minden debug build-hez.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C13Q2 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi a különbség a statikus könyvtár (.lib) és a dinamikus könyvtár (.dll) között?" data-correct-answer="C">
+                <h2>C13Q2: Mi a különbség a statikus könyvtár (.lib) és a dinamikus könyvtár (.dll) között?</h2>
+                <ul>
+                    <li><strong>A)</strong> A statikus könyvtárak a C++ hoz vannak; a dinamikusak a C#-hoz.</li>
+                    <li><strong>B)</strong> A dinamikus könyvtárak gyorsabbak, de több helyet foglalnak a lemezen.</li>
+                    <li><strong>C)</strong> A statikus könyvtárak beépülnek az exe-be; a dinamikusak külön fájlok maradnak.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C13Q3 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Hogyan találja meg a Windows OS az appodnak szükséges DLL-eket futásidőben?" data-correct-answer="A">
+                <h2>C13Q3: Hogyan találja meg a Windows OS az appodnak szükséges DLL-eket futásidőben?</h2>
+                <ul>
+                    <li><strong>A)</strong> Ellenőrzi a konkrét helyeket: az app mappáját, a PATH-t és a rendszermappákat.</li>
+                    <li><strong>B)</strong> Átkutatja a teljes merevlemezt, amíg meg nem találja őket.</li>
+                    <li><strong>C)</strong> Megkéri a felhasználót, hogy mutasson rá a mappára minden app induláskor.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C13Q4 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi az a .csproj fájl egy .NET projektben?" data-correct-answer="B">
+                <h2>C13Q4: Mi az a .csproj fájl egy .NET projektben?</h2>
+                <ul>
+                    <li><strong>A)</strong> Az összes forráskód tömörített változata.</li>
+                    <li><strong>B)</strong> Egy XML fájl, amely utasításokat tartalmaz a build motor (MSBuild) számára.</li>
+                    <li><strong>C)</strong> A tényleges bináris fájl, ami a felhasználó gépén fut.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
+                </ul>
+            </section>
+
+            <!-- C13Q5 -->
+            <section class="question-slide" data-question-slide="true" data-question-title="Mi a fő hátránya a &quot;Framework-Dependent&quot; (keretrendszer-függő) publikálásnak?" data-correct-answer="A">
+                <h2>C13Q5: Mi a fő hátránya a "Framework-Dependent" (keretrendszer-függő) publikálásnak?</h2>
+                <ul>
+                    <li><strong>A)</strong> A célgépen telepítve KELL lennie a .NET Runtime megfelelő verziójának.</li>
+                    <li><strong>B)</strong> A végeredmény fájlmérete rendkívül nagy lesz.</li>
+                    <li><strong>C)</strong> Nem futhat más gépen, csak a fejlesztőén.</li>
+                    <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
             

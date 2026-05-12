@@ -12,6 +12,20 @@
     
     <!-- Custom presentation styles -->
     <link rel="stylesheet" href="presentation.css">
+
+    <!-- QR Code generation (client-side, no server needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <!--
+      *** CONFIGURATION ***
+      Set PHP_SERVER_URL to the base URL of your PHP voting server.
+      This is the URL audience members will open to vote, and also
+      the URL that will be encoded in the QR code.
+      Example: 'https://example.com/voting'
+    -->
+    <script>
+        window.PHP_SERVER_URL = 'http://avalon.aut.bme.hu/~kristof/vote';
+    </script>
 </head>
 <body>
     <div class="reveal">
@@ -28,16 +42,9 @@
             <section>
                 <h2>Join the Voting!</h2>
                 <div class="qr-code-container">
-                    <img id="qrCodeImage" 
-                         src="/qr-code" 
-                         alt="QR Code for Voting"
-                         onerror="this.style.display='none'; document.getElementById('qrError').style.display='block';">
-                    <div id="qrError" style="display:none; padding:20px; background:#fff3cd; border:2px solid #ffc107; border-radius:8px;">
-                        <h3 style="color:#856404;">⚠️ QR Code Loading...</h3>
-                        <p style="color:#856404;">Please wait a few seconds for the tunnel to initialize, then refresh the page.</p>
-                        <p style="color:#856404; font-size:14px;">Or share this URL manually: <strong>Check server console</strong></p>
-                    </div>
+                    <div id="qrcode"></div>
                     <h3>Scan with your smartphone</h3>
+                    <p id="votingUrl" style="font-size:14px; color:#666; word-break:break-all;"></p>
                     <p>Vote on upcoming questions!</p>
                 </div>
             </section>
@@ -748,8 +755,30 @@
 
     <!-- Reveal.js from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-    
+
     <!-- Custom voting integration -->
     <script src="voting-system.js"></script>
+
+    <!-- Generate QR code once the page is ready -->
+    <script>
+        (function () {
+            var url = window.PHP_SERVER_URL || '';
+            var el  = document.getElementById('qrcode');
+            var lbl = document.getElementById('votingUrl');
+            if (!url || url.indexOf('YOUR-SERVER') !== -1) {
+                if (el) el.innerHTML = '<p style="color:#c00;">Set PHP_SERVER_URL in sweep_questions.html</p>';
+                return;
+            }
+            if (el) {
+                new QRCode(el, {
+                    text: url,
+                    width: 256,
+                    height: 256,
+                    correctLevel: QRCode.CorrectLevel.M
+                });
+            }
+            if (lbl) lbl.textContent = url;
+        })();
+    </script>
 </body>
 </html>

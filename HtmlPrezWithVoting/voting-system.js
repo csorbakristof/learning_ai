@@ -87,7 +87,9 @@ let currentSlide = null;
 let pollingInterval = null;
 let isQuestionSlide = false;
 let previousVoteCount = 0; // Track previous vote count for animation
-const SERVER_URL = 'http://localhost:8000';
+// SERVER_URL is set via window.PHP_SERVER_URL in presentation.html.
+// It points to the directory on the PHP server that contains api.php and index.php.
+const SERVER_URL = (window.PHP_SERVER_URL || '').replace(/\/+$/, '');
 const POLL_INTERVAL = 1000; // 1 second
 
 // ============================================
@@ -124,23 +126,30 @@ function getQuestionTitle(slide) {
  * @param {string} questionTitle - The title of the new question
  */
 async function notifyNewQuestion(questionTitle) {
+    const url = `${SERVER_URL}/api.php?action=new-question`;
     try {
-        const response = await fetch(`${SERVER_URL}/new-question`, {
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ title: questionTitle })
         });
-        
-        const data = await response.json();
-        console.log('New question set:', data);
-        
-        // Reset vote display
-        updateVoteDisplay({ total: 0, A: 0, B: 0, C: 0, D: 0 });
-        
+
+        const text = await response.text();
+        if (!response.ok) {
+            console.error(`new-question HTTP ${response.status} from ${url}:`, text);
+            return;
+        }
+        const data = JSON.parse(text);
+        if (data.success) {
+            console.log('New question confirmed by server:', data);
+        } else {
+            console.error('Server rejected new-question:', data);
+        }
+
     } catch (error) {
-        console.error('Error notifying new question:', error);
+        console.error('Error notifying new question (URL was: ' + url + '):', error);
     }
 }
 
@@ -152,7 +161,7 @@ async function pollResults() {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
         
-        const response = await fetch(`${SERVER_URL}/results`, {
+        const response = await fetch(`${SERVER_URL}/api.php?action=results`, {
             signal: controller.signal
         });
         clearTimeout(timeoutId);
@@ -330,10 +339,12 @@ function stopPolling() {
  * Handle slide change events
  * @param {Object} event - Reveal.js slide change event
  */
-function onSlideChanged(event) {
+async function onSlideChanged(event) {
     const slide = event.currentSlide;
     const isQuestion = slide.hasAttribute('data-question-slide');
     
+    console.log('onSlideChanged fired — isQuestion:', isQuestion, '| slide:', slide.id || slide.className || '(no id/class)');
+
     // Get the global vote display
     const voteDisplay = document.querySelector('.vote-display');
     
@@ -345,28 +356,23 @@ function onSlideChanged(event) {
         isQuestionSlide = true;
         const questionTitle = getQuestionTitle(slide);
         
-        console.log('Entered question slide:', questionTitle);
+        console.log('Entering question slide:', questionTitle);
         
-        // Show the vote display
+        // Show the vote display and reset counters immediately (optimistic reset)
         if (voteDisplay) {
             voteDisplay.style.display = 'block';
         }
-        
-        // Notify server about new question
-        notifyNewQuestion(questionTitle);
-        
-        // Start polling for results
+        updateVoteDisplay({ total: 0, A: 0, B: 0, C: 0, D: 0 });
+
+        // Hide details panel on new question
+        const detailedVotes = voteDisplay ? voteDisplay.querySelector('.detailed-votes') : null;
+        const button = voteDisplay ? voteDisplay.querySelector('.toggle-details') : null;
+        if (detailedVotes) detailedVotes.classList.add('hidden');
+        if (button) button.textContent = 'Details (D)';
+
+        // Tell the server to reset, then start polling
+        await notifyNewQuestion(questionTitle);
         startPolling();
-        
-        // Ensure details are hidden initially
-        const detailedVotes = voteDisplay.querySelector('.detailed-votes');
-        const button = voteDisplay.querySelector('.toggle-details');
-        if (detailedVotes) {
-            detailedVotes.classList.add('hidden');
-        }
-        if (button) {
-            button.textContent = 'Details (D)';
-        }
         
     } else {
         isQuestionSlide = false;

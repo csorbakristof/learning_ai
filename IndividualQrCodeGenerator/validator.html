@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Answer Validator</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; color: #333; }
+    h1 { color: #1a73e8; border-bottom: 2px solid #1a73e8; padding-bottom: 8px; }
+    h2 { color: #444; font-size: 1.05em; margin: 0 0 12px; }
+    .section { background: #f8f9fa; border: 1px solid #dadce0; border-radius: 8px; padding: 18px 20px; margin-bottom: 18px; }
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field { margin-bottom: 10px; }
+    .field:last-child { margin-bottom: 0; }
+    label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 4px; }
+    input[type=text], input[type=number] { width: 100%; padding: 8px 11px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+    textarea { width: 100%; padding: 9px 11px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; font-family: monospace; resize: vertical; }
+    input:focus, textarea:focus { outline: none; border-color: #1a73e8; box-shadow: 0 0 0 2px rgba(26,115,232,.18); }
+    .hint { font-size: 12px; color: #777; margin-top: 3px; }
+    .btn { display: block; width: 100%; background: #1a73e8; color: #fff; padding: 13px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; margin-top: 4px; }
+    .btn:hover { background: #1558b0; }
+    #summary { margin: 16px 0 8px; font-size: 15px; font-weight: bold; }
+    #results-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    #results-table th { background: #1a73e8; color: #fff; padding: 8px 10px; text-align: left; white-space: nowrap; }
+    #results-table td { padding: 7px 10px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+    #results-table tr.valid   td { background: #e8f5e9; }
+    #results-table tr.invalid td { background: #ffebee; }
+    .ok   { color: #2e7d32; font-weight: bold; }
+    .fail { color: #c62828; font-weight: bold; }
+    code { background: #eef; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+    p { margin: 0 0 10px; font-size: 14px; color: #555; }
+    .checkbox-row { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 10px; }
+    .checkbox-row input[type=checkbox] { width: auto; }
+  </style>
+</head>
+<body>
+  <h1>QR Code Answer Validator</h1>
+  <p>Paste Google Sheets data from your Google Form responses, configure the columns and salt, then click <strong>Validate</strong>.</p>
+
+  <div class="section">
+    <h2>Security</h2>
+    <div class="field">
+      <label for="salt">Salt Value</label>
+      <input type="text" id="salt" placeholder="The same salt used when generating the QR codes">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Column Mapping</h2>
+    <p>Enter the 1-based column index for each field in the pasted data. Google Sheets puts the form submission timestamp in column 1 by default.</p>
+    <div class="cols">
+      <div class="field">
+        <label for="col-submit-ts">Form Submission Timestamp column</label>
+        <input type="number" id="col-submit-ts" value="1" min="1">
+        <div class="hint">Auto-added by Google Forms (e.g. "5/28/2024 14:30:00")</div>
+      </div>
+      <div class="field">
+        <label for="col-random">Random ID column</label>
+        <input type="number" id="col-random" value="2" min="1">
+      </div>
+      <div class="field">
+        <label for="col-qr-ts">QR Timestamp column</label>
+        <input type="number" id="col-qr-ts" value="3" min="1">
+        <div class="hint">Format: YYYYMMDDHHMMSS (from the QR code)</div>
+      </div>
+      <div class="field">
+        <label for="col-validation">Validation Code column</label>
+        <input type="number" id="col-validation" value="4" min="1">
+        <div class="hint">5-character hex string from the QR code</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Google Sheets Data</h2>
+    <div class="checkbox-row">
+      <input type="checkbox" id="has-header" checked>
+      <label for="has-header" style="display:inline; font-weight:normal">First row is a header row (skip it)</label>
+    </div>
+    <div class="field">
+      <textarea id="data" rows="10" placeholder="Paste tab-separated data from Google Sheets here (Ctrl+A, Ctrl+C in Google Sheets, then paste here)..."></textarea>
+    </div>
+  </div>
+
+  <button class="btn" onclick="validate()">Validate</button>
+
+  <div id="output" style="display:none">
+    <div id="summary"></div>
+    <div style="overflow-x:auto">
+      <table id="results-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Submit Timestamp</th>
+            <th>Random ID</th>
+            <th>QR Timestamp</th>
+            <th>Provided Code</th>
+            <th>Expected Code</th>
+            <th>Hash OK?</th>
+            <th>Time Diff</th>
+            <th>Timing OK?</th>
+            <th>Valid?</th>
+          </tr>
+        </thead>
+        <tbody id="results-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // SHA-1 (pure JS, handles UTF-8) — must match the display page implementation
+    function sha1(input) {
+      function toBytes(str) {
+        var b = [];
+        for (var i = 0; i < str.length; i++) {
+          var c = str.charCodeAt(i);
+          if (c < 0x80) { b.push(c); }
+          else if (c < 0x800) { b.push((c >> 6) | 0xC0, (c & 0x3F) | 0x80); }
+          else { b.push((c >> 12) | 0xE0, ((c >> 6) & 0x3F) | 0x80, (c & 0x3F) | 0x80); }
+        }
+        return b;
+      }
+      function rotl(n, s) { return ((n << s) | (n >>> (32 - s))) >>> 0; }
+      var bytes = toBytes(input);
+      var blen  = bytes.length;
+      bytes.push(0x80);
+      while ((bytes.length % 64) !== 56) bytes.push(0);
+      var bl = blen * 8;
+      bytes.push(0, 0, 0, 0, (bl >>> 24) & 0xFF, (bl >>> 16) & 0xFF, (bl >>> 8) & 0xFF, bl & 0xFF);
+      var H = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0];
+      for (var bi = 0; bi < bytes.length; bi += 64) {
+        var W = [];
+        for (var j = 0; j < 16; j++)
+          W[j] = ((bytes[bi+j*4] << 24) | (bytes[bi+j*4+1] << 16) | (bytes[bi+j*4+2] << 8) | bytes[bi+j*4+3]) >>> 0;
+        for (var j = 16; j < 80; j++) W[j] = rotl(W[j-3] ^ W[j-8] ^ W[j-14] ^ W[j-16], 1);
+        var a=H[0], b=H[1], c=H[2], d=H[3], e=H[4], f, k, t;
+        for (var j = 0; j < 80; j++) {
+          if      (j < 20) { f = ((b & c) | (~b & d)) >>> 0;          k = 0x5A827999; }
+          else if (j < 40) { f = (b ^ c ^ d) >>> 0;                   k = 0x6ED9EBA1; }
+          else if (j < 60) { f = ((b & c) | (b & d) | (c & d)) >>> 0; k = 0x8F1BBCDC; }
+          else             { f = (b ^ c ^ d) >>> 0;                   k = 0xCA62C1D6; }
+          t = (rotl(a, 5) + f + e + W[j] + k) >>> 0;
+          e = d; d = c; c = rotl(b, 30); b = a; a = t;
+        }
+        H[0]=(H[0]+a)>>>0; H[1]=(H[1]+b)>>>0; H[2]=(H[2]+c)>>>0; H[3]=(H[3]+d)>>>0; H[4]=(H[4]+e)>>>0;
+      }
+      return H.map(function(n) { return n.toString(16).padStart(8, '0'); }).join('');
+    }
+
+    // Parse a QR timestamp in YYYYMMDDHHMMSS format as local time
+    function parseQrTimestamp(ts) {
+      ts = ts.trim();
+      if (ts.length !== 14) return null;
+      return new Date(
+        parseInt(ts.substr(0,4), 10),
+        parseInt(ts.substr(4,2), 10) - 1,
+        parseInt(ts.substr(6,2), 10),
+        parseInt(ts.substr(8,2), 10),
+        parseInt(ts.substr(10,2), 10),
+        parseInt(ts.substr(12,2), 10)
+      );
+    }
+
+    // Parse the Google Forms submission timestamp (accepts most locale formats via Date constructor)
+    function parseSubmitTimestamp(ts) {
+      var d = new Date(ts.trim());
+      return isNaN(d.getTime()) ? null : d;
+    }
+
+    function esc(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function validate() {
+      var salt         = document.getElementById('salt').value;
+      var colSubmitTs  = parseInt(document.getElementById('col-submit-ts').value, 10) - 1;
+      var colRandom    = parseInt(document.getElementById('col-random').value, 10) - 1;
+      var colQrTs      = parseInt(document.getElementById('col-qr-ts').value, 10) - 1;
+      var colValidation= parseInt(document.getElementById('col-validation').value, 10) - 1;
+      var hasHeader    = document.getElementById('has-header').checked;
+      var rawData      = document.getElementById('data').value;
+
+      if (!salt) { alert('Please enter the salt value.'); return; }
+      if (!rawData.trim()) { alert('Please paste some data.'); return; }
+
+      var lines = rawData.split('\n');
+      var startIdx = hasHeader ? 1 : 0;
+      var dataLines = lines.slice(startIdx);
+
+      var results = [];
+      for (var i = 0; i < dataLines.length; i++) {
+        var line = dataLines[i];
+        if (!line.trim()) continue;
+        var cols = line.split('\t');
+
+        var submitTs  = (cols[colSubmitTs]   || '').trim();
+        var randomId  = (cols[colRandom]     || '').trim();
+        var qrTs      = (cols[colQrTs]       || '').trim();
+        var provided  = (cols[colValidation] || '').trim();
+
+        // Hash check: sha1(randomId + qrTimestamp + salt), first 5 chars
+        var expected = sha1(randomId + qrTs + salt).substring(0, 5);
+        var hashOk   = provided.toLowerCase() === expected.toLowerCase();
+
+        // Timing check: |submitTime - qrTime| <= 10 minutes (600 seconds)
+        var submitDate = parseSubmitTimestamp(submitTs);
+        var qrDate     = parseQrTimestamp(qrTs);
+        var timingOk   = false;
+        var timeDiffSec = null;
+
+        if (submitDate && qrDate) {
+          timeDiffSec = Math.round(Math.abs(submitDate.getTime() - qrDate.getTime()) / 1000);
+          timingOk = timeDiffSec <= 600;
+        }
+
+        results.push({
+          rowNum:     startIdx + i + 1,
+          submitTs:   submitTs,
+          randomId:   randomId,
+          qrTs:       qrTs,
+          provided:   provided,
+          expected:   expected,
+          hashOk:     hashOk,
+          timeDiffSec:timeDiffSec,
+          timingOk:   timingOk,
+          valid:      hashOk && timingOk
+        });
+      }
+
+      // Render results
+      var valid   = results.filter(function(r) { return r.valid; }).length;
+      var invalid = results.length - valid;
+
+      var summaryEl = document.getElementById('summary');
+      summaryEl.innerHTML =
+        'Rows processed: <strong>' + results.length + '</strong> &nbsp;|&nbsp; ' +
+        '<span class="ok">Valid: ' + valid + '</span> &nbsp;|&nbsp; ' +
+        '<span class="fail">Invalid: ' + invalid + '</span>';
+
+      var tbody = document.getElementById('results-body');
+      tbody.innerHTML = '';
+      for (var i = 0; i < results.length; i++) {
+        var r = results[i];
+        var tr = document.createElement('tr');
+        tr.className = r.valid ? 'valid' : 'invalid';
+
+        var timeDiffStr = r.timeDiffSec !== null
+          ? (r.timeDiffSec + 's (' + Math.floor(r.timeDiffSec / 60) + 'm ' + (r.timeDiffSec % 60) + 's)')
+          : '<em>parse error</em>';
+
+        tr.innerHTML =
+          '<td>' + esc(r.rowNum) + '</td>' +
+          '<td>' + esc(r.submitTs) + '</td>' +
+          '<td>' + esc(r.randomId) + '</td>' +
+          '<td>' + esc(r.qrTs) + '</td>' +
+          '<td><code>' + esc(r.provided) + '</code></td>' +
+          '<td><code>' + esc(r.expected) + '</code></td>' +
+          '<td class="' + (r.hashOk ? 'ok' : 'fail') + '">' + (r.hashOk ? '&#10003;' : '&#10007;') + '</td>' +
+          '<td>' + timeDiffStr + '</td>' +
+          '<td class="' + (r.timingOk ? 'ok' : 'fail') + '">' + (r.timingOk ? '&#10003;' : '&#10007;') + '</td>' +
+          '<td class="' + (r.valid ? 'ok' : 'fail') + '">' + (r.valid ? '&#10003; OK' : '&#10007; FAIL') + '</td>';
+
+        tbody.appendChild(tr);
+      }
+
+      document.getElementById('output').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

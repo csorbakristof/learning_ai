@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Code Display Page Generator</title>
+  <title>QR + Validator Page Generator</title>
   <style>
     * { box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; max-width: 660px; margin: 40px auto; padding: 20px; color: #333; }
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 40px auto; padding: 20px; color: #333; }
     h1 { color: #1a73e8; border-bottom: 2px solid #1a73e8; padding-bottom: 8px; }
     h2 { color: #444; font-size: 1.05em; margin: 0 0 12px; }
     .section { background: #f8f9fa; border: 1px solid #dadce0; border-radius: 8px; padding: 18px 20px; margin-bottom: 18px; }
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .field { margin-bottom: 13px; }
     .field:last-child { margin-bottom: 0; }
     label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 4px; }
-    input[type=text], input[type=url] { width: 100%; padding: 9px 11px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+    input[type=text], input[type=url], input[type=number] { width: 100%; padding: 9px 11px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
     input:focus { outline: none; border-color: #1a73e8; box-shadow: 0 0 0 2px rgba(26,115,232,.18); }
     .hint { font-size: 12px; color: #777; margin-top: 3px; }
+    .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .btn { display: block; width: 100%; background: #1a73e8; color: #fff; padding: 13px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; margin-top: 4px; }
     .btn:hover { background: #1558b0; }
     code { background: #eef; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
@@ -23,35 +25,31 @@
   </style>
 </head>
 <body>
-  <h1>QR Code Display Page Generator</h1>
-  <p>Fill in the settings below, then click <strong>Generate &amp; Download</strong> to create a standalone QR code display page you can open on your phone.</p>
+  <h1>QR + Validator Page Generator</h1>
+  <p>Fill in the settings once, then generate separate standalone files for the QR display page and validator page.</p>
 
   <div class="section">
     <h2>Google Forms Settings</h2>
     <div class="field">
       <label for="forms-url">Google Forms URL</label>
       <input type="url" id="forms-url" placeholder="https://docs.google.com/forms/d/e/.../viewform">
-      <div class="hint">Base URL of your Google Form — no query parameters. Example: the URL up to and including <code>viewform</code>.</div>
+      <div class="hint">Base URL of your Google Form up to <code>viewform</code>.</div>
     </div>
   </div>
 
   <div class="section">
     <h2>Form Field Entry IDs</h2>
-    <p>Open your Google Form, click <em>Get pre-filled link</em>, and read the <code>entry.XXXXXXXXXX</code> parameter names from the resulting URL.</p>
+    <p>Use Google Forms pre-filled links and copy the <code>entry.XXXXXXXXXX</code> names.</p>
     <div class="field">
-      <label for="entry-topic">Entry ID — Topic</label>
+      <label for="entry-topic">Entry ID - Topic</label>
       <input type="text" id="entry-topic" placeholder="entry.1234567890">
     </div>
     <div class="field">
-      <label for="entry-random">Entry ID — Random ID</label>
-      <input type="text" id="entry-random" placeholder="entry.1234567890">
-    </div>
-    <div class="field">
-      <label for="entry-timestamp">Entry ID — Timestamp</label>
+      <label for="entry-timestamp">Entry ID - Timestamp</label>
       <input type="text" id="entry-timestamp" placeholder="entry.1234567890">
     </div>
     <div class="field">
-      <label for="entry-validation">Entry ID — Validation Code</label>
+      <label for="entry-validation">Entry ID - Validation Code</label>
       <input type="text" id="entry-validation" placeholder="entry.1234567890">
     </div>
   </div>
@@ -60,177 +58,374 @@
     <h2>Security</h2>
     <div class="field">
       <label for="salt">Salt Value</label>
-      <input type="text" id="salt" placeholder="Any secret string, e.g.  MyS3cretSalt!2024">
-      <div class="hint">This value will be embedded in the generated HTML file. Keep that file secure (e.g. only on your phone).</div>
+      <input type="text" id="salt" placeholder="Any secret string, e.g. MyS3cretSalt!2026">
+      <div class="hint">This value is embedded in generated files. Keep those files secure.</div>
     </div>
   </div>
 
-  <button class="btn" onclick="generateAndDownload()">Generate &amp; Download Display Page</button>
+  <div class="section">
+    <h2>Validator Column Indices (Fixed in Generated Validator)</h2>
+    <p>These are 1-based columns in pasted Google Sheets data.</p>
+    <div class="cols">
+      <div class="field">
+        <label for="col-submit-ts">Form Submission Timestamp column</label>
+        <input type="number" id="col-submit-ts" min="1" value="1">
+      </div>
+      <div class="field">
+        <label for="col-qr-ts">QR Timestamp column</label>
+        <input type="number" id="col-qr-ts" min="1" value="3">
+      </div>
+      <div class="field">
+        <label for="col-validation">Validation Code column</label>
+        <input type="number" id="col-validation" min="1" value="4">
+      </div>
+      <div class="field">
+        <label for="skip-header">Skip first row (header)</label>
+        <input type="text" id="skip-header" value="yes" placeholder="yes or no">
+        <div class="hint">Use <code>yes</code> if pasted data includes the header row.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn" onclick="generateDisplayPage()">Generate QR Display Page</button>
+    <button class="btn" onclick="generateValidatorPage()">Generate Validation Page</button>
+  </div>
 
   <script>
-    function generateAndDownload() {
-      var formsUrl      = document.getElementById('forms-url').value.trim();
-      var salt          = document.getElementById('salt').value;
-      var entryTopic    = document.getElementById('entry-topic').value.trim();
-      var entryRandom   = document.getElementById('entry-random').value.trim();
-      var entryTimestamp= document.getElementById('entry-timestamp').value.trim();
-      var entryValidation=document.getElementById('entry-validation').value.trim();
+    function getConfig() {
+      var config = {
+        formsUrl: document.getElementById('forms-url').value.trim(),
+        entryTopic: document.getElementById('entry-topic').value.trim(),
+        entryTimestamp: document.getElementById('entry-timestamp').value.trim(),
+        entryValidation: document.getElementById('entry-validation').value.trim(),
+        salt: document.getElementById('salt').value,
+        colSubmitTs: parseInt(document.getElementById('col-submit-ts').value, 10),
+        colQrTs: parseInt(document.getElementById('col-qr-ts').value, 10),
+        colValidation: parseInt(document.getElementById('col-validation').value, 10),
+        skipHeader: (document.getElementById('skip-header').value || '').trim().toLowerCase() !== 'no'
+      };
 
-      if (!formsUrl || !salt || !entryTopic || !entryRandom || !entryTimestamp || !entryValidation) {
-        alert('Please fill in all fields before generating.');
-        return;
+      if (!config.formsUrl || !config.entryTopic || !config.entryTimestamp || !config.entryValidation || !config.salt) {
+        alert('Please fill in all Google Forms and security fields.');
+        return null;
       }
 
-      var html = buildDisplayPage(formsUrl, salt, entryTopic, entryRandom, entryTimestamp, entryValidation);
+      if (!Number.isInteger(config.colSubmitTs) || config.colSubmitTs < 1 ||
+          !Number.isInteger(config.colQrTs) || config.colQrTs < 1 ||
+          !Number.isInteger(config.colValidation) || config.colValidation < 1) {
+        alert('Validator column indices must be integers greater than or equal to 1.');
+        return null;
+      }
+
+      return config;
+    }
+
+    function downloadHtml(filename, html) {
       var blob = new Blob([html], { type: 'text/html' });
-      var url  = URL.createObjectURL(blob);
-      var a    = document.createElement('a');
-      a.href   = url;
-      a.download = 'qr-display.html';
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     }
 
-    function buildDisplayPage(formsUrl, salt, entryTopic, entryRandom, entryTimestamp, entryValidation) {
-      // JSON.stringify safely escapes all special characters for embedding in JS
-      var jFormsUrl       = JSON.stringify(formsUrl);
-      var jSalt           = JSON.stringify(salt);
-      var jEntryTopic     = JSON.stringify(entryTopic);
-      var jEntryRandom    = JSON.stringify(entryRandom);
-      var jEntryTimestamp = JSON.stringify(entryTimestamp);
-      var jEntryValidation= JSON.stringify(entryValidation);
+    function generateDisplayPage() {
+      var config = getConfig();
+      if (!config) return;
+      downloadHtml('qr-display.html', buildDisplayPage(config));
+    }
 
-      // Build lines of the generated HTML file
-      var lines = [
-        '<!DOCTYPE html>',
-        '<html lang="en">',
-        '<head>',
-        '  <meta charset="UTF-8">',
-        '  <meta name="viewport" content="width=device-width, initial-scale=1.0">',
-        '  <title>Student QR Code</title>',
-        '  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"><\/script>',
-        '  <style>',
-        '    * { box-sizing: border-box; }',
-        '    body { font-family: Arial, sans-serif; background: #fff; text-align: center; padding: 20px; margin: 0; }',
-        '    h1 { color: #1a73e8; margin-bottom: 16px; }',
-        '    #controls { margin: 0 auto 24px; }',
-        '    #topic-input { padding: 10px 14px; font-size: 18px; border: 2px solid #ccc; border-radius: 6px; width: 260px; }',
-        '    #generate-btn { background: #1a73e8; color: #fff; padding: 11px 22px; border: none; border-radius: 6px; font-size: 18px; cursor: pointer; margin-left: 8px; vertical-align: middle; }',
-        '    #generate-btn:hover { background: #1558b0; }',
-        '    #qr-wrap { margin: 0 auto 20px; display: none; padding: 14px; border: 2px solid #dadce0; border-radius: 10px; display: inline-block; }',
-        '    #qr-wrap.visible { display: inline-block; }',
-        '    #info-table { margin: 0 auto 12px; border-collapse: collapse; min-width: 340px; display: none; }',
-        '    #info-table.visible { display: table; }',
-        '    #info-table td { padding: 7px 16px; border: 1px solid #ddd; text-align: left; font-size: 15px; }',
-        '    #info-table td:first-child { font-weight: bold; background: #f5f5f5; min-width: 150px; }',
-        '    #url-display { word-break: break-all; max-width: 640px; margin: 4px auto 0; font-size: 11px; color: #aaa; }',
-        '  </style>',
-        '</head>',
-        '<body>',
-        '  <h1>Student QR Code</h1>',
-        '  <div id="controls">',
-        '    <input type="text" id="topic-input" placeholder="Topic (e.g. Lecture 3)">',
-        '    <button id="generate-btn" onclick="generateNext()">Next QR Code</button>',
-        '  </div>',
-        '  <div id="qr-wrap">',
-        '    <div id="qr-container"></div>',
-        '  </div>',
-        '  <table id="info-table">',
-        '    <tr><td>Topic</td><td id="v-topic"></td></tr>',
-        '    <tr><td>Random ID</td><td id="v-random"></td></tr>',
-        '    <tr><td>Timestamp</td><td id="v-timestamp"></td></tr>',
-        '    <tr><td>Validation Code</td><td id="v-validation"></td></tr>',
-        '  </table>',
-        '  <div id="url-display"></div>',
-        '',
-        '  <script>',
-        '    var FORMS_URL        = ' + jFormsUrl + ';',
-        '    var SALT             = ' + jSalt + ';',
-        '    var ENTRY_TOPIC      = ' + jEntryTopic + ';',
-        '    var ENTRY_RANDOM     = ' + jEntryRandom + ';',
-        '    var ENTRY_TIMESTAMP  = ' + jEntryTimestamp + ';',
-        '    var ENTRY_VALIDATION = ' + jEntryValidation + ';',
-        '',
-        '    // SHA-1 (pure JS, handles UTF-8)',
-        '    function sha1(input) {',
-        '      function toBytes(str) {',
-        '        var b = [];',
-        '        for (var i = 0; i < str.length; i++) {',
-        '          var c = str.charCodeAt(i);',
-        '          if (c < 0x80) { b.push(c); }',
-        '          else if (c < 0x800) { b.push((c >> 6) | 0xC0, (c & 0x3F) | 0x80); }',
-        '          else { b.push((c >> 12) | 0xE0, ((c >> 6) & 0x3F) | 0x80, (c & 0x3F) | 0x80); }',
-        '        }',
-        '        return b;',
-        '      }',
-        '      function rotl(n, s) { return ((n << s) | (n >>> (32 - s))) >>> 0; }',
-        '      var bytes = toBytes(input);',
-        '      var blen  = bytes.length;',
-        '      bytes.push(0x80);',
-        '      while ((bytes.length % 64) !== 56) bytes.push(0);',
-        '      var bl = blen * 8;',
-        '      bytes.push(0, 0, 0, 0, (bl >>> 24) & 0xFF, (bl >>> 16) & 0xFF, (bl >>> 8) & 0xFF, bl & 0xFF);',
-        '      var H = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0];',
-        '      for (var bi = 0; bi < bytes.length; bi += 64) {',
-        '        var W = [];',
-        '        for (var j = 0; j < 16; j++)',
-        '          W[j] = ((bytes[bi+j*4] << 24) | (bytes[bi+j*4+1] << 16) | (bytes[bi+j*4+2] << 8) | bytes[bi+j*4+3]) >>> 0;',
-        '        for (var j = 16; j < 80; j++) W[j] = rotl(W[j-3] ^ W[j-8] ^ W[j-14] ^ W[j-16], 1);',
-        '        var a=H[0], b=H[1], c=H[2], d=H[3], e=H[4], f, k, t;',
-        '        for (var j = 0; j < 80; j++) {',
-        '          if      (j < 20) { f = ((b & c) | (~b & d)) >>> 0;          k = 0x5A827999; }',
-        '          else if (j < 40) { f = (b ^ c ^ d) >>> 0;                   k = 0x6ED9EBA1; }',
-        '          else if (j < 60) { f = ((b & c) | (b & d) | (c & d)) >>> 0; k = 0x8F1BBCDC; }',
-        '          else             { f = (b ^ c ^ d) >>> 0;                   k = 0xCA62C1D6; }',
-        '          t = (rotl(a, 5) + f + e + W[j] + k) >>> 0;',
-        '          e = d; d = c; c = rotl(b, 30); b = a; a = t;',
-        '        }',
-        '        H[0]=(H[0]+a)>>>0; H[1]=(H[1]+b)>>>0; H[2]=(H[2]+c)>>>0; H[3]=(H[3]+d)>>>0; H[4]=(H[4]+e)>>>0;',
-        '      }',
-        '      return H.map(function(n) { return n.toString(16).padStart(8, "0"); }).join("");',
-        '    }',
-        '',
-        '    function getTimestamp() {',
-        '      var now = new Date();',
-        '      var p = function(n) { return String(n).padStart(2, "0"); };',
-        '      return "" + now.getFullYear() + p(now.getMonth()+1) + p(now.getDate())',
-        '             + p(now.getHours()) + p(now.getMinutes()) + p(now.getSeconds());',
-        '    }',
-        '',
-        '    function generateNext() {',
-        '      var topic      = document.getElementById("topic-input").value;',
-        '      var randomId   = Math.floor(Math.random() * 10000) + 1;',
-        '      var timestamp  = getTimestamp();',
-        '      var hashInput  = String(randomId) + timestamp + SALT;',
-        '      var validation = sha1(hashInput).substring(0, 5);',
-        '',
-        '      var url = new URL(FORMS_URL);',
-        '      url.searchParams.set(ENTRY_TOPIC,      topic);',
-        '      url.searchParams.set(ENTRY_RANDOM,     String(randomId));',
-        '      url.searchParams.set(ENTRY_TIMESTAMP,  timestamp);',
-        '      url.searchParams.set(ENTRY_VALIDATION, validation);',
-        '      var fullUrl = url.toString();',
-        '',
-        '      var container = document.getElementById("qr-container");',
-        '      container.innerHTML = "";',
-        '      new QRCode(container, { text: fullUrl, width: 400, height: 400, correctLevel: QRCode.CorrectLevel.L });',
-        '',
-        '      document.getElementById("v-topic").textContent      = topic || "(empty)";',
-        '      document.getElementById("v-random").textContent     = randomId;',
-        '      document.getElementById("v-timestamp").textContent  = timestamp;',
-        '      document.getElementById("v-validation").textContent = validation;',
-        '      document.getElementById("qr-wrap").classList.add("visible");',
-        '      document.getElementById("info-table").classList.add("visible");',
-        '      document.getElementById("url-display").textContent  = fullUrl;',
-        '    }',
-        '  <\/script>',
-        '</body>',
-        '</html>'
-      ];
+    function generateValidatorPage() {
+      var config = getConfig();
+      if (!config) return;
+      downloadHtml('qr-validator.html', buildValidatorPage(config));
+    }
 
-      return lines.join('\n');
+    function buildDisplayPage(config) {
+      var jFormsUrl = JSON.stringify(config.formsUrl);
+      var jEntryTopic = JSON.stringify(config.entryTopic);
+      var jEntryTimestamp = JSON.stringify(config.entryTimestamp);
+      var jEntryValidation = JSON.stringify(config.entryValidation);
+      var jSalt = JSON.stringify(config.salt);
+
+      return '<!DOCTYPE html>\n' +
+        '<html lang="en">\n' +
+        '<head>\n' +
+        '  <meta charset="UTF-8">\n' +
+        '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
+        '  <title>Student QR Code</title>\n' +
+        '  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"><\\/script>\n' +
+        '  <style>\n' +
+        '    * { box-sizing: border-box; }\n' +
+        '    body { font-family: Arial, sans-serif; background: #fff; text-align: center; padding: 20px; margin: 0; }\n' +
+        '    h1 { color: #1a73e8; margin-bottom: 16px; }\n' +
+        '    #controls { margin: 0 auto 24px; }\n' +
+        '    #topic-input { padding: 10px 14px; font-size: 18px; border: 2px solid #ccc; border-radius: 6px; width: 320px; max-width: 95%; }\n' +
+        '    #generate-btn { background: #1a73e8; color: #fff; padding: 11px 22px; border: none; border-radius: 6px; font-size: 18px; cursor: pointer; margin-left: 8px; vertical-align: middle; }\n' +
+        '    #generate-btn:hover { background: #1558b0; }\n' +
+        '    #qr-wrap { margin: 0 auto 20px; display: none; padding: 14px; border: 2px solid #dadce0; border-radius: 10px; }\n' +
+        '    #qr-wrap.visible { display: inline-block; }\n' +
+        '    #info-table { margin: 0 auto 12px; border-collapse: collapse; min-width: 340px; display: none; }\n' +
+        '    #info-table.visible { display: table; }\n' +
+        '    #info-table td { padding: 7px 16px; border: 1px solid #ddd; text-align: left; font-size: 15px; }\n' +
+        '    #info-table td:first-child { font-weight: bold; background: #f5f5f5; min-width: 150px; }\n' +
+        '    #url-display { word-break: break-all; max-width: 760px; margin: 8px auto 0; font-size: 12px; }\n' +
+        '    #url-display a { color: #1a73e8; }\n' +
+        '  </style>\n' +
+        '</head>\n' +
+        '<body>\n' +
+        '  <h1>Student QR Code</h1>\n' +
+        '  <div id="controls">\n' +
+        '    <input type="text" id="topic-input" placeholder="Topic (e.g. Lecture 3)">\n' +
+        '    <button id="generate-btn" onclick="generateNext()">Next QR Code</button>\n' +
+        '  </div>\n' +
+        '  <div id="qr-wrap">\n' +
+        '    <div id="qr-container"></div>\n' +
+        '  </div>\n' +
+        '  <table id="info-table">\n' +
+        '    <tr><td>Topic</td><td id="v-topic"></td></tr>\n' +
+        '    <tr><td>Timestamp</td><td id="v-timestamp"></td></tr>\n' +
+        '    <tr><td>Validation Code</td><td id="v-validation"></td></tr>\n' +
+        '  </table>\n' +
+        '  <div id="url-display"></div>\n' +
+        '  <script>\n' +
+        '    var FORMS_URL = ' + jFormsUrl + ';\n' +
+        '    var ENTRY_TOPIC = ' + jEntryTopic + ';\n' +
+        '    var ENTRY_TIMESTAMP = ' + jEntryTimestamp + ';\n' +
+        '    var ENTRY_VALIDATION = ' + jEntryValidation + ';\n' +
+        '    var SALT = ' + jSalt + ';\n' +
+        '    function sha1(input) {\n' +
+        '      function toBytes(str) {\n' +
+        '        var b = [];\n' +
+        '        for (var i = 0; i < str.length; i++) {\n' +
+        '          var c = str.charCodeAt(i);\n' +
+        '          if (c < 0x80) { b.push(c); }\n' +
+        '          else if (c < 0x800) { b.push((c >> 6) | 0xC0, (c & 0x3F) | 0x80); }\n' +
+        '          else { b.push((c >> 12) | 0xE0, ((c >> 6) & 0x3F) | 0x80, (c & 0x3F) | 0x80); }\n' +
+        '        }\n' +
+        '        return b;\n' +
+        '      }\n' +
+        '      function rotl(n, s) { return ((n << s) | (n >>> (32 - s))) >>> 0; }\n' +
+        '      var bytes = toBytes(input);\n' +
+        '      var blen = bytes.length;\n' +
+        '      bytes.push(0x80);\n' +
+        '      while ((bytes.length % 64) !== 56) bytes.push(0);\n' +
+        '      var bl = blen * 8;\n' +
+        '      bytes.push(0, 0, 0, 0, (bl >>> 24) & 0xFF, (bl >>> 16) & 0xFF, (bl >>> 8) & 0xFF, bl & 0xFF);\n' +
+        '      var H = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0];\n' +
+        '      for (var bi = 0; bi < bytes.length; bi += 64) {\n' +
+        '        var W = [];\n' +
+        '        for (var j = 0; j < 16; j++) {\n' +
+        '          W[j] = ((bytes[bi + j * 4] << 24) | (bytes[bi + j * 4 + 1] << 16) | (bytes[bi + j * 4 + 2] << 8) | bytes[bi + j * 4 + 3]) >>> 0;\n' +
+        '        }\n' +
+        '        for (var j2 = 16; j2 < 80; j2++) W[j2] = rotl(W[j2 - 3] ^ W[j2 - 8] ^ W[j2 - 14] ^ W[j2 - 16], 1);\n' +
+        '        var a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f, k, t;\n' +
+        '        for (var j3 = 0; j3 < 80; j3++) {\n' +
+        '          if (j3 < 20) { f = ((b & c) | (~b & d)) >>> 0; k = 0x5A827999; }\n' +
+        '          else if (j3 < 40) { f = (b ^ c ^ d) >>> 0; k = 0x6ED9EBA1; }\n' +
+        '          else if (j3 < 60) { f = ((b & c) | (b & d) | (c & d)) >>> 0; k = 0x8F1BBCDC; }\n' +
+        '          else { f = (b ^ c ^ d) >>> 0; k = 0xCA62C1D6; }\n' +
+        '          t = (rotl(a, 5) + f + e + W[j3] + k) >>> 0;\n' +
+        '          e = d; d = c; c = rotl(b, 30); b = a; a = t;\n' +
+        '        }\n' +
+        '        H[0] = (H[0] + a) >>> 0; H[1] = (H[1] + b) >>> 0; H[2] = (H[2] + c) >>> 0; H[3] = (H[3] + d) >>> 0; H[4] = (H[4] + e) >>> 0;\n' +
+        '      }\n' +
+        '      return H.map(function(n) { return n.toString(16).padStart(8, "0"); }).join("");\n' +
+        '    }\n' +
+        '    function getTimestamp() {\n' +
+        '      var now = new Date();\n' +
+        '      var p = function(n) { return String(n).padStart(2, "0"); };\n' +
+        '      return "" + now.getFullYear() + p(now.getMonth() + 1) + p(now.getDate()) + p(now.getHours()) + p(now.getMinutes()) + p(now.getSeconds());\n' +
+        '    }\n' +
+        '    function generateNext() {\n' +
+        '      var topic = document.getElementById("topic-input").value;\n' +
+        '      var timestamp = getTimestamp();\n' +
+        '      var validation = sha1(timestamp + SALT).substring(0, 5).toUpperCase();\n' +
+        '      var url = new URL(FORMS_URL);\n' +
+        '      url.searchParams.set(ENTRY_TOPIC, topic);\n' +
+        '      url.searchParams.set(ENTRY_TIMESTAMP, timestamp);\n' +
+        '      url.searchParams.set(ENTRY_VALIDATION, validation);\n' +
+        '      var fullUrl = url.toString();\n' +
+        '      var container = document.getElementById("qr-container");\n' +
+        '      container.innerHTML = "";\n' +
+        '      new QRCode(container, { text: fullUrl, width: 400, height: 400, correctLevel: QRCode.CorrectLevel.L });\n' +
+        '      document.getElementById("v-topic").textContent = topic || "(empty)";\n' +
+        '      document.getElementById("v-timestamp").textContent = timestamp;\n' +
+        '      document.getElementById("v-validation").textContent = validation;\n' +
+        '      document.getElementById("qr-wrap").classList.add("visible");\n' +
+        '      document.getElementById("info-table").classList.add("visible");\n' +
+        '      var urlDisplay = document.getElementById("url-display");\n' +
+        '      urlDisplay.innerHTML = "";\n' +
+        '      var link = document.createElement("a");\n' +
+        '      link.href = fullUrl;\n' +
+        '      link.target = "_blank";\n' +
+        '      link.rel = "noopener noreferrer";\n' +
+        '      link.textContent = fullUrl;\n' +
+        '      urlDisplay.appendChild(link);\n' +
+        '    }\n' +
+        '  <\\/script>\n' +
+        '</body>\n' +
+        '</html>\n';
+    }
+
+    function buildValidatorPage(config) {
+      var jSalt = JSON.stringify(config.salt);
+      var colSubmitTs = config.colSubmitTs - 1;
+      var colQrTs = config.colQrTs - 1;
+      var colValidation = config.colValidation - 1;
+      var skipHeader = config.skipHeader ? 'true' : 'false';
+
+      return '<!DOCTYPE html>\n' +
+        '<html lang="en">\n' +
+        '<head>\n' +
+        '  <meta charset="UTF-8">\n' +
+        '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
+        '  <title>QR Code Answer Validator</title>\n' +
+        '  <style>\n' +
+        '    * { box-sizing: border-box; }\n' +
+        '    body { font-family: Arial, sans-serif; max-width: 940px; margin: 40px auto; padding: 20px; color: #333; }\n' +
+        '    h1 { color: #1a73e8; border-bottom: 2px solid #1a73e8; padding-bottom: 8px; }\n' +
+        '    .section { background: #f8f9fa; border: 1px solid #dadce0; border-radius: 8px; padding: 18px 20px; margin-bottom: 18px; }\n' +
+        '    textarea { width: 100%; padding: 9px 11px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; font-family: monospace; resize: vertical; }\n' +
+        '    textarea:focus { outline: none; border-color: #1a73e8; box-shadow: 0 0 0 2px rgba(26,115,232,.18); }\n' +
+        '    .btn { display: block; width: 100%; background: #1a73e8; color: #fff; padding: 13px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }\n' +
+        '    .btn:hover { background: #1558b0; }\n' +
+        '    #summary { margin: 16px 0 8px; font-size: 15px; font-weight: bold; }\n' +
+        '    #results-table { width: 100%; border-collapse: collapse; font-size: 13px; }\n' +
+        '    #results-table th { background: #1a73e8; color: #fff; padding: 8px 10px; text-align: left; white-space: nowrap; }\n' +
+        '    #results-table td { padding: 7px 10px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }\n' +
+        '    #results-table tr.valid td { background: #e8f5e9; }\n' +
+        '    #results-table tr.invalid td { background: #ffebee; }\n' +
+        '    .ok { color: #2e7d32; font-weight: bold; }\n' +
+        '    .fail { color: #c62828; font-weight: bold; }\n' +
+        '    p { margin: 0 0 10px; font-size: 14px; color: #555; }\n' +
+        '    code { background: #eef; padding: 1px 4px; border-radius: 3px; font-size: 12px; }\n' +
+        '  </style>\n' +
+        '</head>\n' +
+        '<body>\n' +
+        '  <h1>QR Code Answer Validator</h1>\n' +
+        '  <div class="section">\n' +
+        '    <p>This validator is preconfigured. Paste copied rows from Google Sheets, then click <strong>Validate</strong>.</p>\n' +
+        '    <p><strong>Fixed config:</strong> submit timestamp column = <code>' + String(config.colSubmitTs) + '</code>, QR timestamp column = <code>' + String(config.colQrTs) + '</code>, validation column = <code>' + String(config.colValidation) + '</code>, skip header row = <code>' + (config.skipHeader ? 'yes' : 'no') + '</code>.</p>\n' +
+        '  </div>\n' +
+        '  <div class="section">\n' +
+        '    <textarea id="data" rows="10" placeholder="Paste tab-separated data from Google Sheets here..."></textarea>\n' +
+        '  </div>\n' +
+        '  <button class="btn" onclick="validateRows()">Validate</button>\n' +
+        '  <div id="output" style="display:none">\n' +
+        '    <div id="summary"></div>\n' +
+        '    <div style="overflow-x:auto">\n' +
+        '      <table id="results-table">\n' +
+        '        <thead>\n' +
+        '          <tr>\n' +
+        '            <th>#</th><th>Submit Timestamp</th><th>QR Timestamp</th><th>Provided</th><th>Expected</th><th>Hash OK?</th><th>Time Diff</th><th>Timing OK?</th><th>Valid?</th>\n' +
+        '          </tr>\n' +
+        '        </thead>\n' +
+        '        <tbody id="results-body"></tbody>\n' +
+        '      </table>\n' +
+        '    </div>\n' +
+        '  </div>\n' +
+        '  <script>\n' +
+        '    var SALT = ' + jSalt + ';\n' +
+        '    var COL_SUBMIT_TS = ' + String(colSubmitTs) + ';\n' +
+        '    var COL_QR_TS = ' + String(colQrTs) + ';\n' +
+        '    var COL_VALIDATION = ' + String(colValidation) + ';\n' +
+        '    var SKIP_HEADER_ROW = ' + skipHeader + ';\n' +
+        '    function sha1(input) {\n' +
+        '      function toBytes(str) {\n' +
+        '        var b = [];\n' +
+        '        for (var i = 0; i < str.length; i++) {\n' +
+        '          var c = str.charCodeAt(i);\n' +
+        '          if (c < 0x80) { b.push(c); }\n' +
+        '          else if (c < 0x800) { b.push((c >> 6) | 0xC0, (c & 0x3F) | 0x80); }\n' +
+        '          else { b.push((c >> 12) | 0xE0, ((c >> 6) & 0x3F) | 0x80, (c & 0x3F) | 0x80); }\n' +
+        '        }\n' +
+        '        return b;\n' +
+        '      }\n' +
+        '      function rotl(n, s) { return ((n << s) | (n >>> (32 - s))) >>> 0; }\n' +
+        '      var bytes = toBytes(input);\n' +
+        '      var blen = bytes.length;\n' +
+        '      bytes.push(0x80);\n' +
+        '      while ((bytes.length % 64) !== 56) bytes.push(0);\n' +
+        '      var bl = blen * 8;\n' +
+        '      bytes.push(0, 0, 0, 0, (bl >>> 24) & 0xFF, (bl >>> 16) & 0xFF, (bl >>> 8) & 0xFF, bl & 0xFF);\n' +
+        '      var H = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0];\n' +
+        '      for (var bi = 0; bi < bytes.length; bi += 64) {\n' +
+        '        var W = [];\n' +
+        '        for (var j = 0; j < 16; j++) W[j] = ((bytes[bi + j * 4] << 24) | (bytes[bi + j * 4 + 1] << 16) | (bytes[bi + j * 4 + 2] << 8) | bytes[bi + j * 4 + 3]) >>> 0;\n' +
+        '        for (var j2 = 16; j2 < 80; j2++) W[j2] = rotl(W[j2 - 3] ^ W[j2 - 8] ^ W[j2 - 14] ^ W[j2 - 16], 1);\n' +
+        '        var a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f, k, t;\n' +
+        '        for (var j3 = 0; j3 < 80; j3++) {\n' +
+        '          if (j3 < 20) { f = ((b & c) | (~b & d)) >>> 0; k = 0x5A827999; }\n' +
+        '          else if (j3 < 40) { f = (b ^ c ^ d) >>> 0; k = 0x6ED9EBA1; }\n' +
+        '          else if (j3 < 60) { f = ((b & c) | (b & d) | (c & d)) >>> 0; k = 0x8F1BBCDC; }\n' +
+        '          else { f = (b ^ c ^ d) >>> 0; k = 0xCA62C1D6; }\n' +
+        '          t = (rotl(a, 5) + f + e + W[j3] + k) >>> 0;\n' +
+        '          e = d; d = c; c = rotl(b, 30); b = a; a = t;\n' +
+        '        }\n' +
+        '        H[0] = (H[0] + a) >>> 0; H[1] = (H[1] + b) >>> 0; H[2] = (H[2] + c) >>> 0; H[3] = (H[3] + d) >>> 0; H[4] = (H[4] + e) >>> 0;\n' +
+        '      }\n' +
+        '      return H.map(function(n) { return n.toString(16).padStart(8, "0"); }).join("");\n' +
+        '    }\n' +
+        '    function parseQrTimestamp(ts) {\n' +
+        '      ts = (ts || "").trim();\n' +
+        '      if (!/^\\d{14}$/.test(ts)) return null;\n' +
+        '      return new Date(parseInt(ts.substr(0, 4), 10), parseInt(ts.substr(4, 2), 10) - 1, parseInt(ts.substr(6, 2), 10), parseInt(ts.substr(8, 2), 10), parseInt(ts.substr(10, 2), 10), parseInt(ts.substr(12, 2), 10));\n' +
+        '    }\n' +
+        '    function parseSubmitTimestamp(ts) {\n' +
+        '      var d = new Date((ts || "").trim());\n' +
+        '      return isNaN(d.getTime()) ? null : d;\n' +
+        '    }\n' +
+        '    function esc(str) {\n' +
+        '      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");\n' +
+        '    }\n' +
+        '    function validateRows() {\n' +
+        '      var rawData = document.getElementById("data").value;\n' +
+        '      if (!rawData.trim()) { alert("Please paste some data."); return; }\n' +
+        '      var lines = rawData.split(/\\r?\\n/);\n' +
+        '      var startIdx = SKIP_HEADER_ROW ? 1 : 0;\n' +
+        '      var results = [];\n' +
+        '      for (var i = startIdx; i < lines.length; i++) {\n' +
+        '        var line = lines[i];\n' +
+        '        if (!line || !line.trim()) continue;\n' +
+        '        var cols = line.split("\\t");\n' +
+        '        var submitTs = (cols[COL_SUBMIT_TS] || "").trim();\n' +
+        '        var qrTs = (cols[COL_QR_TS] || "").trim();\n' +
+        '        var provided = (cols[COL_VALIDATION] || "").trim().toUpperCase();\n' +
+        '        var expected = sha1(qrTs + SALT).substring(0, 5).toUpperCase();\n' +
+        '        var hashOk = provided === expected;\n' +
+        '        var submitDate = parseSubmitTimestamp(submitTs);\n' +
+        '        var qrDate = parseQrTimestamp(qrTs);\n' +
+        '        var timingOk = false;\n' +
+        '        var timeDiffSec = null;\n' +
+        '        if (submitDate && qrDate) {\n' +
+        '          timeDiffSec = Math.round(Math.abs(submitDate.getTime() - qrDate.getTime()) / 1000);\n' +
+        '          timingOk = timeDiffSec <= 600;\n' +
+        '        }\n' +
+        '        results.push({ rowNum: i + 1, submitTs: submitTs, qrTs: qrTs, provided: provided, expected: expected, hashOk: hashOk, timeDiffSec: timeDiffSec, timingOk: timingOk, valid: hashOk && timingOk });\n' +
+        '      }\n' +
+        '      var valid = results.filter(function(r) { return r.valid; }).length;\n' +
+        '      var invalid = results.length - valid;\n' +
+        '      document.getElementById("summary").innerHTML = "Rows processed: <strong>" + results.length + "</strong> | <span class=\\"ok\\">Valid: " + valid + "</span> | <span class=\\"fail\\">Invalid: " + invalid + "</span>";\n' +
+        '      var tbody = document.getElementById("results-body");\n' +
+        '      tbody.innerHTML = "";\n' +
+        '      for (var rIdx = 0; rIdx < results.length; rIdx++) {\n' +
+        '        var r = results[rIdx];\n' +
+        '        var tr = document.createElement("tr");\n' +
+        '        tr.className = r.valid ? "valid" : "invalid";\n' +
+        '        var timeDiffStr = r.timeDiffSec !== null ? (r.timeDiffSec + "s (" + Math.floor(r.timeDiffSec / 60) + "m " + (r.timeDiffSec % 60) + "s)") : "<em>parse error</em>";\n' +
+        '        tr.innerHTML = "<td>" + esc(r.rowNum) + "</td>" + "<td>" + esc(r.submitTs) + "</td>" + "<td>" + esc(r.qrTs) + "</td>" + "<td><code>" + esc(r.provided) + "</code></td>" + "<td><code>" + esc(r.expected) + "</code></td>" + "<td class=\\"" + (r.hashOk ? "ok" : "fail") + "\\">" + (r.hashOk ? "&#10003;" : "&#10007;") + "</td>" + "<td>" + timeDiffStr + "</td>" + "<td class=\\"" + (r.timingOk ? "ok" : "fail") + "\\">" + (r.timingOk ? "&#10003;" : "&#10007;") + "</td>" + "<td class=\\"" + (r.valid ? "ok" : "fail") + "\\">" + (r.valid ? "&#10003; OK" : "&#10007; FAIL") + "</td>";\n' +
+        '        tbody.appendChild(tr);\n' +
+        '      }\n' +
+        '      document.getElementById("output").style.display = "block";\n' +
+        '    }\n' +
+        '  <\\/script>\n' +
+        '</body>\n' +
+        '</html>\n';
     }
   </script>
 </body>

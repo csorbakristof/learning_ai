@@ -300,6 +300,7 @@
         '    #results-table td { padding: 7px 10px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }\n' +
         '    #results-table tr.valid td { background: #e8f5e9; }\n' +
         '    #results-table tr.invalid td { background: #ffebee; }\n' +
+        '    #results-table td.duplicate-ts { background: #fff3cd !important; color: #7a4f01; font-weight: bold; }\n' +
         '    .ok { color: #2e7d32; font-weight: bold; }\n' +
         '    .fail { color: #c62828; font-weight: bold; }\n' +
         '    p { margin: 0 0 10px; font-size: 14px; color: #555; }\n' +
@@ -322,7 +323,7 @@
         '      <table id="results-table">\n' +
         '        <thead>\n' +
         '          <tr>\n' +
-        '            <th>#</th><th>Submit Timestamp</th><th>QR Timestamp</th><th>Provided</th><th>Expected</th><th>Hash OK?</th><th>Time Diff</th><th>Timing OK?</th><th>Valid?</th>\n' +
+        '            <th>#</th><th>Submit Timestamp</th><th>QR Timestamp</th><th>Provided</th><th>Expected</th><th>Hash OK?</th><th>Time Diff</th><th>Timing OK?</th><th>Duplicate QR TS?</th><th>Valid?</th>\n' +
         '          </tr>\n' +
         '        </thead>\n' +
         '        <tbody id="results-body"></tbody>\n' +
@@ -406,11 +407,23 @@
         '          timeDiffSec = Math.round(Math.abs(submitDate.getTime() - qrDate.getTime()) / 1000);\n' +
         '          timingOk = timeDiffSec <= 600;\n' +
         '        }\n' +
-        '        results.push({ rowNum: i + 1, submitTs: submitTs, qrTs: qrTs, provided: provided, expected: expected, hashOk: hashOk, timeDiffSec: timeDiffSec, timingOk: timingOk, valid: hashOk && timingOk });\n' +
+        '        results.push({ rowNum: i + 1, submitTs: submitTs, qrTs: qrTs, provided: provided, expected: expected, hashOk: hashOk, timeDiffSec: timeDiffSec, timingOk: timingOk, duplicateTs: false, valid: hashOk && timingOk });\n' +
+        '      }\n' +
+        '      var qrTsCounts = {};\n' +
+        '      for (var c = 0; c < results.length; c++) {\n' +
+        '        var key = results[c].qrTs;\n' +
+        '        if (!key) continue;\n' +
+        '        qrTsCounts[key] = (qrTsCounts[key] || 0) + 1;\n' +
+        '      }\n' +
+        '      for (var m = 0; m < results.length; m++) {\n' +
+        '        var ts = results[m].qrTs;\n' +
+        '        results[m].duplicateTs = !!ts && qrTsCounts[ts] > 1;\n' +
+        '        if (results[m].duplicateTs) results[m].valid = false;\n' +
         '      }\n' +
         '      var valid = results.filter(function(r) { return r.valid; }).length;\n' +
         '      var invalid = results.length - valid;\n' +
-        '      document.getElementById("summary").innerHTML = "Rows processed: <strong>" + results.length + "</strong> | <span class=\\"ok\\">Valid: " + valid + "</span> | <span class=\\"fail\\">Invalid: " + invalid + "</span>";\n' +
+        '      var duplicateRows = results.filter(function(r) { return r.duplicateTs; }).length;\n' +
+        '      document.getElementById("summary").innerHTML = "Rows processed: <strong>" + results.length + "</strong> | <span class=\\"ok\\">Valid: " + valid + "</span> | <span class=\\"fail\\">Invalid: " + invalid + "</span> | <span class=\\"fail\\">Duplicate QR Timestamp rows: " + duplicateRows + "</span>";\n' +
         '      var tbody = document.getElementById("results-body");\n' +
         '      tbody.innerHTML = "";\n' +
         '      for (var rIdx = 0; rIdx < results.length; rIdx++) {\n' +
@@ -418,7 +431,7 @@
         '        var tr = document.createElement("tr");\n' +
         '        tr.className = r.valid ? "valid" : "invalid";\n' +
         '        var timeDiffStr = r.timeDiffSec !== null ? (r.timeDiffSec + "s (" + Math.floor(r.timeDiffSec / 60) + "m " + (r.timeDiffSec % 60) + "s)") : "<em>parse error</em>";\n' +
-        '        tr.innerHTML = "<td>" + esc(r.rowNum) + "</td>" + "<td>" + esc(r.submitTs) + "</td>" + "<td>" + esc(r.qrTs) + "</td>" + "<td><code>" + esc(r.provided) + "</code></td>" + "<td><code>" + esc(r.expected) + "</code></td>" + "<td class=\\"" + (r.hashOk ? "ok" : "fail") + "\\">" + (r.hashOk ? "&#10003;" : "&#10007;") + "</td>" + "<td>" + timeDiffStr + "</td>" + "<td class=\\"" + (r.timingOk ? "ok" : "fail") + "\\">" + (r.timingOk ? "&#10003;" : "&#10007;") + "</td>" + "<td class=\\"" + (r.valid ? "ok" : "fail") + "\\">" + (r.valid ? "&#10003; OK" : "&#10007; FAIL") + "</td>";\n' +
+        '        tr.innerHTML = "<td>" + esc(r.rowNum) + "</td>" + "<td>" + esc(r.submitTs) + "</td>" + "<td class=\\"" + (r.duplicateTs ? "duplicate-ts" : "") + "\\">" + esc(r.qrTs) + "</td>" + "<td><code>" + esc(r.provided) + "</code></td>" + "<td><code>" + esc(r.expected) + "</code></td>" + "<td class=\\"" + (r.hashOk ? "ok" : "fail") + "\\">" + (r.hashOk ? "&#10003;" : "&#10007;") + "</td>" + "<td>" + timeDiffStr + "</td>" + "<td class=\\"" + (r.timingOk ? "ok" : "fail") + "\\">" + (r.timingOk ? "&#10003;" : "&#10007;") + "</td>" + "<td class=\\"" + (r.duplicateTs ? "fail" : "ok") + "\\">" + (r.duplicateTs ? "&#10007; DUPLICATE" : "&#10003;") + "</td>" + "<td class=\\"" + (r.valid ? "ok" : "fail") + "\\">" + (r.valid ? "&#10003; OK" : "&#10007; FAIL") + "</td>";\n' +
         '        tbody.appendChild(tr);\n' +
         '      }\n' +
         '      document.getElementById("output").style.display = "block";\n' +

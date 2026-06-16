@@ -11,7 +11,7 @@ REM of the directory on your web server where api.php and index.php live.
 
 REM Set presentation file (default to presentation.html)
 set PRESENTATION_FILE=%~1
-if "%PRESENTATION_FILE%"=="" set PRESENTATION_FILE=presentation.html
+if "%PRESENTATION_FILE%"=="" set PRESENTATION_FILE=sweep_questions.html
 
 echo ============================================================
 echo   PRESENTATION VOTING SYSTEM (PHP edition)

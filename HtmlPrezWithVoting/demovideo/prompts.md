@@ -18,3 +18,17 @@ You mentioned "**Technology Icons**". Can you download them for me into the asse
 Have a look at the files in screens and assets folders. I will upload these into Google Labs Flow. Please update the prompt to reference these filenames properly. And remove the parts for manual media creation, I do not want to create the video manually.
 
 ---
+
+(Itt futtattam le a promptot a Nano Banana 2-vel, hogy az architektúra diagram elkészüljön.)
+
+---
+
+I have downloaded the #architecture_diagram.png file created by nano banana using your prompt. Update the prompt for Google Labs Flow to reference this file as well as the architecture diagram.
+
+---
+
+(Manuális svg 2 png konverziók.)
+
+---
+
+SVG files are not supported by Google Labs Flow, I converted them to png. Please update the references of these files accordingly in the prompts.

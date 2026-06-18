@@ -11,7 +11,7 @@ Create an animated infographics demo video for "HTML Presentation with Voting" -
 - Display project title: "HTML Presentation with Voting System"
 - Subtitle: "Real-time Interactive Presentations with Audience Engagement"
 - Show animated tech stack icons: Reveal.js, PHP server, and mobile devices
-- **Reference media**: `screens/screen1_title.png`, `assets/revealjs_icon.svg`, `assets/php_icon.png`, `assets/smartphone_icon.svg`
+- **Reference media**: `screens/screen1_title.png`, `assets/revealjs_icon.png`, `assets/php_icon.png`, `assets/smartphone_icon.png`
 
 **Scene 2: Problem Statement (10-20s)**
 - Animated text: "Traditional presentations lack real-time interaction"
@@ -29,11 +29,11 @@ Create an animated infographics demo video for "HTML Presentation with Voting" -
   - Question appears on presentation → Presentation notifies server → Phones poll for updates
   - Votes submitted → Server collects votes → Presentation polls and displays results
   - Real-time counters update on presentation screen
-- Reference media: System diagram illustration
+- **Reference media**: `assets/architecture_diagram.png`
 
 **Scene 4: Presenter Workflow (35-50s)**
 - Show presentation screen with QR code slide
-- **Reference media**: `screens/screen2_qr.png`, `assets/qr_code_icon.svg`
+- **Reference media**: `screens/screen2_qr.png`, `assets/qr_code_icon.png`
 - Animated QR code scanning by multiple phone icons
 - Transition to question slide
 - **Reference media**: `screens/screen3_question.png`
@@ -44,7 +44,7 @@ Create an animated infographics demo video for "HTML Presentation with Voting" -
 
 **Scene 5: Audience Experience (50-65s)**
 - Show mobile phone screen closeup
-- **Reference media**: `screens/screen5_mobileVotingPage.jpg`, `assets/smartphone_icon.svg`
+- **Reference media**: `screens/screen5_mobileVotingPage.jpg`, `assets/smartphone_icon.png`
 - Simple voting interface appears with large A/B/C/D buttons
 - Touch animation on option "B"
 - Success confirmation: "Vote submitted! ✓"
@@ -118,18 +118,15 @@ If adding narration:
 
 ### Technology Icons (Available in `assets/` folder)
 ✅ `php_icon.png` - Official PHP logo (elephant)
-✅ `revealjs_icon.svg` / `revealjs_icon.png` - Reveal.js presentation icon
-✅ `server_icon.svg` - Server icon (blue, professional)
-✅ `qr_code_icon.svg` - QR code icon
-✅ `smartphone_icon.svg` - Smartphone icon (blue)
+✅ `revealjs_icon.png` - Reveal.js presentation icon
+✅ `server_icon.png` - Server icon (blue, professional)
+✅ `qr_code_icon.png` - QR code icon
+✅ `smartphone_icon.png` - Smartphone icon (blue)
 
-### Additional Assets to Create
+### Architecture Diagram (Available in `assets/` folder)
+✅ `architecture_diagram.png` - System architecture diagram (Presenter → PHP Server → Audience Phones)
 
-#### 1. **System Architecture Diagram** (create this with Nano Banana 2)
-- **What**: Simple flowchart showing Presenter → PHP Server → Audience Phones
-- **Format**: PNG, 1920x1080
-- **Tool**: Use the Nano Banana 2 prompt at the end of this document
-- **Filename**: Save as `assets/architecture_diagram.png`
+### Optional Assets to Create
 
 #### 2. **Animation Elements** (optional, Flow may generate)
 - Checkmark/success icon
@@ -169,11 +166,10 @@ demovideo/
 ├── assets/
 │   ├── php_icon.png ✅
 │   ├── revealjs_icon.png ✅
-│   ├── revealjs_icon.svg ✅
-│   ├── server_icon.svg ✅
-│   ├── qr_code_icon.svg ✅
-│   ├── smartphone_icon.svg ✅
-│   └── architecture_diagram.png (TO CREATE with Nano Banana 2)
+│   ├── server_icon.png ✅
+│   ├── qr_code_icon.png ✅
+│   ├── smartphone_icon.png ✅
+│   └── architecture_diagram.png ✅
 └── audio/ (optional)
     ├── background_music.mp3 (OPTIONAL)
     └── voiceover.mp3 (OPTIONAL)
@@ -183,9 +179,9 @@ demovideo/
 
 ## Google Labs Flow Usage Instructions
 
-### Step 1: Prepare Remaining Assets
-1. Create the architecture diagram using the Nano Banana 2 prompt below
-2. (Optional) Select background music and record voiceover
+### Step 1: Prepare Optional Assets
+1. (Optional) Select background music
+2. (Optional) Record voiceover
 
 ### Step 2: Set Up Flow Project
 1. Go to Google Labs Flow (labs.google/flow)
@@ -202,11 +198,11 @@ demovideo/
    - screen5_mobileVotingPage.jpg
 2. Upload all icons and diagrams from `assets/` folder:
    - php_icon.png
-   - revealjs_icon.svg (or .png)
-   - server_icon.svg
-   - qr_code_icon.svg
-   - smartphone_icon.svg
-   - architecture_diagram.png (once created)
+   - revealjs_icon.png
+   - server_icon.png
+   - qr_code_icon.png
+   - smartphone_icon.png
+   - architecture_diagram.png
 3. (Optional) Upload audio files
 
 ### Step 4: Input the Prompt

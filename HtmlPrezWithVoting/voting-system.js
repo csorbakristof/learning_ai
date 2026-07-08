@@ -87,6 +87,8 @@ let currentSlide = null;
 let pollingInterval = null;
 let isQuestionSlide = false;
 let previousVoteCount = 0; // Track previous vote count for animation
+let qrOverlayVisible = false; // Track QR overlay visibility
+let qrOverlayElement = null; // Reference to QR overlay element
 // SERVER_URL is set via window.PHP_SERVER_URL in presentation.html.
 // It points to the directory on the PHP server that contains api.php and index.php.
 const SERVER_URL = (window.PHP_SERVER_URL || '').replace(/\/+$/, '');
@@ -386,10 +388,73 @@ async function onSlideChanged(event) {
 }
 
 /**
+ * Create QR code overlay element
+ */
+function createQROverlay() {
+    if (qrOverlayElement) return; // Already created
+    
+    const overlay = document.createElement('div');
+    overlay.className = 'qr-overlay';
+    overlay.innerHTML = `
+        <div class="qr-code-container">
+            <div id="qrcode-overlay"></div>
+            <h3>Scan to Vote!</h3>
+            <p id="votingUrlOverlay" style="font-size:14px; color:#666; word-break:break-all;"></p>
+            <p class="close-hint">Press Q to close</p>
+        </div>
+    `;
+    
+    document.body.appendChild(overlay);
+    qrOverlayElement = overlay;
+    
+    // Generate QR code for overlay
+    const url = window.PHP_SERVER_URL || '';
+    if (url && url.indexOf('YOUR-SERVER') === -1) {
+        const qrElement = overlay.querySelector('#qrcode-overlay');
+        if (qrElement) {
+            new QRCode(qrElement, {
+                text: url,
+                width: 512,
+                height: 512,
+                correctLevel: QRCode.CorrectLevel.M
+            });
+        }
+        const urlLabel = overlay.querySelector('#votingUrlOverlay');
+        if (urlLabel) {
+            urlLabel.textContent = url;
+        }
+    }
+}
+
+/**
+ * Toggle QR code overlay visibility
+ */
+function toggleQROverlay() {
+    if (!qrOverlayElement) {
+        createQROverlay();
+    }
+    
+    qrOverlayVisible = !qrOverlayVisible;
+    
+    if (qrOverlayVisible) {
+        qrOverlayElement.classList.add('visible');
+    } else {
+        qrOverlayElement.classList.remove('visible');
+    }
+}
+
+/**
  * Handle keyboard events
  * @param {KeyboardEvent} event - Keyboard event
  */
 function onKeyPress(event) {
+    // Check for 'Q' key press (QR overlay)
+    if (event.key === 'q' || event.key === 'Q') {
+        toggleQROverlay();
+        event.preventDefault();
+        return;
+    }
+    
     // Check for 'D' key press (Details)
     if (event.key === 'd' || event.key === 'D') {
         if (isQuestionSlide) {
@@ -415,8 +480,50 @@ Reveal.on('ready', () => {
     }
 });
 
-// Make toggle function globally accessible for onclick handlers
+/**
+ * Initialize QR code on the main slide (for the QR code slide)
+ */
+function initializeMainQRCode() {
+    const url = window.PHP_SERVER_URL || '';
+    const el = document.getElementById('qrcode');
+    const lbl = document.getElementById('votingUrl');
+    
+    if (!url || url.indexOf('YOUR-SERVER') !== -1) {
+        if (el) el.innerHTML = '<p style="color:#c00;">Set PHP_SERVER_URL in sweep_questions.html</p>';
+        return;
+    }
+    
+    if (el) {
+        new QRCode(el, {
+            text: url,
+            width: 256,
+            height: 256,
+            correctLevel: QRCode.CorrectLevel.M
+        });
+    }
+    
+    if (lbl) lbl.textContent = url;
+}
+
+// ============================================
+// INITIALIZATION ON PAGE LOAD
+// ============================================
+
+// Make toggle functions globally accessible for onclick handlers
 window.toggleVoteDetails = toggleVoteDetails;
+window.toggleQROverlay = toggleQROverlay;
+
+// Initialize QR codes when page is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        createQROverlay();
+        initializeMainQRCode();
+    });
+} else {
+    createQROverlay();
+    initializeMainQRCode();
+}
 
 console.log('Voting system initialized');
+console.log('Press Q on any slide to show/hide QR code');
 console.log('Press D on question slides to toggle detailed vote counts');

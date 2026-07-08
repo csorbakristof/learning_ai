@@ -35,7 +35,7 @@
             <section>
                 <h1>Computer Science Fundamentals Quiz</h1>
                 <h3>Interactive Knowledge Check</h3>
-                <p style="margin-top: 50px;">Press <strong>→</strong> to begin</p>
+                <p class="title-slide-subtitle">Press <strong>→</strong> to begin</p>
             </section>
             
             <!-- QR Code Slide -->
@@ -44,7 +44,7 @@
                 <div class="qr-code-container">
                     <div id="qrcode"></div>
                     <h3>Scan with your smartphone</h3>
-                    <p id="votingUrl" style="font-size:14px; color:#666; word-break:break-all;"></p>
+                    <p id="votingUrl" class="voting-url-label"></p>
                     <p>Vote on upcoming questions!</p>
                 </div>
             </section>
@@ -300,7 +300,7 @@
                 <ul>
                     <li><strong>A)</strong> Biztonságban vannak a felhőben (GitHub), és automatikusan újra megjelennek.</li>
                     <li><strong>B)</strong> Végleg elvesznek a lokális gépedről a teljes verziótörténettel együtt.</li>
-                    <li><strong>C)</strong> Áthelyeződnek a rendszer ideiglenes "visszavonási" pufferrébe 30 napra.</li>
+                    <li><strong>C)</strong> Áthelyeződnek a rendszer ideiglenes "visszavonási" pufferébe 30 napra.</li>
                     <li><strong>D)</strong> Nem tudom.</li>
                 </ul>
             </section>
@@ -747,7 +747,7 @@
             <section>
                 <h1>Thank You!</h1>
                 <h3>Great Job Completing the Quiz!</h3>
-                <p style="margin-top: 50px;">Questions?</p>
+                <p class="title-slide-subtitle">Questions?</p>
             </section>
             
         </div>
@@ -758,27 +758,5 @@
 
     <!-- Custom voting integration -->
     <script src="voting-system.js"></script>
-
-    <!-- Generate QR code once the page is ready -->
-    <script>
-        (function () {
-            var url = window.PHP_SERVER_URL || '';
-            var el  = document.getElementById('qrcode');
-            var lbl = document.getElementById('votingUrl');
-            if (!url || url.indexOf('YOUR-SERVER') !== -1) {
-                if (el) el.innerHTML = '<p style="color:#c00;">Set PHP_SERVER_URL in sweep_questions.html</p>';
-                return;
-            }
-            if (el) {
-                new QRCode(el, {
-                    text: url,
-                    width: 256,
-                    height: 256,
-                    correctLevel: QRCode.CorrectLevel.M
-                });
-            }
-            if (lbl) lbl.textContent = url;
-        })();
-    </script>
 </body>
 </html>

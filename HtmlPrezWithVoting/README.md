@@ -1,620 +1,293 @@
 # Presentation Voting System
 
-A real-time audience voting system for HTML presentations using Reveal.js.
+Interactive Reveal.js presentation with live audience voting backed by a small PHP API.
 
-**Status**: ✅ Production Ready | All Features Implemented
+## Status
 
-## Quick Links
+The current implementation is based on:
 
-- **[Testing Guide](TESTING.md)** - Comprehensive testing procedures and checklist
-- **[Project Summary](PROJECT_SUMMARY.md)** - Complete project overview and technical details
-- **[Specification](spec.md)** - Original requirements and implementation plan
+- `sweep_questions.html` for the presentation content
+- `voting-system.js` for Reveal.js integration and polling
+- `php-server/` for the audience voting page and JSON API
 
-## System Requirements
-
-- **Node.js** (v14 or higher) - [Download](https://nodejs.org/)
-- **Modern Web Browser** (Chrome, Firefox, Edge, Safari)
-- **Internet Connection** (for localtunnel public URL)
-- **Windows** (for start.bat) or Mac/Linux (manual start)
-
-## What Is This?
-
-An interactive presentation system that lets presenters embed multiple-choice questions (A/B/C/D) in their slides and collect real-time votes from audience members using their smartphones. Perfect for classrooms, conferences, workshops, and training sessions.
-
-### Key Features
-
-- 📱 **Mobile Voting**: Audience votes via smartphone browser (no app needed)
-- 🎯 **Real-Time Updates**: See vote counts update live (1-second refresh)
-- 🔗 **Easy Access**: QR code for instant audience connection
-- 💾 **Auto-Save**: All votes automatically logged to CSV
-- 🚀 **One-Click Start**: Simple batch file launches everything
-- 🎨 **Smooth Animations**: Visual feedback for vote updates
-- 🔒 **Vote Limiting**: Configurable maximum votes per question
-- 📊 **Toggle Display**: Show/hide detailed results with 'D' key
-- ✅ **Correct Answers**: Highlight the correct answer when revealing results
+This README documents that PHP-based setup. Older Node.js and `start.bat` instructions are no longer applicable.
 
 ## Project Structure
 
-```
+```text
 HtmlPrezWithVoting/
-├── server.js                    # Node.js backend server
-├── package.json                 # Dependencies configuration
-├── presentation.html            # Main presentation file (content only)
-├── presentation.css             # Custom styles for voting system
-├── voting-system.js             # Voting integration logic
-├── start.bat                    # Windows startup script
-├── votes.csv                    # Vote history log (auto-generated)
-├── README.md                    # This file
-├── TESTING.md                   # Testing guide
-├── PROJECT_SUMMARY.md           # Technical documentation
-└── spec.md                      # Original specification
+├── sweep_questions.html      # Reveal.js presentation
+├── presentation.css          # Presentation and vote display styling
+├── voting-system.js          # Voting integration, polling, QR overlay, keyboard shortcuts
+├── php-server/
+│   ├── index.php             # Audience voting page
+│   ├── api.php               # Voting API
+│   └── data/
+│       ├── state.json        # Current vote state (created/updated at runtime)
+│       └── votes.csv         # Vote history log
+├── TESTING.md                # Test notes
+├── questions.md              # Question source material
+├── spec.md                   # Specification
+└── README.md                 # This file
 ```
 
-**Clean Architecture:**
-- `presentation.html` - Contains **only** your presentation content (slides)
-- `presentation.css` - All styling (isolated from content)
-- `voting-system.js` - All voting logic (isolated from content)
-- This separation makes it easy to modify presentation content without touching framework code
+## System Requirements
 
-## Phase 1 Complete ✓ - Server Backend
-## Phase 2 Complete ✓ - Reveal.js Presentation
-## Phase 3 Complete ✓ - Startup Script
+- PHP 7.4+ or PHP 8.x with a web server, or PHP's built-in development server for local testing
+- A writable `php-server/data/` directory on the host running PHP
+- A modern browser for the presentation and for audience devices
+- Internet access while presenting if you rely on CDN-hosted Reveal.js and `qrcodejs`
 
-The complete voting system is now implemented with the following features:
+Node.js, npm, Express, and localtunnel are not required by the current version.
 
-### Features Implemented
+## What The System Does
 
-- **Express Web Server**: Configurable port (default: 8000)
-- **REST API Endpoints**:
-  - `GET /` - Voting page for audience
-  - `POST /vote` - Submit votes (A/B/C/D)
-  - `GET /results` - Get current vote counts
-  - `POST /new-question` - Reset votes and set new question
-  - `GET /qr-code` - Generate QR code with tunnel URL
-  - `GET /status` - Check voting status
-- **Localtunnel Integration**: Automatic public URL generation for remote access
-- **Vote Limiting**: Configurable max votes per question (default: 500)
-- **CSV Logging**: Automatic backup of all vote data with timestamps
-- **Mobile-Friendly Voting Page**: Clean, responsive UI with light background
-- **Graceful Shutdown**: Saves pending votes and closes tunnel on Ctrl+C
+- Displays a Reveal.js slide deck with question slides
+- Resets vote counts automatically when the presenter enters a new question slide
+- Polls the PHP API once per second for live results
+- Shows a floating vote panel on question slides
+- Lets the presenter toggle detailed counts with `D`
+- Lets the presenter toggle a large QR overlay with `Q`
+- Generates QR codes client-side from the configured voting URL
+- Saves completed question results into `php-server/data/votes.csv`
 
-### Phase 2 - Presentation Features
+## Architecture
 
-- **Reveal.js Integration**: Loaded via CDN (no local files needed)
-- **Interactive Slides**: Example presentation with title, content, and question slides
-- **QR Code Display**: Dedicated slide showing voting URL for audience
-- **Question Slides**: 
-  - Marked with `data-question-slide="true"` attribute
-  - Optional `data-question-title` for custom titles
-  - Auto-detects question title from `<h2>` element
-- **Vote Display Component**:
-  - Shows total votes in real-time
-  - Toggle detailed breakdown with 'V' key or button
-  - Updates every 1 second via polling
-  - Positioned at bottom-right of slides
-- **Automatic Question Management**:
-  - Detects slide changes
-  - Notifies server when entering question slides
-  - Resets votes automatically for each new question
-  - Starts/stops polling based on slide type
-- **Keyboard Controls**: Press 'V' to show/hide detailed vote counts
+### Presentation side
 
-### Phase 3 - Startup Automation
+- `sweep_questions.html` loads Reveal.js from CDN
+- `window.PHP_SERVER_URL` defines the base URL of the deployed PHP voting server
+- `voting-system.js` calls:
+  - `GET {PHP_SERVER_URL}/api.php?action=results`
+  - `POST {PHP_SERVER_URL}/api.php?action=new-question`
+- The presentation can be opened from a local file or another host because `api.php` sends permissive CORS headers
 
-- **start.bat**: Windows batch file for easy startup
-  - Checks Node.js installation
-  - Automatically installs dependencies if needed
-  - Starts server in background
-  - Opens presentation in default browser
-  - Shows helpful instructions
-  - One-click launch solution
+### Audience side
 
-### Installation
+- Audience members open the PHP server URL itself, which serves `php-server/index.php`
+- That page polls `api.php?action=status` every 2 seconds
+- Votes are submitted to `api.php?action=vote`
+- A `localStorage` key prevents repeat voting for the same question in the same browser
 
-1. Install Node.js (if not already installed):
-   - Download from https://nodejs.org/
+### Persistence
 
-2. Install npm dependencies:
-   ```bash
-   npm install
-   ```
-   
-   Or simply run `start.bat` - it will install dependencies automatically!
+- Current counters are stored in `php-server/data/state.json`
+- Finished question results are appended to `php-server/data/votes.csv`
+- Writes use file locking in `api.php` to reduce concurrent write issues
 
-### Usage
+## Configuration
 
-**Easy Way (Windows):**
-Simply double-click `start.bat` in Windows Explorer!
-
-The script will:
-- Check Node.js installation
-- Install dependencies if needed
-- Start the server
-- Open the presentation in your browser
-
-**Manual Way:**
-
-Start the server:
-```bash
-node server.js
-```
-
-Or use npm script:
-```bash
-npm start
-```
-
-#### Command-line Options
-
-- `--port PORT` - Set server port (default: 8000)
-- `--max-votes N` - Set maximum votes per question (default: 500)
-
-Examples:
-```bash
-node server.js --port 8080 --max-votes 1000
-node server.js --port 3000
-```
-
-### How It Works
-
-1. Server starts and initializes a public tunnel via localtunnel
-2. QR code is generated with the public URL
-3. Audience scans QR code to access voting page on their smartphones
-4. Votes are collected and counted in real-time
-5. When presenter moves to new question, previous votes are saved to CSV
-6. Vote counters reset for the new question
-7. Presenter can view real-time vote counts in presentation
-
-### REST API Documentation
-
-#### GET /
-Returns the voting page HTML for audience members.
-
-#### POST /vote
-Submit a vote.
-- **Body**: `{ "vote": "A" }` (A, B, C, or D)
-- **Response**: `{ "success": true, "total": 42 }`
-
-#### GET /results
-Get current vote counts.
-- **Response**: 
-  ```json
-  {
-    "total": 42,
-    "A": 15,
-    "B": 10,
-    "C": 12,
-    "D": 5,
-    "question": "What is the capital of France?",
-    "voting_open": true
-  }
-  ```
-
-#### POST /new-question
-Reset votes for a new question.
-- **Body**: `{ "title": "Question title" }`
-- **Response**: `{ "success": true, "question": "Question title" }`
-
-#### GET /qr-code
-Get QR code image (PNG) with tunnel URL.
-
-#### GET /status
-Check voting status.
-- **Response**:
-  ```json
-  {
-    "question": "Current question title",
-    "voting_open": true,
-    "total_votes": 42,
-    "max_votes": 500
-  }
-  ```
-
-### File Structure
-
-```
-HtmlPrezWithVoting/
-├── server.js              # Main Express server
-├── package.json           # Node.js dependencies
-├── presentation.html      # Reveal.js presentation with voting
-├── start.bat              # Windows startup script
-├── votes.csv             # Vote history (auto-created)
-├── README.md             # This file - user guide
-├── TESTING.md            # Comprehensive testing guide
-├── PROJECT_SUMMARY.md    # Complete project documentation
-└── spec.md               # Original specification
-```
-
-### CSV Format
-
-Vote data is saved with the following columns:
-- `timestamp` - ISO format timestamp
-- `question_title` - Title of the question
-- `votes_A` - Number of A votes
-- `votes_B` - Number of B votes
-- `votes_C` - Number of C votes
-- `votes_D` - Number of D votes
-- `total_votes` - Total number of votes
-
-### Technical Details
-
-- **Framework**: Express.js with CORS enabled
-- **QR Code**: Generated using `qrcode` npm package
-- **Tunneling**: Uses localtunnel for public URL
-- **Vote Storage**: In-memory (resets on server restart)
-- **Static Files**: Serves files from current directory
-
-### All Features Complete! ✅
-
-The system is production-ready and includes:
-- ✓ Full-featured Node.js server backend
-- ✓ Interactive Reveal.js presentation
-- ✓ Mobile-optimized voting page
-- ✓ Automated startup script
-- ✓ Comprehensive documentation
-- ✓ Complete testing guide
-- ✓ CSS animations and polish
-- ✓ Error handling and fallbacks
-
-## Customization
-
-### Working with Clean Content Files
-
-The presentation has been refactored for maximum clarity:
-- **Edit `presentation.html`** for slide content only (no framework code!)
-- **Edit `presentation.css`** to customize styling
-- **Edit `voting-system.js`** to modify voting behavior
-
-This clean separation means you can focus on your presentation content without worrying about breaking the voting system.
-
-### Adding New Question Slides
-
-The vote display component is now **automatically injected** into question slides. To add a new question:
-
-1. Open `presentation.html`
-2. Add a new `<section>` with the `data-question-slide="true"` attribute:
+Set the voting backend URL in `sweep_questions.html`:
 
 ```html
-<section class="question-slide" data-question-slide="true" 
-         data-question-title="Your Question Title"
-         data-correct-answer="B">
-    <h2>Question 4: Your question here?</h2>
+<script>
+    window.PHP_SERVER_URL = 'https://example.com/vote';
+</script>
+```
+
+This URL must point to the directory that contains both `index.php` and `api.php`.
+
+Example:
+
+- If the deployed audience page is `https://example.com/vote/index.php`
+- Then `window.PHP_SERVER_URL` should be `https://example.com/vote`
+
+## Running Locally
+
+### Option 1: Local PHP backend + local presentation file
+
+1. Start the PHP server from `php-server/`:
+
+```bash
+php -S localhost:8080
+```
+
+2. In `sweep_questions.html`, set:
+
+```html
+<script>
+    window.PHP_SERVER_URL = 'http://localhost:8080';
+</script>
+```
+
+3. Open `sweep_questions.html` in a browser.
+
+4. Open `http://localhost:8080/` on a phone or a second browser window to vote.
+
+### Option 2: Deploy the PHP backend remotely
+
+1. Upload the contents of `php-server/` to a PHP-capable web host.
+2. Make sure the `data/` directory is writable by the web server process.
+3. Set `window.PHP_SERVER_URL` in `sweep_questions.html` to that deployed URL.
+4. Open `sweep_questions.html` locally or host it on any static server.
+
+## Presentation Behavior
+
+Question slides are recognized by the `data-question-slide="true"` attribute.
+
+When the presenter lands on a question slide:
+
+1. The floating vote display is shown.
+2. Counts are reset visually to zero.
+3. The presentation sends `new-question` to the backend using the slide title.
+4. Polling starts and live results begin updating.
+
+When the presenter leaves a question slide:
+
+1. Polling stops.
+2. The floating vote display is hidden.
+
+Detailed vote counts are shown with `D`. When details are visible, the answer matching `data-correct-answer` is highlighted.
+
+## Keyboard Shortcuts
+
+- `D` toggles the detailed vote breakdown on question slides
+- `Q` toggles a full-screen QR code overlay on any slide
+- Standard Reveal.js shortcuts still apply for navigation, fullscreen, overview, and speaker tools
+
+## Question Slide Markup
+
+Example:
+
+```html
+<section
+    class="question-slide"
+    data-question-slide="true"
+    data-question-title="Your question title"
+    data-correct-answer="B">
+    <h2>Your question?</h2>
     <ul>
         <li><strong>A)</strong> Option A</li>
         <li><strong>B)</strong> Option B</li>
         <li><strong>C)</strong> Option C</li>
         <li><strong>D)</strong> Option D</li>
     </ul>
-    <!-- Vote display is automatically added by JavaScript -->
 </section>
 ```
 
-**Key attributes:**
-- `data-question-slide="true"` - Marks this as a question slide (vote display will be auto-injected)
-- `data-question-title="..."` - (Optional) Custom question title for vote logging
-- `data-correct-answer="A|B|C|D"` - (Optional) Marks the correct answer (highlighted when pressing V)
-- `class="question-slide"` - Applies question slide styling
+Notes:
 
-**No copy-pasting needed!** The `injectVoteDisplays()` function automatically adds the vote display component to all slides with `data-question-slide="true"`.
+- `data-question-slide="true"` marks the slide as vote-enabled
+- `data-question-title` overrides the title stored in the backend
+- If `data-question-title` is missing, the first `h2` text is used
+- `data-correct-answer` can be `A`, `B`, `C`, or `D`
+- The vote display is injected automatically by JavaScript; do not copy it into every slide
 
-**Correct Answer Feature:** When you press 'D' to show detailed results, the correct answer will be:
-- Highlighted with a green background
-- Marked with a checkmark (✓)
-- Displayed at the bottom of the details section
+## API Reference
 
-### Modifying the Vote Display Component
+The backend is routed through `php-server/api.php?action=...`.
 
-To change how the vote display looks or behaves:
+### `GET ?action=status`
 
-1. **For HTML structure**: Edit the `createVoteDisplayComponent()` function in [voting-system.js](voting-system.js)
-2. **For styling**: Edit the `.vote-display` styles in [presentation.css](presentation.css)
-3. **For behavior**: Modify other functions in [voting-system.js](voting-system.js)
+Returns a compact status object for the audience page.
 
-All changes propagate to every question slide automatically!
+Example response:
 
-### Adding Non-Question Slides
-
-Regular slides (intro, content, outro) don't need any special attributes:
-
-```html
-<section>
-    <h2>Regular Slide Title</h2>
-    <p>Your content here...</p>
-</section>
+```json
+{
+  "question": "Current question",
+  "voting_open": true,
+  "total_votes": 12,
+  "max_votes": 500
+}
 ```
 
-### Future Enhancements (Optional)
+### `GET ?action=results`
 
-If you want to extend the system, consider:
-- Multi-language support (i18n)
-- Additional themes and styling options
-- Support for more question types (true/false, ranking)
-- Admin dashboard for monitoring votes
-- Export results to different formats (JSON, Excel)
-- Real-time WebSocket updates (eliminate polling)
-- Database backend option (SQLite/MongoDB)
-- Vote visualization charts and analytics
+Returns full counts for the presentation overlay.
 
-## Using the Presentation
+Example response:
 
-### Quick Start with start.bat
-
-**For Windows users**, the easiest way to start the system:
-
-1. **Double-click `start.bat`** in Windows Explorer
-2. The script will:
-   - ✓ Check if Node.js is installed
-   - ✓ Install dependencies automatically (if not installed)
-   - ✓ Start the server
-   - ✓ Open the presentation in your browser
-   - ✓ Display helpful error messages if something goes wrong
-3. Follow the on-screen instructions
-
-**Note**: If the server fails to start (e.g., port already in use), the script will automatically display troubleshooting suggestions to help you resolve the issue.
-
-That's it! The presentation will open automatically.
-
-### Manual Start
-
-If you prefer to start manually or are on Mac/Linux:
-
-1. **Start the server**:
-   ```bash
-   node server.js
-   ```
-
-2. **Open the presentation**:
-   - Navigate to http://localhost:8000/presentation.html
-   - Or the server will show you the URL in the console
-
-3. **Show QR code to audience**:
-   - Navigate to the QR code slide (slide 2)
-   - Audience scans and opens voting page on their phones
-
-4. **Navigate through slides**:
-   - Use arrow keys or space bar
-   - When you reach a question slide, voting starts automatically
-
-5. **View vote results**:
-   - Total votes update in real-time
-   - Press **D** key to show/hide detailed breakdown (A, B, C, D counts)
-   - Or click the "Show Details" button
-
-6. **Move to next question**:
-   - Simply navigate to the next question slide
-   - Votes reset automatically and previous results are saved to CSV
-
-### Keyboard Controls
-
-**Voting System Controls:**
-- **D** - Toggle detailed vote breakdown (show/hide A, B, C, D counts with correct answer)
-  - Only works on question slides
-  - Highlights the correct answer when showing details
-
-**Reveal.js Standard Controls:**
-- **Arrow keys** / **Space** - Navigate slides
-- **F** - Fullscreen mode
-- **S** - Speaker notes view
-- **O** / **ESC** - Overview mode
-- **B** / **.** - Pause/black screen
-
-**Note:** We use **D** for "Details" instead of V to avoid conflicts with Reveal.js built-in shortcuts.
-
-### Creating Your Own Presentation
-
-To create your own presentation with voting:
-
-1. **Copy presentation.html** as a template
-
-2. **Add regular slides** (without voting):
-   ```html
-   <section>
-       <h2>Your Content</h2>
-       <p>Regular slide content</p>
-   </section>
-   ```
-
-3. **Add question slides** (with voting):
-   ```html
-   <section class="question-slide" data-question-slide="true" data-question-title="Custom Title">
-       <h2>Your Question?</h2>
-       <ul>
-           <li><strong>A)</strong> Option A</li>
-           <li><strong>B)</strong> Option B</li>
-           <li><strong>C)</strong> Option C</li>
-           <li><strong>D)</strong> Option D</li>
-       </ul>
-       
-       <!-- Copy this vote display component -->
-       <div class="vote-display">
-           <h4>Live Votes</h4>
-           <div class="total-votes">
-               Total: <span class="vote-total">0</span>
-           </div>
-           <div class="detailed-votes hidden">
-               <div><span class="vote-label">A:</span><span class="vote-count vote-a">0</span></div>
-               <div><span class="vote-label">B:</span><span class="vote-count vote-b">0</span></div>
-               <div><span class="vote-label">C:</span><span class="vote-count vote-c">0</span></div>
-               <div><span class="vote-label">D:</span><span class="vote-count vote-d">0</span></div>
-           </div>
-           <button class="toggle-details" onclick="toggleVoteDetails()">
-               Show Details (or press D)
-           </button>
-       </div>
-   </section>
-   ```
-
-4. **Customize the QR code slide** (keep it or remove it):
-   ```html
-   <section>
-       <h2>Join the Voting!</h2>
-       <div class="qr-code-container">
-           <img id="qrCodeImage" src="/qr-code" alt="QR Code for Voting">
-           <h3>Scan with your smartphone</h3>
-       </div>
-   </section>
-   ```
-
-### Testing the Server
-
-1. Start the server:
-   ```bash
-   npm start
-   ```
-
-2. Open the voting page in browser:
-   - Local: http://localhost:8000/
-   - Remote: Use the tunnel URL shown in console
-
-3. Test voting:
-   - Click A, B, C, or D buttons
-   - Verify votes are counted
-
-4. Test results endpoint:
-   ```bash
-   curl http://localhost:8000/results
-   ```
-
-5. Test new question:
-   ```bash
-   curl -X POST http://localhost:8000/new-question \
-     -H "Content-Type: application/json" \
-     -d '{"title":"Test Question"}'
-   ```
-
-### Testing the Complete System
-
-1. **Start the server**:
-   ```bash
-   node server.js
-   ```
-
-2. **Open presentation** in your browser:
-   - Go to http://localhost:8000/presentation.html
-
-3. **Open voting page** on another device (or browser tab):
-   - Go to http://localhost:8000/ (or scan QR code from slide 2)
-
-4. **Navigate to a question slide** in the presentation:
-   - Watch vote counter initialize to 0
-
-5. **Submit votes** from the voting page:
-   - Click A, B, C, or D
-   - Watch total votes update in presentation (every 1 second)
-
-6. **Press V key** in presentation:
-   - See detailed breakdown of A, B, C, D votes
-
-7. **Navigate to next question slide**:
-   - Previous votes should be saved to votes.csv
-   - Vote counters reset to 0
-
-8. **Check votes.csv**:
-   - Verify previous question data was saved
-
-### Troubleshooting
-
-### Port Already in Use (EADDRINUSE)
-
-If you see this error:
-```
-Error: listen EADDRINUSE: address already in use :::8000
+```json
+{
+  "total": 12,
+  "A": 3,
+  "B": 4,
+  "C": 2,
+  "D": 3,
+  "question": "Current question",
+  "voting_open": true
+}
 ```
 
-**Solutions:**
-1. **Kill all Node processes** (easiest):
-   ```bash
-   taskkill /F /IM node.exe
-   ```
-   Then run `start.bat` again
+### `POST ?action=vote`
 
-2. **Use a different port**:
-   ```bash
-   node server.js --port 3000
-   ```
+Body:
 
-3. **Find and kill specific process**:
-   ```bash
-   netstat -ano | findstr :8000
-   taskkill /PID <process_id> /F
-   ```
+```json
+{ "vote": "A" }
+```
 
-The `start.bat` script will automatically display these solutions if it encounters errors.
+Successful response:
 
-**Problem**: start.bat shows "Node.js is not installed"
-- **Solution**: Install Node.js from https://nodejs.org/ and restart
+```json
+{ "success": true, "total": 13 }
+```
 
-**Problem**: start.bat fails with npm install error
-- **Solution**: Open command prompt, navigate to folder, run `npm install` manually to see detailed error
+### `POST ?action=new-question`
 
-**Problem**: Localtunnel fails to start
-- **Solution**: Check internet connection, try restarting server
+Body:
 
-**Problem**: Port already in use
-- **Solution**: Use `--port` option to specify different port
+```json
+{ "title": "Question title" }
+```
 
-**Problem**: npm install fails
-- **Solution**: Ensure Node.js is installed and up to date
+Successful response:
 
-**Problem**: QR code doesn't display
-- **Solution**: Wait for tunnel to initialize (can take 5-10 seconds)
+```json
+{ "success": true, "question": "Question title" }
+```
 
-**Problem**: How do I stop the server when using start.bat?
-- **Solution**: Press Ctrl+C in the command window that opened
+## Vote Limits and Storage
 
-**Problem**: Browser doesn't open automatically
-- **Solution**: Manually open http://localhost:8000/presentation.html
+- `api.php` currently uses `MAX_VOTES = 500`
+- Once the total reaches that limit, `voting_open` becomes `false`
+- On each `new-question` call, the previous question is appended to `votes.csv` if it received any votes
+- The current question is not appended to CSV until the next question begins
 
-**Problem**: Votes aren't animating/updating smoothly
-- **Solution**: Ensure browser supports CSS animations (use modern browser)
-- **Solution**: Check browser console for JavaScript errors
+## Troubleshooting
 
-**Problem**: Can't test multiple votes (localStorage prevents it)
-- **Solution**: Use incognito/private browsing mode
-- **Solution**: Open voting page in multiple different browsers
-- **Solution**: Clear browser localStorage (F12 → Application → Local Storage)
+### QR code or voting URL is wrong
 
-## Performance Tips
+- Check `window.PHP_SERVER_URL` in `sweep_questions.html`
+- It must point to the PHP server directory, not directly to `api.php`
 
-- **Large Audiences**: System tested with 100+ simultaneous voters
-- **Network Speed**: 1-second polling interval works well on most connections
-- **Mobile Data**: Voting page is lightweight (~10KB), works on 3G/4G
-- **Offline Mode**: Use `--no-tunnel` flag for localhost-only testing
+### Votes are not being saved
 
-## Additional Resources
+- Verify that `php-server/data/` exists
+- Verify that the PHP process can write to `php-server/data/state.json` and `php-server/data/votes.csv`
 
-- **Reveal.js Documentation**: https://revealjs.com/
-- **Express.js Guide**: https://expressjs.com/
-- **Node.js Documentation**: https://nodejs.org/docs/
+### Presentation loads but live counts do not update
 
-## Support
+- Open browser developer tools and check failed requests to `api.php`
+- Confirm the configured `PHP_SERVER_URL` is reachable from the presentation machine
+- Confirm the PHP host allows `GET`, `POST`, and `OPTIONS`
 
-For questions or issues:
-1. Check the [Testing Guide](TESTING.md) for troubleshooting
-2. Review the [Project Summary](PROJECT_SUMMARY.md) for technical details
-3. See the [Specification](spec.md) for original requirements
+### The audience page says the user already voted
 
-## Contributing
+- The audience page stores the last-voted question in `localStorage`
+- Test with a private browsing window or clear site storage for the voting page
 
-To customize or extend this project:
-1. Modify `presentation.html` for custom slides
-2. Edit styles in the `<style>` section
-3. Add new API endpoints in `server.js`
-4. See [Project Summary](PROJECT_SUMMARY.md) for architecture details
+### The QR code overlay shows a placeholder or error
 
-## License
+- The configured URL may still contain a placeholder value
+- The QR code library is loaded from CDN, so offline environments may block generation unless assets are cached or vendored locally
 
-This project is provided as-is for educational and presentation purposes.
+## Customization
 
----
+- Edit `sweep_questions.html` to change slides and question metadata
+- Edit `presentation.css` to change styling
+- Edit `voting-system.js` to change polling, keyboard behavior, or overlay behavior
+- Edit `php-server/index.php` to change the audience voting page
+- Edit `php-server/api.php` to change API behavior, vote limits, or storage format
 
-**Made with ❤️ for better presentations**
+## Development Notes
 
-Ready to engage your audience? Run `start.bat` and let's go! 🚀
+- The current implementation uses client-side QR generation through `qrcodejs`
+- The `D` key is intentionally used instead of `V`
+- The vote display is global and fixed-position, not embedded inside each question slide
 
-### Development Notes
+## References
 
-- Server automatically saves votes before shutdown (Ctrl+C)
-- Each question's votes are logged to CSV when moving to next question
-- localStorage prevents users from voting multiple times per question
-- Vote limit prevents spam and abuse
+- Reveal.js: https://revealjs.com/
+- PHP manual: https://www.php.net/docs.php

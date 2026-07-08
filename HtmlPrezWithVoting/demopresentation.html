@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reveal.js Demo Presentation</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+    <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+    <div class="reveal demo-presentation">
+        <div class="slides">
+
+            <section data-transition="fade" style="text-align:center;">
+                <h1>Reveal.js Demo Deck</h1>
+                <p class="title-slide-subtitle">Ten different slide patterns in the current HTML presentation environment</p>
+                <p>Code, fragments, images, transitions, and vertical navigation.</p>
+            </section>
+
+            <section data-transition="slide" style="text-align:left;">
+                <h2>Source Code Slide</h2>
+                <p>A readable code-only slide can explain one behavior without switching to the editor.</p>
+                <pre style="font-size:0.7em; line-height:1.45;"><code>function onKeyPress(event) {
+    if (event.key === 'q' || event.key === 'Q') {
+        toggleQROverlay();
+        event.preventDefault();
+        return;
+    }
+
+    if ((event.key === 'd' || event.key === 'D') &amp;&amp; isQuestionSlide) {
+        toggleVoteDetails();
+        event.preventDefault();
+    }
+}</code></pre>
+            </section>
+
+            <section data-transition="convex" style="text-align:left;">
+                <h2>Manual Sequential Reveal</h2>
+                <p>Each bullet is revealed on demand using Reveal fragments.</p>
+                <ol style="font-size:0.9em; line-height:1.7; margin-top:0.8em;">
+                    <li class="fragment fade-up">Enter a question slide.</li>
+                    <li class="fragment fade-up">Reset counters in the floating vote display.</li>
+                    <li class="fragment fade-up">Send <strong>new-question</strong> to the PHP backend.</li>
+                    <li class="fragment fade-up">Start polling results every second.</li>
+                    <li class="fragment fade-up">Press <strong>D</strong> to reveal detailed counts.</li>
+                </ol>
+            </section>
+
+            <section data-transition="zoom" data-autoslide="1800" style="text-align:left;">
+                <h2>Timed Sequential Reveal</h2>
+                <p>This slide advances its fragments automatically to simulate a guided explanation.</p>
+                <div style="display:grid; gap:16px; margin-top:1.5em;">
+                    <div class="fragment fade-in-then-semi-out" data-fragment-index="1">
+                        <span style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:#1d77d0; color:white; font-weight:700; margin-right:18px;">1</span>
+                        <span>Audience scans the QR code.</span>
+                    </div>
+                    <div class="fragment fade-in-then-semi-out" data-fragment-index="2">
+                        <span style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:#1d77d0; color:white; font-weight:700; margin-right:18px;">2</span>
+                        <span>The phone opens the voting page.</span>
+                    </div>
+                    <div class="fragment fade-in-then-semi-out" data-fragment-index="3">
+                        <span style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:#1d77d0; color:white; font-weight:700; margin-right:18px;">3</span>
+                        <span>The presentation polls and shows the total live votes.</span>
+                    </div>
+                </div>
+                <p style="font-size:0.66em; line-height:1.25; text-align:center; max-width:760px; margin:0.4em auto 0 auto;">Reveal keeps advancing the fragments automatically.</p>
+            </section>
+
+            <section data-transition="fade">
+                <h2>Single Image Slide</h2>
+                <figure class="qr-code-container" style="max-width:760px; margin:1.2em auto 0 auto;">
+                    <img src="demovideo/screens/screen2_qr.png" alt="Presentation QR code slide screenshot" style="max-width:100%; margin:20px auto;">
+                    <figcaption style="font-size:0.7em; color:#586170; margin-top:0.8em;">The presentation can dedicate a clean slide to audience onboarding.</figcaption>
+                </figure>
+            </section>
+
+            <section data-transition="slide" style="text-align:left;">
+                <h2>Two Images on One Slide</h2>
+                <table style="width:100%; border-collapse:separate; border-spacing:20px; margin-top:1em;">
+                    <tr>
+                        <td style="width:50%; vertical-align:top;">
+                            <figure class="qr-code-container fragment fade-right" style="padding:12px; max-width:none;">
+                                <img src="demovideo/screens/screen3_question.png" alt="Question slide screenshot" style="max-width:100%; margin:20px auto;">
+                                <figcaption style="font-size:0.7em; color:#586170; margin-top:0.8em;">Presentation view</figcaption>
+                            </figure>
+                        </td>
+                        <td style="width:50%; vertical-align:top;">
+                            <figure class="qr-code-container fragment fade-left" style="padding:12px; max-width:none;">
+                                <img src="demovideo/screens/screen5_mobileVotingPage.jpg" alt="Mobile voting page screenshot" style="max-width:100%; margin:20px auto;">
+                                <figcaption style="font-size:0.7em; color:#586170; margin-top:0.8em;">Audience phone view</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section data-transition="concave" style="text-align:left;">
+                <h2>Image and Source Code Together</h2>
+                <table style="width:100%; border-collapse:separate; border-spacing:20px; margin-top:1em;">
+                    <tr>
+                        <td style="width:50%; vertical-align:top;">
+                            <figure class="qr-code-container" style="padding:12px; max-width:none;">
+                                <img src="demovideo/screens/screen4_details.png" alt="Detailed vote counts screenshot" style="max-width:100%; margin:20px auto;">
+                                <figcaption style="font-size:0.7em; color:#586170; margin-top:0.8em;">What the presenter sees after pressing D</figcaption>
+                            </figure>
+                        </td>
+                        <td style="width:50%; vertical-align:top;">
+                            <pre style="font-size:0.64em; line-height:1.45; padding:18px 22px; background:#0f1a2b; color:#e9f1ff; border-radius:14px; box-shadow:0 10px 30px rgba(15, 26, 43, 0.16);"><code>function highlightCorrectAnswer(slide) {
+    const correctAnswer = slide.getAttribute('data-correct-answer');
+    const correctRow = voteDisplay.querySelector(
+        `[data-option="${correctAnswer}"]`
+    );
+
+    if (correctRow) {
+        correctRow.classList.add('correct-answer');
+    }
+}</code></pre>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section data-transition="fade" style="text-align:left;">
+                <h2>Images Inside Text</h2>
+                <p>
+                    The presenter shows a
+                    <img src="demovideo/assets/qr_code_icon.svg" alt="QR code icon" style="width:1.2em; height:1.2em; vertical-align:middle; margin:0 0.18em;">
+                    QR code, the audience opens the voting page on a
+                    <img src="demovideo/assets/smartphone_icon.svg" alt="Smartphone icon" style="width:1.2em; height:1.2em; vertical-align:middle; margin:0 0.18em;">
+                    phone, and the presentation updates through the
+                    <img src="demovideo/assets/server_icon.svg" alt="Server icon" style="width:1.2em; height:1.2em; vertical-align:middle; margin:0 0.18em;">
+                    PHP backend.
+                </p>
+                <p>This pattern is useful when you want visual anchors inside explanatory text without switching to a gallery layout.</p>
+            </section>
+
+            <section data-auto-animate data-transition="zoom" style="text-align:left;">
+                <h2>Transition Showcase</h2>
+                <div style="display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin:1.4em 0;">
+                    <div style="min-width:240px; padding:22px 24px; border-radius:16px; background:linear-gradient(180deg, #ffffff 0%, #edf5fc 100%); border:1px solid #d6e4f2; box-shadow:0 10px 24px rgba(29, 94, 168, 0.09);">
+                        <span style="display:block; color:#6a7481; font-size:0.65em; text-transform:uppercase; letter-spacing:0.08em;">Layout</span>
+                        <span style="display:block; color:#1c3557; font-size:1em; font-weight:700; margin-top:0.35em;">Simple</span>
+                    </div>
+                    <div style="min-width:240px; padding:22px 24px; border-radius:16px; background:linear-gradient(180deg, #ffffff 0%, #edf5fc 100%); border:1px solid #d6e4f2; box-shadow:0 10px 24px rgba(29, 94, 168, 0.09);">
+                        <span style="display:block; color:#6a7481; font-size:0.65em; text-transform:uppercase; letter-spacing:0.08em;">Focus</span>
+                        <span style="display:block; color:#1c3557; font-size:1em; font-weight:700; margin-top:0.35em;">Watch the next slide</span>
+                    </div>
+                </div>
+                <p>The next step uses a different transition and also opens a vertical navigation branch.</p>
+            </section>
+
+            <section>
+                <section data-auto-animate data-transition="convex" style="text-align:left;">
+                    <h2>Branching Navigation</h2>
+                    <div style="display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin:1.4em 0;">
+                        <div style="min-width:240px; padding:22px 24px; border-radius:16px; background:linear-gradient(180deg, #ffffff 0%, #edf5fc 100%); border:1px solid #d6e4f2; box-shadow:0 10px 24px rgba(29, 94, 168, 0.09);">
+                            <span style="display:block; color:#6a7481; font-size:0.65em; text-transform:uppercase; letter-spacing:0.08em;">Layout</span>
+                            <span style="display:block; color:#1c3557; font-size:1em; font-weight:700; margin-top:0.35em;">Branched</span>
+                        </div>
+                        <div style="min-width:240px; padding:22px 24px; border-radius:16px; background:linear-gradient(180deg, #ffffff 0%, #edf5fc 100%); border:1px solid #d6e4f2; box-shadow:0 10px 24px rgba(29, 94, 168, 0.09);">
+                            <span style="display:block; color:#6a7481; font-size:0.65em; text-transform:uppercase; letter-spacing:0.08em;">Focus</span>
+                            <span style="display:block; color:#1c3557; font-size:1em; font-weight:700; margin-top:0.35em;">Right continues, down drills in</span>
+                        </div>
+                    </div>
+                    <p style="font-size:1.1em; text-align:center; margin:1.2em 0;">Main Slide → Next Topic ↓ Vertical Detail</p>
+                    <p>Press down arrow now to see the continuation branch inside the same topic.</p>
+                </section>
+
+                <section data-transition="slide" style="text-align:left;">
+                    <h2>Vertical Detail A</h2>
+                    <table style="width:100%; border-collapse:separate; border-spacing:20px; margin-top:1em;">
+                        <tr>
+                            <td style="width:50%; vertical-align:top;">
+                                <h3>Why use vertical slides?</h3>
+                                <ul style="font-size:0.9em; line-height:1.7; margin-top:0.8em;">
+                                    <li>Keep the main story compact.</li>
+                                    <li>Hide supporting detail until needed.</li>
+                                    <li>Return to the horizontal path cleanly.</li>
+                                </ul>
+                            </td>
+                            <td style="width:50%; vertical-align:top;">
+                                <figure class="qr-code-container" style="padding:12px; max-width:none;">
+                                    <img src="demovideo/assets/architecture_diagram.png" alt="Architecture diagram" style="max-width:100%; margin:20px auto;">
+                                    <figcaption style="font-size:0.7em; color:#586170; margin-top:0.8em;">Example of detail content that does not need to live on the main path.</figcaption>
+                                </figure>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section data-transition="slide" style="text-align:left;">
+                    <h2>Vertical Detail B</h2>
+                    <p>This closes the branch with a compact checklist.</p>
+                    <ul style="font-size:0.9em; line-height:1.7; margin-top:0.8em;">
+                        <li>Horizontal slides carry the primary narrative.</li>
+                        <li>Vertical slides act like expandable subchapters.</li>
+                        <li>The same deck can combine both without extra plugins.</li>
+                    </ul>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            center: true,
+            slideNumber: true,
+            transition: 'slide',
+            controlsTutorial: true,
+            autoSlideStoppable: true
+        });
+    </script>
+</body>
+</html>

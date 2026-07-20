@@ -67,82 +67,44 @@
     const ANIMATION_DURATION_MS = 1000;
     const HIGHLIGHT_COLOR = "#3333ff";
 
-    function easeInOut(t) {
-      return 0.5 * (1 - Math.cos(Math.PI * t));
-    }
-
     function labelSelector(label) {
       return '[inkscape\\:label="' + label + '"]';
     }
 
     function findByLabel(root, label) {
       return (
-        root.querySelector(labelSelector(label)) ||
-        root.querySelector('[label="' + label + '"]') ||
-        root.querySelector('#' + CSS.escape(label))
+        root.findOne(labelSelector(label)) ||
+        root.findOne('[label="' + label + '"]') ||
+        root.findOne('#' + CSS.escape(label))
       );
     }
 
-    function placeMarker(markerNode, cx, cy) {
-      const width = Number(markerNode.getAttribute("width"));
-      const height = Number(markerNode.getAttribute("height"));
+    function requireByLabel(root, label) {
+      const element = findByLabel(root, label);
 
-      markerNode.setAttribute("x", String(cx - width / 2));
-      markerNode.setAttribute("y", String(cy - height / 2));
-      markerNode.removeAttribute("transform");
-    }
-
-    function elementCenter(node) {
-      const tag = node.tagName.toLowerCase();
-
-      if (tag === "circle" || tag === "ellipse") {
-        return {
-          x: Number(node.getAttribute("cx")),
-          y: Number(node.getAttribute("cy"))
-        };
+      if (!element) {
+        throw new Error('Could not find SVG element with label "' + label + '".');
       }
 
-      if (tag === "rect") {
-        const x = Number(node.getAttribute("x"));
-        const y = Number(node.getAttribute("y"));
-        const width = Number(node.getAttribute("width"));
-        const height = Number(node.getAttribute("height"));
-        return { x: x + width / 2, y: y + height / 2 };
-      }
-
-      const box = node.getBBox();
-      return { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+      return element;
     }
 
-    function animateMarkerTo(markerNode, fromCenter, toCenter, durationMs) {
+    function animateMarkerTo(marker, targetCenter) {
       return new Promise((resolve) => {
-        const startTime = performance.now();
-
-        function frame(now) {
-          const elapsed = now - startTime;
-          const linearT = Math.min(1, elapsed / durationMs);
-          const easedT = easeInOut(linearT);
-
-          const x = fromCenter.x + (toCenter.x - fromCenter.x) * easedT;
-          const y = fromCenter.y + (toCenter.y - fromCenter.y) * easedT;
-
-          placeMarker(markerNode, x, y);
-
-          if (linearT < 1) {
-            requestAnimationFrame(frame);
-          } else {
+        marker
+          .animate(ANIMATION_DURATION_MS)
+          .ease("<>")
+          .center(targetCenter.x, targetCenter.y)
+          .after(() => {
             resolve();
-          }
-        }
-
-        requestAnimationFrame(frame);
+          });
       });
     }
 
-    function setPhaseHighlight(labels, originalStroke, activeIndex) {
+    function setPhaseHighlight(labels, activeIndex) {
       labels.forEach((node, index) => {
-        const color = index === activeIndex ? HIGHLIGHT_COLOR : originalStroke[index];
-        node.style.stroke = color;
+        const color = index === activeIndex ? HIGHLIGHT_COLOR : node.remember("original-stroke");
+        node.css("stroke", color);
       });
     }
 
@@ -150,60 +112,37 @@
       const host = document.getElementById("svg-host");
 
       const response = await fetch(SVG_FILE);
+      const svgText = await response.text();
       if (!response.ok) {
         throw new Error("Could not load SVG: " + SVG_FILE);
       }
 
-      host.innerHTML = await response.text();
-
-      const svgElement = host.querySelector("svg");
-      if (!svgElement) {
+      const draw = SVG(svgText).addTo(host);
+      if (!draw) {
         throw new Error("Loaded file does not contain an <svg> element.");
       }
 
-      // Adopt the loaded SVG into SVG.js so the demo explicitly uses the library.
-      SVG(svgElement);
+      const markerRed = requireByLabel(draw, "marker_red");
+      const markerBlu = requireByLabel(draw, "marker_blu");
+      const homeRed = requireByLabel(draw, "home_red");
+      const labels = ["txt phase 1", "txt phase 2", "txt phase 3"].map((label) => requireByLabel(draw, label));
 
-      const markerRed = findByLabel(svgElement, "marker_red");
-      const markerBlu = findByLabel(svgElement, "marker_blu");
-      const homeRed = findByLabel(svgElement, "home_red");
-      const phase1 = findByLabel(svgElement, "txt phase 1");
-      const phase2 = findByLabel(svgElement, "txt phase 2");
-      const phase3 = findByLabel(svgElement, "txt phase 3");
+      homeRed.addClass("hidden-ref");
 
-      if (!markerRed) {
-        throw new Error('Could not find marker element (expected label "marker_red").');
-      }
+      labels.forEach((label) => {
+        label.remember("original-stroke", label.css("stroke") || label.attr("stroke") || "#ff0000");
+      });
+      setPhaseHighlight(labels, -1);
 
-      if (!markerBlu) {
-        throw new Error('Could not find marker element (expected label "marker_blu").');
-      }
+      const homeCenter = { x: homeRed.cx(), y: homeRed.cy() };
+      markerRed.remember("start-center", { x: markerRed.cx(), y: markerRed.cy() });
+      markerBlu.remember("start-center", { x: markerBlu.cx(), y: markerBlu.cy() });
 
-      if (!homeRed) {
-        throw new Error('Could not find home path element (expected label "home_red").');
-      }
-
-      if (!phase1 || !phase2 || !phase3) {
-        throw new Error('Could not find all phase labels (expected "txt phase 1", "txt phase 2", "txt phase 3").');
-      }
-
-      homeRed.classList.add("hidden-ref");
-
-      const labels = [phase1, phase2, phase3];
-      const originalStroke = labels.map((node) => node.style.stroke || getComputedStyle(node).stroke || "#ff0000");
-      setPhaseHighlight(labels, originalStroke, -1);
-
-      const homeCenter = elementCenter(homeRed);
-      const redStart = elementCenter(markerRed);
-      const bluStart = elementCenter(markerBlu);
-
-      let redCurrent = { x: redStart.x, y: redStart.y };
-      let bluCurrent = { x: bluStart.x, y: bluStart.y };
       let phaseIndex = 0;
       let isAnimating = false;
 
-      svgElement.style.cursor = "pointer";
-      svgElement.addEventListener("click", async () => {
+      draw.css("cursor", "pointer");
+      draw.on("click", async () => {
         if (isAnimating) {
           return;
         }
@@ -212,21 +151,17 @@
 
         try {
           if (phaseIndex === 0) {
-            setPhaseHighlight(labels, originalStroke, 0);
-            await animateMarkerTo(markerRed, redCurrent, homeCenter, ANIMATION_DURATION_MS);
-            redCurrent = { x: homeCenter.x, y: homeCenter.y };
+            setPhaseHighlight(labels, 0);
+            await animateMarkerTo(markerRed, homeCenter);
           } else if (phaseIndex === 1) {
-            setPhaseHighlight(labels, originalStroke, 1);
-            await animateMarkerTo(markerBlu, bluCurrent, homeCenter, ANIMATION_DURATION_MS);
-            bluCurrent = { x: homeCenter.x, y: homeCenter.y };
+            setPhaseHighlight(labels, 1);
+            await animateMarkerTo(markerBlu, homeCenter);
           } else {
-            setPhaseHighlight(labels, originalStroke, 2);
+            setPhaseHighlight(labels, 2);
             await Promise.all([
-              animateMarkerTo(markerRed, redCurrent, redStart, ANIMATION_DURATION_MS),
-              animateMarkerTo(markerBlu, bluCurrent, bluStart, ANIMATION_DURATION_MS)
+              animateMarkerTo(markerRed, markerRed.remember("start-center")),
+              animateMarkerTo(markerBlu, markerBlu.remember("start-center"))
             ]);
-            redCurrent = { x: redStart.x, y: redStart.y };
-            bluCurrent = { x: bluStart.x, y: bluStart.y };
           }
 
           phaseIndex = (phaseIndex + 1) % 3;

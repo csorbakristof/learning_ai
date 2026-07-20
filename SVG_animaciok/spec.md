@@ -3,22 +3,25 @@ We are creating visualizations to explain complex things.
 
 For all demos, create a html file with embedded javascript using the SVG.js library. These html files show the SVG files and contain additional javascript to manipulate them. You can have a look at the documentation of the SVG.js library where: https://svgjs.dev/docs/3.0/
 
+In the description of the tasks, I will refer to the SVG objects by their labels. During the animations, use the center of the objects as anchor points. Use 1 second animations and easing on both ends.
 
 # DEMO1: marker_to_home
 
 File to create: marker_to_home.html
 Image to embed: marker_to_home.svg
 
-The SVG file contains a rectangle (label: marker_red) and a path (an ellipse) with label "home_red". Create an animation which moves the marker between its initial position and the location indicated by home_red. Make home_red invisible.
+Preparation: hide home_red via CSS. All phase labels should be red (original color).
 
-## Further details
+The demo contains the following animations, each triggered by a mouse click after each other:
 
-For DEMO1 (marker_to_home):
-- Start the animation automatically when the page loads.
-- Animate continuously in a back-and-forth loop.
-- Use a duration of 2 seconds for one leg of the motion.
-- Follow the ellipse path geometry for movement.
-- Use ease-in-out easing.
-- Hide `home_red` via a CSS class.
-- Use the center of the moving rectangle (`marker_red`) as the point that follows the ellipse path (`home_red`).
-- Rotate the rectangle while moving so its orientation follows the direction of motion along the path.
+1. marker_red moves to home_red. Select "txt phase 1" by changing its stroke color to blue.
+2. marker_blu moves to home_red as well. Select "txt phase 2" by making it blue and "txt phase 1" back to its original color.
+3. marker_red and marker_blu return to their original position. Select "txt phase 3".
+
+# Further details
+
+- If user clicks during an animation, ignore the click.
+- Every click advances only 1 phase in the animation.
+- "Original color" refers to the color defined in the SVG file.
+- Every marker should preserve their shape during the animations.
+- Clicks should be detected inside the SVG.

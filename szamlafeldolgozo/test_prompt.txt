@@ -1,0 +1,8 @@
+Menj végig a workspace minden dokumentumán. Ezek számlák. Mindegyikből nyerd ki az alábbi információkat egy közös JSON-ba. Csak tiszta JSON formátumot adj vissza. Ha a kapott dokumentumból ezek az adatok nem nyerhetőek ki egyértelműen, a hiányzó mezők értéke legyen "???". Ne próbálj korábbi dokumentumok alapján értékeket betippelni!
+
+- A szolgáltató neve.
+- A Felhasználási hely címe (mint például 1115 Budapest, Bartók Béla út 129 . ép. 3.")
+- A szolgáltatás megnevezése (mint például "Villamos energia egyetemes szolgáltatás és villamosenergia­elosztás"),
+- Számla kelte (egy dátum string),
+- A számla összege (Fizetendő összeg összesen)
+ 

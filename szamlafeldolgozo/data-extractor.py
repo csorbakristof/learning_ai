@@ -14,11 +14,11 @@ DEFAULT_PROMPT = """Olvasd el ezt a számla dokumentumot és gyűjtsd ki JSON fo
 Csak tiszta JSON formátumot adj vissza.
 - A szolgáltató neve.
 - A Felhasználási hely címe (mint például 1115 Budapest, Bartók Béla út 129 . ép. 3.")
-- A szolgáltatás megnevezése (mint például "Villamos energia egyetemes szolgáltatás és villamosenergia­elosztás"),
-- Számla kelte (egy dátum string),
+- A szolgáltatás megnevezése (mint például "Villamos energia elszámoló számla" vagy "Távhőszolgáltatási 1. részszámla" a dokumentum legelején.),
+- Számla kelte (egy dátum string, mint például "Számla kelte: 2026.06.05"),
 - A számla összege (Fizetendő összeg összesen)
 
-Ha a kapott dokumentumból ezek az adatok nem nyerhetőek ki egyértelműen, a hiányzó mezők értéke legyen "???". Ne próbálj korábbi dokumentumok alapján értékeket betippelni!
+Ha a kapott dokumentumból ezek az adatok nem nyerhetőek ki, a hiányzó mezők értéke legyen "???".
 """;
 
 def parse_args():
@@ -88,22 +88,63 @@ def upload_document(base_url: str, api_key: str, file_path: Path, workspace_slug
         raise RuntimeError(f"Failed to upload document {file_path.name}: {res_data}")
 
 
+def get_workspace_documents(base_url: str, api_key: str, workspace_slug: str) -> list[str]:
+    """Return the document locations currently attached to a workspace."""
+    url = f"{base_url.rstrip('/')}/api/v1/workspace/{workspace_slug}"
+    headers = {"Authorization": f"Bearer {api_key}"}
+
+    try:
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
+    except Exception:
+        return []
+
+    res_data = response.json()
+    document_locations = []
+    if isinstance(res_data, dict):
+        documents = res_data.get("documents") or []
+        for item in documents:
+            if isinstance(item, dict):
+                location = item.get("location") or item.get("path")
+                if location:
+                    document_locations.append(location)
+    return document_locations
+
+
 def remove_from_workspace(base_url: str, api_key: str, workspace_slug: str, doc_location: str):
-    """
-    Cleans up the document from workspace embeddings after processing.
-    """
-    url = f"{base_url.rstrip('/')}/api/v1/workspace/{workspace_slug}/update-embeddings"
+    """Remove a document from the workspace and any attached embeddings."""
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
-    payload = {"adds": [], "deletes": [doc_location]}
 
+    # 1) Try the workspace embeddings delete endpoint.
+    url = f"{base_url.rstrip('/')}/api/v1/workspace/{workspace_slug}/update-embeddings"
+    payload = {"adds": [], "deletes": [doc_location]}
     try:
-        response = requests.post(url, headers=headers, json=payload)
+        response = requests.post(url, headers=headers, json=payload, timeout=60)
         response.raise_for_status()
     except Exception:
         pass
+
+    # 2) Try deleting the document directly from the document API.
+    doc_url = f"{base_url.rstrip('/')}/api/v1/document"
+    try:
+        response = requests.delete(doc_url, headers={"Authorization": f"Bearer {api_key}"}, params={"location": doc_location}, timeout=60)
+        response.raise_for_status()
+    except Exception:
+        pass
+
+
+def clear_workspace_documents(base_url: str, api_key: str, workspace_slug: str):
+    """Remove any documents already attached to the workspace before processing the ZIP."""
+    document_locations = get_workspace_documents(base_url, api_key, workspace_slug)
+    if not document_locations:
+        return
+
+    print(f" -> Deleting workspace documents: {document_locations}")
+    for doc_location in document_locations:
+        remove_from_workspace(base_url, api_key, workspace_slug, doc_location)
 
 
 def _clean_llm_response(raw_text: str) -> str:
@@ -139,6 +180,7 @@ def query_workspace(base_url: str, api_key: str, workspace_slug: str, prompt: st
         "message": prompt,
         "mode": "query"
     }
+    print(f" -> Prompt sent to LLM: {prompt}")
     if doc_location:
         payload["documentLocations"] = [doc_location]
         payload["documents"] = [doc_location]
@@ -164,6 +206,7 @@ def process_pdf_files(zip_path: str, output_path: str, api_key: str, workspace_s
     results = []
 
     print("Preparing workspace for isolated document queries...")
+    clear_workspace_documents(base_url, api_key, workspace_slug)
 
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_dir_path = Path(temp_dir)
@@ -192,6 +235,8 @@ def process_pdf_files(zip_path: str, output_path: str, api_key: str, workspace_s
                 # 1. Upload Document
                 print(" -> Uploading document...")
                 doc_location = upload_document(base_url, api_key, pdf_file, workspace_slug)
+                print(f" -> Uploaded document location: {doc_location}")
+                active_doc_location = doc_location
 
                 # 2. Query AnythingLLM with the uploaded document already attached to the workspace
                 print(" -> Querying AnythingLLM...")
@@ -217,6 +262,11 @@ def process_pdf_files(zip_path: str, output_path: str, api_key: str, workspace_s
                     },
                     "error": str(err)
                 })
+            finally:
+                if doc_location:
+                    remove_from_workspace(base_url, api_key, workspace_slug, doc_location)
+                    if active_doc_location == doc_location:
+                        active_doc_location = None
 
     if active_doc_location:
         print(" -> Cleaning up the last document from workspace...")

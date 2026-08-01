@@ -1,28 +1,301 @@
 [
   {
     "source_metadata": {
-      "filename": "847603031354.pdf",
-      "relative_path": "ujSzamlak20260701\\847603031354.pdf"
+      "filename": "szamla_20241014_122300300195.pdf",
+      "relative_path": "ujSzamlak20241119\\szamla_20241014_122300300195.pdf"
     },
     "analysis": {
-      "szolgaltatoNeve": "MVM Next Energiakereskedelmi Zrt.",
-      "felhasznalasiHelyCime": "1115 Budapest, Bartók Béla út 129 . ép. 3.",
-      "szolgaltatasMegnevezese": "Villamos energia elszámoló számla",
-      "szamlaKelte": "???",
-      "szamlaOsszege": "2.363 Ft"
+      "szolgáltató_neve": "BKM Nonprofit Zrt.",
+      "felhasználási_hely_címe": "H119146; 1115 Budapest, Bartók Béla út 129/B.",
+      "szolgáltatás_megnevezése": "Távhőszolgáltatás",
+      "számla_kelte": "2024.10.14.",
+      "számla_összege": "6.731 Ft"
     }
   },
   {
     "source_metadata": {
-      "filename": "szamla_20260612_122500539675.pdf",
-      "relative_path": "ujSzamlak20260701\\szamla_20260612_122500539675.pdf"
+      "filename": "szamla_20241106_FCS_88564745.pdf",
+      "relative_path": "ujSzamlak20241119\\szamla_20241106_FCS_88564745.pdf"
     },
     "analysis": {
-      "szolgaltatoNeve": "MVM Next Energiakereskedelmi Zrt.",
-      "felhasznalasiHelyCime": "1115 Budapest, Bartók Béla út 129 . ép. 3.",
-      "szolgaltatasMegnevezese": "Villamos energia elszámoló számla",
-      "szamlaKelte": "???",
-      "szamlaOsszege": "2.363 Ft"
+      "szolgáltató_neve": "Fővárosi Csatornázási Művek Zrt.",
+      "felhasználási_hely_címe": "1115 BUDAPEST BARTÓK BÉLA ÚT 129/B 3.em. 8.",
+      "szolgáltatás_megnevezése": "Víziközmű-szolgáltatás / szennyvízelvezetés",
+      "számla_kelte": "2024.11.06.",
+      "számla_összege": "2 374 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_20241106_FVV_13883145.pdf",
+      "relative_path": "ujSzamlak20241119\\szamla_20241106_FVV_13883145.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "Fővárosi Vízművek Zártkörűen Működő Részvénytársaság",
+      "felhasználási_hely_címe": "1115 BUDAPEST BARTÓK BÉLA ÚT 129/B 3.em. 8.",
+      "szolgáltatás_megnevezése": "Víziközmű-szolgáltatás",
+      "számla_kelte": "2024.11.06.",
+      "számla_összege": "1 565 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_BKM_20241115_122200332621.pdf",
+      "relative_path": "ujSzamlak20241202\\szamla_BKM_20241115_122200332621.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "BKM Nonprofit Zrt.",
+      "felhasználási_hely_címe": "H119146; 1115 Budapest,Bartók Béla út 129/B. 3. em. 8",
+      "szolgáltatás_megnevezése": "Távhőszolgáltatás",
+      "számla_kelte": "2024.11.15.",
+      "számla_összege": "6.731 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_mvm_gaz_20241125_101909560900.pdf",
+      "relative_path": "ujSzamlak20241202\\szamla_mvm_gaz_20241125_101909560900.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "MVM Next Energiakereskedelmi Zrt.",
+      "felhasználási_hely_címe": "1115 Budapest Bartók Béla út 129/B. 3. em. 8.",
+      "szolgáltatás_megnevezése": "Földgáz egyetemes szolgáltatás és földgázelosztás",
+      "számla_kelte": "2024.11.25.",
+      "számla_összege": "4 225 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_20241206_FVV_14409602.pdf",
+      "relative_path": "ujSzamlak20250103\\szamla_20241206_FVV_14409602.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "Fővárosi Vízművek Zártkörűen Működő Részvénytársaság",
+      "felhasználási_hely_címe": "1115 BUDAPEST BARTÓK BÉLA ÚT 129/B 3.em. 8.",
+      "szolgáltatás_megnevezése": "Mellékvízmérővel kapcsolatos szolgáltatás",
+      "számla_kelte": "2024.12.06.",
+      "számla_összege": "3 468 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_20241213_Fotav121100507843.pdf",
+      "relative_path": "ujSzamlak20250103\\szamla_20241213_Fotav121100507843.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "BKM Nonprofit Zrt.",
+      "felhasználási_hely_címe": "1115 Budapest, Bartók Béla út 129/B",
+      "szolgáltatás_megnevezése": "Távhőszolgáltatás",
+      "számla_kelte": "2024.12.13.",
+      "számla_összege": "6.731 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_20241218_FCS_89049742.pdf",
+      "relative_path": "ujSzamlak20250103\\szamla_20241218_FCS_89049742.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "Fővárosi Csatornázási Művek Zrt.",
+      "felhasználási_hely_címe": "1115 BUDAPEST BARTÓK BÉLA ÚT 129/B 3.em. 8.",
+      "szolgáltatás_megnevezése": "Víziközmű-szolgáltatás / szennyvízelvezetés",
+      "számla_kelte": "2024.12.18.",
+      "számla_összege": "2 287 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_20241218_FVV_14556321.pdf",
+      "relative_path": "ujSzamlak20250103\\szamla_20241218_FVV_14556321.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "Fővárosi Vízművek Zártkörűen Működő Részvénytársaság",
+      "felhasználási_hely_címe": "1115 BUDAPEST BARTÓK BÉLA ÚT 129/B 3.em. 8.",
+      "szolgáltatás_megnevezése": "Víziközmű-szolgáltatás",
+      "számla_kelte": "2024.12.18.",
+      "számla_összege": "1 314 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "Aram dec 845401800781.pdf",
+      "relative_path": "ujSzamlak20250202\\Aram dec 845401800781.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "MVM Next Energiakereskedelmi Zrt.",
+      "felhasználási_hely_címe": "1115 Budapest XI., Bartók Béla út 129b . ép. 3. em 008",
+      "szolgáltatás_megnevezése": "Villamos energia egyetemes szolgáltatás és villamosenergia-elosztás",
+      "számla_kelte": "2024.12.06",
+      "számla_összege": "1.601 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "Aram jan 846301836725.pdf",
+      "relative_path": "ujSzamlak20250202\\Aram jan 846301836725.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "MVM Next Energiakereskedelmi Zrt.",
+      "felhasználási_hely_címe": "1115 Budapest XI., Bartók Béla út 129b. ép. 3. em 008",
+      "szolgáltatás_megnevezése": "Villamos energia egyetemes szolgáltatás és villamosenergia-elosztás",
+      "számla_kelte": "2025.01.08",
+      "számla_összege": "1.529 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "Aram nov 846801649993.pdf",
+      "relative_path": "ujSzamlak20250202\\Aram nov 846801649993.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "MVM Next Energiakereskedelmi Zrt.",
+      "felhasználási_hely_címe": "1115 Budapest XI., Bartók Béla út 129b . ép. 3. em 008",
+      "szolgáltatás_megnevezése": "Villamos energia egyetemes szolgáltatás és villamosenergia-elosztás",
+      "számla_kelte": "2024.11.07",
+      "számla_összege": "2.002 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_20250106_FCS_89191958.pdf",
+      "relative_path": "ujSzamlak20250202\\szamla_20250106_FCS_89191958.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "Fővárosi Csatornázási Művek Zrt.",
+      "felhasználási_hely_címe": "1115 BUDAPEST BARTÓK BÉLA ÚT 129/B 3.em. 8.",
+      "szolgáltatás_megnevezése": "Víziközmű-szolgáltatás / szennyvízelvezetés",
+      "számla_kelte": "2025.01.06.",
+      "számla_összege": "86 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_20250106_FVV_14759564.pdf",
+      "relative_path": "ujSzamlak20250202\\szamla_20250106_FVV_14759564.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "Fővárosi Vízművek Zártkörűen Működő Részvénytársaság",
+      "felhasználási_hely_címe": "1115 BUDAPEST BARTÓK BÉLA ÚT 129/B 3.em. 8.",
+      "szolgáltatás_megnevezése": "Víziközmű-szolgáltatás",
+      "számla_kelte": "2025.01.06.",
+      "számla_összege": "251 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_20250115_BKM_Főtáv_121100522834.pdf",
+      "relative_path": "ujSzamlak20250202\\szamla_20250115_BKM_Főtáv_121100522834.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "BKM Nonprofit Zrt.",
+      "felhasználási_hely_címe": "H119146; 1115 Budapest,Bartók Béla út 129/B.",
+      "szolgáltatás_megnevezése": "Távhőszolgáltatás",
+      "számla_kelte": "2025.01.15.",
+      "számla_összege": "6.731 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "BB_aram_20250207_846001934048.pdf",
+      "relative_path": "ujSzamlak20250306ig\\BB_aram_20250207_846001934048.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "MVM Next Energiakereskedelmi Zrt.",
+      "felhasználási_hely_címe": "1115 Budapest XI., Bartók Béla út 129b . ép. 3. em 008",
+      "szolgáltatás_megnevezése": "Villamos energia egyetemes szolgáltatás és villamosenergia-elosztás",
+      "számla_kelte": "2025.02.07",
+      "számla_összege": "1.891 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "BB_fotav_20250214_123500410886.pdf",
+      "relative_path": "ujSzamlak20250306ig\\BB_fotav_20250214_123500410886.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "BKM Nonprofit Zrt.",
+      "felhasználási_hely_címe": "H119146; 1115 Budapest,Bartók Béla út 129/B.",
+      "szolgáltatás_megnevezése": "Távhőszolgáltatás",
+      "számla_kelte": "2025.02.14.",
+      "számla_összege": "6.731 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "BB_gaz_20250225_101316309255.pdf",
+      "relative_path": "ujSzamlak20250306ig\\BB_gaz_20250225_101316309255.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "MVM Next Energiakereskedelmi Zrt.",
+      "felhasználási_hely_címe": "1115 Budapest Bartók Béla út 129/B. 3. em. 8.",
+      "szolgáltatás_megnevezése": "Földgáz egyetemes szolgáltatás és földgázelosztás",
+      "számla_kelte": "2025.02.25.",
+      "számla_összege": "4 225 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_20250305_FCS_89774931.pdf",
+      "relative_path": "ujSzamlak20250404ig\\szamla_20250305_FCS_89774931.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "Fővárosi Csatornázási Művek Zrt.",
+      "felhasználási_hely_címe": "1115 BUDAPEST BARTÓK BÉLA ÚT 129/B 3.em. 8.",
+      "szolgáltatás_megnevezése": "Víziközmű-szolgáltatás / szennyvízelvezetés",
+      "számla_kelte": "2025.03.05.",
+      "számla_összege": "3 519 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_20250305_FVV_15597375.pdf",
+      "relative_path": "ujSzamlak20250404ig\\szamla_20250305_FVV_15597375.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "Fővárosi Vízművek Zártkörűen Működő Részvénytársaság",
+      "felhasználási_hely_címe": "1115 BUDAPEST BARTÓK BÉLA ÚT 129/B 3.em. 8.",
+      "szolgáltatás_megnevezése": "Víziközmű-szolgáltatás",
+      "számla_kelte": "2025.03.05.",
+      "számla_összege": "2 221 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_fotav_20250314_122800394064.pdf",
+      "relative_path": "ujSzamlak20250404ig\\szamla_fotav_20250314_122800394064.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "BKM Nonprofit Zrt.",
+      "felhasználási_hely_címe": "1115 Budapest, Bartók Béla út 129/B",
+      "szolgáltatás_megnevezése": "Távhőszolgáltatás",
+      "számla_kelte": "2025.03.14.",
+      "számla_összege": "6.731 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "bb elmu 20250407 845402127276.pdf",
+      "relative_path": "ujSzamlak20250501\\bb elmu 20250407 845402127276.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "MVM Next Energiakereskedelmi Zrt.",
+      "felhasználási_hely_címe": "1115 Budapest XI., Bartók Béla út 129b. ép. 3. em 008",
+      "szolgáltatás_megnevezése": "Villamos energia egyetemes szolgáltatás és villamosenergia-elosztás",
+      "számla_kelte": "2025.04.07",
+      "számla_összege": "1.494 Ft"
+    }
+  },
+  {
+    "source_metadata": {
+      "filename": "szamla_BB_fotav_20250414_123400286940.pdf",
+      "relative_path": "ujSzamlak20250501\\szamla_BB_fotav_20250414_123400286940.pdf"
+    },
+    "analysis": {
+      "szolgáltató_neve": "BKM Nonprofit Zrt.",
+      "felhasználási_hely_címe": "H119146; 1115 Budapest,Bartók Béla út 129/B.",
+      "szolgáltatás_megnevezése": "Távhőszolgáltatás",
+      "számla_kelte": "2025.04.14.",
+      "számla_összege": "6.731 Ft"
     }
   }
 ]

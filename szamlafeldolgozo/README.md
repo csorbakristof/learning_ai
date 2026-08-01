@@ -1,18 +1,24 @@
-Create a python script which takes a zip file as input. Extracts all PDF files (from all subdirectories) and one-by-one.processes them using AnythingLLM: it uploads the file, sends a processing query which returns a JSON answer, and concatenates these JSON answers into a single file. It appends the path and filename to the individual answers before merging them.
+Create a Python script which takes a ZIP file as input, extracts all PDF files from all subdirectories, and processes them one by one. For each PDF, the script uses a table-aware PDF extraction library to pull out text and tabular data, sends the extracted content together with a query to an LM Studio-compatible API endpoint, and merges the returned JSON answers into a single output file. Each result includes the source path and filename before being combined.
 
 ## Prerequisites
 
-``` bash
-pip install requests
+```bash
+pip install requests pdfplumber pypdf pymupdf
 ```
 
 ## Example start
 
-``` bash
-python process_zip_anythingllm.py \
+```bash
+python data-extractor.py \
   --zip-path "/path/to/documents.zip" \
   --output-json "/path/to/output.json" \
-  --api-key "YOUR_ANYTHINGLLM_API_KEY" \
-  --workspace-slug "my-workspace" \
+  --base-url "http://localhost:1234/v1" \
+  --model "local-model" \
   --prompt "Extract the document title, summary, and action items into a JSON object."
 ```
+
+## Notes
+
+- The script uses the LM Studio OpenAI-compatible chat completions endpoint directly.
+- The PDF extraction step uses PyMuPDF first, with pdfplumber and pypdf as fallbacks, so text and table content are preserved as accurately as possible.
+- If LM Studio is running locally, no API key is usually required.

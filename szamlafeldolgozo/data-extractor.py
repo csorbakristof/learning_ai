@@ -3,158 +3,100 @@ import json
 import os
 import re
 import tempfile
-import time
 import zipfile
 from pathlib import Path
+
 import requests
 
-# Default AnythingLLM configuration
-DEFAULT_BASE_URL = "http://localhost:3001"
-DEFAULT_PROMPT = """Olvasd el ezt a számla dokumentumot és gyűjtsd ki JSON formátumba az alábbi adatokat.
-Csak tiszta JSON formátumot adj vissza.
-- A szolgáltató neve.
-- A Felhasználási hely címe (mint például 1115 Budapest, Bartók Béla út 129 . ép. 3.")
-- A szolgáltatás megnevezése (mint például "Villamos energia elszámoló számla" vagy "Távhőszolgáltatási 1. részszámla" a dokumentum legelején.),
-- Számla kelte (egy dátum string, mint például "Számla kelte: 2026.06.05"),
-- A számla összege (Fizetendő összeg összesen)
+DEFAULT_BASE_URL = "http://localhost:1234/v1"
+DEFAULT_MODEL = "local-model"
+DEFAULT_PROMPT = """Olvasd el ezt a dokumentumot figyelmesen, és gyűjtsd ki JSON formátumban az alábbi mezőket.
+Csak érvényes JSON-t adj vissza.
+- szolgáltató_neve
+- felhasználási_hely_címe
+- szolgáltatás_megnevezése
+- számla_kelte
+- számla_összege
 
-Ha a kapott dokumentumból ezek az adatok nem nyerhetőek ki, a hiányzó mezők értéke legyen "???".
-""";
+Ha egy adat nem látható a dokumentumban, az érték legyen "???".
+"""
+
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Extract PDFs from a ZIP file and process them individually with AnythingLLM."
+        description="Extract PDFs from a ZIP archive, extract text and tables from each PDF, and send the content to LM Studio for JSON extraction."
     )
     parser.add_argument("--zip-path", required=True, help="Path to the input ZIP file.")
     parser.add_argument("--output-json", required=True, help="Path to save the combined JSON output.")
-    parser.add_argument("--api-key", required=True, help="AnythingLLM API Key.")
-    parser.add_argument(
-        "--workspace-slug",
-        default=os.getenv("ANYTHINGLLM_WORKSPACE_SLUG"),
-        help="AnythingLLM workspace slug. Provide the actual slug from your workspace (for example: my-workspace)."
-    )
-    parser.add_argument("--base-url", default=DEFAULT_BASE_URL, help="AnythingLLM API Base URL (default: http://localhost:3001)")
-    parser.add_argument("--prompt", default=DEFAULT_PROMPT, help="Query prompt to send for processing each PDF.")
-    args = parser.parse_args()
-
-    if not args.workspace_slug:
-        parser.error("--workspace-slug is required and must be an existing AnythingLLM workspace slug.")
-
-    return args
+    parser.add_argument("--base-url", default=os.getenv("LM_STUDIO_BASE_URL", DEFAULT_BASE_URL), help="LM Studio base URL (default: http://localhost:1234/v1)")
+    parser.add_argument("--model", default=os.getenv("LM_STUDIO_MODEL", DEFAULT_MODEL), help="LM Studio model name to call.")
+    parser.add_argument("--api-key", default=os.getenv("LM_STUDIO_API_KEY", ""), help="Optional API key for LM Studio-compatible servers.")
+    parser.add_argument("--prompt", default=DEFAULT_PROMPT, help="Prompt to send along with the extracted PDF content.")
+    return parser.parse_args()
 
 
-def _extract_document_location(res_data: dict, file_name: str) -> str:
-    """Extract the document location returned by AnythingLLM after upload."""
-    documents = res_data.get("documents") or []
-    if not documents:
-        raise RuntimeError(f"Upload response did not contain any document entries for {file_name}: {res_data}")
-
-    first_doc = documents[0]
-    location = first_doc.get("location")
-    if not location and isinstance(first_doc.get("document"), dict):
-        location = first_doc["document"].get("location")
-
-    if not location:
-        raise RuntimeError(f"Could not find a document location in upload response for {file_name}: {res_data}")
-
-    return location
-
-
-def upload_document(base_url: str, api_key: str, file_path: Path, workspace_slug: str) -> str:
-    """
-    Uploads a document to AnythingLLM and returns the document location used for querying.
-    """
-    url = f"{base_url.rstrip('/')}/api/v1/document/upload"
-    headers = {
-        "Authorization": f"Bearer {api_key}"
-    }
-
-    with open(file_path, "rb") as f:
-        files = {"file": (file_path.name, f, "application/pdf")}
-        data = {"addToWorkspaces": workspace_slug}
-        response = requests.post(url, headers=headers, files=files, data=data, timeout=120)
+def extract_pdf_content(pdf_path: Path) -> str:
+    """Extract text and tables from a PDF using PyMuPDF first, with pdfplumber and pypdf fallbacks."""
+    content_parts = []
 
     try:
-        response.raise_for_status()
-    except requests.HTTPError as exc:
-        raise RuntimeError(f"Upload failed for {file_path.name}: HTTP {response.status_code}: {response.text.strip()}") from exc
+        import fitz
 
-    res_data = response.json()
-
-    if res_data.get("success") and res_data.get("documents"):
-        doc_location = _extract_document_location(res_data, file_path.name)
-        return doc_location
-    else:
-        raise RuntimeError(f"Failed to upload document {file_path.name}: {res_data}")
-
-
-def get_workspace_documents(base_url: str, api_key: str, workspace_slug: str) -> list[str]:
-    """Return the document locations currently attached to a workspace."""
-    url = f"{base_url.rstrip('/')}/api/v1/workspace/{workspace_slug}"
-    headers = {"Authorization": f"Bearer {api_key}"}
-
-    try:
-        response = requests.get(url, headers=headers, timeout=30)
-        response.raise_for_status()
+        with fitz.open(pdf_path) as doc:
+            for page_num, page in enumerate(doc, start=1):
+                page_text = page.get_text("text") or ""
+                if page_text.strip():
+                    content_parts.append(f"=== Page {page_num} text ===\n{page_text.strip()}")
     except Exception:
-        return []
+        content_parts = []
 
-    res_data = response.json()
-    document_locations = []
-    if isinstance(res_data, dict):
-        documents = res_data.get("documents") or []
-        for item in documents:
-            if isinstance(item, dict):
-                location = item.get("location") or item.get("path")
-                if location:
-                    document_locations.append(location)
-    return document_locations
+    if not content_parts:
+        try:
+            import pdfplumber
+        except ImportError as exc:
+            raise RuntimeError("pdfplumber is required. Install it with: pip install pdfplumber pypdf pymupdf") from exc
 
+        with pdfplumber.open(pdf_path) as pdf:
+            for page_num, page in enumerate(pdf.pages, start=1):
+                page_text = page.extract_text() or ""
+                if page_text.strip():
+                    content_parts.append(f"=== Page {page_num} text ===\n{page_text.strip()}")
 
-def remove_from_workspace(base_url: str, api_key: str, workspace_slug: str, doc_location: str):
-    """Remove a document from the workspace and any attached embeddings."""
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json"
-    }
+                tables = page.extract_tables() or []
+                for table_idx, table in enumerate(tables, start=1):
+                    cleaned_rows = []
+                    for row in table:
+                        if not row:
+                            continue
+                        cleaned_row = [cell.strip() if isinstance(cell, str) else "" for cell in row]
+                        if any(cleaned_row):
+                            cleaned_rows.append(cleaned_row)
+                    if cleaned_rows:
+                        content_parts.append(f"=== Page {page_num} table {table_idx} ===\n{json.dumps(cleaned_rows, ensure_ascii=False)}")
 
-    # 1) Try the workspace embeddings delete endpoint.
-    url = f"{base_url.rstrip('/')}/api/v1/workspace/{workspace_slug}/update-embeddings"
-    payload = {"adds": [], "deletes": [doc_location]}
-    try:
-        response = requests.post(url, headers=headers, json=payload, timeout=60)
-        response.raise_for_status()
-    except Exception:
-        pass
+    if not content_parts:
+        try:
+            from pypdf import PdfReader
 
-    # 2) Try deleting the document directly from the document API.
-    doc_url = f"{base_url.rstrip('/')}/api/v1/document"
-    try:
-        response = requests.delete(doc_url, headers={"Authorization": f"Bearer {api_key}"}, params={"location": doc_location}, timeout=60)
-        response.raise_for_status()
-    except Exception:
-        pass
+            reader = PdfReader(str(pdf_path))
+            for page_num, page in enumerate(reader.pages, start=1):
+                text = page.extract_text() or ""
+                if text.strip():
+                    content_parts.append(f"=== Page {page_num} text ===\n{text.strip()}")
+        except Exception as exc:
+            raise RuntimeError(f"Could not extract any text or tables from {pdf_path.name}: {exc}") from exc
 
+    if not content_parts:
+        raise RuntimeError(f"No extractable content found in {pdf_path.name}")
 
-def clear_workspace_documents(base_url: str, api_key: str, workspace_slug: str):
-    """Remove any documents already attached to the workspace before processing the ZIP."""
-    document_locations = get_workspace_documents(base_url, api_key, workspace_slug)
-    if not document_locations:
-        return
-
-    print(f" -> Deleting workspace documents: {document_locations}")
-    for doc_location in document_locations:
-        remove_from_workspace(base_url, api_key, workspace_slug, doc_location)
+    return "\n\n".join(content_parts).strip()
 
 
 def _clean_llm_response(raw_text: str) -> str:
-    """Remove reasoning tags and markdown fences from AnythingLLM responses before parsing JSON."""
+    """Remove reasoning tags and markdown fences from LM Studio responses before parsing JSON."""
     text = raw_text.strip()
-
-    # Remove <think>...</think> blocks, including multi-line reasoning.
     text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL | re.IGNORECASE)
 
-    # Remove leading/trailing whitespace around markdown code fences.
     if text.startswith("```"):
         lines = text.splitlines()
         if lines and lines[0].startswith("```"):
@@ -166,34 +108,28 @@ def _clean_llm_response(raw_text: str) -> str:
     return text
 
 
-def query_workspace(base_url: str, api_key: str, workspace_slug: str, prompt: str, doc_location: str | None = None) -> dict:
-    """
-    Sends a query prompt to the workspace chat endpoint.
-    """
-    url = f"{base_url.rstrip('/')}/api/v1/workspace/{workspace_slug}/chat"
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json"
-    }
+def query_lm_studio(base_url: str, model: str, prompt: str, document_content: str, api_key: str) -> dict:
+    """Send the extracted PDF content to an LM Studio-compatible chat completions endpoint."""
+    url = f"{base_url.rstrip('/')}/chat/completions"
+    headers = {"Content-Type": "application/json"}
+    if api_key:
+        headers["Authorization"] = f"Bearer {api_key}"
 
     payload = {
-        "message": prompt,
-        "mode": "query"
+        "model": model,
+        "messages": [
+            {"role": "system", "content": "You are a document extraction assistant. Return only valid JSON."},
+            {"role": "user", "content": f"{prompt}\n\nDocument content:\n{document_content}"}
+        ],
+        "temperature": 0.1,
+        "max_tokens": 2000,
     }
-    print(f" -> Prompt sent to LLM: {prompt}")
-    if doc_location:
-        payload["documentLocations"] = [doc_location]
-        payload["documents"] = [doc_location]
 
-    response = requests.post(url, headers=headers, json=payload)
+    response = requests.post(url, headers=headers, json=payload, timeout=180)
+    response.raise_for_status()
 
-    try:
-        response.raise_for_status()
-    except requests.HTTPError as exc:
-        raise RuntimeError(f"Query failed for workspace '{workspace_slug}': HTTP {response.status_code}: {response.text.strip()}") from exc
-
-    res_data = response.json()
-    raw_text = res_data.get("textResponse", "")
+    data = response.json()
+    raw_text = data.get("choices", [{}])[0].get("message", {}).get("content", "")
     clean_text = _clean_llm_response(raw_text)
 
     try:
@@ -202,77 +138,49 @@ def query_workspace(base_url: str, api_key: str, workspace_slug: str, prompt: st
         return {"raw_response": raw_text}
 
 
-def process_pdf_files(zip_path: str, output_path: str, api_key: str, workspace_slug: str, base_url: str, prompt: str):
+def process_pdf_files(zip_path: str, output_path: str, base_url: str, model: str, api_key: str, prompt: str):
     results = []
-
-    print("Preparing workspace for isolated document queries...")
-    clear_workspace_documents(base_url, api_key, workspace_slug)
 
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_dir_path = Path(temp_dir)
         print(f"Extracting ZIP archive: {zip_path}")
 
-        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        with zipfile.ZipFile(zip_path, "r") as zip_ref:
             zip_ref.extractall(temp_dir_path)
 
-        # Recursively find all PDF files within all subdirectories
         pdf_files = sorted([p for p in temp_dir_path.rglob("*") if p.is_file() and p.suffix.lower() == ".pdf"])
+        if not pdf_files:
+            raise FileNotFoundError("No PDF files found in the ZIP archive.")
 
         print(f"Found {len(pdf_files)} PDF file(s) to process.")
 
-        active_doc_location = None
         for idx, pdf_file in enumerate(pdf_files, start=1):
             relative_path = str(pdf_file.relative_to(temp_dir_path))
             print(f"\n[{idx}/{len(pdf_files)}] Processing: {relative_path}")
-
-            if active_doc_location:
-                print(" -> Removing previous document from workspace before processing the next file...")
-                remove_from_workspace(base_url, api_key, workspace_slug, active_doc_location)
-                active_doc_location = None
-
-            doc_location = None
             try:
-                # 1. Upload Document
-                print(" -> Uploading document...")
-                doc_location = upload_document(base_url, api_key, pdf_file, workspace_slug)
-                print(f" -> Uploaded document location: {doc_location}")
-                active_doc_location = doc_location
+                extracted_content = extract_pdf_content(pdf_file)
+                print(f" -> Extracted {len(extracted_content)} characters from {pdf_file.name}")
+                answer = query_lm_studio(base_url, model, prompt, extracted_content, api_key)
 
-                # 2. Query AnythingLLM with the uploaded document already attached to the workspace
-                print(" -> Querying AnythingLLM...")
-                answer = query_workspace(base_url, api_key, workspace_slug, prompt, doc_location)
-
-                # 3. Format and append response metadata
                 processed_entry = {
                     "source_metadata": {
                         "filename": pdf_file.name,
-                        "relative_path": relative_path
+                        "relative_path": relative_path,
                     },
-                    "analysis": answer
+                    "analysis": answer,
                 }
                 print(f" -> LLM response for {pdf_file.name}: {json.dumps(answer, ensure_ascii=False, indent=2)}")
                 results.append(processed_entry)
-
             except Exception as err:
                 print(f" ERROR processing {relative_path}: {err}")
                 results.append({
                     "source_metadata": {
                         "filename": pdf_file.name,
-                        "relative_path": relative_path
+                        "relative_path": relative_path,
                     },
-                    "error": str(err)
+                    "error": str(err),
                 })
-            finally:
-                if doc_location:
-                    remove_from_workspace(base_url, api_key, workspace_slug, doc_location)
-                    if active_doc_location == doc_location:
-                        active_doc_location = None
 
-    if active_doc_location:
-        print(" -> Cleaning up the last document from workspace...")
-        remove_from_workspace(base_url, api_key, workspace_slug, active_doc_location)
-
-    # Save aggregated results
     with open(output_path, "w", encoding="utf-8") as out_f:
         json.dump(results, out_f, indent=2, ensure_ascii=False)
 
@@ -284,8 +192,8 @@ if __name__ == "__main__":
     process_pdf_files(
         zip_path=args.zip_path,
         output_path=args.output_json,
-        api_key=args.api_key,
-        workspace_slug=args.workspace_slug,
         base_url=args.base_url,
-        prompt=args.prompt
+        model=args.model,
+        api_key=args.api_key,
+        prompt=args.prompt,
     )

@@ -16,12 +16,14 @@ if not errorlevel 1 (
     )
 )
 
-echo Installing required dependency: requests
-%PYTHON_CMD% -m pip install requests
+echo Installing required dependencies: requests, pdfplumber, pypdf, pymupdf
+%PYTHON_CMD% -m pip install requests pdfplumber pypdf pymupdf
 if errorlevel 1 (
     echo Dependency installation failed.
     exit /b %errorlevel%
 )
 
 echo Starting document processor...
-python data-extractor.py --zip-path "szamlak/szamlak.zip" --output-json "ujszamlak.json" --api-key "6ZAAA6D-8TKM1FJ-GG4XEZN-AS5JS7S" --workspace-slug "billextractor"
+rem %PYTHON_CMD% "%SCRIPT_DIR%data-extractor.py" --zip-path "%SCRIPT_DIR%szamlak\szamlak.zip" --output-json "%SCRIPT_DIR%ujszamlak.json" --base-url "http://localhost:1234/v1" --model "local-model"
+%PYTHON_CMD% "%SCRIPT_DIR%data-extractor.py" --zip-path "%SCRIPT_DIR%szamlak\drive-download-20260801T151302Z-1-001.zip" --output-json "%SCRIPT_DIR%ujszamlak.json" --base-url "http://localhost:1234/v1" --model "local-model"
+

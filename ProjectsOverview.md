@@ -39,8 +39,8 @@ Admin funkciók önlab jegyek adminisztrálására, adatok Neptunból kinyerés�
 #### **SmartdocKitolto/**
 Py+Selenium excel tábla alapján SmartDoc kitöltésre és PDF-ben letöltésre.
 
-#### **TemperatureMonitoring/**
-Hőmérséklet monitorozáshoz adat összesítő és kiértékelő. Még csak pár alap kimutatással.
+#### **TemperatureMonitoring** (áthelyezve)
+Hőmérséklet monitorozáshoz adat összesítő és kiértékelő. **Áthelyezve** (2026-10-12) külön repositoryba: https://github.com/csorbakristof/TemperatureMonitoring . Ebben a repóban már nem található.
 
 ### 📚 Educational and Research Projects
 
@@ -78,7 +78,7 @@ Documentation for local development setup and Jekyll site management.
 ## Project Categories
 
 ### By Technology Stack
-- **Python Projects:** BillSummarizer, SmartdocKitolto, TemperatureMonitoring
+- **Python Projects:** BillSummarizer, SmartdocKitolto
 - **.NET/C# Projects:** EViP_ZH_gen
 - **VBA/Excel Projects:** BiralatSablonGeneralo, Excel2DocWithTemplate, ExcelMergerWithMacro
 - **Web Development:** docs, gh-pages
@@ -88,14 +88,14 @@ Documentation for local development setup and Jekyll site management.
 - **Document Processing:** BillSummarizer, Excel2DocWithTemplate, SmartdocKitolto
 - **Educational Tools:** BiralatSablonGeneralo, info2_vizsgaztatas, MoodlePlanning
 - **Administrative Automation:** ProjectLabAdmin, OutlookReplyDrafter, ExcelMergerWithMacro
-- **Data Analysis:** TemperatureMonitoring, EViP_ZH_gen
+- **Data Analysis:** EViP_ZH_gen
 - **Development Tools:** cleanbinobj.ps1, setup scripts
 
 ### By Development Status
 - **Active Development:** ProjectLabAdmin, docs
 - **Functional Tools:** cleanbinobj.ps1, BillSummarizer, SmartdocKitolto
 - **Planning Phase:** MoodlePlanning
-- **Experimental:** TemperatureMonitoring, info2_vizsgaztatas
+- **Experimental:** info2_vizsgaztatas
 
 ## Getting Started
 

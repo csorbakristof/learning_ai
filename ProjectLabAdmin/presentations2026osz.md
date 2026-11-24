@@ -2,6 +2,44 @@
 
 Headcounts are based on the downloaded Neptun enrollment lists in
 [`data/neptun_downloads_refresh_2026_11_24/`](./data/neptun_downloads_refresh_2026_11_24/).
+
+## Reproducing the Neptun download
+
+The lists were collected with `NeptunStudentDataCollector` in
+[`app1_data_collector/dlnep_collector.py`](./app1_data_collector/dlnep_collector.py).
+It opens the Neptun staff login in Chrome, then checks the course table for
+courses whose code starts with `BMEVI`, whose requirement contains
+`Évközi jegy`, and whose instructor field contains `Dr. Csorba Kristóf`.
+Therefore, the actual selection is all matching courses in the logged-in
+Neptun course list, not just courses explicitly named as project labs or thesis
+courses.
+
+To collect another semester's lists:
+
+1. Open a PowerShell terminal and use the project's virtual environment.
+2. Set the collector's download folder to a **new, empty, semester-specific
+   folder**. The collector deletes existing Excel files in its configured
+   download folder at the start of a run.
+3. Run this from `ProjectLabAdmin`:
+
+   ```powershell
+   Set-Location 'E:\_learning_ai\ProjectLabAdmin\app1_data_collector'
+   & '..\.venv\Scripts\python.exe' -c "from pathlib import Path; from dlnep_collector import NeptunStudentDataCollector; output = Path('..') / 'data' / 'neptun_downloads_YYYY_YY_T'; collector = NeptunStudentDataCollector(output); results = collector.collect_all_course_data(); print(f'Processed {len(results)} courses; downloaded {len(collector.downloaded_files)} files')"
+   ```
+
+   Replace `neptun_downloads_YYYY_YY_T` with a new folder name for the target
+   semester (for example, `neptun_downloads_2027_28_1`).
+4. Sign in yourself in the Chrome window, complete any required authentication,
+   then press Enter in the PowerShell terminal when prompted. The collector
+   navigates to the course list and exports each matching course roster as an
+   Excel file.
+5. Check the reported download count and confirm the new folder contains the
+   expected `.xlsx` files before calculating headcounts.
+
+Run the command in an interactive terminal so the login prompt can receive
+Enter. Do not point the collector at a folder containing spreadsheets you want
+to keep: its startup cleanup removes old Excel files there.
+
 ## Calculation and filtering criteria
 
 1. Start with courses marked **Yes** for “Presentation required?” in
@@ -96,4 +134,3 @@ course-type labels and presentation flags are inferred from the codes.
 | QBF15 | Tuesday | 8-12 |
 | QBF14 | Wednesday | 8-16 |
 | QBF15 | Wednesday | 8-16 |
-
